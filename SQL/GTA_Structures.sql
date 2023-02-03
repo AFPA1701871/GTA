@@ -23,8 +23,7 @@ CREATE TABLE gta_TypePrestations(
 DROP TABLE IF EXISTS gta_Activites;
 CREATE TABLE gta_Activites(
    idActivite INT AUTO_INCREMENT PRIMARY KEY,
-   libelleActivite VARCHAR(100)  NOT NULL,
-   idTypePrestation INT NOT NULL
+   libelleActivite VARCHAR(100)  NOT NULL
 ) ENGINE=InnoDB;
 
 --
@@ -180,9 +179,10 @@ CREATE TABLE gta_Pointages(
    idPrestation INT,
    idProjet INT,
    idUO INT,
-   idUtilisateur INT,
+   idUtilisateur INT NOT NULL,
    datePointage DATE NOT NULL,
-   statutPointage BOOLEAN,
+   validePointage BOOLEAN,
+   reportePointage BOOLEAN,
    nbHeuresPointage DECIMAL(15,2)
 ) ENGINE=InnoDB;
 
@@ -194,7 +194,16 @@ DROP TABLE IF EXISTS gta_Preferences;
 CREATE TABLE gta_Preferences(
    idPreference INT AUTO_INCREMENT PRIMARY KEY,
    idPrestation INT,
-   idUtilisateur INT,
-   FOREIGN KEY(idPrestation) REFERENCES gta_Prestations(idPrestation),
-   FOREIGN KEY(idUtilisateur) REFERENCES gta_Utilisateurs(idUtilisateur)
+   idUtilisateur INT
+) ENGINE=InnoDB;
+
+--
+-- Table ActivitesParTypes
+--
+
+DROP TABLE IF EXISTS gta_ActivitesParTypes;
+CREATE TABLE gta_ActivitesParTypes(
+   idActivitesParTypes INT AUTO_INCREMENT PRIMARY KEY,
+   idTypePrestation INT,
+   idActivite INT
 ) ENGINE=InnoDB;

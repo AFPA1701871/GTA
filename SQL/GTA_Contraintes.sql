@@ -1,12 +1,6 @@
 USE GTA;
 
 --
--- Table Activites
---
-
-ALTER TABLE gta_Activites ADD CONSTRAINT FK_Activites_TypePrestations FOREIGN KEY(idTypePrestation) REFERENCES gta_TypePrestations (idTypePrestation);
-
---
 -- Table Motifs
 --
 
@@ -62,3 +56,10 @@ ALTER TABLE gta_Pointages ADD CONSTRAINT FK_Pointages_Utilisateurs FOREIGN KEY(i
 
 ALTER TABLE gta_Preferences ADD CONSTRAINT FK_Preferences_Prestations FOREIGN KEY(idPrestation) REFERENCES gta_Prestations(idPrestation);
 ALTER TABLE gta_Preferences ADD CONSTRAINT FK_Preferences_Utilisateurs FOREIGN KEY(idUtilisateur) REFERENCES gta_Utilisateurs(idUtilisateur);
+
+--
+-- Table ActivitesParTypes
+--
+
+ALTER TABLE gta_ActivitesParTypes ADD CONSTRAINT FK_ActivitesParTypes_TypePrestations FOREIGN KEY(idTypePrestation) REFERENCES gta_TypePrestations(idTypePrestation);
+ALTER TABLE gta_ActivitesParTypes ADD CONSTRAINT FK_ActivitesParTypes_Activites FOREIGN KEY(idActivite) REFERENCES gta_Activites(idActivite);
