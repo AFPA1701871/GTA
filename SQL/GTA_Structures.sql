@@ -124,6 +124,7 @@ DROP TABLE IF EXISTS gta_Utilisateurs;
 CREATE TABLE gta_Utilisateurs(
    idUtilisateur INT AUTO_INCREMENT PRIMARY KEY,
    nomUtilisateur VARCHAR(100)  NOT NULL,
+   mailUtilisateur VARCHAR(50) NOT NULL,
    matriculeUtilisateur VARCHAR(50)  NOT NULL UNIQUE,
    passwordUtilisateur VARCHAR(250)  NOT NULL,
    idUO INT NOT NULL,
