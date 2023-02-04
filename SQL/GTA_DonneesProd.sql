@@ -28,18 +28,18 @@ insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,moti
 insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,motifRequis,uoRequis,projetRequis) values(4,"Mandat",1,1,0);
 insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,motifRequis,uoRequis,projetRequis) values(5,"Autres Activités De Support",0,1,1);
 
-insert into gta_ActivitesParTypes (idType,idActivite) values(1,1);
-insert into gta_ActivitesParTypes (idType,idActivite) values(1,2);
-insert into gta_ActivitesParTypes (idType,idActivite) values(2,6);
-insert into gta_ActivitesParTypes (idType,idActivite) values(3,1);
-insert into gta_ActivitesParTypes (idType,idActivite) values(3,2);
-insert into gta_ActivitesParTypes (idType,idActivite) values(3,3);
-insert into gta_ActivitesParTypes (idType,idActivite) values(3,4);
-insert into gta_ActivitesParTypes (idType,idActivite) values(3,5);
-insert into gta_ActivitesParTypes (idType,idActivite) values(4,4);
-insert into gta_ActivitesParTypes (idType,idActivite) values(5,2);
-insert into gta_ActivitesParTypes (idType,idActivite) values(5,3);
-insert into gta_ActivitesParTypes (idType,idActivite) values(5,4);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(1,1);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(1,2);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(2,6);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(3,1);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(3,2);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(3,3);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(3,4);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(3,5);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(4,4);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(5,2);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(5,3);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(5,4);
 
 insert into gta_Centres (numeroCentre,nomCentre) values("02011","Laon");
 insert into gta_Centres (numeroCentre,nomCentre) values("59010","Douai Cantin");
