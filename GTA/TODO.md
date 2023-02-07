@@ -24,7 +24,7 @@ Ajouter les texte() dans les listes
 
 # Specificités appli
 
-Ajouter un logo et un favicon
+* [] Ajouter un logo et un favicon
 
 ## Crud Utilisateurs
 
