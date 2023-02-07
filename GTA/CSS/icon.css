@@ -1,0 +1,90 @@
+@font-face {
+    font-family: "font-awesome";
+    src: url("fa-solid-900.ttf");
+}
+
+.fas,.fa-solid {
+    font-family: "font-awesome";
+    font-style: normal;
+}
+
+.fa-sort::before {
+    content: "\f0dc";
+}
+
+.fa-eye::before {
+    content: "\f06e";
+}
+
+.fa-question-circle::before {
+    content: "\f059";
+}
+
+.fa-check-circle::before {
+    content: "\f058";
+}
+
+.fa-sign-out-alt::before {
+    content: "\f2f5";
+}
+
+.fa-paper-plane::before {
+    content: "\f1d8";
+}
+
+.fa-times-circle::before {
+    content: "\f057";
+}
+
+.fa-plus::before {
+    content: "\2b";
+}
+
+.fa-file-contract::before {
+    content: "\f56c";
+}
+
+.fa-pen::before {
+    content: "\f304";
+}
+
+.fa-trash-alt::before {
+    content: "\f2ed";
+}
+
+.fa-rotate-180 {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.fa-arrow-down-z-a::before {
+    content: "\f881";
+}
+
+.fa-arrow-down-a-z::before {
+    content: "\f15d"; }
+
+.fa-1::before {
+    content: "\31";
+}
+
+.fa-2::before {
+    content: "\32";
+}
+
+.fa-3::before {
+    content: "\33";
+}
+
+.fa-4::before {
+    content: "\34";
+}
+
+.fa-5::before {
+    content: "\35";
+}
+.fa-xs {
+    font-size: 0.75em;
+    line-height: 0.08333em;
+    vertical-align: 0.125em; }
+  

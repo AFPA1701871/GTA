@@ -35,8 +35,8 @@ echo '</div><div class="grid-col-6 gridListe grid-contenu"></div>';
 // Affichage des enregistrements de la base de données
 echo '<template>';
 echo '<div class="donnees ">CodePrestation</div>';
-echo '<div class="donnees ">LibellePrestation</div>';
-echo '<div class="donnees ">IdActivite</div>';
+echo '<div class="donnees left">LibellePrestation</div>';
+echo '<div class="donnees left ">IdActivite</div>';
  echo '<a href="index.php?page=FormPrestations&mode=Afficher&id=IdPrestation"><i class="fas fa-file-contract"></i></a>';
                                     
 echo '<a href="index.php?page=FormPrestations&mode=Modifier&id=IdPrestation"><i class="fas fa-pen"></i></a>';

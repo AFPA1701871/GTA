@@ -13,17 +13,16 @@ CREATE VIEW gta_View_Utilisateurs AS SELECT
     m.nomUtilisateur AS "nomManager",
     m.mailUtilisateur AS "mailManager",
     m.matriculeUtilisateur AS "matriculeManager",
-    (c.dateDebutContrat < CURRENT_DATE AND c.dateFinContrat > CURRENT_DATE) as actif,
+    (c.dateDebutContrat <= CURRENT_DATE AND c.dateFinContrat >= CURRENT_DATE) as actif,
     uo.numeroUO,
     uo.libelleUO,
     r.nomRole
 FROM
     gta_utilisateurs u
-LEFT JOIN gta_Utilisateurs m ON
-    u.idManager = m.idUtilisateur
+LEFT JOIN gta_Utilisateurs m ON u.idManager = m.idUtilisateur
 LEFT JOIN gta_Uos as uo ON u.idUO = uo.idUO
 LEFT JOIN gta_Roles as r ON u.idRole = r.idRole
-LEFT JOIN gta_contrats as c ON  c.idContrat in (SELECT idContrat FROM gta_contrats WHERE gta_Contrats.idUtilisateur = u.idUtilisateur);
+LEFT JOIN gta_Contrats as c ON  c.idContrat in (SELECT idContrat FROM gta_Contrats WHERE gta_Contrats.idUtilisateur = u.idUtilisateur);
 
  --
  -- Vue regroupant les utilisateurs et leurs prestations préférées
