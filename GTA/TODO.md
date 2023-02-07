@@ -2,21 +2,22 @@
 
 ## Crud Utilisateurs
 
-gérer le mot de pase
+* [ ] gérer le mot de pase
 
 ## Pagination
 
-Mettre à jour pour toutes les pages
+* [X] Mettre à jour pour toutes les pages
+* [X] corriger recherche full texte en interraction avec filtre
 
 ## NAV
 
-Regrouper les boutons
-Ajouter la gestion des droits
+* [X] Regrouper les boutons
+* [ ] Ajouter la gestion des droits
 
 ## Traduction
 
-Ajouter les traductions pour les noms ed colonne en français
-Ajouter les texte() dans les listes
+* [ ] Ajouter les traductions pour les noms de colonne en français
+* [ ] Ajouter les texte() dans les listes
 
 ## Gestion des icones
 
@@ -28,16 +29,16 @@ Ajouter les texte() dans les listes
 
 ## Crud Utilisateurs
 
-ajouter le reinit
-ajouter la gestion des contrats
-ajouter un lien changer mot de pase dans le header
+* [ ] ajouter le reinit
+* [ ] ajouter la gestion des contrats
+* [ ] ajouter un lien changer mot de pase dans le header
 
 ## Crud Activités
 
-ajouter gestion des types associés
+* [ ] ajouter gestion des types associés
 
 ## Gestion des pointages
 
-Feuille de pointage individuel avec préférences
-Récapitulatif pointage pour manager
-Récapitulatif pointage pour ARH
+* [ ] Feuille de pointage individuel avec préférences
+* [ ] Récapitulatif pointage pour manager
+* [ ] Récapitulatif pointage pour ARH

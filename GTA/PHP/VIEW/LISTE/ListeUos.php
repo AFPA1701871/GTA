@@ -15,7 +15,7 @@ echo '<div class="grid-col-5 gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-5">Liste des Uos </div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-5"><div class="demi"></div><input name="filtre" title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+ echo '<div class="grid-columns-span-5"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-5">
 <div></div>
 <div class="bigEspace"></div>
@@ -24,7 +24,7 @@ echo '<div class="caseListe grid-columns-span-5">
 </div>';
 
 echo '<div class="caseListe labelListe" data-name= "NumeroUO">NumeroUO</div>';
-echo '<div class="caseListe labelListe" data-name= "LibelleUO">LibelleUO</div>';
+echo '<div class="caseListe labelListe left" data-name= "LibelleUO">LibelleUO</div>';
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
@@ -34,7 +34,7 @@ echo '</div><div class="grid-col-5 gridListe grid-contenu"></div>';
 // Affichage des enregistrements de la base de données
 echo '<template>';
 echo '<div class="donnees ">NumeroUO</div>';
-echo '<div class="donnees ">LibelleUO</div>';
+echo '<div class="donnees left">LibelleUO</div>';
  echo '<a href="index.php?page=FormUos&mode=Afficher&id=IdUO"><i class="fas fa-file-contract"></i></a>';
                                     
 echo '<a href="index.php?page=FormUos&mode=Modifier&id=IdUO"><i class="fas fa-pen"></i></a>';

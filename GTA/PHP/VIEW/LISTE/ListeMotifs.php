@@ -15,7 +15,7 @@ echo '<div class="grid-col-6 gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-6">Liste des Motifs </div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-6"><div class="demi"></div><input name="filtre" title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+ echo '<div class="grid-columns-span-6"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-6">
 <div></div>
 <div class="bigEspace"></div>
@@ -35,7 +35,7 @@ echo '</div><div class="grid-col-6 gridListe grid-contenu"></div>';
 // Affichage des enregistrements de la base de données
 echo '<template>';
 echo '<div class="donnees ">CodeMotif</div>';
-echo '<div class="donnees ">LibelleMotif</div>';
+echo '<div class="donnees left">LibelleMotif</div>';
 echo '<div class="donnees ">IdTypePrestation</div>';
  echo '<a href="index.php?page=FormMotifs&mode=Afficher&id=IdMotif"><i class="fas fa-file-contract"></i></a>';
                                     

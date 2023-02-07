@@ -106,9 +106,12 @@ function AfficherPage(index, filtre) {
                         grid.innerHTML = grid.innerHTML.replaceAll("IdTypePrestation", element.idTypePrestation);
                         grid.innerHTML = grid.innerHTML.replaceAll("NumeroTypePrestation", element.numeroTypePrestation);
                         grid.innerHTML = grid.innerHTML.replaceAll("LibelleTypePrestation", element.libelleTypePrestation);
-                        grid.innerHTML = grid.innerHTML.replaceAll("MotifRequis", element.motifRequis);
-                        grid.innerHTML = grid.innerHTML.replaceAll("UoRequis", element.uoRequis);
-                        grid.innerHTML = grid.innerHTML.replaceAll("ProjetRequis", element.projetRequis);
+                        motif = element.motifRequis==1?"<i class=\"fas fa-check\"></i>":"";
+                        grid.innerHTML = grid.innerHTML.replaceAll("MotifRequis", motif);
+                        uo =  element.uoRequis==1?"<i class=\"fas fa-check\"></i>":"";
+                        grid.innerHTML = grid.innerHTML.replaceAll("UoRequis", uo);
+                        projet =  element.projetRequis==1?"<i class=\"fas fa-check\"></i>":"";
+                       grid.innerHTML = grid.innerHTML.replaceAll("ProjetRequis",projet);
                     });
                 } else if (page == "ListeActivites") {
                     temp = document.getElementsByTagName("template")[0];

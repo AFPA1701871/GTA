@@ -23,6 +23,9 @@
 .fa-check-circle::before {
     content: "\f058";
 }
+.fa-check::before {
+    content: "\f00c";
+}
 
 .fa-sign-out-alt::before {
     content: "\f2f5";
@@ -87,4 +90,9 @@
     font-size: 0.75em;
     line-height: 0.08333em;
     vertical-align: 0.125em; }
-  
+ 
+    .fa-filter::before{
+        margin-left:0.2em;
+        content: "\f0b0";
+    }
+    

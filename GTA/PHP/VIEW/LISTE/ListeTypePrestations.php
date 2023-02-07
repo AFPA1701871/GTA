@@ -15,7 +15,7 @@ echo '<div class="grid-col-8 gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-8">Liste des TypePrestations </div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-8"><div class="demi"></div><input name="filtre" title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+ echo '<div class="grid-columns-span-8"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-8">
 <div></div>
 <div class="bigEspace"></div>
@@ -23,8 +23,8 @@ echo '<div class="caseListe grid-columns-span-8">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "NumeroTypePrestation">NumeroTypePrestation</div>';
-echo '<div class="caseListe labelListe" data-name= "LibelleTypePrestation">LibelleTypePrestation</div>';
+echo '<div class="caseListe labelListe " data-name= "NumeroTypePrestation">NumeroTypePrestation</div>';
+echo '<div class="caseListe labelListe left" data-name= "LibelleTypePrestation">LibelleTypePrestation</div>';
 echo '<div class="caseListe labelListe" data-name= "MotifRequis">MotifRequis</div>';
 echo '<div class="caseListe labelListe" data-name= "UoRequis">UoRequis</div>';
 echo '<div class="caseListe labelListe" data-name= "ProjetRequis">ProjetRequis</div>';
@@ -37,7 +37,7 @@ echo '</div><div class="grid-col-8 gridListe grid-contenu"></div>';
 // Affichage des enregistrements de la base de données
 echo '<template>';
 echo '<div class="donnees ">NumeroTypePrestation</div>';
-echo '<div class="donnees ">LibelleTypePrestation</div>';
+echo '<div class="donnees left">LibelleTypePrestation</div>';
 echo '<div class="donnees ">MotifRequis</div>';
 echo '<div class="donnees ">UoRequis</div>';
 echo '<div class="donnees ">ProjetRequis</div>';

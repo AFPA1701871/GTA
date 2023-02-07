@@ -15,7 +15,7 @@ echo '<div class="grid-col-4 gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-4">Liste des Activites </div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-4"><div class="demi"></div><input name="filtre" title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+ echo '<div class="grid-columns-span-4"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-4">
 <div></div>
 <div class="bigEspace"></div>
@@ -32,7 +32,7 @@ echo '</div><div class="grid-col-4 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';
-echo '<div class="donnees ">LibelleActivite</div>';
+echo '<div class="donnees left">LibelleActivite</div>';
  echo '<a href="index.php?page=FormActivites&mode=Afficher&id=IdActivite"><i class="fas fa-file-contract"></i></a>';
                                     
 echo '<a href="index.php?page=FormActivites&mode=Modifier&id=IdActivite"><i class="fas fa-pen"></i></a>';

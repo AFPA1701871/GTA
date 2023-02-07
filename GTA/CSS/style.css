@@ -13,6 +13,9 @@ header{
 body{
     background-color: var(--color4);
 }
+input,select{
+    font-size:1.2em;
+}
 footer{
     background-color: var(--color5);
     color: var(--color1);
@@ -63,6 +66,7 @@ nav div:hover .sous-menu{
 .left {
     justify-content: left !important;
 }
+
 .estompe{
     opacity:0.3;
 }

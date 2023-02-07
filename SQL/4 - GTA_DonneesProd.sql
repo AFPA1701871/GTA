@@ -579,7 +579,7 @@ insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(43,"95NPLA160
 insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(44,"95NPSE190001","PSE pour l¿EPIC");
 insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(45,"95NSES170001","SET APP ERASMUS +");
 insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(46,"95NSHD180001","SIEG 2018 HDF Dynamique vers l'emploi");
-insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(47,"95NPEC190001","Accompagnement à la Mise en ½uvre du parcours Emploi Compétence (PEC)");
+insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(47,"95NPEC190001","Accompagnement à la Mise en oeuvre du parcours Emploi Compétence (PEC)");
 insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(48,"95NHAN210001","Accompagnement BENEFICIAIRES HANDICAPES");
 insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(49,"95NHOPE22001","Accompagnement intégration HOPE Promotion 2022");
 insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(50,"95NHOPE23001","Accompagnement intégration HOPE Promotion 2023");
