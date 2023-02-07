@@ -1,27 +1,43 @@
-## Correctif generateur
-# Crud Utilisateurs
+# Correctif generateur
+
+## Crud Utilisateurs
+
 gérer le mot de pase
-# Pagination
+
+## Pagination
+
 Mettre à jour pour toutes les pages
-# NAV
+
+## NAV
+
 Regrouper les boutons
 Ajouter la gestion des droits
-# Traduction
+
+## Traduction
+
 Ajouter les traductions pour les noms ed colonne en français
 Ajouter les texte() dans les listes
 
-## Specificités appli
+## Gestion des icones
+
+* [X] Utiliser des icones locales
+
+# Specificités appli
+
 Ajouter un logo et un favicon
 
-# Crud Utilisateurs
+## Crud Utilisateurs
+
 ajouter le reinit
 ajouter la gestion des contrats
 ajouter un lien changer mot de pase dans le header
 
-# Crud Activités
+## Crud Activités
+
 ajouter gestion des types associés
 
-# Gestion des pointages
+## Gestion des pointages
+
 Feuille de pointage individuel avec préférences
 Récapitulatif pointage pour manager
 Récapitulatif pointage pour ARH
