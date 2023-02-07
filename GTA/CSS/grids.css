@@ -1,0 +1,115 @@
+
+/********** GRIDS **********/
+
+.grid-col-4 {
+	display : grid;
+	grid-template-columns : 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-4 { 
+	grid-column:1/5;
+}
+
+.grid-col-5 {
+	display : grid;
+	grid-template-columns : 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-5 { 
+	grid-column:1/6;
+}
+
+.grid-col-7 {
+	display : grid;
+	grid-template-columns : 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-7 { 
+	grid-column:1/8;
+}
+
+.grid-col-6 {
+	display : grid;
+	grid-template-columns : 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-6 { 
+	grid-column:1/7;
+}
+
+.grid-col-12 {
+	display : grid;
+	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-12 { 
+	grid-column:1/13;
+}
+
+.grid-col-8 {
+	display : grid;
+	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-8 { 
+	grid-column:1/9;
+}
+
+.grid-col-10 {
+	display : grid;
+	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-10 { 
+	grid-column:1/11;
+}
+
+.grid-col-29 {
+	display : grid;
+	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-29 { 
+	grid-column:1/30;
+}
+
+.grid-col-17 {
+	display : grid;
+	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-17 { 
+	grid-column:1/18;
+}
+
+.grid-col-15 {
+	display : grid;
+	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-15 { 
+	grid-column:1/16;
+}
+
+.gridListe div,button,a {
+	justify-content: center;
+	align-items: center;
+}
+
+.caseListe {
+	padding : 0.2em;
+}
+
+.caseForm {
+	border: 1px solid #00aaff;
+	padding : 0.2em;
+}
+
+.GridForm {
+	 display : grid;
+	grid-template-columns: 2fr 2fr 0.5fr 0.5fr;
+	grid-gap: 0.5em;
+}
+
+.GridForm div,button,a {
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-0-1 {
+	flex:0.1;
+}
+
+.gridForm-col-span {
+	grid-column: 1/5 ;
+}

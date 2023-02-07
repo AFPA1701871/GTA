@@ -1,0 +1,67 @@
+header{
+    height: 15vh;
+    flex:none;
+    background-color: var(--color5);
+    color: var(--color1);
+}
+.titre, .titreListe, .labelListe{
+    font-size: 2 em;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+}
+body{
+    background-color: var(--color4);
+}
+footer{
+    background-color: var(--color5);
+    color: var(--color1);
+    font-size: 0.8em;
+    position: fixed;
+    bottom:0;
+    width: 100%;
+   
+     padding: 2em; 
+}
+main{
+    padding-bottom: 20vh;
+}
+
+.labelListe{
+    grid-gap:0.2em;
+}
+.labelListe .left{
+    justify-content: unset;
+}
+.titreForm{
+    padding: 3em;
+}
+/**** MENU ***/
+nav a > div , nav > div{
+    padding: 2em 0.2em;
+    box-shadow: 2px 2px 3px black;
+    justify-content: center;
+    margin: 0.3em;
+    background-color: var(--color2);
+}
+.sous-menu a > div{
+    padding: 0.5em 2em;
+    box-shadow: 2px 2px 3px black;
+}
+nav a > div:hover , nav > div:hover{
+    background-color: var(--color2);
+}
+nav div:hover .sous-menu{
+    display: flex;
+}
+.sous-menu{
+    display: none;
+    position: absolute;
+    top: 5em;
+}
+/******/
+.left {
+    justify-content: left !important;
+}
+.estompe{
+    opacity:0.3;
+}

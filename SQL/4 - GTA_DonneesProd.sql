@@ -1,8 +1,11 @@
+use gta;
 
 insert into gta_Roles  values(1,"agent");
 insert into gta_Roles  values(2,"manager");
 insert into gta_Roles  values(3,"assistante");
 insert into gta_Roles  values(4,"admin");
+
+insert into gta_Utilisateurs (idUtilisateur,   nomUtilisateur,   mailUtilisateur ,   matriculeUtilisateur ,   passwordUtilisateur ,    idRole ) values(1,"admin","admin@afpa.fr","Admin",md5(md5("Admin")),4);
 
 insert into gta_Conversions  values(null,1,"0.15");
 insert into gta_Conversions  values(null,2,"0.3");

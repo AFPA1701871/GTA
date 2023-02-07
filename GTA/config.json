@@ -1,0 +1,8 @@
+{
+	"Host":"localhost",
+	"Port":"3306",
+	"DbName":"gta",
+	"Login":"root",
+	"Pwd":"",
+	"NbEltParPage":50
+}
