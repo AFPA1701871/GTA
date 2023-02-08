@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/root.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/grids.css">
+    <link rel="stylesheet" href="../CSS/pointage.css">
+    <title>GTA - Pointage</title>
+</head>
+
+<body class="colonne">
+    <!------------------------------------------------------------------------>
+    <!--------------------------------Header---------------------------------->
+    <!------------------------------------------------------------------------>
+    <header>
+        <div class="demi"></div>
+        <div><img src="" alt="Logo de l'application"></div>
+        <div class="titre center">Pointage</div>
+        <div class="colonne center">Connexion</div>
+        <div class="demi"></div>
+    </header>
+    <!------------------------------------------------------------------------>
+    <!----------------------------------Nav----------------------------------->
+    <!------------------------------------------------------------------------>
+    <nav>
+        <!--Barre de navigation-->
+
+    </nav>
+    <!------------------------------------------------------------------------>
+    <!---------------------------------Main----------------------------------->
+    <!------------------------------------------------------------------------>
+    <main>
+        
+        <div class="grid-col2">
+            <!--Séparation Prestations/Pointages => Zone Prestations -->
+            <div class="grid-presta tabCol">
+                <div class="grid-columns-span-5 grid-lineSimple cellRight">&nbsp;</div>
+                <div class="grid-columns-span-5 grid-lineSimple cellRight">&nbsp;</div>
+                <div class="center grid-lineDoublegrid-lineSimple cellBottom cellTop"></div>
+                <div class="center grid-lineDouble cellBottom cellTop">Code Prestation</div>
+                <div class="center grid-lineDouble cellBottom cellTop">UO de MAD<br />
+                    interne</div>
+                <div class="center grid-lineDouble cellBottom cellTop">Code Motif</div>
+                <div class="center grid-lineDouble cellBottom cellTop">Code Projet</div>
+                <!------------------>
+                <!------------------>
+                <!------------------>
+                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">
+                    <div></div>
+                    <div class="triple">Jours ouvrés</div>
+                    <div></div>
+                </div>
+                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">
+                    <div></div>
+                    <div class="triple">Nb jours absences (congés, maladie ...) ne pas saisir les absences RTT</div>
+                    <div></div>
+                </div>
+                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">
+                    <div></div>
+                    <div class="triple">Jours ouvrés hors absences</div>
+                    <div></div>
+                </div>                
+                <!--------------------------->
+                <!-- Prestations de type 1 -->
+                <!--------------------------->
+                <!-- Titre -->
+                <div class="grid-columns-span-5 grid-lineSimple cellBottom">1 - Activité de production (y compris présentation titres CCxx)</div>
+                    <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="center grid-lineDouble cellBottom notApplicable"></div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="center grid-lineDouble cellBottom notApplicable"></div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="center grid-lineDouble cellBottom notApplicable"></div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">Option pour ajouter une ligne</div>
+                
+                <!--------------------------->
+                <!-- Prestations de type 2 -->
+                <!--------------------------->
+                <!-- Titre -->
+                <div class="grid-columns-span-5 grid-lineSimple cellBottom">2 - Missions Nationales de Service Public
+                </div>
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="center grid-lineDouble cellBottom notApplicable"></div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">Option pour ajouter une ligne</div> 
+
+                <!--------------------------->
+                <!-- Prestations de type 3 -->
+                <!--------------------------->
+                <!-- Titre -->
+                <div class="grid-columns-span-5 grid-lineSimple cellBottom">3 - Perfectionnement</div>
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom notApplicable"></div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">Option pour ajouter une ligne</div>                
+                <!--------------------------->
+                <!-- Prestations de type 4 -->
+                <!--------------------------->
+                <!-- Titre -->
+                <div class="grid-columns-span-5 grid-lineSimple cellBottom">4 - Mandat</div>
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="center grid-lineDouble cellBottom notApplicable"></div>
+                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">Option pour ajouter une ligne</div>                
+                <!--------------------------->
+                <!-- Prestations de type 5 -->
+                <!--------------------------->
+                <!-- Titre -->
+                <div class="grid-columns-span-5 grid-lineSimple cellBottom">5 - Autres activités de support</div>
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="center grid-lineDouble cellBottom notApplicable"></div>
+                <div class="center grid-lineDouble cellBottom work"></div>
+                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">Option pour ajouter une ligne</div>
+            </div>
+            <!--Séparation Prestations/Pointages => Zone Pointages -->
+            <div class="grid-pointage tabCol">
+                <div class="center grid-lineSimple cellBottom">Contrôle</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="grid-lineSimple cellBottom"></div>
+                <div class="center cellOK grid-lineSimple cellBottom">OK</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellOK grid-lineSimple cellBottom">OK</div>
+                <div class="center cellOK grid-lineSimple cellBottom">OK</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellOK grid-lineSimple cellBottom">OK</div>
+                <div class="center cellOK grid-lineSimple cellBottom">OK</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellOK grid-lineSimple cellBottom">OK</div>
+                <div class="center cellOK grid-lineSimple cellBottom">OK</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellOK grid-lineSimple cellBottom">OK</div>
+                <div class="center cellOK grid-lineSimple cellBottom">OK</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <div class="center cellKO grid-lineSimple cellBottom">KO</div>
+                <!-- Ligne 8 -->
+                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom grid-lineSimple"></div>
+                <div class="center date grid-lineSimple cellBottom">01/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">02/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">03/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">04/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">05/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">06/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">07/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">08/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">09/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">10/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">11/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">12/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">13/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">14/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">15/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">16/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">17/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">18/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">19/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">20/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">21/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">22/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">23/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">24/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">25/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">26/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">27/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">28/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">29/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">30/02/23</div>
+                <div class="center date grid-lineSimple cellBottom">31/02/23</div>
+                <!-- Lignes 9 et 10 -->
+                <div class="cellBottom center grid-lineDouble">Total</div>
+                <div class="cellBottom center grid-lineDouble">%GTA</div>
+                <div class="cellBottom grid-lineDouble"></div>
+                <div class="center grid-lineDouble cellBottom noWork">1<br />Dim</div>
+                <div class="center grid-lineDouble cellBottom work">2<br />Lun</div>
+                <div class="center grid-lineDouble cellBottom work">3<br />Mar</div>
+                <div class="center grid-lineDouble cellBottom work">4<br />Mer</div>
+                <div class="center grid-lineDouble cellBottom work">5<br />Jeu</div>
+                <div class="center grid-lineDouble cellBottom work">6<br />Ven</div>
+                <div class="center grid-lineDouble cellBottom noWork">7<br />Sam</div>
+                <div class="center grid-lineDouble cellBottom noWork">8<br />Dim</div>
+                <div class="center grid-lineDouble cellBottom work">9<br />Lun</div>
+                <div class="center grid-lineDouble cellBottom work">10<br />Mar</div>
+                <div class="center grid-lineDouble cellBottom work">11<br />Mer</div>
+                <div class="center grid-lineDouble cellBottom work">12<br />Jeu</div>
+                <div class="center grid-lineDouble cellBottom work">13<br />Ven</div>
+                <div class="center grid-lineDouble cellBottom noWork">14<br />Sam</div>
+                <div class="center grid-lineDouble cellBottom noWork">15<br />Dim</div>
+                <div class="center grid-lineDouble cellBottom work">16<br />Lun</div>
+                <div class="center grid-lineDouble cellBottom work">17<br />Mar</div>
+                <div class="center grid-lineDouble cellBottom work">18<br />Mer</div>
+                <div class="center grid-lineDouble cellBottom work">19<br />Jeu</div>
+                <div class="center grid-lineDouble cellBottom work">20<br />Ven</div>
+                <div class="center grid-lineDouble cellBottom noWork">21<br />Sam</div>
+                <div class="center grid-lineDouble cellBottom noWork">22<br />Dim</div>
+                <div class="center grid-lineDouble cellBottom work">23<br />Lun</div>
+                <div class="center grid-lineDouble cellBottom work">24<br />Mar</div>
+                <div class="center grid-lineDouble cellBottom work">25<br />Mer</div>
+                <div class="center grid-lineDouble cellBottom work">26<br />Jeu</div>
+                <div class="center grid-lineDouble cellBottom work">27<br />Ven</div>
+                <div class="center grid-lineDouble cellBottom noWork">28<br />Sam</div>
+                <div class="center grid-lineDouble cellBottom noWork">29<br />Dim</div>
+                <div class="center grid-lineDouble cellBottom work">30<br />Lun</div>
+                <div class="center grid-lineDouble cellBottom work">31<br />Mar</div>
+                <!-- Ligne 11 -->
+                <div class="cellBottom center grid-lineSimple">22</div>
+                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <!-- Ligne 12 -->
+                <div class="cellBottom center grid-lineSimple">0</div>
+                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <div class="cellBottom center work grid-lineSimple"></div>
+                <!-- Ligne 13 -->
+                <div class="cellBottom center grid-lineSimple">22</div>
+                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center noWork grid-lineSimple">0,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>
+
+                <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
+
+                <div class="cellBottom center grid-lineDouble">0,00</div>
+                <div class="cellBottom center grid-lineDouble">0,0%</div>
+                <div class="cellBottom grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+
+                <div class="cellBottom center grid-lineDouble">0,00</div>
+                <div class="cellBottom center grid-lineDouble">0,0%</div>
+                <div class="cellBottom grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+
+                <div class="cellBottom center grid-lineDouble">0,00</div>
+                <div class="cellBottom center grid-lineDouble">0,0%</div>
+                <div class="cellBottom grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
+
+                <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
+                <div class="cellBottom center grid-lineDouble">0,00</div>
+                <div class="cellBottom center grid-lineDouble">0,0%</div>
+                <div class="cellBottom grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
+
+                <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
+                <div class="cellBottom center grid-lineDouble">0,00</div>
+                <div class="cellBottom center grid-lineDouble">0,0%</div>
+                <div class="cellBottom grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
+
+                <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
+                <div class="cellBottom center grid-lineDouble">0,00</div>
+                <div class="cellBottom center grid-lineDouble">0,0%</div>
+                <div class="cellBottom grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
+
+                <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
+                <div class="cellBottom center grid-lineDouble">0,00</div>
+                <div class="cellBottom center grid-lineDouble">0,0%</div>
+                <div class="cellBottom grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center noWork grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="cellBottom center work grid-lineDouble"></div>
+                <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
+            </div>
+        </div>
+    </main>
+    <!------------------------------------------------------------------------>
+    <!--------------------------------Footer---------------------------------->
+    <!------------------------------------------------------------------------>
+    <footer>
+        <script src="../JS/pointage.js"></script>
+    </footer>
+</body>
+
+</html>
