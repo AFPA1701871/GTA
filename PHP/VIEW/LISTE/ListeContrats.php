@@ -6,7 +6,7 @@ echo '<div class="flex-0-1"></div>';
 
 echo '<div><section class="colonne">';
 
-$objets = ContratsManager::getList(null, null, null, Parametres::getNbEltParPage());
+$objets = ContratsManager::getList(null, ['idUtilisateur' => $_GET['id']], null, Parametres::getNbEltParPage());
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
 echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
