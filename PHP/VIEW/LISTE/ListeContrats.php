@@ -35,8 +35,8 @@ echo '</div><div class="grid-col-7 gridListe grid-contenu">';
 // Affichage des enregistrements de la base de données
 foreach ($objets AS $value)
 {
-	echo '<div class="donnees ">'.$value->getIdCentre().'</div>';
-	echo '<div class="donnees ">'.$value->getIdUtilisateur().'</div>';
+	echo '<div class="donnees ">'.CentresManager::findById($value->getIdCentre())->getNomCentre().'</div>';
+	echo '<div class="donnees ">'.UtilisateursManager::findById($value->getIdUtilisateur())->getNomUtilisateur().'</div>';
 	echo '<div class="donnees ">'.$value->getDateDebutContrat().'</div>';
 	echo '<div class="donnees ">'.$value->getDateFinContrat().'</div>';
 	echo '<a href="index.php?page=FormContrats&mode=Afficher&id='.$value->getIdContrat().'"><i class="fas fa-file-contract"></i></a>';
