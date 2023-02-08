@@ -19,7 +19,7 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="caseListe grid-columns-span-7">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe"><a href="index.php?page=FormContrats&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
+<div class="caseListe"><a href="index.php?page=FormContrats&mode=Ajouter&idutilisateur='.$_GET['id'].'"><i class="fas fa-plus"></i></a></div>
 <div></div>
 </div>';
 
