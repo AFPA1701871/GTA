@@ -71,3 +71,6 @@ form {
     grid-auto-rows: minmax(1em, auto);
     width: 75%;
 }
+input[type=submit]{
+    justify-content: center;
+}

@@ -1,9 +1,11 @@
-
 header{
     height: 15vh;
     flex:none;
     background-color: var(--color5);
     color: var(--color1);
+}
+h1 {
+    font-size: 2rem;
 }
 .titre, .titreListe, .labelListe{
     font-size: 2rem;
