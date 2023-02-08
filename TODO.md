@@ -3,11 +3,12 @@
 ## Crud Utilisateurs
 
 * [ ] gérer le mot de pase
+* [ ] obliger le changement de mot de passe à la première connexion
 
 ## Pagination
 
 * [X] Mettre à jour pour toutes les pages
-* [X] corriger recherche full texte en interraction avec filtre
+* [X] Corriger recherche full texte en interraction avec filtre
 
 ## NAV
 
