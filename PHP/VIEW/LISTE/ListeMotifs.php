@@ -2,7 +2,7 @@
 
  echo '<main>';
 
- echo '<div class="flex-0-1"></div>';
+ echo '<div class="cote"></div>';
 
  echo '<div><section class="colonne">';
  
@@ -58,5 +58,5 @@ echo '<div class="bigEspace grid-columns-span-9 pagination"></div>';
 
 echo '<div class="bigEspace grid-columns-span-9"></div>';
 echo'</div>'; //Div
-echo '<div class="flex-0-1"></div>';
+echo '<div class="cote"></div>';
 echo '</section></main>';

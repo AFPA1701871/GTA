@@ -30,7 +30,7 @@ echo '<div class="bigEspace "></div>	';
 echo '<div class="caseForm col-span-form">
 	<div></div>
 	<div><a href="index.php?page=ListeActivites"><button type="button"><i class="fas fa-sign-out-alt fa-rotate-180"></i></button></a></div>
-	<div class="flex-0-1"></div>';
+	<div class="cote"></div>';
 	echo ($mode == "Afficher") ? "" : " <div><button type=\"submit\"><i class=\"fas fa-paper-plane\"></i></button></div>";
 	echo'<div></div>
 	</div>';

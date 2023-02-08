@@ -11,7 +11,8 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link rel="stylesheet" href="CSS/root.css">
 <link rel="stylesheet" href="CSS/style.css">
-<link rel="stylesheet" href="CSS/icon.css">';
+<link rel="stylesheet" href="CSS/icon.css">
+<link rel="stylesheet" href="CSS/header.css">';
 if (substr($nom,0,4)=="Form"){
     echo '  <link rel="stylesheet" href="CSS/grids.css">
             <link rel="stylesheet" href="CSS/form.css">';

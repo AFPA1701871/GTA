@@ -4,6 +4,7 @@ header{
     background-color: var(--color5);
     color: var(--color1);
 }
+
 h1 {
     font-size: 2rem;
 }
@@ -17,6 +18,10 @@ body{
 }
 input,select{
     font-size:1.2em;
+}
+.flex {
+    display: flex;
+    flex-wrap: nowrap;
 }
 footer{
     background-color: var(--color5);
@@ -42,18 +47,24 @@ main{
     padding: 3em;
 }
 /**** MENU ***/
-nav a > div , nav > div{
+/* menu {
+    margin: 0;
+    padding: 0;
+    flex: 1;
+} */
+menu a > div , menu > div{
     padding: 2em 0.2em;
     box-shadow: 2px 2px 3px black;
     justify-content: center;
     margin: 0.3em;
     background-color: var(--color2);
+    /* flex: 1; */
 }
 .sous-menu a > div{
     padding: 0.5em 2em;
     box-shadow: 2px 2px 3px black;
 }
-nav a > div:hover , nav > div:hover{
+menu a > div:hover , menu > div:hover{
     background-color: var(--color2);
 }
 nav div:hover .sous-menu{
