@@ -19,8 +19,12 @@ html, menu, main, body, div, a, header, footer, nav, article, section, aside, fi
     padding: 0;
 }
 
-img, video, button {
+video, button {
     width: 100%;
+}
+img {
+    width: auto;
+    height: 100%;
 }
 
 .colonne {

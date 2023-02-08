@@ -1,7 +1,7 @@
 <body class="colonne">
     <header>
         <div class="demi"></div>
-        <div><img src="" alt=""></div>
+        <div><img src="./IMG/croissant.png" alt=""></div>
         <div class="titre center"><?php echo texte($titre); ?></div>
         <div class="colonne">
             <?php
