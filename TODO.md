@@ -25,6 +25,7 @@
 * [X] Utiliser des icones locales
 
 ## Listes avec vues
+
 * [ ] Modifier les redirections (Colin)
 
 # Spécificités appli
@@ -44,7 +45,7 @@
 
 ## Gestion des pointages
 
-* [ ] Créer la page en HTML 
+* [ ] Créer la page en HTML (Florent)
 * [ ] Feuille de pointage individuel avec préférences
 * [ ] Récapitulatif pointage pour manager
 * [ ] Récapitulatif pointage pour ARH
@@ -58,9 +59,11 @@
 
 * [ ] Supprimer la partie inscription (Martine)
 
-## CSS 
-* [ ] Améliorer le design 
+## CSS
+
+* [ ] Améliorer le design
 
 ## Type Prestation
+
 * [ ] CRUD Modifier par des checkBox (Colin)
 * [ ] Ajouter le sous formulaire pour choisir les activités associées
