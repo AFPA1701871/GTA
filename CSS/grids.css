@@ -106,9 +106,7 @@
 	align-items: center;
 }
 
-.cote {
-	flex:0.1;
-}
+
 
 .gridForm-col-span {
 	grid-column: 1/5 ;

@@ -1,7 +1,7 @@
 <footer class="center">
     <div class="cote"></div>
     <div>
-        <p>Fait par la promotion CDA 2022/2023 de Martine Poix</p>
+        <p>Fait par la promotion CDA 2022/2023 de Martine Poix.</p>
         <div id="backToTop"><i class="fa-solid fa-square-caret-up fa-2x"></i></div>
     </div>
     <div class="cote"></div>
