@@ -210,7 +210,7 @@ CREATE TABLE gta_ActivitesParTypes(
 ) ENGINE = InnoDB;
 
 
-CREATE TABLE IF NOT EXISTS gta_textes (
+CREATE TABLE IF NOT EXISTS gta_Textes (
 idTexte int (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 codeTexte varchar (50) NOT NULL,
 fr LONGTEXT NOT NULL,
