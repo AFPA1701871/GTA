@@ -35,7 +35,7 @@
 ## Crud Utilisateurs
 
 * [ ] Ajouter le reinit
-* [ ] Ajouter la gestion des contrats
+* [ ] Ajouter la gestion des contrats (Alexandre et Yves)
 * [ ] Ajouter un lien changer mot de pase dans le header
 * [ ] Mettre un check sur actif
 
