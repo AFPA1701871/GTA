@@ -40,11 +40,11 @@ echo '<div class="donnees left">LibelleMotif</div>';
 echo '<div class="donnees ">NumeroTypePrestation</div>';
 echo '<div class="donnees left">LibelleTypePrestation</div>';
 
- echo '<a href="index.php?page=FormView_Motifs&mode=Afficher&id=IdMotif"><i class="fas fa-file-contract"></i></a>';
+ echo '<a href="index.php?page=FormMotifs&mode=Afficher&id=IdMotif"><i class="fas fa-file-contract"></i></a>';
                                     
-echo '<a href="index.php?page=FormView_Motifs&mode=Modifier&id=IdMotif"><i class="fas fa-pen"></i></a>';
+echo '<a href="index.php?page=FormMotifs&mode=Modifier&id=IdMotif"><i class="fas fa-pen"></i></a>';
                                     
-echo '<a href="index.php?page=FormView_Motifs&mode=Supprimer&id=IdMotif"><i class="fas fa-trash-alt"></i></a>';
+echo '<a href="index.php?page=FormMotifs&mode=Supprimer&id=IdMotif"><i class="fas fa-trash-alt"></i></a>';
  echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';

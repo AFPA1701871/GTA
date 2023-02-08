@@ -45,11 +45,11 @@ echo '<div class="donnees ">NomManager</div>';
 echo '<div class="donnees ">Actif</div>';
 echo '<div class="donnees ">NumeroUO</div>';
 echo '<div class="donnees ">NomRole</div>';
- echo '<a href="index.php?page=FormView_Utilisateurs&mode=Afficher&id=IdUtilisateur"><i class="fas fa-file-contract"></i></a>';
+ echo '<a href="index.php?page=FormUtilisateurs&mode=Afficher&id=IdUtilisateur"><i class="fas fa-file-contract"></i></a>';
                                     
-echo '<a href="index.php?page=FormView_Utilisateurs&mode=Modifier&id=IdUtilisateur"><i class="fas fa-pen"></i></a>';
+echo '<a href="index.php?page=FormUtilisateurs&mode=Modifier&id=IdUtilisateur"><i class="fas fa-pen"></i></a>';
                                     
-echo '<a href="index.php?page=FormView_Utilisateurs&mode=Supprimer&id=IdUtilisateur"><i class="fas fa-trash-alt"></i></a>';
+echo '<a href="index.php?page=FormUtilisateurs&mode=Supprimer&id=IdUtilisateur"><i class="fas fa-trash-alt"></i></a>';
  echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';

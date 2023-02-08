@@ -37,11 +37,11 @@ echo '<template>';
 echo '<div class="donnees ">CodePrestation</div>';
 echo '<div class="donnees left">LibellePrestation</div>';
 echo '<div class="donnees ">LibelleActivite</div>';
- echo '<a href="index.php?page=FormView_Prestations&mode=Afficher&id=IdPrestation"><i class="fas fa-file-contract"></i></a>';
+ echo '<a href="index.php?page=FormPrestations&mode=Afficher&id=IdPrestation"><i class="fas fa-file-contract"></i></a>';
                                     
-echo '<a href="index.php?page=FormView_Prestations&mode=Modifier&id=IdPrestation"><i class="fas fa-pen"></i></a>';
+echo '<a href="index.php?page=FormPrestations&mode=Modifier&id=IdPrestation"><i class="fas fa-pen"></i></a>';
                                     
-echo '<a href="index.php?page=FormView_Prestations&mode=Supprimer&id=IdPrestation"><i class="fas fa-trash-alt"></i></a>';
+echo '<a href="index.php?page=FormPrestations&mode=Supprimer&id=IdPrestation"><i class="fas fa-trash-alt"></i></a>';
  echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';

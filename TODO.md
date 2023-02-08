@@ -26,7 +26,7 @@
 
 ## Listes avec vues
 
-* [ ] Modifier les redirections (Colin)
+* [X] Modifier les redirections
 
 # Spécificités appli
 
