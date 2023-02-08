@@ -24,6 +24,15 @@ h1 {
     
     text-transform: uppercase;
 }
+.caseListe a {
+    max-width: fit-content;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.caseListe a i {
+    cursor: pointer;
+    font-size: 2.5rem;
+}
 
 
 input::placeholder {

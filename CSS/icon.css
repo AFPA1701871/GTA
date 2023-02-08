@@ -27,10 +27,13 @@
     content: "\f00c";
 }
 
-.fa-sign-out-alt::before {
+.fa-house::before {
     content: "\f2f5";
 }
 
+.fa-house::before {
+    content: "\E00D";
+}
 .fa-paper-plane::before {
     content: "\f1d8";
 }
