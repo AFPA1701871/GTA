@@ -44,19 +44,6 @@
     padding-top: 1em;
 }
 
-.horizontal-scroll-wrapper {
-    overflow-x: auto;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(31, minmax(4em, 5em));
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(4em, 5em);
-}
-
-.horizontal-scroll-wrapper {
-    width: minmax(4em, 5em);
-}
-
 .tabCol > div {
     border-left: 0.1em solid black;
     border-right: 0.1em solid black;
