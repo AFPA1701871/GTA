@@ -35,8 +35,8 @@
 ## Crud Utilisateurs
 
 * [ ] Ajouter le reinit
-* [ ] Ajouter la gestion des contrats (Alexandre et Yves)
-* [ ] Remplacer les input ID par des select (Yves)
+* [X] Ajouter la gestion des contrats (Alexandre et Yves)
+* [X] Remplacer les input ID par des select (Yves)
 * [ ] Ajouter un lien changer mot de pase dans le header
 * [ ] Mettre un check sur actif
 
