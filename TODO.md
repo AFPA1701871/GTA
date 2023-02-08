@@ -48,3 +48,6 @@
 ## CRUD Prestations
 
 * [X] mettre des checks plutot que 0/1
+
+## Connexion
+* [] Supprimer la partie inscription
