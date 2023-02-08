@@ -24,7 +24,7 @@ echo '<div class="caseListe labelListe" data-name= "DateFinContrat">DateFinContr
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair ">Nombre d\'éléments :</div><div class="mini" id="nbEnregs">'.count($objets).'</div> ';
+echo '<div class=" caseListe texteClair "></div><div class="mini" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-7 gridListe grid-contenu">';
 
 // Affichage des enregistrements de la base de données
@@ -40,7 +40,7 @@ foreach ($objets AS $value)
 										
 	echo '<a href="index.php?page=FormContrats&mode=Supprimer&id='.$value->getIdContrat().'"><i class="fas fa-trash-alt"></i></a>';
 }
-echo '</div>';
+echo '</div></div>';
 
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';

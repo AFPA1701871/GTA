@@ -3,7 +3,8 @@
     src: url("fa-solid-900.ttf");
 }
 
-.fas,.fa-solid {
+.fas,
+.fa-solid {
     font-family: "font-awesome";
     font-style: normal;
 }
@@ -23,6 +24,7 @@
 .fa-check-circle::before {
     content: "\f058";
 }
+
 .fa-check::before {
     content: "\f00c";
 }
@@ -68,7 +70,8 @@
 }
 
 .fa-arrow-down-a-z::before {
-    content: "\f15d"; }
+    content: "\f15d";
+}
 
 .fa-1::before {
     content: "\31";
@@ -89,13 +92,17 @@
 .fa-5::before {
     content: "\35";
 }
+
 .fa-xs {
     font-size: 0.75em;
     line-height: 0.08333em;
-    vertical-align: 0.125em; }
- 
-    .fa-filter::before{
-        margin-left:0.2em;
-        content: "\f0b0";
-    }
-    
+    vertical-align: 0.125em;
+}
+
+.fa-filter::before {
+    margin-left: 0.2em;
+    content: "\f0b0";
+}
+.fa-calculator::before{
+    content: "\f1ec";
+}
