@@ -61,7 +61,7 @@
 
 ## CSS
 
-* [ ] Améliorer le design
+* [ ] Améliorer le design (Valentin)
 
 ## Type Prestation
 
