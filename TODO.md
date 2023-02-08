@@ -14,7 +14,7 @@
 * [X] Regrouper les boutons
 * [ ] Ajouter la gestion des droits
 
-## Traduction
+## Traduction (Fabien)
 
 * [ ] Ajouter les traductions pour les noms de colonne en français
 * [ ] Ajouter les texte() dans les listes
@@ -23,7 +23,7 @@
 
 * [X] Utiliser des icones locales
 
-# Specificités appli
+# Spécificités appli
 
 * [ ] Ajouter un logo et un favicon
 
@@ -32,6 +32,7 @@
 * [ ] ajouter le reinit
 * [ ] ajouter la gestion des contrats
 * [ ] ajouter un lien changer mot de pase dans le header
+* [ ] mettre un check sur actif
 
 ## Crud Activités
 
@@ -42,3 +43,7 @@
 * [ ] Feuille de pointage individuel avec préférences
 * [ ] Récapitulatif pointage pour manager
 * [ ] Récapitulatif pointage pour ARH
+
+## CRUD Prestations
+
+* [X] mettre des checks plutot que 0/1
