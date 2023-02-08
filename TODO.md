@@ -2,8 +2,8 @@
 
 ## Crud Utilisateurs
 
-* [ ] gérer le mot de passe
-* [ ] obliger le changement de mot de passe à la première connexion (Martine)
+* [ ] Gérer le mot de passe
+* [X] Obliger le changement de mot de passe à la première connexion
 
 ## Pagination
 
@@ -26,7 +26,7 @@
 
 ## Listes avec vues
 
-* [ ] Modifier les redirections (Colin)
+* [X] Modifier les redirections
 
 # Spécificités appli
 
@@ -35,7 +35,8 @@
 ## Crud Utilisateurs
 
 * [ ] Ajouter le reinit
-* [ ] Ajouter la gestion des contrats (Alexandre et Yves)
+* [X] Ajouter la gestion des contrats (Alexandre et Yves)
+* [X] Remplacer les input ID par des select (Yves)
 * [ ] Ajouter un lien changer mot de pase dans le header
 * [ ] Mettre un check sur actif
 
@@ -57,7 +58,7 @@
 
 ## Connexion
 
-* [ ] Supprimer la partie inscription (Martine)
+* [X] Supprimer la partie inscription
 
 ## CSS
 

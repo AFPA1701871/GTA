@@ -25,5 +25,5 @@ if (substr($nom,0,4)=="Form"){
 else if (substr($nom,0,4)=="List"){
     echo '  <link rel="stylesheet" href="CSS/grids.css">';
 }
- echo '</head>';
+echo '</head>';
 //  <script src="https://kit.fontawesome.com/ce4feb7268.js" crossorigin="anonymous"></script>

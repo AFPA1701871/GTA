@@ -5,7 +5,6 @@
         <div class="titre center"><?php echo texte($titre); ?></div>
         <div class="colonne">
             <?php
-
             if (isset($_SESSION['utilisateur'])) {
                 echo '<div class="center">'. texte('Bonjour') ." ". $_SESSION['utilisateur']->getNomUtilisateur() . '</div>';
                 echo '<div><a href="index.php?page=ActionDeconnexion" class="center">'. texte("Deconnexion") .'</a></div>';

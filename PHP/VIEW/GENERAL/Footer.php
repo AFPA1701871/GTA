@@ -19,11 +19,16 @@ if (isset($page)) {
            <script src="./JS/Filtre.js"></script>
            <script src="./JS/Pagination.js"></script>
            ';
-        } else if ($matches[0] == "Form") {
-            if ($page[1] != "FormFichesItv")
-                echo '<script src="./JS/VerifForm.js"></script>';
-        }
-    }
+       } else if ($matches[0] == "Form") {
+           if ($page[1] != "FormFichesItv")
+               echo '<script src="./JS/VerifForm.js"></script>';
+       } 
+   }
+   switch ($page[1]) {
+   case "ChangePassword":
+    echo '<script src="./JS/VerifFormMdp.js"></script>';
+    break;
+   }
 }
 echo '</body>
 </html>';

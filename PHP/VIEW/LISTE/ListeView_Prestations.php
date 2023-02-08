@@ -13,13 +13,13 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
 echo '<div class="grid-col-6 gridListe">';
 
-echo '<div class="caseListe titreListe grid-columns-span-6">Liste des View_Prestations </div>';
+echo '<div class="caseListe titreListe grid-columns-span-6">Liste des Prestations </div>';
 echo '<div class="bigEspace"></div>';
  echo '<div class="grid-columns-span-6"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-6">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe"><a href="index.php?page=FormView_Prestations&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
+<div class="caseListe"><a href="index.php?page=FormPrestations&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
 <div></div>
 </div>';
 
@@ -37,11 +37,11 @@ echo '<template>';
 echo '<div class="donnees ">CodePrestation</div>';
 echo '<div class="donnees left">LibellePrestation</div>';
 echo '<div class="donnees ">LibelleActivite</div>';
- echo '<a href="index.php?page=FormView_Prestations&mode=Afficher&id=IdPrestation"><i class="fas fa-file-contract"></i></a>';
+ echo '<a href="index.php?page=FormPrestations&mode=Afficher&id=IdPrestation"><i class="fas fa-file-contract"></i></a>';
                                     
-echo '<a href="index.php?page=FormView_Prestations&mode=Modifier&id=IdPrestation"><i class="fas fa-pen"></i></a>';
+echo '<a href="index.php?page=FormPrestations&mode=Modifier&id=IdPrestation"><i class="fas fa-pen"></i></a>';
                                     
-echo '<a href="index.php?page=FormView_Prestations&mode=Supprimer&id=IdPrestation"><i class="fas fa-trash-alt"></i></a>';
+echo '<a href="index.php?page=FormPrestations&mode=Supprimer&id=IdPrestation"><i class="fas fa-trash-alt"></i></a>';
  echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';

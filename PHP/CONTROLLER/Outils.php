@@ -34,7 +34,10 @@ function crypte($mot)
 {
 	return md5(md5($mot));
 }
-
+function passwordDefault($uti)
+{
+	return $uti->getMatriculeUtilisateur();
+}
 function texte($codeTexte)
 {
 	$retour=TextesManager::findByCodes($_SESSION['lang'], $codeTexte);

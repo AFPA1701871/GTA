@@ -1,12 +1,4 @@
 
-.fa-green {
-    color: var(--inputCorrect);
-}
-
-.fa-red {
-    color: var(--inputIncorrect);
-}
-
 .inputCorrect {
     box-shadow: 2px 2px 3px var(--inputCorrect);
 }
