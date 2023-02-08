@@ -1,5 +1,5 @@
 header {
-    height: 15vh;
+    height: 10vh;
     flex: none;
     background-color: var(--color5);
     color: var(--color1);
@@ -33,7 +33,12 @@ h1 {
     cursor: pointer;
     font-size: 2.5rem;
 }
-
+.caseListe button {
+    border: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
 input::placeholder {
     padding-left: 0.5rem;
