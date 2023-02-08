@@ -2,8 +2,8 @@
 
 ## Crud Utilisateurs
 
-* [ ] gérer le mot de passe
-* [ ] obliger le changement de mot de passe à la première connexion (Martine)
+* [ ] Gérer le mot de passe
+* [X] Obliger le changement de mot de passe à la première connexion
 
 ## Pagination
 
@@ -58,7 +58,7 @@
 
 ## Connexion
 
-* [ ] Supprimer la partie inscription (Martine)
+* [X] Supprimer la partie inscription
 
 ## CSS
 
