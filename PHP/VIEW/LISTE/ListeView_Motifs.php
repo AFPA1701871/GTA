@@ -13,13 +13,13 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
 echo '<div class="grid-col-7 gridListe">';
 
-echo '<div class="caseListe titreListe grid-columns-span-7">Liste des View_Motifs </div>';
+echo '<div class="caseListe titreListe grid-columns-span-7">Liste des Motifs </div>';
 echo '<div class="bigEspace"></div>';
  echo '<div class="grid-columns-span-7"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-7">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe"><a href="index.php?page=FormView_Motifs&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
+<div class="caseListe"><a href="index.php?page=FormMotifs&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
 <div></div>
 </div>';
 
