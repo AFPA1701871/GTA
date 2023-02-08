@@ -3,6 +3,7 @@ $elm = new Utilisateurs($_POST);
 
 switch ($_GET['mode']) {
 	case "Ajouter": {
+		$elm->setPasswordUtilisateur(passwordDefault($elm));
 		$elm = UtilisateursManager::add($elm);
 		break;
 	}
@@ -12,6 +13,12 @@ switch ($_GET['mode']) {
 	}
 	case "Supprimer": {
 		$elm = UtilisateursManager::delete($elm);
+		break;
+	}
+	case "Reinit": {
+		$elm = UtilisateursManager::findById($_GET["id"]);
+		$elm->setMdpUser(crypte(passwordDefault($elm)));
+		UtilisateursManager::update($elm);
 		break;
 	}
 }

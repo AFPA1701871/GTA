@@ -70,3 +70,22 @@ nav div:hover .sous-menu{
 .estompe{
     opacity:0.3;
 }
+
+.aideMdp {
+    flex-direction: column;
+    z-index: 2;
+    font-size: 0.8em;
+    display: none;
+    white-space: nowrap;
+    border-radius: 2vh;
+    background-color: white;
+    padding: 1vh;
+}
+
+.fa-green {
+    color: var(--inputCorrect);
+}
+
+.fa-red {
+    color: var(--inputIncorrect);
+}

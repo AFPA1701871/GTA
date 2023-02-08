@@ -1,12 +1,4 @@
 
-.fa-green {
-    color: var(--inputCorrect);
-}
-
-.fa-red {
-    color: var(--inputIncorrect);
-}
-
 .inputCorrect {
     box-shadow: 2px 2px 3px var(--inputCorrect);
 }
@@ -62,12 +54,4 @@ form {
 
 .col-span-form {
     grid-column: 1/5 ;
-}
-
-.gridAideMDP {
-    display: grid;
-    grid-template-columns: 0.1fr 2fr;
-    grid-gap: 0.2em;
-    grid-auto-rows: minmax(1em, auto);
-    width: 75%;
 }
