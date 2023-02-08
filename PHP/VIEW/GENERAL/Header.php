@@ -1,11 +1,9 @@
 <body class="colonne">
     <header>
         <div class="demi"></div>
-        <div><img src="" alt=""></div>
-        <div class="titre center"><?php echo texte($titre); ?></div>
-        <div class="colonne">
+        <div><img src="./IMG/croissant.png" alt=""></div>
+        <div class="">
             <?php
-
             if (isset($_SESSION['utilisateur'])) {
                 echo '<div class="center">'. texte('Bonjour') ." ". $_SESSION['utilisateur']->getNomUtilisateur() . '</div>';
                 echo '<div><a href="index.php?page=ActionDeconnexion" class="center">'. texte("Deconnexion") .'</a></div>';

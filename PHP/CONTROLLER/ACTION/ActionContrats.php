@@ -1,5 +1,6 @@
 <?php
 $elm = new Contrats($_POST);
+$idUtilisateur = $elm->getIdUtilisateur();
 
 switch ($_GET['mode']) {
 	case "Ajouter": {
@@ -16,4 +17,4 @@ switch ($_GET['mode']) {
 	}
 }
 
-header("location:index.php?page=ListeContrats");
+header("location:index.php?page=FormUtilisateurs&mode=Modifier&id=" . $idUtilisateur);

@@ -16,7 +16,9 @@
 .grid-columns-span-5 { 
 	grid-column:1/6;
 }
-
+.grid-contenu > div {
+	margin: 0.3rem;
+}
 .grid-col-7 {
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
@@ -91,7 +93,6 @@
 }
 
 .caseForm {
-	border: 1px solid #00aaff;
 	padding : 0.2em;
 }
 
@@ -106,9 +107,7 @@
 	align-items: center;
 }
 
-.flex-0-1 {
-	flex:0.1;
-}
+
 
 .gridForm-col-span {
 	grid-column: 1/5 ;
