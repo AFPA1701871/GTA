@@ -208,3 +208,11 @@ CREATE TABLE gta_ActivitesParTypes(
    idTypePrestation INT,
    idActivite INT
 ) ENGINE = InnoDB;
+
+
+CREATE TABLE IF NOT EXISTS gta_textes (
+idTexte int (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+codeTexte varchar (50) NOT NULL,
+fr LONGTEXT NOT NULL,
+en LONGTEXT NOT NULL
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
