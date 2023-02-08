@@ -12,15 +12,19 @@
     --linkColor : black;
 }
 
-html, main, body, div, a, header, footer, nav, article, section, aside, fieldset, label, input, select {
+html, menu, main, body, div, a, header, footer, nav, article, section, aside, fieldset, label, input, select {
     display: flex;
     flex: 1;
     margin: 0;
     padding: 0;
 }
 
-img, video, button {
+video, button {
     width: 100%;
+}
+img {
+    width: auto;
+    height: 100%;
 }
 
 .colonne {

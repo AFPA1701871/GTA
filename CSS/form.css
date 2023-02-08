@@ -1,12 +1,4 @@
 
-.fa-green {
-    color: var(--inputCorrect);
-}
-
-.fa-red {
-    color: var(--inputIncorrect);
-}
-
 .inputCorrect {
     box-shadow: 2px 2px 3px var(--inputCorrect);
 }
@@ -47,7 +39,8 @@ form {
 .oeil {
     position: absolute;
     right: 0.5em;
-    margin-top:0.5em;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .infoBulle {
@@ -69,4 +62,7 @@ form {
     grid-gap: 0.2em;
     grid-auto-rows: minmax(1em, auto);
     width: 75%;
+}
+input[type=submit]{
+    justify-content: center;
 }
