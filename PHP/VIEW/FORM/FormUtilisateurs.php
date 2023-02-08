@@ -68,3 +68,8 @@ echo '<div class="caseForm col-span-form">
 echo'</form>';
 
 echo '</main>';
+
+if ($_GET['mode'] == "Modifier")
+{
+	include 'PHP/VIEW/LISTE/ListeContrats.php';
+}
