@@ -70,3 +70,14 @@ form {
 .col-span-form {
   grid-column: 1/5;
 }
+
+.gridAideMDP {
+    display: grid;
+    grid-template-columns: 0.1fr 2fr;
+    grid-gap: 0.2em;
+    grid-auto-rows: minmax(1em, auto);
+    width: 75%;
+}
+input[type=submit]{
+    justify-content: center;
+}

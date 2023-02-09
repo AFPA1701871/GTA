@@ -1,74 +1,161 @@
-
-header{
-    height: 15vh;
-    flex:none;
+header {
+    height: 10vh;
+    flex: none;
     background-color: var(--color5);
     color: var(--color1);
+    padding: 0.6rem 0;
+    text-transform: uppercase;
 }
-.titre, .titreListe, .labelListe{
-    font-size: 2 em;
+
+h1 {
+    font-size: 2rem;
+}
+
+.titre,
+.titreListe,
+.labelListe {
+    font-size: 1rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
 }
-body{
-    background-color: var(--color4);
+.titreListe , .titre{
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.4rem;
+    
+    text-transform: uppercase;
 }
-input,select{
-    font-size:1.2em;
+.caseListe a {
+    max-width: fit-content;
+    padding: 0.5rem;
+    cursor: pointer;
 }
-footer{
-    background-color: var(--color5);
-    color: var(--color1);
-    font-size: 0.8em;
-    position: fixed;
-    bottom:0;
-    width: 100%;
-   
-     padding: 2em; 
+.caseListe a i {
+    cursor: pointer;
+    font-size: 2.5rem;
 }
-main{
-    padding-bottom: 20vh;
+.caseListe button {
+    border: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-.labelListe{
-    grid-gap:0.2em;
+input::placeholder {
+    padding-left: 0.5rem;
 }
-.labelListe .left{
+
+body {
+    background-color: var(--color4);
+    font-family: 'Roboto', sans-serif;
+}
+i {
+    font-size: 1.4rem;
+}
+input,
+select {
+    font-size: 1.2em;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+header .titre {
+    font-size: 2rem;
+    
+}
+header a {
+    color: var(--color1);
+}
+
+footer {
+    background-color: var(--color5);
+    color: var(--color1);
+    font-size: 1rem;
+    position: fixed;
+    bottom:0; 
+     width: 100%; 
+    padding: 1em;
+}
+
+main {
+    padding-bottom: 10vh;
+}
+
+.labelListe {
+    grid-gap: 0.2em;
+}
+
+.labelListe .left {
     justify-content: unset;
 }
-.titreForm{
+
+.titreForm {
     padding: 3em;
 }
+
 /**** MENU ***/
-nav a > div , nav > div{
-    padding: 2em 0.2em;
+/* menu {
+    margin: 0;
+    padding: 0;
+    flex: 1;
+} */
+menu a>div,
+menu>div {
+    padding: 1.8rem 0.2em;
     box-shadow: 2px 2px 3px black;
     justify-content: center;
     margin: 0.3em;
     background-color: var(--color2);
+    transition: all 1s;
+    /* flex: 1; */
 }
-.sous-menu a > div{
-    padding: 0.5em 2em;
+
+.sous-menu a>div {
+    padding: 0.8em 2em;
     box-shadow: 2px 2px 3px black;
+    margin: 0;
 }
-nav a > div:hover , nav > div:hover{
+
+menu a>div:hover,
+menu>div:hover {
     background-color: var(--color2);
 }
-nav div:hover .sous-menu{
+
+nav div:hover .sous-menu {
     display: flex;
 }
-.sous-menu{
+.pagination button{
+    max-width: 20rem;
+    min-width: 4rem;
+}
+.pagination {
+    margin: 0 auto;
+}
+nav {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.sous-menu {
     display: none;
     position: absolute;
-    top: 5em;
+    top: 4.2em;
+    width: 100%;
+    margin: 0;
 }
+
 /******/
+.cote {
+	flex:0.1;
+}
 .left {
     justify-content: left !important;
 }
 
-.estompe{
-    opacity:0.3;
+.estompe {
+    opacity: 0.3;
 }
 
 .aideMdp {
