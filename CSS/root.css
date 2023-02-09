@@ -68,8 +68,8 @@ img {
 
 .absolu {
     position: absolute;
-    top: 5em;
-    left: 5em;
+    top: 5rem;
+    left: 5rem;
 }
 
 .relative {
