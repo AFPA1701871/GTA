@@ -13,9 +13,9 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
 echo '<div class="grid-col-15 gridListe">';
 
-echo '<div class="caseListe titreListe grid-columns-span-15">Liste des View_Utilisateurs_Preferences_Prestations </div>';
+echo '<div class="caseListe titreListe grid-columns-span-15">'.texte("Liste des Utilisateurs").'</div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-15"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+ echo '<div class="grid-columns-span-15"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").' placeholder="'.texte("mot à chercher").'/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-15">
 <div></div>
 <div class="bigEspace"></div>

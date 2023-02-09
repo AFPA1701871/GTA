@@ -96,7 +96,6 @@ $regex = [
 	"*"  => ".*"
 ];
 
-
 function appelGet($obj, $chaine)
 {
 	$methode = 'get' . ucfirst($chaine);

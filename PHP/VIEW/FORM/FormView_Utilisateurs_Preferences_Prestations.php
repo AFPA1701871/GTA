@@ -18,7 +18,7 @@ echo '<main class="center">';
 
 echo '<form class="GridForm" action="index.php?page=ActionView_Utilisateurs_Preferences_Prestations&mode='.$_GET['mode'].'" method="post"/>';
 echo '<div class="bigEspace"></div>	';
-echo '<div class="caseForm titreForm col-span-form">Formulaire View_Utilisateurs_Preferences_Prestations</div>';
+echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire View_Utilisateurs_Preferences_Prestations").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdPreference().'" name=IdPreference></div>';
 echo '<label for=IdUtilisateur class="caseForm labelForm">'.texte("IdUtilisateur").'</label>';

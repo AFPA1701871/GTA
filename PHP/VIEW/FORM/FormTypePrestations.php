@@ -19,7 +19,7 @@ echo '<main class="center">';
 echo '<section class="colonne center">';
 echo '<form class="GridForm" action="index.php?page=ActionTypePrestations&mode='.$_GET['mode'].'" method="post"/>';
 echo '<div class="bigEspace"></div>	';
-echo '<div class="caseForm titreForm col-span-form">Formulaire TypePrestations</div>';
+echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire TypePrestations").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdTypePrestation().'" name=IdTypePrestation></div>';
 echo '<label for=NumeroTypePrestation class="caseForm labelForm">'.texte("NumeroTypePrestation").'</label>';
