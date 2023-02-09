@@ -1,59 +1,74 @@
-
 .inputCorrect {
-    box-shadow: 2px 2px 3px var(--inputCorrect);
+  box-shadow: 2px 2px 3px var(--inputCorrect);
 }
 
 .inputIncorrect {
-    box-shadow: 2px 2px 3px var(--inputIncorrect);
+  box-shadow: 2px 2px 3px var(--inputIncorrect);
 }
 
 .inputVide {
 }
 
+input,
+select {
+  box-shadow: 2px 2px 3px black;
+  padding: 0.5em;
+}
 
-input, select {
-    box-shadow: 2px 2px 3px black;
-    padding: 0.5em;
+input[type="checkbox"] {
+  box-shadow: none;
+  outline: none;
+
+  height: 3vh;
+}
+
+
+
+input[type="checkbox"]:before:hover {
+  border-color: black;
+}
+
+input[type="checkbox"]:checked {
 }
 
 label {
-    align-self: center;
+  align-self: center;
 }
 
 fieldset {
-    grid-column: 1 / span 2;
-    padding: 0.5em;
+  grid-column: 1 / span 2;
+  padding: 0.5em;
 }
 
 form {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    grid-gap: 0.5em;
-    grid-auto-rows: minmax(1em, auto);
-    width: 75%;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-gap: 0.5em;
+  grid-auto-rows: minmax(1em, auto);
+  width: 75%;
 }
-.colSpan2{
-    grid-column: 1 / span 2;
+.colSpan2 {
+  grid-column: 1 / span 2;
 }
 
 .oeil {
-    position: absolute;
-    right: 0.5em;
-    top: 50%;
-    transform: translateY(-50%);
+  position: absolute;
+  right: 0.5em;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .infoBulle {
-    position: absolute;
-    background-color: whitesmoke;
-    margin-top: 3vh;
-    right: 0;
-    z-index: 10;
-    white-space: nowrap;
-} 
+  position: absolute;
+  background-color: whitesmoke;
+  margin-top: 3vh;
+  right: 0;
+  z-index: 10;
+  white-space: nowrap;
+}
 
 .col-span-form {
-    grid-column: 1/5 ;
+  grid-column: 1/5;
 }
 
 .gridAideMDP {
