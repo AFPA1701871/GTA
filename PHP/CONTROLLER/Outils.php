@@ -34,7 +34,10 @@ function crypte($mot)
 {
 	return md5(md5($mot));
 }
-
+function passwordDefault($uti)
+{
+	return $uti->getMatriculeUtilisateur();
+}
 function texte($codeTexte)
 {
 	$retour=TextesManager::findByCodes($_SESSION['lang'], $codeTexte);
@@ -93,7 +96,6 @@ $regex = [
 	"*"  => ".*"
 ];
 
-
 function appelGet($obj, $chaine)
 {
 	$methode = 'get' . ucfirst($chaine);
@@ -129,12 +131,17 @@ function appelGet($obj, $chaine)
  * @param string|null $orderBy $orderBy => null par défaut, contient un string qui contient les noms de colonnes et le type de tri
 	 * Exemple :"nomColonne1 , nomColonne2 DESC" => "Order By nomColonne1 , nomColonne2 DESC"
 	 * 
+ * @param string|null $attributId $attributId => null par défaut, contient un string qui contient le name à donner au formulaire s'il est différent de la table
+	 * 
  * @return void
  */
-function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $attributs = "", array $condition = null, string $orderBy = null)
+function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $attributs = "", array $condition = null, string $orderBy = null, string $attributId = null)
 {
+	
 		$nomId= $table::getAttributes()[0];
-		$select = '<select id="' . $nomId . '" name="' . $nomId . '"' . $attributs . '>';
+		$atrId = ($attributId == null ? $nomId : $attributId);
+
+		$select = '<select id="' . $atrId . '" name="' . $atrId . '"' . $attributs . '>';
 		$methode = $table . 'Manager';
 		$libelle= $nomColonnes;
 		array_push($nomColonnes, $nomId);

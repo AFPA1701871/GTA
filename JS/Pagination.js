@@ -196,7 +196,8 @@ function AfficherPage(index, filtre) {
                         grid.innerHTML = grid.innerHTML.replaceAll("MailUtilisateur", element.mailUtilisateur);
                         grid.innerHTML = grid.innerHTML.replaceAll("MatriculeUtilisateur", element.matriculeUtilisateur);
                         grid.innerHTML = grid.innerHTML.replaceAll("NomManager", element.nomManager);
-                        grid.innerHTML = grid.innerHTML.replaceAll("Actif", element.actif);
+                        actif = element.actif == 1 ? '<i class="fas fa-check"></i>' : "";
+                        grid.innerHTML = grid.innerHTML.replaceAll("Actif", actif);
                         grid.innerHTML = grid.innerHTML.replaceAll("NumeroUO", element.numeroUO);
                         grid.innerHTML = grid.innerHTML.replaceAll("NomRole", element.nomRole);
                     });

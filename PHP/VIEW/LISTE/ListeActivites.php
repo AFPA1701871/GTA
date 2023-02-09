@@ -1,21 +1,32 @@
 <?php
 
- echo '<main>';
+$formtype = ($_GET['page'] == 'FormTypePrestations'? true : false);
 
- echo '<div class="flex-0-1"></div>';
+if (!$formtype)
+{
+	echo '<main>';
 
- echo '<div><section class="colonne">';
- 
+	echo '<div class="cote"></div>';
+}
 
-$objets = ActivitesManager::getList(null, null, null, Parametres::getNbEltParPage());
+echo '<div><section class="colonne">';
+
+if ($formtype)
+{
+	$activites = ActivitesParTypesManager::getList(null, ['idTypePrestation' => $_GET['id']], null, Parametres::getNbEltParPage());
+}
+else
+{
+	$objets = ActivitesManager::getList(null, null, null, Parametres::getNbEltParPage());
+}
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
 echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
 echo '<div class="grid-col-4 gridListe">';
 
-echo '<div class="caseListe titreListe grid-columns-span-4">Liste des Activites </div>';
-echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-4"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+echo '<div class="caseListe titreListe grid-columns-span-4">'.texte("Liste des Activites").'</div>';
+if (!$formtype) { echo '<div class="bigEspace"></div>'; }
+echo '<div class="grid-columns-span-4"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").' placeholder="'.texte("mot à chercher").'/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-4">
 <div></div>
 <div class="bigEspace"></div>
@@ -23,28 +34,49 @@ echo '<div class="caseListe grid-columns-span-4">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "LibelleActivite">LibelleActivite</div>';
+echo '<div class="caseListe labelListe" data-name= "LibelleActivite">'.texte("LibelleActivite").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair ">Nombre d\'éléments :</div><div class="mini" id="nbEnregs"></div> ';
-echo '</div><div class="grid-col-4 gridListe grid-contenu"></div>';
+echo '<div class=" caseListe texteClair ">'.(!$formtype ? '<i class="fas fa-calculator"></i>':'').'</div><div class="mini" id="nbEnregs"></div> ';
+echo '</div><div class="grid-col-4 gridListe grid-contenu">';
 
 // Affichage des enregistrements de la base de données
-echo '<template>';
-echo '<div class="donnees left">LibelleActivite</div>';
- echo '<a href="index.php?page=FormActivites&mode=Afficher&id=IdActivite"><i class="fas fa-file-contract"></i></a>';
-                                    
-echo '<a href="index.php?page=FormActivites&mode=Modifier&id=IdActivite"><i class="fas fa-pen"></i></a>';
-                                    
-echo '<a href="index.php?page=FormActivites&mode=Supprimer&id=IdActivite"><i class="fas fa-trash-alt"></i></a>';
- echo '</template>';
+if (!$formtype)
+{
+	echo '</div>';
+	echo '<template>';
+	echo '<div class="donnees left">LibelleActivite</div>';
+	echo '<a href="index.php?page=FormActivites&mode=Afficher&id=IdActivite"><i class="fas fa-file-contract"></i></a>';
+
+	echo '<a href="index.php?page=FormActivites&mode=Modifier&id=IdActivite"><i class="fas fa-pen"></i></a>';
+
+	echo '<a href="index.php?page=FormActivites&mode=Supprimer&id=IdActivite"><i class="fas fa-trash-alt"></i></a>';
+	echo '</template>';
+} else {
+	for ($i=0; $i < count($activites); $i++)
+	{
+		$objets = ActivitesManager::getList(null, ['idActivite' => $activites[$i]->getIdActivite()], null, Parametres::getNbEltParPage());
+
+		foreach ($objets AS $value)
+		{
+			echo '<div class="donnees">'.$value->getLibelleActivite().'</div>';
+			echo '<a href="index.php?page=FormActivites&mode=Afficher&id='.$value->getIdActivite().'&idtypeprestation='.$activites[$i]->getIdTypePrestation().'"><i class="fas fa-file-contract"></i></a>';
+
+			echo '<a href="index.php?page=FormActivites&mode=Modifier&id='.$value->getIdActivite().'&idtypeprestation='.$activites[$i]->getIdTypePrestation().'"><i class="fas fa-pen"></i></a>';
+
+			echo '<a href="index.php?page=FormActivites&mode=Supprimer&id='.$value->getIdActivite().'&idtypeprestation='.$activites[$i]->getIdTypePrestation().'"><i class="fas fa-trash-alt"></i></a>';
+		}
+	}
+	echo '</div></div>';
+}
+
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';
-                                 
+
 echo '<div class="caseListe grid-columns-span-4">
 	<div></div>
-	<a href="index.php?page=Accueil"><button><i class="fas fa-sign-out-alt fa-rotate-180"></i></button></a>
+	<a href="index.php?page=Accueil"><button><i class="fas fa-house fa-rotate-180"></i></button></a>
 	<div></div>
 </div>';
 
@@ -54,5 +86,9 @@ echo '<div class="bigEspace grid-columns-span-9 pagination"></div>';
 
 echo '<div class="bigEspace grid-columns-span-9"></div>';
 echo'</div>'; //Div
-echo '<div class="flex-0-1"></div>';
-echo '</section></main>';
+
+if (!$formtype)
+{
+	echo '<div class="cote"></div>';
+	echo '</section></main>';
+}
