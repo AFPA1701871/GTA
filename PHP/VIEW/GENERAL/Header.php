@@ -1,7 +1,7 @@
 <body class="colonne">
     <header>
         <div class="demi"></div>
-        <div><img src="./IMG/croissant.png" alt=""></div>
+        <div><a href="index.php?page=Default"><img src="./IMG/croissant.png" alt=""></a></div>
         <div class="">
             <?php
             if (isset($_SESSION['utilisateur'])) {

@@ -68,6 +68,9 @@ header .titre {
 header a {
     color: var(--color1);
 }
+header img {
+    margin-right: auto;
+}
 
 footer {
     background-color: var(--color5);
