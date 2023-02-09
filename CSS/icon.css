@@ -94,13 +94,13 @@
 }
 
 .fa-xs {
-    font-size: 0.75em;
-    line-height: 0.08333em;
-    vertical-align: 0.125em;
+    font-size: 0.75rem
+    line-height: 0.08333rem
+    vertical-align: 0.125rem
 }
 
 .fa-filter::before {
-    margin-left: 0.2em;
+    margin-left: 0.2rem
     content: "\f0b0";
 }
 .fa-calculator::before{
