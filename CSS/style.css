@@ -213,3 +213,7 @@ footer #backToTop {
 .fa-red {
     color: var(--inputIncorrect);
 }
+
+.removeShadow {
+    box-shadow: unset;
+}
