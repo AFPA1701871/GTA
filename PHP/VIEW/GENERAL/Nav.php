@@ -1,48 +1,48 @@
 <nav>
     <aside class="cote"></aside>
     <menu class="flex">
-        <div class="relative">Données administratives
+        <div class="relative"><?= texte("Données administratives")?>
         <i class="fa-solid fa-angle-down"></i>
             <div class="sous-menu colonne">
                 <a href='?page=ListeCentres'>
-                    <div>Centres</div>
+                    <div><?= texte("Centres")?></div>
                 </a>
                 <a href='?page=ListeConversions'>
-                    <div>Conversions</div>
+                    <div><?= texte("Conversions")?></div>
                 </a>
                 <a href='?page=ListeFermetures'>
-                    <div>Fermetures</div>
+                    <div><?= texte("Fermetures")?></div>
                 </a>
                 <a href='?page=ListeUos'>
-                    <div>Uos</div>
+                    <div><?= texte("Uos")?></div>
                 </a>
             </div>
         </div>
         <a href='?page=ListeUtilisateurs'>
-            <div>Utilisateurs</div>
+            <div><?= texte("Utilisateurs")?></div>
         </a>
-        <div class="relative">Données pointages
+        <div class="relative"><?= texte("Données pointages")?>
         <i class="fa-solid fa-angle-down"></i>
             <div class="sous-menu colonne">
                 <a href='?page=ListeMotifs'>
-                    <div>Motifs</div>
+                    <div><?= texte("Motifs")?></div>
                 </a>
                 <a href='?page=ListePrestations'>
-                    <div>Prestations</div>
+                    <div><?= texte("Prestations")?></div>
                 </a>
                 <a href='?page=ListeProjets'>
-                    <div>Projets</div>
+                    <div><?= texte("Projets")?></div>
                 </a>
                 <a href='?page=ListeTypePrestations'>
-                    <div>TypePrestations</div>
+                    <div><?= texte("TypePrestations")?></div>
                 </a>
                 <a href='?page=ListeActivites'>
-                    <div>Activites</div>
+                    <div><?= texte("Activites")?></div>
                 </a>
             </div>
         </div>
         <a href='?page=ListePointages'>
-            <div>Pointages</div>
+            <div><?= texte("Pointages")?></div>
         </a>
     </menu>
     <aside class="cote"></aside>
