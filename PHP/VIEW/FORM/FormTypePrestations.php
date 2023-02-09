@@ -16,6 +16,7 @@ if (isset($_GET['id'])) {
 }
 echo '<main class="center">';
 
+echo '<section class="colonne center">';
 echo '<form class="GridForm" action="index.php?page=ActionTypePrestations&mode='.$_GET['mode'].'" method="post"/>';
 echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">Formulaire TypePrestations</div>';
@@ -55,6 +56,13 @@ echo '<div class="caseForm col-span-form">
 	echo'<div></div>
 	</div>';
 
-echo'</form>';
+echo'</form>
+<div class="flex-0-1"></div>';
 
+if ($_GET['mode'] == "Modifier")
+{
+	include 'PHP/VIEW/LISTE/ListeActivites.php';
+}
+
+echo '<div class="flex-0-1"></div></section>';
 echo '</main>';
