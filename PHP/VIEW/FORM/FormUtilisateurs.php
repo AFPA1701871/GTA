@@ -54,7 +54,7 @@ echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=IdManager class="caseForm labelForm">'.texte("IdManager").'</label>';
-echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdManager(), 'Utilisateurs', ['nomUtilisateur'], $disabled, ['idRole' => 2]).'</div>';
+echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdManager(), 'Utilisateurs', ['nomUtilisateur'], $disabled, ['idRole' => 2], null, 'idManager').'</div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
