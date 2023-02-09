@@ -34,11 +34,11 @@ foreach ($objets AS $value)
 	echo '<div class="donnees ">'.UtilisateursManager::findById($value->getIdUtilisateur())->getNomUtilisateur().'</div>';
 	echo '<div class="donnees ">'.$value->getDateDebutContrat().'</div>';
 	echo '<div class="donnees ">'.$value->getDateFinContrat().'</div>';
-	echo '<a href="index.php?page=FormContrats&mode=Afficher&id='.$value->getIdContrat().'"><i class="fas fa-file-contract"></i></a>';
+	echo '<a href="index.php?page=FormContrats&mode=Afficher&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-file-contract"></i></a>';
 										
-	echo '<a href="index.php?page=FormContrats&mode=Modifier&id='.$value->getIdContrat().'"><i class="fas fa-pen"></i></a>';
+	echo '<a href="index.php?page=FormContrats&mode=Modifier&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-pen"></i></a>';
 										
-	echo '<a href="index.php?page=FormContrats&mode=Supprimer&id='.$value->getIdContrat().'"><i class="fas fa-trash-alt"></i></a>';
+	echo '<a href="index.php?page=FormContrats&mode=Supprimer&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-trash-alt"></i></a>';
 }
 echo '</div></div>';
 
