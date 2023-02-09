@@ -99,4 +99,7 @@ INSERT INTO gta_textes (`idTexte`, `codeTexte`, `fr`, `en`) VALUES
 (98, "NbElement", "Résultat", "Result"),
 (99, "ListeCentres", "Liste des centres", "Centres list"),
 (100, "ListeContrats", "Liste des Contrats", "Contracts list"),
-(101, "IdUO", "U.O", "U.O");
+(101, "IdUO", "U.O", "U.O"),
+(102, "PasswordUtilisateur", "Mot de passe", "Password"),
+(103, "IdRole", "Rôle", "Role"),
+(104, "IdManager", 'Manager', "Manager");
