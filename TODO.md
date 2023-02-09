@@ -37,7 +37,7 @@
 * [ ] Ajouter le reinit
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
 * [X] Remplacer les input ID par des select (Yves)
-* [ ] Ajouter un lien changer mot de pase dans le header
+* [ ] Ajouter un lien changer mot de passe dans le header
 * [X] Mettre un check sur actif (Alexandre)
 
 ## Crud Activités
@@ -67,4 +67,7 @@
 ## Type Prestation
 
 * [ ] CRUD Modifier par des checkBox (Colin)
-* [ ] Ajouter le sous formulaire pour choisir les activités associées (Alexandre et Yves)
+* [ ] Ajouter le sous formulaire pour choisir les activités associées
+
+## Jeux de données
+* [ ] Compléter le jeux de données (Martine)
