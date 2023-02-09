@@ -76,7 +76,6 @@ footer {
     position: fixed;
     bottom:0; 
      width: 100%; 
-    padding: 1rem;
 }
 
 main {
@@ -103,15 +102,23 @@ main {
 } */
 menu a>div,
 menu>div {
-    padding: 1.8rem 0.2rem;
+    padding: 1.2rem 0.4rem;
     box-shadow: 2px 2px 3px black;
     justify-content: center;
-    margin: 0.3rem;
-    background-color: var(--color2);
+    margin: 0.3rem 0.5rem;
+    background-color: var(--color3);
     transition: all 1s;
+    cursor: pointer;
     /* flex: 1; */
 }
 
+menu {
+    padding-left: 12%;
+    padding-right: 12%;
+}
+ nav {
+    background-color: var(--color2);
+ }
 .sous-menu a>div {
     padding: 0.8em 2rem;
     box-shadow: 2px 2px 3px black;
@@ -142,12 +149,19 @@ nav {
     z-index: 1000;
     display: none;
     position: absolute;
-    top: 4.2rem;
+    top: 3.8rem;
     width: 100%;
     margin: 0;
 }
 
 /******/
+footer #backToTop {
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    right: 1rem;
+    cursor: pointer;
+}
 .cote {
 	flex:0.1;
 }

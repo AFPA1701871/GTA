@@ -60,6 +60,11 @@
     content: "\f2ed";
 }
 
+.fa-square-caret-up::before{
+    content: "\F106";
+    font-size: 4rem;
+    color: var(--color3);
+}
 .fa-rotate-180 {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
