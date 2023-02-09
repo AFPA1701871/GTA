@@ -3,7 +3,6 @@
 <head>
 <?php
 
-
 //Si le titre est indiqué, on l'affiche entre les balises <title>
 echo (!empty($titre)) ? '<title>' . $titre . '</title>' : '<title> Titre de la page </title>';
 echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -24,6 +23,9 @@ if (substr($nom,0,4)=="Form"){
 }
 else if (substr($nom,0,4)=="List"){
     echo '  <link rel="stylesheet" href="CSS/grids.css">';
+}
+else if (substr($nom,0,4)=="Chan"){
+    echo ' <link rel="stylesheet" href="CSS/form.css">';
 }
 echo '</head>';
 //  <script src="https://kit.fontawesome.com/ce4feb7268.js" crossorigin="anonymous"></script>
