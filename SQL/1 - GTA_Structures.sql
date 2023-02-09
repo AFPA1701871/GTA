@@ -67,7 +67,7 @@ DROP TABLE IF EXISTS gta_UOs;
 
 CREATE TABLE gta_UOs(
    idUO INT AUTO_INCREMENT PRIMARY KEY,
-   numeroUO INT NOT NULL,
+   numeroUO varchar(10) NOT NULL,
    libelleUO VARCHAR(200)
 ) ENGINE = InnoDB;
 
