@@ -89,7 +89,7 @@ form {
     grid-template-columns: 1fr 1.5fr;
     grid-gap: 0.5em;
     grid-auto-rows: minmax(1em, auto);
-    width: 75%;
+    width: 40%;
 }
 .colSpan2 {
   grid-column: 1 / span 2;
