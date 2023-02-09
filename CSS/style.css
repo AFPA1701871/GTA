@@ -112,13 +112,17 @@ main {
 menu a>div,
 menu>div {
     padding: 1.2rem 0.4rem;
-    box-shadow: 2px 2px 3px black;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     justify-content: center;
     margin: 0.3rem 0.5rem;
     background-color: var(--color3);
     transition: all 1s;
     cursor: pointer;
     /* flex: 1; */
+    
+}
+menu .relative, menu > a div {
+    border-radius: 5px;
 }
 
 menu {
@@ -133,7 +137,7 @@ menu i {
  }
 .sous-menu a>div {
     padding: 0.8em 2rem;
-    box-shadow: 2px 2px 3px black;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     margin: 0;
 }
 
@@ -145,6 +149,7 @@ menu>div:hover {
 nav div:hover .sous-menu {
     display: flex;
 }
+
 .pagination button{
     max-width: 20rem;
     min-width: 4rem;
