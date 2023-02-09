@@ -53,7 +53,7 @@ i {
 }
 input,
 select {
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 .flex {
@@ -76,7 +76,7 @@ footer {
     position: fixed;
     bottom:0; 
      width: 100%; 
-    padding: 1em;
+    padding: 1rem;
 }
 
 main {
@@ -84,7 +84,7 @@ main {
 }
 
 .labelListe {
-    grid-gap: 0.2em;
+    grid-gap: 0.2rem;
 }
 
 .labelListe .left {
@@ -92,7 +92,7 @@ main {
 }
 
 .titreForm {
-    padding: 3em;
+    padding: 3rem;
 }
 
 /**** MENU ***/
@@ -103,17 +103,17 @@ main {
 } */
 menu a>div,
 menu>div {
-    padding: 1.8rem 0.2em;
+    padding: 1.8rem 0.2rem;
     box-shadow: 2px 2px 3px black;
     justify-content: center;
-    margin: 0.3em;
+    margin: 0.3rem;
     background-color: var(--color2);
     transition: all 1s;
     /* flex: 1; */
 }
 
 .sous-menu a>div {
-    padding: 0.8em 2em;
+    padding: 0.8em 2rem;
     box-shadow: 2px 2px 3px black;
     margin: 0;
 }
@@ -139,9 +139,10 @@ nav {
 }
 
 .sous-menu {
+    z-index: 1000;
     display: none;
     position: absolute;
-    top: 4.2em;
+    top: 4.2rem;
     width: 100%;
     margin: 0;
 }
@@ -161,7 +162,7 @@ nav {
 .aideMdp {
     flex-direction: column;
     z-index: 2;
-    font-size: 0.8em;
+    font-size: 0.8rem;
     display: none;
     white-space: nowrap;
     border-radius: 2vh;

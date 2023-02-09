@@ -9,10 +9,10 @@
 .inputVide {
 }
 
-input,
-select {
-  box-shadow: 2px 2px 3px black;
-  padding: 0.5em;
+
+input, select {
+    box-shadow: 2px 2px 3px black;
+    padding: 0.5rem;
 }
 
 /* input[type="checkbox"] {
@@ -80,26 +80,26 @@ label {
 }
 
 fieldset {
-  grid-column: 1 / span 2;
-  padding: 0.5em;
+    grid-column: 1 / span 2;
+    padding: 0.5em;
 }
 
 form {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  grid-gap: 0.5em;
-  grid-auto-rows: minmax(1em, auto);
-  width: 75%;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-gap: 0.5em;
+    grid-auto-rows: minmax(1em, auto);
+    width: 75%;
 }
 .colSpan2 {
   grid-column: 1 / span 2;
 }
 
 .oeil {
-  position: absolute;
-  right: 0.5em;
-  top: 50%;
-  transform: translateY(-50%);
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .infoBulle {
@@ -116,11 +116,11 @@ form {
 }
 
 .gridAideMDP {
-  display: grid;
-  grid-template-columns: 0.1fr 2fr;
-  grid-gap: 0.2em;
-  grid-auto-rows: minmax(1em, auto);
-  width: 75%;
+    display: grid;
+    grid-template-columns: 0.1fr 2fr;
+    grid-gap: 0.2rem;
+    grid-auto-rows: minmax(1em, auto);
+    width: 75%;
 }
 input[type="submit"] {
   justify-content: center;

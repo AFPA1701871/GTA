@@ -89,17 +89,17 @@
 }
 
 .caseListe {
-	padding : 0.2em;
+	padding : 0.2rem
 }
 
 .caseForm {
-	padding : 0.2em;
+	padding : 0.2rem
 }
 
 .GridForm {
 	 display : grid;
 	grid-template-columns: 2fr 2fr 0.5fr 0.5fr;
-	grid-gap: 0.5em;
+	grid-gap: 0.5rem
 }
 
 .GridForm div,button,a {
