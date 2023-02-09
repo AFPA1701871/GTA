@@ -26,19 +26,20 @@ h1 {
     
     text-transform: uppercase;
 }
-.caseListe a {
+.caseListe a, .caseForm button {
     max-width: fit-content;
     padding: 0.5rem;
     cursor: pointer;
 }
-.caseListe a i {
+.caseListe a i, .caseForm button i {
     cursor: pointer;
     font-size: 2.5rem;
 }
+
 :focus-visible {
     outline: none;
 }
-.caseListe button {
+.caseListe button, .caseForm button {
     border: 0;
     padding: 0.5rem;
     cursor: pointer;
