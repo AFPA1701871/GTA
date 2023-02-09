@@ -1,0 +1,70 @@
+.grid-col2 {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+}
+
+.grid-presta {
+    display: grid;
+    min-width: 100vh;
+    grid-template-columns: 4fr 1fr 2fr 1fr 1.5fr;
+    text-align: center;
+}
+
+.cellBottom {
+    border-bottom: 0.1em solid black;
+}
+.cellTop {
+    border-top: 0.1em solid black;
+}
+.cellRight {
+    border-right: 0.1em solid black;
+}
+
+.grid-lineSimple {
+    height: 1.5em;
+}
+
+.grid-lineDouble {
+    height: 3.2em;
+}
+
+.grid-pointage {
+    display: grid;
+    grid-template-columns: 5em 4em 0.1fr repeat(31, minmax(2.5em, 3em));
+    padding: 0em 0.2em;
+    overflow: hidden;
+}
+
+.grid-columns-span-34{
+    grid-column: span 34;
+}
+
+.date {
+    font-size: xx-small;
+    padding-top: 1em;
+}
+
+.tabCol > div {
+    border-left: 0.1em solid black;
+    border-right: 0.1em solid black;
+    text-align: center;
+}
+
+.cellOK {
+    background-color: green;
+}
+
+.cellKO {
+    background-color: lightcoral;
+}
+
+.noWork {
+    background-color: blueviolet;
+}
+
+.work {
+    background-color: lightgreen;
+}
+.notApplicable {
+    background-color:slategray ;
+}

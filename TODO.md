@@ -38,11 +38,11 @@
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
 * [X] Remplacer les input ID par des select (Yves)
 * [ ] Ajouter un lien changer mot de pase dans le header
-* [ ] Mettre un check sur actif
+* [X] Mettre un check sur actif (Alexandre)
 
 ## Crud Activités
 
-* [ ] ajouter gestion des types associés
+* [ ] Ajouter gestion des types associés
 
 ## Gestion des pointages
 
@@ -67,4 +67,4 @@
 ## Type Prestation
 
 * [ ] CRUD Modifier par des checkBox (Colin)
-* [ ] Ajouter le sous formulaire pour choisir les activités associées
+* [ ] Ajouter le sous formulaire pour choisir les activités associées (Alexandre et Yves)
