@@ -12,7 +12,7 @@
 
 input, select {
     box-shadow: 2px 2px 3px black;
-    padding: 0.5rem
+    padding: 0.5rem;
 }
 
 input[type="checkbox"] {
@@ -74,7 +74,7 @@ form {
 .gridAideMDP {
     display: grid;
     grid-template-columns: 0.1fr 2fr;
-    grid-gap: 0.2rem
+    grid-gap: 0.2rem;
     grid-auto-rows: minmax(1em, auto);
     width: 75%;
 }

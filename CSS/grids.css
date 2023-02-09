@@ -17,7 +17,7 @@
 	grid-column:1/6;
 }
 .grid-contenu > div {
-	margin: 0.3rrem
+	margin: 0.3rem;
 }
 .grid-col-7 {
 	display : grid;
