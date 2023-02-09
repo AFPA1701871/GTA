@@ -139,6 +139,7 @@ nav {
 }
 
 .sous-menu {
+    z-index: 1000;
     display: none;
     position: absolute;
     top: 4.2em;
