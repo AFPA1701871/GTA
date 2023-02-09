@@ -213,3 +213,21 @@ footer #backToTop {
 .fa-red {
     color: var(--inputIncorrect);
 }
+
+
+/****** Footer en bas de page ******/ 
+
+body{
+    position: relative;
+    min-height: calc(100vh - 7vh); 
+    padding-bottom: 7vh;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    right:0;
+    left:0;
+    height: 7vh;
+}
+
