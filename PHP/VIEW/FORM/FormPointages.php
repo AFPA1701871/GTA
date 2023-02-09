@@ -18,7 +18,7 @@ echo '<main class="center">';
 
 echo '<form class="GridForm" action="index.php?page=ActionPointages&mode='.$_GET['mode'].'" method="post"/>';
 echo '<div class="bigEspace"></div>	';
-echo '<div class="caseForm titreForm col-span-form">Formulaire Pointages</div>';
+echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Pointages").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdPointage().'" name=IdPointage></div>';
 echo '<label for=IdMotif class="caseForm labelForm">'.texte("IdMotif").'</label>';

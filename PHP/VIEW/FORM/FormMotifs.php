@@ -18,7 +18,7 @@ echo '<main class="center">';
 
 echo '<form class="GridForm" action="index.php?page=ActionMotifs&mode='.$_GET['mode'].'" method="post"/>';
 echo '<div class="bigEspace"></div>	';
-echo '<div class="caseForm titreForm col-span-form">Formulaire Motifs</div>';
+echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Motifs").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdMotif().'" name=IdMotif></div>';
 echo '<label for=CodeMotif class="caseForm labelForm">'.texte("CodeMotif").'</label>';

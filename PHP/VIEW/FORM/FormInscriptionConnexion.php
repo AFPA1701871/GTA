@@ -28,16 +28,16 @@ global $regex;
             <div class="colSpan2 center"><h1><?php echo texte('Inscription') ?></h1></div>
 
             <label for="nom"><?php echo texte('Nom') ?> * : </label>
-            <input type="text" id="nom" name="nom" pattern="^<?php echo $regex["alpha"] ?>$" required title="Renseigner votre nom d'usage">
+            <input type="text" id="nom" name="nom" pattern="^<?php echo $regex["alpha"] ?>$" required title=<?= texte("infoUsage")?>>
 
             <label for="prenom"><?php echo texte('Prenom') ?> * : </label>
-            <input type="text" id="prenom" name="prenom" pattern="^<?php echo $regex["alpha"] ?>$" required title="Renseigner votre prénom">
+            <input type="text" id="prenom" name="prenom" pattern="^<?php echo $regex["alpha"] ?>$" required title=<?= texte("infoPrenom")?>>
 
             <label for="mailUtilisateur"><?php echo texte('mailUtilisateur') ?> * : </label>
             <div class="relative">
-                <input type="text" id="mailUtilisateur" name="mailUtilisateur" pattern="^<?php echo $regex["email"] ?>$" required title="Renseigner une adresse mail valide. Elle sera utilisée pour la connexion">
+                <input type="text" id="mailUtilisateur" name="mailUtilisateur" pattern="^<?php echo $regex["email"] ?>$" required title=<?= texte("infoMail")?>>
                 <fieldset id="infoEmail" class="infoBulle noDisplay">
-                    <div >Un compte a déjà été créé avec ce mail</div>
+                    <div ><?= texte("erreurMail")?></div>
                 </fieldset>
             </div>
 

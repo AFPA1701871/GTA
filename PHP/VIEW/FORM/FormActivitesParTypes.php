@@ -18,7 +18,7 @@ echo '<main class="center">';
 
 echo '<form class="GridForm" action="index.php?page=ActionActivitesParTypes&mode='.$_GET['mode'].'" method="post"/>';
 echo '<div class="bigEspace"></div>	';
-echo '<div class="caseForm titreForm col-span-form">Formulaire ActivitesParTypes</div>';
+echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire ActivitesParTypes").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdActivitesParTypes().'" name=IdActivitesParTypes></div>';
 echo '<label for=IdTypePrestation class="caseForm labelForm">'.texte("IdTypePrestation").'</label>';

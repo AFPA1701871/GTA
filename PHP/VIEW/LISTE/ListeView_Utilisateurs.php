@@ -13,9 +13,9 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
 echo '<div class="grid-col-10 gridListe">';
 
-echo '<div class="caseListe titreListe grid-columns-span-10">Liste des View_Utilisateurs </div>';
+echo '<div class="caseListe titreListe grid-columns-span-10">'.texte("Liste des Utilisateurs").' </div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-10"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+ echo '<div class="grid-columns-span-10"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").' placeholder="'.texte("mot à chercher").'/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-10">
 <div></div>
 <div class="bigEspace"></div>
@@ -23,17 +23,17 @@ echo '<div class="caseListe grid-columns-span-10">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "NomUtilisateur">NomUtilisateur</div>';
-echo '<div class="caseListe labelListe" data-name= "MailUtilisateur">MailUtilisateur</div>';
-echo '<div class="caseListe labelListe" data-name= "MatriculeUtilisateur">MatriculeUtilisateur</div>';
-echo '<div class="caseListe labelListe" data-name= "NomManager">NomManager</div>';
-echo '<div class="caseListe labelListe" data-name= "Actif">Actif</div>';
-echo '<div class="caseListe labelListe" data-name= "NumeroUO">NumeroUO</div>';
-echo '<div class="caseListe labelListe" data-name= "NomRole">NomRole</div>';
+echo '<div class="caseListe labelListe" data-name= "NomUtilisateur">'.texte("NomUtilisateur").'</div>';
+echo '<div class="caseListe labelListe" data-name= "MailUtilisateur">'.texte("MailUtilisateur").'</div>';
+echo '<div class="caseListe labelListe" data-name= "MatriculeUtilisateur">'.texte("MatriculeUtilisateur").'</div>';
+echo '<div class="caseListe labelListe" data-name= "NomManager">'.texte("NomManager").'</div>';
+echo '<div class="caseListe labelListe" data-name= "Actif">'.texte("Actif").'</div>';
+echo '<div class="caseListe labelListe" data-name= "NumeroUO">'.texte("NumeroUO").'</div>';
+echo '<div class="caseListe labelListe" data-name= "NomRole">'.texte("NomRole").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair ">Nombre d\'éléments :</div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class=" caseListe texteClair ">'.texte("NbElement").' :</div><div class="mini" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-10 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
