@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../CSS/root.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/grids.css">
+    <link rel="stylesheet" href="../CSS/icon.css">
     <link rel="stylesheet" href="../CSS/pointage.css">
     <title>GTA - Pointage</title>
 </head>
@@ -34,117 +35,51 @@
     <!---------------------------------Main----------------------------------->
     <!------------------------------------------------------------------------>
     <main>
-        
-        <div class="grid-col2">
+
+        <div class="cote"></div>
+        <div class="mainGrid grid-col2-reduct">
             <!--Séparation Prestations/Pointages => Zone Prestations -->
-            <div class="grid-presta tabCol">
-                <div class="grid-columns-span-5 grid-lineSimple cellRight">&nbsp;</div>
-                <div class="grid-columns-span-5 grid-lineSimple cellRight">&nbsp;</div>
+            <div class="grid-presta tabCol grid-5-reduct pointHead bgc4">
+                <div class="grid-columns-span-2 fullLine grid-lineSimple cellRight">
+                    <div></div>
+                    <div class="vMini">
+                        <div class="center" id="btnMasque">
+                            <i class="fas fa-expand rotate-45 center"></i>
+                        </div>
+                    </div>
+                    <div></div>
+                </div>
                 <div class="center grid-lineDoublegrid-lineSimple cellBottom cellTop"></div>
                 <div class="center grid-lineDouble cellBottom cellTop">Code Prestation</div>
-                <div class="center grid-lineDouble cellBottom cellTop">UO de MAD<br />
+                <div class="center grid-lineDouble cellBottom cellTop colCachable noDisplay">UO de MAD<br />
                     interne</div>
-                <div class="center grid-lineDouble cellBottom cellTop">Code Motif</div>
-                <div class="center grid-lineDouble cellBottom cellTop">Code Projet</div>
+                <div class="center grid-lineDouble cellBottom cellTop colCachable noDisplay">Code Motif</div>
+                <div class="center grid-lineDouble cellBottom cellTop colCachable noDisplay">Code Projet</div>
+
                 <!------------------>
                 <!------------------>
                 <!------------------>
-                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">
-                    <div></div>
+
+                <div class="grid-columns-span-2 fullLine center grid-lineSimple cellBottom">
+                    <div class="noDisplay colCachable"></div>
                     <div class="triple">Jours ouvrés</div>
-                    <div></div>
+                    <div class="noDisplay colCachable"></div>
                 </div>
-                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">
-                    <div></div>
-                    <div class="triple">Nb jours absences (congés, maladie ...) ne pas saisir les absences RTT</div>
-                    <div></div>
+                <div class="grid-columns-span-2 fullLine center grid-lineSimple cellBottom">
+                    <div class="noDisplay colCachable"></div>
+                    <div class="triple">Nb jours absences (congés, maladie ...)&nbsp;<small id="info">ne pas saisir les
+                            absences RTT</small></div>
+                    <div class="noDisplay colCachable"></div>
                 </div>
-                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">
-                    <div></div>
+                <div class="grid-columns-span-2 fullLine center grid-lineSimple cellBottom">
+                    <div class="noDisplay colCachable"></div>
                     <div class="triple">Jours ouvrés hors absences</div>
-                    <div></div>
-                </div>                
-                <!--------------------------->
-                <!-- Prestations de type 1 -->
-                <!--------------------------->
-                <!-- Titre -->
-                <div class="grid-columns-span-5 grid-lineSimple cellBottom">1 - Activité de production (y compris présentation titres CCxx)</div>
-                    <!-- Ligne -->
-                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
-                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="center grid-lineDouble cellBottom notApplicable"></div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-
-                <!-- Ligne -->
-                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
-                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="center grid-lineDouble cellBottom notApplicable"></div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-
-                <!-- Ligne -->
-                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
-                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="center grid-lineDouble cellBottom notApplicable"></div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">Option pour ajouter une ligne</div>
-                
-                <!--------------------------->
-                <!-- Prestations de type 2 -->
-                <!--------------------------->
-                <!-- Titre -->
-                <div class="grid-columns-span-5 grid-lineSimple cellBottom">2 - Missions Nationales de Service Public
+                    <div class="noDisplay colCachable"></div>
                 </div>
-                <!-- Ligne -->
-                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
-                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="center grid-lineDouble cellBottom notApplicable"></div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">Option pour ajouter une ligne</div> 
-
-                <!--------------------------->
-                <!-- Prestations de type 3 -->
-                <!--------------------------->
-                <!-- Titre -->
-                <div class="grid-columns-span-5 grid-lineSimple cellBottom">3 - Perfectionnement</div>
-                <!-- Ligne -->
-                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
-                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
-                <div class="center grid-lineDouble cellBottom notApplicable"></div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">Option pour ajouter une ligne</div>                
-                <!--------------------------->
-                <!-- Prestations de type 4 -->
-                <!--------------------------->
-                <!-- Titre -->
-                <div class="grid-columns-span-5 grid-lineSimple cellBottom">4 - Mandat</div>
-                <!-- Ligne -->
-                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
-                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="center grid-lineDouble cellBottom notApplicable"></div>
-                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">Option pour ajouter une ligne</div>                
-                <!--------------------------->
-                <!-- Prestations de type 5 -->
-                <!--------------------------->
-                <!-- Titre -->
-                <div class="grid-columns-span-5 grid-lineSimple cellBottom">5 - Autres activités de support</div>
-                <!-- Ligne -->
-                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
-                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="center grid-lineDouble cellBottom notApplicable"></div>
-                <div class="center grid-lineDouble cellBottom work"></div>
-                <div class="grid-columns-span-5 center grid-lineSimple cellBottom">Option pour ajouter une ligne</div>
             </div>
             <!--Séparation Prestations/Pointages => Zone Pointages -->
-            <div class="grid-pointage tabCol">
-                <div class="center grid-lineSimple cellBottom">Contrôle</div>
+            <div class="grid-pointage tabCol pointHead">
+                <div class="center grid-lineSimple cellBottom bgc4">Contrôle</div>
                 <div class="center cellKO grid-lineSimple cellBottom">KO</div>
                 <div class="grid-lineSimple cellBottom"></div>
                 <div class="center cellOK grid-lineSimple cellBottom">OK</div>
@@ -178,45 +113,11 @@
                 <div class="center cellOK grid-lineSimple cellBottom">OK</div>
                 <div class="center cellKO grid-lineSimple cellBottom">KO</div>
                 <div class="center cellKO grid-lineSimple cellBottom">KO</div>
-                <!-- Ligne 8 -->
-                <div class="cellBottom grid-lineSimple"></div>
-                <div class="cellBottom grid-lineSimple"></div>
-                <div class="cellBottom grid-lineSimple"></div>
-                <div class="center date grid-lineSimple cellBottom">01/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">02/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">03/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">04/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">05/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">06/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">07/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">08/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">09/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">10/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">11/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">12/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">13/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">14/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">15/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">16/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">17/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">18/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">19/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">20/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">21/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">22/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">23/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">24/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">25/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">26/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">27/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">28/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">29/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">30/02/23</div>
-                <div class="center date grid-lineSimple cellBottom">31/02/23</div>
+
                 <!-- Lignes 9 et 10 -->
-                <div class="cellBottom center grid-lineDouble">Total</div>
-                <div class="cellBottom center grid-lineDouble">%GTA</div>
-                <div class="cellBottom grid-lineDouble"></div>
+                <div class="cellBottom center grid-lineDouble bgc4">Total</div>
+                <div class="cellBottom center grid-lineDouble bgc4">%GTA</div>
+                <div class="cellBottom grid-lineDouble bgc4"></div>
                 <div class="center grid-lineDouble cellBottom noWork">1<br />Dim</div>
                 <div class="center grid-lineDouble cellBottom work">2<br />Lun</div>
                 <div class="center grid-lineDouble cellBottom work">3<br />Mar</div>
@@ -249,9 +150,9 @@
                 <div class="center grid-lineDouble cellBottom work">30<br />Lun</div>
                 <div class="center grid-lineDouble cellBottom work">31<br />Mar</div>
                 <!-- Ligne 11 -->
-                <div class="cellBottom center grid-lineSimple">22</div>
-                <div class="cellBottom grid-lineSimple"></div>
-                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom center grid-lineSimple bgc4">22</div>
+                <div class="cellBottom grid-lineSimple bgc4"></div>
+                <div class="cellBottom grid-lineSimple bgc4"></div>
                 <div class="cellBottom center noWork grid-lineSimple">0,0</div>
                 <div class="cellBottom center work grid-lineSimple">1,0</div>
                 <div class="cellBottom center work grid-lineSimple">1,0</div>
@@ -284,9 +185,9 @@
                 <div class="cellBottom center work grid-lineSimple">1,0</div>
                 <div class="cellBottom center work grid-lineSimple">1,0</div>
                 <!-- Ligne 12 -->
-                <div class="cellBottom center grid-lineSimple">0</div>
-                <div class="cellBottom grid-lineSimple"></div>
-                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom center grid-lineSimple bgc4">0</div>
+                <div class="cellBottom grid-lineSimple bgc4"></div>
+                <div class="cellBottom grid-lineSimple bgc4"></div>
                 <div class="cellBottom center noWork grid-lineSimple"></div>
                 <div class="cellBottom center work grid-lineSimple"></div>
                 <div class="cellBottom center work grid-lineSimple"></div>
@@ -319,9 +220,9 @@
                 <div class="cellBottom center work grid-lineSimple"></div>
                 <div class="cellBottom center work grid-lineSimple"></div>
                 <!-- Ligne 13 -->
-                <div class="cellBottom center grid-lineSimple">22</div>
-                <div class="cellBottom grid-lineSimple"></div>
-                <div class="cellBottom grid-lineSimple"></div>
+                <div class="cellBottom center grid-lineSimple bgc4">22</div>
+                <div class="cellBottom grid-lineSimple bgc4"></div>
+                <div class="cellBottom grid-lineSimple bgc4"></div>
                 <div class="cellBottom center noWork grid-lineSimple">0,0</div>
                 <div class="cellBottom center work grid-lineSimple">1,0</div>
                 <div class="cellBottom center work grid-lineSimple">1,0</div>
@@ -352,8 +253,98 @@
                 <div class="cellBottom center noWork grid-lineSimple">0,0</div>
                 <div class="cellBottom center noWork grid-lineSimple">0,0</div>
                 <div class="cellBottom center work grid-lineSimple">1,0</div>
-                <div class="cellBottom center work grid-lineSimple">1,0</div>
+                <div class="cellBottom center work grid-lineSimple">1,0</div>                
+            </div>
+            <div class="grid-presta tabCol grid-5-reduct pointMove">
+                
+                <!--------------------------->
+                <!-- Prestations de type 1 -->
+                <!--------------------------->
+                <!-- Titre -->
+                <div class="center grid-columns-span-2 fullLine grid-lineSimple cellBottom left">1 - Activité de
+                    production (y compris présentation titres CCxx)</div>
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable notApplicable noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
 
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable notApplicable noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable notApplicable noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="grid-columns-span-2 fullLine center grid-lineSimple cellBottom">Option pour ajouter une
+                    ligne</div>
+
+                <!--------------------------->
+                <!-- Prestations de type 2 -->
+                <!--------------------------->
+                <!-- Titre -->
+                <div class="center grid-columns-span-2 fullLine grid-lineSimple cellBottom left">2 - Missions Nationales
+                    de Service Public
+                </div>
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable notApplicable noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="grid-columns-span-2 fullLine center grid-lineSimple cellBottom">Option pour ajouter une
+                    ligne</div>
+
+                <!--------------------------->
+                <!-- Prestations de type 3 -->
+                <!--------------------------->
+                <!-- Titre -->
+                <div class="center grid-columns-span-2 fullLine grid-lineSimple cellBottom left">3 - Perfectionnement
+                </div>
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom colCachable notApplicable noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="grid-columns-span-2 fullLine center grid-lineSimple cellBottom">Option pour ajouter une
+                    ligne</div>
+                <!--------------------------->
+                <!-- Prestations de type 4 -->
+                <!--------------------------->
+                <!-- Titre -->
+                <div class="center grid-columns-span-2 fullLine grid-lineSimple cellBottom left">4 - Mandat</div>
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable notApplicable noDisplay"></div>
+                <div class="grid-columns-span-2 fullLine center grid-lineSimple cellBottom">Option pour ajouter une
+                    ligne</div>
+                <!--------------------------->
+                <!-- Prestations de type 5 -->
+                <!--------------------------->
+                <!-- Titre -->
+                <div class="center grid-columns-span-2 fullLine grid-lineSimple cellBottom left">5 - Autres activités de
+                    support</div>
+                <!-- Ligne -->
+                <div class="center grid-lineDouble cellBottom">Combobox des prestations possibles</div>
+                <div class="center grid-lineDouble cellBottom">Code de la prestation</div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable notApplicable noDisplay"></div>
+                <div class="center grid-lineDouble cellBottom colCachable work noDisplay"></div>
+                <div class="grid-columns-span-2 fullLine center grid-lineSimple cellBottom">Option pour ajouter une
+                    ligne</div>
+            </div>
+            <div class="grid-pointage tabCol pointMove">
                 <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
 
                 <div class="cellBottom center grid-lineDouble">0,00</div>
@@ -611,6 +602,7 @@
                 <div class="grid-columns-span-34 grid-lineSimple cellBottom">&nbsp;</div>
             </div>
         </div>
+        <div class="cote"></div>
     </main>
     <!------------------------------------------------------------------------>
     <!--------------------------------Footer---------------------------------->
