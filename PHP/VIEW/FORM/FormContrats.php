@@ -20,14 +20,14 @@ echo '<form class="GridForm" action="index.php?page=ActionContrats&mode='.$_GET[
 echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">Formulaire Contrats</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
-	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdContrat().'" name=IdContrat></div>';
+echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdContrat().'" name=IdContrat></div>';
 echo '<label for=IdCentre class="caseForm labelForm">'.texte("IdCentre").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getIdCentre().'" name=IdCentre pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdCentre(), 'Centres', ['nomCentre'], $disabled, ['idCentre' => $elm->getIdCentre()]).'</div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=IdUtilisateur class="caseForm labelForm">'.texte("IdUtilisateur").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.($mode == "Ajouter" ? $_GET['idutilisateur'] : $elm->getIdUtilisateur()).'" name=IdUtilisateur pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm">'.creerSelect(($mode == "Ajouter" ? $_GET['idutilisateur'] : $elm->getIdUtilisateur()), 'Utilisateurs', ['nomUtilisateur'], ($mode == "Modifier" ? ' disabled ' : $disabled), ['idUtilisateur' => $elm->getIdUtilisateur()]).'</div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
