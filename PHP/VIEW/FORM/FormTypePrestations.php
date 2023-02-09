@@ -32,17 +32,17 @@ echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=MotifRequis class="caseForm labelForm">'.texte("MotifRequis").'</label>';
-echo '<div class="caseForm donneeForm"><input type="checkbox" '.$disabled .'value="'.$elm->getMotifRequis().'" name=MotifRequis pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm toggle-switch"><input type="checkbox" class="toggle-input" '.$disabled .'value="'.$elm->getMotifRequis().'" name=MotifRequis pattern="'.$regex["*"].'"><label for="toggle" class="toggle-label"/></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=UoRequis class="caseForm labelForm">'.texte("UoRequis").'</label>';
-echo '<div class="caseForm donneeForm"><input type="checkbox" '.$disabled .'value="'.$elm->getUoRequis().'" name=UoRequis pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm toggle-switch"><input type="checkbox" class="toggle-input" '.$disabled .'value="'.$elm->getUoRequis().'" name=UoRequis pattern="'.$regex["*"].'"><label for="toggle" class="toggle-label"/></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=ProjetRequis class="caseForm labelForm">'.texte("ProjetRequis").'</label>';
-echo '<div class="caseForm donneeForm"><input type="checkbox" '.$disabled .'value="'.$elm->getProjetRequis().'" name=ProjetRequis pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm toggle-switch"><input type="checkbox" class="toggle-input" '.$disabled .'value="'.$elm->getProjetRequis().'" name=ProjetRequis pattern="'.$regex["*"].'"><label for="toggle" class="toggle-label"/></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
