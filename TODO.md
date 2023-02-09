@@ -38,7 +38,7 @@
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
 * [X] Remplacer les input ID par des select (Yves)
 * [ ] Ajouter un lien changer mot de pase dans le header
-* [ ] Mettre un check sur actif
+* [X] Mettre un check sur actif (Alexandre)
 
 ## Crud Activités
 

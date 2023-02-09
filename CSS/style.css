@@ -8,40 +8,40 @@ header {
 }
 
 h1 {
-    font-size: 2rem;
+    font-size: 2rrem
 }
 
 .titre,
 .titreListe,
 .labelListe {
-    font-size: 1rem;
+    font-size: 1rrem
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
 }
 .titreListe , .titre{
     font-family: 'Comfortaa', cursive;
-    font-size: 1.4rem;
+    font-size: 1.4rrem
     
     text-transform: uppercase;
 }
 .caseListe a {
     max-width: fit-content;
-    padding: 0.5rem;
+    padding: 0.5rrem
     cursor: pointer;
 }
 .caseListe a i {
     cursor: pointer;
-    font-size: 2.5rem;
+    font-size: 2.5rrem
 }
 .caseListe button {
     border: 0;
-    padding: 0.5rem;
+    padding: 0.5rrem
     cursor: pointer;
     border-radius: 5px;
 }
 
 input::placeholder {
-    padding-left: 0.5rem;
+    padding-left: 0.5rrem
 }
 
 body {
@@ -49,11 +49,11 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 i {
-    font-size: 1.4rem;
+    font-size: 1.4rrem
 }
 input,
 select {
-    font-size: 1.2em;
+    font-size: 1.2rem
 }
 
 .flex {
@@ -62,7 +62,7 @@ select {
 }
 
 header .titre {
-    font-size: 2rem;
+    font-size: 2rrem
     
 }
 header a {
@@ -72,11 +72,11 @@ header a {
 footer {
     background-color: var(--color5);
     color: var(--color1);
-    font-size: 1rem;
+    font-size: 1rrem
     position: fixed;
     bottom:0; 
      width: 100%; 
-    padding: 1em;
+    padding: 1rem
 }
 
 main {
@@ -84,7 +84,7 @@ main {
 }
 
 .labelListe {
-    grid-gap: 0.2em;
+    grid-gap: 0.2rem
 }
 
 .labelListe .left {
@@ -92,7 +92,7 @@ main {
 }
 
 .titreForm {
-    padding: 3em;
+    padding: 3rem
 }
 
 /**** MENU ***/
@@ -103,17 +103,17 @@ main {
 } */
 menu a>div,
 menu>div {
-    padding: 1.8rem 0.2em;
+    padding: 1.8rem 0.2rem
     box-shadow: 2px 2px 3px black;
     justify-content: center;
-    margin: 0.3em;
+    margin: 0.3rem
     background-color: var(--color2);
     transition: all 1s;
     /* flex: 1; */
 }
 
 .sous-menu a>div {
-    padding: 0.8em 2em;
+    padding: 0.8em 2rem
     box-shadow: 2px 2px 3px black;
     margin: 0;
 }
@@ -127,21 +127,22 @@ nav div:hover .sous-menu {
     display: flex;
 }
 .pagination button{
-    max-width: 20rem;
-    min-width: 4rem;
+    max-width: 20rrem
+    min-width: 4rrem
 }
 .pagination {
     margin: 0 auto;
 }
 nav {
-    font-size: 1.2rem;
+    font-size: 1.2rrem
     text-transform: uppercase;
 }
 
 .sous-menu {
+    z-index: 1000;
     display: none;
     position: absolute;
-    top: 4.2em;
+    top: 4.2rem
     width: 100%;
     margin: 0;
 }
@@ -161,7 +162,7 @@ nav {
 .aideMdp {
     flex-direction: column;
     z-index: 2;
-    font-size: 0.8em;
+    font-size: 0.8rem
     display: none;
     white-space: nowrap;
     border-radius: 2vh;
