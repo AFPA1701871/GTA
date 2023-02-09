@@ -30,7 +30,8 @@ class DAO
 			if ($obj->$methode() != null)
 				$q->bindValue(":" . $colonnes[$i], $obj->$methode());
 		}
-		return $q->execute();
+		$q->execute();
+		return $db->lastInsertId();
 	}
 
 	public static function update($obj)

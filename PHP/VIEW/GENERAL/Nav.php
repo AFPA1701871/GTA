@@ -1,21 +1,49 @@
 <nav>
-    <div class="relative"><?=texte("Données administratives")?>
-        <div class="sous-menu colonne">
-            <a href='?page=ListeCentres'><div><?=texte("Centres")?></div></a>
-            <a href='?page=ListeConversions'><div><?=texte("Conversions")?></div></a>
-            <a href='?page=ListeFermetures'><div><?=texte("Fermetures")?></div></a>
-            <a href='?page=ListeUos'><div><?=texte("Uos")?></div></a>
+    <aside class="cote"></aside>
+    <menu class="flex">
+        <div class="relative">Données administratives
+        <i class="fa-solid fa-angle-down"></i>
+            <div class="sous-menu colonne">
+                <a href='?page=ListeCentres'>
+                    <div>Centres</div>
+                </a>
+                <a href='?page=ListeConversions'>
+                    <div>Conversions</div>
+                </a>
+                <a href='?page=ListeFermetures'>
+                    <div>Fermetures</div>
+                </a>
+                <a href='?page=ListeUos'>
+                    <div>Uos</div>
+                </a>
+            </div>
         </div>
-    </div>
-    <a href='?page=ListeUtilisateurs'><div><?=texte("Utilisateurs")?></div></a>
-    <div class="relative"><?=texte("Données pointage")?>
-        <div class="sous-menu colonne">
-            <a href='?page=ListeMotifs'><div><?=texte("Motifs")?></div></a>
-            <a href='?page=ListePrestations'><div><?=texte("Prestations")?></div></a>
-            <a href='?page=ListeProjets'><div><?=texte("Projets")?></div></a>
-            <a href='?page=ListeTypePrestations'><div><?=texte("TypePrestation")?></div></a>
-            <a href='?page=ListeActivites'><div><?=texte("Activites")?></div></a>
+        <a href='?page=ListeUtilisateurs'>
+            <div>Utilisateurs</div>
+        </a>
+        <div class="relative">Données pointages
+        <i class="fa-solid fa-angle-down"></i>
+            <div class="sous-menu colonne">
+                <a href='?page=ListeMotifs'>
+                    <div>Motifs</div>
+                </a>
+                <a href='?page=ListePrestations'>
+                    <div>Prestations</div>
+                </a>
+                <a href='?page=ListeProjets'>
+                    <div>Projets</div>
+                </a>
+                <a href='?page=ListeTypePrestations'>
+                    <div>TypePrestations</div>
+                </a>
+                <a href='?page=ListeActivites'>
+                    <div>Activites</div>
+                </a>
+            </div>
         </div>
-    </div>
-    <a href='?page=ListePointages'><div><?=texte("Pointage")?></div></a>
+        <a href='?page=ListePointages'>
+            <div>Pointages</div>
+        </a>
+    </menu>
+    <aside class="cote"></aside>
 </nav>

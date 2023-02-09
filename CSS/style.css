@@ -1,72 +1,207 @@
-
-header{
-    height: 15vh;
-    flex:none;
+header {
+    height: 10vh;
+    flex: none;
     background-color: var(--color5);
     color: var(--color1);
+    padding: 0.6rem 0;
+    text-transform: uppercase;
 }
-.titre, .titreListe, .labelListe{
-    font-size: 2 em;
+*{
+    scroll-behavior: smooth;
+}
+h1 {
+    font-size: 2rem;
+}
+
+.titre,
+.titreListe,
+.labelListe {
+    font-size: 1rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
 }
-body{
-    background-color: var(--color4);
+.titreListe , .titre, .titreForm{
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.4rem;
+    
+    text-transform: uppercase;
 }
-input,select{
-    font-size:1.2em;
+.caseListe a, .caseForm button {
+    max-width: fit-content;
+    padding: 0.5rem;
+    cursor: pointer;
 }
-footer{
-    background-color: var(--color5);
-    color: var(--color1);
-    font-size: 0.8em;
-    position: fixed;
-    bottom:0;
-    width: 100%;
-   
-     padding: 2em; 
-}
-main{
-    padding-bottom: 20vh;
+.caseListe a i, .caseForm button i {
+    cursor: pointer;
+    font-size: 2.5rem;
 }
 
-.labelListe{
-    grid-gap:0.2em;
+:focus-visible {
+    outline: none;
 }
-.labelListe .left{
+.caseListe button, .caseForm button {
+    border: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+input::placeholder {
+    padding-left: 0.5rem;
+}
+
+body {
+    background-color: var(--color4);
+    font-family: 'Roboto', sans-serif;
+}
+i {
+    font-size: 1.4rem;
+}
+input,
+select {
+    font-size: 1.2rem;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+header .titre {
+    font-size: 2rem;
+    
+}
+header a {
+    color: var(--color1);
+}
+header img {
+    margin-right: auto;
+}
+
+footer {
+    background-color: var(--color5);
+    color: var(--color1);
+    font-size: 1rem;
+    position: fixed;
+    bottom:0; 
+     width: 100%; 
+}
+
+main {
+    padding-bottom: 10vh;
+}
+
+.labelListe {
+    grid-gap: 0.2rem;
+}
+
+.labelListe .left {
     justify-content: unset;
 }
-.titreForm{
-    padding: 3em;
+
+.titreForm {
+    padding: 3rem;
 }
+
 /**** MENU ***/
-nav a > div , nav > div{
-    padding: 2em 0.2em;
+/* menu {
+    margin: 0;
+    padding: 0;
+    flex: 1;
+} */
+menu a>div,
+menu>div {
+    padding: 1.2rem 0.4rem;
     box-shadow: 2px 2px 3px black;
     justify-content: center;
-    margin: 0.3em;
-    background-color: var(--color2);
+    margin: 0.3rem 0.5rem;
+    background-color: var(--color3);
+    transition: all 1s;
+    cursor: pointer;
+    /* flex: 1; */
 }
-.sous-menu a > div{
-    padding: 0.5em 2em;
+
+menu {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+menu i {
+    margin-left: 0.5rem;
+}
+ nav {
+    background-color: var(--color2);
+ }
+.sous-menu a>div {
+    padding: 0.8em 2rem;
     box-shadow: 2px 2px 3px black;
+    margin: 0;
 }
-nav a > div:hover , nav > div:hover{
+
+menu a>div:hover,
+menu>div:hover {
     background-color: var(--color2);
 }
-nav div:hover .sous-menu{
+
+nav div:hover .sous-menu {
     display: flex;
 }
-.sous-menu{
+.pagination button{
+    max-width: 20rem;
+    min-width: 4rem;
+}
+.pagination {
+    margin: 0 auto;
+}
+nav {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+#searchInList {
+    max-width: 300px;
+}
+.sous-menu {
+    z-index: 1000;
     display: none;
     position: absolute;
-    top: 5em;
+    top: 3.8rem;
+    width: 100%;
+    margin: 0;
 }
+
 /******/
+footer #backToTop {
+    position: absolute;
+    top: 0;
+    transform: translateY(-100%);
+    right: 1rem;
+    cursor: pointer;
+}
+.cote {
+	flex:0.1;
+}
 .left {
     justify-content: left !important;
 }
 
-.estompe{
-    opacity:0.3;
+.estompe {
+    opacity: 0.3;
+}
+
+.aideMdp {
+    flex-direction: column;
+    z-index: 2;
+    font-size: 0.8rem;
+    display: none;
+    white-space: nowrap;
+    border-radius: 2vh;
+    background-color: white;
+    padding: 1vh;
+}
+
+.fa-green {
+    color: var(--inputCorrect);
+}
+
+.fa-red {
+    color: var(--inputIncorrect);
 }

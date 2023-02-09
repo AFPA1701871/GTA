@@ -2,7 +2,7 @@
 
  echo '<main>';
 
- echo '<div class="flex-0-1"></div>';
+ echo '<div class="cote"></div>';
 
  echo '<div><section class="colonne">';
  
@@ -35,7 +35,7 @@ echo '<div class="caseListe labelListe" data-name= "NbHeuresPointage">'.texte("N
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair ">'.texte("NbElement").' :</div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class=" caseListe texteClair "><i class="fas fa-calculator"></i></div><div class="mini" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-12 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
@@ -60,7 +60,7 @@ echo '<div class="bigEspace"></div>';
                                  
 echo '<div class="caseListe grid-columns-span-12">
 	<div></div>
-	<a href="index.php?page=Accueil"><button><i class="fas fa-sign-out-alt fa-rotate-180"></i></button></a>
+	<a href="index.php?page=Accueil"><button><i class="fas fa-house fa-rotate-180"></i></button></a>
 	<div></div>
 </div>';
 
@@ -70,5 +70,5 @@ echo '<div class="bigEspace grid-columns-span-9 pagination"></div>';
 
 echo '<div class="bigEspace grid-columns-span-9"></div>';
 echo'</div>'; //Div
-echo '<div class="flex-0-1"></div>';
+echo '<div class="cote"></div>';
 echo '</section></main>';

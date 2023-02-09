@@ -2,8 +2,8 @@
 
 ## Crud Utilisateurs
 
-* [ ] gérer le mot de passe
-* [ ] obliger le changement de mot de passe à la première connexion (Martine)
+* [ ] Gérer le mot de passe
+* [X] Obliger le changement de mot de passe à la première connexion
 
 ## Pagination
 
@@ -26,7 +26,7 @@
 
 ## Listes avec vues
 
-* [ ] Modifier les redirections (Colin)
+* [X] Modifier les redirections
 
 # Spécificités appli
 
@@ -35,13 +35,14 @@
 ## Crud Utilisateurs
 
 * [ ] Ajouter le reinit
-* [ ] Ajouter la gestion des contrats (Alexandre et Yves)
-* [ ] Ajouter un lien changer mot de pase dans le header
-* [ ] Mettre un check sur actif
+* [X] Ajouter la gestion des contrats (Alexandre et Yves)
+* [X] Remplacer les input ID par des select (Yves)
+* [ ] Ajouter un lien changer mot de passe dans le header
+* [X] Mettre un check sur actif (Alexandre)
 
 ## Crud Activités
 
-* [ ] ajouter gestion des types associés
+* [ ] Ajouter gestion des types associés
 
 ## Gestion des pointages
 
@@ -57,13 +58,16 @@
 
 ## Connexion
 
-* [ ] Supprimer la partie inscription (Martine)
+* [X] Supprimer la partie inscription
 
 ## CSS
 
-* [ ] Améliorer le design
+* [ ] Améliorer le design (Valentin)
 
 ## Type Prestation
 
 * [ ] CRUD Modifier par des checkBox (Colin)
 * [ ] Ajouter le sous formulaire pour choisir les activités associées
+
+## Jeux de données
+* [ ] Compléter le jeux de données (Martine)
