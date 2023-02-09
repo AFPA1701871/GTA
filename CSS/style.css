@@ -90,7 +90,10 @@ footer {
 main {
     padding-bottom: 10vh;
 }
-
+/* section form {
+    max-width: 500px;
+    margin: 0 auto;
+} */
 .labelListe {
     grid-gap: 0.2rem;
 }
