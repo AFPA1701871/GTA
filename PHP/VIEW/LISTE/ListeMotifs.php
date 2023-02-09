@@ -13,9 +13,9 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
 echo '<div class="grid-col-6 gridListe">';
 
-echo '<div class="caseListe titreListe grid-columns-span-6">Liste des Motifs </div>';
+echo '<div class="caseListe titreListe grid-columns-span-6">'.texte("Liste des Motifs").'</div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-6"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+ echo '<div class="grid-columns-span-6"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").' placeholder="'.texte("mot à chercher").'/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-6">
 <div></div>
 <div class="bigEspace"></div>
@@ -23,8 +23,8 @@ echo '<div class="caseListe grid-columns-span-6">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "CodeMotif">CodeMotif</div>';
-echo '<div class="caseListe labelListe" data-name= "LibelleMotif">LibelleMotif</div>';
+echo '<div class="caseListe labelListe" data-name= "CodeMotif">'.texte("CodeMotif").'</div>';
+echo '<div class="caseListe labelListe" data-name= "LibelleMotif">'.texte("LibelleMotif").'</div>';
 echo '<div class="caseListe labelListe" data-name= "IdTypePrestation">IdTypePrestation</div>';
 
 //Remplissage de div vide pour la structure de la grid

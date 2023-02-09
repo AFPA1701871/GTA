@@ -13,9 +13,9 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
 echo '<div class="grid-col-5 gridListe">';
 
-echo '<div class="caseListe titreListe grid-columns-span-5">Liste des Conversions </div>';
+echo '<div class="caseListe titreListe grid-columns-span-5">'.texte("Liste des Conversions").'</div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-5"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+echo '<div class="grid-columns-span-5"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").' placeholder="'.texte("mot à chercher").'/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-5">
 <div></div>
 <div class="bigEspace"></div>
@@ -23,8 +23,8 @@ echo '<div class="caseListe grid-columns-span-5">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "NbHeureConversion">NbHeureConversion</div>';
-echo '<div class="caseListe labelListe" data-name= "CoeffConversion">CoeffConversion</div>';
+echo '<div class="caseListe labelListe" data-name= "NbHeureConversion">'.texte("NbHeureConversion").'</div>';
+echo '<div class="caseListe labelListe" data-name= "CoeffConversion">'.texte("CoeffConversion").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
@@ -35,12 +35,12 @@ echo '</div><div class="grid-col-5 gridListe grid-contenu"></div>';
 echo '<template>';
 echo '<div class="donnees ">NbHeureConversion</div>';
 echo '<div class="donnees ">CoeffConversion</div>';
- echo '<a href="index.php?page=FormConversions&mode=Afficher&id=IdConversion"><i class="fas fa-file-contract"></i></a>';
+echo '<a href="index.php?page=FormConversions&mode=Afficher&id=IdConversion"><i class="fas fa-file-contract"></i></a>';
                                     
 echo '<a href="index.php?page=FormConversions&mode=Modifier&id=IdConversion"><i class="fas fa-pen"></i></a>';
                                     
 echo '<a href="index.php?page=FormConversions&mode=Supprimer&id=IdConversion"><i class="fas fa-trash-alt"></i></a>';
- echo '</template>';
+echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';
                                  

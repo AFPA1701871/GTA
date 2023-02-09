@@ -9,7 +9,7 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
 echo '<div class="grid-col-7 gridListe">';
 
-echo '<div class="caseListe titreListe grid-columns-span-7 ">Liste des Contrats </div>';
+echo '<div class="caseListe titreListe grid-columns-span-7">'.texte("Liste des Contrats").'</div>';
 echo '<div class="caseListe grid-columns-span-7">
 <div></div>
 <div class="bigEspace"></div>
@@ -34,11 +34,11 @@ foreach ($objets AS $value)
 	echo '<div class="donnees ">'.UtilisateursManager::findById($value->getIdUtilisateur())->getNomUtilisateur().'</div>';
 	echo '<div class="donnees ">'.$value->getDateDebutContrat().'</div>';
 	echo '<div class="donnees ">'.$value->getDateFinContrat().'</div>';
-	echo '<a href="index.php?page=FormContrats&mode=Afficher&id='.$value->getIdContrat().'"><i class="fas fa-file-contract"></i></a>';
+	echo '<a href="index.php?page=FormContrats&mode=Afficher&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-file-contract"></i></a>';
 										
-	echo '<a href="index.php?page=FormContrats&mode=Modifier&id='.$value->getIdContrat().'"><i class="fas fa-pen"></i></a>';
+	echo '<a href="index.php?page=FormContrats&mode=Modifier&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-pen"></i></a>';
 										
-	echo '<a href="index.php?page=FormContrats&mode=Supprimer&id='.$value->getIdContrat().'"><i class="fas fa-trash-alt"></i></a>';
+	echo '<a href="index.php?page=FormContrats&mode=Supprimer&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-trash-alt"></i></a>';
 }
 echo '</div></div>';
 

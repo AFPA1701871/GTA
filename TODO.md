@@ -17,8 +17,8 @@
 
 ## Traduction (Fabien)
 
-* [ ] Ajouter les traductions pour les noms de colonne en français
-* [ ] Ajouter les texte() dans les listes
+* [X] Ajouter les traductions pour les noms de colonne en français
+* [X] Ajouter les texte() dans les listes
 
 ## Gestion des icones
 
@@ -34,15 +34,15 @@
 
 ## Crud Utilisateurs
 
-* [ ] Ajouter le reinit
+* [ ] Ajouter le reinit (Fabien)
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
 * [X] Remplacer les input ID par des select (Yves)
-* [ ] Ajouter un lien changer mot de pase dans le header
-* [ ] Mettre un check sur actif
+* [ ] Ajouter un lien changer mot de passe dans le header (Fabien)
+* [X] Mettre un check sur actif (Alexandre)
 
 ## Crud Activités
 
-* [ ] ajouter gestion des types associés
+* [ ] Ajouter gestion des types associés
 
 ## Gestion des pointages
 
@@ -68,3 +68,7 @@
 
 * [ ] CRUD Modifier par des checkBox (Colin)
 * [ ] Ajouter le sous formulaire pour choisir les activités associées
+
+## Jeux de données
+
+* [ ] Compléter le jeux de données (Martine)

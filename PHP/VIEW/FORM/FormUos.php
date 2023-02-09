@@ -18,7 +18,7 @@ echo '<main class="center">';
 
 echo '<form class="GridForm" action="index.php?page=ActionUos&mode='.$_GET['mode'].'" method="post"/>';
 echo '<div class="bigEspace"></div>	';
-echo '<div class="caseForm titreForm col-span-form">Formulaire Uos</div>';
+echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Uos").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdUO().'" name=IdUO></div>';
 echo '<label for=NumeroUO class="caseForm labelForm">'.texte("NumeroUO").'</label>';

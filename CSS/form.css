@@ -1,10 +1,9 @@
-
 .inputCorrect {
-    box-shadow: 2px 2px 3px var(--inputCorrect);
+  box-shadow: 2px 2px 3px var(--inputCorrect);
 }
 
 .inputIncorrect {
-    box-shadow: 2px 2px 3px var(--inputIncorrect);
+  box-shadow: 2px 2px 3px var(--inputIncorrect);
 }
 
 .inputVide {
@@ -13,11 +12,71 @@
 
 input, select {
     box-shadow: 2px 2px 3px black;
-    padding: 0.5em;
+    padding: 0.5rem;
 }
 
+/* input[type="checkbox"] {
+  box-shadow: none;
+  outline: none;
+
+  height: 3vh;
+} */
+
+/***** *****/
+
+.toggle-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.toggle-label {
+  width: 4rem;
+  height: 2rem;
+  background: #a5a5a5;
+  position: relative;
+  display: inline-block;
+  border-radius: 3rem;
+  transition: 0.4s;
+  box-sizing: border-box;
+}
+.toggle-label:after {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.toggle-input:checked + .toggle-label {
+  background-color: #4bd865;
+}
+.toggle-input:checked + .toggle-label:after {
+  left: 2rem;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 4rem;
+  height: 3rem;
+  margin: auto;
+}
+
+/***** *****/
+
 label {
-    align-self: center;
+  align-self: center;
 }
 
 fieldset {
@@ -30,10 +89,10 @@ form {
     grid-template-columns: 1fr 1.5fr;
     grid-gap: 0.5em;
     grid-auto-rows: minmax(1em, auto);
-    width: 75%;
+    width: 40%;
 }
-.colSpan2{
-    grid-column: 1 / span 2;
+.colSpan2 {
+  grid-column: 1 / span 2;
 }
 
 .oeil {
@@ -44,25 +103,25 @@ form {
 }
 
 .infoBulle {
-    position: absolute;
-    background-color: whitesmoke;
-    margin-top: 3vh;
-    right: 0;
-    z-index: 10;
-    white-space: nowrap;
-} 
+  position: absolute;
+  background-color: whitesmoke;
+  margin-top: 3vh;
+  right: 0;
+  z-index: 10;
+  white-space: nowrap;
+}
 
 .col-span-form {
-    grid-column: 1/5 ;
+  grid-column: 1/5;
 }
 
 .gridAideMDP {
     display: grid;
     grid-template-columns: 0.1fr 2fr;
-    grid-gap: 0.2em;
+    grid-gap: 0.2rem;
     grid-auto-rows: minmax(1em, auto);
     width: 75%;
 }
-input[type=submit]{
-    justify-content: center;
+input[type="submit"] {
+  justify-content: center;
 }

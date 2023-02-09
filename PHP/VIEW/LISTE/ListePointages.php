@@ -13,9 +13,9 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
 echo '<div class="grid-col-12 gridListe">';
 
-echo '<div class="caseListe titreListe grid-columns-span-12">Liste des Pointages </div>';
+echo '<div class="caseListe titreListe grid-columns-span-12">'.texte("Liste des Pointages").'</div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-12"><div class="demi"></div><input id=searchInList  title="entrer le mot à chercher puis cliquer sur le filtre" placeholder="mot à chercher"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+ echo '<div class="grid-columns-span-12"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").' placeholder="'.texte("mot à chercher").'/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-12">
 <div></div>
 <div class="bigEspace"></div>
@@ -23,15 +23,15 @@ echo '<div class="caseListe grid-columns-span-12">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "IdMotif">IdMotif</div>';
-echo '<div class="caseListe labelListe" data-name= "IdPrestation">IdPrestation</div>';
-echo '<div class="caseListe labelListe" data-name= "IdProjet">IdProjet</div>';
-echo '<div class="caseListe labelListe" data-name= "IdUO">IdUO</div>';
-echo '<div class="caseListe labelListe" data-name= "IdUtilisateur">IdUtilisateur</div>';
-echo '<div class="caseListe labelListe" data-name= "DatePointage">DatePointage</div>';
-echo '<div class="caseListe labelListe" data-name= "ValidePointage">ValidePointage</div>';
-echo '<div class="caseListe labelListe" data-name= "ReportePointage">ReportePointage</div>';
-echo '<div class="caseListe labelListe" data-name= "NbHeuresPointage">NbHeuresPointage</div>';
+echo '<div class="caseListe labelListe" data-name= "IdMotif">'.texte("IdMotif").'</div>';
+echo '<div class="caseListe labelListe" data-name= "IdPrestation">'.texte("IdPrestation").'</div>';
+echo '<div class="caseListe labelListe" data-name= "IdProjet">'.texte("IdProjet").'</div>';
+echo '<div class="caseListe labelListe" data-name= "IdUO">'.texte("IdUO").'</div>';
+echo '<div class="caseListe labelListe" data-name= "IdUtilisateur">'.texte("IdUtilisateur").'</div>';
+echo '<div class="caseListe labelListe" data-name= "DatePointage">'.texte("DatePointage").'</div>';
+echo '<div class="caseListe labelListe" data-name= "ValidePointage">'.texte("ValidePointage").'</div>';
+echo '<div class="caseListe labelListe" data-name= "ReportePointage">'.texte("ReportePointage").'</div>';
+echo '<div class="caseListe labelListe" data-name= "NbHeuresPointage">'.texte("NbHeuresPointage").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
