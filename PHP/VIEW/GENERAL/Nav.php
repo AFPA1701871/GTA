@@ -2,6 +2,7 @@
     <aside class="cote"></aside>
     <menu class="flex">
         <div class="relative">Données administratives
+        <i class="fa-solid fa-angle-down"></i>
             <div class="sous-menu colonne">
                 <a href='?page=ListeCentres'>
                     <div>Centres</div>
@@ -21,6 +22,7 @@
             <div>Utilisateurs</div>
         </a>
         <div class="relative">Données pointages
+        <i class="fa-solid fa-angle-down"></i>
             <div class="sous-menu colonne">
                 <a href='?page=ListeMotifs'>
                     <div>Motifs</div>
