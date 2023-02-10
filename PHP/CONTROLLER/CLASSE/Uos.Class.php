@@ -27,7 +27,7 @@ class Uos
 		return $this->_numeroUO;
 	}
 
-	public function setNumeroUO(int $numeroUO)
+	public function setNumeroUO(string $numeroUO)
 	{
 		$this->_numeroUO=$numeroUO;
 	}

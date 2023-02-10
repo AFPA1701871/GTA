@@ -67,7 +67,7 @@ DROP TABLE IF EXISTS gta_UOs;
 
 CREATE TABLE gta_UOs(
    idUO INT AUTO_INCREMENT PRIMARY KEY,
-   numeroUO INT NOT NULL,
+   numeroUO varchar(10) NOT NULL,
    libelleUO VARCHAR(200)
 ) ENGINE = InnoDB;
 
@@ -181,6 +181,7 @@ CREATE TABLE gta_Pointages(
    idProjet INT,
    idUO INT,
    idUtilisateur INT NOT NULL,
+   idTypePrestation INT NOT NULL,
    datePointage DATE NOT NULL,
    validePointage BOOLEAN,
    reportePointage BOOLEAN,
@@ -194,8 +195,12 @@ DROP TABLE IF EXISTS gta_Preferences;
 
 CREATE TABLE gta_Preferences(
    idPreference INT AUTO_INCREMENT PRIMARY KEY,
-   idPrestation INT,
-   idUtilisateur INT
+   idMotif INT,
+   idPrestation INT NOT NULL,
+   idProjet INT,
+   idUO INT,
+   idUtilisateur INT NOT NULL,
+   idTypePrestation INT NOT NULL
 ) ENGINE = InnoDB;
 
 --

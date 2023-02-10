@@ -46,6 +46,7 @@ ALTER TABLE gta_Contrats ADD CONSTRAINT FK_Contrats_Utilisateurs FOREIGN KEY(idU
 
 ALTER TABLE gta_Pointages ADD CONSTRAINT FK_Pointages_Motifs FOREIGN KEY(idMotif) REFERENCES gta_Motifs(idMotif);
 ALTER TABLE gta_Pointages ADD CONSTRAINT FK_Pointages_Prestations FOREIGN KEY(idPrestation) REFERENCES gta_Prestations(idPrestation);
+ALTER TABLE gta_Pointages ADD CONSTRAINT FK_Pointages_TypePrestations FOREIGN KEY(idTypePrestation) REFERENCES gta_TypePrestations(idTypePrestation);
 ALTER TABLE gta_Pointages ADD CONSTRAINT FK_Pointages_Projets FOREIGN KEY(idProjet) REFERENCES gta_Projets(idProjet);
 ALTER TABLE gta_Pointages ADD CONSTRAINT FK_Pointages_UOs FOREIGN KEY(idUO) REFERENCES gta_UOs(idUO);
 ALTER TABLE gta_Pointages ADD CONSTRAINT FK_Pointages_Utilisateurs FOREIGN KEY(idUtilisateur) REFERENCES gta_Utilisateurs(idUtilisateur);
@@ -53,9 +54,13 @@ ALTER TABLE gta_Pointages ADD CONSTRAINT FK_Pointages_Utilisateurs FOREIGN KEY(i
 --
 -- Table Preferences
 --
-
+ALTER TABLE gta_Preferences ADD CONSTRAINT FK_Preferences_Motifs FOREIGN KEY(idMotif) REFERENCES gta_Motifs(idMotif);
 ALTER TABLE gta_Preferences ADD CONSTRAINT FK_Preferences_Prestations FOREIGN KEY(idPrestation) REFERENCES gta_Prestations(idPrestation);
+ALTER TABLE gta_Preferences ADD CONSTRAINT FK_Preferences_TypePrestations FOREIGN KEY(idTypePrestation) REFERENCES gta_TypePrestations(idTypePrestation);
+ALTER TABLE gta_Preferences ADD CONSTRAINT FK_Preferences_Projets FOREIGN KEY(idProjet) REFERENCES gta_Projets(idProjet);
+ALTER TABLE gta_Preferences ADD CONSTRAINT FK_Preferences_UOs FOREIGN KEY(idUO) REFERENCES gta_UOs(idUO);
 ALTER TABLE gta_Preferences ADD CONSTRAINT FK_Preferences_Utilisateurs FOREIGN KEY(idUtilisateur) REFERENCES gta_Utilisateurs(idUtilisateur);
+
 
 --
 -- Table ActivitesParTypes

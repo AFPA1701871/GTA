@@ -78,15 +78,6 @@ header img {
     margin-right: auto;
 }
 
-footer {
-    background-color: var(--color5);
-    color: var(--color1);
-    font-size: 1rem;
-    position: fixed;
-    bottom:0; 
-     width: 100%; 
-}
-
 main {
     padding-bottom: 10vh;
 }
@@ -146,7 +137,7 @@ menu i {
 
 menu a>div:hover,
 menu>div:hover {
-    background-color: var(--color2);
+    background-color: var(--color6);
 }
 
 nav div:hover .sous-menu {
@@ -213,3 +204,29 @@ footer #backToTop {
 .fa-red {
     color: var(--inputIncorrect);
 }
+
+.removeShadow {
+    box-shadow: unset;
+}
+
+
+/****** Footer en bas de page ******/ 
+
+body{
+    position: relative;
+    min-height: calc(100vh - 7vh); 
+    padding-bottom: 7vh;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    right:0;
+    left:0;
+    height: 7vh;
+
+    background-color: var(--color5);
+    color: var(--color1);
+    font-size: 1rem;
+}
+

@@ -11,11 +11,12 @@ class Pointages
 	private $_idProjet;
 	private $_idUO;
 	private $_idUtilisateur;
+	private $_idTypePrestation;
 	private $_datePointage;
 	private $_validePointage;
 	private $_reportePointage;
 	private $_nbHeuresPointage;
-	private static $_attributes=["idPointage","idMotif","idPrestation","idProjet","idUO","idUtilisateur","datePointage","validePointage","reportePointage","nbHeuresPointage"];
+	private static $_attributes=["idPointage","idMotif","idPrestation","idProjet","idUO","idUtilisateur","idTypePrestation","datePointage","validePointage","reportePointage","nbHeuresPointage"];
 	/***************** Accesseurs ***************** */
 
 
@@ -119,6 +120,15 @@ class Pointages
 		$this->_nbHeuresPointage=$nbHeuresPointage;
 	}
 
+	public function getIdTypePrestation()
+	{
+		return $this->_idTypePrestation;
+	}
+
+	public function setIdTypePrestation($idTypePrestation)
+	{
+		$this->_idTypePrestation = $idTypePrestation;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;
@@ -156,4 +166,5 @@ class Pointages
 	{
 		return "IdPointage : ".$this->getIdPointage()."IdMotif : ".$this->getIdMotif()."IdPrestation : ".$this->getIdPrestation()."IdProjet : ".$this->getIdProjet()."IdUO : ".$this->getIdUO()."IdUtilisateur : ".$this->getIdUtilisateur()."DatePointage : ".$this->getDatePointage()."ValidePointage : ".$this->getValidePointage()."ReportePointage : ".$this->getReportePointage()."NbHeuresPointage : ".$this->getNbHeuresPointage()."\n";
 	}
+
 }
