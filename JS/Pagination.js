@@ -111,7 +111,7 @@ function AfficherPage(index, filtre) {
                         uo =  element.uoRequis==1?"<i class=\"fas fa-check\"></i>":"";
                         grid.innerHTML = grid.innerHTML.replaceAll("UoRequis", uo);
                         projet =  element.projetRequis==1?"<i class=\"fas fa-check\"></i>":"";
-                       grid.innerHTML = grid.innerHTML.replaceAll("ProjetRequis",projet);
+                        grid.innerHTML = grid.innerHTML.replaceAll("ProjetRequis",projet);
                     });
                 } else if (page == "ListeActivites") {
                     temp = document.getElementsByTagName("template")[0];
@@ -137,7 +137,7 @@ function AfficherPage(index, filtre) {
                         grid.appendChild(contenu);
                         grid.innerHTML = grid.innerHTML.replaceAll("IdConversion", element.idConversion);
                         grid.innerHTML = grid.innerHTML.replaceAll("NbHeureConversion", element.nbHeureConversion);
-                        grid.innerHTML = grid.innerHTML.replaceAll("CoeffConversion", element.coeffConversion);
+                        grid.innerHTML = grid.innerHTML.replaceAll("CoeffConversion", (element.coeffConversion==null?'':element.coeffConversion));
                     });
                 } else if (page == "ListeFermetures") {
                     temp = document.getElementsByTagName("template")[0];
@@ -165,7 +165,7 @@ function AfficherPage(index, filtre) {
                         grid.appendChild(contenu);
                         grid.innerHTML = grid.innerHTML.replaceAll("IdPrestation", element.idPrestation);
                         grid.innerHTML = grid.innerHTML.replaceAll("CodePrestation", element.codePrestation);
-                        grid.innerHTML = grid.innerHTML.replaceAll("LibellePrestation", element.libellePrestation);
+                        grid.innerHTML = grid.innerHTML.replaceAll("LibellePrestation", element.libellePrestation==null ? '' : element.libellePrestation);
                         grid.innerHTML = grid.innerHTML.replaceAll("LibelleActivite", element.libelleActivite);
                     });
                 } else if (page == "ListeProjets") {
@@ -184,7 +184,7 @@ function AfficherPage(index, filtre) {
                         grid.appendChild(contenu);
                         grid.innerHTML = grid.innerHTML.replaceAll("IdUO", element.idUO);
                         grid.innerHTML = grid.innerHTML.replaceAll("NumeroUO", element.numeroUO);
-                        grid.innerHTML = grid.innerHTML.replaceAll("LibelleUO", element.libelleUO);
+                        grid.innerHTML = grid.innerHTML.replaceAll("LibelleUO", element.libelleUO==null ? '' : element.libelleUO);
                     });
                 } else if (page == "ListeUtilisateurs") {
                     temp = document.getElementsByTagName("template")[0];
@@ -195,10 +195,10 @@ function AfficherPage(index, filtre) {
                         grid.innerHTML = grid.innerHTML.replaceAll("NomUtilisateur", element.nomUtilisateur);
                         grid.innerHTML = grid.innerHTML.replaceAll("MailUtilisateur", element.mailUtilisateur);
                         grid.innerHTML = grid.innerHTML.replaceAll("MatriculeUtilisateur", element.matriculeUtilisateur);
-                        grid.innerHTML = grid.innerHTML.replaceAll("NomManager", element.nomManager);
+                        grid.innerHTML = grid.innerHTML.replaceAll("NomManager", element.nomManager==null ? '' : element.nomManager);
                         actif = element.actif == 1 ? '<i class="fas fa-check"></i>' : "";
                         grid.innerHTML = grid.innerHTML.replaceAll("Actif", actif);
-                        grid.innerHTML = grid.innerHTML.replaceAll("NumeroUO", element.numeroUO);
+                        grid.innerHTML = grid.innerHTML.replaceAll("NumeroUO", element.numeroUO==null ? '' : element.numeroUO);
                         grid.innerHTML = grid.innerHTML.replaceAll("NomRole", element.nomRole);
                     });
                 }  
