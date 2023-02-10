@@ -20,7 +20,7 @@ echo '<form class="GridForm" action="index.php?page=ActionContrats&mode='.$_GET[
 echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Contrats").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
-echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdContrat().'" name=IdContrat></div>';
+echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdContrat().'" name=IdContrat><input type="hidden" value="'.$_GET['idutilisateur'].'" name=IdUtilisateur></div>';
 echo '<label for=IdCentre class="caseForm labelForm">'.texte("IdCentre").'</label>';
 echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdCentre(), 'Centres', ['nomCentre'], $disabled).'</div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
