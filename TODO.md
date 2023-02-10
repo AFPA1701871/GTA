@@ -67,7 +67,7 @@
 ## Type Prestation
 
 * [ ] CRUD Modifier par des checkBox (Colin)
-* [ ] Ajouter le sous formulaire pour choisir les activités associées
+* [ ] Ajouter le sous formulaire pour choisir les activités associées (Alexandre et Yves)
 
 ## Jeux de données
 
