@@ -22,6 +22,9 @@ if (isset($page)) {
        } else if ($matches[0] == "Form") {
            if ($page[1] != "FormFichesItv")
                echo '<script src="./JS/VerifForm.js"></script>';
+            if ($page[1] == "FormTypePrestations" && $_GET["mode"] == "Modifier") {
+                echo '<script src="./JS/CheckActivites.js"></script>';
+            }
        } 
    }
    switch ($page[1]) {
