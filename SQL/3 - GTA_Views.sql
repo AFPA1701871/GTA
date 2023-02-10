@@ -35,10 +35,41 @@ LEFT JOIN gta_Contrats as c ON  c.idContrat in (SELECT idContrat FROM gta_Contra
  --
  -- Vue Pointages avec satellites
  --
- CREATE
- ALGORITHM = UNDEFINED
- VIEW gta_View_Pointages_Satellites
- AS SELECT po.idPointage, po.datePointage, po.validePointage, po.reportePointage, po.nbHeuresPointage, u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO as "idUO_Utilisateur", u.idRole, u.idManager, po.idUO as "idUO_Pointage", uo.numeroUO, uo.libelleUO, po.idMotif, m.codeMotif, m.libelleMotif, m.idTypePrestation, pro.idProjet, pro.codeProjet, pro.libelleProjet, pre.idPrestation, pre.codePrestation, pre.libellePrestation, pre.idActivite FROM gta_pointages po LEFT JOIN gta_utilisateurs u ON po.idUtilisateur=u.idUtilisateur LEFT JOIN gta_uos uo ON po.idUO=uo.idUO LEFT JOIN gta_motifs m ON po.idMotif=m.idMotif LEFT JOIN gta_projets pro ON po.idProjet=pro.idProjet LEFT JOIN gta_prestations pre ON po.idPrestation=pre.idPrestation;
+ CREATE VIEW gta_View_Pointages AS 
+ SELECT po.idPointage, po.datePointage, po.validePointage, po.reportePointage, po.nbHeuresPointage,  po.idUO as "idUO_Pointage",po.idMotif,
+ u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO as "idUO_Utilisateur", u.idRole, u.idManager, 
+ uo.numeroUO, uo.libelleUO,  
+ m.codeMotif, m.libelleMotif, 
+ pro.idProjet, pro.codeProjet, pro.libelleProjet, 
+ pre.idPrestation, pre.codePrestation, pre.libellePrestation, pre.idActivite,
+ tp.idTypePrestation, tp.numeroTypePrestation, tp.libelleTypePrestation 
+ FROM gta_Pointages po 
+ LEFT JOIN gta_Utilisateurs u ON po.idUtilisateur=u.idUtilisateur 
+ LEFT JOIN gta_Uos uo ON po.idUO=uo.idUO 
+ LEFT JOIN gta_Motifs m ON po.idMotif=m.idMotif 
+ LEFT JOIN gta_Projets pro ON po.idProjet=pro.idProjet 
+ LEFT JOIN gta_Prestations pre ON po.idPrestation=pre.idPrestation
+ LEFT JOIN gta_TypePrestations tp ON po.idTypePrestation = tp.idTypePrestation;
+
+--
+-- Vue Preferences
+--
+CREATE VIEW gta_View_Preferences AS 
+ SELECT p.idPreference,   p.idUO as "idUO_Pointage",p.idMotif,
+ u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO as "idUO_Utilisateur", u.idRole, u.idManager, 
+ uo.numeroUO, uo.libelleUO,  
+ m.codeMotif, m.libelleMotif, 
+ pro.idProjet, pro.codeProjet, pro.libelleProjet, 
+ pre.idPrestation, pre.codePrestation, pre.libellePrestation, pre.idActivite,
+ tp.idTypePrestation, tp.numeroTypePrestation, tp.libelleTypePrestation 
+ FROM gta_Preferences p 
+ LEFT JOIN gta_Utilisateurs u ON p.idUtilisateur=u.idUtilisateur 
+ LEFT JOIN gta_Uos uo ON p.idUO=uo.idUO 
+ LEFT JOIN gta_Motifs m ON p.idMotif=m.idMotif 
+ LEFT JOIN gta_Projets pro ON p.idProjet=pro.idProjet 
+ LEFT JOIN gta_Prestations pre ON p.idPrestation=pre.idPrestation
+ LEFT JOIN gta_TypePrestations tp ON p.idTypePrestation = tp.idTypePrestation;
+
 
  CREATE VIEW  gta_View_Motifs as SELECT m.idMotif, m.codeMotif, m.libelleMotif, t.idTypePrestation, t.numeroTypePrestation, t.libelleTypePrestation, t.motifRequis, t.uoRequis, t.projetRequis FROM gta_Motifs as m
 INNER JOIN gta_TypePrestations as t on m.idTypePrestation = t.idTypePrestation;

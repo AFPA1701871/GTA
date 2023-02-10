@@ -6,9 +6,13 @@ class Preferences
 	/*****************Attributs***************** */
 
 	private $_idPreference;
+	private $_idMotif;
 	private $_idPrestation;
+	private $_idProjet;
+	private $_idUO;
 	private $_idUtilisateur;
-	private static $_attributes=["idPreference","idPrestation","idUtilisateur"];
+	private $_idTypePrestation;
+	private static $_attributes=["idPreference","idMotif","idPrestation","idProjet","idUO","idUtilisateur","idTypePrestation"];
 	/***************** Accesseurs ***************** */
 
 
@@ -42,6 +46,45 @@ class Preferences
 		$this->_idUtilisateur=$idUtilisateur;
 	}
 
+	public function getIdMotif()
+	{
+		return $this->_idMotif;
+	}
+
+	public function setIdMotif($idMotif)
+	{
+		$this->_idMotif = $idMotif;
+	}
+
+	public function getIdProjet()
+	{
+		return $this->_idProjet;
+	}
+
+	public function setIdProjet($idProjet)
+	{
+		$this->_idProjet = $idProjet;
+	}
+
+	public function getIdUO()
+	{
+		return $this->_idUO;
+	}
+
+	public function setIdUO($idUO)
+	{
+		$this->_idUO = $idUO;
+	}
+
+	public function getIdTypePrestation()
+	{
+		return $this->_idTypePrestation;
+	}
+
+	public function setIdTypePrestation($idTypePrestation)
+	{
+		$this->_idTypePrestation = $idTypePrestation;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;
@@ -79,4 +122,5 @@ class Preferences
 	{
 		return "IdPreference : ".$this->getIdPreference()."IdPrestation : ".$this->getIdPrestation()."IdUtilisateur : ".$this->getIdUtilisateur()."\n";
 	}
+
 }
