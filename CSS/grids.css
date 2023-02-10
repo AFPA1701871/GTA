@@ -5,7 +5,15 @@
 	display : grid;
 	grid-template-columns : 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-4 { 
+.grid-columns-span-4 {
+	grid-column:1/5;
+}
+
+.grid-col-4-nobutton {
+	display : grid;
+	grid-template-columns : 2fr 2fr 2fr 2fr;}
+
+.grid-columns-span-4-nobutton {
 	grid-column:1/5;
 }
 
@@ -13,7 +21,7 @@
 	display : grid;
 	grid-template-columns : 2fr 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-5 { 
+.grid-columns-span-5 {
 	grid-column:1/6;
 }
 .grid-contenu > div {
@@ -23,7 +31,7 @@
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-7 { 
+.grid-columns-span-7 {
 	grid-column:1/8;
 }
 
@@ -31,7 +39,7 @@
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-6 { 
+.grid-columns-span-6 {
 	grid-column:1/7;
 }
 
@@ -39,7 +47,7 @@
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-12 { 
+.grid-columns-span-12 {
 	grid-column:1/13;
 }
 
@@ -47,7 +55,7 @@
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-8 { 
+.grid-columns-span-8 {
 	grid-column:1/9;
 }
 
@@ -55,7 +63,7 @@
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-10 { 
+.grid-columns-span-10 {
 	grid-column:1/11;
 }
 
@@ -63,7 +71,7 @@
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-10 { 
+.grid-columns-span-10 {
 	grid-column:1/10;
 }
 
@@ -71,7 +79,7 @@
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-29 { 
+.grid-columns-span-29 {
 	grid-column:1/30;
 }
 
@@ -79,7 +87,7 @@
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-17 { 
+.grid-columns-span-17 {
 	grid-column:1/18;
 }
 
@@ -87,7 +95,7 @@
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
 
-.grid-columns-span-15 { 
+.grid-columns-span-15 {
 	grid-column:1/16;
 }
 

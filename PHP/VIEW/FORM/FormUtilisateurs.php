@@ -70,7 +70,7 @@ echo '<div class="caseForm col-span-form">
 echo'</form>
 <div class=flex-0-1></div>';
 
-if ($_GET['mode'] == "Modifier")
+if ($_GET['mode'] == "Modifier" || $_GET['mode'] == "Afficher")
 {
 	include 'PHP/VIEW/LISTE/ListeContrats.php';
 }
