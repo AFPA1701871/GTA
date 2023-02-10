@@ -59,6 +59,14 @@
 	grid-column:1/11;
 }
 
+.grid-col-10 {
+	display : grid;
+	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+
+.grid-columns-span-10 { 
+	grid-column:1/10;
+}
+
 .grid-col-29 {
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}

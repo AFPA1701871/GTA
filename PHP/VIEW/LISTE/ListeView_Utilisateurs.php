@@ -24,7 +24,6 @@ echo '<div class="caseListe grid-columns-span-10">
 </div>';
 
 echo '<div class="caseListe labelListe" data-name= "NomUtilisateur">'.texte("NomUtilisateur").'</div>';
-echo '<div class="caseListe labelListe" data-name= "MailUtilisateur">'.texte("MailUtilisateur").'</div>';
 echo '<div class="caseListe labelListe" data-name= "MatriculeUtilisateur">'.texte("MatriculeUtilisateur").'</div>';
 echo '<div class="caseListe labelListe" data-name= "NomManager">'.texte("NomManager").'</div>';
 echo '<div class="caseListe labelListe" data-name= "Actif">'.texte("Actif").'</div>';
@@ -39,7 +38,6 @@ echo '</div><div class="grid-col-10 gridListe grid-contenu"></div>';
 // Affichage des enregistrements de la base de données
 echo '<template>';
 echo '<div class="donnees ">NomUtilisateur</div>';
-echo '<div class="donnees ">MailUtilisateur</div>';
 echo '<div class="donnees ">MatriculeUtilisateur</div>';
 echo '<div class="donnees ">NomManager</div>';
 echo '<div class="donnees ">Actif</div>';

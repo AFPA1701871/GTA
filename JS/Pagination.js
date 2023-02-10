@@ -193,7 +193,6 @@ function AfficherPage(index, filtre) {
                         grid.appendChild(contenu);
                         grid.innerHTML = grid.innerHTML.replaceAll("IdUtilisateur", element.idUtilisateur);
                         grid.innerHTML = grid.innerHTML.replaceAll("NomUtilisateur", element.nomUtilisateur);
-                        grid.innerHTML = grid.innerHTML.replaceAll("MailUtilisateur", element.mailUtilisateur);
                         grid.innerHTML = grid.innerHTML.replaceAll("MatriculeUtilisateur", element.matriculeUtilisateur);
                         grid.innerHTML = grid.innerHTML.replaceAll("NomManager", element.nomManager==null ? '' : element.nomManager);
                         actif = element.actif == 1 ? '<i class="fas fa-check"></i>' : "";
