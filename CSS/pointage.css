@@ -1,4 +1,11 @@
-
+:root{
+    --width-col-total:5em;
+    --width-col-prct:4em;
+    --width-col-jo:2.5em;
+    --width-col-we:0.2em;
+    --grid-template-columns:var(--width-col-total) var(--width-col-prct) 0.1fr var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo);
+    --color7:#87919e;
+}
 
 .grid-col2-extend {
     display: grid;
@@ -10,7 +17,7 @@
     grid-template-columns: minmax(30rem, 1fr) 3fr;
 }
 
-.grid-columns-span-2{
+.grid-columns-span-2 {
     grid-column: 1/3;
 }
 
@@ -19,11 +26,11 @@
     text-align: center;
 }
 
-.grid-5-extend{
+.grid-5-extend {
     grid-template-columns: 4fr 1fr 2fr 1fr 1.5fr;
 }
 
-.grid-5-reduct{
+.grid-5-reduct {
     grid-template-columns: 4fr 1fr;
 }
 
@@ -31,9 +38,11 @@
 .cellBottom {
     border-bottom: 0.1em solid black;
 }
+
 .cellTop {
     border-top: 0.1em solid black;
 }
+
 .cellRight {
     border-right: 0.1em solid black;
 }
@@ -48,64 +57,92 @@
 
 .grid-pointage {
     display: grid;
-    grid-template-columns: 5em 4em 0.1fr repeat(31, minmax(2.5em, 3em));
+    grid-template-columns: var(--grid-template-columns);
     padding: 0em 0.2em;
     overflow: hidden;
 }
 
-.grid-columns-span-34{
+.grid-columns-span-34 {
     grid-column: span 34;
 }
 
-.date {
-    font-size: xx-small;
-    padding-top: 1em;
-}
-
-.tabCol > div {
+.tabCol>div {
     border-left: 0.1em solid black;
     border-right: 0.1em solid black;
     text-align: center;
 }
 
-.cellOK {
+/* .cellOK {
     background-color: var(--inputCorrect);
-}
+} */
 
 .cellKO {
     background-color: var(--inputIncorrect);
 }
 
 .noWork {
-    background-color: blueviolet;
+    background-color: lightgrey;
 }
 
 .work {
-    background-color: lightgreen;
+    background-color: whitesmoke;
 }
+
 .notApplicable {
-    background-color:var(--color6) ;
+    background-color: var(--color7);
 }
-#info{
+
+#info {
     color: red;
 }
 
-.fa-expand::before{
-    content:"\f424";
-}
-.fa-contract::before{
-    content:"\f422";
+.fa-expand::before {
+    content: "\f424";
 }
 
-.rotate-45{
+.fa-contract::before {
+    content: "\f422";
+}
+
+.rotate-45 {
     transform: rotate(45deg);
 }
 
-.pointHead{
+.pointHead {
     position: sticky;
     top: 0em;
 }
 
-.bgc4{    
+.topStickyBottom {
+    border-bottom: 0.2em solid black;
+}
+.leftStickyRigth {
+    border-right: 0.2em solid black;
+}
+
+.bgc4 {
     background-color: var(--color4);
 }
+
+select {
+    height: 100% !important;
+}
+
+.plusRigth {
+    margin-left: auto;
+}
+
+#btnMasque {
+    padding-right: 0.5em;
+}
+
+.titreTypePrestation {
+    background-color: var(--color2);
+}
+
+.fa-fav:before{
+    content: "\f005";
+}
+
+
+/* rootEl.style.setProperty('--grid-template-columns' theGridTemplateColumnsValue) */
