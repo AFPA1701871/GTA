@@ -137,7 +137,7 @@ menu i {
 
 menu a>div:hover,
 menu>div:hover {
-    background-color: var(--color2);
+    background-color: var(--color6);
 }
 
 nav div:hover .sous-menu {
@@ -203,6 +203,10 @@ footer #backToTop {
 
 .fa-red {
     color: var(--inputIncorrect);
+}
+
+.removeShadow {
+    box-shadow: unset;
 }
 
 
