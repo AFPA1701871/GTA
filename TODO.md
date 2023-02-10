@@ -68,7 +68,7 @@
 
 * [ ] CRUD Modifier par des checkBox (Colin)
 * [ ] Ajouter le sous formulaire pour choisir les activités associées (Yves)
-* [ ] AJAX pour gérer les activités associées (Alexandre)
+* [X] AJAX pour gérer les activités associées (Alexandre)
 
 ## Jeux de données
 
