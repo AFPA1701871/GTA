@@ -27,7 +27,7 @@ echo '<div class="caseListe grid-columns-span-'.($formtype?5:4).'">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe"></div>';
+if ($formtype) { echo '<div class="caseListe labelListe"></div>'; }
 echo '<div class="caseListe labelListe" data-name= "LibelleActivite">'.texte("LibelleActivite").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
