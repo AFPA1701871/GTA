@@ -14,7 +14,7 @@
 
 .grid-col2-reduct {
     display: grid;
-    grid-template-columns: minmax(30rem, 1fr) 3fr;
+    grid-template-columns: minmax(25rem, 1fr) 3fr;
 }
 
 .grid-columns-span-2 {
@@ -53,6 +53,10 @@
 
 .grid-lineDouble {
     height: 3.2em;
+}
+
+.grid-lineQuad {
+    height: 6em;
 }
 
 .grid-pointage {
@@ -141,8 +145,36 @@ select {
 }
 
 .fa-fav:before{
-    content: "\f005";
+    content: "\F5C0";    
 }
 
+.favActive{
+    color:green;
+}
+.favDesActive{
+    color:red;
+}
+
+.prestaLine{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.infosUser{
+    display: grid;
+    grid-template-columns: auto auto 1fr auto auto 1fr auto auto 1fr auto auto 1fr auto auto 1fr auto auto;
+}
+
+.colSelected{
+    border-left: 0.5em;
+    border-right: 0.5em;
+    color:green;
+}
+
+.fa-open:before{
+    content: "\F107";
+}
+.fa-close:before{
+    content: "\F106";
+}
 
 /* rootEl.style.setProperty('--grid-template-columns' theGridTemplateColumnsValue) */
