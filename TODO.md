@@ -59,6 +59,7 @@
 ## Connexion
 
 * [X] Supprimer la partie inscription
+* [ ] Changer la connexion avec le matricule plutôt que l'adresse mail
 
 ## CSS
 
