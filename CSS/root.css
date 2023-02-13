@@ -92,4 +92,8 @@ a {
 }
 .bgc5{
     background-color: var(--color5);
+    color: var(--color1);
+}
+.pagination .bgc5 {
+    border: none;
 }
