@@ -36,6 +36,10 @@
 .fa-house::before {
     content: "\E00D";
 }
+.fa-arrow-left::before {
+    content: "\F060";
+}
+
 .fa-paper-plane::before {
     content: "\f1d8";
 }
@@ -110,6 +114,13 @@
     margin-left: 0.2rem;
     content: "\f0b0";
 }
+.fa-search::before {
+    margin-left: 0.3rem;
+    content: "\01F50D";
+}
 .fa-calculator::before{
     content: "\f1ec";
+}
+.fa-disconnect::before {
+    content: "\F2F5";
 }

@@ -32,14 +32,14 @@ echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=IdTypePrestation class="caseForm labelForm">'.texte("IdTypePrestation").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getIdTypePrestation().'" name=IdTypePrestation pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdTypePrestation(), "TypePrestations", ["libelleTypePrestation"], $disabled) . '</div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<div class="bigEspace "></div>	';
 echo '<div class="caseForm col-span-form">
 	<div></div>
-	<div><a href="index.php?page=ListeMotifs"><button type="button"><i class="fas fa-house fa-rotate-180"></i></button></a></div>
+	<div><a href="index.php?page=ListeMotifs"><button type="button"><i class="fas fa-arrow-left fa-rotate-180"></i></button></a></div>
 	<div class="cote"></div>';
 	echo ($mode == "Afficher") ? "" : " <div><button type=\"submit\"><i class=\"fas fa-paper-plane\"></i></button></div>";
 	echo'<div></div>

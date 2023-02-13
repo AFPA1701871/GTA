@@ -15,7 +15,7 @@ echo '<div class="grid-col-8 gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-8">'.texte("Liste des Types Prestations").'</div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-8"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").' placeholder="'.texte("mot à chercher").'/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+ echo '<div class="grid-columns-span-8"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").' placeholder="'.texte("mot à chercher").'/><i class="fa-solid fa-search" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-8">
 <div></div>
 <div class="bigEspace"></div>
