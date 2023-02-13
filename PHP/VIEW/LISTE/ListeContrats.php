@@ -50,7 +50,7 @@ echo '<div class="bigEspace"></div>';
 
 echo '<div class="caseListe grid-columns-span-7">
 	<div></div>
-	<a href="index.php?page=ListeUtilisateurs"><button><i class="fas fa-house fa-rotate-180"></i></button></a>
+	<a href="index.php?page=ListeUtilisateurs"><button><i class="fas fa-arrow-left fa-rotate-180"></i></button></a>
 	<div></div>
 </div>';
 

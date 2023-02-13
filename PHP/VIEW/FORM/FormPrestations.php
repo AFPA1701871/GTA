@@ -39,7 +39,7 @@ echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>'
 echo '<div class="bigEspace "></div>	';
 echo '<div class="caseForm col-span-form">
 	<div></div>
-	<div><a href="index.php?page=ListePrestations"><button type="button"><i class="fas fa-house fa-rotate-180"></i></button></a></div>
+	<div><a href="index.php?page=ListePrestations"><button type="button"><i class="fas fa-arrow-left fa-rotate-180"></i></button></a></div>
 	<div class="cote"></div>';
 	echo ($mode == "Afficher") ? "" : " <div><button type=\"submit\"><i class=\"fas fa-paper-plane\"></i></button></div>";
 	echo'<div></div>

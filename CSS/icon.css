@@ -36,6 +36,10 @@
 .fa-house::before {
     content: "\E00D";
 }
+.fa-arrow-left::before {
+    content: "\F060";
+}
+
 .fa-paper-plane::before {
     content: "\f1d8";
 }
