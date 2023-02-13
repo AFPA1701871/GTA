@@ -122,6 +122,9 @@ menu {
     padding-left: 10%;
     padding-right: 10%;
 }
+header i {
+    margin-left: 0.5rem;
+}
 menu i {
     
     transition: 0.5s all;
