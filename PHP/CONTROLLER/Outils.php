@@ -61,7 +61,11 @@ function afficherPage($page)
 			include 'PHP/VIEW/GENERAL/Header.php';
 			if (isset($_SESSION["utilisateur"]) && stripos($chemin,"PHP/CONTROLLER/ACTION/") !== 0)
 			{
-				include 'PHP/VIEW/GENERAL/Nav.php';
+				// On n'affiche pas la navigation dans le cas du chamgement forcé du mot de passe
+				if ($nom != "ChangePassword")
+				{
+					include 'PHP/VIEW/GENERAL/Nav.php';
+				}
 			}
 			include $chemin . $nom . '.php'; //Chargement de la page en fonction du chemin et du nom
 			include 'PHP/VIEW/GENERAL/Footer.php';

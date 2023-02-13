@@ -210,6 +210,7 @@ footer #backToTop {
     border-radius: 2vh;
     background-color: white;
     padding: 1vh;
+    align-items: baseline !important;
 }
 
 .fa-green {

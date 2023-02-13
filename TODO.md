@@ -60,6 +60,7 @@
 ## Connexion
 
 * [X] Supprimer la partie inscription
+* [X] Retravailler le formulaire de changement de mot de passe (Yves)
 
 ## CSS
 
