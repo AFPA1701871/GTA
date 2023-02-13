@@ -76,4 +76,4 @@
 
 ## CRUD Motifs
 
-* [ ] Remplacer l'input IdTypePrestation par un select (Alexandre)
+* [X] Remplacer l'input IdTypePrestation par un select (Alexandre)
