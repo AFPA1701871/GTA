@@ -1,7 +1,7 @@
 :root{
-    --width-col-total:5em;
-    --width-col-prct:4em;
-    --width-col-jo:2.5em;
+    --width-col-total:3em;
+    --width-col-prct:3em;
+    --width-col-jo:3em;
     --width-col-we:0.2em;
     --grid-template-columns:var(--width-col-total) var(--width-col-prct) 0.1fr var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo);
     --color7:#87919e;
@@ -56,7 +56,7 @@
 }
 
 .grid-lineQuad {
-    height: 6em;
+    height: 6.3em;
 }
 
 .grid-pointage {
@@ -177,4 +177,7 @@ select {
     content: "\F106";
 }
 
+.pijama{
+    background-color: lightblue;
+}
 /* rootEl.style.setProperty('--grid-template-columns' theGridTemplateColumnsValue) */
