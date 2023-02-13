@@ -103,6 +103,12 @@
 .fa-5::before {
     content: "\35";
 }
+.fa-moon::before {
+    content: "\F186";
+}
+.fa-sun::before {
+    content: "\F185";
+}
 
 .fa-xs {
     font-size: 0.75rem;

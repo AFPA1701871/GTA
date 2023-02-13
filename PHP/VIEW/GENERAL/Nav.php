@@ -1,6 +1,7 @@
 <nav>
     <aside class="cote"></aside>
     <menu class="flex">
+        
         <div class="relative"><?= texte("Données administratives")?>
         <i class="fa-solid fa-angle-down"></i>
             <div class="sous-menu colonne">
