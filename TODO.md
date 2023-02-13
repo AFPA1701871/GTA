@@ -55,7 +55,7 @@
 
 * [X] Mettre des checks plutot que 0/1
 * [ ] Gérer les projets associés
-* [ ] Remplacer l'input IdActivite par un select dans FormPrestations (Alexandre)
+* [X] Remplacer l'input IdActivite par un select dans FormPrestations (Alexandre)
 
 ## Connexion
 
