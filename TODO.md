@@ -73,3 +73,7 @@
 ## Jeux de données
 
 * [ ] Compléter le jeux de données (Martine)
+
+## CRUD Motifs
+
+* [ ] Remplacer l'input IdTypePrestation par un select (Alexandre)
