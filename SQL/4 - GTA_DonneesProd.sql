@@ -24,13 +24,16 @@ insert into gta_Activites values(3,"Fca");
 insert into gta_Activites values(4,"Fcta");
 insert into gta_Activites values(5,"Fcta Spe");
 insert into gta_Activites values(6,"Mnsp");
+insert into gta_Activites values(7,"Absences");
 
 insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,motifRequis,uoRequis,projetRequis) values(1,"Activité De Production",0,1,1);
 insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,motifRequis,uoRequis,projetRequis) values(2,"Missions Nationales De Service Public",0,1,1);
 insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,motifRequis,uoRequis,projetRequis) values(3,"Perfectionnement",1,0,1);
 insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,motifRequis,uoRequis,projetRequis) values(4,"Mandat",1,1,0);
 insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,motifRequis,uoRequis,projetRequis) values(5,"Autres Activités De Support",0,1,1);
+insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,motifRequis,uoRequis,projetRequis) values(0,"Absences",0,0,0);
 
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(6,7);
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(1,1);
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(1,2);
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(2,6);
@@ -553,6 +556,9 @@ insert into gta_Prestations (codePrestation,libellePrestation,idActivite) values
 insert into gta_Prestations (codePrestation,libellePrestation,idActivite) values("AS9","ASE Promo 16-18",2);
 insert into gta_Prestations (codePrestation,libellePrestation,idActivite) values("IN06","Ingénierie Promo 16-18",2);
 insert into gta_Prestations (codePrestation,libellePrestation,idActivite) values("Z06","Autres - Promo 16-18",2);
+insert into gta_Prestations (codePrestation,libellePrestation,idActivite) values("0","Absences",7);
+
+
 
 insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(1,"95NPMA160001","2ème PLAN MIGRANTS AFPA 2016-2017");
 insert into gta_Projets (idProjet,codeProjet,libelleProjet) values(2,"97NGCA720001","AAE PREPA COMP  Atelier 7 Club PREPA");
