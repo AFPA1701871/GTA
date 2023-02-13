@@ -76,6 +76,8 @@ $routes = [
 	"FormPointages" => ["PHP/VIEW/FORM/", "FormPointages", "Formulaire Pointages", 0, false],
 	"ActionPointages" => ["PHP/CONTROLLER/ACTION/", "ActionPointages", "Action Pointages", 0, false],
 
+	"FormPointagesIndividuels" => ["PHP/VIEW/FORM/", "FormPointagesIndividuels", "Pointages Individuels", 0, false],
+
 	"ListePreferences" => ["PHP/VIEW/LISTE/", "ListePreferences", "Liste Preferences", 0, false],
 	"FormPreferences" => ["PHP/VIEW/FORM/", "FormPreferences", "Formulaire Preferences", 0, false],
 	"ActionPreferences" => ["PHP/CONTROLLER/ACTION/", "ActionPreferences", "Action Preferences", 0, false],

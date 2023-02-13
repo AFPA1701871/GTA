@@ -18,10 +18,8 @@ sectionSideScroll.forEach(element => {
 })
 
 listeLignesPresta = document.querySelectorAll(".expand-line");
-console.log(listeLignesPresta);
 listeLignesPresta.forEach(LignePresta => {
     LignePresta.addEventListener("click", function (e) {
-        console.log(e);
         e.target.classList.toggle("fa-open");
         e.target.classList.toggle("fa-close");
         ligne = e.target.parentNode.parentNode.parentNode;
@@ -29,9 +27,9 @@ listeLignesPresta.forEach(LignePresta => {
         listeCol.forEach(cell => {
             cell.classList.toggle("noDisplay");
         });
-        ligneActu=ligne.getAttribute("data-Line");
-        selectLine=document.querySelectorAll("div[data-Line='"+ligneActu+"']");
-        selectLine.forEach(cell2=>{
+        ligneActu = ligne.getAttribute("data-Line");
+        selectLine = document.querySelectorAll("div[data-line='" + ligneActu + "']");
+        selectLine.forEach(cell2 => {
             cell2.classList.toggle("grid-lineDouble");
             cell2.classList.toggle("grid-lineQuad");
         })
@@ -39,33 +37,66 @@ listeLignesPresta.forEach(LignePresta => {
 })
 
 
-window.addEventListener("load", function setGridPointage(mois, annee) {
-    var feuilleStyle;
-    var indexStyle = 0;
-    listeStyle = document.styleSheets;
-    console.log(listeStyle);
-    // listeStyle.forEach(element => {
-    //     lien=element.href.split('/');
-    //     if(lien[lien.length-1]=="pointage.css"){
-    //         feuilleStyle=document.styleSheets[indexStyle];
-    //         indexStyle++;
-    //     }
-    // });
-    // nbreJour=new Date(mois-1, annee, 0).getDate();
-    // tailleTotal=rootEl.style.getPropertyValue('--width-col-total');
-    // taillePrct=rootEl.style.getPropertyValue('--width-col-prct');
-    // tailleJo=rootEl.style.getPropertyValue('--width-col-jo');
-    // tailleWe=rootEl.style.getPropertyValue('--width-col-we');
-    // theGridTemplateColumnsValue=tailleTotal+" "+taillePrct+" 0.1fr ";
-    // for (let jour = 1; jour <=nbreJour; jour++) {
-    //     jourActu=new Date(annee, mois-1, jour);
-    //     if(jourActu.getDay()==0||jourActu.getDay()==6){
-    //         theGridTemplateColumnsValue+=tailleWe+" ";
-    //     }
-    //     else{
-    //         theGridTemplateColumnsValue+=tailleJo+" ";
-    //     }
-    // }
-    console.log(feuilleStyle);
-    // rootEl.style.setProperty('--grid-template-columns', theGridTemplateColumnsValue);
-});
+window.addEventListener("load", setGridPointage);
+function setGridPointage() {
+    selectAnnee = document.querySelector("#anneeVisionne");
+    selectAnnee.addEventListener("change", setGridPointage);
+    annee = selectAnnee.value;
+    selectMois = document.querySelector("#moisVisionne");
+    selectMois.addEventListener("change", setGridPointage);
+    mois = selectMois.value;
+    var feuilleStyle = document.querySelector('link[href*=pointage]').sheet.cssRules[0];
+    const getDays = (year, month) => {
+        return new Date(year, month, 0).getDate();
+    }
+    const nbreJour = getDays(annee, mois);
+    tailleTotal = feuilleStyle.style.getPropertyValue('--width-col-total');
+    taillePrct = feuilleStyle.style.getPropertyValue('--width-col-prct');
+    tailleJo = feuilleStyle.style.getPropertyValue('--width-col-jo');
+    tailleWe = feuilleStyle.style.getPropertyValue('--width-col-we');
+    theGridTemplateColumnsValue = tailleTotal + " " + taillePrct + " 0.1em ";
+    for (let jour = 1; jour <= nbreJour; jour++) {
+        jourActu = new Date(annee, mois - 1, jour);
+        if (jourActu.getDay() == 0 || jourActu.getDay() == 6) {
+            theGridTemplateColumnsValue += tailleWe + " ";
+        }
+        else {
+            theGridTemplateColumnsValue += tailleJo + " ";
+        }
+    }
+    feuilleStyle.style.setProperty('--grid-template-columns', theGridTemplateColumnsValue);
+    divPointage = document.querySelector(".grid-pointage.pointMove");
+    barresTitre = divPointage.querySelectorAll(".titreTypePrestation");
+    classe = "grid-columns-span-" + (nbreJour + 3);
+    barresTitre.forEach(barre => {
+        switch (nbreJour) {
+            case 28:
+                barre.classList.add("grid-columns-span-31");
+                barre.classList.remove("grid-columns-span-32");
+                barre.classList.remove("grid-columns-span-33");
+                barre.classList.remove("grid-columns-span-34");
+                break;
+            case 29:
+                barre.classList.add("grid-columns-span-32");
+                barre.classList.remove("grid-columns-span-31");
+                barre.classList.remove("grid-columns-span-33");
+                barre.classList.remove("grid-columns-span-34");
+                break;
+            case 30:
+                barre.classList.add("grid-columns-span-33");
+                barre.classList.remove("grid-columns-span-31");
+                barre.classList.remove("grid-columns-span-32");
+                barre.classList.remove("grid-columns-span-34");
+                break;
+            case 31:
+                barre.classList.add("grid-columns-span-34");
+                barre.classList.remove("grid-columns-span-31");
+                barre.classList.remove("grid-columns-span-32");
+                barre.classList.remove("grid-columns-span-33");
+                break;
+            default:
+                break;
+        }
+    })
+};
+

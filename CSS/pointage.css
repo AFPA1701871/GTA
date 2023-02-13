@@ -3,7 +3,7 @@
     --width-col-prct:3em;
     --width-col-jo:3em;
     --width-col-we:0.2em;
-    --grid-template-columns:var(--width-col-total) var(--width-col-prct) 0.1fr var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo);
+    --grid-template-columns:var(--width-col-total) var(--width-col-prct) 0.1em var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo);
     --color7:#87919e;
 }
 
@@ -20,6 +20,7 @@
 .grid-columns-span-2 {
     grid-column: 1/3;
 }
+
 
 .grid-presta {
     display: grid;
@@ -65,7 +66,15 @@
     padding: 0em 0.2em;
     overflow: hidden;
 }
-
+.grid-columns-span-31 {
+    grid-column: span 31;
+}
+.grid-columns-span-32 {
+    grid-column: span 32;
+}
+.grid-columns-span-33 {
+    grid-column: span 33;
+}
 .grid-columns-span-34 {
     grid-column: span 34;
 }
@@ -142,6 +151,7 @@ select {
 
 .titreTypePrestation {
     background-color: var(--color2);
+    padding-left: 1em;
 }
 
 .fa-fav:before{
@@ -180,4 +190,12 @@ select {
 .pijama{
     background-color: lightblue;
 }
-/* rootEl.style.setProperty('--grid-template-columns' theGridTemplateColumnsValue) */
+
+.casePointage{
+    width:100%;
+    display: block;
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+}
