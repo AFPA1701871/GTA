@@ -123,6 +123,8 @@ menu {
     padding-right: 10%;
 }
 menu i {
+    
+    transition: 0.5s all;
     margin-left: 0.5rem;
 }
  nav {
@@ -137,6 +139,10 @@ menu i {
 menu a>div:hover,
 menu>div:hover {
     background-color: var(--color6);
+    
+}
+menu>div:hover i {
+    transform: rotate(180deg);
 }
 
 nav div:hover .sous-menu {
