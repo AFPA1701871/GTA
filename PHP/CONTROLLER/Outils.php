@@ -59,7 +59,7 @@ function afficherPage($page)
 		} else {
 			include 'PHP/VIEW/GENERAL/Head.php';
 			include 'PHP/VIEW/GENERAL/Header.php';
-			if (isset($_SESSION["utilisateur"]) && stripos($chemin,"PHP/CONTROLLER/ACTION/") !== 0)
+			if (isset($_SESSION["utilisateur"]) && (stripos($chemin,"PHP/CONTROLLER/ACTION/") !== 0 || $nom != "ChangePassword"))
 			{
 				include 'PHP/VIEW/GENERAL/Nav.php';
 			}

@@ -54,6 +54,9 @@ form {
 .col-span-form {
   grid-column: 1/5;
 }
+.col-span-form-chg-pwd {
+  grid-column: 1/3;
+}
 
 .gridAideMDP {
     display: grid;

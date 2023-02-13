@@ -1,11 +1,12 @@
 /* Appel d'une variable s'effectue en faisant "Var(--ColorTitle)" par exemple. */
 :root {
-    --color1: #cde6f5;
-    --color2:#8da7be;
-    --color3:#87919e;
-    --color4:#c2c9d1;
-    --color5:#79635b;
-    --color6:#707078;
+    --color1: #F0EEED;
+    --color2:#609EA2;
+    --color3:#F0EEED;
+    --color4:#F0EEED;;
+    --color5:#332C39;
+    --color6:#A5EBF0;
+    
     --inputCorrect: #04724d;
     --inputIncorrect: #e94f37;
     --inputVide: #cde6f5;
@@ -68,8 +69,8 @@ img {
 
 .absolu {
     position: absolute;
-    top: 5rem;
-    left: 5rem;
+    top: 3rem;
+    left: 25rem;
 }
 
 .relative {
