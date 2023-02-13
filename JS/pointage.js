@@ -17,33 +17,26 @@ sectionSideScroll.forEach(element => {
     })
 })
 
-
-document.querySelector('#btnMasque').addEventListener('click', function (e) {
-
-    var btn = e.target;
-    btn.classList.toggle("fa-expand");
-    btn.classList.toggle("fa-contract");
-    colonneCachable = document.querySelectorAll('.colCachable');
-    colonneCachable.forEach(celCache => {
-        celCache.classList.toggle('noDisplay');
-    });
-});
-
-listeLignesPresta = document.querySelectorAll("expand-line");
+listeLignesPresta = document.querySelectorAll(".expand-line");
 console.log(listeLignesPresta);
-// Array.from(listeLignesPresta).forEach(LignePresta => {
-//     LignePresta.addEventListener("click", function (e) {
-//         ligne = e.target.parentNode;
-//         console.log(ligne.getElementsByClassName("colCachable"))
-//         listeCol = ligne.querySelectorAll("colCachable");
-//         console.log(ligne);
-//         console.log(ligne.querySelectorAll("colCachable"));
-//         listeCol.forEach(cell => {
-//             cell.classList.toggle("noDisplay");
-//         });
-
-//     });
-// })
+listeLignesPresta.forEach(LignePresta => {
+    LignePresta.addEventListener("click", function (e) {
+        console.log(e);
+        e.target.classList.toggle("fa-open");
+        e.target.classList.toggle("fa-close");
+        ligne = e.target.parentNode.parentNode.parentNode;
+        listeCol = ligne.querySelectorAll(".colCachable");
+        listeCol.forEach(cell => {
+            cell.classList.toggle("noDisplay");
+        });
+        ligneActu=ligne.getAttribute("data-Line");
+        selectLine=document.querySelectorAll("div[data-Line='"+ligneActu+"']");
+        selectLine.forEach(cell2=>{
+            cell2.classList.toggle("grid-lineDouble");
+            cell2.classList.toggle("grid-lineQuad");
+        })
+    });
+})
 
 
 window.addEventListener("load", function setGridPointage(mois, annee) {
