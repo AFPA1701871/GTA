@@ -60,6 +60,8 @@
 ## Connexion
 
 * [X] Supprimer la partie inscription
+* [ ] Changer la connexion avec le matricule plutôt que l'adresse mail
+* [X] Retravailler le formulaire de changement de mot de passe (Yves)
 
 ## CSS
 

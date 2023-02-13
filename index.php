@@ -35,6 +35,7 @@ $routes = [
 	"ListeMailAPI" => ["PHP/MODEL/API/", "ListeMailAPI", "ListeMailAPI", 0, true],
 	"ListeAPI" => ["PHP/MODEL/API/", "ListeAPI", "ListeAPI", 0, true],
 	"MAJActivitesParTypesAPI" => ["PHP/MODEL/API/", "MAJActivitesParTypesAPI", "MAJActivitesParTypesAPI", 0, true],
+	"MAJPointageAPI" => ["PHP/MODEL/API/", "MAJPointageAPI", "MAJPointageAPI", 0, true],
 	
 	"ListeActivites" => ["PHP/VIEW/LISTE/", "ListeActivites", "Liste Activites", 0, false],
 	"FormActivites" => ["PHP/VIEW/FORM/", "FormActivites", "Formulaire Activites", 0, false],
@@ -75,6 +76,8 @@ $routes = [
 	"ListePointages" => ["PHP/VIEW/LISTE/", "ListePointages", "Liste Pointages", 0, false],
 	"FormPointages" => ["PHP/VIEW/FORM/", "FormPointages", "Formulaire Pointages", 0, false],
 	"ActionPointages" => ["PHP/CONTROLLER/ACTION/", "ActionPointages", "Action Pointages", 0, false],
+
+	"FormPointagesIndividuels" => ["PHP/VIEW/FORM/", "FormPointagesIndividuels", "Pointages Individuels", 0, false],
 
 	"ListePreferences" => ["PHP/VIEW/LISTE/", "ListePreferences", "Liste Preferences", 0, false],
 	"FormPreferences" => ["PHP/VIEW/FORM/", "FormPreferences", "Formulaire Preferences", 0, false],

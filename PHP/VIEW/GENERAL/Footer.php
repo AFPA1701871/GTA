@@ -25,6 +25,7 @@ if (isset($page)) {
             if ($page[1] == "FormTypePrestations" && $_GET["mode"] == "Modifier") {
                 echo '<script src="./JS/CheckActivites.js"></script>';
             }
+            echo ' <script src="./JS/pointage.js"></script>';
        } 
    }
    switch ($page[1]) {

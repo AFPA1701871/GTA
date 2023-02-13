@@ -157,17 +157,14 @@ menu>div {
     padding: 1.2rem 0.4rem;
 justify-content: center;
     margin: 0.3rem 0.5rem;
-    background-color: var(--color2);
-    /* transition: all 1s;
-    transition: color none; */
-    transition: background 0.5s;
+    background-color: var(--color3);
+    transition: all 1s;
     cursor: pointer;
     /* flex: 1; */
     
 }
 menu .relative, menu > a div {
     border-radius: 5px;
-    color: var(--color1);
 }
 
 menu {
@@ -183,19 +180,18 @@ menu i {
     margin-left: 0.5rem;
 }
  nav {
-    background-color: var(--color2);
+    background-color: var(--color3);
  }
 .sous-menu a>div {
     padding: 0.8em 2rem;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     margin: 0;
-    color: var(--color1);
 }
 
 menu a>div:hover,
 menu>div:hover {
     background-color: var(--color6);
-    color: var(--color5);
+    
 }
 menu>div:hover i {
     transform: rotate(180deg);
@@ -215,7 +211,6 @@ nav div:hover .sous-menu {
 nav {
     font-size: 1.2rem;
     text-transform: uppercase;
-    
 }
 #searchInList {
     max-width: 300px;
@@ -231,13 +226,11 @@ nav {
 
 /******/
 footer #backToTop {
-    display: none;
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    top: 0;
     transform: translateY(-100%);
     right: 1rem;
     cursor: pointer;
-    color: var(--color5);
 }
 .cote {
 	flex:0.1;
