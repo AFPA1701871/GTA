@@ -108,7 +108,7 @@ menu>div {
     padding: 1.2rem 0.4rem;
 justify-content: center;
     margin: 0.3rem 0.5rem;
-    background-color: var(--color3);
+    background-color: var(--color2);
     transition: all 1s;
     cursor: pointer;
     /* flex: 1; */
@@ -131,7 +131,7 @@ menu i {
     margin-left: 0.5rem;
 }
  nav {
-    background-color: var(--color3);
+    background-color: var(--color2);
  }
 .sous-menu a>div {
     padding: 0.8em 2rem;
@@ -177,11 +177,13 @@ nav {
 
 /******/
 footer #backToTop {
+    display: none;
     position: absolute;
     top: 0;
     transform: translateY(-100%);
     right: 1rem;
     cursor: pointer;
+    color: var(--color5);
 }
 .cote {
 	flex:0.1;
