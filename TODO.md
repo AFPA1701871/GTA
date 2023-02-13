@@ -55,10 +55,13 @@
 
 * [X] Mettre des checks plutot que 0/1
 * [ ] Gérer les projets associés
+* [X] Remplacer l'input IdActivite par un select dans FormPrestations (Alexandre)
 
 ## Connexion
 
 * [X] Supprimer la partie inscription
+* [ ] Changer la connexion avec le matricule plutôt que l'adresse mail
+* [X] Retravailler le formulaire de changement de mot de passe (Yves)
 
 ## CSS
 
@@ -76,4 +79,4 @@
 
 ## CRUD Motifs
 
-* [ ] Remplacer l'input IdTypePrestation par un select (Alexandre)
+* [X] Remplacer l'input IdTypePrestation par un select (Alexandre)
