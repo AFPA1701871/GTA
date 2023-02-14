@@ -6,7 +6,7 @@
             </div>
 
             <div class="relative col-span-form-chg-pwd ligne">
-                <label for="passwordUtilisateur">Mot de passe :</label>
+                <label for="passwordUtilisateur"><?= texte('Mdp'); ?> :</label>
                 <div>
                     <input type="password" id="mdpUser" name="passwordUtilisateur" required class="minWidth"
                         pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
@@ -56,7 +56,7 @@
             <div></div>
             <div></div>
             <div></div>
-            <input type="submit" disabled></button>
+            <input type="submit" value="<?= texte('Envoyer')  ?>"></button>
         </form>
     </section>
 </main>
