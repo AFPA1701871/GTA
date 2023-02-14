@@ -35,38 +35,38 @@ LEFT JOIN gta_Contrats as c ON  c.idContrat in (SELECT idContrat FROM gta_Contra
  --
  -- Vue Pointages avec satellites
  --
- CREATE VIEW gta_View_Pointages AS 
+ CREATE VIEW gta_View_Pointages AS
  SELECT po.idPointage, po.datePointage, po.validePointage, po.reportePointage, po.nbHeuresPointage,  po.idUO as "idUO_Pointage",po.idMotif,
- u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO as "idUO_Utilisateur", u.idRole, u.idManager, 
- uo.numeroUO, uo.libelleUO,  
- m.codeMotif, m.libelleMotif, 
- pro.idProjet, pro.codeProjet, pro.libelleProjet, 
+ u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO as "idUO_Utilisateur", u.idRole, u.idManager,
+ uo.numeroUO, uo.libelleUO,
+ m.codeMotif, m.libelleMotif,
+ pro.idProjet, pro.codeProjet, pro.libelleProjet,
  pre.idPrestation, pre.codePrestation, pre.libellePrestation, pre.idActivite,
- tp.idTypePrestation, tp.numeroTypePrestation, tp.libelleTypePrestation 
- FROM gta_Pointages po 
- LEFT JOIN gta_Utilisateurs u ON po.idUtilisateur=u.idUtilisateur 
- LEFT JOIN gta_Uos uo ON po.idUO=uo.idUO 
- LEFT JOIN gta_Motifs m ON po.idMotif=m.idMotif 
- LEFT JOIN gta_Projets pro ON po.idProjet=pro.idProjet 
+ tp.idTypePrestation, tp.numeroTypePrestation, tp.libelleTypePrestation
+ FROM gta_Pointages po
+ LEFT JOIN gta_Utilisateurs u ON po.idUtilisateur=u.idUtilisateur
+ LEFT JOIN gta_Uos uo ON po.idUO=uo.idUO
+ LEFT JOIN gta_Motifs m ON po.idMotif=m.idMotif
+ LEFT JOIN gta_Projets pro ON po.idProjet=pro.idProjet
  LEFT JOIN gta_Prestations pre ON po.idPrestation=pre.idPrestation
  LEFT JOIN gta_TypePrestations tp ON po.idTypePrestation = tp.idTypePrestation;
 
 --
 -- Vue Preferences
 --
-CREATE VIEW gta_View_Preferences AS 
+CREATE VIEW gta_View_Preferences AS
  SELECT p.idPreference,   p.idUO as "idUO_Pointage",p.idMotif,
- u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO as "idUO_Utilisateur", u.idRole, u.idManager, 
- uo.numeroUO, uo.libelleUO,  
- m.codeMotif, m.libelleMotif, 
- pro.idProjet, pro.codeProjet, pro.libelleProjet, 
+ u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO as "idUO_Utilisateur", u.idRole, u.idManager,
+ uo.numeroUO, uo.libelleUO,
+ m.codeMotif, m.libelleMotif,
+ pro.idProjet, pro.codeProjet, pro.libelleProjet,
  pre.idPrestation, pre.codePrestation, pre.libellePrestation, pre.idActivite,
- tp.idTypePrestation, tp.numeroTypePrestation, tp.libelleTypePrestation 
- FROM gta_Preferences p 
- LEFT JOIN gta_Utilisateurs u ON p.idUtilisateur=u.idUtilisateur 
- LEFT JOIN gta_Uos uo ON p.idUO=uo.idUO 
- LEFT JOIN gta_Motifs m ON p.idMotif=m.idMotif 
- LEFT JOIN gta_Projets pro ON p.idProjet=pro.idProjet 
+ tp.idTypePrestation, tp.numeroTypePrestation, tp.libelleTypePrestation
+ FROM gta_Preferences p
+ LEFT JOIN gta_Utilisateurs u ON p.idUtilisateur=u.idUtilisateur
+ LEFT JOIN gta_Uos uo ON p.idUO=uo.idUO
+ LEFT JOIN gta_Motifs m ON p.idMotif=m.idMotif
+ LEFT JOIN gta_Projets pro ON p.idProjet=pro.idProjet
  LEFT JOIN gta_Prestations pre ON p.idPrestation=pre.idPrestation
  LEFT JOIN gta_TypePrestations tp ON p.idTypePrestation = tp.idTypePrestation;
 
@@ -76,13 +76,13 @@ INNER JOIN gta_TypePrestations as t on m.idTypePrestation = t.idTypePrestation;
 
 CREATE VIEW gta_View_Prestations as
 SELECT p.idPrestation, p.codePrestation, p.libellePrestation,a.idActivite, a.libelleActivite  FROM gta_prestations p
-INNER JOIN gta_Activites as a ON p.idActivite = a.idActivite
+INNER JOIN gta_Activites as a ON p.idActivite = a.idActivite;
 
 
 
 DROP VIEW IF EXISTS gta_View_Prestations_Pref_Point;
 CREATE VIEW gta_View_Prestations_Pref_Point as
-SELECT 
+SELECT
 p.idPrestation,
 p.codePrestation,
 p.libellePrestation,
@@ -104,7 +104,7 @@ null as idPointage,
 null as datePointage,
 null as  mois
 
-FROM gta_view_prestations p 
+FROM gta_view_prestations p
 INNER JOIN gta_activites a ON p.idActivite = a.idActivite
 LEFT JOIN gta_activitespartypes apt ON apt.idActivite = a.idActivite
 LEFT JOIN gta_typeprestations t ON apt.idTypePrestation = t.idTypePrestation
@@ -112,9 +112,9 @@ LEFT JOIN gta_preferences w ON  w.idPrestation = p.idPrestation
 LEFT JOIN gta_Motifs m ON w.idMotif=m.idMotif
 LEFT JOIN gta_Uos u ON w.idUO=u.idUO
 LEFT JOIN gta_Projets pr ON w.idProjet=pr.idProjet
-UNION 
+UNION
 
-SELECT 
+SELECT
 p.idPrestation,
 p.codePrestation,
 p.libellePrestation,
@@ -136,7 +136,7 @@ po.idPointage,
 po.datePointage,
 date_format(po.datePointage,"%Y-%m") as mois
 
-FROM gta_View_Prestations p 
+FROM gta_View_Prestations p
 INNER JOIN gta_Activites a ON p.idActivite = a.idActivite
 LEFT JOIN gta_ActivitesParTypes apt ON apt.idActivite = a.idActivite
 LEFT JOIN gta_Typeprestations t ON apt.idTypePrestation = t.idTypePrestation
