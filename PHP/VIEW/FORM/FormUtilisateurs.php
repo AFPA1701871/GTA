@@ -22,7 +22,7 @@ echo '<form class="GridForm" action="index.php?page=ActionUtilisateurs&mode='.$_
 echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Utilisateurs").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
-	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdUtilisateur().'" name=IdUtilisateur><input type="hidden" value="'.$elm->getPasswordUtilisateur().'" name=PasswordUtilisateur></div>';
+	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdUtilisateur().'" name=IdUtilisateur><input type="hidden" value="'.($elm->getPasswordUtilisateur()?$elm->getPasswordUtilisateur():' ').'" name=PasswordUtilisateur></div>';
 echo '<label for=NomUtilisateur class="caseForm labelForm">'.texte("NomUtilisateur").'</label>';
 echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getNomUtilisateur().'" name=NomUtilisateur pattern="'.$regex["*"].'"></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';

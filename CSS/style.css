@@ -159,6 +159,7 @@ header .titre {
 }
 header a {
     color: var(--color1);
+    max-width: fit-content;
 }
 header img {
     margin-right: auto;
