@@ -120,7 +120,7 @@ foreach ($typesPrestations as $key => $value)
 
     echo '    <div class="grid-pointage tabCol pointMove">';
     echo '        <div class=" grid-lineSimple cellBottom titreTypePrestation grid-columns-span-31">&nbsp;</div>';
-    echo '                <div class="cellBottom center grid-lineSimple" data-line="' . $value->getNumeroTypePrestation() . '-1">0</div>';
+    echo '                <div class="cellBottom center grid-lineSimple colTotal" data-line="' . $value->getNumeroTypePrestation() . '-1">0</div>';
     echo '                <div class="cellBottom center grid-lineSimple" data-line="' . $value->getNumeroTypePrestation() . '-1"></div>';
     echo '                <div class="cellBottom grid-lineSimple"></div>';
     for ($i = 1; $i <= $nbrJoursMois; $i++)
@@ -145,11 +145,11 @@ foreach ($typesPrestations as $key => $value)
             else
             {
                 $classeBG = "work";
-                $content = '<input data-date="'.$jour->format("Y-m-d").'" data-line="' . $value->getNumeroTypePrestation() . '-1" class="casePointage" type="text"></input>';  }
+                $content = '<input data-date="'.$jour->format("Y-m-d").'" data-line="' . $value->getNumeroTypePrestation() . '-1" class="inputPointage casePointage" type="text"></input>';  }
         }
         echo '        <div class="center grid-lineSimple cellBottom ' . $classeBG . '"  >' . $content . '</div>';
     }
 
     echo '</div>';
 }
-echo '<div class="cote"></div></main>';
+echo '</div><div class="cote"></div></main>';
