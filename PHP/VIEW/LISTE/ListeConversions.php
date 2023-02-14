@@ -19,7 +19,7 @@ echo '<div class="grid-columns-span-5"><div class="demi"></div><input id=searchI
 echo '<div class="caseListe grid-columns-span-5">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe"><a href="index.php?page=FormConversions&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
+<div class="caseListe"><a class="pyjama"  href="index.php?page=FormConversions&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
 <div></div>
 </div>';
 
@@ -33,13 +33,13 @@ echo '</div><div class="grid-col-5 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';
-echo '<div class="donnees ">NbHeureConversion</div>';
-echo '<div class="donnees ">CoeffConversion</div>';
-echo '<a href="index.php?page=FormConversions&mode=Afficher&id=IdConversion"><i class="fas fa-file-contract"></i></a>';
+echo '<div class="donnees pyjama ">NbHeureConversion</div>';
+echo '<div class="donnees pyjama ">CoeffConversion</div>';
+echo '<a class="pyjama"  href="index.php?page=FormConversions&mode=Afficher&id=IdConversion"><i class="fas fa-file-contract"></i></a>';
                                     
-echo '<a href="index.php?page=FormConversions&mode=Modifier&id=IdConversion"><i class="fas fa-pen"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormConversions&mode=Modifier&id=IdConversion"><i class="fas fa-pen"></i></a>';
                                     
-echo '<a href="index.php?page=FormConversions&mode=Supprimer&id=IdConversion"><i class="fas fa-trash-alt"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormConversions&mode=Supprimer&id=IdConversion"><i class="fas fa-trash-alt"></i></a>';
 echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';

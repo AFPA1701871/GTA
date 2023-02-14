@@ -23,7 +23,7 @@ echo '<div class="grid-columns-span-'.($formtype?5:4).'"><div class="demi"></div
 echo '<div class="caseListe grid-columns-span-'.($formtype?5:4).'">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe"><a href="index.php?page=FormActivites&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
+<div class="caseListe"><a class="pyjama"  href="index.php?page=FormActivites&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
 <div></div>
 </div>';
 
@@ -40,25 +40,25 @@ if (!$formtype)
 {
 	echo '</div>';
 	echo '<template>';
-	echo '<div class="donnees left">LibelleActivite</div>';
-	echo '<a href="index.php?page=FormActivites&mode=Afficher&id=IdActivite"><i class="fas fa-file-contract"></i></a>';
+	echo '<div class="donnees pyjama left">LibelleActivite</div>';
+	echo '<a class="pyjama"  href="index.php?page=FormActivites&mode=Afficher&id=IdActivite"><i class="fas fa-file-contract"></i></a>';
 
-	echo '<a href="index.php?page=FormActivites&mode=Modifier&id=IdActivite"><i class="fas fa-pen"></i></a>';
+	echo '<a class="pyjama"  href="index.php?page=FormActivites&mode=Modifier&id=IdActivite"><i class="fas fa-pen"></i></a>';
 
-	echo '<a href="index.php?page=FormActivites&mode=Supprimer&id=IdActivite"><i class="fas fa-trash-alt"></i></a>';
+	echo '<a class="pyjama"  href="index.php?page=FormActivites&mode=Supprimer&id=IdActivite"><i class="fas fa-trash-alt"></i></a>';
 	echo '</template>';
 } else {
 	foreach ($objets AS $value)
 	{
 		$activite = ActivitesParTypesManager::getList(['idActivite'], ['idTypePrestation' => $_GET['id'], 'idActivite' => $value->getIdActivite()]);
 
-		echo '<div class="donnees"><input type="checkbox" class="removeShadow"'.($activite?($activite[0]->getIdActivite()==$value->getIdActivite()?' checked':''):'').' data-id="'.$value->getIdActivite().'" /></div>';
-		echo '<div class="donnees">'.$value->getLibelleActivite().'</div>';
-		echo '<a href="index.php?page=FormActivites&mode=Afficher&id='.$value->getIdActivite().'"><i class="fas fa-file-contract"></i></a>';
+		echo '<div class="donnees pyjama"><input type="checkbox" class="removeShadow"'.($activite?($activite[0]->getIdActivite()==$value->getIdActivite()?' checked':''):'').' data-id="'.$value->getIdActivite().'" /></div>';
+		echo '<div class="donnees pyjama">'.$value->getLibelleActivite().'</div>';
+		echo '<a class="pyjama"  href="index.php?page=FormActivites&mode=Afficher&id='.$value->getIdActivite().'"><i class="fas fa-file-contract"></i></a>';
 
-		echo '<a href="index.php?page=FormActivites&mode=Modifier&id='.$value->getIdActivite().'"><i class="fas fa-pen"></i></a>';
+		echo '<a class="pyjama"  href="index.php?page=FormActivites&mode=Modifier&id='.$value->getIdActivite().'"><i class="fas fa-pen"></i></a>';
 
-		echo '<a href="index.php?page=FormActivites&mode=Supprimer&id='.$value->getIdActivite().'"><i class="fas fa-trash-alt"></i></a>';
+		echo '<a class="pyjama"  href="index.php?page=FormActivites&mode=Supprimer&id='.$value->getIdActivite().'"><i class="fas fa-trash-alt"></i></a>';
 	}
 
 	echo '</div></div>';

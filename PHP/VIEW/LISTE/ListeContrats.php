@@ -14,7 +14,7 @@ echo '<div class="caseListe titreListe grid-columns-span-'.($formtype?'4-nobutto
 echo '<div class="caseListe grid-columns-span-'.($formtype?'4-nobutton':7).'">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe">'.(!$formtype?'<a href="index.php?page=FormContrats&mode=Ajouter&idutilisateur='.$_GET['id'].'"><i class="fas fa-plus"></i></a>':'').'</div>
+<div class="caseListe">'.(!$formtype?'<a class="pyjama"  href="index.php?page=FormContrats&mode=Ajouter&idutilisateur='.$_GET['id'].'"><i class="fas fa-plus"></i></a>':'').'</div>
 <div></div>
 </div>';
 
@@ -31,16 +31,16 @@ echo '</div><div class="grid-col-'.($formtype?'4-nobutton':7).' gridListe grid-c
 // Affichage des enregistrements de la base de données
 foreach ($objets AS $value)
 {
-	echo '<div class="donnees ">'.CentresManager::findById($value->getIdCentre())->getNomCentre().'</div>';
-	echo '<div class="donnees ">'.UtilisateursManager::findById($value->getIdUtilisateur())->getNomUtilisateur().'</div>';
-	echo '<div class="donnees ">'.$value->getDateDebutContrat().'</div>';
-	echo '<div class="donnees ">'.$value->getDateFinContrat().'</div>';
+	echo '<div class="donnees pyjama ">'.CentresManager::findById($value->getIdCentre())->getNomCentre().'</div>';
+	echo '<div class="donnees pyjama ">'.UtilisateursManager::findById($value->getIdUtilisateur())->getNomUtilisateur().'</div>';
+	echo '<div class="donnees pyjama ">'.$value->getDateDebutContrat().'</div>';
+	echo '<div class="donnees pyjama ">'.$value->getDateFinContrat().'</div>';
 	if (!$formtype){
-		echo '<a href="index.php?page=FormContrats&mode=Afficher&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-file-contract"></i></a>';
+		echo '<a class="pyjama"  href="index.php?page=FormContrats&mode=Afficher&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-file-contract"></i></a>';
 
-		echo '<a href="index.php?page=FormContrats&mode=Modifier&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-pen"></i></a>';
+		echo '<a class="pyjama"  href="index.php?page=FormContrats&mode=Modifier&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-pen"></i></a>';
 
-		echo '<a href="index.php?page=FormContrats&mode=Supprimer&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-trash-alt"></i></a>';
+		echo '<a class="pyjama"  href="index.php?page=FormContrats&mode=Supprimer&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-trash-alt"></i></a>';
 	}
 }
 echo '</div></div>';

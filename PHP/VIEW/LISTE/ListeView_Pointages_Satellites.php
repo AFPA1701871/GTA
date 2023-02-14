@@ -19,7 +19,7 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="caseListe grid-columns-span-29">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe"><a href="index.php?page=FormView_Pointages_Satellites&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
+<div class="caseListe"><a class="pyjama"  href="index.php?page=FormView_Pointages_Satellites&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
 <div></div>
 </div>';
 
@@ -57,37 +57,37 @@ echo '</div><div class="grid-col-29 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';
-echo '<div class="donnees ">DatePointage</div>';
-echo '<div class="donnees ">ValidePointage</div>';
-echo '<div class="donnees ">ReportePointage</div>';
-echo '<div class="donnees ">NbHeuresPointage</div>';
-echo '<div class="donnees ">IdUtilisateur</div>';
-echo '<div class="donnees ">NomUtilisateur</div>';
-echo '<div class="donnees ">MailUtilisateur</div>';
-echo '<div class="donnees ">MatriculeUtilisateur</div>';
-echo '<div class="donnees ">PasswordUtilisateur</div>';
-echo '<div class="donnees ">IdUO_Utilisateur</div>';
-echo '<div class="donnees ">IdRole</div>';
-echo '<div class="donnees ">IdManager</div>';
-echo '<div class="donnees ">IdUO_Pointage</div>';
-echo '<div class="donnees ">NumeroUO</div>';
-echo '<div class="donnees ">LibelleUO</div>';
-echo '<div class="donnees ">IdMotif</div>';
-echo '<div class="donnees ">CodeMotif</div>';
-echo '<div class="donnees ">LibelleMotif</div>';
-echo '<div class="donnees ">IdTypePrestation</div>';
-echo '<div class="donnees ">IdProjet</div>';
-echo '<div class="donnees ">CodeProjet</div>';
-echo '<div class="donnees ">LibelleProjet</div>';
-echo '<div class="donnees ">IdPrestation</div>';
-echo '<div class="donnees ">CodePrestation</div>';
-echo '<div class="donnees ">LibellePrestation</div>';
-echo '<div class="donnees ">IdActivite</div>';
- echo '<a href="index.php?page=FormView_Pointages_Satellites&mode=Afficher&id=IdPointage"><i class="fas fa-file-contract"></i></a>';
+echo '<div class="donnees pyjama ">DatePointage</div>';
+echo '<div class="donnees pyjama ">ValidePointage</div>';
+echo '<div class="donnees pyjama ">ReportePointage</div>';
+echo '<div class="donnees pyjama ">NbHeuresPointage</div>';
+echo '<div class="donnees pyjama ">IdUtilisateur</div>';
+echo '<div class="donnees pyjama ">NomUtilisateur</div>';
+echo '<div class="donnees pyjama ">MailUtilisateur</div>';
+echo '<div class="donnees pyjama ">MatriculeUtilisateur</div>';
+echo '<div class="donnees pyjama ">PasswordUtilisateur</div>';
+echo '<div class="donnees pyjama ">IdUO_Utilisateur</div>';
+echo '<div class="donnees pyjama ">IdRole</div>';
+echo '<div class="donnees pyjama ">IdManager</div>';
+echo '<div class="donnees pyjama ">IdUO_Pointage</div>';
+echo '<div class="donnees pyjama ">NumeroUO</div>';
+echo '<div class="donnees pyjama ">LibelleUO</div>';
+echo '<div class="donnees pyjama ">IdMotif</div>';
+echo '<div class="donnees pyjama ">CodeMotif</div>';
+echo '<div class="donnees pyjama ">LibelleMotif</div>';
+echo '<div class="donnees pyjama ">IdTypePrestation</div>';
+echo '<div class="donnees pyjama ">IdProjet</div>';
+echo '<div class="donnees pyjama ">CodeProjet</div>';
+echo '<div class="donnees pyjama ">LibelleProjet</div>';
+echo '<div class="donnees pyjama ">IdPrestation</div>';
+echo '<div class="donnees pyjama ">CodePrestation</div>';
+echo '<div class="donnees pyjama ">LibellePrestation</div>';
+echo '<div class="donnees pyjama ">IdActivite</div>';
+ echo '<a class="pyjama"  href="index.php?page=FormView_Pointages_Satellites&mode=Afficher&id=IdPointage"><i class="fas fa-file-contract"></i></a>';
                                     
-echo '<a href="index.php?page=FormView_Pointages_Satellites&mode=Modifier&id=IdPointage"><i class="fas fa-pen"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormView_Pointages_Satellites&mode=Modifier&id=IdPointage"><i class="fas fa-pen"></i></a>';
                                     
-echo '<a href="index.php?page=FormView_Pointages_Satellites&mode=Supprimer&id=IdPointage"><i class="fas fa-trash-alt"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormView_Pointages_Satellites&mode=Supprimer&id=IdPointage"><i class="fas fa-trash-alt"></i></a>';
  echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';

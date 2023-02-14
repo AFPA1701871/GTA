@@ -19,7 +19,7 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="caseListe grid-columns-span-10">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe"><a href="index.php?page=FormUtilisateurs&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
+<div class="caseListe"><a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
 <div></div>
 </div>';
 
@@ -43,11 +43,11 @@ echo '<div class="donnees ">NomManager</div>';
 echo '<div class="donnees ">Actif</div>';
 echo '<div class="donnees ">NumeroUO</div>';
 echo '<div class="donnees ">NomRole</div>';
- echo '<a href="index.php?page=FormUtilisateurs&mode=Afficher&id=IdUtilisateur"><i class="fas fa-file-contract"></i></a>';
+ echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Afficher&id=IdUtilisateur"><i class="fas fa-file-contract"></i></a>';
                                     
-echo '<a href="index.php?page=FormUtilisateurs&mode=Modifier&id=IdUtilisateur"><i class="fas fa-pen"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Modifier&id=IdUtilisateur"><i class="fas fa-pen"></i></a>';
                                     
-echo '<a href="index.php?page=FormUtilisateurs&mode=Supprimer&id=IdUtilisateur"><i class="fas fa-trash-alt"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Supprimer&id=IdUtilisateur"><i class="fas fa-trash-alt"></i></a>';
  echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';

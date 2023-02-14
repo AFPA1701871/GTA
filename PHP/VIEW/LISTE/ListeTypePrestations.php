@@ -19,7 +19,7 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="caseListe grid-columns-span-8">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe"><a href="index.php?page=FormTypePrestations&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
+<div class="caseListe"><a class="pyjama"  href="index.php?page=FormTypePrestations&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
 <div></div>
 </div>';
 
@@ -36,16 +36,16 @@ echo '</div><div class="grid-col-8 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';
-echo '<div class="donnees ">NumeroTypePrestation</div>';
-echo '<div class="donnees left">LibelleTypePrestation</div>';
-echo '<div class="donnees ">MotifRequis</div>';
-echo '<div class="donnees ">UoRequis</div>';
-echo '<div class="donnees ">ProjetRequis</div>';
- echo '<a href="index.php?page=FormTypePrestations&mode=Afficher&id=IdTypePrestation"><i class="fas fa-file-contract"></i></a>';
+echo '<div class="donnees pyjama ">NumeroTypePrestation</div>';
+echo '<div class="donnees pyjama left">LibelleTypePrestation</div>';
+echo '<div class="donnees pyjama ">MotifRequis</div>';
+echo '<div class="donnees pyjama ">UoRequis</div>';
+echo '<div class="donnees pyjama ">ProjetRequis</div>';
+ echo '<a class="pyjama"  href="index.php?page=FormTypePrestations&mode=Afficher&id=IdTypePrestation"><i class="fas fa-file-contract"></i></a>';
                                     
-echo '<a href="index.php?page=FormTypePrestations&mode=Modifier&id=IdTypePrestation"><i class="fas fa-pen"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormTypePrestations&mode=Modifier&id=IdTypePrestation"><i class="fas fa-pen"></i></a>';
                                     
-echo '<a href="index.php?page=FormTypePrestations&mode=Supprimer&id=IdTypePrestation"><i class="fas fa-trash-alt"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormTypePrestations&mode=Supprimer&id=IdTypePrestation"><i class="fas fa-trash-alt"></i></a>';
  echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';
