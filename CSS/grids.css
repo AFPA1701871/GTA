@@ -25,11 +25,12 @@
 	grid-column:1/6;
 }
 .grid-contenu > div {
-	margin: 0.3rem;
+	padding: 0.5rem;
 }
 .grid-col-7 {
 	display : grid;
-	grid-template-columns : 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
+	grid-template-columns : 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;
+}
 
 .grid-columns-span-7 {
 	grid-column:1/8;
@@ -51,6 +52,9 @@
 	grid-column:1/13;
 }
 
+.align-end {
+	align-items: end
+}
 .grid-col-8 {
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
@@ -104,8 +108,9 @@
 	align-items: center;
 }
 
-.caseListe {
-	padding : 0.2rem
+.caseListe, #nbEnregs {
+	padding : 0.2rem;
+	font-weight: bold;
 }
 
 .caseForm {
@@ -113,8 +118,8 @@
 }
 
 .GridForm {
-	 display : grid;
-	grid-template-columns: 2fr 2fr 0.2fr 0.2fr;
+	display : grid;
+	grid-template-columns: 1fr 4fr 0.2fr 0.2fr;
 	grid-gap: 0.5rem
 }
 

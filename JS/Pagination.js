@@ -159,7 +159,7 @@ function AfficherPage(index, filtre) {
                         contenu = temp.content.cloneNode(true);
                         grid.appendChild(contenu);
                         grid.innerHTML = grid.innerHTML.replaceAll("IdFermeture", element.idFermeture);
-                        grid.innerHTML = grid.innerHTML.replaceAll("DateFermeture", element.dateFermeture);
+                        grid.innerHTML = grid.innerHTML.replaceAll("DateFermeture", new Date(element.dateFermeture).toLocaleDateString('fr-FR', {year: 'numeric', month: '2-digit', day: '2-digit'}));
                         grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
                     });
                 } else if (page == "ListeMotifs") {
@@ -176,7 +176,7 @@ function AfficherPage(index, filtre) {
                         grid.innerHTML = grid.innerHTML.replaceAll("LibelleTypePrestation", element.libelleTypePrestation);
                         grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
                     });
-                } if (page == "ListePrestations") {
+                } else if (page == "ListePrestations") {
                     temp = document.getElementsByTagName("template")[0];
                     pair = 0; 
                     liste.forEach(element => {

@@ -22,7 +22,7 @@ echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Conversi
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdConversion().'" name=IdConversion></div>';
 echo '<label for=NbHeureConversion class="caseForm labelForm">'.texte("NbHeureConversion").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getNbHeureConversion().'" name=NbHeureConversion pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm"><input type="number" '.$disabled .'value="'.$elm->getNbHeureConversion().'" name=NbHeureConversion pattern="'.$regex["num"].'"></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 

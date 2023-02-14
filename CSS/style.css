@@ -21,7 +21,7 @@ h1 {
   .label {
     width: 50px;
     height: 26px;
-    background-color:#111;
+    background-color: var(--color1);
     display: flex;
     border-radius:50px;
     align-items: center;
@@ -29,44 +29,48 @@ h1 {
     /* padding: 5px; */
     position: relative;
     transform: scale(1.5);
+    cursor: pointer;
   }
   
   .ball {
     width: 20px;
     height: 20px;
-    background-color: white;
+    background-color: var(--color5);
     position: absolute;
     /* top: 2px; */
-    left: 2px;
+    left: 4px;
     border-radius: 50%;
     transition: transform 0.2s linear;
   }
  .darkmode {
     display: block;
-    /* width: 50px;
-    height: 26px; */
+    width: 76px;
+    /*height: 26px; */
     margin: auto 0;
-    flex: 0.2;
+    flex: 0; 
+    
   }
   /*  target the elemenent after the label*/
   .checkbox:checked + .label .ball{
-    transform: translateX(24px);
+    transform: translateX(22px);
   }
   
   .fa-moon {
-    color: pink;
+    margin-left: 5px;
+    color: var(--color5);
     font-size: 0.9rem;
   }
   
   .fa-sun {
-    color: yellow;
+    color: rgb(252, 173, 27);
     font-size: 0.9rem;
+    margin-right: 5px;
   }
 .titre,
 .titreListe,
 .labelListe {
     font-size: 1rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
 }
 .titreListe , .titre, .titreForm{
@@ -93,6 +97,7 @@ h1 {
     padding: 0.5rem;
     cursor: pointer;
     border-radius: 5px;
+    background-color: transparent;
 }
 
 input::placeholder {
@@ -102,7 +107,39 @@ input::placeholder {
 body {
     background-color: var(--color4);
     font-family: 'Roboto', sans-serif;
+    transition: color 0.3s;
+    transition: background 0.3s;
 }
+  /***********************darkmode ************************/
+  body.dark {
+    background-color: var(--color5);
+    color: var(--color1);
+
+}
+body.dark i {
+    color:var(--color1);
+}
+body.dark header .darkmode i{
+    color:#111;
+}
+
+body.dark header {
+    background-color: #111;
+}
+body.dark header .label {
+    background-color: var(--color1);
+}
+body.dark header .ball {
+    background-color: #111;
+}
+
+body.dark footer {
+    background-color: #111;
+}
+
+
+
+
 i {
     font-size: 1.4rem;
 }
@@ -174,7 +211,7 @@ menu {
     padding-left: 10%;
     padding-right: 10%;
 }
-header i {
+header i.fa-disconnect {
     margin-left: 0.5rem;
 }
 menu i {

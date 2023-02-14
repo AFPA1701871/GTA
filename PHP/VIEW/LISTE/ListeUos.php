@@ -15,7 +15,7 @@ echo '<div class="grid-col-5 gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-5">'.texte("Liste des Uos").'</div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-5"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").' placeholder="'.texte("mot à chercher").'/><i class="fa-solid fa-search" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+ echo '<div class="grid-columns-span-5"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-5">
 <div></div>
 <div class="bigEspace"></div>
@@ -28,7 +28,7 @@ echo '<div class="caseListe labelListe left" data-name= "LibelleUO">'.texte("Lib
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair "><i class="fas fa-calculator"></i></div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class=" caseListe texteClair "><p>Total :</p></div><div class="mini" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-5 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
