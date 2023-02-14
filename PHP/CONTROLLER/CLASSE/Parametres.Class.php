@@ -7,6 +7,7 @@ class Parametres
 	private static $_login;
 	private static $_pwd;
 	private static $_nbEltParPage;
+	private static $_anneeDisponible;
 
 	static function getHost()
 	{
@@ -36,7 +37,10 @@ class Parametres
 	{
 		return self::$_nbEltParPage;
 	}
-
+	static function getAnneeDisponible()
+	{
+		return self::$_anneeDisponible;
+	}
 	static function init()
 	{
 		if (file_exists("config.json")) {
@@ -46,10 +50,15 @@ class Parametres
 			self::$_dbname = decode($parametre->DbName);
 			self::$_login = decode($parametre->Login);
 			self::$_nbEltParPage = decode($parametre->NbEltParPage);
+			self::$_anneeDisponible = decode($parametre->AnneeDisponible);
 			if (strlen($parametre->Pwd) == 0)
 				self::$_pwd = $parametre->Pwd; //developpement
 			else
 				self::$_pwd = decode($parametre->Pwd); //production
 		}
 	}
+
+	
+
+	
 }
