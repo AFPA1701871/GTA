@@ -52,6 +52,9 @@
 	grid-column:1/13;
 }
 
+.align-end {
+	align-items: end
+}
 .grid-col-8 {
 	display : grid;
 	grid-template-columns : 2fr 2fr 2fr 2fr 2fr 0.5fr 0.5fr 0.5fr;}
