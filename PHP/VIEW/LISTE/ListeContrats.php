@@ -18,10 +18,10 @@ echo '<div class="caseListe grid-columns-span-'.($formtype?'4-nobutton':7).'">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "IdCentre">IdCentre</div>';
-echo '<div class="caseListe labelListe" data-name= "IdUtilisateur">IdUtilisateur</div>';
-echo '<div class="caseListe labelListe" data-name= "DateDebutContrat">DateDebutContrat</div>';
-echo '<div class="caseListe labelListe" data-name= "DateFinContrat">DateFinContrat</div>';
+echo '<div class="caseListe labelListe" data-name= "IdCentre">'.texte("IdCentre").'</div>';
+echo '<div class="caseListe labelListe" data-name= "IdUtilisateur">'.texte("IdUtilisateur").'</div>';
+echo '<div class="caseListe labelListe" data-name= "DateDebutContrat">'.texte("DateDebutContrat").'</div>';
+echo '<div class="caseListe labelListe" data-name= "DateFinContrat">'.texte("DateFinContrat").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
