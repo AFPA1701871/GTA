@@ -21,7 +21,7 @@ h1 {
   .label {
     width: 50px;
     height: 26px;
-    background-color:#111;
+    background-color: var(--color1);
     display: flex;
     border-radius:50px;
     align-items: center;
@@ -34,7 +34,7 @@ h1 {
   .ball {
     width: 20px;
     height: 20px;
-    background-color: var(--color1);
+    background-color: var(--color5);
     position: absolute;
     /* top: 2px; */
     left: 2px;
@@ -54,12 +54,12 @@ h1 {
   }
   
   .fa-moon {
-    color: pink;
+    color: var(--color5);
     font-size: 0.9rem;
   }
   
   .fa-sun {
-    color: yellow;
+    color: rgb(252, 173, 27);
     font-size: 0.9rem;
   }
 .titre,
