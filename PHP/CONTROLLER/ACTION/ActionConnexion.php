@@ -2,7 +2,7 @@
 $mode = isset($_GET["mode"]) ? $_GET["mode"] : "login";
 switch ($mode) {
     case 'login':
-        $uti =  UtilisateursManager::getList(null, ['mailUtilisateur' => $_POST['mailUtilisateur']]);
+        $uti =  UtilisateursManager::getList(null, ['matriculeUtilisateur' => $_POST['matriculeUtilisateur']]);
         if ($uti != null) {
             $uti=$uti[0];
             if ($uti->getPasswordUtilisateur() == crypte($_POST['passwordUtilisateur'])) {
@@ -24,7 +24,7 @@ switch ($mode) {
                 header("location:index.php?page=Default");
             }
         } else {
-            conn_log("l'utilisateur n'existe pas",$_POST["mailUtiliateur"]);
+            conn_log("l'utilisateur n'existe pas",$_POST["matriculeUtiliateur"]);
             header("location:index.php?page=Default");
         }
         break;
