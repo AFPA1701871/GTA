@@ -32,12 +32,12 @@ echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=DateDebutContrat class="caseForm labelForm">'.texte("DateDebutContrat").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getDateDebutContrat().'" name=DateDebutContrat pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm"><input type="date" ' . $disabled . 'value="' . date('Y-m-d', strtotime($elm->getDateDebutContrat())) . '" name=DateDebutContrat pattern="' . $regex["date"] . '"></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=DateFinContrat class="caseForm labelForm">'.texte("DateFinContrat").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getDateFinContrat().'" name=DateFinContrat pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm"><input type="date" ' . $disabled . 'value="' . date('Y-m-d', strtotime($elm->getDateFinContrat())) . '" name=DateFinContrat pattern="' . $regex["date"] . '"></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
