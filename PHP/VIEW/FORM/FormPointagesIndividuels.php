@@ -46,11 +46,11 @@ echo '        <div>XXX</div>';
 echo '        <div class="grid-columns-span-17 espace"></div>';
 echo '    </div>';
 
-$anneeVisionne = 2023;
-$moisVisionne = 02;
+$anneeVisionne = (isset($_POST['anneeVisionne']))?$_POST['anneeVisionne']:2023;
+$moisVisionne = (isset($_POST['moisVisionne']))?$_POST['moisVisionne']:02;
 $joursSemaine = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
 $nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $moisVisionne, $anneeVisionne);
-$listeFermetures = FermeturesManager::getList(null, ["dateFermeture" => $anneeVisionne . "-" . str_pad($moisVisionne, 2, "0", STR_PAD_LEFT) . "-%"], null, null, true);
+$listeFermetures = FermeturesManager::getList(null, null, null, null, true);
 if (sizeof($listeFermetures) != 0) {
     foreach ($listeFermetures as $fermeture) {
         $listeFermeturesDuMois[] = $fermeture['dateFermeture'];
@@ -114,10 +114,10 @@ echo '                    <div class="center grid-lineSimple colCachable noDispl
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="casePointage" data-line="1-1" type="text"></input></div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="casePointage" data-line="1-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" data-line="1-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="1-1" type="text"></input></div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight notApplicable"></div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="casePointage" data-line="1-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="1-1" type="text"></input></div>';
 echo '                </div>';
 
 echo '        <!--------------------------->';
@@ -138,10 +138,10 @@ echo '                    <div class="center grid-lineSimple colCachable noDispl
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="casePointage" data-line="2-1" type="text"></input></div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="casePointage" data-line="2-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" data-line="2-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="2-1" type="text"></input></div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight notApplicable"></div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="casePointage" data-line="2-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="2-1" type="text"></input></div>';
 echo '                </div>';
 
 echo '        <!--------------------------->';
@@ -162,10 +162,10 @@ echo '                    <div class="center grid-lineSimple colCachable noDispl
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="casePointage" data-line="3-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" data-line="3-1" type="text"></input></div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight notApplicable"></div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="casePointage" data-line="3-1" type="text"></input></div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="casePointage" data-line="3-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="3-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="3-1" type="text"></input></div>';
 echo '                </div>';
 echo '        <!--------------------------->';
 echo '        <!-- Prestations de type 4 -->';
@@ -185,9 +185,9 @@ echo '                    <div class="center grid-lineSimple colCachable noDispl
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="casePointage" data-line="4-1" type="text"></input></div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="casePointage" data-line="4-1" type="text"></input></div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="casePointage" data-line="4-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" data-line="4-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="4-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="4-1" type="text"></input></div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight notApplicable"></div>';
 echo '                </div>';
 echo '        <!--------------------------->';
@@ -208,10 +208,10 @@ echo '                    <div class="center grid-lineSimple colCachable noDispl
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="casePointage" data-line="5-1" type="text"></input></div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="casePointage" data-line="5-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" data-line="5-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="5-1" type="text"></input></div>';
 echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight notApplicable"></div>';
-echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="casePointage" data-line="5-1" type="text"></input></div>';
+echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="5-1" type="text"></input></div>';
 echo '                </div>';
 echo '    </div>';
 
@@ -220,8 +220,8 @@ echo '    </div>';
 
 echo '    <div class="grid-pointage tabCol pointMove">';
 echo '        <div class=" grid-lineSimple cellBottom titreTypePrestation">&nbsp;</div>';
-echo '                <div class="cellBottom center grid-lineSimple">0</div>';
-echo '                <div class="cellBottom center grid-lineSimple"></div>';
+echo '                <div data-line="0-1" class="cellBottom center grid-lineSimple colTotal">0</div>';
+echo '                <div data-line="0-1" class="cellBottom center grid-lineSimple"></div>';
 echo '                <div class="cellBottom grid-lineSimple"></div>';
 for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
     $jourString = $anneeVisionne . "-" . str_pad($moisVisionne, 2, "0", STR_PAD_LEFT) . "-" . str_pad($jour, 2, "0", STR_PAD_LEFT);
@@ -237,14 +237,14 @@ for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
     } else {
         $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
         $classeBG = "work";
-        $content = '<input class="casePointage" type="text"></input>';
+        $content = '<input data-line="0-1" data-date="'.$jourString.'" class="inputPointage casePointage" type="text"></input>';
     }
-    echo '        <div class="center grid-lineSimple cellBottom ' . $classeBG . '">' . $content . '</div>';
+    echo '        <div data-line="0-1" class="center grid-lineSimple cellBottom ' . $classeBG . '">' . $content . '</div>';
 }
 
 echo '                <div class=" grid-lineSimple cellBottom titreTypePrestation">&nbsp;</div>';
 
-echo '        <div data-line="1-1" class="cellBottom center grid-lineDouble">0,00</div>';
+echo '        <div data-line="1-1" class="cellBottom center grid-lineDouble colTotal">0,00</div>';
 echo '        <div data-line="1-1" class="cellBottom center grid-lineDouble">0,0%</div>';
 echo '        <div data-line="1-1" class="cellBottom grid-lineDouble"></div>';
 for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
@@ -261,14 +261,14 @@ for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
     } else {
         $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
         $classeBG = "work";
-        $content = '<input data-line="1-1" data-date="'.$jourString.'" class="casePointage" type="text"></input>';
+        $content = '<input data-line="1-1" data-date="'.$jourString.'" class="inputPointage casePointage" type="text"></input>';
     }
     echo '        <div data-line="1-1" class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $content . '</div>';
 }
 
 echo '        <div class=" grid-lineSimple titreTypePrestation cellBottom">&nbsp;</div>';
 
-echo '        <div data-line="2-1" class="cellBottom center grid-lineDouble">0,00</div>';
+echo '        <div data-line="2-1" class="cellBottom center grid-lineDouble colTotal">0,00</div>';
 echo '        <div data-line="2-1" class="cellBottom center grid-lineDouble">0,0%</div>';
 echo '        <div data-line="2-1" class="cellBottom grid-lineDouble"></div>';
 for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
@@ -285,14 +285,14 @@ for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
     } else {
         $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
         $classeBG = "work";
-        $content = '<input data-line="2-1" data-date="'.$jourString.'" class="casePointage" type="text"></input>';
+        $content = '<input data-line="2-1" data-date="'.$jourString.'" class="inputPointage casePointage" type="text"></input>';
     }
     echo '        <div data-line="2-1" class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $content . '</div>';
 }
 
 echo '        <div class=" titreTypePrestation grid-lineSimple cellBottom">&nbsp;</div>';
 
-echo '        <div data-line="3-1" class="cellBottom center grid-lineDouble">0,00</div>';
+echo '        <div data-line="3-1" class="cellBottom center grid-lineDouble colTotal">0,00</div>';
 echo '        <div data-line="3-1" class="cellBottom center grid-lineDouble">0,0%</div>';
 echo '        <div data-line="3-1" class="cellBottom grid-lineDouble"></div>';
 for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
@@ -309,14 +309,14 @@ for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
     } else {
         $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
         $classeBG = "work";
-        $content = '<input data-line="3-1" data-date="'.$jourString.'" class="casePointage" type="text"></input>';
+        $content = '<input data-line="3-1" data-date="'.$jourString.'" class="inputPointage casePointage" type="text"></input>';
     }
     echo '        <div data-line="3-1" class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $content . '</div>';
 }
 
 echo '        <div class=" grid-lineSimple titreTypePrestation cellBottom">&nbsp;</div>';
 
-echo '        <div data-line="4-1" class="cellBottom center grid-lineDouble">0,00</div>';
+echo '        <div data-line="4-1" class="cellBottom center grid-lineDouble colTotal">0,00</div>';
 echo '        <div data-line="4-1" class="cellBottom center grid-lineDouble">0,0%</div>';
 echo '        <div data-line="4-1" class="cellBottom grid-lineDouble"></div>';
 for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
@@ -333,14 +333,14 @@ for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
     } else {
         $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
         $classeBG = "work";
-        $content = '<input data-line="4-1" data-date="'.$jourString.'" class="casePointage" type="text"></input>';
+        $content = '<input data-line="4-1" data-date="'.$jourString.'" class="inputPointage casePointage" type="text"></input>';
     }
     echo '        <div data-line="4-1" class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $content . '</div>';
 }
 
 echo '        <div class=" titreTypePrestation grid-lineSimple cellBottom">&nbsp;</div>';
 
-echo '        <div data-line="5-1" class="cellBottom center grid-lineDouble">0,00</div>';
+echo '        <div data-line="5-1" class="cellBottom center grid-lineDouble colTotal">0,00</div>';
 echo '        <div data-line="5-1" class="cellBottom center grid-lineDouble">0,0%</div>';
 echo '        <div data-line="5-1" class="cellBottom grid-lineDouble"></div>';
 for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
@@ -357,7 +357,7 @@ for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
     } else {
         $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
         $classeBG = "work";
-        $content = '<input data-line="5-1" data-date="'.$jourString.'" class="casePointage" type="text"></input>';
+        $content = '<input data-line="5-1" data-date="'.$jourString.'" class="inputPointage casePointage" type="text"></input>';
     }
     echo '        <div data-line="5-1" class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $content . '</div>';
 }

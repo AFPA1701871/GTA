@@ -151,6 +151,7 @@ select {
 
 .titreTypePrestation {
     background-color: var(--color2);
+    color: var(--color1);
     padding-left: 1em;
 }
 
@@ -191,7 +192,11 @@ select {
     background-color: lightblue;
 }
 
-.casePointage{
+div .jourOK>input[type="text"]{
+    background-color: lightgreen;
+}
+
+.inputPointage{
     width:100%;
     display: block;
     height: 100%;

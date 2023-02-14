@@ -40,11 +40,12 @@ listeLignesPresta.forEach(LignePresta => {
 window.addEventListener("load", setGridPointage);
 function setGridPointage() {
     selectAnnee = document.querySelector("#anneeVisionne");
-    selectAnnee.addEventListener("change", setGridPointage);
-    annee = selectAnnee.value;
     selectMois = document.querySelector("#moisVisionne");
-    selectMois.addEventListener("change", setGridPointage);
+    annee = selectAnnee.value;
     mois = selectMois.value;
+    // selectAnnee.addEventListener("change", setGridPointage);
+    // selectMois.addEventListener("change", setGridPointage);
+
     var feuilleStyle = document.querySelector('link[href*=pointage]').sheet.cssRules[0];
     const getDays = (year, month) => {
         return new Date(year, month, 0).getDate();
@@ -98,5 +99,81 @@ function setGridPointage() {
                 break;
         }
     })
+
 };
 
+listeCases = document.querySelectorAll('.casePointage');
+listeCases.forEach(caseJour => {
+    caseJour.addEventListener('change', ChangeCellule)
+}
+)
+function ChangeCellule(e) {
+    ligne = e.target.getAttribute("data-line");
+    casesLigne = document.querySelectorAll("input.casePointage[data-line='" + ligne + "']");
+    if (e.target.getAttribute("data-line") == "0-1") {
+        MarquageAbsent(e, e.target.value);
+    }
+    else {
+        SommeColonne(e);
+    }
+    SommeLigne(e);
+}
+
+function SommeLigne(e) {
+    total = 0;
+    casesLigne.forEach(inputCase => {
+        if (inputCase.value != "") {
+            ajout = inputCase.value;
+        } else {
+            ajout = 0;
+        }
+        total = (parseFloat(total) + parseFloat(ajout)).toFixed(2);
+    })
+    ligne = e.target.getAttribute("data-line");
+    caseTotal = document.querySelector("div.colTotal[data-line='" + ligne + "']");
+    caseTotal.innerHTML = total;
+}
+
+function SommeColonne(e) {
+    total = 0;
+    colonne = e.target.getAttribute("data-date");
+    inputsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
+    inputsColonne.forEach(cellule => {
+        if (e.target.getAttribute("data-line") != "0-1" && cellule.value != "") {
+            ajout = cellule.value;
+        } else {
+            ajout = 0;
+        }
+        total = (parseFloat(total) + parseFloat(ajout)).toFixed(2);
+    })
+    console.log(total);
+    if (total == 1.00) {
+        inputsColonne.forEach(cellule => {
+            console.log("ok");
+            cellule.parentNode.classList.add("jourOK");
+        })
+    }
+}
+
+function MarquageAbsent(e, valeur) {
+    colonne = e.target.getAttribute("data-date");
+    inputsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
+    if (valeur == 1) {
+        inputDisabled = true;
+        if (!(e.target.classList.contains("notApplicable"))) {
+            e.target.classList.add("notApplicable");
+        }
+    }
+    else {
+        inputDisabled = false;
+        if ((e.target.classList.contains("notApplicable"))) {
+            e.target.classList.remove("notApplicable");
+        }
+    }
+    inputsColonne.forEach(elt => {
+        if (elt.getAttribute("data-line") != "0-1") {
+            elt.value = "";
+            elt.disabled = inputDisabled;
+        }
+    })
+}
