@@ -33,8 +33,8 @@ foreach ($objets AS $value)
 {
 	echo '<div class="donnees pyjama ">'.CentresManager::findById($value->getIdCentre())->getNomCentre().'</div>';
 	echo '<div class="donnees pyjama ">'.UtilisateursManager::findById($value->getIdUtilisateur())->getNomUtilisateur().'</div>';
-	echo '<div class="donnees pyjama ">'.$value->getDateDebutContrat().'</div>';
-	echo '<div class="donnees pyjama ">'.$value->getDateFinContrat().'</div>';
+	echo '<div class="donnees pyjama ">'.date('d/m/Y', strtotime($value->getDateDebutContrat())).'</div>';
+	echo '<div class="donnees pyjama ">'.date('d/m/Y', strtotime($value->getDateFinContrat())).'</div>';
 	if (!$formtype){
 		echo '<a class="pyjama"  href="index.php?page=FormContrats&mode=Afficher&id='.$value->getIdContrat().'&idutilisateur='.$_GET['id'].'"><i class="fas fa-file-contract"></i></a>';
 
