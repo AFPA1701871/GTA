@@ -2,7 +2,8 @@
     <header>
         <div class="cote"></div>
         <div>
-            <div><a href="index.php?page=Default"><img src="./IMG/croissant.png" alt=""></a></div>
+
+            <div><a href="index.php?page=Accueil"><img src="./IMG/croissant.png" alt=""></a></div>
             <div class="">
                 <?php
                 if (isset($_SESSION['utilisateur'])) {

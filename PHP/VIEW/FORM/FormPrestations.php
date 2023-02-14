@@ -31,7 +31,7 @@ echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
-echo '<label for=IdActivite class="caseForm labelForm">'.texte("IdActivite").'</label>';
+echo '<label for=IdActivite class="caseForm labelForm">'.texte("LibelleActivite").'</label>';
 echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdActivite(),"Activites",["libelleActivite"],$disabled,null,"libelleActivite",null ).'</div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
