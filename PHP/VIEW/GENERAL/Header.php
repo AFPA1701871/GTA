@@ -11,7 +11,6 @@
                     echo '<div><a href="index.php?page=ActionDeconnexion" class="center">' . texte("Deconnexion") . '<i class="fas fa-disconnect"></i></a></div>';
                 }
                 ?>
-
             </div>
         </div>
         <div class="darkmode">

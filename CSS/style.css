@@ -21,7 +21,7 @@ h1 {
   .label {
     width: 50px;
     height: 26px;
-    background-color:#111;
+    background-color: var(--color1);
     display: flex;
     border-radius:50px;
     align-items: center;
@@ -34,7 +34,7 @@ h1 {
   .ball {
     width: 20px;
     height: 20px;
-    background-color: white;
+    background-color: var(--color5);
     position: absolute;
     /* top: 2px; */
     left: 2px;
@@ -54,12 +54,12 @@ h1 {
   }
   
   .fa-moon {
-    color: pink;
+    color: var(--color5);
     font-size: 0.9rem;
   }
   
   .fa-sun {
-    color: yellow;
+    color: rgb(252, 173, 27);
     font-size: 0.9rem;
   }
 .titre,
@@ -93,6 +93,7 @@ h1 {
     padding: 0.5rem;
     cursor: pointer;
     border-radius: 5px;
+    background-color: transparent;
 }
 
 input::placeholder {
@@ -102,7 +103,39 @@ input::placeholder {
 body {
     background-color: var(--color4);
     font-family: 'Roboto', sans-serif;
+    transition: color 0.3s;
+    transition: background 0.3s;
 }
+  /***********************darkmode ************************/
+  body.dark {
+    background-color: var(--color5);
+    color: var(--color1);
+
+}
+body.dark i {
+    color:var(--color1);
+}
+body.dark header .darkmode i{
+    color:#111;
+}
+
+body.dark header {
+    background-color: #111;
+}
+body.dark header .label {
+    background-color: var(--color1);
+}
+body.dark header .ball {
+    background-color: #111;
+}
+
+body.dark footer {
+    background-color: #111;
+}
+
+
+
+
 i {
     font-size: 1.4rem;
 }

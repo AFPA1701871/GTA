@@ -7,8 +7,8 @@ global $regex;
         <form action="index.php?page=ActionConnexion" method="POST">
             <div class="colSpan2 center"><h1><?php echo texte('Connexion') ?></h1></div>
 
-            <label for="mailUtilisateur"><?php echo texte('mailUtilisateur') ?> : </label>
-            <input type="text" name="mailUtilisateur" required>
+            <label for="matriculeUtilisateur"><?php echo texte('matriculeUtilisateur') ?> : </label>
+            <input type="text" name="matriculeUtilisateur" required>
 
             <label for="passwordUtilisateur"><?php echo texte('Mdp') ?> : </label>
             <div class="relative">
