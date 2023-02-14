@@ -10,6 +10,8 @@ $moisVisionne = date("m") * 1;
 echo '<main>';
 echo '<div class="cote"></div>';
 echo '<div class="mainGrid grid-col2-reduct">';
+
+echo '        <div class=" espace"></div>';
 echo '    <div class="grid-columns-span-2 center infosUser">';
 echo '        <div>Année: </div>';
 echo '        <div>';
@@ -33,8 +35,12 @@ echo '        <div>XXXXX</div>';
 // echo '        <div>'.$user->getCentreUtilisateur().'</div>';
 echo '        <div></div>';
 echo '        <div>UO d\'affectation:</div>';
+<<<<<<< HEAD
 echo '        <div>test' . $user->getNumeroUO() . '</div>';
 echo '        <div class="grid-columns-span-17 espace"></div>';
+=======
+echo '        <div>XXX</div>';
+>>>>>>> adbca22650ae77efc158fb7d586a0e778c6313a0
 echo '    </div>';
 
 $nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $moisVisionne, $anneeVisionne);
@@ -53,16 +59,16 @@ else
 }
 
 echo '    <!--Séparation Prestations/Pointages => Zone Prestations -->';
-echo '    <div class="grid-presta tabCol grid-5-reduct pointHead bgc4 leftStickyRigth cellBottom">';
+echo '    <div class="grid-presta tabCol grid-5-reduct pointHead bgc4  cellBottom noDisplay">';
 echo '      <div id="anneeSelected" class="noDisplay">2023</div>';
 echo '      <div id="moisSelected" class="noDisplay">02</div>';
 echo '    </div>';
 echo '    <!--Séparation Prestations/Pointages => Zone Pointages -->';
-echo '    <div class="grid-pointage tabCol pointHead">';
+echo '    <div class="grid-pointage tabCol pointHead align-end">';
 
 echo '        <!-- Lignes 9 et 10 -->';
 echo '        <div class="cellBottom center grid-lineDouble bgc4">Total</div>';
-echo '        <div class="cellBottom center grid-lineDouble bgc4">%GTA</div>';
+echo '        <div class="cellBottom center grid-lineDouble bgc4 border-left">%GTA</div>';
 echo '        <div class="cellBottom grid-lineDouble bgc4"></div>';
 $nbJourPointe = 0;
 for ($i = 1; $i <= $nbrJoursMois; $i++)
@@ -153,6 +159,128 @@ foreach ($typesPrestations as $key => $value)
         echo '        <div class="center grid-lineSimple cellBottom ' . $classeBG . '"  >' . $content . '</div>';
     }
 
+<<<<<<< HEAD
     echo '</div>';
 }
+=======
+echo '        <div data-line="1-1" class="cellBottom center grid-lineDouble">0,00</div>';
+echo '        <div data-line="1-1" class="cellBottom center grid-lineDouble border-left">0,0%</div>';
+echo '        <div data-line="1-1" class="cellBottom grid-lineDouble"></div>';
+for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
+    $jourString = $anneeVisionne . "-" . str_pad($moisVisionne, 2, "0", STR_PAD_LEFT) . "-" . str_pad($jour, 2, "0", STR_PAD_LEFT);
+    $jourActu = mktime(0, 0, 0, $moisVisionne, $jour, $anneeVisionne);
+    if (getdate($jourActu)['wday'] == 0 || getdate($jourActu)['wday'] == 6) {
+        $jourOuvert = "";
+        $classeBG = "noWork";
+        $content = "";
+    } elseif (in_array($jourString, $listeFermeturesDuMois)) {
+        $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
+        $classeBG = "notApplicable";
+        $content = "";
+    } else {
+        $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
+        $classeBG = "work";
+        $content = '<input data-line="1-1" data-date="'.$jourString.'" class="casePointage" type="text"></input>';
+    }
+    echo '        <div data-line="1-1" class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $content . '</div>';
+}
+
+echo '        <div class=" grid-lineSimple titreTypePrestation cellBottom">&nbsp;</div>';
+
+echo '        <div data-line="2-1" class="cellBottom center grid-lineDouble">0,00</div>';
+echo '        <div data-line="2-1" class="cellBottom center grid-lineDouble border-left">0,0%</div>';
+echo '        <div data-line="2-1" class="cellBottom grid-lineDouble"></div>';
+for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
+    $jourString = $anneeVisionne . "-" . str_pad($moisVisionne, 2, "0", STR_PAD_LEFT) . "-" . str_pad($jour, 2, "0", STR_PAD_LEFT);
+    $jourActu = mktime(0, 0, 0, $moisVisionne, $jour, $anneeVisionne);
+    if (getdate($jourActu)['wday'] == 0 || getdate($jourActu)['wday'] == 6) {
+        $jourOuvert = "";
+        $classeBG = "noWork";
+        $content = "";
+    } elseif (in_array($jourString, $listeFermeturesDuMois)) {
+        $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
+        $classeBG = "notApplicable";
+        $content = "";
+    } else {
+        $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
+        $classeBG = "work";
+        $content = '<input data-line="2-1" data-date="'.$jourString.'" class="casePointage" type="text"></input>';
+    }
+    echo '        <div data-line="2-1" class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $content . '</div>';
+}
+
+echo '        <div class=" titreTypePrestation grid-lineSimple cellBottom">&nbsp;</div>';
+
+echo '        <div data-line="3-1" class="cellBottom center grid-lineDouble">0,00</div>';
+echo '        <div data-line="3-1" class="cellBottom center grid-lineDouble border-left">0,0%</div>';
+echo '        <div data-line="3-1" class="cellBottom grid-lineDouble"></div>';
+for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
+    $jourString = $anneeVisionne . "-" . str_pad($moisVisionne, 2, "0", STR_PAD_LEFT) . "-" . str_pad($jour, 2, "0", STR_PAD_LEFT);
+    $jourActu = mktime(0, 0, 0, $moisVisionne, $jour, $anneeVisionne);
+    if (getdate($jourActu)['wday'] == 0 || getdate($jourActu)['wday'] == 6) {
+        $jourOuvert = "";
+        $classeBG = "noWork";
+        $content = "";
+    } elseif (in_array($jourString, $listeFermeturesDuMois)) {
+        $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
+        $classeBG = "notApplicable";
+        $content = "";
+    } else {
+        $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
+        $classeBG = "work";
+        $content = '<input data-line="3-1" data-date="'.$jourString.'" class="casePointage" type="text"></input>';
+    }
+    echo '        <div data-line="3-1" class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $content . '</div>';
+}
+
+echo '        <div class=" grid-lineSimple titreTypePrestation cellBottom">&nbsp;</div>';
+
+echo '        <div data-line="4-1" class="cellBottom center grid-lineDouble">0,00</div>';
+echo '        <div data-line="4-1" class="cellBottom center grid-lineDouble border-left">0,0%</div>';
+echo '        <div data-line="4-1" class="cellBottom grid-lineDouble"></div>';
+for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
+    $jourString = $anneeVisionne . "-" . str_pad($moisVisionne, 2, "0", STR_PAD_LEFT) . "-" . str_pad($jour, 2, "0", STR_PAD_LEFT);
+    $jourActu = mktime(0, 0, 0, $moisVisionne, $jour, $anneeVisionne);
+    if (getdate($jourActu)['wday'] == 0 || getdate($jourActu)['wday'] == 6) {
+        $jourOuvert = "";
+        $classeBG = "noWork";
+        $content = "";
+    } elseif (in_array($jourString, $listeFermeturesDuMois)) {
+        $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
+        $classeBG = "notApplicable";
+        $content = "";
+    } else {
+        $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
+        $classeBG = "work";
+        $content = '<input data-line="4-1" data-date="'.$jourString.'" class="casePointage" type="text"></input>';
+    }
+    echo '        <div data-line="4-1" class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $content . '</div>';
+}
+
+echo '        <div class=" titreTypePrestation grid-lineSimple cellBottom">&nbsp;</div>';
+
+echo '        <div data-line="5-1" class="cellBottom center grid-lineDouble">0,00</div>';
+echo '        <div data-line="5-1" class="cellBottom center grid-lineDouble border-left">0,0%</div>';
+echo '        <div data-line="5-1" class="cellBottom grid-lineDouble"></div>';
+for ($jour = 1; $jour <= $nbrJoursMois; $jour++) {
+    $jourString = $anneeVisionne . "-" . str_pad($moisVisionne, 2, "0", STR_PAD_LEFT) . "-" . str_pad($jour, 2, "0", STR_PAD_LEFT);
+    $jourActu = mktime(0, 0, 0, $moisVisionne, $jour, $anneeVisionne);
+    if (getdate($jourActu)['wday'] == 0 || getdate($jourActu)['wday'] == 6) {
+        $jourOuvert = "";
+        $classeBG = "noWork";
+        $content = "";
+    } elseif (in_array($jourString, $listeFermeturesDuMois)) {
+        $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
+        $classeBG = "notApplicable";
+        $content = "";
+    } else {
+        $jourOuvert = $jour . "<br/>" . $joursSemaine[getdate($jourActu)['wday']];
+        $classeBG = "work";
+        $content = '<input data-line="5-1" data-date="'.$jourString.'" class="casePointage" type="text"></input>';
+    }
+    echo '        <div data-line="5-1" class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $content . '</div>';
+}
+echo '    </div>';
+echo '</div>';
+>>>>>>> adbca22650ae77efc158fb7d586a0e778c6313a0
 echo '<div class="cote"></div></main>';

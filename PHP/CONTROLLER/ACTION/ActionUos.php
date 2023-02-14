@@ -1,6 +1,10 @@
 <?php
 $elm = new Uos($_POST);
 
+// On désactive le rendu de < et >
+$libelle = htmlentities($elm->getLibelleUO());
+$elm->setLibelleUO($libelle);
+
 switch ($_GET['mode']) {
 	case "Ajouter": {
 		$elm = UosManager::add($elm);

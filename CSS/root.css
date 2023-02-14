@@ -92,7 +92,11 @@ a {
     color: var(--color5);
 }
 .bgc5{
-    background-color: var(--color5);
+    background-color: var(--color2);
+    color: var(--color1);
+}
+.dark .bgc5{
+    background-color: var(--color2);
     color: var(--color1);
 }
 .pagination .bgc5 {

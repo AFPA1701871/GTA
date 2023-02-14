@@ -67,7 +67,9 @@
 .fa-square-caret-up::before{
     content: "\F106";
     font-size: 4rem;
-    color: var(--color3);
+}
+.fa-number::before {
+    content: "\F292";
 }
 .fa-rotate-180 {
     -webkit-transform: rotate(180deg);

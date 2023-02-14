@@ -3,7 +3,7 @@
         <div class="cote"></div>
         <div>
 
-            <div><a href="index.php?page=Default"><img src="./IMG/croissant.png" alt=""></a></div>
+            <div><a href="index.php?page=Accueil"><img src="./IMG/croissant.png" alt=""></a></div>
             <div class="">
                 <?php
                 if (isset($_SESSION['utilisateur'])) {
@@ -12,14 +12,15 @@
                 }
                 ?>
             </div>
+            <div class="darkmode">
+                <input type="checkbox" class="checkbox" id="checkbox">
+                <label for="checkbox" class="label">
+                    <i class="fas fa-moon"></i>
+                    <i class='fas fa-sun'></i>
+                    <div class='ball'>
+                </label>
+            </div>
         </div>
-        <div class="darkmode">
-            <input type="checkbox" class="checkbox" id="checkbox">
-            <label for="checkbox" class="label">
-                <i class="fas fa-moon"></i>
-                <i class='fas fa-sun'></i>
-                <div class='ball'>
-            </label>
         </div>
         <div class="cote"></div>
     </header>
