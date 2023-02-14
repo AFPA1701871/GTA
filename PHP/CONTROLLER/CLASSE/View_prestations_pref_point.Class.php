@@ -15,13 +15,17 @@ class View_Prestations_Pref_Point
 	private $_projetRequis;
 	private $_idPreference;
 	private $_idMotif;
+	private $_codeMotif;
+	private $_idUO;
+	private $_numeroUO;
 	private $_idProjet;
+	private $_codeProjet;
 	private $_idTypePrestation;
 	private $_idUtilisateur;
 	private $_idPointage;
 	private $_datePointage;
 	private $_mois;
-	private static $_attributes=["idPrestation","codePrestation","libellePrestation","numeroTypePrestation","libelleTypePrestation","motifRequis","uoRequis","projetRequis","idPreference","idMotif","idProjet","idTypePrestation","idUtilisateur","idPointage","datePointage","mois"];
+	private static $_attributes=["idPrestation","codePrestation","libellePrestation","numeroTypePrestation","libelleTypePrestation","motifRequis","uoRequis","projetRequis","idPreference","idMotif","codeMotif","idUO","numeroUO","idProjet","codeProjet","idTypePrestation","idUtilisateur","idPointage","datePointage","mois"];
 	/***************** Accesseurs ***************** */
 
 
@@ -185,6 +189,45 @@ class View_Prestations_Pref_Point
 		$this->_mois=$mois;
 	}
 
+	public function getCodeMotif()
+	{
+		return $this->_codeMotif;
+	}
+
+	public function setCodeMotif($codeMotif)
+	{
+		$this->_codeMotif = $codeMotif;
+	}
+
+	public function getIdUO()
+	{
+		return $this->_idUO;
+	}
+
+	public function setIdUO($idUO)
+	{
+		$this->_idUO = $idUO;
+	}
+
+	public function getNumeroUO()
+	{
+		return $this->_numeroUO;
+	}
+
+	public function setNumeroUO($numeroUO)
+	{
+		$this->_numeroUO = $numeroUO;
+	}
+
+	public function getCodeProjet()
+	{
+		return $this->_codeProjet;
+	}
+
+	public function setCodeProjet($codeProjet)
+	{
+		$this->_codeProjet = $codeProjet;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;
@@ -222,4 +265,5 @@ class View_Prestations_Pref_Point
 	{
 		return "IdPrestation : ".$this->getIdPrestation()."CodePrestation : ".$this->getCodePrestation()."LibellePrestation : ".$this->getLibellePrestation()."NumeroTypePrestation : ".$this->getNumeroTypePrestation()."LibelleTypePrestation : ".$this->getLibelleTypePrestation()."MotifRequis : ".$this->getMotifRequis()."UoRequis : ".$this->getUoRequis()."ProjetRequis : ".$this->getProjetRequis()."IdPreference : ".$this->getIdPreference()."IdMotif : ".$this->getIdMotif()."IdProjet : ".$this->getIdProjet()."IdTypePrestation : ".$this->getIdTypePrestation()."IdUtilisateur : ".$this->getIdUtilisateur()."IdPointage : ".$this->getIdPointage()."DatePointage : ".$this->getDatePointage()."Mois : ".$this->getMois()."\n";
 	}
+
 }

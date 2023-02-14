@@ -73,7 +73,7 @@ $routes = [
 	"FormMotifs" => ["PHP/VIEW/FORM/", "FormMotifs", "Formulaire Motifs", 0, false],
 	"ActionMotifs" => ["PHP/CONTROLLER/ACTION/", "ActionMotifs", "Action Motifs", 0, false],
 
-	//"ListePointages" => ["PHP/VIEW/LISTE/", "ListePointages", "Liste Pointages", 0, false],
+	"ListePointages2" => ["PHP/VIEW/FORM/", "FormPointages", "Liste Pointages", 0, false],
 	"FormPointages" => ["PHP/VIEW/FORM/", "FormPointages", "Formulaire Pointages", 0, false],
 	"ActionPointages" => ["PHP/CONTROLLER/ACTION/", "ActionPointages", "Action Pointages", 0, false],
 

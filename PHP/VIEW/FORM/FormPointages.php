@@ -1,80 +1,155 @@
 <?php
-global $regex;
-$mode = $_GET['mode'];
-$disabled = " ";
-switch ($mode) {
-	case "Afficher":
-	case "Supprimer":
-		$disabled = " disabled ";
-		break;
+global $mois;
+global $joursSemaine;
+/* pour test */
+$idUtilisateur = 1;
+$user = View_UtilisateursManager::findById($idUtilisateur);
+
+$anneeVisionne = date("Y");
+$moisVisionne = date("m") * 1;
+echo '<main>';
+echo '<div class="cote"></div>';
+echo '<div class="mainGrid grid-col2-reduct">';
+echo '    <div class="grid-columns-span-2 center infosUser">';
+echo '        <div>Année: </div>';
+echo '        <div>';
+echo creerSelectTab($anneeVisionne, Parametres::getAnneeDisponible(), null, "anneeVisionne", false);
+echo '        </div>';
+echo '        <div></div>';
+echo '        <div>Mois:</div>';
+echo '        <div>';
+// A remplacer par mois en cours dès que disponible
+echo creerSelectTab($mois[$moisVisionne], $mois, null, "moisVisionne", true);
+echo '        </div>';
+echo '        <div></div>';
+echo '        <div>Nom:</div>';
+echo '        <div>' . $user->getNomUtilisateur() . '</div>';
+echo '        <div></div>';
+echo '        <div>Matricule:</div>';
+echo '        <div>' . $user->getMatriculeUtilisateur() . '</div>';
+echo '        <div></div>';
+echo '        <div>Centre de rattachement:</div>';
+echo '        <div>XXXXX</div>';
+// echo '        <div>'.$user->getCentreUtilisateur().'</div>';
+echo '        <div></div>';
+echo '        <div>UO d\'affectation:</div>';
+echo '        <div>test' . $user->getNumeroUO() . '</div>';
+echo '        <div class="grid-columns-span-17 espace"></div>';
+echo '    </div>';
+
+$nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $moisVisionne, $anneeVisionne);
+$listeFermetures = FermeturesManager::getList(null, null, null, null, true);
+if (sizeof($listeFermetures) != 0) {
+    foreach ($listeFermetures as $fermeture) {
+        $listeFermeturesDuMois[] = $fermeture['dateFermeture'];
+    }
+}
+else
+{
+    $listeFermeturesDuMois[] = null;
 }
 
-if (isset($_GET['id'])) {
-	$elm = PointagesManager::findById($_GET['id']);
-} else {
-	$elm = new Pointages();
+echo '    <!--Séparation Prestations/Pointages => Zone Prestations -->';
+echo '    <div class="grid-presta tabCol grid-5-reduct pointHead bgc4 leftStickyRigth cellBottom">';
+echo '      <div id="anneeSelected" class="noDisplay">2023</div>';
+echo '      <div id="moisSelected" class="noDisplay">02</div>';
+echo '    </div>';
+echo '    <!--Séparation Prestations/Pointages => Zone Pointages -->';
+echo '    <div class="grid-pointage tabCol pointHead">';
+
+echo '        <!-- Lignes 9 et 10 -->';
+echo '        <div class="cellBottom center grid-lineDouble bgc4">Total</div>';
+echo '        <div class="cellBottom center grid-lineDouble bgc4">%GTA</div>';
+echo '        <div class="cellBottom grid-lineDouble bgc4"></div>';
+$nbJourPointe = 0;
+for ($i = 1; $i <= $nbrJoursMois; $i++)
+{
+    //on crée la date au format DateTime
+    $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
+    // $jour->format('w') donne le jour dans la semaine 0 pour dimanche, 1 pour lundi
+    if ($jour->format('w') == 0 || $jour->format('w') == 6)
+    {
+        $jourOuvert = "";
+        $classeBG = "noWork";
+    }
+    else
+    {
+        $nbJourPointe++;
+        $jourOuvert = $jour->format("d") . "<br/>" . $joursSemaine[$jour->format('w')];
+        if (in_array($jour, $listeFermeturesDuMois))
+        {
+            $classeBG = "notApplicable";
+        }
+        else
+        {
+            $classeBG = "work";
+        }
+    }
+    echo '        <div class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $jourOuvert . '</div>';
 }
-echo '<main class="center">';
+echo '    </div>';
+$typesPrestations = TypePrestationsManager::getList(null, null, "numeroTypePrestation", null, false, false);
+foreach ($typesPrestations as $key => $value)
+{
 
-echo '<form class="GridForm" action="index.php?page=ActionPointages&mode='.$_GET['mode'].'" method="post"/>';
-echo '<div class="bigEspace"></div>	';
-echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Pointages").'</div>';
-echo '<div class="bigEspace  col-span-form"></div>	';
-	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdPointage().'" name=IdPointage></div>';
-echo '<label for=IdMotif class="caseForm labelForm">'.texte("IdMotif").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getIdMotif().'" name=IdMotif pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+    echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">';
+    echo '        <!-- Titre -->';
+    echo '        <div class="center grid-columns-span-2 fullLine grid-lineSimple cellBottom left titreTypePrestation">' . $value->getNumeroTypePrestation() . " - " . $value->getLibelleTypePrestation() . '<i id="AjoutPresta1" class="fas fa-plus plusRigth"></i></div>';
+    echo '        <!-- Ligne -->';
+    echo '                <div data-line="' . $value->getNumeroTypePrestation() . '-1" class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">';
+    echo '                    <div class="center grid-lineDouble cellBottom grid-columns-span-4">';
+    echo '                        <select data-line="' . $value->getNumeroTypePrestation() . '-1">';
+    echo '                            <option>Prestations de type 1</option>';
+    echo '                        </select>';
+    echo '                        <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>';
+    echo '                        <div class="expand-line vMini"><i class="fas fa-open" data-line="' . $value->getNumeroTypePrestation() . '-1"></i></div>';
+    echo '                    </div>';
+    echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Cde Prest.</div>';
+    echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>';
+    echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>';
+    echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>';
+    echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" data-line="' . $value->getNumeroTypePrestation() . '-1" type="text"></input></div>';
+    echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $value->getNumeroTypePrestation() . '-1" type="text"></input></div>';
+    echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight notApplicable"></div>';
+    echo '                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $value->getNumeroTypePrestation() . '-1" type="text"></input></div>';
+    echo '                </div>';
+    echo '    </div>';
 
-echo '<label for=IdPrestation class="caseForm labelForm">'.texte("IdPrestation").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getIdPrestation().'" name=IdPrestation pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+////////////////////////////////
+    // Pointage
 
-echo '<label for=IdProjet class="caseForm labelForm">'.texte("IdProjet").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getIdProjet().'" name=IdProjet pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+    echo '    <div class="grid-pointage tabCol pointMove">';
+    echo '        <div class=" grid-lineSimple cellBottom titreTypePrestation grid-columns-span-31">&nbsp;</div>';
+    echo '                <div class="cellBottom center grid-lineSimple colTotal" data-line="' . $value->getNumeroTypePrestation() . '-1">0</div>';
+    echo '                <div class="cellBottom center grid-lineSimple" data-line="' . $value->getNumeroTypePrestation() . '-1"></div>';
+    echo '                <div class="cellBottom grid-lineSimple"></div>';
+    for ($i = 1; $i <= $nbrJoursMois; $i++)
+    {
+        //on crée la date au format DateTime
+        $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
+        $content="";
+        // $jour->format('w') donne le jour dans la semaine 0 pour dimanche, 1 pour lundi
+        if ($jour->format('w') == 0 || $jour->format('w') == 6)
+        {
+            $jourOuvert = "";
+            $classeBG = "noWork";
+        }
+        else
+        {
+            $nbJourPointe++;
+            $jourOuvert = $jour->format("d") . "<br/>" . $joursSemaine[$jour->format('w')];
+            if (in_array($jour, $listeFermeturesDuMois))
+            {
+                $classeBG = "notApplicable";
+            }
+            else
+            {
+                $classeBG = "work";
+                $content = '<input data-date="'.$jour->format("Y-m-d").'" data-line="' . $value->getNumeroTypePrestation() . '-1" class="inputPointage casePointage" type="text"></input>';  }
+        }
+        echo '        <div class="center grid-lineSimple cellBottom ' . $classeBG . '"  >' . $content . '</div>';
+    }
 
-echo '<label for=IdUO class="caseForm labelForm">'.texte("IdUO").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getIdUO().'" name=IdUO pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
-
-echo '<label for=IdUtilisateur class="caseForm labelForm">'.texte("IdUtilisateur").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getIdUtilisateur().'" name=IdUtilisateur pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
-
-echo '<label for=DatePointage class="caseForm labelForm">'.texte("DatePointage").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getDatePointage().'" name=DatePointage pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
-
-echo '<label for=ValidePointage class="caseForm labelForm">'.texte("ValidePointage").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getValidePointage().'" name=ValidePointage pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
-
-echo '<label for=ReportePointage class="caseForm labelForm">'.texte("ReportePointage").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getReportePointage().'" name=ReportePointage pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
-
-echo '<label for=NbHeuresPointage class="caseForm labelForm">'.texte("NbHeuresPointage").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getNbHeuresPointage().'" name=NbHeuresPointage pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
-
-echo '<div class="bigEspace "></div>	';
-echo '<div class="caseForm col-span-form">
-	<div></div>
-	<div><a href="index.php?page=ListePointages"><button type="button"><i class="fas fa-arrow-left fa-rotate-180"></i></button></a></div>
-	<div class="cote"></div>';
-	echo ($mode == "Afficher") ? "" : " <div><button type=\"submit\"><i class=\"fas fa-paper-plane\"></i></button></div>";
-	echo'<div></div>
-	</div>';
-
-echo'</form>';
-
-echo '</main>';
+    echo '</div>';
+}
+echo '</div><div class="cote"></div></main>';
