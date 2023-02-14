@@ -1,6 +1,10 @@
 <?php
 $elm = new Projets($_POST);
 
+// On désactive le rendu de < et >
+$libelle = htmlentities($elm->getLibelleProjet());
+$elm->setLibelleProjet($libelle);
+
 switch ($_GET['mode']) {
 	case "Ajouter": {
 		$elm = ProjetsManager::add($elm);
