@@ -176,7 +176,7 @@ function AfficherPage(index, filtre) {
                         grid.innerHTML = grid.innerHTML.replaceAll("LibelleTypePrestation", element.libelleTypePrestation);
                         grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
                     });
-                } if (page == "ListePrestations") {
+                } else if (page == "ListePrestations") {
                     temp = document.getElementsByTagName("template")[0];
                     pair = 0; 
                     liste.forEach(element => {
