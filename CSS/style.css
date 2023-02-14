@@ -29,6 +29,7 @@ h1 {
     /* padding: 5px; */
     position: relative;
     transform: scale(1.5);
+    cursor: pointer;
   }
   
   .ball {
@@ -47,6 +48,7 @@ h1 {
     /*height: 26px; */
     margin: auto 0;
     flex: 0; 
+    
   }
   /*  target the elemenent after the label*/
   .checkbox:checked + .label .ball{
