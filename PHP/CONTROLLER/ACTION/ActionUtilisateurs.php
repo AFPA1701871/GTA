@@ -10,7 +10,7 @@ $elm->setMatriculeUtilisateur($matricule);
 
 switch ($_GET['mode']) {
 	case "Ajouter": {
-		$elm->setPasswordUtilisateur(passwordDefault($elm));
+		$elm->setPasswordUtilisateur(crypte(passwordDefault($elm)));
 		$elm = UtilisateursManager::add($elm);
 		header("location:index.php?page=FormUtilisateurs&mode=Modifier&id=" . $elm);
 		break;
