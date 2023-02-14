@@ -23,7 +23,7 @@ echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire TypePres
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdTypePrestation().'" name=IdTypePrestation></div>';
 echo '<label for=NumeroTypePrestation class="caseForm labelForm">'.texte("NumeroTypePrestation").'</label>';
-echo '<div class="caseForm donneeForm"><input type="number" '.$disabled .'value="'.$elm->getNumeroTypePrestation().'" name=NumeroTypePrestation></div>';
+echo '<div class="caseForm donneeForm"><input type="number" '.$disabled .'value="'.$elm->getNumeroTypePrestation().'" name=NumeroTypePrestation pattern="'.$regex['num'].'"></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
@@ -33,19 +33,19 @@ echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=MotifRequis class="caseForm labelForm">'.texte("MotifRequis").'</label>';
-$check = $elm->getMotifRequis()==1?" checked ":" ";echo '<div class="caseForm donneeForm toggle-switch"><input type="checkbox" class="toggle-input" '.$check.$disabled .'value="'.$elm->getMotifRequis().'" name=MotifRequis pattern="'.$regex["*"].'"><label for="toggle" class="toggle-label"/></div>';
+$check = $elm->getMotifRequis()==1?" checked ":" ";echo '<div class="caseForm donneeForm toggle-switch"><input type="checkbox" class="toggle-input" '.$check.$disabled .'value="1" name=MotifRequis><label for="toggle" class="toggle-label"/></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=UoRequis class="caseForm labelForm">'.texte("UoRequis").'</label>';
 $check = $elm->getUORequis()==1?" checked ":" ";
-echo '<div class="caseForm donneeForm toggle-switch"><input type="checkbox" class="toggle-input" '.$check.$disabled .'value="'.$elm->getUoRequis().'" name=UoRequis pattern="'.$regex["*"].'"><label for="toggle" class="toggle-label"/></div>';
+echo '<div class="caseForm donneeForm toggle-switch"><input type="checkbox" class="toggle-input" '.$check.$disabled .'value="1" name=UoRequis><label for="toggle" class="toggle-label"/></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=ProjetRequis class="caseForm labelForm">'.texte("ProjetRequis").'</label>';
 $check = $elm->getProjetRequis()==1?" checked ":" ";
-echo '<div class="caseForm donneeForm toggle-switch "><input type="checkbox"  class="toggle-input" '.$check.$disabled .'value="1" name=ProjetRequis pattern="'.$regex["*"].'"><label for="toggle" class="toggle-label"/></div>';
+echo '<div class="caseForm donneeForm toggle-switch "><input type="checkbox"  class="toggle-input" '.$check.$disabled .'value="1" name=ProjetRequis><label for="toggle" class="toggle-label"/></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
