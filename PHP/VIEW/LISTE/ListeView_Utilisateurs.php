@@ -37,12 +37,12 @@ echo '</div><div class="grid-col-10 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';
-echo '<div class="donnees ">NomUtilisateur</div>';
-echo '<div class="donnees ">MatriculeUtilisateur</div>';
-echo '<div class="donnees ">NomManager</div>';
-echo '<div class="donnees ">Actif</div>';
-echo '<div class="donnees ">NumeroUO</div>';
-echo '<div class="donnees ">NomRole</div>';
+echo '<div class="donnees pyjama">NomUtilisateur</div>';
+echo '<div class="donnees pyjama">MatriculeUtilisateur</div>';
+echo '<div class="donnees pyjama">NomManager</div>';
+echo '<div class="donnees pyjama">Actif</div>';
+echo '<div class="donnees pyjama">NumeroUO</div>';
+echo '<div class="donnees pyjama">NomRole</div>';
  echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Afficher&id=IdUtilisateur"><i class="fas fa-file-contract"></i></a>';
                                     
 echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Modifier&id=IdUtilisateur"><i class="fas fa-pen"></i></a>';
