@@ -19,7 +19,7 @@ echo '<div class="grid-col-'.($formtype?5:4).' gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-'.($formtype?5:4).'">'.texte("Liste des Activites").'</div>';
 if (!$formtype) { echo '<div class="bigEspace"></div>'; }
-echo '<div class="grid-columns-span-'.($formtype?5:4).'"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-search" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+echo '<div class="grid-columns-span-'.($formtype?5:4).'"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-'.($formtype?5:4).'">
 <div></div>
 <div class="bigEspace"></div>
