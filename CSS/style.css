@@ -70,7 +70,7 @@ h1 {
 .titreListe,
 .labelListe {
     font-size: 1rem;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
 }
 .titreListe , .titre, .titreForm{

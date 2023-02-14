@@ -108,8 +108,9 @@
 	align-items: center;
 }
 
-.caseListe {
-	padding : 0.2rem
+.caseListe, #nbEnregs {
+	padding : 0.2rem;
+	font-weight: bold;
 }
 
 .caseForm {
