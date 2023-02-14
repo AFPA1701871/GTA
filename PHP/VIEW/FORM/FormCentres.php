@@ -27,7 +27,7 @@ echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=NumeroCentre class="caseForm labelForm">'.texte("NumeroCentre").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getNumeroCentre().'" name=NumeroCentre pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm"><input type="number" '.$disabled .'value="'.$elm->getNumeroCentre().'" name=NumeroCentre pattern="'.$regex["num"].'"></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
