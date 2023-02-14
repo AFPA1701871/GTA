@@ -38,11 +38,6 @@ echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
-echo '<label for=PasswordUtilisateur class="caseForm labelForm">'.texte("PasswordUtilisateur").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="" name=PasswordUtilisateur pattern="'.$regex["pwd"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
-
 echo '<label for=IdUO class="caseForm labelForm">'.texte("IdUO").'</label>';
 echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdUO(), 'Uos', ['numeroUO', 'libelleUO'], $disabled).'</div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
