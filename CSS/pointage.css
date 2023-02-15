@@ -1,7 +1,7 @@
 :root{
     --width-col-total:3em;
     --width-col-prct:3em;
-    --width-col-jo:3em;
+    --width-col-jo:auto;
     --width-col-we:0.2em;
     --grid-template-columns:var(--width-col-total) var(--width-col-prct) 0.1em var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo);
     --color7:#87919e;
@@ -128,9 +128,7 @@
     border-bottom: 0.2em solid black;
 }
 .leftStickyRigth {
-    border-right: 0.2em solid black;
-    
-    
+    border-right: 0.2em solid black;    
 }
 
 .bgc4 {
@@ -151,6 +149,7 @@ select {
 
 .titreTypePrestation {
     background-color: var(--color2);
+    color: var(--color1);
     padding-left: 1em;
     color: var(--color1);
 }
@@ -193,7 +192,11 @@ select {
     background-color: lightblue;
 }
 
-.casePointage{
+div .jourOK>input[type="text"]{
+    background-color: lightgreen;
+}
+
+.inputPointage{
     width:100%;
     display: block;
     height: 100%;

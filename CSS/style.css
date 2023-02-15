@@ -103,7 +103,72 @@ h1 {
 input::placeholder {
     padding-left: 0.5rem;
 }
-
+.easter {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 0;
+    cursor: crosshair;
+}
+.EasterBody {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    overflow: hidden;
+}
+.EasterBody .fade {
+    position: relative;
+    width: 100%;
+    min-height: 0vh;
+    top: -25px;
+    background-image: linear-gradient(0deg, transparent, black 75%);
+    z-index: 1;
+  }
+  .EasterBody .star-wars {
+    
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 80vh;
+    color: #feda4a;
+    font-family: 'Pathway Gothic One', sans-serif;
+    font-size: 400%;
+    font-weight: 600;
+    letter-spacing: 6px;
+    line-height: 150%;
+    perspective: 400px;
+    text-align: justify;
+    width: 80%;
+    margin: 0 auto;
+  }
+  .EasterBody .crawl {
+    display: block;
+    position: relative;
+    top: 99999px;
+    transform-origin: 50% 100%;
+    animation: crawl 60s linear;
+  }
+  .EasterBody .crawl > .title {
+    display: block;
+    font-size: 90%;
+    text-align: center;
+  }
+  .EasterBody 
+  .crawl > .title h1 {
+    margin: 0 0 100px;
+    text-transform: uppercase;
+  }
+  @keyframes crawl {
+    0% {
+      top: -100px;
+      transform: rotateX(20deg)  translateZ(0);
+    }
+    100% { 
+      top: -6000px;
+      transform: rotateX(25deg) translateZ(-2500px);
+    }
+  }
 body {
     background-color: var(--color4);
     font-family: 'Roboto', sans-serif;
