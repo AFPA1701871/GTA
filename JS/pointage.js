@@ -82,22 +82,23 @@ listeCases.forEach(caseJour => {
 )
 function ChangeCellule(e) {
     let cell = e.target;
-    console.log(parseFloat(cell.value));
+    let ligne=cell.getAttribute("data-line");
+    let colonne=cell.getAttribute("data-date");
     if (isNaN(parseFloat(cell.value))||(parseFloat(cell.value) < 0 || parseFloat(cell.value) > 1)) {
         cell.value = "";
     }
     if (cell.getAttribute("data-line") == "0-1") {
-        MarquageAbsent(e, cell.value);
+        MarquageAbsent(colonne, cell.value);
     }
     else {
-        SommeColonne(e);
+        SommeColonne(colonne);
     }
-    SommeLigne(e);
+    SommeLigne(ligne);
 }
 
-function SommeLigne(e) {
-    let total = 0;
-    let ligne = e.target.getAttribute("data-line");
+function SommeLigne(ligne) {
+    // let total = 0;
+    // let ligne = e.target.getAttribute("data-line");
     let casesLigne = document.querySelectorAll("input.casePointage[data-line='" + ligne + "']");
     casesLigne.forEach(inputCase => {
         if (inputCase.value != "") {
@@ -111,9 +112,8 @@ function SommeLigne(e) {
     caseTotal.innerHTML = total;
 }
 
-function SommeColonne(e) {
+function SommeColonne(colonne) {
     let total = 0;
-    let colonne = e.target.getAttribute("data-date");
     let inputsColonne = document.querySelectorAll("input[data-date='" + colonne + "']");
     inputsColonne.forEach(cellule => {
         if (e.target.getAttribute("data-line") != "0-1" && cellule.value != "") {
@@ -145,8 +145,7 @@ function SommeColonne(e) {
     })
 }
 
-function MarquageAbsent(e, valeur) {
-    let colonne = e.target.getAttribute("data-date");
+function MarquageAbsent(colonne, valeur) {
     let inputsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
     if (valeur == 1) {
         inputDisabled = true;
@@ -175,5 +174,25 @@ function SelectColonne(e){
             elt.classList.toggle("cellBottom");
         }
     });
+
+}
+
+function CalculPrctGTA(e){
+    let ligne=e.target.getAttribute("data-line");
+    let cellCible=document.querySelector(".colPrctGTA[data-line='"+ligne+"']");
+    let listeTousInputs=document.querySelectorAll(".inputPointage");
+    let listeInputsPresta=document.querySelectorAll(".inputPointage[data-line='"+ligne+"']");
+    let totalLigne=0;
+    let totalMois=0;
+    let ajout;
+    listeInputsPresta.forEach(cellLigne=>{
+        if(cellLigne.value!=""){
+            ajout=cellLigne.value;
+        }else{
+            ajout=0;
+        }
+        totalLigne=(parseFloat(totalLigne) + parseFloat(ajout)).toFixed(2);
+    })
+
 
 }
