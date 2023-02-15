@@ -40,6 +40,10 @@
 * [ ] Ajouter un lien changer mot de passe dans le header (Fabien)
 * [X] Mettre un check sur actif (Alexandre)
 
+## Table Associations
+
+* [ ] Gérer l'association entre les idPrestations et les idProjets
+
 ## Crud Activités
 
 * [ ] Ajouter gestion des types associés
