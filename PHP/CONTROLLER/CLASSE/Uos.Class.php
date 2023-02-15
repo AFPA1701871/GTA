@@ -1,6 +1,6 @@
 <?php
 
-class Uos 
+class UOs
 {
 
 	/*****************Attributs***************** */
@@ -8,7 +8,7 @@ class Uos
 	private $_idUO;
 	private $_numeroUO;
 	private $_libelleUO;
-	private static $_attributes=["idUO","numeroUO","libelleUO"];
+	private static $_attributes = ["idUO", "numeroUO", "libelleUO"];
 	/***************** Accesseurs ***************** */
 
 
@@ -19,7 +19,7 @@ class Uos
 
 	public function setIdUO(?int $idUO)
 	{
-		$this->_idUO=$idUO;
+		$this->_idUO = $idUO;
 	}
 
 	public function getNumeroUO()
@@ -29,7 +29,7 @@ class Uos
 
 	public function setNumeroUO(string $numeroUO)
 	{
-		$this->_numeroUO=$numeroUO;
+		$this->_numeroUO = $numeroUO;
 	}
 
 	public function getLibelleUO()
@@ -39,7 +39,7 @@ class Uos
 
 	public function setLibelleUO(?string $libelleUO)
 	{
-		$this->_libelleUO=$libelleUO;
+		$this->_libelleUO = $libelleUO;
 	}
 
 	public static function getAttributes()
@@ -51,19 +51,18 @@ class Uos
 
 	public function __construct(array $options = [])
 	{
- 		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
 		{
 			$this->hydrate($options);
 		}
 	}
 	public function hydrate($data)
 	{
- 		foreach ($data as $key => $value)
-		{
- 			$methode = "set".ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+		foreach ($data as $key => $value) {
+			$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
 			if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
 			{
-				$this->$methode($value===""?null:$value);
+				$this->$methode($value === "" ? null : $value);
 			}
 		}
 	}
@@ -71,12 +70,12 @@ class Uos
 	/*****************Autres Méthodes***************** */
 
 	/**
-	* Transforme l'objet en chaine de caractères
-	*
-	* @return String
-	*/
+	 * Transforme l'objet en chaine de caractères
+	 *
+	 * @return String
+	 */
 	public function toString()
 	{
-		return "IdUO : ".$this->getIdUO()."NumeroUO : ".$this->getNumeroUO()."LibelleUO : ".$this->getLibelleUO()."\n";
+		return "IdUO : " . $this->getIdUO() . "NumeroUO : " . $this->getNumeroUO() . "LibelleUO : " . $this->getLibelleUO() . "\n";
 	}
 }

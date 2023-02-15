@@ -29,20 +29,20 @@ $routes = [
 	"Accueil" => ["PHP/VIEW/GENERAL/", "Accueil", "Accueil", 0, false],
 	"TbAssistante" => ["PHP/VIEW/GENERAL/", "TbAssistante", "Tableau de bord de l'assistante", 3, false],
 	"TbManager" => ["PHP/VIEW/GENERAL/", "TbManager", "Tableau de bord du manager", 2, false],
-	
+
 	"ActionConnexion" => ["PHP/CONTROLLER/ACTION/", "ActionConnexion", "Action de la connexion", 0, false],
 	"ChangePassword" => ["PHP/VIEW/GENERAL/", "ChangePassword", "Modification du mot de passe", 0, false],
-	
+
 	"ListeAPI" => ["PHP/MODEL/API/", "ListeAPI", "ListeAPI", 0, true],
 	"MAJActivitesParTypesAPI" => ["PHP/MODEL/API/", "MAJActivitesParTypesAPI", "MAJActivitesParTypesAPI", 0, true],
 	"MAJPointageAPI" => ["PHP/MODEL/API/", "MAJPointageAPI", "MAJPointageAPI", 0, true],
 	"MAJJoursFeriesAPI" => ["PHP/MODEL/API/", "MAJJoursFeries", "MAJJoursFeries", 3, true],
-	
+
 	"ListeActivites" => ["PHP/VIEW/LISTE/", "ListeActivites", "Liste Activites", 3, false],
 	"FormActivites" => ["PHP/VIEW/FORM/", "FormActivites", "Formulaire Activites", 3, false],
 	"ActionActivites" => ["PHP/CONTROLLER/ACTION/", "ActionActivites", "Action Activites", 3, false],
-	
-	
+
+
 	"ListeAssociations" => ["PHP/VIEW/LISTE/", "ListeAssociations", "Liste Associations", 3, false],
 	"FormAssociations" => ["PHP/VIEW/FORM/", "FormAssociations", "Formulaire Associations", 3, false],
 	"ActionAssociations" => ["PHP/CONTROLLER/ACTION/", "ActionAssociations", "Action Associations", 3, false],
@@ -75,8 +75,8 @@ $routes = [
 	"Easter" => ["PHP/VIEW/FORM/", "FormEaster", "Easter", 0, false],
 
 	"FormPointages" => ["PHP/VIEW/FORM/", "FormPointages", "Formulaire Pointages", 0, false],
-	
-	
+
+
 	"ListePrestations" => ["PHP/VIEW/LISTE/", "ListePrestations", "Liste Prestations", 3, false],
 	"FormPrestations" => ["PHP/VIEW/FORM/", "FormPrestations", "Formulaire Prestations", 3, false],
 	"ActionPrestations" => ["PHP/CONTROLLER/ACTION/", "ActionPrestations", "Action Prestations", 3, false],
@@ -89,15 +89,15 @@ $routes = [
 	"FormTypePrestations" => ["PHP/VIEW/FORM/", "FormTypePrestations", "Formulaire TypePrestations", 3, false],
 	"ActionTypePrestations" => ["PHP/CONTROLLER/ACTION/", "ActionTypePrestations", "Action TypePrestations", 3, false],
 
-	"ListeUos" => ["PHP/VIEW/LISTE/", "ListeUos", "Liste Uos", 3, false],
-	"FormUos" => ["PHP/VIEW/FORM/", "FormUos", "Formulaire Uos", 3, false],
-	"ActionUos" => ["PHP/CONTROLLER/ACTION/", "ActionUos", "Action Uos", 3, false],
+	"ListeUOs" => ["PHP/VIEW/LISTE/", "ListeUOs", "Liste UOs", 3, false],
+	"FormUOs" => ["PHP/VIEW/FORM/", "FormUOs", "Formulaire UOs", 3, false],
+	"ActionUOs" => ["PHP/CONTROLLER/ACTION/", "ActionUOs", "Action UOs", 3, false],
 
 	"ListeUtilisateurs" => ["PHP/VIEW/LISTE/", "ListeUtilisateurs", "Liste Utilisateurs", 3, false],
 	"FormUtilisateurs" => ["PHP/VIEW/FORM/", "FormUtilisateurs", "Formulaire Utilisateurs", 3, false],
 	"ActionUtilisateurs" => ["PHP/CONTROLLER/ACTION/", "ActionUtilisateurs", "Action Utilisateurs", 3, false],
 
-	
+
 ];
 
 if (isset($_GET["page"])) {
