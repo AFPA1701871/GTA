@@ -3,26 +3,6 @@
 class View_Prestations_Pref_PointManager
 {
 
-    public static function add(View_Prestations_Pref_Point $obj)
-    {
-        return DAO::add($obj);
-    }
-
-    public static function update(View_Prestations_Pref_Point $obj)
-    {
-        return DAO::update($obj);
-    }
-
-    public static function delete(View_Prestations_Pref_Point $obj)
-    {
-        return DAO::delete($obj);
-    }
-
-    public static function findById($id)
-    {
-        return DAO::select(View_Prestations_Pref_Point::getAttributes(), "View_Prestations_Pref_Point", ["idPrestation" => $id])[0];
-    }
-
     public static function getList(array $nomColonnes = null, array $conditions = null, string $orderBy = null, string $limit = null, bool $api = false, bool $debug = false)
     {
         $nomColonnes = ($nomColonnes == null) ? View_Prestations_Pref_Point::getAttributes() : $nomColonnes;
