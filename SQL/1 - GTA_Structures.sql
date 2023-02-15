@@ -46,7 +46,7 @@ DROP TABLE IF EXISTS gta_Fermetures;
 
 CREATE TABLE gta_Fermetures(
    idFermeture INT AUTO_INCREMENT PRIMARY KEY,
-   dateFermeture DATE NOT NULL
+   dateFermeture DATE NOT NULL UNIQUE
 ) ENGINE = InnoDB;
 
 --

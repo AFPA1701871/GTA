@@ -40,7 +40,10 @@ if (isset($page)) {
             echo '<script src="./JS/CreateChartTB.js"></script>';
             break;
         case 'Accueil':
-            echo ' <script src="./JS/Pointage.js"></script>';
+            echo '<script src="./JS/Pointage.js"></script>';
+            break;
+        case 'ListeFermetures':
+            echo '<script src="./JS/JoursFeries.js"></script>';
             break;
     }
 }
