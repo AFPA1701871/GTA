@@ -1,6 +1,6 @@
 <?php
 
-class View_Pointages_Satellites 
+class View_Pointages 
 {
 
 	/*****************Attributs***************** */

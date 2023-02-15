@@ -71,7 +71,7 @@ function afficherPage($page)
 		$titre = "Authorisation insuffisante";
 		include 'PHP/VIEW/GENERAL/Head.php';
 		include 'PHP/VIEW/GENERAL/Header.php';
-		include 'PHP/VIEW/FORM/FormInscriptionConnexion.php';
+		include 'PHP/VIEW/FORM/FormConnexion.php';
 		include 'PHP/VIEW/GENERAL/Footer.php';
 	}
 }

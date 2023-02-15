@@ -27,6 +27,7 @@ setcookie("lang", $_SESSION['lang'], time() + 36000, '/');
 $routes = [
 	"Default" => ["PHP/VIEW/FORM/", "FormConnexion", "Connexion", 0, false],
 	"Accueil" => ["PHP/VIEW/GENERAL/", "Accueil", "Accueil", 0, false],
+	"dbAssistante" => ["PHP/VIEW/GENERAL/", "dbAssistante", "DashBoard Assistante", 0, false],
 	
 	"ActionConnexion" => ["PHP/CONTROLLER/ACTION/", "ActionConnexion", "Action de la connexion", 0, false],
 	"ActionDeconnexion" => ["PHP/CONTROLLER/ACTION/", "ActionDeconnexion", "Action de deconnexion", 0, false],
@@ -108,9 +109,9 @@ $routes = [
 	"FormUtilisateurs" => ["PHP/VIEW/FORM/", "FormUtilisateurs", "Formulaire Utilisateurs", 0, false],
 	"ActionUtilisateurs" => ["PHP/CONTROLLER/ACTION/", "ActionUtilisateurs", "Action Utilisateurs", 0, false],
 
-	"ListeView_Pointages_Satellites" => ["PHP/VIEW/LISTE/", "ListeView_Pointages_Satellites", "Liste View_Pointages_Satellites", 0, false],
-	"FormView_Pointages_Satellites" => ["PHP/VIEW/FORM/", "FormView_Pointages_Satellites", "Formulaire View_Pointages_Satellites", 0, false],
-	"ActionView_Pointages_Satellites" => ["PHP/CONTROLLER/ACTION/", "ActionView_Pointages_Satellites", "Action View_Pointages_Satellites", 0, false],
+	"ListeView_Pointages" => ["PHP/VIEW/LISTE/", "ListeView_Pointages", "Liste View_Pointages", 0, false],
+	"FormView_Pointages" => ["PHP/VIEW/FORM/", "FormView_Pointages", "Formulaire View_Pointages", 0, false],
+	"ActionView_Pointages" => ["PHP/CONTROLLER/ACTION/", "ActionView_Pointages", "Action View_Pointages", 0, false],
 
 	"ListeView_Utilisateurs" => ["PHP/VIEW/LISTE/", "ListeView_Utilisateurs", "Liste View_Utilisateurs", 0, false],
 	"FormView_Utilisateurs" => ["PHP/VIEW/FORM/", "FormView_Utilisateurs", "Formulaire View_Utilisateurs", 0, false],

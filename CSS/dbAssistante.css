@@ -1,0 +1,27 @@
+main {
+    display: grid;
+    grid-template-columns: 0.5fr 3fr 2fr 0.5fr;
+}
+
+#tabManager {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 0.5fr;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+.vCenter {
+    align-items: center;
+    padding-left: 0.5rem;
+}
+
+#tabReModif {
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.5fr;
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+}
+
+.section2 {
+flex-direction: column;
+}

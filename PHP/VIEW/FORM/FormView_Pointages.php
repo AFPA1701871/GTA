@@ -10,15 +10,15 @@ switch ($mode) {
 }
 
 if (isset($_GET['id'])) {
-	$elm = View_Pointages_SatellitesManager::findById($_GET['id']);
+	$elm = View_PointagesManager::findById($_GET['id']);
 } else {
-	$elm = new View_Pointages_Satellites();
+	$elm = new View_Pointages();
 }
 echo '<main class="center">';
 
-echo '<form class="GridForm" action="index.php?page=ActionView_Pointages_Satellites&mode='.$_GET['mode'].'" method="post"/>';
+echo '<form class="GridForm" action="index.php?page=ActionView_Pointages&mode='.$_GET['mode'].'" method="post"/>';
 echo '<div class="bigEspace"></div>	';
-echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire View_Pointages_Satellites").'</div>';
+echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire View_Pointages").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdPointage().'" name=IdPointage></div>';
 echo '<label for=DatePointage class="caseForm labelForm">'.texte("DatePointage").'</label>';
@@ -154,7 +154,7 @@ echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>'
 echo '<div class="bigEspace "></div>	';
 echo '<div class="caseForm col-span-form">
 	<div></div>
-	<div><a href="index.php?page=ListeView_Pointages_Satellites"><button type="button"><i class="fas fa-arrow-left fa-rotate-180"></i></button></a></div>
+	<div><a href="index.php?page=ListeView_Pointages"><button type="button"><i class="fas fa-arrow-left fa-rotate-180"></i></button></a></div>
 	<div class="cote"></div>';
 	echo ($mode == "Afficher") ? "" : " <div><button type=\"submit\"><i class=\"fas fa-paper-plane\"></i></button></div>";
 	echo'<div></div>

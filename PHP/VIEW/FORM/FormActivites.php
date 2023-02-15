@@ -22,7 +22,7 @@ echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Activite
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdActivite().'" name=IdActivite></div>';
 echo '<label for=LibelleActivite class="caseForm labelForm">'.texte("LibelleActivite").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getLibelleActivite().'" name=LibelleActivite pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getLibelleActivite().'" name=LibelleActivite pattern="'.$regex["*"].'" required></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
