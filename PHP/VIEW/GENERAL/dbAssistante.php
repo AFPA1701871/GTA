@@ -7,22 +7,24 @@ echo '<main>';
 // ********** PRMIERE COLONNE **********
 echo '<div class="cote"></div>';
 echo '<section id="tabManager">';
-echo '<div class="vCenter">Nom du Manager</div>';
-echo '<div class="vCenter">Saisis</div>';
-echo '<div class="vCenter">Validés</div>';
-echo '<div class="vCenter">Report SIRH</div>';
+echo '<div class="vCenter gras">Nom du Manager</div>';
+echo '<div class="vCenter gras">Saisis</div>';
+echo '<div class="vCenter gras">Validés</div>';
+echo '<div class="vCenter gras">Report SIRH</div>';
 echo '<div class="vCenter"></div>';
 echo '<div class="cote"></div>';
 
 $managers = UtilisateursManager::getList(['idUtilisateur','nomUtilisateur'], ['idRole'=>2], 'nomUtilisateur');
 foreach ($managers as $key => $manager) {
     $bgc = ($key%2 == 0) ? '': 'bgc';
+    $idManager = $manager->getIdUtilisateur();
     echo '<div class="vCenter '.$bgc.'">'.$manager->getNomUtilisateur().'</div>';
-    $agents = UtilisateursManager::getList(null, ['idManager'=>$manager->getIdUtilisateur()]);
-    $valide = View_PointagesManager::getList(null, ['idManager'=>$manager->getIdUtilisateur(), 'validePointage'=>1]);
-    $reporte = View_PointagesManager::getList(null, ['idManager'=>$manager->getIdUtilisateur(), 'reportePointage'=>1]);
+    $agents = UtilisateursManager::getList(null, ['idManager'=>$idManager]);
+    $saisi = View_PointagesManager::getList(null, ['idManager'=>$idManager]);
+    $valide = View_PointagesManager::getList(null, ['idManager'=>$idManager, 'validePointage'=>1]);
+    $reporte = View_PointagesManager::getList(null, ['idManager'=>$idManager, 'reportePointage'=>1]);
 
-    echo '<div class="vCenter '.$bgc.'">'.count($valide).'/'.count($agents).'</div>';
+    echo '<div class="vCenter '.$bgc.'">'.count($saisi).'/'.count($agents).'</div>';
     echo '<div class="vCenter '.$bgc.'">'.count($valide).'/'.count($agents).'</div>';
     echo '<div class="vCenter '.$bgc.'">'.count($reporte).'/'.count($agents).'</div>';
     echo '<div class="vCenter '.$bgc.'"><a class="'.$bgc.'" href="index.php?page=FormCentres&amp;mode=Afficher&amp;id=20"><i class="fas fa-file-contract"></i></a></div>';
@@ -36,15 +38,15 @@ echo '</section>';
 echo '<section class="section2">';
 // ***** CAMEMBERT *****
 $reportPourcentage = $nbReports * 100 / $totalAgents;
-echo '<div id="camembert">';
+echo '<div class="camembert">';
 echo '<input type="hidden" id="reporte" value='.$reportPourcentage.'>';
 echo'<canvas id="chart" data-role="assistante"></canvas>';
 echo '</div>';
 
 // ***** LISTE RE-MODIF *****
 echo '<div id="tabReModif">';
-echo '<div class="vCenter">Date</div>';
-echo '<div class="vCenter">Nom de l\'agent</div>';
+echo '<div class="vCenter gras">Date</div>';
+echo '<div class="vCenter gras">Nom de l\'agent</div>';
 echo '<div class="vCenter"></div>';
 
 $logs = LogsManager::getList(['dateLog', 'idUtilisateur'], ['prisEnCompte'=>0],'dateLog');

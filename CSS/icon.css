@@ -136,3 +136,7 @@
     content: "\F3C1";
     margin-left: 0.5rem;
 }
+.fa-floppy-disk::before {
+    content: "\f0c7";
+    margin-left: 0.5em;
+}
