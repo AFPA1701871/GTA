@@ -22,7 +22,7 @@ echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Uos").'<
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdUO().'" name=IdUO></div>';
 echo '<label for=NumeroUO class="caseForm labelForm">'.texte("NumeroUO").'</label>';
-echo '<div class="caseForm donneeForm"><input type="number" '.$disabled .'value="'.$elm->getNumeroUO().'" name=NumeroUO pattern="'.$regex["num"].'"></div>';
+echo '<div class="caseForm donneeForm"><input type="number" '.$disabled .'value="'.$elm->getNumeroUO().'" name=NumeroUO pattern="'.$regex["num"].'" required></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
