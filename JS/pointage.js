@@ -51,8 +51,7 @@ function setGridPointage() {
     mois = selectMois.value;
     // selectAnnee.addEventListener("change", setGridPointage);
     // selectMois.addEventListener("change", setGridPointage);
-
-    var feuilleStyle = document.querySelector('link[href*=pointage]').sheet.cssRules[0];
+    var feuilleStyle = document.querySelector('link[href*=Pointage]').sheet.cssRules[0];
     const getDays = (year, month) => {
         return new Date(year, month, 0).getDate();
     }
