@@ -6,7 +6,7 @@
 
 ## Formulaires
 
-* [ ] Changer oeil -> ON/OFF plutôt que rester appuyé (valentin)
+* [X] Changer oeil -> ON/OFF plutôt que rester appuyé (valentin)
 * [ ] Enlever les icones (? et v)
 
 ## Crud Utilisateurs
