@@ -16,20 +16,21 @@ CREATE VIEW gta_View_Utilisateurs AS SELECT
     (c.dateDebutContrat <= CURRENT_DATE AND c.dateFinContrat >= CURRENT_DATE) as actif,
     uo.numeroUO,
     uo.libelleUO,
-    r.nomRole
+    r.nomRole,
+    c.idCentre,
+    centre.nomCentre
 FROM
-    gta_utilisateurs u
+    gta_Utilisateurs u
 LEFT JOIN gta_Utilisateurs m ON u.idManager = m.idUtilisateur
 LEFT JOIN gta_Uos as uo ON u.idUO = uo.idUO
 LEFT JOIN gta_Roles as r ON u.idRole = r.idRole
-LEFT JOIN gta_Contrats as c ON  c.idContrat in (SELECT idContrat FROM gta_Contrats WHERE gta_Contrats.idUtilisateur = u.idUtilisateur);
+LEFT JOIN gta_Contrats as c ON  c.idContrat in (SELECT idContrat FROM gta_Contrats WHERE gta_Contrats.idUtilisateur = u.idUtilisateur)
+LEFT JOIN gta_Centres as centre ON c.idCentre = centre.idCentre;
 
  --
  -- Vue regroupant les utilisateurs et leurs prestations préférées
  --
- CREATE
- ALGORITHM = UNDEFINED
- VIEW gta_View_Utilisateurs_Preferences_Prestations
+ CREATE VIEW gta_View_Utilisateurs_Preferences_Prestations
  AS SELECT w.idPreference, u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO, u.idRole, u.idManager, p.idPrestation, p.codePrestation, p.libellePrestation, p.idActivite FROM gta_preferences w LEFT JOIN gta_utilisateurs u ON w.idUtilisateur=u.idUtilisateur LEFT JOIN gta_prestations p ON w.idPrestation=p.idPrestation;
 
  --
@@ -145,11 +146,3 @@ LEFT JOIN gta_Motifs m ON po.idMotif=m.idMotif
 LEFT JOIN gta_Uos u ON po.idUO=u.idUO
 LEFT JOIN gta_Projets pr ON po.idProjet=pr.idProjet;
 
-
--- SELECT distinct idPrestation, codePrestation, libellePrestation, numeroTypePrestation, libelleTypePrestation, motifRequis, uoRequis, projetRequis,idMotif, idProjet, idTypePrestation, idUtilisateur FROM gta_view_prestations_pref_point WHERE idUtilisateur=1 AND (mois = "2023-02" || isnull(mois));
-
--- INSERT INTO gta_preferences (idPreference, idMotif, idPrestation, idProjet, idUO, idUtilisateur, idTypePrestation) VALUES
--- (1, 6, 1, 9, 68, 1, 1);
--- INSERT INTO gta_pointages (idPointage, idMotif, idPrestation, idProjet, idUO, idUtilisateur, idTypePrestation, datePointage, validePointage, reportePointage, nbHeuresPointage) VALUES
--- (1, 6, 1, 9, 68, 1, 1, '2023-02-14', NULL, NULL, '1.00'),
--- (2, 6, 1, 9, 68, 1, 1, '2023-02-15', NULL, NULL, '1.00');

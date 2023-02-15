@@ -29,8 +29,7 @@ echo '          </div>
                 <div>' . $user->getMatriculeUtilisateur() . '</div>
                 <div></div>
                 <div>Centre de rattachement:</div>
-                <div>XXXXX</div>';
-// echo '        <div>'.$user->getCentreUtilisateur().'</div>';
+                <div>'.$user->getNomCentre().'</div>';
 echo '          <div></div>
                 <div>UO d\'affectation:</div>
                 <div>' . $user->getNumeroUO() . '</div>
