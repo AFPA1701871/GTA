@@ -1,13 +1,12 @@
 <?php
 
- echo '<main>';
+echo '<main>';
 
- echo '<div class="cote"></div>';
+echo '<div class="cote"></div>';
 
- echo '<div><section class="colonne">';
- 
+echo '<div><section class="colonne">';
 
-$objets = PrestationsManager::getList(null, null, null, Parametres::getNbEltParPage());
+$objets = View_PrestationsManager::getList(null, null, null, Parametres::getNbEltParPage());
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
 echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
@@ -25,7 +24,7 @@ echo '<div class="caseListe grid-columns-span-6">
 
 echo '<div class="caseListe labelListe" data-name= "CodePrestation">'.texte("CodePrestation").'</div>';
 echo '<div class="caseListe labelListe" data-name= "LibellePrestation">'.texte("LibellePrestation").'</div>';
-echo '<div class="caseListe labelListe" data-name= "IdActivite">IdActivite</div>';
+echo '<div class="caseListe labelListe" data-name= "LibelleActivite">'.texte("LibelleActivite").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
@@ -34,18 +33,18 @@ echo '</div><div class="grid-col-6 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';
-echo '<div class="donnees pyjama ">CodePrestation</div>';
+echo '<div class="donnees pyjama">CodePrestation</div>';
 echo '<div class="donnees pyjama left">LibellePrestation</div>';
-echo '<div class="donnees pyjama left ">IdActivite</div>';
- echo '<a class="pyjama"  href="index.php?page=FormPrestations&mode=Afficher&id=IdPrestation"><i class="fas fa-file-contract"></i></a>';
-                                    
+echo '<div class="donnees pyjama">LibelleActivite</div>';
+echo '<a class="pyjama"  href="index.php?page=FormPrestations&mode=Afficher&id=IdPrestation"><i class="fas fa-file-contract"></i></a>';
+
 echo '<a class="pyjama"  href="index.php?page=FormPrestations&mode=Modifier&id=IdPrestation"><i class="fas fa-pen"></i></a>';
-                                    
+
 echo '<a class="pyjama"  href="index.php?page=FormPrestations&mode=Supprimer&id=IdPrestation"><i class="fas fa-trash-alt"></i></a>';
- echo '</template>';
+echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';
-                                 
+
 echo '<div class="caseListe grid-columns-span-6">
 	<div></div>
 	<a href="index.php?page=Accueil"><button><i class="fas fa-house fa-rotate-180"></i></button></a>

@@ -42,7 +42,7 @@
                 </a>
             </div>
         </div>
-        <a href='?page=ListePointages'>
+        <a href='?page=FormPointages'>
             <div><?= texte("Pointages")?></div>
         </a>
     </menu>
