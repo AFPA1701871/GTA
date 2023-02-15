@@ -1,10 +1,24 @@
 // Récupération du canvas
 const ctx = document.getElementById("chart");
-var dark;
-document.querySelector(".dark").addEventListener('change', () => {
-    console.log(querySelector(".dark"));
-    dark = (document.getElementsByClassName("dark"))[0] ? '#F0EEED': 'black';
+
+// Changement de la couleur des labels du camenbert
+dark = (checkbox.checked) ? '#F0EEED' : 'black';
+checkbox.addEventListener('change', () => {
+    dark = (checkbox.checked) ? '#F0EEED' : 'black';
+    chart.options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: dark
+                },
+            },
+        },
+    };
+    chart.update();
 });
+
+
 // Test du rôle
 if (ctx.getAttribute("data-role") == "manager") {
     // Chart Manager
@@ -86,13 +100,14 @@ const config = {
 
                         return labelsOriginal;
                     },
-                    color:dark,
-                    font:{weight:"bold"}
+                    color: dark,
+                    font: { weight: "bold" }
                 },
             },
         },
     },
 };
 
+
 // Création du camembert
-new Chart(ctx, config);
+var chart = new Chart(ctx, config);

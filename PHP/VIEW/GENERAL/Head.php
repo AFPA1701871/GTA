@@ -26,8 +26,8 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         echo '  <link rel="stylesheet" href="CSS/grids.css">';
     } else if (substr($nom, 0, 4) == "Chan") {
         echo ' <link rel="stylesheet" href="CSS/form.css">';
-    } else if (substr($nom, 0, 4) == "dbAs") {
-        echo ' <link rel="stylesheet" href="CSS/TbAssistante.css">';
+    } else if (substr($nom, 0, 4) == "TbAs") {
+        echo ' <link rel="stylesheet" href="CSS/tbAssistante.css">';
     }
     echo '</head>';
 //  <script src="https://kit.fontawesome.com/ce4feb7268.js" crossorigin="anonymous"></script>
