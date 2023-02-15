@@ -1,5 +1,6 @@
 <?php
-
+$nbReports = 0;
+$totalAgents = 0;
 echo '<div class="bigEspace"></div>';
 echo '<main>';
 
@@ -26,14 +27,18 @@ foreach ($managers as $key => $manager) {
     echo '<div class="vCenter '.$bgc.'">'.count($reporte).'/'.count($agents).'</div>';
     echo '<div class="vCenter '.$bgc.'"><a class="'.$bgc.'" href="index.php?page=FormCentres&amp;mode=Afficher&amp;id=20"><i class="fas fa-file-contract"></i></a></div>';
     echo '<div class="cote "></div>';
+    $nbReports += count($reporte);
+    $totalAgents += count($agents);
 }
 echo '</section>';
 
 // ********** DEUXIEME COLONNE **********
 echo '<section class="section2">';
 // ***** CAMEMBERT *****
-echo '<div>';
-echo'CAMEMBERT';
+$reportPourcentage = $nbReports * 100 / $totalAgents;
+echo '<div id="camembert">';
+echo '<input type="hidden" id="reporte" value='.$reportPourcentage.'>';
+echo'<canvas id="chart" data-role="assistante"></canvas>';
 echo '</div>';
 
 // ***** LISTE RE-MODIF *****
