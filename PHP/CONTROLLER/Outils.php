@@ -233,8 +233,9 @@ function creerSelectTab( $valeur, array $tab,  ?string $attributs = "",  string 
  * @param array $mois
  * @return array
  */
-function tabMoisAnnee($mois)
+function tabMoisAnnee()
 {
+	global $mois;
 	// Récupération des années et des mois
 	$annees = Parametres::getAnneeDisponible();
 	// Parcours des tableaux
@@ -250,6 +251,5 @@ function tabMoisAnnee($mois)
 			$tabMoisAnnee[$date] = $value . " " . $annee;
 		}
 	}
-
 	return $tabMoisAnnee;
 }

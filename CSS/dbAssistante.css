@@ -5,7 +5,7 @@ main {
 
 #tabManager {
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
     padding-top: 8rem;
     padding-bottom: 8rem;
 }
@@ -18,16 +18,20 @@ main {
 #tabReModif {
     display: grid;
     grid-template-columns: 1fr 2fr 0.5fr;
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
 }
 
 .section2 {
 flex-direction: column;
 }
 
-#camembert {
+.camembert {
     height: 25vh;
     align-items: center;
     justify-content: center;
+}
+
+.gras {
+    font-weight: bold;
 }
