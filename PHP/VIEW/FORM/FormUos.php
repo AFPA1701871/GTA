@@ -16,7 +16,7 @@ if (isset($_GET['id'])) {
 }
 echo '<main class="center">';
 
-echo '<form class="GridForm" action="index.php?page=ActionUos&mode='.$_GET['mode'].'" method="post"/>';
+echo '<form class="GridForm" action="index.php?page=ActionUOs&mode='.$_GET['mode'].'" method="post"/>';
 echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Uos").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
