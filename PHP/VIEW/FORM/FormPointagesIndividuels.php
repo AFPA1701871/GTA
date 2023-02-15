@@ -50,10 +50,7 @@ else
 }
 
 echo '    <!--Séparation Prestations/Pointages => Zone Prestations -->';
-echo '    <div class="grid-presta tabCol grid-5-reduct pointHead bgc4 leftStickyRigth cellBottom">';
-echo '      <div id="anneeSelected" class="noDisplay">2023</div>';
-echo '      <div id="moisSelected" class="noDisplay">02</div>';
-echo '    </div>';
+echo '    <div class="grid-presta tabCol grid-5-reduct pointHead leftStickyRigth cellBottom"></div>';
 echo '    <!--Séparation Prestations/Pointages => Zone Pointages -->';
 echo '    <div class="grid-pointage tabCol pointHead">';
 
@@ -85,7 +82,7 @@ for ($i = 1; $i <= $nbrJoursMois; $i++)
             $classeBG = "work";
         }
     }
-    echo '        <div class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $jourOuvert . '</div>';
+    echo '        <div data-date='.$jour->format("Y-m-d").' class="center grid-lineDouble cellBottom ' . $classeBG . '">' . $jourOuvert . '</div>';
 }
 echo '    </div>';
 $typesPrestations = TypePrestationsManager::getList(null, null, "numeroTypePrestation", null, false, false);
@@ -120,9 +117,9 @@ foreach ($typesPrestations as $key => $value)
 
     echo '    <div class="grid-pointage tabCol pointMove">';
     echo '        <div class=" grid-lineSimple cellBottom titreTypePrestation grid-columns-span-31">&nbsp;</div>';
-    echo '                <div class="cellBottom center grid-lineSimple colTotal" data-line="' . $value->getNumeroTypePrestation() . '-1">0</div>';
-    echo '                <div class="cellBottom center grid-lineSimple" data-line="' . $value->getNumeroTypePrestation() . '-1"></div>';
-    echo '                <div class="cellBottom grid-lineSimple"></div>';
+    echo '                <div class="cellBottom center grid-lineDouble colTotal" data-line="' . $value->getNumeroTypePrestation() . '-1">0</div>';
+    echo '                <div class="cellBottom center grid-lineDouble" data-line="' . $value->getNumeroTypePrestation() . '-1"></div>';
+    echo '                <div class="cellBottom grid-lineDouble"></div>';
     for ($i = 1; $i <= $nbrJoursMois; $i++)
     {
         //on crée la date au format DateTime
@@ -147,7 +144,7 @@ foreach ($typesPrestations as $key => $value)
                 $classeBG = "work";
                 $content = '<input data-date="'.$jour->format("Y-m-d").'" data-line="' . $value->getNumeroTypePrestation() . '-1" class="inputPointage casePointage" type="text"></input>';  }
         }
-        echo '        <div class="center grid-lineSimple cellBottom ' . $classeBG . '"  >' . $content . '</div>';
+        echo '        <div class="center grid-lineDouble cellBottom ' . $classeBG . '"  >' . $content . '</div>';
     }
 
     echo '</div>';

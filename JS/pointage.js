@@ -33,6 +33,11 @@ listeLignesPresta.forEach(LignePresta => {
             cell2.classList.toggle("grid-lineDouble");
             cell2.classList.toggle("grid-lineQuad");
         })
+        listeInput = document.querySelectorAll(".grid-pointage input[data-line='" + ligneActu + "']");
+        listeInput.forEach(cell3 => {
+            cell3.parentNode.classList.toggle("grid-lineDouble");
+            cell3.parentNode.classList.toggle("grid-lineQuad");
+        })
     });
 })
 
@@ -104,14 +109,19 @@ function setGridPointage() {
 
 listeCases = document.querySelectorAll('.casePointage');
 listeCases.forEach(caseJour => {
-    caseJour.addEventListener('change', ChangeCellule)
+    caseJour.addEventListener('change', ChangeCellule);
+    caseJour.addEventListener('focus', SelectColonne);
+    caseJour.addEventListener('blur', SelectColonne);
 }
 )
 function ChangeCellule(e) {
-    ligne = e.target.getAttribute("data-line");
-    casesLigne = document.querySelectorAll("input.casePointage[data-line='" + ligne + "']");
-    if (e.target.getAttribute("data-line") == "0-1") {
-        MarquageAbsent(e, e.target.value);
+    let cell = e.target;
+    console.log(parseFloat(cell.value));
+    if (isNaN(parseFloat(cell.value))||(parseFloat(cell.value) < 0 || parseFloat(cell.value) > 1)) {
+        cell.value = "";
+    }
+    if (cell.getAttribute("data-line") == "0-1") {
+        MarquageAbsent(e, cell.value);
     }
     else {
         SommeColonne(e);
@@ -120,7 +130,9 @@ function ChangeCellule(e) {
 }
 
 function SommeLigne(e) {
-    total = 0;
+    let total = 0;
+    let ligne = e.target.getAttribute("data-line");
+    let casesLigne = document.querySelectorAll("input.casePointage[data-line='" + ligne + "']");
     casesLigne.forEach(inputCase => {
         if (inputCase.value != "") {
             ajout = inputCase.value;
@@ -129,15 +141,14 @@ function SommeLigne(e) {
         }
         total = (parseFloat(total) + parseFloat(ajout)).toFixed(2);
     })
-    ligne = e.target.getAttribute("data-line");
-    caseTotal = document.querySelector("div.colTotal[data-line='" + ligne + "']");
+    let caseTotal = document.querySelector("div.colTotal[data-line='" + ligne + "']");
     caseTotal.innerHTML = total;
 }
 
 function SommeColonne(e) {
-    total = 0;
-    colonne = e.target.getAttribute("data-date");
-    inputsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
+    let total = 0;
+    let colonne = e.target.getAttribute("data-date");
+    let inputsColonne = document.querySelectorAll("input[data-date='" + colonne + "']");
     inputsColonne.forEach(cellule => {
         if (e.target.getAttribute("data-line") != "0-1" && cellule.value != "") {
             ajout = cellule.value;
@@ -146,34 +157,57 @@ function SommeColonne(e) {
         }
         total = (parseFloat(total) + parseFloat(ajout)).toFixed(2);
     })
-    console.log(total);
+    let cellsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
+
     if (total == 1.00) {
-        inputsColonne.forEach(cellule => {
-            console.log("ok");
-            cellule.parentNode.classList.add("jourOK");
-        })
+        isOK = true;
+        isWork = false;
+        isWarning = false;
+    } else if (total > 1.00) {
+        isOK = false;
+        isWork = false;
+        isWarning = true;
+    } else {
+        isOK = false;
+        isWork = true;
+        isWarning = false;
     }
+    cellsColonne.forEach(cellule => {
+        cellule.classList.toggle("jourOK", isOK);
+        cellule.classList.toggle("work", isWork);
+        cellule.classList.toggle("jourWarn", isWarning);
+    })
 }
 
 function MarquageAbsent(e, valeur) {
-    colonne = e.target.getAttribute("data-date");
-    inputsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
+    let colonne = e.target.getAttribute("data-date");
+    let inputsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
     if (valeur == 1) {
         inputDisabled = true;
-        if (!(e.target.classList.contains("notApplicable"))) {
-            e.target.classList.add("notApplicable");
-        }
     }
     else {
         inputDisabled = false;
-        if ((e.target.classList.contains("notApplicable"))) {
-            e.target.classList.remove("notApplicable");
-        }
     }
+    e.target.classList.toggle("notApplicable", inputDisabled);
     inputsColonne.forEach(elt => {
         if (elt.getAttribute("data-line") != "0-1") {
             elt.value = "";
             elt.disabled = inputDisabled;
+            elt.classList.toggle("notApplicable", inputDisabled);
         }
-    })
+    });
+}
+
+function SelectColonne(e){
+    let colonne = e.target.getAttribute("data-date");
+    let inputsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
+    console.log(inputsColonne);
+    inputsColonne.forEach(elt => {
+        elt.classList.toggle("colSelected");
+        if(elt.nodeName=="DIV")
+        {
+            elt.classList.toggle("cellBottom");
+        }
+    });
+
 }
