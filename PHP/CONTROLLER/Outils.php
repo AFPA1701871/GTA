@@ -82,11 +82,15 @@ function afficherPage($page)
 			// - on est assistante ou admin
 			// - on a un rôle
 			// - on ne se déconnecte pas
-			if (($roleConnecte == $role['agent'] || $roleConnecte == $role['manager']) && ($roleConnecte == ['agent'] || $roleConnecte == $role['manager'] || $roleConnecte == $role['assistante'] || $roleConnecte == $role['admin']) && $nom != 'ActionDeconnexion')
+			if (($roleConnecte == $role['agent'] || $roleConnecte == $role['manager']) && ($roleConnecte == ['agent'] || $roleConnecte == $role['manager'] || $roleConnecte == $role['admin']) && $nom != 'ActionDeconnexion')
 			{
 				$chemin = 'PHP/VIEW/FORM/';
 				$nom = 'FormPointagesIndividuels';
 			}
+			// else if ($roleConnecte == $role['assistante'] && $nom != 'ActionDeconnexion' && $nom != 'ChangePassword'){
+			// 	$chemin = 'PHP/VIEW/GENERAL/';
+			// 	$nom = 'dbAssistante';
+			// }
 
 			include $chemin . $nom . '.php'; //Chargement de la page en fonction du chemin et du nom
 			include 'PHP/VIEW/GENERAL/Footer.php';
