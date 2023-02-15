@@ -66,6 +66,7 @@
     /* padding: 0em 0.2em; */
     overflow: hidden;
     align-content: space-around;
+    background-color: var(--color4);
 }
 
 .grid-columns-span-31 {
@@ -99,9 +100,9 @@
     /* height: 100%; */
 }
 
-.work {
+/* .work {
     background-color: white;
-}
+} */
 
 .notApplicable {
     background-color: var(--color7);
@@ -214,7 +215,7 @@ input[type="text"]:disabled {
 
 .inputPointage {
     width: 100%;
-    height: 100%;
+    /* height: 100%; */
     padding: 0px;
     text-align: center;
 }

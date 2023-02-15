@@ -16,6 +16,7 @@ sectionSideScroll.forEach(element => {
         e.preventDefault();
     })
 })
+//mod
 
 listeLignesPresta = document.querySelectorAll(".expand-line");
 listeLignesPresta.forEach(LignePresta => {
@@ -71,40 +72,6 @@ function setGridPointage() {
         }
     }
     feuilleStyle.style.setProperty('--grid-template-columns', theGridTemplateColumnsValue);
-    divPointage = document.querySelector(".grid-pointage.pointMove");
-    barresTitre = divPointage.querySelectorAll(".titreTypePrestation");
-    classe = "grid-columns-span-" + (nbreJour + 3);
-    barresTitre.forEach(barre => {
-        switch (nbreJour) {
-            case 28:
-                barre.classList.add("grid-columns-span-31");
-                barre.classList.remove("grid-columns-span-32");
-                barre.classList.remove("grid-columns-span-33");
-                barre.classList.remove("grid-columns-span-34");
-                break;
-            case 29:
-                barre.classList.add("grid-columns-span-32");
-                barre.classList.remove("grid-columns-span-31");
-                barre.classList.remove("grid-columns-span-33");
-                barre.classList.remove("grid-columns-span-34");
-                break;
-            case 30:
-                barre.classList.add("grid-columns-span-33");
-                barre.classList.remove("grid-columns-span-31");
-                barre.classList.remove("grid-columns-span-32");
-                barre.classList.remove("grid-columns-span-34");
-                break;
-            case 31:
-                barre.classList.add("grid-columns-span-34");
-                barre.classList.remove("grid-columns-span-31");
-                barre.classList.remove("grid-columns-span-32");
-                barre.classList.remove("grid-columns-span-33");
-                break;
-            default:
-                break;
-        }
-    })
-
 };
 
 listeCases = document.querySelectorAll('.casePointage');
