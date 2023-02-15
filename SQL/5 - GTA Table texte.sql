@@ -78,7 +78,7 @@ INSERT INTO gta_textes (`idTexte`, `codeTexte`, `fr`, `en`) VALUES
 (76, "Formulaire TypePrestations", "Formulaire de type de prestation", "Type of service form"),
 (77, "Formulaire Uos", "Formulaire U.O", "U.O form"),
 (78, "Formulaire Utilisateurs", "Formulaire de l'utilisateur", "User form"),
-(79, "Formulaire View_Pointages_Satellites", "Formulaire du pointage", "Clock in form"),
+(79, "Formulaire View_Pointages", "Formulaire du pointage", "Clock in form"),
 (80, "Formulaire View_Utilisateurs_Preferences_Prestations", "Formulaire de l'utilisateur", "User form"),
 (81, "Formulaire View_Utilisateurs", "Formulaire des utilisateurs", "Users form"),
 (82, "Données administratives", "Données administratives", "Administratives data"),

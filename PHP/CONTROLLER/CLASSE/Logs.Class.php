@@ -26,7 +26,7 @@ class Logs
 
 	public function getDateLog()
 	{
-		return is_null($this->_dateLog)?null:$this->_dateLog->format('Y-n-j H:i:s');
+		return is_null($this->_dateLog)?null:$this->_dateLog->format('F Y');
 	}
 
 	public function setDateLog(string $dateLog)
