@@ -218,8 +218,8 @@ input[type="text"]:disabled {
     padding: 0px;
     text-align: center;
 }
-.mainGrid input,
-.mainGrid select {
+
+.mainGrid input, .mainGrid select {
     box-shadow: none;
 }
 
