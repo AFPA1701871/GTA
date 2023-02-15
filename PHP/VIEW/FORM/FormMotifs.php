@@ -32,7 +32,7 @@ echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=IdTypePrestation class="caseForm labelForm">'.texte("IdTypePrestation").'</label>';
-echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdTypePrestation(), "TypePrestations", ["libelleTypePrestation"], $disabled) . '</div>';
+echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdTypePrestation(), "TypePrestations", ["libelleTypePrestation"], $disabled . ' required') . '</div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 

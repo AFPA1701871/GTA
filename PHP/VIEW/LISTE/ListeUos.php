@@ -7,7 +7,7 @@
  echo '<div><section class="colonne">';
  
 
-$objets = UosManager::getList(null, null, null, Parametres::getNbEltParPage());
+$objets = UOsManager::getList(null, null, null, Parametres::getNbEltParPage());
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
 echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
