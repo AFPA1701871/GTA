@@ -6,7 +6,7 @@ $idUtilisateur = 1;
 $user = View_UtilisateursManager::findById($idUtilisateur);
 
 $anneeVisionne = date("Y");
-$moisVisionne = date("m") * 1;
+$moisVisionne = date("m") * 1 +1;
 echo '  <main>
             <div id=IdUtilisateur class="noDisplay">'.$idUtilisateur.'</div>
             <div class="cote"></div>
@@ -39,10 +39,7 @@ echo '          <div></div>
 
 $nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $moisVisionne, $anneeVisionne);
 $listeFermeturesDuMois = FermeturesManager::getDates($moisVisionne);
-echo '  <div class="grid-presta tabCol grid-5-reduct pointHead bgc4 leftStickyRigth cellBottom">
-            <div id="anneeSelected" class="noDisplay">2023</div>
-            <div id="moisSelected" class="noDisplay">02</div>
-        </div>
+echo '  <div class="grid-presta tabCol grid-5-reduct pointHead leftStickyRigth cellBottom"></div>
         <div class="grid-pointage tabCol pointHead">
             <div class="cellBottom center grid-lineDouble bgc4">Total</div>
             <div class="cellBottom center grid-lineDouble bgc4">%GTA</div>

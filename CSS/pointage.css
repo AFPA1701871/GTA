@@ -225,8 +225,7 @@ input[type="text"]:disabled {
 
 .mainGrid i {
     padding: 0 0.2rem;
-}
-
+   }
 .rtt {
     padding-left: 0.5rem;
 }
