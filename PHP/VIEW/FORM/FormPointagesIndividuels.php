@@ -7,6 +7,7 @@ $user = View_UtilisateursManager::findById($idUtilisateur);
 
 $anneeVisionne = date("Y");
 $moisVisionne = date("m") * 1;
+$periode = $anneeVisionne.'-'.$moisVisionne;
 echo '  <main>
             <div id=IdUtilisateur class="noDisplay">'.$idUtilisateur.'</div>
             <div class="cote"></div>
@@ -15,15 +16,13 @@ echo '  <main>
                 <div class="grid-columns-span-2 center infosUser">
                     <div>Année: </div>
                 <div>';
-echo creerSelectTab($anneeVisionne, Parametres::getAnneeDisponible(), null, "anneeVisionne", false);
+echo creerSelectTab($anneeVisionne, Parametres::getAnneeDisponible(),"class=noDisplay", "anneeVisionne", false);
+echo creerSelectTab($periode, tabMoisAnnee(),null, "periode", false);
 echo '        </div>
-                <div></div>
-                <div>Mois:</div>
-                <div>';
+                ';
 // A remplacer par mois en cours dès que disponible
-echo creerSelectTab($mois[$moisVisionne], $mois, null, "moisVisionne", true);
-echo '          </div>
-                <div></div>
+echo creerSelectTab($mois[$moisVisionne], $mois, "class=noDisplay", "moisVisionne", true);
+echo '          <div></div>
                 <div>Nom:</div>
                 <div>' . $user->getNomUtilisateur() . '</div>
                 <div></div>
@@ -92,7 +91,8 @@ foreach ($typesPrestations as $key => $typePresta)
         echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
               <div data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
-                      <input value = "' . $prestation->getLibellePrestation() . '">
+                  <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '">
+                  <input value = "' . $prestation->getLibellePrestation() . '">
                       <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></i></div>
                             </div>
