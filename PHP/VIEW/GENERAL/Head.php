@@ -6,11 +6,12 @@
 //Si le titre est indiqué, on l'affiche entre les balises <title>
 echo (!empty($titre)) ? '<title>' . $titre . '</title>' : '<title> Titre de la page </title>';
 echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="icon" type="image/png" href="IMG/favicon.ico">
+<link rel="icon" type="image/png" href="IMG/LogoGTA_blanc.png">
 
 <link rel="stylesheet" href="CSS/root.css">
 <link rel="stylesheet" href="CSS/style.css">
 <link rel="stylesheet" href="CSS/icon.css">
+<link rel="stylesheet" href="CSS/header.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
