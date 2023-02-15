@@ -1,7 +1,8 @@
 // Récupération du canvas
 const ctx = document.getElementById("chart");
 var dark;
-document.querySelector(".darkmode").addEventListener('click', () => {
+document.querySelector(".dark").addEventListener('change', () => {
+    console.log(querySelector(".dark"));
     dark = (document.getElementsByClassName("dark"))[0] ? '#F0EEED': 'black';
 });
 // Test du rôle

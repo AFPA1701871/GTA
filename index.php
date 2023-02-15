@@ -27,9 +27,8 @@ setcookie("lang", $_SESSION['lang'], time() + 36000, '/');
 $routes = [
 	"Default" => ["PHP/VIEW/FORM/", "FormConnexion", "Connexion", 0, false],
 	"Accueil" => ["PHP/VIEW/GENERAL/", "Accueil", "Accueil", 0, false],
-	"dbAssistante" => ["PHP/VIEW/GENERAL/", "dbAssistante", "DashBoard Assistante", 3, false],
-	"dbManager" => ["PHP/VIEW/GENERAL/", "dbManager", "DashBoard Manager", 2, false],
-	"dbAdmin" => ["PHP/VIEW/GENERAL/", "dbAdmin", "DashBoard Admin", 4, false],
+	"TbAssistante" => ["PHP/VIEW/GENERAL/", "TbAssistante", "Tableau de bord de l'assistante", 3, false],
+	"TbManager" => ["PHP/VIEW/GENERAL/", "TbManager", "Tableau de bord du manager", 2, false],
 	
 	"ActionConnexion" => ["PHP/CONTROLLER/ACTION/", "ActionConnexion", "Action de la connexion", 0, false],
 	"ChangePassword" => ["PHP/VIEW/GENERAL/", "ChangePassword", "Modification du mot de passe", 0, false],
