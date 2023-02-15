@@ -227,6 +227,12 @@ function creerSelectTab( $valeur, array $tab,  ?string $attributs = "",  string 
 		return $select;
 }
 
+/**
+ * Créer un tableau associatif contenant les mois et années
+ *
+ * @param array $mois
+ * @return array
+ */
 function tabMoisAnnee($mois)
 {
 	// Récupération des années et des mois
