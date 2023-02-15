@@ -57,14 +57,6 @@ function afficherPage($page)
 		if  ($api) {
 			include $chemin . $nom . '.php';
 		} else {
-			$role = [];
-			$roles = RolesManager::getList();
-			foreach ($roles AS $key => $value)
-			{
-				$nomRole = $value->getNomRole();
-				$role["$nomRole"] = $value->getIdRole();
-			}
-
 			include 'PHP/VIEW/GENERAL/Head.php';
 			include 'PHP/VIEW/GENERAL/Header.php';
 
@@ -72,25 +64,11 @@ function afficherPage($page)
 			// - on est connecté
 			// - on est pas dans une des pages d'action
 			// - on ne modifie pas de force son mot de passe
-			// - on est assistante ou admin
-			if (isset($_SESSION["utilisateur"]) && (stripos($chemin,"PHP/CONTROLLER/ACTION/") !== 0) && $nom != "ChangePassword" && ($roleConnecte == $role['assistante'] || $roleConnecte == $role['admin']))
+			// - on est assistante (id 3) ou admin (id 4)
+			if (isset($_SESSION["utilisateur"]) && (stripos($chemin,"PHP/CONTROLLER/ACTION/") !== 0) && $nom != "ChangePassword" && ($roleConnecte == 3 || $roleConnecte == 4))
 			{
 				include 'PHP/VIEW/GENERAL/Nav.php';
 			}
-
-			// On force à afficher uniquement le pointage si :
-			// - on est assistante ou admin
-			// - on a un rôle
-			// - on ne se déconnecte pas
-			if (($roleConnecte == $role['agent'] || $roleConnecte == $role['manager']) && ($roleConnecte == ['agent'] || $roleConnecte == $role['manager'] || $roleConnecte == $role['admin']) && $nom != 'ActionDeconnexion')
-			{
-				$chemin = 'PHP/VIEW/FORM/';
-				$nom = 'FormPointagesIndividuels';
-			}
-			// else if ($roleConnecte == $role['assistante'] && $nom != 'ActionDeconnexion' && $nom != 'ChangePassword'){
-			// 	$chemin = 'PHP/VIEW/GENERAL/';
-			// 	$nom = 'dbAssistante';
-			// }
 
 			include $chemin . $nom . '.php'; //Chargement de la page en fonction du chemin et du nom
 			include 'PHP/VIEW/GENERAL/Footer.php';

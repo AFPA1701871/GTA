@@ -29,7 +29,7 @@ $routes = [
 	"Accueil" => ["PHP/VIEW/GENERAL/", "Accueil", "Accueil", 0, false],
 	"dbAssistante" => ["PHP/VIEW/GENERAL/", "dbAssistante", "DashBoard Assistante", 3, false],
 	"dbManager" => ["PHP/VIEW/GENERAL/", "dbManager", "DashBoard Manager", 2, false],
-
+	"dbAdmin" => ["PHP/VIEW/GENERAL/", "dbAdmin", "DashBoard Admin", 4, false],
 	
 	"ActionConnexion" => ["PHP/CONTROLLER/ACTION/", "ActionConnexion", "Action de la connexion", 0, false],
 	"ActionDeconnexion" => ["PHP/CONTROLLER/ACTION/", "ActionDeconnexion", "Action de deconnexion", 0, false],
