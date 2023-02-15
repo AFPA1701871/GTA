@@ -1,7 +1,7 @@
 :root {
     --width-col-total: 3em;
     --width-col-prct: 3em;
-    --width-col-jo: auto;
+    --width-col-jo: minmax(2em, auto);
     --width-col-we: 0.2em;
     --grid-template-columns: var(--width-col-total) var(--width-col-prct) 0.1em var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo);
     --color7: #87919e;
