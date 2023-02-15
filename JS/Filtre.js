@@ -23,3 +23,4 @@ function RechercheFullTexte() {
     arrayConditions.fullTexte = recherche.value;
     AfficherPage(pageActive, true);
 }
+
