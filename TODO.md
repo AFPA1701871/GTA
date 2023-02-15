@@ -1,5 +1,12 @@
 # Correctif generateur
 
+## Header
+* [ ] Ajouter le titre de l'application
+
+## Formulaires
+* [ ] Changer oeil -> ON/OFF plutôt que rester appuyé
+* [ ] Enlever les icones (? et v)
+
 ## Crud Utilisateurs
 
 * [ ] Gérer le mot de passe
@@ -30,14 +37,15 @@
 
 # Spécificités appli
 
-* [ ] Ajouter un logo et un favicon (Colin)
+* [X] Ajouter un logo et un favicon (Colin)
 
 ## Crud Utilisateurs
 
-* [ ] Ajouter le reinit (Fabien)
+* [ ] Ajouter le reinit 
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
+* [ ] Bug 
 * [X] Remplacer les input ID par des select (Yves)
-* [ ] Ajouter un lien changer mot de passe dans le header (Fabien)
+* [ ] Ajouter un lien changer mot de passe dans le header
 * [X] Mettre un check sur actif (Alexandre)
 
 ## Table Associations
@@ -50,10 +58,19 @@
 
 ## Gestion des pointages
 
-* [ ] Créer la page en HTML (Florent)
-* [ ] Feuille de pointage individuel avec préférences
-* [ ] Récapitulatif pointage pour manager
-* [ ] Récapitulatif pointage pour ARH
+* [X] Créer la page en HTML (Florent)
+* [ ] Feuille de pointage individuel avec préférences (Florent)
+* [ ] Ajax étoiles préférences (Florent)
+* [ ] % sur les lignes de pointage
+* [ ] Message informatif sauvegardes
+* [ ] Récapitulatif pointage pour manager 
+* [ ] Récapitulatif pointage pour ARH 
+* [ ] Precision pour les RTT
+* [ ] Gestion des logs
+* [ ] Gestion de l'envoi de mail
+
+## Tableaux de bord (Fabien)
+* [ ] Ajouter des titres aux grids
 
 ## CRUD Prestations
 
@@ -64,7 +81,7 @@
 ## Connexion
 
 * [X] Supprimer la partie inscription
-* [ ] Changer la connexion avec le matricule plutôt que l'adresse mail (Martine)
+* [X] Changer la connexion avec le matricule plutôt que l'adresse mail (Martine)
 * [X] Retravailler le formulaire de changement de mot de passe (Yves)
 
 ## CSS
@@ -73,7 +90,7 @@
 
 ## Type Prestation
 
-* [ ] CRUD Modifier par des checkBox (Colin)
+* [X] CRUD Modifier par des checkBox (Colin)
 * [X] Ajouter le sous formulaire pour choisir les activités associées (Yves)
 * [X] AJAX pour gérer les activités associées (Alexandre)
 
@@ -84,3 +101,9 @@
 ## CRUD Motifs
 
 * [X] Remplacer l'input IdTypePrestation par un select (Alexandre)
+
+## Gestion de l'archivage (Martine)
+* [ ] HF
+
+## Feriés
+* [ ] Visuel du chargement des fériés de l'année (Yves)
