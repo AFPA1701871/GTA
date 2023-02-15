@@ -16,6 +16,7 @@ sectionSideScroll.forEach(element => {
         e.preventDefault();
     })
 })
+//mod
 
 listeLignesPresta = document.querySelectorAll(".expand-line");
 listeLignesPresta.forEach(LignePresta => {

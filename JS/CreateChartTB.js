@@ -1,6 +1,9 @@
 // Récupération du canvas
 const ctx = document.getElementById("chart");
-
+var dark;
+document.querySelector(".darkmode").addEventListener('click', () => {
+    dark = (document.getElementsByClassName("dark"))[0] ? '#F0EEED': 'black';
+});
 // Test du rôle
 if (ctx.getAttribute("data-role") == "manager") {
     // Chart Manager
@@ -82,6 +85,8 @@ const config = {
 
                         return labelsOriginal;
                     },
+                    color:dark,
+                    font:{weight:"bold"}
                 },
             },
         },

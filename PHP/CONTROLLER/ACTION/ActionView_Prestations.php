@@ -1,5 +1,5 @@
 <?php
-$elm = new Gta_View_Prestations($_POST);
+$elm = new View_Prestations($_POST);
 
 switch ($_GET['mode']) {
 	case "Ajouter": {
@@ -16,4 +16,4 @@ switch ($_GET['mode']) {
 	}
 }
 
-header("location:index.php?page=ListeGta_View_Prestations");
+header("location:index.php?page=Liste_View_Prestations");

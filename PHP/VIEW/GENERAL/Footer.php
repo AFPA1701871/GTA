@@ -25,6 +25,9 @@ if (isset($page)) {
             if ($page[1] == "FormTypePrestations" && $_GET["mode"] == "Modifier") {
                 echo '<script src="./JS/CheckActivites.js"></script>';
             }
+            if ($page[1] == "FormPointagesIndividuels" ) {
+                echo '<script src="./JS/CrudPointage.js"></script>';
+            }
             echo ' <script src="./JS/pointage.js"></script>';
         } 
     }
@@ -37,7 +40,7 @@ if (isset($page)) {
             echo '<script src="./JS/CreateChartTB.js"></script>';
             break;
         case 'Accueil':
-            echo '<script src="./JS/pointage.js"></script>';
+            echo '<script src="./JS/Pointage.js"></script>';
             break;
         case 'ListeFermetures':
             echo '<script src="./JS/JoursFeries.js"></script>';

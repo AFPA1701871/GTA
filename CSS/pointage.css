@@ -49,7 +49,7 @@
 }
 
 .grid-lineSimple {
-    height: 1.5em;
+    margin: 0.4rem 0;
 }
 
 .grid-lineDouble {
@@ -57,7 +57,7 @@
 }
 
 .grid-lineQuad {
-    height: 6.3em;
+    /* height: 6.3em; */
 } 
 
 .grid-pointage {
@@ -66,6 +66,7 @@
     /* padding: 0em 0.2em; */
     overflow: hidden;
     align-content: space-around;
+    background-color: var(--color4);
 }
 
 .grid-columns-span-31 {
@@ -96,12 +97,12 @@
 
 .noWork {
     background-color: lightgrey;
-    height: 100%;
+    /* height: 100%; */
 }
 
-.work {
+/* .work {
     background-color: white;
-}
+} */
 
 .notApplicable {
     background-color: var(--color7);
@@ -226,6 +227,10 @@ input[type="text"]:disabled {
 .mainGrid i {
     padding: 0 0.2rem;
    }
+/* 
+   .mainGrid {
+    flex: 0;
+   } */
 .rtt {
     padding-left: 0.5rem;
 }

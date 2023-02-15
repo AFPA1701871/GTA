@@ -16,4 +16,4 @@ switch ($_GET['mode']) {
 	}
 }
 
-header("location:index.php?page=ListeGta_View_Motifs");
+header("location:index.php?page=ListeView_Motifs");
