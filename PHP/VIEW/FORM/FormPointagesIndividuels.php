@@ -7,7 +7,7 @@ $user = View_UtilisateursManager::findById($idUtilisateur);
 
 $anneeVisionne = date("Y");
 $moisVisionne = date("m") * 1;
-$periode = $anneeVisionne.'-'.$moisVisionne;
+$periode = $anneeVisionne.'-0'.$moisVisionne;
 echo '  <main>
             <div id=IdUtilisateur class="noDisplay">'.$idUtilisateur.'</div>
             <div class="cote"></div>
@@ -17,7 +17,7 @@ echo '  <main>
                     <div>Année: </div>
                 <div>';
 echo creerSelectTab($anneeVisionne, Parametres::getAnneeDisponible(),"class=noDisplay", "anneeVisionne", false);
-echo creerSelectTab($periode, tabMoisAnnee(),null, "periode", false);
+echo creerSelectTab($periode, tabMoisAnnee(),null, "periode", true);
 echo '        </div>
                 ';
 // A remplacer par mois en cours dès que disponible
