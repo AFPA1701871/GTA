@@ -40,7 +40,8 @@ class FermeturesManager
 		// Création d'un tableau plat si on a des résultats
 		if ($dates != null) {
 			foreach ($dates as $date) {
-				$listeDates[] = $date->getDateFermeture();
+				$d = strtotime($date->getDateFermeture());
+				$listeDates[] = date("Y-m-d", $d);
 			}
 		}
 		return $listeDates;
