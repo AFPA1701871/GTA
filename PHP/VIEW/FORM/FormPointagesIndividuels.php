@@ -6,7 +6,7 @@ $idUtilisateur = 1;
 $user = View_UtilisateursManager::findById($idUtilisateur);
 
 $anneeVisionne = date("Y");
-$moisVisionne = date("m") * 1;
+$moisVisionne = date("m") * 1 +1;
 echo '  <main>
             <div class="cote"></div>
             <div class="mainGrid grid-col2-reduct">
