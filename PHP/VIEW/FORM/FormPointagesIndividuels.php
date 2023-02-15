@@ -91,8 +91,8 @@ foreach ($typesPrestations as $key => $typePresta)
         echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
               <div data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
-                  <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '">
-                  <input value = "' . $prestation->getLibellePrestation() . '">
+                  <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">
+                  <input value = "' . $prestation->getLibellePrestation() . '" >
                       <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></i></div>
                             </div>
@@ -104,33 +104,33 @@ foreach ($typesPrestations as $key => $typePresta)
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getUORequis())
         {
-            echo '<input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getNumeroUO() . '">';
+            echo '<input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputUo" value = "' . $prestation->getNumeroUO() . '">';
         }
         else
         {
-            echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" disabled>';
+            echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputUo" disabled>';
         }
 
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getMotifRequis())
         {
-            echo '<input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodeMotif() . '">';
+            echo '<input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputMotif" value = "' . $prestation->getCodeMotif() . '">';
         }
         else
         {
-            echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" disabled>';
+            echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputMotif" disabled>';
         }
 
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getProjetRequis())
         {
-            echo '<input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodeProjet() . '">';
+            echo '<input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputProjet" value = "' . $prestation->getCodeProjet() . '">';
         }
         else
         {
-            echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" disabled>';
+            echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputProjet"disabled>';
         }
 
         echo '</div>
