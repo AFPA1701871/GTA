@@ -67,7 +67,7 @@ for ($i = 1; $i <= $nbrJoursMois; $i++)
         if (in_array($jour->format("Y-m-d"), $listeFermeturesDuMois))
         {
             $tabJour[$i]["classeBG"] = "notApplicable";
-            $tabJour[$i]["content"] = "";
+            $tabJour[$i]["content"] = "<input disabled class=' notApplicable inputPointage casePointage'>";
         }
         else
         {
