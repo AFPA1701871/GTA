@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+<?php
 //Si le titre est indiqué, on l'affiche entre les balises <title>
 echo (!empty($titre)) ? '<title>' . $titre . '</title>' : '<title> Titre de la page </title>';
 echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
