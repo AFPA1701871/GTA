@@ -37,6 +37,7 @@ $routes = [
 	"ListeAPI" => ["PHP/MODEL/API/", "ListeAPI", "ListeAPI", 0, true],
 	"MAJActivitesParTypesAPI" => ["PHP/MODEL/API/", "MAJActivitesParTypesAPI", "MAJActivitesParTypesAPI", 0, true],
 	"MAJPointageAPI" => ["PHP/MODEL/API/", "MAJPointageAPI", "MAJPointageAPI", 0, true],
+	"MAJJoursFeriesAPI" => ["PHP/MODEL/API/", "MAJJoursFeries", "MAJJoursFeries", 3, true],
 	
 	"ListeActivites" => ["PHP/VIEW/LISTE/", "ListeActivites", "Liste Activites", 3, false],
 	"FormActivites" => ["PHP/VIEW/FORM/", "FormActivites", "Formulaire Activites", 3, false],
@@ -65,6 +66,8 @@ $routes = [
 	"ListeFermetures" => ["PHP/VIEW/LISTE/", "ListeFermetures", "Liste Fermetures", 3, false],
 	"FormFermetures" => ["PHP/VIEW/FORM/", "FormFermetures", "Formulaire Fermetures", 3, false],
 	"ActionFermetures" => ["PHP/CONTROLLER/ACTION/", "ActionFermetures", "Action Fermetures", 3, false],
+
+	"FormFeries" => ["PHP/VIEW/FORM/", "FormFeries", "Formulaire des jours fériés", 3, false],
 
 	"ListeLogs" => ["PHP/VIEW/LISTE/", "ListeLogs", "Liste Logs", 3, false],
 	"FormLogs" => ["PHP/VIEW/FORM/", "FormLogs", "Formulaire Logs", 3, false],

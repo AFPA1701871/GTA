@@ -334,6 +334,15 @@ nav {
 #searchInList {
     max-width: 300px;
 }
+
+#anneeJoursFeries {
+    max-width: 70px;
+}
+
+.feriesSeparation {
+    max-width: 50px;
+}
+
 .sous-menu {
     z-index: 1000;
     display: none;
