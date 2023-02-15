@@ -7,7 +7,7 @@
  echo '<div><section class="colonne">';
  
 
-$objets = View_Pointages_SatellitesManager::getList(null, null, null, Parametres::getNbEltParPage());
+$objets = View_PointagesManager::getList(null, null, null, Parametres::getNbEltParPage());
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
 echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
@@ -19,7 +19,7 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="caseListe grid-columns-span-29">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe"><a class="pyjama"  href="index.php?page=FormView_Pointages_Satellites&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
+<div class="caseListe"><a class="pyjama"  href="index.php?page=FormView_Pointages&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
 <div></div>
 </div>';
 
@@ -83,11 +83,11 @@ echo '<div class="donnees pyjama ">IdPrestation</div>';
 echo '<div class="donnees pyjama ">CodePrestation</div>';
 echo '<div class="donnees pyjama ">LibellePrestation</div>';
 echo '<div class="donnees pyjama ">IdActivite</div>';
- echo '<a class="pyjama"  href="index.php?page=FormView_Pointages_Satellites&mode=Afficher&id=IdPointage"><i class="fas fa-file-contract"></i></a>';
+ echo '<a class="pyjama"  href="index.php?page=FormView_Pointages&mode=Afficher&id=IdPointage"><i class="fas fa-file-contract"></i></a>';
                                     
-echo '<a class="pyjama"  href="index.php?page=FormView_Pointages_Satellites&mode=Modifier&id=IdPointage"><i class="fas fa-pen"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormView_Pointages&mode=Modifier&id=IdPointage"><i class="fas fa-pen"></i></a>';
                                     
-echo '<a class="pyjama"  href="index.php?page=FormView_Pointages_Satellites&mode=Supprimer&id=IdPointage"><i class="fas fa-trash-alt"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormView_Pointages&mode=Supprimer&id=IdPointage"><i class="fas fa-trash-alt"></i></a>';
  echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';

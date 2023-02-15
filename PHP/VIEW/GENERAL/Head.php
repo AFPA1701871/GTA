@@ -18,7 +18,7 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&display=swap" rel="stylesheet">';
-if (substr($nom,0,4)=="Form"){
+if (substr($nom,0,4)=="Form" || $nom == 'Accueil'){
     echo '  <link rel="stylesheet" href="CSS/grids.css">
             <link rel="stylesheet" href="CSS/form.css">
             <link rel="stylesheet" href="CSS/pointage.css">';
@@ -28,6 +28,9 @@ else if (substr($nom,0,4)=="List"){
 }
 else if (substr($nom,0,4)=="Chan"){
     echo ' <link rel="stylesheet" href="CSS/form.css">';
+}
+else if (substr($nom,0,4)=="dbAs"){
+    echo ' <link rel="stylesheet" href="CSS/dbAssistante.css">';
 }
 echo '</head>';
 //  <script src="https://kit.fontawesome.com/ce4feb7268.js" crossorigin="anonymous"></script>

@@ -26,5 +26,24 @@ class FermeturesManager
 	public static function getList(array $nomColonnes=null,  array $conditions = null, string $orderBy = null, string $limit = null, bool $api = false, bool $debug = false)
 	{
  		$nomColonnes = ($nomColonnes==null)?Fermetures::getAttributes():$nomColonnes;
-		return DAO::select($nomColonnes,"Fermetures",   $conditions ,  $orderBy,  $limit ,  $api,  $debug );	}
+		return DAO::select($nomColonnes,"Fermetures",   $conditions ,  $orderBy,  $limit ,  $api,  $debug );
+	}
+
+	public static function getDates(string $periode)
+	{
+		// Nettoyage de la période
+		$periodeClean = htmlentities($periode);
+
+		$dates = DAO::select(["dateFermeture"], "Fermetures", ["dateFermeture" => $periodeClean . "%"], "dateFermeture ASC");
+		$listeDates = [];
+
+		// Création d'un tableau plat si on a des résultats
+		if ($dates != null) {
+			foreach ($dates as $date) {
+				$d = strtotime($date->getDateFermeture());
+				$listeDates[] = date("Y-m-d", $d);
+			}
+		}
+		return $listeDates;
+	}
 }

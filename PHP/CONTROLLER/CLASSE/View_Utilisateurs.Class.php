@@ -19,7 +19,9 @@ class View_Utilisateurs
 	private $_numeroUO;
 	private $_libelleUO;
 	private $_nomRole;
-	private static $_attributes=["idUtilisateur","nomUtilisateur","mailUtilisateur","matriculeUtilisateur","idUO","idRole","idManager","nomManager","mailManager","matriculeManager","actif","numeroUO","libelleUO","nomRole"];
+	private $_idCentre;
+	private $_nomCentre;
+	private static $_attributes=["idUtilisateur","nomUtilisateur","mailUtilisateur","matriculeUtilisateur","idUO","idRole","idManager","nomManager","mailManager","matriculeManager","actif","numeroUO","libelleUO","nomRole","idCentre","nomCentre"];
 	/***************** Accesseurs ***************** */
 
 
@@ -162,7 +164,25 @@ class View_Utilisateurs
 	{
 		$this->_nomRole=$nomRole;
 	}
+	public function getIdCentre()
+	{
+		return $this->_idCentre;
+	}
 
+	public function setIdCentre($idCentre)
+	{
+		$this->_idCentre = $idCentre;
+	}
+
+	public function getNomCentre()
+	{
+		return $this->_nomCentre;
+	}
+
+	public function setNomCentre($nomCentre)
+	{
+		$this->_nomCentre = $nomCentre;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;
@@ -200,4 +220,6 @@ class View_Utilisateurs
 	{
 		return "IdUtilisateur : ".$this->getIdUtilisateur()."NomUtilisateur : ".$this->getNomUtilisateur()."MailUtilisateur : ".$this->getMailUtilisateur()."MatriculeUtilisateur : ".$this->getMatriculeUtilisateur()."IdUO : ".$this->getIdUO()."IdRole : ".$this->getIdRole()."IdManager : ".$this->getIdManager()."NomManager : ".$this->getNomManager()."MailManager : ".$this->getMailManager()."MatriculeManager : ".$this->getMatriculeManager()."Actif : ".$this->getActif()."NumeroUO : ".$this->getNumeroUO()."LibelleUO : ".$this->getLibelleUO()."NomRole : ".$this->getNomRole()."\n";
 	}
+
+	
 }

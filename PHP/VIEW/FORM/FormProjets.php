@@ -22,12 +22,12 @@ echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Projets"
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdProjet().'" name=IdProjet></div>';
 echo '<label for=CodeProjet class="caseForm labelForm">'.texte("CodeProjet").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getCodeProjet().'" name=CodeProjet pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getCodeProjet().'" name=CodeProjet pattern="'.$regex["*"].'" required></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
 echo '<label for=LibelleProjet class="caseForm labelForm">'.texte("LibelleProjet").'</label>';
-echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getLibelleProjet().'" name=LibelleProjet pattern="'.$regex["*"].'"></div>';
+echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getLibelleProjet().'" name=LibelleProjet pattern="'.$regex["*"].'" required></div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
