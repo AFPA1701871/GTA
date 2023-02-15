@@ -1,6 +1,10 @@
 <?php
 $elm = new Conversions($_POST);
 
+// On désactive le rendu de < et >
+$quotient = htmlentities($elm->getCoeffConversion());
+$elm->setCoeffConversion($quotient);
+
 switch ($_GET['mode']) {
 	case "Ajouter": {
 		$elm = ConversionsManager::add($elm);

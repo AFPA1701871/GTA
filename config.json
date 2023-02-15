@@ -4,5 +4,6 @@
 	"DbName":"gta",
 	"Login":"root",
 	"Pwd":"",
-	"NbEltParPage":50
+	"NbEltParPage":50,
+	"AnneeDisponible":[2022,2023,2024]
 }

@@ -31,7 +31,7 @@ $routes = [
 	
 	"ActionConnexion" => ["PHP/CONTROLLER/ACTION/", "ActionConnexion", "Action de la connexion", 0, false],
 	"ActionDeconnexion" => ["PHP/CONTROLLER/ACTION/", "ActionDeconnexion", "Action de deconnexion", 0, false],
-	"ChangePassword" => ["PHP/VIEW/GENERAL/", "ChangePassword", "Action de deconnexion", 0, false],
+	"ChangePassword" => ["PHP/VIEW/GENERAL/", "ChangePassword", "Modification du mot de passe", 0, false],
 	
 	"ListeMailAPI" => ["PHP/MODEL/API/", "ListeMailAPI", "ListeMailAPI", 0, true],
 	"ListeAPI" => ["PHP/MODEL/API/", "ListeAPI", "ListeAPI", 0, true],
@@ -73,8 +73,9 @@ $routes = [
 	"ListeMotifs" => ["PHP/VIEW/LISTE/", "ListeView_Motifs", "Liste Motifs", 0, false],
 	"FormMotifs" => ["PHP/VIEW/FORM/", "FormMotifs", "Formulaire Motifs", 0, false],
 	"ActionMotifs" => ["PHP/CONTROLLER/ACTION/", "ActionMotifs", "Action Motifs", 0, false],
+	"Easter" => ["PHP/VIEW/FORM/", "FormEaster", "Easter", 0, false],
 
-	//"ListePointages" => ["PHP/VIEW/LISTE/", "ListePointages", "Liste Pointages", 0, false],
+	"ListePointages2" => ["PHP/VIEW/FORM/", "FormPointages", "Liste Pointages", 0, false],
 	"FormPointages" => ["PHP/VIEW/FORM/", "FormPointages", "Formulaire Pointages", 0, false],
 	"ActionPointages" => ["PHP/CONTROLLER/ACTION/", "ActionPointages", "Action Pointages", 0, false],
 

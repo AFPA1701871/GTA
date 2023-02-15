@@ -1,6 +1,10 @@
 <?php
 $elm = new Activites($_POST);
 
+// On désactive le rendu de < et >
+$libelle = htmlentities($elm->getLibelleActivite());
+$elm->setLibelleActivite($libelle);
+
 switch ($_GET['mode']) {
 	case "Ajouter": {
 		$elm = ActivitesManager::add($elm);

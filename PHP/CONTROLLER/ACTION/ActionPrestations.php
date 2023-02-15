@@ -1,6 +1,10 @@
 <?php
 $elm = new Prestations($_POST);
 
+// On désactive le rendu de < et >
+$libelle = htmlentities($elm->getLibellePrestation());
+$elm->setLibellePrestation($libelle);
+
 switch ($_GET['mode']) {
 	case "Ajouter": {
 		$elm = PrestationsManager::add($elm);

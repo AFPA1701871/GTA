@@ -12,6 +12,10 @@ if ($elm->getProjetRequis() == null) {
 	$elm->setProjetRequis(0);
 }
 
+// On désactive le rendu de < et >
+$libelle = htmlentities($elm->getLibelleTypePrestation());
+$elm->setLibelleTypePrestation($libelle);
+
 switch ($_GET['mode']) {
 	case "Ajouter": {
 		$elm = TypePrestationsManager::add($elm);

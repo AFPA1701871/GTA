@@ -56,7 +56,7 @@
             <div></div>
             <div></div>
             <div></div>
-            <input type="submit" value="<?= texte('Envoyer')  ?>"></button>
+            <input type="submit" id="submit" value="<?= texte('Envoyer')  ?>" disabled></button>
         </form>
     </section>
 </main>

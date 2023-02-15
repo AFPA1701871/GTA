@@ -102,4 +102,9 @@ INSERT INTO gta_textes (`idTexte`, `codeTexte`, `fr`, `en`) VALUES
 (101, "IdUO", "U.O", "U.O"),
 (102, "PasswordUtilisateur", "Mot de passe", "Password"),
 (103, "IdRole", "Rôle", "Role"),
-(104, "IdManager", 'Manager', "Manager");
+(104, "IdManager", 'Manager', "Manager"),
+(105, "IdTypePrestation", "Type de prestation", "Service type"),
+(106, "IdCentre", "Centre", "Centre"),
+(107, "IdUtilisateur", "Utilisateur", "User"),
+(108, "DateDebutContrat", "Date de début de contrat", "Contract start date"),
+(109, "DateFinContrat", "Date de fin de contrat", "Contract end date");

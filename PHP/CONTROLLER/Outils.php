@@ -71,7 +71,7 @@ function afficherPage($page)
 		$titre = "Authorisation insuffisante";
 		include 'PHP/VIEW/GENERAL/Head.php';
 		include 'PHP/VIEW/GENERAL/Header.php';
-		include 'PHP/VIEW/FORM/FormInscriptionConnexion.php';
+		include 'PHP/VIEW/FORM/FormConnexion.php';
 		include 'PHP/VIEW/GENERAL/Footer.php';
 	}
 }
@@ -95,6 +95,10 @@ $regex = [
 	"postal" => "[0-9]{5}",
 	"*"  => ".*"
 ];
+$mois=[1=>"Janvier",2=>"Février",3=>"Mars",4=>"Avril",5=>"Mai",6=>"Juin",7=>"Juillet",8=>"Aout",9=>"Septembre",10=>"Octobre",11=>"Novembre",12=>"Décembre"];
+
+
+$joursSemaine = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
 
 function appelGet($obj, $chaine)
 {
@@ -160,6 +164,38 @@ function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $a
 						$select .= '<option value="' . appelGet($elt, $nomId) . '" SELECTED>' . $content . '</option>';
 				} else {
 						$select .= '<option value="' . appelGet($elt, $nomId) . '">' . $content . '</option>';
+				}
+			}
+		$select .= "</select>";
+		return $select;
+}
+
+/**
+ * Créer un select (combobox) à partir d'un tableau
+ *
+ * @param integer|null $valeur
+ * @param array $tab
+ * @param string|null $attributs
+ * @param string $attributId
+ * @return void
+ */
+function creerSelectTab( $valeur, array $tab,  ?string $attributs = "",  string $attributId ,bool $tabAssoc)
+{
+	
+		
+		$select = '<select id="' . $attributId . '" name="' . $attributId . '"' . $attributs . '>';
+		
+		if ($valeur == null) {
+				$select .= '<option value="" SELECTED>'.texte("inputDefault").'</option>';
+		} else {
+				$select .= '<option value="">'.texte("inputDefault").'</option>';
+		}
+		foreach ($tab as $key=>$elt) {
+				$key = $tabAssoc? $key :$elt;
+				if ($valeur == $elt) {
+						$select .= '<option value="' .$key. '" SELECTED>' . $elt . '</option>';
+				} else {
+						$select .= '<option value="' .$key. '">' . $elt . '</option>';
 				}
 			}
 		$select .= "</select>";
