@@ -32,6 +32,10 @@ if (isset($page)) {
         case "ChangePassword":
             echo '<script src="./JS/VerifFormMdp.js"></script>';
             break;
+        case "dbAssistante":
+            echo '<script src="./JS/Chart.js"></script>';
+            echo '<script src="./JS/CreateChartTB.js"></script>';
+            break;
         case 'Accueil':
             echo ' <script src="./JS/pointage.js"></script>';
             break;
