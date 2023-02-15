@@ -31,9 +31,7 @@ checkbox.addEventListener('change', ()=>{
   document.body.classList.toggle('dark');
   if (checkbox.checked) {
     sessionStorage.setItem("darkmode", "true");
-    console.log(sessionStorage)
   }else {
     sessionStorage.setItem("darkmode", "false");
-    console.log(sessionStorage)
   }
 })
