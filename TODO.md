@@ -1,10 +1,12 @@
 # Correctif generateur
 
 ## Header
+
 * [ ] Ajouter le titre de l'application
 
 ## Formulaires
-* [ ] Changer oeil -> ON/OFF plutôt que rester appuyé
+
+* [ ] Changer oeil -> ON/OFF plutôt que rester appuyé (valentin)
 * [ ] Enlever les icones (? et v)
 
 ## Crud Utilisateurs
@@ -41,9 +43,9 @@
 
 ## Crud Utilisateurs
 
-* [ ] Ajouter le reinit 
+* [ ] Ajouter le reinit
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
-* [ ] Bug 
+* [ ] Bug
 * [X] Remplacer les input ID par des select (Yves)
 * [ ] Ajouter un lien changer mot de passe dans le header
 * [X] Mettre un check sur actif (Alexandre)
@@ -63,13 +65,14 @@
 * [ ] Ajax étoiles préférences (Florent)
 * [ ] % sur les lignes de pointage
 * [ ] Message informatif sauvegardes
-* [ ] Récapitulatif pointage pour manager 
-* [ ] Récapitulatif pointage pour ARH 
+* [ ] Récapitulatif pointage pour manager
+* [ ] Récapitulatif pointage pour ARH
 * [ ] Precision pour les RTT
 * [ ] Gestion des logs
 * [ ] Gestion de l'envoi de mail
 
 ## Tableaux de bord (Fabien)
+
 * [ ] Ajouter des titres aux grids
 
 ## CRUD Prestations
@@ -103,7 +106,9 @@
 * [X] Remplacer l'input IdTypePrestation par un select (Alexandre)
 
 ## Gestion de l'archivage (Martine)
+
 * [ ] HF
 
 ## Feriés
+
 * [ ] Visuel du chargement des fériés de l'année (Yves)
