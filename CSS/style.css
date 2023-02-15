@@ -43,10 +43,11 @@ h1 {
     transition: transform 0.2s linear;
   }
  .darkmode {
-    display: block;
-    width: 76px;
+    display: flex;
+    /* width: 76px; */
     /*height: 26px; */
     margin: auto 0;
+    margin-left: .8rem;
     flex: 0; 
     
   }
@@ -223,7 +224,11 @@ header .titre {
     
 }
 header a {
+    cursor: pointer;
     color: var(--color1);
+} 
+header .logo  {
+
     max-width: fit-content;
 }
 header img {

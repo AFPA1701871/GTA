@@ -132,3 +132,7 @@
 .fa-disconnect::before {
     content: "\F2F5";
 }
+.fa-lock-open::before {
+    content: "\F3C1";
+    margin-left: 0.5rem;
+}
