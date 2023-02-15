@@ -6,7 +6,7 @@ $idUtilisateur = 1;
 $user = View_UtilisateursManager::findById($idUtilisateur);
 
 $anneeVisionne = date("Y");
-$moisVisionne = date("m") * 1;
+$moisVisionne = date("m") * 1 +1;
 echo '  <main>
             <div class="cote"></div>
             <div class="mainGrid grid-col2-reduct">
@@ -38,7 +38,7 @@ echo '          <div></div>
 
 $nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $moisVisionne, $anneeVisionne);
 $listeFermeturesDuMois = FermeturesManager::getDates($moisVisionne);
-echo '  <div class="grid-presta tabCol grid-5-reduct pointHead bgc4 leftStickyRigth cellBottom">
+echo '  <div class="grid-presta tabCol grid-5-reduct pointHead leftStickyRigth cellBottom">
             <div id="anneeSelected" class="noDisplay">2023</div>
             <div id="moisSelected" class="noDisplay">02</div>
         </div>
@@ -67,7 +67,7 @@ for ($i = 1; $i <= $nbrJoursMois; $i++)
         if (in_array($jour->format("Y-m-d"), $listeFermeturesDuMois))
         {
             $tabJour[$i]["classeBG"] = "notApplicable";
-            $tabJour[$i]["content"] = "";
+            $tabJour[$i]["content"] = "<input disabled class=' notApplicable inputPointage casePointage'>";
         }
         else
         {
@@ -75,7 +75,7 @@ for ($i = 1; $i <= $nbrJoursMois; $i++)
             $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage" value type="text"></input>';
         }
     }
-    echo '        <div class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
+    echo '        <div data-date='.$jour->format("Y-m-d").' class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
 }
 echo '    </div>';
 $typesPrestations = TypePrestationsManager::getList(null, null, "numeroTypePrestation", null, false, false);
@@ -112,9 +112,9 @@ foreach ($typesPrestations as $key => $typePresta)
         // Pointage
 
         echo '    <div class="grid-pointage tabCol pointMove">';
-        echo '                <div class="cellBottom center grid-lineSimple colTotal" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">0</div>';
-        echo '                <div class="cellBottom center grid-lineSimple" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
-        echo '                <div class="cellBottom grid-lineSimple"></div>';
+        echo '                <div class="cellBottom center grid-lineDouble colTotal" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">0</div>';
+        echo '                <div class="cellBottom center grid-lineDouble" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
+        echo '                <div class="cellBottom grid-lineDouble"></div>';
         foreach ($tabJour as $i=>$value)
         {
             $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
@@ -122,7 +122,7 @@ foreach ($typesPrestations as $key => $typePresta)
             $pointage = PointagesManager::getList(null,["idTypePrestation"=>$typePresta->getIdTypePrestation(),"idUtilisateur"=>$idUtilisateur,"idPrestation"=>$prestation->getIdPrestation(),"datePointage"=>$jour->format("Y-m-d")],null,null,false,false);
             if ($pointage!=false) 
                 $content = str_replace("value",' value="'.$pointage[0]->getNbHeuresPointage().'" ',$content);
-            echo '        <div class="center grid-lineSimple cellBottom ' . $value["classeBG"] . '"  >' . $content . '</div>';
+            echo '        <div class="center grid-lineDouble cellBottom ' . $value["classeBG"] . '"  >' . $content . '</div>';
         }
         echo '</div>';
     }
