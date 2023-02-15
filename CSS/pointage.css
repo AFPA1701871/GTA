@@ -57,7 +57,7 @@
 }
 
 .grid-lineQuad {
-    height: 6.3em;
+    /* height: 6.3em; */
 } 
 
 .grid-pointage {
@@ -215,7 +215,7 @@ input[type="text"]:disabled {
 
 .inputPointage {
     width: 100%;
-    /* height: 100%; */
+    height: 100%;
     padding: 0px;
     text-align: center;
 }
