@@ -218,3 +218,26 @@ function creerSelectTab( $valeur, array $tab,  ?string $attributs = "",  string 
 		$select .= "</select>";
 		return $select;
 }
+
+function tabMoisAnnee($mois)
+{
+	// Récupération des années et des mois
+	$annees = Parametres::getAnneeDisponible();
+	$tabMois = $mois;
+
+	// Parcours des tableaux
+	foreach ($annees as $annee) {
+		foreach ($tabMois as $key => $value) {
+			// Création de la future key
+			if ($key < 10) {
+				$date = $annee . "-0" . $key;
+			} else {
+				$date = $annee . "-" . $key;
+			}
+			// Ajout de la case dans le tableau
+			$tabMoisAnnee[$date] = $value . " " . $annee;
+		}
+	}
+
+	return $tabMoisAnnee;
+}
