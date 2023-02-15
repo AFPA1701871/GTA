@@ -6,7 +6,7 @@ $idUtilisateur = 1;
 $user = View_UtilisateursManager::findById($idUtilisateur);
 
 $anneeVisionne = date("Y");
-$moisVisionne = date("m") * 1 +1;
+$moisVisionne = date("m") * 1;
 echo '  <main>
             <div class="cote"></div>
             <div class="mainGrid grid-col2-reduct">
@@ -69,7 +69,7 @@ for ($i = 1; $i <= $nbrJoursMois; $i++)
         else
         {
             $tabJour[$i]["classeBG"] = "work";
-            $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage" value type="text"></input>';
+            $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage" value type="text">';
         }
     }
     echo '        <div data-date='.$jour->format("Y-m-d").' class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
@@ -98,10 +98,10 @@ foreach ($typesPrestations as $key => $typePresta)
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodePrestation() . '"></input></div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getNumeroUO() . '"></input></div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodeMotif() . '"></input></div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodeProjet() . '"></input></div>
+                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodePrestation() . '"></div>
+                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getNumeroUO() . '"></div>
+                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodeMotif() . '"></div>
+                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodeProjet() . '"></div>
                         </div>
             </div>';
 
