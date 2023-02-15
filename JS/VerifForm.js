@@ -98,15 +98,19 @@ listForms.forEach(formulaire => {
 var listeOeil = document.getElementsByClassName("oeil");
 for (let i = 0; i < listeOeil.length; i++) {
     // on affiche un petit oeil qui permet de voir de mot de passe 
-    listeOeil[i].addEventListener("mousedown", function () {
-        affichePassWord(listeOeil[i], true);
-    });
-    // document.addEventListener("mouseup", function () {
-    listeOeil[i].addEventListener("mouseout", function () {
-        affichePassWord(listeOeil[i], false);
-    });
-}
+    // listeOeil[i].addEventListener("mousedown", function () {
+    //     affichePassWord(listeOeil[i],true);
+    // });
+    // listeOeil[i].addEventListener("mouseup", function () {
+    //     affichePassWord(listeOeil[i],false);
+    // });
+    console.log(listeOeil[i]);
+     listeOeil[i].addEventListener("click", function () {
+        // console.log('click')
+            affichePassWord(listeOeil[i]);
+     });
 
+}
 /***********************************Function************************************/
 
 /**
@@ -226,8 +230,19 @@ function annule(event) {
  * Change le type de l'input mot de passe
  * @param {boolean} flag 
  */
-function affichePassWord(input, flag) {
+// function affichePassWord(input, flag) {
+//     inp = input.previousElementSibling;
+//     if (flag) inp.type = "text";
+//     else inp.type = "password";
+// }
+function affichePassWord(input) {
     inp = input.previousElementSibling;
-    if (flag) inp.type = "text";
-    else inp.type = "password";
+
+    console.log(inp)
+    if (inp.type == "password"){
+        inp.type = "text"
+    }else if(inp.type == "text"){
+        console.log('txt')
+        inp.type = "password";
+    }
 }
