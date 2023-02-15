@@ -226,3 +226,30 @@ function creerSelectTab( $valeur, array $tab,  ?string $attributs = "",  string 
 		$select .= "</select>";
 		return $select;
 }
+
+/**
+ * Créer un tableau associatif contenant les mois et années
+ *
+ * @param array $mois
+ * @return array
+ */
+function tabMoisAnnee()
+{
+	global $mois;
+	// Récupération des années et des mois
+	$annees = Parametres::getAnneeDisponible();
+	// Parcours des tableaux
+	foreach ($annees as $annee) {
+		foreach ($mois as $key => $value) {
+			// Création de la future key
+			if ($key < 10) {
+				$date = $annee . "-0" . $key;
+			} else {
+				$date = $annee . "-" . $key;
+			}
+			// Ajout de la case dans le tableau
+			$tabMoisAnnee[$date] = $value . " " . $annee;
+		}
+	}
+	return $tabMoisAnnee;
+}

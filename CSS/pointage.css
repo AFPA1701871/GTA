@@ -1,10 +1,11 @@
-:root{
-    --width-col-total:3em;
-    --width-col-prct:3em;
-    --width-col-jo:auto;
-    --width-col-we:0.2em;
-    --grid-template-columns:var(--width-col-total) var(--width-col-prct) 0.1em var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo);
-    --color7:#87919e;
+:root {
+    --width-col-total: 3em;
+    --width-col-prct: 3em;
+    --width-col-jo: auto;
+    --width-col-we: 0.2em;
+    --grid-template-columns: var(--width-col-total) var(--width-col-prct) 0.1em var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-jo) var(--width-col-we) var(--width-col-we) var(--width-col-jo) var(--width-col-jo);
+    --color7: #87919e;
+    --color8:lightgreen;
 }
 
 .grid-col2-extend {
@@ -25,6 +26,7 @@
 .grid-presta {
     display: grid;
     text-align: center;
+    align-content: space-around;
 }
 
 .grid-5-extend {
@@ -47,7 +49,7 @@
 }
 
 .grid-lineSimple {
-    height: 1.5em;
+    margin: 0.4rem 0;
 }
 
 .grid-lineDouble {
@@ -55,24 +57,30 @@
 }
 
 .grid-lineQuad {
-    height: 6.3em;
-}
+    /* height: 6.3em; */
+} 
 
 .grid-pointage {
     display: grid;
     grid-template-columns: var(--grid-template-columns);
     /* padding: 0em 0.2em; */
     overflow: hidden;
+    align-content: space-around;
+    background-color: var(--color4);
 }
+
 .grid-columns-span-31 {
     grid-column: span 31;
 }
+
 .grid-columns-span-32 {
     grid-column: span 32;
 }
+
 .grid-columns-span-33 {
     grid-column: span 33;
 }
+
 .grid-columns-span-34 {
     grid-column: span 34;
 }
@@ -83,21 +91,18 @@
     text-align: center;
 }
 
-/* .cellOK {
-    background-color: var(--inputCorrect);
-} */
-
 .cellKO {
     background-color: var(--inputIncorrect);
 }
 
 .noWork {
     background-color: lightgrey;
+    /* height: 100%; */
 }
 
-.work {
-    background-color: whitesmoke;
-}
+/* .work {
+    background-color: white;
+} */
 
 .notApplicable {
     background-color: var(--color7);
@@ -127,8 +132,9 @@
 .topStickyBottom {
     border-bottom: 0.2em solid black;
 }
+
 .leftStickyRigth {
-    border-right: 0.2em solid black;    
+    border-right: 0.2em solid black;
 }
 
 .bgc4 {
@@ -154,63 +160,77 @@ select {
     color: var(--color1);
 }
 
-.fa-fav:before{
-    content: "\F5C0";    
+.fa-fav:before {
+    content: "\F5C0";
     color: rgb(212, 212, 7);
 }
 
-.favActive{
-    color:green;
-}
-.favDesActive{
-    color:red;
+.favActive {
+    color: green;
 }
 
-.prestaLine{
+.favDesActive {
+    color: red;
+}
+
+.prestaLine {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.infosUser{
+
+.infosUser {
     display: grid;
     grid-template-columns: auto auto 1fr auto auto 1fr auto auto 1fr auto auto 1fr auto auto 1fr auto auto;
 }
 
-.colSelected{
-    border-left: 0.5em;
-    border-right: 0.5em;
-    color:green;
+.colSelected {
+    border-width: 0.2em;
+    border-color: var(--color8);
 }
 
-.fa-open:before{
+.fa-open:before {
     content: "\F107";
 }
-.fa-close:before{
+
+.fa-close:before {
     content: "\F106";
 }
 
-.pijama{
+.pyjama {
     background-color: lightblue;
 }
-
-div .jourOK>input[type="text"]{
-    background-color: lightgreen;
+.jourOK {
+    background-color: var(--color8);
+}
+div .jourOK>input[type="text"] {
+    background-color:var(--color8);
+}
+.jourWarn{
+    background-color:lightcoral;
 }
 
-.inputPointage{
-    width:100%;
-    display: block;
+input[type="text"]:disabled {
+    background-color: var(--color7);
+}
+
+.inputPointage {
+    width: 100%;
     height: 100%;
     padding: 0px;
-    margin: 0px;
     text-align: center;
 }
 
 .mainGrid input, .mainGrid select {
     box-shadow: none;
-   }
-   .mainGrid i {
+}
+
+.mainGrid i {
     padding: 0 0.2rem;
    }
+/* 
+   .mainGrid {
+    flex: 0;
+   } */
 .rtt {
     padding-left: 0.5rem;
 }

@@ -8,12 +8,14 @@ $user = View_UtilisateursManager::findById($idUtilisateur);
 $anneeVisionne = date("Y");
 $moisVisionne = date("m") * 1;
 echo '  <main>
+            <div id=IdUtilisateur class="noDisplay">'.$idUtilisateur.'</div>
             <div class="cote"></div>
+            <div>
             <div class="mainGrid grid-col2-reduct">
                 <div class="grid-columns-span-2 center infosUser">
                     <div>Année: </div>
                 <div>';
-echo               creerSelectTab($anneeVisionne, Parametres::getAnneeDisponible(), null, "anneeVisionne", false);
+echo creerSelectTab($anneeVisionne, Parametres::getAnneeDisponible(), null, "anneeVisionne", false);
 echo '        </div>
                 <div></div>
                 <div>Mois:</div>
@@ -29,7 +31,7 @@ echo '          </div>
                 <div>' . $user->getMatriculeUtilisateur() . '</div>
                 <div></div>
                 <div>Centre de rattachement:</div>
-                <div>'.$user->getNomCentre().'</div>';
+                <div>' . $user->getNomCentre() . '</div>';
 echo '          <div></div>
                 <div>UO d\'affectation:</div>
                 <div>' . $user->getNumeroUO() . '</div>
@@ -38,13 +40,10 @@ echo '          <div></div>
 
 $nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $moisVisionne, $anneeVisionne);
 $listeFermeturesDuMois = FermeturesManager::getDates($moisVisionne);
-echo '  <div class="grid-presta tabCol grid-5-reduct pointHead bgc4 leftStickyRigth cellBottom">
-            <div id="anneeSelected" class="noDisplay">2023</div>
-            <div id="moisSelected" class="noDisplay">02</div>
-        </div>
+echo '  <div class="grid-presta tabCol grid-5-reduct pointHead leftStickyRigth cellBottom"></div>
         <div class="grid-pointage tabCol pointHead">
             <div class="cellBottom center grid-lineDouble bgc4">Total</div>
-            <div class="cellBottom center grid-lineDouble bgc4">%GTA</div>
+            <div class="cellBottom center grid-lineDouble bgc4 border-left">%GTA</div>
             <div class="cellBottom grid-lineDouble bgc4"></div>';
 $nbJourPointe = 0;
 $tabJour = [];
@@ -72,10 +71,10 @@ for ($i = 1; $i <= $nbrJoursMois; $i++)
         else
         {
             $tabJour[$i]["classeBG"] = "work";
-            $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage" value type="text"></input>';
+            $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage case" value type="text">';
         }
     }
-    echo '        <div class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
+    echo '        <div data-date='.$jour->format("Y-m-d").' class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
 }
 echo '    </div>';
 $typesPrestations = TypePrestationsManager::getList(null, null, "numeroTypePrestation", null, false, false);
@@ -95,26 +94,56 @@ foreach ($typesPrestations as $key => $typePresta)
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
                       <input value = "' . $prestation->getLibellePrestation() . '">
                       <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
-                      <div class="expand-line vMini"><i class="fas fa-open" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></i></div>
+                      <div class=" border-left expand-line vMini"><i class="fas fa-open" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></i></div>
                             </div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Cde Prest.</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodePrestation() . '"></input></div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getNumeroUO() . '"></input></div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodeMotif() . '"></input></div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodeProjet() . '"></input></div>
-                        </div>
+                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodePrestation() . '"></div>
+                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
+        if ($typePresta->getUORequis())
+        {
+            echo '<input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getNumeroUO() . '">';
+        }
+        else
+        {
+            echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" disabled>';
+        }
+
+        echo '  </div>
+                <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
+        if ($typePresta->getMotifRequis())
+        {
+            echo '<input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodeMotif() . '">';
+        }
+        else
+        {
+            echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" disabled>';
+        }
+
+        echo '  </div>
+                <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
+        if ($typePresta->getProjetRequis())
+        {
+            echo '<input class="inputPointage" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" value = "' . $prestation->getCodeProjet() . '">';
+        }
+        else
+        {
+            echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" disabled>';
+        }
+
+        echo '</div>
+                            </div>
             </div>';
 
 ////////////////////////////////
         // Pointage
 
         echo '    <div class="grid-pointage tabCol pointMove">';
-        echo '                <div class="cellBottom center grid-lineSimple colTotal" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">0</div>';
-        echo '                <div class="cellBottom center grid-lineSimple" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
-        echo '                <div class="cellBottom grid-lineSimple"></div>';
+        echo '                <div class="cellBottom center grid-lineDouble colTotal" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">0</div>';
+        echo '                <div class="cellBottom center grid-lineDouble" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
+        echo '                <div class="cellBottom grid-lineDouble"></div>';
         foreach ($tabJour as $i=>$value)
         {
             $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
@@ -122,9 +151,9 @@ foreach ($typesPrestations as $key => $typePresta)
             $pointage = PointagesManager::getList(null,["idTypePrestation"=>$typePresta->getIdTypePrestation(),"idUtilisateur"=>$idUtilisateur,"idPrestation"=>$prestation->getIdPrestation(),"datePointage"=>$jour->format("Y-m-d")],null,null,false,false);
             if ($pointage!=false) 
                 $content = str_replace("value",' value="'.$pointage[0]->getNbHeuresPointage().'" ',$content);
-            echo '        <div class="center grid-lineSimple cellBottom ' . $value["classeBG"] . '"  >' . $content . '</div>';
+            echo '        <div class="center grid-lineDouble cellBottom ' . $value["classeBG"] . '"  >' . $content . '</div>';
         }
         echo '</div>';
     }
 }
-echo '</div><div class="cote"></main>';
+echo '</div></div><div class="cote"></main>';
