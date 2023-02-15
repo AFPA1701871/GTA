@@ -31,12 +31,13 @@ class View_Prestations_Pref_PointManager
     public static function getListePrestation($idUtilisateur, $mois, $idType)
     {
         $db = DbConnect::getDb();
-        $q = $db->query('SELECT distinct idPrestation, codePrestation, libellePrestation, numeroTypePrestation, libelleTypePrestation, motifRequis, uoRequis, projetRequis,idMotif,codeMotif, idProjet,codeProjet,numeroUO, idTypePrestation, idUtilisateur FROM gta_View_Prestations_Pref_Point WHERE idUtilisateur='.$idUtilisateur.' AND idTypePrestation = '.$idType.' AND (mois = '.$mois.' || isnull(mois))');
+        $q = $db->query('SELECT distinct idPrestation, codePrestation, libellePrestation, numeroTypePrestation, libelleTypePrestation, motifRequis, uoRequis, projetRequis,idMotif,codeMotif, idProjet,codeProjet,numeroUO, idTypePrestation, idUtilisateur FROM gta_View_Prestations_Pref_Point WHERE idUtilisateur='.$idUtilisateur.' AND idTypePrestation = '.$idType.' AND (mois = "'.$mois.'" || isnull(mois))');
         $liste=[];
         if (!$q)
         {
             return false;
         }
+        //var_dump($q);
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
         { // on récupère les enregistrements de la BDD
             if ($donnees != false)
