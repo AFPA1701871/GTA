@@ -228,9 +228,15 @@ header a {
     color: var(--color1);
 } 
 header .logo  {
-
     max-width: fit-content;
+    align-items: center;
 }
+
+.logo img{
+    width: 7.5rem;
+    height: 7.5rem;
+}
+
 header img {
     margin-right: auto;
 }
