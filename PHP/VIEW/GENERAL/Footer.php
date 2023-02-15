@@ -21,13 +21,16 @@ if (isset($page)) {
             <script src="./JS/Pagination.js"></script>
             ';
         } else if ($matches[0] == "Form") {
-            echo '<script src="./JS/VerifForm.js"></script>';
+            if ($page[1] != "FormPointages")
+            {
+                echo '<script src="./JS/VerifForm.js"></script>';
+            }
             if ($page[1] == "FormTypePrestations" && $_GET["mode"] == "Modifier") {
                 echo '<script src="./JS/CheckActivites.js"></script>';
             }
             if ($page[1] == "FormPointages" ) {
                 echo '<script src="./JS/CrudPointage.js"></script>';
-                echo '<script src="./JS/Pointage.js"></script>';
+                echo ' <script src="./JS/Pointage.js"></script>';
             }
         } 
     }
@@ -35,7 +38,7 @@ if (isset($page)) {
         case "ChangePassword":
             echo '<script src="./JS/VerifFormMdp.js"></script>';
             break;
-        case "dbAssistante":
+        case "TbAssistante":
             echo '<script src="./JS/Chart.js"></script>';
             echo '<script src="./JS/CreateChartTB.js"></script>';
             break;

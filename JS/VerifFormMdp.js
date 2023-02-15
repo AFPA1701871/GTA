@@ -3,11 +3,18 @@
  * Change le type de l'input mot de passe
  * @param {boolean} flag 
  */
-function affichePassWord(input,flag) {
+
+function affichePassWord(input) {
     inp = input.parentNode.parentNode.querySelector("input");
-    if (flag) inp.type = "text";
-    else inp.type = "password";
+    console.log(inp.type)
+    if (inp.type == "password"){
+        inp.type = "text"
+    }else if(inp.type == "text"){
+        console.log('txt')
+        inp.type = "password";
+    }
 }
+
 
 /**
  * Annule l'action associé à la touche ou au clic
@@ -54,12 +61,17 @@ var erreur = document.querySelector('.erreur');
 var listeOeil = document.getElementsByClassName("oeil");
 for (let i = 0; i < listeOeil.length; i++) {
     // on affiche un petit oeil qui permet de voir de mot de passe 
-    listeOeil[i].addEventListener("mousedown", function () {
-        affichePassWord(listeOeil[i],true);
-    });
-    listeOeil[i].addEventListener("mouseup", function () {
-        affichePassWord(listeOeil[i],false);
-    });
+    // listeOeil[i].addEventListener("mousedown", function () {
+    //     affichePassWord(listeOeil[i],true);
+    // });
+    // listeOeil[i].addEventListener("mouseup", function () {
+    //     affichePassWord(listeOeil[i],false);
+    // });
+    console.log(listeOeil[i]);
+     listeOeil[i].addEventListener("click", function () {
+        // console.log('click')
+            affichePassWord(listeOeil[i]);
+     });
 
 }
 

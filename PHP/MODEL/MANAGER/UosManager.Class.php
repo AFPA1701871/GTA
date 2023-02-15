@@ -1,30 +1,31 @@
 <?php
 
-class UosManager 
+class UOsManager
 {
 
-	public static function add(Uos $obj)
+	public static function add(UOs $obj)
 	{
- 		return DAO::add($obj);
+		return DAO::add($obj);
 	}
 
-	public static function update(Uos $obj)
+	public static function update(UOs $obj)
 	{
- 		return DAO::update($obj);
+		return DAO::update($obj);
 	}
 
-	public static function delete(Uos $obj)
+	public static function delete(UOs $obj)
 	{
- 		return DAO::delete($obj);
+		return DAO::delete($obj);
 	}
 
 	public static function findById($id)
 	{
- 		return DAO::select(Uos::getAttributes(),"Uos",["idUO" => $id])[0];
+		return DAO::select(UOs::getAttributes(), "UOs", ["idUO" => $id])[0];
 	}
 
-	public static function getList(array $nomColonnes=null,  array $conditions = null, string $orderBy = null, string $limit = null, bool $api = false, bool $debug = false)
+	public static function getList(array $nomColonnes = null,  array $conditions = null, string $orderBy = null, string $limit = null, bool $api = false, bool $debug = false)
 	{
- 		$nomColonnes = ($nomColonnes==null)?Uos::getAttributes():$nomColonnes;
-		return DAO::select($nomColonnes,"Uos",   $conditions ,  $orderBy,  $limit ,  $api,  $debug );	}
+		$nomColonnes = ($nomColonnes == null) ? UOs::getAttributes() : $nomColonnes;
+		return DAO::select($nomColonnes, "UOs",   $conditions,  $orderBy,  $limit,  $api,  $debug);
+	}
 }
