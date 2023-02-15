@@ -22,7 +22,7 @@ echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Contrats
 echo '<div class="bigEspace  col-span-form"></div>	';
 echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdContrat().'" name=IdContrat><input type="hidden" value="'.$_GET['idutilisateur'].'" name=IdUtilisateur></div>';
 echo '<label for=IdCentre class="caseForm labelForm">'.texte("IdCentre").'</label>';
-echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdCentre(), 'Centres', ['nomCentre'], $disabled).'</div>';
+echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdCentre(), 'Centres', ['nomCentre'], $disabled . ' required').'</div>';
 echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
 echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
 
