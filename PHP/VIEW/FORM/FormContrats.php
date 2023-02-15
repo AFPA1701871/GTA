@@ -23,23 +23,19 @@ echo '<div class="bigEspace  col-span-form"></div>	';
 echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdContrat().'" name=IdContrat><input type="hidden" value="'.$_GET['idutilisateur'].'" name=IdUtilisateur></div>';
 echo '<label for=IdCentre class="caseForm labelForm">'.texte("IdCentre").'</label>';
 echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdCentre(), 'Centres', ['nomCentre'], $disabled . ' required').'</div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=IdUtilisateur class="caseForm labelForm">'.texte("IdUtilisateur").'</label>';
 echo '<div class="caseForm donneeForm">'.creerSelect(($mode == "Ajouter" ? $_GET['idutilisateur'] : $elm->getIdUtilisateur()), 'Utilisateurs', ['nomUtilisateur'], ($mode == "Modifier" || $mode == "Ajouter" ? ' disabled ' : $disabled)).'</div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=DateDebutContrat class="caseForm labelForm">'.texte("DateDebutContrat").'</label>';
 echo '<div class="caseForm donneeForm"><input type="date" ' . $disabled . 'value="' . date('Y-m-d', strtotime($elm->getDateDebutContrat() ?? date('Y-m-d'))) . '" name=DateDebutContrat pattern="' . $regex["date"] . '"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=DateFinContrat class="caseForm labelForm">'.texte("DateFinContrat").'</label>';
 echo '<div class="caseForm donneeForm"><input type="date" ' . $disabled . 'value="' . date('Y-m-d', strtotime($elm->getDateFinContrat() ?? date('Y-m-d'))) . '" name=DateFinContrat pattern="' . $regex["date"] . '"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<div class="bigEspace "></div>	';
 echo '<div class="caseForm col-span-form">

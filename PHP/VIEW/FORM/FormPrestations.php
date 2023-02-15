@@ -23,18 +23,15 @@ echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdPrestation().'" name=IdPrestation></div>';
 echo '<label for=CodePrestation class="caseForm labelForm">'.texte("CodePrestation").'</label>';
 echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getCodePrestation().'" name=CodePrestation pattern="'.$regex["*"].'" required></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=LibellePrestation class="caseForm labelForm">'.texte("LibellePrestation").'</label>';
 echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getLibellePrestation().'" name=LibellePrestation pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=IdActivite class="caseForm labelForm">'.texte("LibelleActivite").'</label>';
 echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdActivite(),"Activites",["libelleActivite"],$disabled . ' required',null,"libelleActivite",null ).'</div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<div class="bigEspace "></div>	';
 echo '<div class="caseForm col-span-form">
