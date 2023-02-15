@@ -17,7 +17,7 @@ h1 {
     opacity: 0;
     position: absolute;
   }
-  
+
   .label {
     width: 50px;
     height: 26px;
@@ -31,7 +31,7 @@ h1 {
     transform: scale(1.5);
     cursor: pointer;
   }
-  
+
   .ball {
     width: 20px;
     height: 20px;
@@ -48,20 +48,20 @@ h1 {
     /*height: 26px; */
     margin: auto 0;
     margin-left: .8rem;
-    flex: 0; 
-    
+    flex: 0;
+
   }
   /*  target the elemenent after the label*/
   .checkbox:checked + .label .ball{
     transform: translateX(22px);
   }
-  
+
   .fa-moon {
     margin-left: 5px;
     color: var(--color5);
     font-size: 0.9rem;
   }
-  
+
   .fa-sun {
     color: rgb(252, 173, 27);
     font-size: 0.9rem;
@@ -77,7 +77,7 @@ h1 {
 .titreListe , .titre, .titreForm{
     font-family: 'Comfortaa', cursive;
     font-size: 1.4rem;
-    
+
     text-transform: uppercase;
 }
 .caseListe a, .caseForm button {
@@ -127,7 +127,7 @@ input::placeholder {
     z-index: 1;
   }
   .EasterBody .star-wars {
-    
+
     display: flex;
     justify-content: center;
     position: relative;
@@ -155,7 +155,7 @@ input::placeholder {
     font-size: 90%;
     text-align: center;
   }
-  .EasterBody 
+  .EasterBody
   .crawl > .title h1 {
     margin: 0 0 100px;
     text-transform: uppercase;
@@ -165,7 +165,7 @@ input::placeholder {
       top: -100px;
       transform: rotateX(20deg)  translateZ(0);
     }
-    100% { 
+    100% {
       top: -6000px;
       transform: rotateX(25deg) translateZ(-2500px);
     }
@@ -221,12 +221,12 @@ select {
 
 header .titre {
     font-size: 2rem;
-    
+
 }
 header a {
     cursor: pointer;
     color: var(--color1);
-} 
+}
 header .logo  {
     max-width: fit-content;
     align-items: center;
@@ -276,7 +276,7 @@ justify-content: center;
     transition: background 0.5s;
     cursor: pointer;
     /* flex: 1; */
-    
+
 }
 menu .relative, menu > a div {
     border-radius: 5px;
@@ -291,7 +291,7 @@ header i.fa-disconnect {
     margin-left: 0.5rem;
 }
 menu i {
-    
+
     transition: 0.5s all;
     margin-left: 0.5rem;
 }
@@ -328,18 +328,29 @@ nav div:hover .sous-menu {
 nav {
     font-size: 1.2rem;
     text-transform: uppercase;
-    
+
 }
 #searchInList {
     max-width: 300px;
 }
 
 #anneeJoursFeries {
-    max-width: 70px;
+    max-width: 3vw;
 }
 
-.feriesSeparation {
-    max-width: 50px;
+.divfieldset {
+  margin-left: 5vw;
+}
+
+.fieldset {
+  max-width: 15vw;
+  align-items: center;
+  justify-content: center;
+  height: 7vh;
+}
+
+.fieldset label {
+  max-width: 7vw;
 }
 
 .sous-menu {
@@ -396,11 +407,11 @@ footer #backToTop {
 }
 
 
-/****** Footer en bas de page ******/ 
+/****** Footer en bas de page ******/
 
 body{
     position: relative;
-    min-height: calc(100vh - 7vh); 
+    min-height: calc(100vh - 7vh);
     padding-bottom: 7vh;
 }
 
@@ -416,3 +427,11 @@ footer{
     font-size: 1rem;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
