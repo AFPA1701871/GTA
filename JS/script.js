@@ -19,7 +19,21 @@ function topFunction() {
 
   /***********************darkmode ************************/
 const checkbox = document.getElementById('checkbox');
+if (sessionStorage.getItem('darkmode') === 'true') {
+  checkbox.checked = true
+  document.body.classList.add('dark');
+} else {
+  checkbox.checked = false
+  document.body.classList.remove('dark');
+}
 
 checkbox.addEventListener('change', ()=>{
   document.body.classList.toggle('dark');
+  if (checkbox.checked) {
+    sessionStorage.setItem("darkmode", "true");
+    console.log(sessionStorage)
+  }else {
+    sessionStorage.setItem("darkmode", "false");
+    console.log(sessionStorage)
+  }
 })
