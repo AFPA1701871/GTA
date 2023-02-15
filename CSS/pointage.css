@@ -49,7 +49,7 @@
 }
 
 .grid-lineSimple {
-    height: 1.5em;
+    margin: 0.4rem 0;
 }
 
 .grid-lineDouble {
@@ -96,7 +96,7 @@
 
 .noWork {
     background-color: lightgrey;
-    height: 100%;
+    /* height: 100%; */
 }
 
 .work {
@@ -226,6 +226,10 @@ input[type="text"]:disabled {
 .mainGrid i {
     padding: 0 0.2rem;
    }
+/* 
+   .mainGrid {
+    flex: 0;
+   } */
 .rtt {
     padding-left: 0.5rem;
 }

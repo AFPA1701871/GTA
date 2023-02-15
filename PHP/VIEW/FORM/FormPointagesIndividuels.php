@@ -9,6 +9,7 @@ $anneeVisionne = date("Y");
 $moisVisionne = date("m") * 1 +1;
 echo '  <main>
             <div class="cote"></div>
+            <div>
             <div class="mainGrid grid-col2-reduct">
                 <div class="grid-columns-span-2 center infosUser">
                     <div>Année: </div>
@@ -44,7 +45,7 @@ echo '  <div class="grid-presta tabCol grid-5-reduct pointHead bgc4 leftStickyRi
         </div>
         <div class="grid-pointage tabCol pointHead">
             <div class="cellBottom center grid-lineDouble bgc4">Total</div>
-            <div class="cellBottom center grid-lineDouble bgc4">%GTA</div>
+            <div class="cellBottom center grid-lineDouble bgc4 border-left">%GTA</div>
             <div class="cellBottom grid-lineDouble bgc4"></div>';
 $nbJourPointe = 0;
 $tabJour = [];
@@ -75,7 +76,7 @@ for ($i = 1; $i <= $nbrJoursMois; $i++)
             $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage" value type="text"></input>';
         }
     }
-    echo '        <div data-date='.$jour->format("Y-m-d").' class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
+    echo '        <div class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
 }
 echo '    </div>';
 $typesPrestations = TypePrestationsManager::getList(null, null, "numeroTypePrestation", null, false, false);
@@ -95,7 +96,7 @@ foreach ($typesPrestations as $key => $typePresta)
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
                       <input value = "' . $prestation->getLibellePrestation() . '">
                       <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
-                      <div class="expand-line vMini"><i class="fas fa-open" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></i></div>
+                      <div class=" border-left expand-line vMini"><i class="fas fa-open" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></i></div>
                             </div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Cde Prest.</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>
@@ -112,9 +113,9 @@ foreach ($typesPrestations as $key => $typePresta)
         // Pointage
 
         echo '    <div class="grid-pointage tabCol pointMove">';
-        echo '                <div class="cellBottom center grid-lineDouble colTotal" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">0</div>';
-        echo '                <div class="cellBottom center grid-lineDouble" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
-        echo '                <div class="cellBottom grid-lineDouble"></div>';
+        echo '                <div class="cellBottom center grid-lineSimple colTotal" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">0</div>';
+        echo '                <div class="border-left cellBottom center grid-lineSimple" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
+        echo '                <div class="cellBottom grid-lineSimple"></div>';
         foreach ($tabJour as $i=>$value)
         {
             $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
@@ -122,9 +123,9 @@ foreach ($typesPrestations as $key => $typePresta)
             $pointage = PointagesManager::getList(null,["idTypePrestation"=>$typePresta->getIdTypePrestation(),"idUtilisateur"=>$idUtilisateur,"idPrestation"=>$prestation->getIdPrestation(),"datePointage"=>$jour->format("Y-m-d")],null,null,false,false);
             if ($pointage!=false) 
                 $content = str_replace("value",' value="'.$pointage[0]->getNbHeuresPointage().'" ',$content);
-            echo '        <div class="center grid-lineDouble cellBottom ' . $value["classeBG"] . '"  >' . $content . '</div>';
+            echo '        <div class="center grid-lineSimple cellBottom ' . $value["classeBG"] . '"  >' . $content . '</div>';
         }
         echo '</div>';
     }
 }
-echo '</div><div class="cote"></main>';
+echo '</div></div><div class="cote"></main>';
