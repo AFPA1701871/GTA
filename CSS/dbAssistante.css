@@ -25,3 +25,9 @@ main {
 .section2 {
 flex-direction: column;
 }
+
+#camembert {
+    height: 25vh;
+    align-items: center;
+    justify-content: center;
+}

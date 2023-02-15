@@ -20,20 +20,25 @@ if (isset($page)) {
            <script src="./JS/Filtre.js"></script>
            <script src="./JS/Pagination.js"></script>
            ';
-       } else if ($matches[0] == "Form") {
+       } 
+       else if ($matches[0] == "Form") {
            if ($page[1] != "FormFichesItv")
                echo '<script src="./JS/VerifForm.js"></script>';
             if ($page[1] == "FormTypePrestations" && $_GET["mode"] == "Modifier") {
                 echo '<script src="./JS/CheckActivites.js"></script>';
             }
             echo ' <script src="./JS/pointage.js"></script>';
-       } 
-   }
-   switch ($page[1]) {
-   case "ChangePassword":
-    echo '<script src="./JS/VerifFormMdp.js"></script>';
-    break;
-   }
+       }
+    }
+    switch ($page[1]) {
+    case "ChangePassword":
+        echo '<script src="./JS/VerifFormMdp.js"></script>';
+        break;
+    case "dbAssistante":
+        echo '<script src="./JS/Chart.js"></script>';
+        echo '<script src="./JS/CreateChartTB.js"></script>';
+        break;
+    }
 }
 echo '</body>
 </html>';
