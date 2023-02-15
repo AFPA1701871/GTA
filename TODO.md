@@ -2,7 +2,7 @@
 
 ## Header
 
-* [ ] Ajouter le titre de l'application
+* [X] Ajouter le titre de l'application(valentin)
 
 ## Formulaires
 
