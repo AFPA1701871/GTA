@@ -25,10 +25,10 @@ if (isset($page)) {
             if ($page[1] == "FormTypePrestations" && $_GET["mode"] == "Modifier") {
                 echo '<script src="./JS/CheckActivites.js"></script>';
             }
-            if ($page[1] == "FormPointagesIndividuels" ) {
+            if ($page[1] == "FormPointages" ) {
                 echo '<script src="./JS/CrudPointage.js"></script>';
+                echo ' <script src="./JS/Pointage.js"></script>';
             }
-            echo ' <script src="./JS/Pointage.js"></script>';
         } 
     }
     switch ($page[1]) {
