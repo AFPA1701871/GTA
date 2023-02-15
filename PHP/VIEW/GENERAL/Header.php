@@ -3,7 +3,7 @@
         <div class="cote"></div>
         <div>
 
-            <div><a class=logo href="index.php?page=Accueil"><img src="./IMG/LogoGTA_blanc.png" alt=""></a></div>
+            <div><a class=logo href="index.php?page=Accueil"><img src="./IMG/LogoGTA_blanc.png" alt=""><p class="titre">GTA</p></a></div>
             <div class="">
                 <?php
                 if (isset($_SESSION['utilisateur'])) {
