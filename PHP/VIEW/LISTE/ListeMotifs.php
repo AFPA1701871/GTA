@@ -7,16 +7,16 @@
  echo '<div><section class="colonne">';
  
 
-$objets = MotifsManager::getList(null, null, null, Parametres::getNbEltParPage());
+$objets = View_MotifsManager::getList(null, null, null, Parametres::getNbEltParPage());
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
 echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
-echo '<div class="grid-col-6 gridListe">';
+echo '<div class="grid-col-7 gridListe">';
 
-echo '<div class="caseListe titreListe grid-columns-span-6">'.texte("Liste des Motifs").'</div>';
+echo '<div class="caseListe titreListe grid-columns-span-7">'.texte("Liste des Motifs").' </div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-6"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
-echo '<div class="caseListe grid-columns-span-6">
+ echo '<div class="grid-columns-span-7"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+echo '<div class="caseListe grid-columns-span-7">
 <div></div>
 <div class="bigEspace"></div>
 <div class="caseListe"><a class="pyjama"  href="index.php?page=FormMotifs&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
@@ -25,18 +25,21 @@ echo '<div class="caseListe grid-columns-span-6">
 
 echo '<div class="caseListe labelListe" data-name= "CodeMotif">'.texte("CodeMotif").'</div>';
 echo '<div class="caseListe labelListe" data-name= "LibelleMotif">'.texte("LibelleMotif").'</div>';
-echo '<div class="caseListe labelListe" data-name= "IdTypePrestation">IdTypePrestation</div>';
+echo '<div class="caseListe labelListe" data-name= "NumeroTypePrestation">'.texte("NumeroTypePrestation").'</div>';
+echo '<div class="caseListe labelListe" data-name= "LibelleTypePrestation">'.texte("LibelleTypePrestation").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
 echo '<div class=" caseListe texteClair "><p>Total :</p></div><div class="mini" id="nbEnregs"></div> ';
-echo '</div><div class="grid-col-6 gridListe grid-contenu"></div>';
+echo '</div><div class="grid-col-7 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';
 echo '<div class="donnees pyjama ">CodeMotif</div>';
 echo '<div class="donnees pyjama left">LibelleMotif</div>';
-echo '<div class="donnees pyjama ">IdTypePrestation</div>';
+echo '<div class="donnees pyjama ">NumeroTypePrestation</div>';
+echo '<div class="donnees pyjama left">LibelleTypePrestation</div>';
+
  echo '<a class="pyjama"  href="index.php?page=FormMotifs&mode=Afficher&id=IdMotif"><i class="fas fa-file-contract"></i></a>';
                                     
 echo '<a class="pyjama"  href="index.php?page=FormMotifs&mode=Modifier&id=IdMotif"><i class="fas fa-pen"></i></a>';
@@ -46,7 +49,7 @@ echo '<a class="pyjama"  href="index.php?page=FormMotifs&mode=Supprimer&id=IdMot
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';
                                  
-echo '<div class="caseListe grid-columns-span-6">
+echo '<div class="caseListe grid-columns-span-7">
 	<div></div>
 	<a href="index.php?page=Accueil"><button><i class="fas fa-house fa-rotate-180"></i></button></a>
 	<div></div>

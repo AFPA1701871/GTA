@@ -9,7 +9,7 @@
                 if (isset($_SESSION['utilisateur'])) {
                     echo '<div class="center demi">' . texte('Bonjour') . " " . $_SESSION['utilisateur']->getNomUtilisateur() . '</div>';
                     echo '<div class=demi><a class="center"><p>Mot de passe</p><i class="fas fa-lock-open"></i></a></div>';
-                    echo '<div class=demi><a href="index.php?page=ActionDeconnexion" class="center">' . texte("Deconnexion") . '<i class="fas fa-disconnect"></i></a></div>';
+                    echo '<div class=demi><a href="index.php?page=ActionConnexion&mode=logout" class="center">' . texte("Deconnexion") . '<i class="fas fa-disconnect"></i></a></div>';
                 }
                 ?>
            <div class=mini>

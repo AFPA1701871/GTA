@@ -29,13 +29,10 @@ $routes = [
 	"Accueil" => ["PHP/VIEW/GENERAL/", "Accueil", "Accueil", 0, false],
 	"TbAssistante" => ["PHP/VIEW/GENERAL/", "TbAssistante", "Tableau de bord de l'assistante", 3, false],
 	"TbManager" => ["PHP/VIEW/GENERAL/", "TbManager", "Tableau de bord du manager", 2, false],
-
 	
 	"ActionConnexion" => ["PHP/CONTROLLER/ACTION/", "ActionConnexion", "Action de la connexion", 0, false],
-	"ActionDeconnexion" => ["PHP/CONTROLLER/ACTION/", "ActionDeconnexion", "Action de deconnexion", 0, false],
 	"ChangePassword" => ["PHP/VIEW/GENERAL/", "ChangePassword", "Modification du mot de passe", 0, false],
 	
-	"ListeMailAPI" => ["PHP/MODEL/API/", "ListeMailAPI", "ListeMailAPI", 0, true],
 	"ListeAPI" => ["PHP/MODEL/API/", "ListeAPI", "ListeAPI", 0, true],
 	"MAJActivitesParTypesAPI" => ["PHP/MODEL/API/", "MAJActivitesParTypesAPI", "MAJActivitesParTypesAPI", 0, true],
 	"MAJPointageAPI" => ["PHP/MODEL/API/", "MAJPointageAPI", "MAJPointageAPI", 0, true],
@@ -45,10 +42,7 @@ $routes = [
 	"FormActivites" => ["PHP/VIEW/FORM/", "FormActivites", "Formulaire Activites", 3, false],
 	"ActionActivites" => ["PHP/CONTROLLER/ACTION/", "ActionActivites", "Action Activites", 3, false],
 	
-	"ListeActivitesParTypes" => ["PHP/VIEW/LISTE/", "ListeActivitesParTypes", "Liste ActivitesParTypes", 3, false],
-	"FormActivitesParTypes" => ["PHP/VIEW/FORM/", "FormActivitesParTypes", "Formulaire ActivitesParTypes", 3, false],
-	"ActionActivitesParTypes" => ["PHP/CONTROLLER/ACTION/", "ActionActivitesParTypes", "Action ActivitesParTypes", 3, false],
-
+	
 	"ListeAssociations" => ["PHP/VIEW/LISTE/", "ListeAssociations", "Liste Associations", 3, false],
 	"FormAssociations" => ["PHP/VIEW/FORM/", "FormAssociations", "Formulaire Associations", 3, false],
 	"ActionAssociations" => ["PHP/CONTROLLER/ACTION/", "ActionAssociations", "Action Associations", 3, false],
@@ -75,32 +69,21 @@ $routes = [
 	"FormLogs" => ["PHP/VIEW/FORM/", "FormLogs", "Formulaire Logs", 3, false],
 	"ActionLogs" => ["PHP/CONTROLLER/ACTION/", "ActionLogs", "Action Logs", 3, false],
 
-	"ListeMotifs" => ["PHP/VIEW/LISTE/", "ListeView_Motifs", "Liste Motifs", 3, false],
+	"ListeMotifs" => ["PHP/VIEW/LISTE/", "ListeMotifs", "Liste Motifs", 3, false],
 	"FormMotifs" => ["PHP/VIEW/FORM/", "FormMotifs", "Formulaire Motifs", 3, false],
 	"ActionMotifs" => ["PHP/CONTROLLER/ACTION/", "ActionMotifs", "Action Motifs", 3, false],
 	"Easter" => ["PHP/VIEW/FORM/", "FormEaster", "Easter", 0, false],
 
-	"ListePointages2" => ["PHP/VIEW/FORM/", "FormPointages", "Liste Pointages", 0, false],
 	"FormPointages" => ["PHP/VIEW/FORM/", "FormPointages", "Formulaire Pointages", 0, false],
-	"ActionPointages" => ["PHP/CONTROLLER/ACTION/", "ActionPointages", "Action Pointages", 0, false],
-
-	"ListePointages" => ["PHP/VIEW/FORM/", "FormPointagesIndividuels", "Pointages Individuels", 0, false],
-
-	"ListePreferences" => ["PHP/VIEW/LISTE/", "ListePreferences", "Liste Preferences", 3, false],
-	"FormPreferences" => ["PHP/VIEW/FORM/", "FormPreferences", "Formulaire Preferences", 3, false],
-	"ActionPreferences" => ["PHP/CONTROLLER/ACTION/", "ActionPreferences", "Action Preferences", 3, false],
-
-	"ListePrestations" => ["PHP/VIEW/LISTE/", "ListeView_Prestations", "Liste Prestations", 3, false],
+	
+	
+	"ListePrestations" => ["PHP/VIEW/LISTE/", "ListePrestations", "Liste Prestations", 3, false],
 	"FormPrestations" => ["PHP/VIEW/FORM/", "FormPrestations", "Formulaire Prestations", 3, false],
 	"ActionPrestations" => ["PHP/CONTROLLER/ACTION/", "ActionPrestations", "Action Prestations", 3, false],
 
 	"ListeProjets" => ["PHP/VIEW/LISTE/", "ListeProjets", "Liste Projets", 3, false],
 	"FormProjets" => ["PHP/VIEW/FORM/", "FormProjets", "Formulaire Projets", 3, false],
 	"ActionProjets" => ["PHP/CONTROLLER/ACTION/", "ActionProjets", "Action Projets", 3, false],
-
-	"ListeRoles" => ["PHP/VIEW/LISTE/", "ListeRoles", "Liste Roles", 3, false],
-	"FormRoles" => ["PHP/VIEW/FORM/", "FormRoles", "Formulaire Roles", 3, false],
-	"ActionRoles" => ["PHP/CONTROLLER/ACTION/", "ActionRoles", "Action Roles", 3, false],
 
 	"ListeTypePrestations" => ["PHP/VIEW/LISTE/", "ListeTypePrestations", "Liste TypePrestations", 3, false],
 	"FormTypePrestations" => ["PHP/VIEW/FORM/", "FormTypePrestations", "Formulaire TypePrestations", 3, false],
@@ -110,22 +93,11 @@ $routes = [
 	"FormUos" => ["PHP/VIEW/FORM/", "FormUos", "Formulaire Uos", 3, false],
 	"ActionUos" => ["PHP/CONTROLLER/ACTION/", "ActionUos", "Action Uos", 3, false],
 
-	"ListeUtilisateurs" => ["PHP/VIEW/LISTE/", "ListeView_Utilisateurs", "Liste Utilisateurs", 3, false],
+	"ListeUtilisateurs" => ["PHP/VIEW/LISTE/", "ListeUtilisateurs", "Liste Utilisateurs", 3, false],
 	"FormUtilisateurs" => ["PHP/VIEW/FORM/", "FormUtilisateurs", "Formulaire Utilisateurs", 3, false],
 	"ActionUtilisateurs" => ["PHP/CONTROLLER/ACTION/", "ActionUtilisateurs", "Action Utilisateurs", 3, false],
 
-	"ListeView_Pointages" => ["PHP/VIEW/LISTE/", "ListeView_Pointages", "Liste View_Pointages", 3, false],
-	"FormView_Pointages" => ["PHP/VIEW/FORM/", "FormView_Pointages", "Formulaire View_Pointages", 3, false],
-	"ActionView_Pointages" => ["PHP/CONTROLLER/ACTION/", "ActionView_Pointages", "Action View_Pointages", 3, false],
-
-	"ListeView_Utilisateurs" => ["PHP/VIEW/LISTE/", "ListeView_Utilisateurs", "Liste View_Utilisateurs", 3, false],
-	"FormView_Utilisateurs" => ["PHP/VIEW/FORM/", "FormView_Utilisateurs", "Formulaire View_Utilisateurs", 3, false],
-	"ActionView_Utilisateurs" => ["PHP/CONTROLLER/ACTION/", "ActionView_Utilisateurs", "Action View_Utilisateurs", 3, false],
-
-	"ListeView_Utilisateurs_Preferences_Prestations" => ["PHP/VIEW/LISTE/", "ListeView_Utilisateurs_Preferences_Prestations", "Liste View_Utilisateurs_Preferences_Prestations", 3, false],
-	"FormView_Utilisateurs_Preferences_Prestations" => ["PHP/VIEW/FORM/", "FormView_Utilisateurs_Preferences_Prestations", "Formulaire View_Utilisateurs_Preferences_Prestations", 3, false],
-	"ActionView_Utilisateurs_Preferences_Prestations" => ["PHP/CONTROLLER/ACTION/", "ActionView_Utilisateurs_Preferences_Prestations", "Action View_Utilisateurs_Preferences_Prestations", 3, false],
-
+	
 ];
 
 if (isset($_GET["page"])) {

@@ -19,8 +19,8 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     if (substr($nom, 0, 4) == "Form" || $nom == 'Accueil') {
         echo '  <link rel="stylesheet" href="CSS/grids.css">
             <link rel="stylesheet" href="CSS/form.css">';
-        if ($nom == "FormPointagesIndividuels") {
-            echo '<link rel="stylesheet" href="CSS/Pointage.css">';
+        if ($nom == "FormPointages") {
+            echo '<link rel="stylesheet" href="CSS/pointage.css">';
         }
     } else if (substr($nom, 0, 4) == "List") {
         echo '  <link rel="stylesheet" href="CSS/grids.css">';
