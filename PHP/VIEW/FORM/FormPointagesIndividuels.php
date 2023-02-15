@@ -142,7 +142,7 @@ foreach ($typesPrestations as $key => $typePresta)
 
         echo '    <div class="grid-pointage tabCol pointMove">';
         echo '                <div class="cellBottom center grid-lineDouble colTotal" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">0</div>';
-        echo '                <div class="cellBottom center grid-lineDouble" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
+        echo '                <div class="cellBottom center grid-lineDouble colPrctGTA" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
         echo '                <div class="cellBottom grid-lineDouble"></div>';
         foreach ($tabJour as $i=>$value)
         {
