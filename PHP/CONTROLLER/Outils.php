@@ -231,11 +231,9 @@ function tabMoisAnnee($mois)
 {
 	// Récupération des années et des mois
 	$annees = Parametres::getAnneeDisponible();
-	$tabMois = $mois;
-
 	// Parcours des tableaux
 	foreach ($annees as $annee) {
-		foreach ($tabMois as $key => $value) {
+		foreach ($mois as $key => $value) {
 			// Création de la future key
 			if ($key < 10) {
 				$date = $annee . "-0" . $key;
