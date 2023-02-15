@@ -15,29 +15,33 @@ if (isset($page)) {
         if ($matches[0] == "Liste") {
             //    <script src="./JS/FiltresListe.js"></script>
             echo '  
-           <script src="./JS/Tri.js"></script>
-           <script src="./JS/SelectionListe.js"></script>
-           <script src="./JS/Filtre.js"></script>
-           <script src="./JS/Pagination.js"></script>
-           ';
-       } 
-       else if ($matches[0] == "Form") {
-           if ($page[1] != "FormFichesItv")
-               echo '<script src="./JS/VerifForm.js"></script>';
+            <script src="./JS/Tri.js"></script>
+            <script src="./JS/SelectionListe.js"></script>
+            <script src="./JS/Filtre.js"></script>
+            <script src="./JS/Pagination.js"></script>
+            ';
+        } else if ($matches[0] == "Form") {
+            echo '<script src="./JS/VerifForm.js"></script>';
             if ($page[1] == "FormTypePrestations" && $_GET["mode"] == "Modifier") {
                 echo '<script src="./JS/CheckActivites.js"></script>';
             }
+            if ($page[1] == "FormPointagesIndividuels" ) {
+                echo '<script src="./JS/CrudPointage.js"></script>';
+            }
             echo ' <script src="./JS/pointage.js"></script>';
-       }
+        } 
     }
     switch ($page[1]) {
-    case "ChangePassword":
-        echo '<script src="./JS/VerifFormMdp.js"></script>';
-        break;
-    case "dbAssistante":
-        echo '<script src="./JS/Chart.js"></script>';
-        echo '<script src="./JS/CreateChartTB.js"></script>';
-        break;
+        case "ChangePassword":
+            echo '<script src="./JS/VerifFormMdp.js"></script>';
+            break;
+        case "dbAssistante":
+            echo '<script src="./JS/Chart.js"></script>';
+            echo '<script src="./JS/CreateChartTB.js"></script>';
+            break;
+        case 'Accueil':
+            echo ' <script src="./JS/Pointage.js"></script>';
+            break;
     }
 }
 echo '</body>

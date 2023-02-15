@@ -1,4 +1,4 @@
-var idUser = document.getElementsByName("idUtilisateur")[0].value;
+var idUser = document.getElementById("IdUtilisateur").innerHTML;
 var inputs = document.querySelectorAll(".case");
 
 // On ajoute un evenement sur toutes les cases de pointage qui se déclanche lorsque la valeur de la case change

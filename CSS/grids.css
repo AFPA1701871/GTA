@@ -136,8 +136,10 @@
 	align-items: center;
 }
 
-
-
 .gridForm-col-span {
 	grid-column: 1/5 ;
+}
+.grid-mini {
+	width: 50vw;
+	margin: 0 auto;
 }

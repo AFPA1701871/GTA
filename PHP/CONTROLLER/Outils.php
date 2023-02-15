@@ -57,17 +57,42 @@ function afficherPage($page)
 		if  ($api) {
 			include $chemin . $nom . '.php';
 		} else {
+			$role = [];
+			$roles = RolesManager::getList();
+			foreach ($roles AS $key => $value)
+			{
+				$nomRole = $value->getNomRole();
+				$role["$nomRole"] = $value->getIdRole();
+			}
+
 			include 'PHP/VIEW/GENERAL/Head.php';
 			include 'PHP/VIEW/GENERAL/Header.php';
-			if (isset($_SESSION["utilisateur"]) && (stripos($chemin,"PHP/CONTROLLER/ACTION/") !== 0 || $nom != "ChangePassword"))
+
+			// On affiche la navigation si :
+			// - on est connecté
+			// - on est pas dans une des pages d'action
+			// - on ne modifie pas de force son mot de passe
+			// - on est assistante ou admin
+			if (isset($_SESSION["utilisateur"]) && (stripos($chemin,"PHP/CONTROLLER/ACTION/") !== 0) && $nom != "ChangePassword" && ($roleConnecte == $role['assistante'] || $roleConnecte == $role['admin']))
 			{
 				include 'PHP/VIEW/GENERAL/Nav.php';
 			}
+
+			// On force à afficher uniquement le pointage si :
+			// - on est assistante ou admin
+			// - on a un rôle
+			// - on ne se déconnecte pas
+			if (($roleConnecte == $role['agent'] || $roleConnecte == $role['manager']) && ($roleConnecte == ['agent'] || $roleConnecte == $role['manager'] || $roleConnecte == $role['assistante'] || $roleConnecte == $role['admin']) && $nom != 'ActionDeconnexion')
+			{
+				$chemin = 'PHP/VIEW/FORM/';
+				$nom = 'FormPointagesIndividuels';
+			}
+
 			include $chemin . $nom . '.php'; //Chargement de la page en fonction du chemin et du nom
 			include 'PHP/VIEW/GENERAL/Footer.php';
 		}
 	} else {
-	$nom = "FormInscriptionConnexion";
+		$nom = "FormInscriptionConnexion";
 		$titre = "Authorisation insuffisante";
 		include 'PHP/VIEW/GENERAL/Head.php';
 		include 'PHP/VIEW/GENERAL/Header.php';
@@ -200,4 +225,31 @@ function creerSelectTab( $valeur, array $tab,  ?string $attributs = "",  string 
 			}
 		$select .= "</select>";
 		return $select;
+}
+
+/**
+ * Créer un tableau associatif contenant les mois et années
+ *
+ * @param array $mois
+ * @return array
+ */
+function tabMoisAnnee()
+{
+	global $mois;
+	// Récupération des années et des mois
+	$annees = Parametres::getAnneeDisponible();
+	// Parcours des tableaux
+	foreach ($annees as $annee) {
+		foreach ($mois as $key => $value) {
+			// Création de la future key
+			if ($key < 10) {
+				$date = $annee . "-0" . $key;
+			} else {
+				$date = $annee . "-" . $key;
+			}
+			// Ajout de la case dans le tableau
+			$tabMoisAnnee[$date] = $value . " " . $annee;
+		}
+	}
+	return $tabMoisAnnee;
 }
