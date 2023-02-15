@@ -38,18 +38,7 @@ echo '          <div></div>
             </div>';
 
 $nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $moisVisionne, $anneeVisionne);
-$listeFermetures = FermeturesManager::getList(null, null, null, null, true);
-if (sizeof($listeFermetures) != 0)
-{
-    foreach ($listeFermetures as $fermeture)
-    {
-        $listeFermeturesDuMois[] = $fermeture['dateFermeture'];
-    }
-}
-else
-{
-    $listeFermeturesDuMois[] = null;
-}
+$listeFermeturesDuMois = FermeturesManager::getDates($moisVisionne);
 echo '  <div class="grid-presta tabCol grid-5-reduct pointHead bgc4 leftStickyRigth cellBottom">
             <div id="anneeSelected" class="noDisplay">2023</div>
             <div id="moisSelected" class="noDisplay">02</div>
@@ -76,7 +65,7 @@ for ($i = 1; $i <= $nbrJoursMois; $i++)
     {
         $nbJourPointe++;
         $tabJour[$i]["jourOuvert"] = $jour->format("d") . "<br/>" . $joursSemaine[$jour->format('w')];
-        if (in_array($jour, $listeFermeturesDuMois))
+        if (in_array($jour->format("Y-m-d"), $listeFermeturesDuMois))
         {
             $tabJour[$i]["classeBG"] = "notApplicable";
             $tabJour[$i]["content"] = "";
