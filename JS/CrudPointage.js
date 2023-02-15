@@ -18,7 +18,7 @@ function changePointage(event) {
   let uo = document.querySelector('input[data-line="' + ligne + '"][name="inputUo"]').value; 
   let motif = document.querySelector('input[data-line="' + ligne + '"][name="inputMotif"]').value;
   let projet = document.querySelector('input[data-line="' + ligne + '"][name="inputProjet"]').value;
-  let prestation = document.querySelector('select[data-line="' + ligne + '"][name="inputPrestation"]').value;
+  let prestation = document.querySelector('input[data-line="' + ligne + '"][name="idPrestation"]').value;
 
   let req = new XMLHttpRequest();
   req.open("POST", "index.php?page=MAJPointageAPI", true); // Initialisation de la requête avec une methode POST et le chemin de la page de traitement

@@ -221,7 +221,7 @@ function creerSelectTab( $valeur, array $tab,  ?string $attributs = "",  string 
 		}
 		foreach ($tab as $key=>$elt) {
 				$key = $tabAssoc? $key :$elt;
-				if ($valeur == $elt) {
+				if ($key == $valeur) {
 						$select .= '<option value="' .$key. '" SELECTED>' . $elt . '</option>';
 				} else {
 						$select .= '<option value="' .$key. '">' . $elt . '</option>';

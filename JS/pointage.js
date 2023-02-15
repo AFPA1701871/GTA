@@ -16,7 +16,7 @@ sectionSideScroll.forEach(element => {
         e.preventDefault();
     })
 })
-//mod
+
 
 listeLignesPresta = document.querySelectorAll(".expand-line");
 listeLignesPresta.forEach(LignePresta => {
@@ -45,14 +45,13 @@ listeLignesPresta.forEach(LignePresta => {
 
 window.addEventListener("load", setGridPointage);
 function setGridPointage() {
-    selectAnnee = document.querySelector("#anneeVisionne");
-    selectMois = document.querySelector("#moisVisionne");
-    annee = selectAnnee.value;
-    mois = selectMois.value;
+    selectPeriode = document.querySelector("#periode");
+    tabPeriode=selectPeriode.value.split('-');
+    annee = tabPeriode[0];
+    mois = tabPeriode[1];
     // selectAnnee.addEventListener("change", setGridPointage);
     // selectMois.addEventListener("change", setGridPointage);
-
-    var feuilleStyle = document.querySelector('link[href*=pointage]').sheet.cssRules[0];
+    var feuilleStyle = document.querySelector('link[href*=Pointage]').sheet.cssRules[0];
     const getDays = (year, month) => {
         return new Date(year, month, 0).getDate();
     }
