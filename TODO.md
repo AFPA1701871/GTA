@@ -64,6 +64,7 @@
 * [ ] Feuille de pointage individuel avec préférences (Florent)
 * [ ] Ajax étoiles préférences (Florent)
 * [X] % sur les lignes de pointage (Florent)
+* [ ] Texte invisible en dark mod 
 * [ ] Message informatif sauvegardes
 * [ ] Récapitulatif pointage pour manager
 * [ ] Récapitulatif pointage pour ARH
