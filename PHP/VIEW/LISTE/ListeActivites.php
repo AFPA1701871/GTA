@@ -15,7 +15,7 @@ $objets = ActivitesManager::getList(null, null, null, Parametres::getNbEltParPag
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
 echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
-echo '<div class="grid-col-'.($formtype?5:4).' gridListe">';
+echo '<div class="grid-col-'.($formtype?5:4).' gridListe grid-mini">';
 
 echo '<div class="caseListe titreListe grid-columns-span-'.($formtype?5:4).'">'.texte("Liste des Activites").'</div>';
 echo '<div class="bigEspace grid-columns-span-'.($formtype?5:4).'"></div>'; 
@@ -36,7 +36,7 @@ echo '<div class="caseListe labelListe" data-name= "LibelleActivite">'.texte("Li
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
 echo '<div class=" caseListe texteClair ">'.(!$formtype ? '<p>'.texte('total').' :</p>':'').'</div><div class="mini" id="nbEnregs"></div> ';
-echo '</div><div class="grid-col-'.($formtype?2:4).' gridListe grid-contenu">';
+echo '</div><div class="grid-col-'.($formtype?2:4).' gridListe grid-contenu grid-mini">';
 
 // Affichage des enregistrements de la base de données
 if (!$formtype)

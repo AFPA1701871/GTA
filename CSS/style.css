@@ -470,3 +470,15 @@ input[type=number] {
 .resetPassword {
     transform: scale(60%);
 }
+
+body.dark .resetPassword {
+    filter: invert(100%) sepia(1%) saturate(3368%) hue-rotate(304deg) brightness(135%) contrast(87%);
+}
+
+.bgc .resetPassword {
+    filter: invert(100%) sepia(1%) saturate(3368%) hue-rotate(304deg) brightness(135%) contrast(87%);
+}
+
+body.dark menu>div:hover i {
+    color: var(--color5);
+}

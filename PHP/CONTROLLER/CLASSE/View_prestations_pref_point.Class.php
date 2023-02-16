@@ -24,7 +24,7 @@ class View_Prestations_Pref_Point
 	private $_idUtilisateur;
 	private $_idPointage;
 	private $_datePointage;
-	private $_mois;
+	private $_periode;
 	private static $_attributes=["idPrestation","codePrestation","libellePrestation","numeroTypePrestation","libelleTypePrestation","motifRequis","uoRequis","projetRequis","idPreference","idMotif","codeMotif","idUO","numeroUO","idProjet","codeProjet","idTypePrestation","idUtilisateur","idPointage","datePointage","mois"];
 	/***************** Accesseurs ***************** */
 
@@ -179,14 +179,14 @@ class View_Prestations_Pref_Point
 		$this->_datePointage=is_null($datePointage)?null:DateTime::createFromFormat("Y-n-j",$datePointage);
 	}
 
-	public function getMois()
+	public function getPeriode()
 	{
-		return $this->_mois;
+		return $this->_periode;
 	}
 
-	public function setMois(?string $mois)
+	public function setPeriode(?string $periode)
 	{
-		$this->_mois=$mois;
+		$this->_periode=$periode;
 	}
 
 	public function getCodeMotif()
@@ -263,7 +263,7 @@ class View_Prestations_Pref_Point
 	*/
 	public function toString()
 	{
-		return "IdPrestation : ".$this->getIdPrestation()."CodePrestation : ".$this->getCodePrestation()."LibellePrestation : ".$this->getLibellePrestation()."NumeroTypePrestation : ".$this->getNumeroTypePrestation()."LibelleTypePrestation : ".$this->getLibelleTypePrestation()."MotifRequis : ".$this->getMotifRequis()."UoRequis : ".$this->getUoRequis()."ProjetRequis : ".$this->getProjetRequis()."IdPreference : ".$this->getIdPreference()."IdMotif : ".$this->getIdMotif()."IdProjet : ".$this->getIdProjet()."IdTypePrestation : ".$this->getIdTypePrestation()."IdUtilisateur : ".$this->getIdUtilisateur()."IdPointage : ".$this->getIdPointage()."DatePointage : ".$this->getDatePointage()."Mois : ".$this->getMois()."\n";
+		return "IdPrestation : ".$this->getIdPrestation()."CodePrestation : ".$this->getCodePrestation()."LibellePrestation : ".$this->getLibellePrestation()."NumeroTypePrestation : ".$this->getNumeroTypePrestation()."LibelleTypePrestation : ".$this->getLibelleTypePrestation()."MotifRequis : ".$this->getMotifRequis()."UoRequis : ".$this->getUoRequis()."ProjetRequis : ".$this->getProjetRequis()."IdPreference : ".$this->getIdPreference()."IdMotif : ".$this->getIdMotif()."IdProjet : ".$this->getIdProjet()."IdTypePrestation : ".$this->getIdTypePrestation()."IdUtilisateur : ".$this->getIdUtilisateur()."IdPointage : ".$this->getIdPointage()."DatePointage : ".$this->getDatePointage()."Mois : ".$this->getPeriode()."\n";
 	}
 
 }

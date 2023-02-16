@@ -22,12 +22,19 @@ echo '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         if ($nom == "FormPointages") {
             echo '<link rel="stylesheet" href="CSS/pointage.css">';
         }
-    } else if (substr($nom, 0, 4) == "List") {
+    } 
+    else if (substr($nom, 0, 4) == "List") {
         echo '  <link rel="stylesheet" href="CSS/grids.css">';
-    } else if (substr($nom, 0, 4) == "Chan") {
+    } 
+    else if (substr($nom, 0, 4) == "Chan") {
         echo ' <link rel="stylesheet" href="CSS/form.css">';
-    } else if (substr($nom, 0, 4) == "TbAs") {
+    } 
+    else if (substr($nom, 0, 4) == "TbAs") {
         echo ' <link rel="stylesheet" href="CSS/tbAssistante.css">';
     }
+    else if (substr($nom, 0, 4) == "TbMa") {
+        echo ' <link rel="stylesheet" href="CSS/tbManager.css">';
+    }
+    
     echo '</head>';
 //  <script src="https://kit.fontawesome.com/ce4feb7268.js" crossorigin="anonymous"></script>

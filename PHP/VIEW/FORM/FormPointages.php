@@ -37,7 +37,9 @@ echo '        </div>
 
 $nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $moisVisionne, $anneeVisionne);
 $listeFermeturesDuMois = FermeturesManager::getDates($moisVisionne);
-echo '  <div class="grid-presta tabCol grid-5-reduct pointHead leftStickyRigth cellBottom trans"></div>
+echo '  <div class="grid-presta tabCol pointHead  cellBottom trans alert center">
+<p>Changement sauveguardé</p><i class="fas fa-floppy-disk"></i>
+</div>
         <div class="grid-pointage tabCol pointHead">
             <div class="cellBottom center grid-lineDouble bgc4">Total</div>
             <div class="cellBottom center grid-lineDouble bgc4 border-left">%GTA</div>

@@ -40,7 +40,8 @@ LEFT JOIN gta_Centres as centre ON c.idCentre = centre.idCentre;
  -- Vue Pointages avec satellites
  --
  CREATE VIEW gta_View_Pointages AS
- SELECT po.idPointage, po.datePointage, po.validePointage, po.reportePointage, po.nbHeuresPointage,  po.idUO as "idUO_Pointage",po.idMotif,
+ SELECT po.idPointage, po.datePointage, date_format(po.datePointage,"%Y-%m") as periode,
+ po.validePointage, po.reportePointage, po.nbHeuresPointage,  po.idUO as "idUO_Pointage",po.idMotif,
  u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO as "idUO_Utilisateur", u.idRole, u.idManager,
  uo.numeroUO, uo.libelleUO,
  m.codeMotif, m.libelleMotif,
@@ -140,7 +141,7 @@ po.idTypePrestation ,
 po.idUtilisateur ,
 po.idPointage,
 po.datePointage,
-date_format(po.datePointage,"%Y-%m") as mois
+date_format(po.datePointage,"%Y-%m") as periode
 
 FROM gta_View_Prestations p
 INNER JOIN gta_Activites a ON p.idActivite = a.idActivite
