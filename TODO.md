@@ -7,7 +7,7 @@
 ## Formulaires
 
 * [X] Changer oeil -> ON/OFF plutôt que rester appuyé (valentin)
-* [ ] Enlever les icones (? et v)
+* [X] Enlever les icônes (? et v) (Yves)
 
 ## Crud Utilisateurs
 
@@ -111,4 +111,4 @@
 
 ## Feriés
 
-* [ ] Visuel du chargement des fériés de l'année (Yves)
+* [X] Visuel du chargement des fériés de l'année (Yves)
