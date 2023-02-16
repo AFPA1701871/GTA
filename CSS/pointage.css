@@ -56,9 +56,9 @@
     height: 3.2em;
 }
 
-.grid-lineQuad {
-    /* height: 6.3em; */
-} 
+/* .grid-lineQuad {
+     height: 6.3em; 
+}  */
 
 .grid-pointage {
     display: grid;
@@ -236,7 +236,7 @@ div .jourOK>input[type="text"] {
     border-color: lightcoral;
 }
 
-input[type="text"]:disabled {
+.grid-pointage input[type="text"]:disabled {
     background-color: var(--color7);
 }
 
