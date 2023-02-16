@@ -339,18 +339,23 @@ nav {
 }
 
 .divfieldset {
-  margin-left: 5vw;
+    margin-left: 5vw;
 }
 
 .fieldset {
-  max-width: 15vw;
-  align-items: center;
-  justify-content: center;
-  height: 7vh;
+    max-width: 15vw;
+    align-items: center;
+    justify-content: center;
+    height: 7vh;
+    border-radius: 6px;
+}
+
+.fieldset legend {
+    margin-left: 1vw;
 }
 
 .fieldset label {
-  max-width: 7vw;
+    max-width: 7vw;
 }
 
 .sous-menu {
