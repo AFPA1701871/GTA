@@ -7,6 +7,7 @@ class View_Pointages
 
 	private $_idPointage;
 	private $_datePointage;
+	private $_periode;
 	private $_validePointage;
 	private $_reportePointage;
 	private $_nbHeuresPointage;
@@ -54,6 +55,16 @@ class View_Pointages
 	public function setDatePointage(string $datePointage)
 	{
 		$this->_datePointage=DateTime::createFromFormat("Y-n-j",$datePointage);
+	}
+
+	public function getPeriode()
+	{
+		return $this->_periode;
+	}
+
+	public function setPeriode(?string $periode)
+	{
+		$this->_periode=$periode;
 	}
 
 	public function getValidePointage()
