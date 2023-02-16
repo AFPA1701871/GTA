@@ -51,7 +51,7 @@
 
 ## Table Associations
 
-* [ ] Gérer l'association entre les idPrestations et les idProjets (Yves)
+* [X] Gérer l'association entre les idPrestations et les idProjets (Yves)
 
 ## Crud Activités
 

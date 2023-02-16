@@ -110,4 +110,5 @@ INSERT INTO gta_Textes (`idTexte`, `codeTexte`, `fr`, `en`) VALUES
 (109, "DateFinContrat", "Date de fin de contrat", "Contract end date"),
 (110, 'annee', 'Année', 'Year'),
 (111, 'addholidays', 'Ajout des jours fériés', 'Add holidays'),
-(112, 'total', 'Total', 'Total');
+(112, 'total', 'Total', 'Total'),
+(113, 'onlymnsp', 'Le projet à renseigner ne concerne que les prestations MNSP !', 'The project needs to be filled only for MNSP services!');
