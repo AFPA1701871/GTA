@@ -213,7 +213,9 @@ select {
 .fa-open:before {
     content: "\F107";
 }
-
+.dark .trans {
+    background-color: transparent;
+}
 .fa-close:before {
     content: "\F106";
 }
