@@ -148,33 +148,32 @@ function appelGet($obj, $chaine)
  */
 function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $attributs = "", array $condition = null, string $orderBy = null, string $attributId = null)
 {
-	
-		$nomId= $table::getAttributes()[0];
-		$atrId = ($attributId == null ? $nomId : $attributId);
+	$nomId= $table::getAttributes()[0];
+	$atrId = ($attributId == null ? $nomId : $attributId);
 
-		$select = '<select id="' . $atrId . '" name="' . $atrId . '"' . $attributs . '>';
-		$methode = $table . 'Manager';
-		$libelle= $nomColonnes;
-		array_push($nomColonnes, $nomId);
-		$liste = $methode::getList($nomColonnes, $condition, $orderBy,  null);
-		if ($valeur == null) {
-				$select .= '<option value="" SELECTED>'.texte("inputDefault").'</option>';
-		} else {
-				$select .= '<option value="">'.texte("inputDefault").'</option>';
-		}
-		foreach ($liste as $elt) {
-				$content = "";
-				foreach ($libelle as $value) {
-						$content .= appelGet($elt, $value) . " ";
-				}
-				if ($valeur == appelGet($elt, $nomId)) {
-						$select .= '<option value="' . appelGet($elt, $nomId) . '" SELECTED>' . $content . '</option>';
-				} else {
-						$select .= '<option value="' . appelGet($elt, $nomId) . '">' . $content . '</option>';
-				}
+	$select = '<select id="' . $atrId . '" name="' . $atrId . '"' . $attributs . '>';
+	$methode = $table . 'Manager';
+	$libelle= $nomColonnes;
+	array_push($nomColonnes, $nomId);
+	$liste = $methode::getList($nomColonnes, $condition, $orderBy,  null);
+	if ($valeur == null) {
+			$select .= '<option value="" SELECTED>'.texte("inputDefault").'</option>';
+	} else {
+			$select .= '<option value="">'.texte("inputDefault").'</option>';
+	}
+	foreach ($liste as $elt) {
+			$content = "";
+			foreach ($libelle as $value) {
+					$content .= appelGet($elt, $value) . " ";
 			}
-		$select .= "</select>";
-		return $select;
+			if ($valeur == appelGet($elt, $nomId)) {
+					$select .= '<option value="' . appelGet($elt, $nomId) . '" SELECTED>' . $content . '</option>';
+			} else {
+					$select .= '<option value="' . appelGet($elt, $nomId) . '">' . $content . '</option>';
+			}
+		}
+	$select .= "</select>";
+	return $select;
 }
 
 /**
@@ -188,25 +187,23 @@ function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $a
  */
 function creerSelectTab( $valeur, array $tab,  ?string $attributs = "",  string $attributId ,bool $tabAssoc)
 {
+	$select = '<select id="' . $attributId . '" name="' . $attributId . '"' . $attributs . '>';
 	
-		
-		$select = '<select id="' . $attributId . '" name="' . $attributId . '"' . $attributs . '>';
-		
-		if ($valeur == null) {
-				$select .= '<option value="" SELECTED>'.texte("inputDefault").'</option>';
-		} else {
-				$select .= '<option value="">'.texte("inputDefault").'</option>';
-		}
-		foreach ($tab as $key=>$elt) {
-				$key = $tabAssoc? $key :$elt;
-				if ($key == $valeur) {
-						$select .= '<option value="' .$key. '" SELECTED>' . $elt . '</option>';
-				} else {
-						$select .= '<option value="' .$key. '">' . $elt . '</option>';
-				}
+	if ($valeur == null) {
+			$select .= '<option value="" SELECTED>'.texte("inputDefault").'</option>';
+	} else {
+			$select .= '<option value="">'.texte("inputDefault").'</option>';
+	}
+	foreach ($tab as $key=>$elt) {
+			$key = $tabAssoc? $key :$elt;
+			if ($key == $valeur) {
+					$select .= '<option value="' .$key. '" SELECTED>' . $elt . '</option>';
+			} else {
+					$select .= '<option value="' .$key. '">' . $elt . '</option>';
 			}
-		$select .= "</select>";
-		return $select;
+		}
+	$select .= "</select>";
+	return $select;
 }
 
 /**
@@ -234,4 +231,10 @@ function tabMoisAnnee()
 		}
 	}
 	return $tabMoisAnnee;
+}
+
+function moisPrecedent(DateTime $date){
+	$date->modify('first day of this month'); // Positionne la date sur le premier jour du mois en cours
+	$month = $date->modify('-1 day')->format('Y-m'); // on retire un jour et on reformate au format ANNEE-MOIS
+	return $month;
 }
