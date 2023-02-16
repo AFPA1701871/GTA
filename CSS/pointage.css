@@ -106,6 +106,7 @@
 
 .notApplicable {
     background-color: var(--color7);
+    color: var(--color1);
 }
 
 #info {
@@ -177,15 +178,22 @@ select {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
+.titreInfosUser {
+    padding-right: 0.4rem;
+}
 .infosUser {
     display: grid;
     grid-template-columns: auto auto 1fr auto auto 1fr auto auto 1fr auto auto 1fr auto auto 1fr auto auto;
 }
-
+.casePointage {
+    border: 2px solid var(--color7);
+}
 .colSelected {
-    border-width: 0.2em;
+    /* border-width: 0.2em;
+    border-color: var(--color8); */
     border-color: var(--color8);
+    outline: 1px solid var(--color8);
+    /* color:var(--color8); */
 }
 
 .fa-open:before {
@@ -201,12 +209,15 @@ select {
 }
 .jourOK {
     background-color: var(--color8);
+    border-color: var(--color8);
 }
 div .jourOK>input[type="text"] {
     background-color:var(--color8);
 }
+
 .jourWarn{
     background-color:lightcoral;
+    border-color: lightcoral;
 }
 
 input[type="text"]:disabled {

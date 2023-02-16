@@ -14,21 +14,21 @@ echo '  <main>
             <div>
             <div class="mainGrid grid-col2-reduct">
                 <div class="grid-columns-span-2 center infosUser">
-                    <div>Année: </div>
+                    <div class=titreInfosUser>Année : </div>
                 <div>';
 echo creerSelectTab($periode, tabMoisAnnee(),null, "periode", true);
 echo '        </div>
               <div></div>
-                <div>Nom:</div>
+                <div class=titreInfosUser>Nom : </div>
                 <div>' . $user->getNomUtilisateur() . '</div>
                 <div></div>
-                <div>Matricule:</div>
+                <div class=titreInfosUser>Matricule : </div>
                 <div>' . $user->getMatriculeUtilisateur() . '</div>
                 <div></div>
-                <div>Centre de rattachement:</div>
+                <div class=titreInfosUser>Centre de rattachement :</div>
                 <div>' . $user->getNomCentre() . '</div>
                 <div></div>
-                <div>UO d\'affectation:</div>
+                <div class=titreInfosUser>UO d\'affectation : </div>
                 <div>' . $user->getNumeroUO() . '</div>
                 <div class="grid-columns-span-17 espace"></div>
             </div>';
@@ -138,7 +138,7 @@ foreach ($typesPrestations as $key => $typePresta)
 
         echo '    <div class="grid-pointage tabCol pointMove">';
         echo '                <div class="cellBottom center grid-lineDouble colTotal" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">0</div>';
-        echo '                <div class="cellBottom center grid-lineDouble colPrctGTA" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
+        echo '                <div class="cellBottom center grid-lineDouble border-left colPrctGTA" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
         echo '                <div class="cellBottom grid-lineDouble"></div>';
         foreach ($tabJour as $i=>$value)
         {
