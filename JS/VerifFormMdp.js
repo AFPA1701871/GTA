@@ -27,6 +27,7 @@ function annule(event) {
 
 function checkAllValidity(){
     valider.disabled=false;
+    //console.log(tabErreur);
     for (var key in tabErreur) {
         if (tabErreur[key]==0)
         valider.disabled =true;
@@ -67,11 +68,11 @@ for (let i = 0; i < listeOeil.length; i++) {
     // listeOeil[i].addEventListener("mouseup", function () {
     //     affichePassWord(listeOeil[i],false);
     // });
-    console.log(listeOeil[i]);
-     listeOeil[i].addEventListener("click", function () {
+    //console.log(listeOeil[i]);
+    listeOeil[i].addEventListener("click", function () {
         // console.log('click')
-            affichePassWord(listeOeil[i]);
-     });
+        affichePassWord(listeOeil[i]);
+    });
 
 }
 
@@ -105,10 +106,17 @@ if (change) {
     //gestion particulière de la confirmation de mot de passe
 
     confirmer.addEventListener("input", function (event) {
-        if (confirmer.value == mdp.value) {
+        if (confirmer.value != mdp.value) {
             tabErreur["confirmer"] = 0;
         } else {
-            tabErreur["confirmer"] = 1;
+            isValid = confirmer.checkValidity();
+            if (!isValid && confirmer.value == "") {
+                tabErreur["confirmer"] = 0;
+            }
+            else{
+                tabErreur["confirmer"] = 1;
+            }
+            checkAllValidity();
         }
     });
     mdp.addEventListener("input",function (e){
@@ -118,16 +126,6 @@ if (change) {
         }
         else{
             tabErreur["mdp"] = 1;
-        }
-        checkAllValidity();
-    });
-    confirmer.addEventListener("input",function (e){
-        isValid = confirmer.checkValidity();
-        if (!isValid && confirmer.value == "") {
-            tabErreur["confirmer"] = 0;
-        }
-        else{
-            tabErreur["confirmer"] = 1;
         }
         checkAllValidity();
     });
