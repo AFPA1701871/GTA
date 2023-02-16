@@ -13,7 +13,7 @@ listePlus.forEach(element => {
 
 function changePointage(event) {
   let pointage = event.target; // Case de pointage changée
-  let idpointage = pointage.getAttribute('idpointage'); // Id de le la case
+  let idpointage = pointage.getAttribute('data-idpointage'); // Id de le la case
   let ligne = pointage.dataset.line; // Dataset contenant le typePrestation suivit de la prestation
   let lignes = ligne.split("-"); // Separation des deux valeurs du data-line
   let typePrestation = lignes[0]; // Prepière valeur du dataset
@@ -42,7 +42,7 @@ function changePointage(event) {
       if (this.status === 200) { // Si la requête est réussie
         if (this.responseText) { // Si la réponse n'est pas vide
           let idpointage = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
-          pointage.setAttribute("idpointage", idpointage); // Change l'attribut ID de la case
+          pointage.setAttribute("data-idpointage", idpointage); // Change l'attribut ID de la case
         }
       }
     }
