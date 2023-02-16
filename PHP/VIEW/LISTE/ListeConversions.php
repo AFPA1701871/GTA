@@ -1,11 +1,11 @@
 <?php
 
- echo '<main>';
+echo '<main>';
 
- echo '<div class="cote"></div>';
+echo '<div class="cote"></div>';
 
- echo '<div><section class="colonne">';
- 
+echo '<div><section class="colonne">';
+
 
 $objets = ConversionsManager::getList(null, null, null, Parametres::getNbEltParPage());
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
@@ -15,7 +15,7 @@ echo '<div class="grid-col-5 gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-5">'.texte("Liste des Conversions").'</div>';
 echo '<div class="bigEspace"></div>';
-echo '<div class="grid-columns-span-5"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+echo '<div class="grid-columns-span-5"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="'.texte("infoSearch").'"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-5">
 <div></div>
 <div class="bigEspace"></div>
@@ -36,14 +36,14 @@ echo '<template>';
 echo '<div class="donnees pyjama ">NbHeureConversion</div>';
 echo '<div class="donnees pyjama ">CoeffConversion</div>';
 echo '<a class="pyjama"  href="index.php?page=FormConversions&mode=Afficher&id=IdConversion"><i class="fas fa-file-contract"></i></a>';
-                                    
+
 echo '<a class="pyjama"  href="index.php?page=FormConversions&mode=Modifier&id=IdConversion"><i class="fas fa-pen"></i></a>';
-                                    
+
 echo '<a class="pyjama"  href="index.php?page=FormConversions&mode=Supprimer&id=IdConversion"><i class="fas fa-trash-alt"></i></a>';
 echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';
-                                 
+
 echo '<div class="caseListe grid-columns-span-5">
 	<div></div>
 	<a href="index.php?page=Accueil"><button><i class="fas fa-house fa-rotate-180"></i></button></a>

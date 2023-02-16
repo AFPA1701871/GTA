@@ -1,11 +1,11 @@
 <?php
 
- echo '<main>';
+echo '<main>';
 
- echo '<div class="cote"></div>';
+echo '<div class="cote"></div>';
 
- echo '<div><section class="colonne">';
- 
+echo '<div><section class="colonne">';
+
 
 $objets = TypePrestationsManager::getList(null, null, null, Parametres::getNbEltParPage());
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
@@ -15,7 +15,7 @@ echo '<div class="grid-col-8 gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-8">'.texte("Liste des Types Prestations").'</div>';
 echo '<div class="bigEspace"></div>';
- echo '<div class="grid-columns-span-8"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+echo '<div class="grid-columns-span-8"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="'.texte("infoSearch").'"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-8">
 <div></div>
 <div class="bigEspace"></div>
@@ -41,15 +41,15 @@ echo '<div class="donnees pyjama left">LibelleTypePrestation</div>';
 echo '<div class="donnees pyjama ">MotifRequis</div>';
 echo '<div class="donnees pyjama ">UoRequis</div>';
 echo '<div class="donnees pyjama ">ProjetRequis</div>';
- echo '<a class="pyjama"  href="index.php?page=FormTypePrestations&mode=Afficher&id=IdTypePrestation"><i class="fas fa-file-contract"></i></a>';
-                                    
+echo '<a class="pyjama"  href="index.php?page=FormTypePrestations&mode=Afficher&id=IdTypePrestation"><i class="fas fa-file-contract"></i></a>';
+
 echo '<a class="pyjama"  href="index.php?page=FormTypePrestations&mode=Modifier&id=IdTypePrestation"><i class="fas fa-pen"></i></a>';
-                                    
+
 echo '<a class="pyjama"  href="index.php?page=FormTypePrestations&mode=Supprimer&id=IdTypePrestation"><i class="fas fa-trash-alt"></i></a>';
- echo '</template>';
+echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';
-                                 
+
 echo '<div class="caseListe grid-columns-span-8">
 	<div></div>
 	<a href="index.php?page=Accueil"><button><i class="fas fa-house fa-rotate-180"></i></button></a>
