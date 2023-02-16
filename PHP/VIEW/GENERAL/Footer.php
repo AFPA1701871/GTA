@@ -1,7 +1,7 @@
 <footer class="center">
     <div class="cote"></div>
     <div class="center">
-        <a class="easter" href="?page=Easter"></a>
+        <a class="easter" href="?page=Easter"><img src="./IMG/death-star.svg" alt=""></a>
         <p>Fait par les stagiaires de la promotion CDA 2022/2023 de Martine Poix.</p>
         <div id="backToTop"><i class="fa-solid fa-square-caret-up fa-2x"></i></div>
     </div>
