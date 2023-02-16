@@ -1,6 +1,6 @@
 use gta;
 
-INSERT INTO gta_textes (`idTexte`, `codeTexte`, `fr`, `en`) VALUES
+INSERT INTO gta_Textes (`idTexte`, `codeTexte`, `fr`, `en`) VALUES
 (1, 'Bonjour', 'Bonjour', 'Hello'),
 (2, 'Connexion', 'Connexion', 'Log in'),
 (3, 'Deconnexion', 'Déconnexion', 'Log out'),

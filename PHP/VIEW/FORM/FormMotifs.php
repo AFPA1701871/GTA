@@ -23,18 +23,15 @@ echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdMotif().'" name=IdMotif></div>';
 echo '<label for=CodeMotif class="caseForm labelForm">'.texte("CodeMotif").'</label>';
 echo '<div class="caseForm donneeForm"><input type="number" '.$disabled .'value="'.$elm->getCodeMotif().'" name=CodeMotif pattern="'.$regex["num"].'" required></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=LibelleMotif class="caseForm labelForm">'.texte("LibelleMotif").'</label>';
 echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getLibelleMotif().'" name=LibelleMotif pattern="'.$regex["*"].'" required></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=IdTypePrestation class="caseForm labelForm">'.texte("IdTypePrestation").'</label>';
 echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdTypePrestation(), "TypePrestations", ["libelleTypePrestation"], $disabled . ' required') . '</div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<div class="bigEspace "></div>	';
 echo '<div class="caseForm col-span-form">

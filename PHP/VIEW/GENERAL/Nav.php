@@ -1,7 +1,7 @@
 <nav>
     <aside class="cote"></aside>
     <menu class="flex">
-        
+
         <div class="relative"><?= texte("Données administratives")?>
         <i class="fa-solid fa-angle-down"></i>
             <div class="sous-menu colonne">
@@ -14,7 +14,7 @@
                 <a href='?page=ListeFermetures'>
                     <div><?= texte("Fermetures")?></div>
                 </a>
-                <a href='?page=ListeUos'>
+                <a href='?page=ListeUOs'>
                     <div><?= texte("Uos")?></div>
                 </a>
             </div>

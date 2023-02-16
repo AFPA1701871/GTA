@@ -63,6 +63,7 @@ function setGridPointage() {
     theGridTemplateColumnsValue = tailleTotal + " " + taillePrct + " 0.1em ";
     for (let jour = 1; jour <= nbreJour; jour++) {
         jourActu = new Date(annee, mois - 1, jour);
+        SommeColonne(annee+"-"+mois+"-"+jour);
         if (jourActu.getDay() == 0 || jourActu.getDay() == 6) {
             theGridTemplateColumnsValue += tailleWe + " ";
         }
@@ -94,10 +95,11 @@ function ChangeCellule(e) {
         SommeColonne(colonne);
     }
     SommeLigne(ligne);
+    CalculPrctGTA(e);
 }
 
 function SommeLigne(ligne) {
-    // let total = 0;
+    let total = 0;
     // let ligne = e.target.getAttribute("data-line");
     let casesLigne = document.querySelectorAll("input.casePointage[data-line='" + ligne + "']");
     casesLigne.forEach(inputCase => {
@@ -116,7 +118,7 @@ function SommeColonne(colonne) {
     let total = 0;
     let inputsColonne = document.querySelectorAll("input[data-date='" + colonne + "']");
     inputsColonne.forEach(cellule => {
-        if (e.target.getAttribute("data-line") != "0-1" && cellule.value != "") {
+        if (cellule.getAttribute("data-line") != "0-1" && cellule.value != "") {
             ajout = cellule.value;
         } else {
             ajout = 0;
@@ -166,7 +168,6 @@ function MarquageAbsent(colonne, valeur) {
 function SelectColonne(e){
     let colonne = e.target.getAttribute("data-date");
     let inputsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
-    console.log(inputsColonne);
     inputsColonne.forEach(elt => {
         elt.classList.toggle("colSelected");
         if(elt.nodeName=="DIV")
@@ -180,19 +181,24 @@ function SelectColonne(e){
 function CalculPrctGTA(e){
     let ligne=e.target.getAttribute("data-line");
     let cellCible=document.querySelector(".colPrctGTA[data-line='"+ligne+"']");
-    let listeTousInputs=document.querySelectorAll(".inputPointage");
-    let listeInputsPresta=document.querySelectorAll(".inputPointage[data-line='"+ligne+"']");
-    let totalLigne=0;
+    let listeTousInputs=document.querySelectorAll(".casePointage");
+    let totalLigne=document.querySelector(".colTotal[data-line='"+ligne+"']").innerHTML;
     let totalMois=0;
+    let totalPrctGTA=0;
     let ajout;
-    listeInputsPresta.forEach(cellLigne=>{
-        if(cellLigne.value!=""){
-            ajout=cellLigne.value;
+    listeTousInputs.forEach(cellActu=>{
+        console.log(cellActu);
+        if(cellActu.getAttribute("data-line")!="0-1" && cellActu.value!=""){
+            ajout=cellActu.value;
         }else{
             ajout=0;
         }
-        totalLigne=(parseFloat(totalLigne) + parseFloat(ajout)).toFixed(2);
+        totalMois = (parseFloat(totalMois) + parseFloat(ajout)).toFixed(2);
     })
-
-
+    
+    totalPrctGTA=((parseFloat(totalLigne)/parseFloat(totalMois))*100).toFixed(1);
+    if(isNaN(totalPrctGTA)){
+        totalPrctGTA=0;
+    }
+    cellCible.innerHTML=totalPrctGTA+"%";
 }
