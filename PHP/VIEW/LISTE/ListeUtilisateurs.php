@@ -48,6 +48,8 @@ echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Afficher&id=
 echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Modifier&id=IdUtilisateur"><i class="fas fa-pen"></i></a>';
 
 echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Supprimer&id=IdUtilisateur"><i class="fas fa-trash-alt"></i></a>';
+
+echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Reinit&id=IdUtilisateur"><img src="IMG/refresh-lock.svg" class="resetPassword" alt="" /></a>';
 echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';
