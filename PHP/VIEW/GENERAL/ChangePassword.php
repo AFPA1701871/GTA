@@ -13,17 +13,17 @@
                 <?php
                 if (isset($_GET['src'])) {
                     if ($_GET['src']) {
-                        echo '<h1>Changement de mot de passe</h1>';
+                        echo '<h1 class=titre>Changement de mot de passe</h1>';
                     }
                 }else{
-                    echo '<h1>Vous devez changer votre mot de passe pour continuer</h1>';
+                    echo '<h1 class=titre>Vous devez changer votre mot de passe pour continuer</h1>';
                 }
                 ?>
                 
             </div>
-
+            <div class="bigEspace"></div>
             <div class="relative col-span-form-chg-pwd ligne">
-                <label for="passwordUtilisateur"><?= texte('Mdp'); ?> :</label>
+                <label for="passwordUtilisateur" class=center><?= texte('Mdp'); ?> :</label>
                 <div>
                     <input type="password" id="mdpUser" name="passwordUtilisateur" required class="minWidth" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
                     <i class="oeil fas fa-eye"></i>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="relative col-span-form-chg-pwd ligne">
-                <label for="confirmation">Confirmation de mot de passe :</label>
+                <label for="confirmation"  class=center>Confirmation de mot de passe :</label>
                 <div>
                     <input type="password" id="confirmation" name="confirmation" title="remettre le même mot de passe" class="minWidth" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
 
@@ -71,7 +71,7 @@
             <div></div>
             <div></div>
             <div></div>
-            <input type="submit" id="submit" value="<?= texte('Envoyer')  ?>" disabled></button>
+            <input class="btnPrincipale" type="submit" id="submit" value="<?= texte('Modifier')  ?>" disabled></button>
         </form>
     </section>
 </main>

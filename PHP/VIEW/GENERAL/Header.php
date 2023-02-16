@@ -12,7 +12,7 @@
                     echo '<div class=demi><a href="index.php?page=ActionConnexion&mode=logout" class="center">' . texte("Deconnexion") . '<i class="fas fa-disconnect"></i></a></div>';
                 }
                 ?>
-           <div class=mini>
+           <div class='mini left-auto'>
             
                 <div class="darkmode">
                 <input type="checkbox" class="checkbox" id="checkbox">

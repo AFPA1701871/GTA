@@ -49,13 +49,32 @@ h1 {
     margin: auto 0;
     margin-left: .8rem;
     flex: 0;
-
+  }
+  .left-auto {
+    margin-left: auto;
   }
   /*  target the elemenent after the label*/
   .checkbox:checked + .label .ball{
     transform: translateX(22px);
   }
-
+  .btnPrincipale {
+    border-radius: 5px;
+    border: none;
+    background-color: var(--color2);
+    color: var(--color1);
+    padding: 1rem 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    /* font-family: 'Comfortaa', cursive; */
+    letter-spacing: 0.05rem;
+    font-size: 1.3rem;
+}
+.btnPrincipale[disabled]{
+    /* color: grey;
+    background-color: transparent; */
+    opacity: 0.5;
+}
   .fa-moon {
     margin-left: 5px;
     color: var(--color5);

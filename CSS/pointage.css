@@ -112,7 +112,20 @@
 #info {
     color: red;
 }
+/****darkmode*****/
 
+.dark .mainGrid {
+    color: var(--color5);
+}
+.dark .mainGrid .infosUser{
+    color: var(--color1);
+}
+.dark .grid-presta {
+    background-color: var(--color1);
+}
+.dark .grid-presta i {
+    color: var(--color5);
+}
 .fa-expand::before {
     content: "\f424";
 }
@@ -178,6 +191,7 @@ select {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
 .titreInfosUser {
     padding-right: 0.4rem;
 }
@@ -238,10 +252,10 @@ input[type="text"]:disabled {
 .mainGrid i {
     padding: 0 0.2rem;
    }
-/* 
+
    .mainGrid {
-    flex: 0;
-   } */
+    margin-top: 2rem;
+   }
 .rtt {
     padding-left: 0.5rem;
 }
