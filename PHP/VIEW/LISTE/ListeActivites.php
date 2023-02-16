@@ -35,7 +35,7 @@ echo '<div class="caseListe labelListe" data-name= "LibelleActivite">'.texte("Li
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair ">'.(!$formtype ? '<p>Total :</p>':'').'</div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class=" caseListe texteClair ">'.(!$formtype ? '<p>'.texte('total').' :</p>':'').'</div><div class="mini" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-'.($formtype?2:4).' gridListe grid-contenu">';
 
 // Affichage des enregistrements de la base de données

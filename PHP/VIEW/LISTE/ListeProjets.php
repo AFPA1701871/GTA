@@ -28,7 +28,7 @@ echo '<div class="caseListe labelListe left" data-name= "LibelleProjet">'.texte(
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair "><p>Total :</p></div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class=" caseListe texteClair "><p>'.texte('total').' :</p></div><div class="mini" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-5 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
