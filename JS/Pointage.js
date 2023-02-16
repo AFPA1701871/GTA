@@ -63,7 +63,7 @@ function setGridPointage() {
     theGridTemplateColumnsValue = tailleTotal + " " + taillePrct + " 0.1em ";
     for (let jour = 1; jour <= nbreJour; jour++) {
         jourActu = new Date(annee, mois - 1, jour);
-        SommeColonne(annee+"-"+mois+"-"+jour);
+        SommeColonne(annee+"-"+mois+"-"+String(jour).padStart(2,'0'));
         if (jourActu.getDay() == 0 || jourActu.getDay() == 6) {
             theGridTemplateColumnsValue += tailleWe + " ";
         }
