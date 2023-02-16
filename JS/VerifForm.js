@@ -2,33 +2,6 @@
 const green = "inputCorrect";
 const white = "inputVide";
 const red = "inputIncorrect";
-const requ = new XMLHttpRequest();
-var listemail = [];
-
-/************* API Mail **************/
-requ.onreadystatechange = function (event) {
-    // XMLHttpRequest.DONE === 4
-    if (this.readyState === XMLHttpRequest.DONE) {
-        if (this.status === 200) {
-            //console.log("Réponse reçue: %s", this.responseText);
-            reponse = JSON.parse(this.responseText);
-            for (let i = 0; i < reponse.length; i++) { //on traite les éléments de la liste ....
-                listemail[i] = (reponse[i].adresseMail);
-            }
-        } else {
-            console.log("Status de la réponse: %d (%s)", this.status, this.statusText);
-        }
-    }
-};
-
-function RecupMail() {
-    // je lance une requete Ajax
-    requ.open('POST', 'index.php?page=ListeMailAPI', true);
-    requ.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    requ.send();
-}
-
-RecupMail();
 
 /************ FIN API MAIL************/
 

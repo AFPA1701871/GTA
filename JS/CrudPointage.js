@@ -23,7 +23,7 @@ function saveMessage(){
 
 function changePointage(event) {
   let pointage = event.target; // Case de pointage changée
-  let idPointage = pointage.id; // Id de le la case
+  let idpointage = pointage.getAttribute('data-idpointage'); // Id de le la case
   let ligne = pointage.dataset.line; // Dataset contenant le typePrestation suivit de la prestation
   let lignes = ligne.split("-"); // Separation des deux valeurs du data-line
   let typePrestation = lignes[0]; // Prepière valeur du dataset
@@ -37,12 +37,13 @@ function changePointage(event) {
 
   // Requête
   let req = new XMLHttpRequest();
-  req.open("POST", "index.php?page=MAJPointageAPI", true); // Initialisation de la requête avec une methode POST et le chemin de la page de traitement
+  // Initialisation de la requête avec une methode POST et le chemin de la page de traitement
+  req.open("POST", "index.php?page=MAJPointageAPI", true);
   req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   // Preparation des arguments qui seront envoyé par POST à la page de traitement
   let args = "idUO=" + uo + "&idMotif=" + motif + "&idProjet=" + projet + "&idPrestation=" + prestation + "&idTypePrestation=" + typePrestation + "&datePointage=" + date + "&idUtilisateur=" + idUser + "&nbHeuresPointage=" + pointage.value;
 
-  if (idPointage) args += "&idPointage=" + idPointage; // Si la case possède déjà un ID
+  if (idpointage) args += "&idPointage=" + idpointage; // Si la case possède déjà un ID
   req.send(args);
 
 
@@ -51,8 +52,8 @@ function changePointage(event) {
       if (this.status === 200) { // Si la requête est réussie
         
         if (this.responseText) { // Si la réponse n'est pas vide
-          let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
-          pointage.setAttribute("id", id); // Change l'attribut ID de la case
+          let idpointage = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
+          pointage.setAttribute("data-idpointage", idpointage); // Change l'attribut ID de la case
         }
       }
     }
