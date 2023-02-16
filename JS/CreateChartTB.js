@@ -9,6 +9,7 @@ checkbox.addEventListener('change', () => {
         responsive: true,
         plugins: {
             legend: {
+                onClick: (e) => e.stopPropagation(),
                 labels: {
                     color: dark
                 },
@@ -74,6 +75,8 @@ const config = {
         responsive: true,
         plugins: {
             legend: {
+                // desactiver le clic sur les labels
+                onClick: (e) => e.stopPropagation(),
                 labels: {
                     generateLabels: function (chart) {
                         // Get the default label list
