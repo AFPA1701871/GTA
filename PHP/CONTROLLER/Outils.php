@@ -239,6 +239,6 @@ function tabMoisAnnee()
 function periodeEnCours($idUtilisateur)
 {
 	$anneeVisionne = date("Y");
-$moisVisionne = date("m") * 1;
+	$moisVisionne = date("m") * 1;
 	return $anneeVisionne.'-'.$moisVisionne;
 }

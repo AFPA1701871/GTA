@@ -77,18 +77,20 @@ echo '    </div>';
 $typesPrestations = TypePrestationsManager::getList(null, null, "numeroTypePrestation", null, false, false);
 foreach ($typesPrestations as $key => $typePresta)
 {
-    echo '        <div class="center fullLine grid-lineSimple cellBottom left titreTypePrestation">' . $typePresta->getNumeroTypePrestation() . " - " . $typePresta->getLibelleTypePrestation() . '<i id="AjoutPresta1" class="fas fa-plus plusRigth"></i></div>';
+    $idTypePrestation = $typePresta->getIdTypePrestation();
+    echo '        <div class="center fullLine grid-lineSimple cellBottom left titreTypePrestation" data-idTypePrestation = '.$idTypePrestation.'>' . $typePresta->getNumeroTypePrestation() . " - " . $typePresta->getLibelleTypePrestation() . '<i id="AjoutPresta1" class="fas fa-plus plusRigth"></i></div>';
     echo '        <div class=" grid-lineSimple cellBottom titreTypePrestation ">&nbsp;</div>';
 
     // remplacer par periode en cours
-    $listePrestation = View_Prestations_Pref_PointManager::getListePrestation($idUtilisateur, $anneeVisionne . "-0" . $moisVisionne, $typePresta->getIdTypePrestation());
+    $listePrestation = View_Prestations_Pref_PointManager::getListePrestation($idUtilisateur, $anneeVisionne . "-0" . $moisVisionne, $idTypePrestation);
     $numPresta = 0;
     foreach ($listePrestation as $prestation)
     {
         // var_dump($prestation);
         $numPresta++;
-        $dataline = ' data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"';
+        $dataline = ' data-line="' . $numPresta . '"';
         echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
+                    <input name="idTypePrestation" type=hidden value='.$idTypePrestation.' '. $dataline .'>
               <div ' . $dataline . ' class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
                   <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '" ' . $dataline . '>
@@ -149,7 +151,14 @@ foreach ($typesPrestations as $key => $typePresta)
             $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
             $content = str_replace("data-line", $dataline, $value['content']);
             $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
-            $pointage = PointagesManager::getList(null, ["idTypePrestation" => $typePresta->getIdTypePrestation(), "idUtilisateur" => $idUtilisateur, "idPrestation" => $prestation->getIdPrestation(), "datePointage" => $jour->format("Y-m-d")], null, null, false, false);
+            $conditions["idTypePrestation"] = $idTypePrestation;
+            $conditions["idUtilisateur"] = $idUtilisateur; 
+            $conditions["idPrestation"] = $prestation->getIdPrestation();
+            $conditions["datePointage"] = $jour->format("Y-m-d");
+            if ($prestation->getMotifRequis()) $conditions["idMotif"]=$prestation->getIdMotif();
+            if ($prestation->getProjetRequis()) $conditions["idProjet"]=$prestation->getIdProjet();
+            if ($prestation->getUORequis()) $conditions["idUO"]=$prestation->getIdUO();;
+            $pointage = PointagesManager::getList(null, $conditions, null, null, false, false);
             if ($pointage != false)
             {
                 $content = str_replace("value", ' value="' . $pointage[0]->getNbHeuresPointage() . '" ', $content);
@@ -162,4 +171,34 @@ foreach ($typesPrestations as $key => $typePresta)
         echo '</div>';
     }
 }
+echo '<template id=lignePresta>
+        ';
+echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
+      <input name="idTypePrestation">
+      <div dataline class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
+          <div class="center grid-lineDouble cellBottom grid-columns-span-4">
+          <input name=idPrestation >
+              <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
+              <div class=" border-left expand-line vMini"><i class="fas fa-open" dataline ></i></div>
+                    </div>
+                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight ">Code Prest.</div>
+                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>
+                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>
+                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
+                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" dataline  type="text" ></div>
+                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
+
+    echo '      <input name="inputUo">
+            </div>
+            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">
+                <input name="inputMotif">
+            </div>
+            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">
+                <input name="inputProjet">
+            </div>
+        </div>
+    </div>
+</template>';
+
+echo '<input id=numPrestaMax type=hidden value='.$numPresta .'>';
 echo '</div></div><div class="cote"></main>';

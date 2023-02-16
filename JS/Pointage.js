@@ -188,7 +188,7 @@ function CalculPrctGTA(ligne){
     let totalPrctGTA=0;
     let ajout;
     listeTousInputs.forEach(cellActu=>{
-        console.log(cellActu);
+        //console.log(cellActu);
         if(cellActu.getAttribute("data-line")!="0-1" && cellActu.value!=""){
             ajout=cellActu.value;
         }else{
