@@ -32,7 +32,9 @@ sectionSideScroll.forEach(element => {
 })
 
 listeLignesPresta.forEach(LignePresta => {
-    LignePresta.addEventListener("click", function (e) {
+    LignePresta.addEventListener("click", expand);});
+
+    function expand(e) {
         e.target.classList.toggle("fa-open");
         e.target.classList.toggle("fa-close");
         ligne = e.target.parentNode.parentNode.parentNode;
@@ -51,8 +53,8 @@ listeLignesPresta.forEach(LignePresta => {
             cell3.parentNode.classList.toggle("grid-lineDouble");
             cell3.parentNode.classList.toggle("grid-lineQuad");
         })
-    });
-})
+    }
+
 
 function setGridPointage() {
     selectPeriode = document.querySelector("#periode");

@@ -32,8 +32,9 @@ $routes = [
 
 	"ActionConnexion" => ["PHP/CONTROLLER/ACTION/", "ActionConnexion", "Action de la connexion", 0, false],
 	"ChangePassword" => ["PHP/VIEW/GENERAL/", "ChangePassword", "Modification du mot de passe", 0, false],
-
+	
 	"ListeAPI" => ["PHP/MODEL/API/", "ListeAPI", "ListeAPI", 0, true],
+	"ListePointageAPI" => ["PHP/MODEL/API/", "ListePointageAPI", "ListePointageAPI", 0, true],
 	"MAJActivitesParTypesAPI" => ["PHP/MODEL/API/", "MAJActivitesParTypesAPI", "MAJActivitesParTypesAPI", 0, true],
 	"MAJPointageAPI" => ["PHP/MODEL/API/", "MAJPointageAPI", "MAJPointageAPI", 0, true],
 	"MAJPreferencesAPI" => ["PHP/MODEL/API/", "MAJPreferencesAPI", "MAJPreferencesAPI", 0, true],

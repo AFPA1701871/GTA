@@ -155,7 +155,7 @@ function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $a
 	$methode = $table . 'Manager';
 	$libelle= $nomColonnes;
 	array_push($nomColonnes, $nomId);
-	$liste = $methode::getList($nomColonnes, $condition, $orderBy,  null);
+	$liste = $methode::getList($nomColonnes, $condition, $orderBy,  null,false,false);
 	if ($valeur == null) {
 			$select .= '<option value="" SELECTED>'.texte("inputDefault").'</option>';
 	} else {

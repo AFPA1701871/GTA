@@ -50,31 +50,90 @@ console.log(args);
 function clicPlus(event)
 {
   plus= event.target;
-  //titreTypePrestation
-  idtypePrestation = plus.parentNode.getAttribute("data-idtypeprestation");
-  console.log(idtypePrestation)
+  idTypePrestation = plus.parentNode.getAttribute("data-idtypeprestation");
   // on clone le template
   temp = document.querySelector("#lignePresta");
   contenu = temp.content.cloneNode(true);
   // on insert avant le prochain type
     plus.parentNode.parentNode.insertBefore(contenu,plus.parentNode.nextElementSibling.nextElementSibling);
     nouvelleLigne = plus.parentNode.nextElementSibling.nextElementSibling
-  // // on modifie l'élément insérer 
-  
-  // // trouver data-line
-  numPresta = document.querySelector("#numPrestaMax").value +1
-  document.querySelector("#numPrestaMax").value = numPresta
 
-  // // mis à jour liste presta
-  // // mis à jour disabled dans motif/projet/uo
-  //   grid.innerHTML = grid.innerHTML.replaceAll("IdTypePrestation", element.idTypePrestation);
-  // // mettre les cases 
-  // // on sélectionne une ligne de case de pointage et on la duplique
+  /**  on modifie l'élément insérer */
+ nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="idTypePrestation">', '<input name="idTypePrestation" type=hidden value="'+idTypePrestation+'"  dataline >');
+  
+  
+  // mis à jour liste presta
+    selectPresta = AppelAjax("Prestations",null,["IdPrestation","LibellePrestation"],'class="inputPointage"',true);
+    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', selectPresta);
+  
+  // mis à jour disabled dans motif/projet/uo
+    typePrestation = AppelAjax ("TypePrestations",idTypePrestation,null,"",false)[0];
+    selectUO =  (typePrestation.uoRequis==1)? AppelAjax("UOs",null,["NumeroUO","LibelleUO"],'class=""',true):'<input class="inputPointage notApplicable" dataline  type="text" name="inputUO" disabled>';
+    selectProjet =  (typePrestation.projetRequis==1)? AppelAjax("Projets",null,["CodeProjet"],'class=""',true):'<input class="inputPointage notApplicable" dataline  type="text" name="inputProjet" disabled>';
+    selectMotif =  (typePrestation.motifRequis==1)? AppelAjax("Motifs",null,["CodeMotif"],'class=""',true):'<input class="inputPointage notApplicable" dataline  type="text" name="inputMotif" disabled>';
+    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputUo">', selectUO);
+    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputProjet">', selectProjet);
+    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputMotif">', selectMotif);
+  
+    // trouver data-line
+  numPresta = ( document.querySelector("#numPrestaMax").value)*1 +1
+  console.log(numPresta);
+  document.querySelector("#numPrestaMax").value = numPresta
+   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('dataline=""', 'data-line="'+numPresta+'"');
+  
+  
+    /**  mettre les cases */
+  // on sélectionne une ligne de case de pointage et on la duplique
     gridpointage = document.querySelectorAll(".grid-pointage")[1].cloneNode(true);
      // on l'ajoute à la dom
      plus.parentNode.parentNode.insertBefore(gridpointage,plus.parentNode.nextElementSibling.nextElementSibling.nextElementSibling);
     nouvellecasePointage = plus.parentNode.nextElementSibling.nextElementSibling.nextElementSibling;
     
-    // on remet les pointages à ""
+    // on remet les pointages à "" et on met le bon data-line
+    //les inputs
+    for (let i = 3; i < nouvellecasePointage.children.length; i++) {
+        const element = nouvellecasePointage.children[i];
+        //element est une div. on modifie l'input à l'intérieur
+        if (element.children.length>0)
+        {
+            element.children[0].value="";
+            element.children[0].setAttribute("data-line",numPresta);
+        } 
+        
+    }
+    //le total et le pourcentage
+    nouvellecasePointage.children[0].innerHtml="";
+    nouvellecasePointage.children[0].setAttribute("data-line",numPresta);
+    nouvellecasePointage.children[1].innerHtml="";
+    nouvellecasePointage.children[1].setAttribute("data-line",numPresta);
+    
+    /* evenement*/
+    //on ajoute l'evenement pour expand
+    nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
+}
 
+function AppelAjax(table,id,colonne,attribut,select)
+{
+    var req = new XMLHttpRequest();
+    req.open('POST', 'index.php?page=ListePointageAPI', false);
+    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    args = ("table=" + table + "&id=" + id +"&colonne="+JSON.stringify(colonne) +  "&attribut=" + attribut + "&select=" + select);
+    console.log(args);
+    req.send(args);
+    if (req.status === 200) {
+        console.log(req.responseText);
+        if (!select)
+        return JSON.parse(req.responseText);
+        return req.responseText;
+    }
+
+    // req.onreadystatechange = function (event) {
+    //     if (this.readyState === XMLHttpRequest.DONE) {
+    //         if (this.status === 200) {
+    //             console.log(this.responseText);
+    //             reponse = JSON.parse(this.responseText);
+    //             return reponse;
+    //         }
+    //     }
+    // }
 }
