@@ -64,8 +64,8 @@ function afficherPage($page)
 			// - on est connecté
 			// - on est pas dans une des pages d'action
 			// - on ne modifie pas de force son mot de passe
-			// - on est assistante (id 3) ou admin (id 4)
-			if (isset($_SESSION["utilisateur"]) && (stripos($chemin,"PHP/CONTROLLER/ACTION/") !== 0) && $nom != "ChangePassword" && ($roleConnecte == 3 || $roleConnecte == 4))
+			// - on est manager (id 2) ou assistante (id 3) ou admin (id 4)
+			if (isset($_SESSION["utilisateur"]) && (stripos($chemin,"PHP/CONTROLLER/ACTION/") !== 0) && $nom != "ChangePassword" && $roleConnecte >= 2)
 			{
 				include 'PHP/VIEW/GENERAL/Nav.php';
 			}

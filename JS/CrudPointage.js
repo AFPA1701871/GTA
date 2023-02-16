@@ -6,6 +6,11 @@ inputs.forEach((element) => {
   element.addEventListener("change", changePointage);
 });
 
+listePlus = document.querySelectorAll(".fa-plus");
+listePlus.forEach(element => {
+  element.addEventListener("click", clicPlus);
+});
+
 function changePointage(event) {
   let pointage = event.target; // Case de pointage changée
   let idPointage = pointage.id; // Id de le la case
@@ -43,4 +48,21 @@ function changePointage(event) {
       }
     }
   };
+}
+
+function clicPlus(event)
+{
+  plus= event.target;
+  // on clone le template
+  temp = document.querySelector(".templatePresta");
+  contenu = temp.content.cloneNode(true);
+  // on insert avant le prochain type
+    plus.parentNode.insertAdjacentElement("afterend",contenu);
+  // on modifie l'élément insérer 
+  
+  // mis à jour data-line
+  // mis à jour liste presta
+  // mis à jour disabled dans motif/projet/uo
+    grid.innerHTML = grid.innerHTML.replaceAll("IdTypePrestation", element.idTypePrestation);
+                        
 }
