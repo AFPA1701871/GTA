@@ -362,7 +362,7 @@ nav {
 }
 
 .fieldset {
-    max-width: 15vw;
+    max-width: 12vw;
     align-items: center;
     justify-content: center;
     height: 7vh;
@@ -374,7 +374,7 @@ nav {
 }
 
 .fieldset label {
-    max-width: 7vw;
+    max-width: 4vw;
 }
 
 .sous-menu {
@@ -453,9 +453,13 @@ footer{
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.resetPassword {
+    transform: scale(60%);
 }

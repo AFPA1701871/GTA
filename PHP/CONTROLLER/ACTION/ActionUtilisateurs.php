@@ -1,13 +1,13 @@
 <?php
 $elm = new Utilisateurs($_POST);
-// On désactive le rendu de < et >
-$nom = htmlentities($elm->getNomUtilisateur());
-$elm->setNomUtilisateur($nom);
-$matricule = htmlentities($elm->getMatriculeUtilisateur());
-$elm->setMatriculeUtilisateur($matricule);
 
 switch ($_GET['mode']) {
 	case "Ajouter": {
+		// On désactive le rendu de < et >
+		$nom = htmlentities($elm->getNomUtilisateur());
+		$elm->setNomUtilisateur($nom);
+		$matricule = htmlentities($elm->getMatriculeUtilisateur());
+		$elm->setMatriculeUtilisateur($matricule);
 		$elm->setPasswordUtilisateur(crypte(passwordDefault($elm)));
 		$elm = UtilisateursManager::add($elm);
 		if ($elm != 0) {
@@ -20,6 +20,11 @@ switch ($_GET['mode']) {
 		break;
 	}
 	case "Modifier": {
+		// On désactive le rendu de < et >
+		$nom = htmlentities($elm->getNomUtilisateur());
+		$elm->setNomUtilisateur($nom);
+		$matricule = htmlentities($elm->getMatriculeUtilisateur());
+		$elm->setMatriculeUtilisateur($matricule);
 		$elm = UtilisateursManager::update($elm);
 		header("location:index.php?page=ListeUtilisateurs");
 		break;
@@ -31,7 +36,8 @@ switch ($_GET['mode']) {
 	}
 	case "Reinit": {
 		$elm = UtilisateursManager::findById($_GET["id"]);
-		$elm->setMdpUser(crypte(passwordDefault($elm)));
+		$elm->setPasswordUtilisateur(crypte(passwordDefault($elm)));
+		header("location:index.php?page=ListeUtilisateurs");
 		UtilisateursManager::update($elm);
 		break;
 	}

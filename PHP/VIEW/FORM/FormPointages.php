@@ -83,6 +83,7 @@ foreach ($typesPrestations as $key => $typePresta)
     $numPresta = 0;
     foreach ($listePrestation as $prestation)
     {
+        // var_dump($prestation);
         $numPresta++;
         echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
               <div data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
@@ -106,7 +107,7 @@ foreach ($typesPrestations as $key => $typePresta)
         {
             echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputUo" disabled>';
         }
-
+        echo '<input type=hidden name=idUo value = "' . $prestation->getIdUO() . '" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">';
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getMotifRequis())
@@ -117,7 +118,7 @@ foreach ($typesPrestations as $key => $typePresta)
         {
             echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputMotif" disabled>';
         }
-
+        echo '<input type=hidden name=idMotif value = "' . $prestation->getIdMotif() . '" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">';
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getProjetRequis())
@@ -128,7 +129,7 @@ foreach ($typesPrestations as $key => $typePresta)
         {
             echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputProjet"disabled>';
         }
-
+        echo '<input type=hidden name=idProjet value = "' . $prestation->getIdProjet() . '" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">';
         echo '</div>
                             </div>
             </div>';
@@ -138,7 +139,7 @@ foreach ($typesPrestations as $key => $typePresta)
 
         echo '    <div class="grid-pointage tabCol pointMove">';
         echo '                <div class="cellBottom center grid-lineDouble colTotal" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">0</div>';
-        echo '                <div class="cellBottom center grid-lineDouble border-left colPrctGTA" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
+        echo '                <div class="cellBottom center grid-lineDouble colPrctGTA border-left" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></div>';
         echo '                <div class="cellBottom grid-lineDouble"></div>';
         foreach ($tabJour as $i=>$value)
         {

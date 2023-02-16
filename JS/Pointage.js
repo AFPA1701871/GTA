@@ -63,7 +63,7 @@ function setGridPointage() {
     theGridTemplateColumnsValue = tailleTotal + " " + taillePrct + " 0.1em ";
     for (let jour = 1; jour <= nbreJour; jour++) {
         jourActu = new Date(annee, mois - 1, jour);
-        SommeColonne(annee+"-"+mois+"-"+jour);
+        SommeColonne(annee+"-"+mois+"-"+String(jour).padStart(2,'0'));
         if (jourActu.getDay() == 0 || jourActu.getDay() == 6) {
             theGridTemplateColumnsValue += tailleWe + " ";
         }
@@ -104,11 +104,11 @@ function SommeLigne(ligne) {
     let casesLigne = document.querySelectorAll("input.casePointage[data-line='" + ligne + "']");
     casesLigne.forEach(inputCase => {
         if (inputCase.value != "") {
-            ajout = inputCase.value;
+            ajoutLigne = inputCase.value;
         } else {
-            ajout = 0;
+            ajoutLigne = 0;
         }
-        total = (parseFloat(total) + parseFloat(ajout)).toFixed(2);
+        total = (parseFloat(total) + parseFloat(ajoutLigne)).toFixed(2);
     })
     let caseTotal = document.querySelector("div.colTotal[data-line='" + ligne + "']");
     caseTotal.innerHTML = total;
@@ -119,11 +119,13 @@ function SommeColonne(colonne) {
     let inputsColonne = document.querySelectorAll("input[data-date='" + colonne + "']");
     inputsColonne.forEach(cellule => {
         if (cellule.getAttribute("data-line") != "0-1" && cellule.value != "") {
-            ajout = cellule.value;
+            ajoutColonne = cellule.value;
         } else {
-            ajout = 0;
+            ajoutColonne = 0;
         }
-        total = (parseFloat(total) + parseFloat(ajout)).toFixed(2);
+        SommeLigne(cellule.getAttribute("data-line"));
+        CalculPrctGTA(cellule.getAttribute("data-line"));
+        total = (parseFloat(total) + parseFloat(ajoutColonne)).toFixed(2);
     })
     let cellsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
 
@@ -178,8 +180,7 @@ function SelectColonne(e){
 
 }
 
-function CalculPrctGTA(e){
-    let ligne=e.target.getAttribute("data-line");
+function CalculPrctGTA(ligne){
     let cellCible=document.querySelector(".colPrctGTA[data-line='"+ligne+"']");
     let listeTousInputs=document.querySelectorAll(".casePointage");
     let totalLigne=document.querySelector(".colTotal[data-line='"+ligne+"']").innerHTML;
