@@ -209,7 +209,27 @@ select {
     outline: 1px solid var(--color8);
     /* color:var(--color8); */
 }
-
+.alert {
+    /* background-color: var(--color5); */
+    color: var(--color5);
+    /* opacity: 0.8; */
+    border-radius: 2px;
+    opacity: 0;
+    font-size: 1.3rem;
+    transition: all 0.3s;
+    display: flex;
+    max-height: 2.6em;
+    align-self: center;
+}
+.alert.active {
+    opacity: 1;
+}
+.dark .alert {
+    color: var(--color1);
+}
+.dark .alert  i{
+    color: var(--color1);
+}
 .fa-open:before {
     content: "\F107";
 }

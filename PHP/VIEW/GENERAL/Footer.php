@@ -42,6 +42,10 @@ if (isset($page)) {
             echo '<script src="./JS/Chart.js"></script>';
             echo '<script src="./JS/CreateChartTB.js"></script>';
             break;
+        case "TbManager":
+            echo '<script src="./JS/Chart.js"></script>';
+            echo '<script src="./JS/CreateChartTB.js"></script>';
+            break;
         case 'ListeFermetures':
             echo '<script src="./JS/JoursFeries.js"></script>';
             break;
