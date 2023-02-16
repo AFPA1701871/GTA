@@ -23,13 +23,11 @@ echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdCentre().'" name=IdCentre></div>';
 echo '<label for=NomCentre class="caseForm labelForm">'.texte("NomCentre").'</label>';
 echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getNomCentre().'" name=NomCentre pattern="'.$regex["*"].'" required></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=NumeroCentre class="caseForm labelForm">'.texte("NumeroCentre").'</label>';
 echo '<div class="caseForm donneeForm"><input type="number" '.$disabled .'value="'.$elm->getNumeroCentre().'" name=NumeroCentre pattern="'.$regex["num"].'" required></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<div class="bigEspace "></div>	';
 echo '<div class="caseForm col-span-form">

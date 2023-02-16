@@ -107,4 +107,7 @@ INSERT INTO gta_Textes (`idTexte`, `codeTexte`, `fr`, `en`) VALUES
 (106, "IdCentre", "Centre", "Centre"),
 (107, "IdUtilisateur", "Utilisateur", "User"),
 (108, "DateDebutContrat", "Date de début de contrat", "Contract start date"),
-(109, "DateFinContrat", "Date de fin de contrat", "Contract end date");
+(109, "DateFinContrat", "Date de fin de contrat", "Contract end date"),
+(110, 'annee', 'Année', 'Year'),
+(111, 'addholidays', 'Ajout des jours fériés', 'Add holidays'),
+(112, 'total', 'Total', 'Total');

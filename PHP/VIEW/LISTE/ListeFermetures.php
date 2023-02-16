@@ -15,13 +15,16 @@ echo '<div class="grid-col-4 gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-4">'.texte("Liste des Fermetures").'</div>';
 echo '<div class="bigEspace"></div>';
-echo '<div class="grid-columns-span-4"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+echo '<div class="grid-columns-span-4">';
+	echo '<div class="double"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="'.texte("infoSearch").'"></i><div class="mini"></div>';
+	echo '<div class="divfieldset"><fieldset class="fieldset"><legend>'.texte('addholidays').'</legend><label>'.texte('annee').' :</label><input type="number" id="anneeJoursFeries" name="AnneeJoursFeries" value="'.date('Y').'" pattern="'.$regex["num"].'" /><i class="fas fa-floppy-disk" id="ajoutJoursFeries"></i></fieldset></div>';
+	echo '<div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-4">
 <div></div>
 <div class="bigEspace"></div>
 <div class="caseListe">
-	<a class="pyjama" href="index.php?page=FormFermetures&mode=Ajouter"><i class="fas fa-plus"></i></a><div class="feriesSeparation"></div>
-	<input type="number" id="anneeJoursFeries" name="AnneeJoursFeries" value="'.date('Y').'" pattern="'.$regex["num"].'" /><i class="fas fa-floppy-disk" id="ajoutJoursFeries"></i>
+	<a class="pyjama" href="index.php?page=FormFermetures&mode=Ajouter"><i class="fas fa-plus"></i></a>
+
 </div>
 <div></div>
 </div>';
@@ -30,7 +33,7 @@ echo '<div class="caseListe labelListe" data-name= "DateFermeture">'.texte("Date
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair "><p>Total :</p></div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class=" caseListe texteClair "><p>'.texte('total').' :</p></div><div class="mini" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-4 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données

@@ -106,12 +106,26 @@
 
 .notApplicable {
     background-color: var(--color7);
+    color: var(--color1);
 }
 
 #info {
     color: red;
 }
+/****darkmode*****/
 
+.dark .mainGrid {
+    color: var(--color5);
+}
+.dark .mainGrid .infosUser{
+    color: var(--color1);
+}
+.dark .grid-presta {
+    background-color: var(--color1);
+}
+.dark .grid-presta i {
+    color: var(--color5);
+}
 .fa-expand::before {
     content: "\f424";
 }
@@ -178,20 +192,30 @@ select {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.titreInfosUser {
+    padding-right: 0.4rem;
+}
 .infosUser {
     display: grid;
     grid-template-columns: auto auto 1fr auto auto 1fr auto auto 1fr auto auto 1fr auto auto 1fr auto auto;
 }
-
+.casePointage {
+    border: 2px solid var(--color7);
+}
 .colSelected {
-    border-width: 0.2em;
+    /* border-width: 0.2em;
+    border-color: var(--color8); */
     border-color: var(--color8);
+    outline: 1px solid var(--color8);
+    /* color:var(--color8); */
 }
 
 .fa-open:before {
     content: "\F107";
 }
-
+.dark .trans {
+    background-color: transparent;
+}
 .fa-close:before {
     content: "\F106";
 }
@@ -201,12 +225,15 @@ select {
 }
 .jourOK {
     background-color: var(--color8);
+    border-color: var(--color8);
 }
 div .jourOK>input[type="text"] {
     background-color:var(--color8);
 }
+
 .jourWarn{
     background-color:lightcoral;
+    border-color: lightcoral;
 }
 
 input[type="text"]:disabled {
@@ -227,10 +254,10 @@ input[type="text"]:disabled {
 .mainGrid i {
     padding: 0 0.2rem;
    }
-/* 
+
    .mainGrid {
-    flex: 0;
-   } */
+    margin-top: 2rem;
+   }
 .rtt {
     padding-left: 0.5rem;
 }

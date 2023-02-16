@@ -7,7 +7,7 @@
 ## Formulaires
 
 * [X] Changer oeil -> ON/OFF plutôt que rester appuyé (valentin)
-* [ ] Enlever les icones (? et v)
+* [X] Enlever les icônes (? et v) (Yves)
 
 ## Crud Utilisateurs
 
@@ -43,11 +43,11 @@
 
 ## Crud Utilisateurs
 
-* [ ] Ajouter le reinit
+* [X] Ajouter le reinit (Yves)
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
 * [ ] Bug
 * [X] Remplacer les input ID par des select (Yves)
-* [ ] Ajouter un lien changer mot de passe dans le header(valentin)
+* [X] Ajouter un lien changer mot de passe dans le header (Valentin)
 * [X] Mettre un check sur actif (Alexandre)
 
 ## Table Associations
@@ -63,7 +63,8 @@
 * [X] Créer la page en HTML (Florent)
 * [ ] Feuille de pointage individuel avec préférences (Florent)
 * [ ] Ajax étoiles préférences (Florent)
-* [ ] % sur les lignes de pointage
+* [X] % sur les lignes de pointage (Florent)
+* [ ] Texte invisible en dark mod 
 * [ ] Message informatif sauvegardes
 * [ ] Récapitulatif pointage pour manager
 * [ ] Récapitulatif pointage pour ARH
@@ -111,4 +112,4 @@
 
 ## Feriés
 
-* [ ] Visuel du chargement des fériés de l'année (Yves)
+* [X] Visuel du chargement des fériés de l'année (Yves)

@@ -77,12 +77,12 @@ function AfficherPage(index, filtre) {
     var requ2 = new XMLHttpRequest();
     requ2.open('POST', 'index.php?page=ListeAPI', true);
     requ2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    // if (filtreEnCours) 
+    // if (filtreEnCours)
     // {
     //     offset =null;// un filtre annule l'offset et la pageActive
     //     pageActive=1;
     // }
-    // else 
+    // else
     offset = (pageActive - 1) * nbEltParPage + "," + nbEltParPage;
     args = ("table=" + classe + "&conditions=" + JSON.stringify(arrayConditions) + "&orderBy=" + CreerStringTris() + "&limit=" + offset + "&selection=" + JSON.stringify(selection));
     console.log(args);
@@ -100,7 +100,7 @@ function AfficherPage(index, filtre) {
                 /*exemple */
                 if (page == "ListeTypePrestations") {
                     temp = document.getElementsByTagName("template")[0];
-                    pair = 0; 
+                    pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);
@@ -118,7 +118,7 @@ function AfficherPage(index, filtre) {
                     });
                 } else if (page == "ListeActivites") {
                     temp = document.getElementsByTagName("template")[0];
-                    pair = 0; 
+                    pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);
@@ -129,7 +129,7 @@ function AfficherPage(index, filtre) {
                     });
                 } else if (page == "ListeCentres") {
                     temp = document.getElementsByTagName("template")[0];
-                    pair = 0; 
+                    pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);
@@ -141,7 +141,7 @@ function AfficherPage(index, filtre) {
                     });
                 } else if (page == "ListeConversions") {
                     temp = document.getElementsByTagName("template")[0];
-                    pair = 0; 
+                    pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);
@@ -153,7 +153,7 @@ function AfficherPage(index, filtre) {
                     });
                 } else if (page == "ListeFermetures") {
                     temp = document.getElementsByTagName("template")[0];
-                    pair = 0; 
+                    pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);
@@ -164,7 +164,7 @@ function AfficherPage(index, filtre) {
                     });
                 } else if (page == "ListeMotifs") {
                     temp = document.getElementsByTagName("template")[0];
-                    pair = 0; 
+                    pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);
@@ -178,7 +178,7 @@ function AfficherPage(index, filtre) {
                     });
                 } else if (page == "ListePrestations") {
                     temp = document.getElementsByTagName("template")[0];
-                    pair = 0; 
+                    pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);
@@ -191,7 +191,7 @@ function AfficherPage(index, filtre) {
                     });
                 } else if (page == "ListeProjets") {
                     temp = document.getElementsByTagName("template")[0];
-                    pair = 0; 
+                    pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);
@@ -201,9 +201,9 @@ function AfficherPage(index, filtre) {
                         grid.innerHTML = grid.innerHTML.replaceAll("LibelleProjet", element.libelleProjet);
                         grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
                     });
-                } else if (page == "ListeUos") {
+                } else if (page == "ListeUOs") {
                     temp = document.getElementsByTagName("template")[0];
-                    pair = 0; 
+                    pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);
@@ -215,7 +215,7 @@ function AfficherPage(index, filtre) {
                     });
                 } else if (page == "ListeUtilisateurs") {
                     temp = document.getElementsByTagName("template")[0];
-                    pair = 0; 
+                    pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);

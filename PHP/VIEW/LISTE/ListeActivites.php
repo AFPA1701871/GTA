@@ -21,7 +21,7 @@ echo '<div class="caseListe titreListe grid-columns-span-'.($formtype?5:4).'">'.
 echo '<div class="bigEspace grid-columns-span-'.($formtype?5:4).'"></div>'; 
 
 if (!$formtype) {
-	echo '<div class="grid-columns-span-4"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+	echo '<div class="grid-columns-span-4"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="'.texte("infoSearch").'"></i><div class="demi"></div></div>';
 	echo '<div class="caseListe grid-columns-span-4">
 <div></div>
 <div class="bigEspace"></div>
@@ -35,7 +35,7 @@ echo '<div class="caseListe labelListe" data-name= "LibelleActivite">'.texte("Li
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair ">'.(!$formtype ? '<p>Total :</p>':'').'</div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class=" caseListe texteClair ">'.(!$formtype ? '<p>'.texte('total').' :</p>':'').'</div><div class="mini" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-'.($formtype?2:4).' gridListe grid-contenu">';
 
 // Affichage des enregistrements de la base de données
