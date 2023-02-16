@@ -15,11 +15,11 @@ function changePointage(event) {
   let date = pointage.dataset.date; // Dataset contenant la date en format (YYYY-MM-DD)
 
   // Récupération des ID de la ligne
-  let uo = document.querySelector('input[data-line="' + ligne + '"][name="inputUo"]').value; 
-  let motif = document.querySelector('input[data-line="' + ligne + '"][name="inputMotif"]').value;
-  let projet = document.querySelector('input[data-line="' + ligne + '"][name="inputProjet"]').value;
+  let uo = document.querySelector('input[data-line="' + ligne + '"][name="idUo"]').value; 
+  let motif = document.querySelector('input[data-line="' + ligne + '"][name="idMotif"]').value;
+  let projet = document.querySelector('input[data-line="' + ligne + '"][name="idProjet"]').value;
   let prestation = document.querySelector('input[data-line="' + ligne + '"][name="idPrestation"]').value;
-
+console.log("uo ", uo, "motif ", motif, "projet ", projet, "prestation ", prestation);
   let req = new XMLHttpRequest();
   req.open("POST", "index.php?page=MAJPointageAPI", true); // Initialisation de la requête avec une methode POST et le chemin de la page de traitement
   req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
