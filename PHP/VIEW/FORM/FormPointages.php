@@ -8,6 +8,8 @@ $user = View_UtilisateursManager::getList(null, ["idUtilisateur" => $idUtilisate
 $anneeVisionne = date("Y");
 $moisVisionne = date("m") * 1;
 $periode = $anneeVisionne . '-0' . $moisVisionne;
+
+// ENTETE de PAGE
 echo '  <main>
             <div id=IdUtilisateur class="noDisplay">' . $idUtilisateur . '</div>
             <div class="cote"></div>
@@ -101,8 +103,8 @@ foreach ($typesPrestations as $key => $typePresta)
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" ' . $dataline . ' type="text" value = "' . $prestation->getCodePrestation() . '"></div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getUORequis())
-        {
-            echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputUo" value = "' . $prestation->getNumeroUO() . '">';
+        {// modifier la vue pour recupérer le libelle de l'UO iden projet et motif
+            echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputUo" value = "' . $prestation->getNumeroUO() . '" disabled title = "'.$prestation->getNumeroUO().'">';
         }
         else
         {
@@ -113,7 +115,7 @@ foreach ($typesPrestations as $key => $typePresta)
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getMotifRequis())
         {
-            echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputMotif" value = "' . $prestation->getCodeMotif() . '">';
+            echo '<input class="inputPointage" disabled ' . $dataline . ' type="text" name="inputMotif" value = "' . $prestation->getCodeMotif() . '" title="'.$prestation->getCodeMotif().'">';
         }
         else
         {
@@ -124,7 +126,7 @@ foreach ($typesPrestations as $key => $typePresta)
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getProjetRequis())
         {
-            echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputProjet" value = "' . $prestation->getCodeProjet() . '">';
+            echo '<input class="inputPointage" disabled ' . $dataline . ' type="text" name="inputProjet" value = "' . $prestation->getCodeProjet() . '" title="'.$prestation->getCodeProjet().'">';
         }
         else
         {
