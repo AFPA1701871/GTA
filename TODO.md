@@ -47,7 +47,7 @@
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
 * [ ] Bug
 * [X] Remplacer les input ID par des select (Yves)
-* [X] Ajouter un lien changer mot de passe dans le header(valentin)
+* [X] Ajouter un lien changer mot de passe dans le header (Valentin)
 * [X] Mettre un check sur actif (Alexandre)
 
 ## Table Associations
@@ -63,7 +63,7 @@
 * [X] Créer la page en HTML (Florent)
 * [ ] Feuille de pointage individuel avec préférences (Florent)
 * [ ] Ajax étoiles préférences (Florent)
-* [ ] % sur les lignes de pointage
+* [X] % sur les lignes de pointage (Florent)
 * [ ] Message informatif sauvegardes
 * [ ] Récapitulatif pointage pour manager
 * [ ] Récapitulatif pointage pour ARH
