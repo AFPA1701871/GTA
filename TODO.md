@@ -43,7 +43,7 @@
 
 ## Crud Utilisateurs
 
-* [ ] Ajouter le reinit (Yves)
+* [X] Ajouter le reinit (Yves)
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
 * [ ] Bug
 * [X] Remplacer les input ID par des select (Yves)
