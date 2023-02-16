@@ -23,8 +23,8 @@ echo '<div class="caseListe grid-columns-span-5">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe " data-name= "NomCentre">'.texte("NomCentre").'</div>';
-echo '<div class="caseListe labelListe " data-name= "NumeroCentre">'.texte("NumeroCentre").'</div>';
+echo '<div class="caseListe labelListe left" data-name= "NomCentre">'.texte("NomCentre").'</div>';
+echo '<div class="caseListe labelListe left" data-name= "NumeroCentre">'.texte("NumeroCentre").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
@@ -33,8 +33,8 @@ echo '</div><div class="grid-col-5 gridListe grid-contenu grid-mini"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';
-echo '<div class="donnees pyjama ">NomCentre</div>';
-echo '<div class="donnees pyjama ">NumeroCentre</div>';
+echo '<div class="donnees pyjama left">NomCentre</div>';
+echo '<div class="donnees pyjama left">NumeroCentre</div>';
 echo '<a class="pyjama"  href="index.php?page=FormCentres&mode=Afficher&id=IdCentre"><i class="fas fa-file-contract"></i></a>';
 
 echo '<a class="pyjama"  href="index.php?page=FormCentres&mode=Modifier&id=IdCentre"><i class="fas fa-pen"></i></a>';
