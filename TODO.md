@@ -47,7 +47,7 @@
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
 * [ ] Bug
 * [X] Remplacer les input ID par des select (Yves)
-* [ ] Ajouter un lien changer mot de passe dans le header(valentin)
+* [X] Ajouter un lien changer mot de passe dans le header(valentin)
 * [X] Mettre un check sur actif (Alexandre)
 
 ## Table Associations
