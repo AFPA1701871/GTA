@@ -11,6 +11,16 @@ listePlus.forEach(element => {
   element.addEventListener("click", clicPlus);
 });
 
+saveMessage()
+function saveMessage(){
+  let alert = document.querySelector('.alert')
+  alert.classList.add('active')
+  setTimeout(function(){
+    alert.classList.remove('active')
+  }, 1000)
+}
+
+
 function changePointage(event) {
   let pointage = event.target; // Case de pointage changée
   let idPointage = pointage.id; // Id de le la case
@@ -39,8 +49,7 @@ function changePointage(event) {
   req.onreadystatechange = function (event) {   // Lorsque l'état de la requête change
     if (this.readyState === XMLHttpRequest.DONE) { // Si la requête a bien été executée
       if (this.status === 200) { // Si la requête est réussie
-        let alert = document.querySelector('.alert')
-        console.log(alert)
+        
         if (this.responseText) { // Si la réponse n'est pas vide
           let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
           pointage.setAttribute("id", id); // Change l'attribut ID de la case
