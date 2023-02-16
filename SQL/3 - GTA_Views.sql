@@ -140,7 +140,7 @@ po.idTypePrestation ,
 po.idUtilisateur ,
 po.idPointage,
 po.datePointage,
-date_format(po.datePointage,"%Y-%m") as mois
+date_format(po.datePointage,"%Y-%m") as periode
 
 FROM gta_View_Prestations p
 INNER JOIN gta_Activites a ON p.idActivite = a.idActivite

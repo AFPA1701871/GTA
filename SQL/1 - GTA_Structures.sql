@@ -183,6 +183,7 @@ CREATE TABLE gta_Pointages(
    idUtilisateur INT NOT NULL,
    idTypePrestation INT NOT NULL,
    datePointage DATE NOT NULL,
+   date_format(datePointage,"%Y-%m") as periode,
    validePointage BOOLEAN,
    reportePointage BOOLEAN,
    nbHeuresPointage DECIMAL(15, 2)
