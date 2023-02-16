@@ -16,13 +16,9 @@ echo '  <main>
                 <div class="grid-columns-span-2 center infosUser">
                     <div>Année: </div>
                 <div>';
-echo creerSelectTab($anneeVisionne, Parametres::getAnneeDisponible(),"class=noDisplay", "anneeVisionne", false);
 echo creerSelectTab($periode, tabMoisAnnee(),null, "periode", true);
 echo '        </div>
-                ';
-// A remplacer par mois en cours dès que disponible
-echo creerSelectTab($mois[$moisVisionne], $mois, "class=noDisplay", "moisVisionne", true);
-echo '          <div></div>
+              <div></div>
                 <div>Nom:</div>
                 <div>' . $user->getNomUtilisateur() . '</div>
                 <div></div>
@@ -30,8 +26,8 @@ echo '          <div></div>
                 <div>' . $user->getMatriculeUtilisateur() . '</div>
                 <div></div>
                 <div>Centre de rattachement:</div>
-                <div>' . $user->getNomCentre() . '</div>';
-echo '          <div></div>
+                <div>' . $user->getNomCentre() . '</div>
+                <div></div>
                 <div>UO d\'affectation:</div>
                 <div>' . $user->getNumeroUO() . '</div>
                 <div class="grid-columns-span-17 espace"></div>

@@ -16,20 +16,18 @@ if (isset($_GET['id'])) {
 }
 echo '<main class="center">';
 
-echo '<form class="GridForm" action="index.php?page=ActionUos&mode='.$_GET['mode'].'" method="post"/>';
+echo '<form class="GridForm" action="index.php?page=ActionUOs&mode='.$_GET['mode'].'" method="post"/>';
 echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Uos").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdUO().'" name=IdUO></div>';
 echo '<label for=NumeroUO class="caseForm labelForm">'.texte("NumeroUO").'</label>';
 echo '<div class="caseForm donneeForm"><input type="number" '.$disabled .'value="'.$elm->getNumeroUO().'" name=NumeroUO pattern="'.$regex["num"].'" required></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=LibelleUO class="caseForm labelForm">'.texte("LibelleUO").'</label>';
 echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getLibelleUO().'" name=LibelleUO pattern="'.$regex["*"].'"></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<div class="bigEspace "></div>	';
 echo '<div class="caseForm col-span-form">

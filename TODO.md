@@ -2,11 +2,11 @@
 
 ## Header
 
-* [ ] Ajouter le titre de l'application
+* [X] Ajouter le titre de l'application(valentin)
 
 ## Formulaires
 
-* [ ] Changer oeil -> ON/OFF plutôt que rester appuyé (valentin)
+* [X] Changer oeil -> ON/OFF plutôt que rester appuyé (valentin)
 * [ ] Enlever les icones (? et v)
 
 ## Crud Utilisateurs
@@ -47,7 +47,7 @@
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
 * [ ] Bug
 * [X] Remplacer les input ID par des select (Yves)
-* [ ] Ajouter un lien changer mot de passe dans le header
+* [X] Ajouter un lien changer mot de passe dans le header(valentin)
 * [X] Mettre un check sur actif (Alexandre)
 
 ## Table Associations

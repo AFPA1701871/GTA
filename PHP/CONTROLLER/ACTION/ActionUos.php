@@ -1,5 +1,5 @@
 <?php
-$elm = new Uos($_POST);
+$elm = new UOs($_POST);
 
 // On désactive le rendu de < et >
 $libelle = htmlentities($elm->getLibelleUO());
@@ -7,17 +7,17 @@ $elm->setLibelleUO($libelle);
 
 switch ($_GET['mode']) {
 	case "Ajouter": {
-		$elm = UosManager::add($elm);
-		break;
-	}
+			$elm = UOsManager::add($elm);
+			break;
+		}
 	case "Modifier": {
-		$elm = UosManager::update($elm);
-		break;
-	}
+			$elm = UOsManager::update($elm);
+			break;
+		}
 	case "Supprimer": {
-		$elm = UosManager::delete($elm);
-		break;
-	}
+			$elm = UOsManager::delete($elm);
+			break;
+		}
 }
 
-header("location:index.php?page=ListeUos");
+header("location:index.php?page=ListeUOs");

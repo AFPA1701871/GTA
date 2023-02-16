@@ -1,7 +1,5 @@
 <?php
-
 $elm = new Utilisateurs($_POST);
-
 // On désactive le rendu de < et >
 $nom = htmlentities($elm->getNomUtilisateur());
 $elm->setNomUtilisateur($nom);
@@ -12,7 +10,13 @@ switch ($_GET['mode']) {
 	case "Ajouter": {
 		$elm->setPasswordUtilisateur(crypte(passwordDefault($elm)));
 		$elm = UtilisateursManager::add($elm);
-		header("location:index.php?page=FormUtilisateurs&mode=Modifier&id=" . $elm);
+		if ($elm != 0) {
+			// Utilisateur crée, redirection vers son formulaire de modification
+			header("location:index.php?page=FormUtilisateurs&mode=Modifier&id=" . $elm);
+		} else {
+			// Utilisateur non crée, retour au formulaire d'ajout
+			header("location:index.php?page=FormUtilisateurs&mode=Ajouter");
+		}
 		break;
 	}
 	case "Modifier": {

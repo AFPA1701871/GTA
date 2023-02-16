@@ -25,33 +25,27 @@ echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdUtilisateur().'" name=IdUtilisateur><input type="hidden" value="'.($elm->getPasswordUtilisateur()?$elm->getPasswordUtilisateur():' ').'" name=PasswordUtilisateur></div>';
 echo '<label for=NomUtilisateur class="caseForm labelForm">'.texte("NomUtilisateur").'</label>';
 echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getNomUtilisateur().'" name=NomUtilisateur pattern="'.$regex["*"].'" required></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=MailUtilisateur class="caseForm labelForm">'.texte("MailUtilisateur").'</label>';
 echo '<div class="caseForm donneeForm"><input type="email" '.$disabled .'value="'.$elm->getMailUtilisateur().'" name=MailUtilisateur pattern="'.$regex["email"].'" required></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=MatriculeUtilisateur class="caseForm labelForm">'.texte("MatriculeUtilisateur").'</label>';
 echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getMatriculeUtilisateur().'" name=MatriculeUtilisateur pattern="'.$regex["*"].'" required></div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=IdUO class="caseForm labelForm">'.texte("IdUO").'</label>';
 echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdUO(), 'Uos', ['numeroUO', 'libelleUO'], $disabled).'</div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=IdRole class="caseForm labelForm">'.texte("IdRole").'</label>';
 echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdRole(), 'Roles', ['nomRole'], $disabled . ' required').'</div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<label for=IdManager class="caseForm labelForm">'.texte("IdManager").'</label>';
 echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdManager(), 'Utilisateurs', ['nomUtilisateur'], $disabled, ['idRole' => 2], null, 'idManager').'</div>';
-echo '<div class="caseForm infoForm"><i class="fas fa-question-circle"></i></div>';
-echo '<div class="caseForm checkForm"><i class="fas fa-check-circle"></i></div>';
+echo '<div></div><div></div>';
 
 echo '<div class="bigEspace "></div>	';
 echo '<div class="caseForm col-span-form">

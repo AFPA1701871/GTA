@@ -17,7 +17,7 @@ $tab = array(
 );
 
 foreach ($tab as $value) {
-    if (FermeturesManager::getList(null, ["dateFemeture" =>  $value[1]]) == null) {
+    if (FermeturesManager::getList(null, ["dateFermeture" =>  $value[1]]) == null) {
         $ferie = new Fermetures(["dateFermeture" =>  $value[1]]);
         FermeturesManager::add($ferie);
     }
