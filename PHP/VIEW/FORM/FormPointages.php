@@ -93,7 +93,7 @@ foreach ($typesPrestations as $key => $typePresta)
                       <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '"></i></div>
                             </div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Cde Prest.</div>
+                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight ">Code Prest.</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
