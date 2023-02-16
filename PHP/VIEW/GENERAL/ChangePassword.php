@@ -1,15 +1,31 @@
+<?php
+                if (isset($_GET['src'])) {
+                    if ($_GET['src']) {
+                       include './PHP/VIEW/GENERAL/Nav.php';
+                    }
+                }
+                ?>
 <main>
+
     <section class="center colonne">
         <form action="index.php?page=ActionConnexion&mode=change" method="post">
             <div class="colSpan2 center">
-                <h1>Vous devez changer votre mot de passe pour continuer</h1>
+                <?php
+                if (isset($_GET['src'])) {
+                    if ($_GET['src']) {
+                        echo '<h1>Changement de mot de passe</h1>';
+                    }
+                }else{
+                    echo '<h1>Vous devez changer votre mot de passe pour continuer</h1>';
+                }
+                ?>
+                
             </div>
 
             <div class="relative col-span-form-chg-pwd ligne">
                 <label for="passwordUtilisateur"><?= texte('Mdp'); ?> :</label>
                 <div>
-                    <input type="password" id="mdpUser" name="passwordUtilisateur" required class="minWidth"
-                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
+                    <input type="password" id="mdpUser" name="passwordUtilisateur" required class="minWidth" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
                     <i class="oeil fas fa-eye"></i>
                 </div>
 
@@ -46,8 +62,7 @@
             <div class="relative col-span-form-chg-pwd ligne">
                 <label for="confirmation">Confirmation de mot de passe :</label>
                 <div>
-                    <input type="password" id="confirmation" name="confirmation" title="remettre le même mot de passe" class="minWidth"
-                        required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
+                    <input type="password" id="confirmation" name="confirmation" title="remettre le même mot de passe" class="minWidth" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
 
                     <i class="oeil fas fa-eye"></i>
                 </div>

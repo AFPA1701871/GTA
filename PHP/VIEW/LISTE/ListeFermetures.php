@@ -15,13 +15,16 @@ echo '<div class="grid-col-4 gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-4">'.texte("Liste des Fermetures").'</div>';
 echo '<div class="bigEspace"></div>';
-echo '<div class="grid-columns-span-4"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="demi"></div></div>';
+echo '<div class="grid-columns-span-4">';
+	echo '<div class="double"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="entrer le mot à chercher puis cliquer sur le filtre"></i><div class="mini"></div>';
+	echo '<div class="divfieldset"><fieldset class="fieldset"><legend>Ajout des jours fériés</legend><label>Année :</label><input type="number" id="anneeJoursFeries" name="AnneeJoursFeries" value="'.date('Y').'" pattern="'.$regex["num"].'" /><i class="fas fa-floppy-disk" id="ajoutJoursFeries"></i></fieldset></div>';
+	echo '<div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-4">
 <div></div>
 <div class="bigEspace"></div>
 <div class="caseListe">
-	<a class="pyjama" href="index.php?page=FormFermetures&mode=Ajouter"><i class="fas fa-plus"></i></a><div class="feriesSeparation"></div>
-	<input type="number" id="anneeJoursFeries" name="AnneeJoursFeries" value="'.date('Y').'" pattern="'.$regex["num"].'" /><i class="fas fa-floppy-disk" id="ajoutJoursFeries"></i>
+	<a class="pyjama" href="index.php?page=FormFermetures&mode=Ajouter"><i class="fas fa-plus"></i></a>
+
 </div>
 <div></div>
 </div>';

@@ -7,7 +7,7 @@
 ## Formulaires
 
 * [X] Changer oeil -> ON/OFF plutôt que rester appuyé (valentin)
-* [ ] Enlever les icones (? et v)
+* [X] Enlever les icônes (? et v) (Yves)
 
 ## Crud Utilisateurs
 
@@ -47,7 +47,7 @@
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
 * [ ] Bug
 * [X] Remplacer les input ID par des select (Yves)
-* [ ] Ajouter un lien changer mot de passe dans le header(valentin)
+* [X] Ajouter un lien changer mot de passe dans le header(valentin)
 * [X] Mettre un check sur actif (Alexandre)
 
 ## Table Associations
@@ -111,4 +111,4 @@
 
 ## Feriés
 
-* [ ] Visuel du chargement des fériés de l'année (Yves)
+* [X] Visuel du chargement des fériés de l'année (Yves)

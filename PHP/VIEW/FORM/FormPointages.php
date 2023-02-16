@@ -16,13 +16,9 @@ echo '  <main>
                 <div class="grid-columns-span-2 center infosUser">
                     <div>Année: </div>
                 <div>';
-echo creerSelectTab($anneeVisionne, Parametres::getAnneeDisponible(),"class=noDisplay", "anneeVisionne", false);
 echo creerSelectTab($periode, tabMoisAnnee(),null, "periode", true);
 echo '        </div>
-                ';
-// A remplacer par mois en cours dès que disponible
-echo creerSelectTab($mois[$moisVisionne], $mois, "class=noDisplay", "moisVisionne", true);
-echo '          <div></div>
+              <div></div>
                 <div>Nom:</div>
                 <div>' . $user->getNomUtilisateur() . '</div>
                 <div></div>
@@ -30,8 +26,8 @@ echo '          <div></div>
                 <div>' . $user->getMatriculeUtilisateur() . '</div>
                 <div></div>
                 <div>Centre de rattachement:</div>
-                <div>' . $user->getNomCentre() . '</div>';
-echo '          <div></div>
+                <div>' . $user->getNomCentre() . '</div>
+                <div></div>
                 <div>UO d\'affectation:</div>
                 <div>' . $user->getNumeroUO() . '</div>
                 <div class="grid-columns-span-17 espace"></div>
@@ -87,6 +83,7 @@ foreach ($typesPrestations as $key => $typePresta)
     $numPresta = 0;
     foreach ($listePrestation as $prestation)
     {
+        // var_dump($prestation);
         $numPresta++;
         echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
               <div data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
@@ -110,7 +107,7 @@ foreach ($typesPrestations as $key => $typePresta)
         {
             echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputUo" disabled>';
         }
-
+        echo '<input type=hidden name=idUo value = "' . $prestation->getIdUO() . '" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">';
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getMotifRequis())
@@ -121,7 +118,7 @@ foreach ($typesPrestations as $key => $typePresta)
         {
             echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputMotif" disabled>';
         }
-
+        echo '<input type=hidden name=idMotif value = "' . $prestation->getIdMotif() . '" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">';
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getProjetRequis())
@@ -132,7 +129,7 @@ foreach ($typesPrestations as $key => $typePresta)
         {
             echo '<input class="inputPointage notApplicable" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '" type="text" name="inputProjet"disabled>';
         }
-
+        echo '<input type=hidden name=idProjet value = "' . $prestation->getIdProjet() . '" data-line="' . $typePresta->getNumeroTypePrestation() . '-' . $numPresta . '">';
         echo '</div>
                             </div>
             </div>';
