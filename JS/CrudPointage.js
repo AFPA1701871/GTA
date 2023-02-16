@@ -34,6 +34,8 @@ function changePointage(event) {
   req.onreadystatechange = function (event) {   // Lorsque l'état de la requête change
     if (this.readyState === XMLHttpRequest.DONE) { // Si la requête a bien été executée
       if (this.status === 200) { // Si la requête est réussie
+        let alert = document.querySelector('.alert')
+        console.log(alert)
         if (this.responseText) { // Si la réponse n'est pas vide
           let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
           pointage.setAttribute("id", id); // Change l'attribut ID de la case
