@@ -143,3 +143,12 @@
 	width: 50vw;
 	margin: 0 auto;
 }
+.grid-col-4.grid-mini {
+		grid-template-columns: 2fr 0.2fr 0.2fr 0.2fr;
+}
+.grid-col-4.grid-mini {
+	grid-template-columns: 2fr 0.2fr 0.2fr 0.2fr;
+}
+.grid-col-5.grid-mini {
+	grid-template-columns: 2fr 2fr 0.3fr 0.3fr 0.3fr;
+}

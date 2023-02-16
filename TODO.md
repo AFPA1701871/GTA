@@ -11,7 +11,7 @@
 
 ## Crud Utilisateurs
 
-* [ ] Gérer le mot de passe
+* [X] Gérer le mot de passe
 * [X] Obliger le changement de mot de passe à la première connexion
 
 ## Pagination
@@ -45,14 +45,13 @@
 
 * [X] Ajouter le reinit (Yves)
 * [X] Ajouter la gestion des contrats (Alexandre et Yves)
-* [ ] Bug
 * [X] Remplacer les input ID par des select (Yves)
 * [X] Ajouter un lien changer mot de passe dans le header (Valentin)
 * [X] Mettre un check sur actif (Alexandre)
 
 ## Table Associations
 
-* [ ] Gérer l'association entre les idPrestations et les idProjets
+* [ ] Gérer l'association entre les idPrestations et les idProjets (Yves)
 
 ## Crud Activités
 
@@ -64,8 +63,8 @@
 * [ ] Feuille de pointage individuel avec préférences (Florent)
 * [ ] Ajax étoiles préférences (Florent)
 * [X] % sur les lignes de pointage (Florent)
-* [ ] Texte invisible en dark mod 
-* [ ] Message informatif sauvegardes
+* [X] Texte invisible en dark mod(valentin)
+* [X] Message informatif sauvegardes(valentin)
 * [ ] Récapitulatif pointage pour manager
 * [ ] Récapitulatif pointage pour ARH
 * [ ] Precision pour les RTT
@@ -79,7 +78,6 @@
 ## CRUD Prestations
 
 * [X] Mettre des checks plutot que 0/1
-* [ ] Gérer les projets associés
 * [X] Remplacer l'input IdActivite par un select dans FormPrestations (Alexandre)
 
 ## Connexion

@@ -11,7 +11,7 @@ $objets = UOsManager::getList(null, null, null, Parametres::getNbEltParPage());
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
 echo '<div class="bigEspace"></div>';
 echo '<div class="bigEspace"></div>';//Création du template de la grid
-echo '<div class="grid-col-5 gridListe">';
+echo '<div class="grid-col-5 gridListe grid-mini">';
 
 echo '<div class="caseListe titreListe grid-columns-span-5">'.texte("Liste des Uos").'</div>';
 echo '<div class="bigEspace"></div>';
@@ -29,7 +29,7 @@ echo '<div class="caseListe labelListe left" data-name= "LibelleUO">'.texte("Lib
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
 echo '<div class=" caseListe texteClair "><p>'.texte('total').' :</p></div><div class="mini" id="nbEnregs"></div> ';
-echo '</div><div class="grid-col-5 gridListe grid-contenu"></div>';
+echo '</div><div class="grid-col-5 gridListe grid-contenu grid-mini"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';

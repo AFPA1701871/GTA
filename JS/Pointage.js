@@ -188,7 +188,6 @@ function CalculPrctGTA(ligne){
     let totalPrctGTA=0;
     let ajout;
     listeTousInputs.forEach(cellActu=>{
-        console.log(cellActu);
         if(cellActu.getAttribute("data-line")!="0-1" && cellActu.value!=""){
             ajout=cellActu.value;
         }else{
@@ -202,4 +201,25 @@ function CalculPrctGTA(ligne){
         totalPrctGTA=0;
     }
     cellCible.innerHTML=totalPrctGTA+"%";
+}
+
+listeStarFav=document.querySelectorAll(".fa-fav");
+listeStarFav.forEach(etoile=>{
+    etoile.addEventListener("click", UpdateFav);
+});
+
+function UpdateFav(e){
+    let caseFav=e.target.parentNode.parentNode;
+    let idPrestation=caseFav.querySelector("[name='idPrestation']").value;
+    let idUO=caseFav.querySelector("[name='inputUO']").value;
+    let idMotif=caseFav.querySelector("[name='inputMotif']").value;
+    let idProjet=caseFav.querySelector("[name='inputProjet']").value;
+    let idTypePrestation=caseFav.querySelector("[name='idPrestation']").getAttribute("data-line")[0].split("-")[0];
+    let idUtilisateur=document.querySelector("#IdUtilisateur").innerHTML;
+    console.log(idMotif);
+    console.log(idPrestation);
+    console.log(idProjet);
+    console.log(idUO);
+    console.log(idUtilisateur);
+    console.log(idTypePrestation);
 }
