@@ -34,18 +34,19 @@ insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,moti
 insert into gta_TypePrestations (numeroTypePrestation,libelleTypePrestation,motifRequis,uoRequis,projetRequis) values(6,"Autres Activités De Support",0,1,1);
 
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(1,1);
-insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(2,1);
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(2,2);
-insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(3,6);
-insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(4,1);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(2,3);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(3,7);
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(4,2);
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(4,3);
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(4,4);
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(4,5);
-insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(5,4);
-insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(6,2);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(4,6);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(5,5);
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(6,3);
 insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(6,4);
+insert into gta_ActivitesParTypes (idTypePrestation,idActivite) values(6,5);
+
 
 
 
