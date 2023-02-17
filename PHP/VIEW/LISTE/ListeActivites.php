@@ -57,7 +57,7 @@ if (!$formtype)
 	{
 		$activite = ActivitesParTypesManager::getList(['idActivite'], ['idTypePrestation' => $_GET['id'], 'idActivite' => $value->getIdActivite()]);
 
-		echo '<div class="donnees pyjama toggle-switch"><input type="checkbox" class="removeShadow toggle-input"'.($activite?($activite[0]->getIdActivite()==$value->getIdActivite()?' checked':''):'').' data-id="'.$value->getIdActivite().'" /><label for="toggle" class="toggle-label" /></div>';
+		echo '<div class="donnees pyjama toggle-switch"><input type="checkbox" '.($_GET['mode']=='Afficher'?'disabled':'').' class="removeShadow toggle-input"'.($activite?($activite[0]->getIdActivite()==$value->getIdActivite()?' checked':''):'').' data-id="'.$value->getIdActivite().'" /><label for="toggle" class="toggle-label" /></div>';
 		echo '<div class="donnees pyjama">'.$value->getLibelleActivite().'</div>';
 	}
 
