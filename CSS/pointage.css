@@ -176,11 +176,11 @@ select {
 
 .fa-fav:before {
     content: "\F5C0";
-    color: rgb(212, 212, 7);
+    /* color: rgb(212, 212, 7); */
 }
 
 .favActive {
-    color: green;
+    color: rgb(212, 212, 7);
 }
 
 .favDesActive {

@@ -89,6 +89,7 @@ foreach ($typesPrestations as $key => $typePresta) {
     foreach ($listePrestation as $prestation) {
         $numPresta++; // permet de numéroter les prestations
         $dataline = ' data-line="' . $numPresta . '"';
+        $classFavorisActif=($prestation->getIdPreference()!=null)?'favActive':'';
         // 9 parties constituants la prestation
         echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
                     <input name="idTypePrestation" type=hidden value=' . $idTypePrestation . ' ' . $dataline . '>
@@ -97,7 +98,7 @@ foreach ($typesPrestations as $key => $typePresta) {
                   <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '" ' . $dataline . '>
                   <input type=hidden name=idPreference value = "' . $prestation->getIdPreference() . '" ' . $dataline . '>
                   <input value = "' . $prestation->getLibellePrestation() . '" >
-                      <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
+                      <div class="favorise vMini cellRight"><i class="fas fa-fav '.$classFavorisActif.' "></i></div>
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" ' . $dataline . '></i></div>
                             </div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight ">Code Prest.</div>

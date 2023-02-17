@@ -212,6 +212,7 @@ function UpdateFav(e) {
     let idTypePrestation = caseFav.parentNode.querySelector("[name='idTypePrestation']").value;
     let idUtilisateur = document.querySelector("#IdUtilisateur").innerHTML;
 
+    e.target.classList.toggle("favActive", idPreference == '');
 
     let req = new XMLHttpRequest();
     req.open("POST", "index.php?page=MAJPreferencesAPI", true);// Initialisation de la requête avec une methode POST et le chemin de la page de traitement
