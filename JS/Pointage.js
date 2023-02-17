@@ -213,9 +213,8 @@ function CalculPrctGTA(ligne) {
 }
 
 function UpdateFav(e) {
-    let caseFav = e.target.parentNode.parentNode.parentNode;
-    console.log(caseFav);
-    let idPreference = caseFav.id;
+    let caseFav = e.target.parentNode.parentNode.parentNode.parentNode;
+    let idPreference = (caseFav.querySelector("[name='idPreference']")!=null)?caseFav.querySelector("[name='idPreference']").value:'';
     let idPrestation = caseFav.querySelector("[name='idPrestation']").value;
     let idUO = (caseFav.querySelector("[name='idUO']")!=null)?caseFav.querySelector("[name='idUO']").value:'';
     let idMotif = (caseFav.querySelector("[name='idMotif']")!=null)?caseFav.querySelector("[name='idMotif']").value:'';
@@ -223,15 +222,12 @@ function UpdateFav(e) {
     let idTypePrestation = caseFav.parentNode.querySelector("[name='idTypePrestation']").value;
     let idUtilisateur = document.querySelector("#IdUtilisateur").innerHTML;
 
-console.log(caseFav);
-console.log(idTypePrestation);
-
     let req = new XMLHttpRequest();
     req.open("POST", "index.php?page=MAJPreferencesAPI", true);// Initialisation de la requête avec une methode POST et le chemin de la page de traitement
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     // Preparation des arguments qui seront envoyé par POST à la page de traitement
     let args = "idUO=" + idUO + "&idMotif=" + idMotif + "&idProjet=" + idProjet + "&idPrestation=" + idPrestation + "&idTypePrestation=" + idTypePrestation + "&idUtilisateur=" + idUtilisateur;
-    if (idPreference) args += "&idPreference=" + idPreference; // Si la DIV possède déjà un ID
+    if (idPreference) args += "&idPreference=" + idPreference; // Si le favoris possède déjà un ID
     req.send(args);
 
     req.onreadystatechange = function (event) {   // Lorsque l'état de la requête change
@@ -239,7 +235,7 @@ console.log(idTypePrestation);
             if (this.status === 200) { // Si la requête est réussie
                 if (this.responseText) { // Si la réponse n'est pas vide
                     let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
-                    caseFav.setAttribute("id", id); // Change l'attribut ID de la DIV
+                    caseFav.querySelector("[name='idPreference']").value=id; // Mise à jour de l'input
                 }
 
                 ///////////////////////////////////////////////////////////
