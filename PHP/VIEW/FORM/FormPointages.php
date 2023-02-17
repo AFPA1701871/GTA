@@ -95,6 +95,7 @@ foreach ($typesPrestations as $key => $typePresta) {
               <div ' . $dataline . ' class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
                   <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '" ' . $dataline . '>
+                  <input type=hidden name=idPreference value = "' . $prestation->getIdPreference() . '" ' . $dataline . '>
                   <input value = "' . $prestation->getLibellePrestation() . '" >
                       <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" ' . $dataline . '></i></div>
@@ -169,6 +170,7 @@ echo '<template id=lignePresta>
       <div dataline class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
           <div class="center grid-lineDouble cellBottom grid-columns-span-4">
           <input name=idPrestation >
+          <input type="hidden" name=idPreference dataline >
               <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
               <div class=" border-left expand-line vMini"><i class="fas fa-open" dataline ></i></div>
                     </div>

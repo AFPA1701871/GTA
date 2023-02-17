@@ -2,6 +2,7 @@ USE GTA;
 --
 -- Vue regroupant toutes les infos des utilisateurs actifs et de leurs managers
 --
+DROP VIEW IF EXISTS gta_View_Utilisateurs;
 CREATE VIEW gta_View_Utilisateurs AS SELECT
     u.idUtilisateur,
     u.nomUtilisateur,
@@ -30,6 +31,7 @@ LEFT JOIN gta_Centres as centre ON c.idCentre = centre.idCentre;
  --
  -- Vue regroupant les utilisateurs et leurs prestations préférées
  --
+ DROP VIEW IF EXISTS gta_View_Utilisateurs_Preferences_Prestations;
  CREATE VIEW gta_View_Utilisateurs_Preferences_Prestations
  AS SELECT w.idPreference, u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO, u.idRole, u.idManager, p.idPrestation, p.codePrestation, p.libellePrestation, p.idActivite 
  FROM gta_Preferences w 
@@ -39,6 +41,7 @@ LEFT JOIN gta_Centres as centre ON c.idCentre = centre.idCentre;
  --
  -- Vue Pointages avec satellites
  --
+ DROP VIEW IF EXISTS gta_View_Pointages;
  CREATE VIEW gta_View_Pointages AS
  SELECT po.idPointage, po.datePointage, date_format(po.datePointage,"%Y-%m") as periode,
  po.validePointage, po.reportePointage, po.nbHeuresPointage,  po.idUO as "idUO_Pointage",po.idMotif,
@@ -59,6 +62,7 @@ LEFT JOIN gta_Centres as centre ON c.idCentre = centre.idCentre;
  --
  -- Vue Nombre heures pointages par personne par periode
  --
+ DROP VIEW IF EXISTS gta_View_Pointages_NbHeures;
  CREATE VIEW gta_View_Pointages_NbHeures AS
  SELECT 
  date_format(po.datePointage,"%Y-%m") as periode, po.nbHeuresPointage,
@@ -69,6 +73,7 @@ LEFT JOIN gta_Centres as centre ON c.idCentre = centre.idCentre;
 --
 -- Vue Preferences
 --
+DROP VIEW IF EXISTS gta_View_Preferences;
 CREATE VIEW gta_View_Preferences AS
  SELECT p.idPreference,   p.idUO as "idUO_Pointage",p.idMotif,
  u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO as "idUO_Utilisateur", u.idRole, u.idManager,
@@ -85,22 +90,18 @@ CREATE VIEW gta_View_Preferences AS
  LEFT JOIN gta_Prestations pre ON p.idPrestation=pre.idPrestation
  LEFT JOIN gta_TypePrestations tp ON p.idTypePrestation = tp.idTypePrestation;
 
-
+DROP VIEW IF EXISTS gta_View_Motifs;
  CREATE VIEW  gta_View_Motifs as SELECT m.idMotif, m.codeMotif, m.libelleMotif, t.idTypePrestation, t.numeroTypePrestation, t.libelleTypePrestation, t.motifRequis, t.uoRequis, t.projetRequis 
  FROM gta_Motifs as m
 INNER JOIN gta_TypePrestations as t on m.idTypePrestation = t.idTypePrestation;
 
+DROP VIEW IF EXISTS gta_View_Prestations;
 CREATE VIEW gta_View_Prestations as
 SELECT p.idPrestation, p.codePrestation, p.libellePrestation,a.idActivite, a.libelleActivite  
 FROM gta_Prestations p
 INNER JOIN gta_Activites as a ON p.idActivite = a.idActivite;
 
-
-CREATE VIEW gta_View_Prestations as
-SELECT p.idPrestation, p.codePrestation, p.libellePrestation,a.idActivite, a.libelleActivite  
-FROM gta_Prestations p
-INNER JOIN gta_Activites as a ON p.idActivite = a.idActivite;
-
+DROP VIEW IF EXISTS gta_View_TypePrestations;
 CREATE VIEW gta_View_TypePrestations as
 SELECT p.idPrestation, p.codePrestation, p.libellePrestation,a.idActivite, a.libelleActivite,t.idTypePrestation, t.numeroTypePrestation, t.libelleTypePrestation  
 FROM gta_TypePrestations as t
