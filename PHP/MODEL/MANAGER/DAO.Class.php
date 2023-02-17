@@ -123,7 +123,7 @@ class DAO
 		$db = DbConnect::getDb();
 		$nomColonnes = ($nomColonnes == null) ? $table::getAttributes() : $nomColonnes;
 		$string = json_encode($nomColonnes) . $table . json_encode($conditions) . $orderBy . $limit . $api . $debug;
-		if (strpos($string, ";")) {
+		if (strpos((string) $string, ";")) {
 			return false;
 		} else if (!empty($nomColonnes)  && ($table != null && $table != "")) {
 
@@ -193,9 +193,9 @@ class DAO
 				// cas du in
 				if (is_array($valeur)) {
 					$req .= $nomColonne . " IN (" . implode(",", $valeur) . ") AND ";
-				} else if (!(strpos($valeur, "%") === false)) { //cas like
+				} else if (!(strpos((string) $valeur, "%") === false)) { //cas like
 					$req .= $nomColonne . ' LIKE "' . $valeur . '" AND ';
-				} else if (strpos($valeur, "->")) { //cas between
+				} else if (strpos((string) $valeur, "->")) { //cas between
 					$tab = explode("->", $valeur);
 					$req .= $nomColonne . " BETWEEN " . $tab[0] . " AND " . $tab[1] . " AND ";
 				} else { //cas valeur simple

@@ -110,38 +110,42 @@ function clicPlus(event) {
       element.children[0].addEventListener('blur', SelectColonne);
       element.children[0].addEventListener("wheel", scrollHoriz);
     }
+    //le total et le pourcentage
+    // nouvellecasePointage.children[0].innerHtml="";
+    nouvellecasePointage.children[0].setAttribute("data-line", numPresta);
+    // nouvellecasePointage.children[1].innerHtml="";
+    nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
+    //Remise à zéro des colonnes Total et pourcentage
+    SommeLigne(numPresta);
+    CalculPrctGTA(numPresta);
 
-  }
-  //le total et le pourcentage
-  nouvellecasePointage.children[0].innerHtml = "";
-  nouvellecasePointage.children[0].setAttribute("data-line", numPresta);
-  nouvellecasePointage.children[1].innerHtml = "";
-  nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
-
-  /* evenement*/
-  //on ajoute l'evenement pour expand
-  nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
-}
-/**
- * Méthode d'appel ajax synchrone
- * @param {*} table  // nom de la table pour la requete
- * @param {*} id // valeur de l'id soit à selectionner pour un select soit pour le where dans les listes
- * @param {*} colonne // colonnes à renvoyer tableau attendu
- * @param {*} attribut // attribut à ajouter sur le select
- * @param {*} select // boolean vaut vrai pour un select faux pour une liste
- * @returns 
- */
-function AppelAjax(table, id, colonne, attribut, select, condition) {
-  var req = new XMLHttpRequest();
-  req.open('POST', 'index.php?page=ListePointageAPI', false); // false signifie appel synchrone
-  req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  args = "table=" + table + "&id=" + id + "&colonne=" + JSON.stringify(colonne) + "&attribut=" + attribut + "&select=" + select + "&condition=" + JSON.stringify(condition);
-  console.log(args);
-  req.send(args);
-  if (req.status === 200) {
-    console.log(req.responseText);
-    if (!select)
-      return JSON.parse(req.responseText);
-    return req.responseText;
+    /* evenement*/
+    //on ajoute l'evenement pour expand
+    nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
+    //on ajoute l'evenement pour favoris
+    nouvelleLigne.querySelector(".fa-fav").addEventListener("click", UpdateFav);
   }
 }
+  /**
+   * Méthode d'appel ajax synchrone
+   * @param {*} table  // nom de la table pour la requete
+   * @param {*} id // valeur de l'id soit à selectionner pour un select soit pour le where dans les listes
+   * @param {*} colonne // colonnes à renvoyer tableau attendu
+   * @param {*} attribut // attribut à ajouter sur le select
+   * @param {*} select // boolean vaut vrai pour un select faux pour une liste
+   * @returns 
+   */
+  function AppelAjax(table, id, colonne, attribut, select, condition) {
+    var req = new XMLHttpRequest();
+    req.open('POST', 'index.php?page=ListePointageAPI', false); // false signifie appel synchrone
+    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    args = "table=" + table + "&id=" + id + "&colonne=" + JSON.stringify(colonne) + "&attribut=" + attribut + "&select=" + select + "&condition=" + JSON.stringify(condition);
+    console.log(args);
+    req.send(args);
+    if (req.status === 200) {
+      console.log(req.responseText);
+      if (!select)
+        return JSON.parse(req.responseText);
+      return req.responseText;
+    }
+  }

@@ -56,6 +56,16 @@ LEFT JOIN gta_Centres as centre ON c.idCentre = centre.idCentre;
  LEFT JOIN gta_Prestations pre ON po.idPrestation=pre.idPrestation
  LEFT JOIN gta_TypePrestations tp ON po.idTypePrestation = tp.idTypePrestation;
 
+ --
+ -- Vue Nombre heures pointages par personne par periode
+ --
+ CREATE VIEW gta_View_Pointages_NbHeures AS
+ SELECT 
+ date_format(po.datePointage,"%Y-%m") as periode, po.nbHeuresPointage,
+ u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.matriculeUtilisateur, u.passwordUtilisateur, u.idUO as "idUO_Utilisateur", u.idRole, u.idManager
+ FROM gta_Pointages po
+ LEFT JOIN gta_Utilisateurs u ON po.idUtilisateur=u.idUtilisateur;
+
 --
 -- Vue Preferences
 --

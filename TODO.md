@@ -68,7 +68,7 @@
 * [ ] Récapitulatif pointage pour manager
 * [ ] Récapitulatif pointage pour ARH
 * [ ] Precision pour les RTT
-* [ ] Gestion des logs
+* [ ] Gestion des logs (Yves)
 * [ ] Gestion de l'envoi de mail
 
 ## Tableaux de bord (Fabien)
