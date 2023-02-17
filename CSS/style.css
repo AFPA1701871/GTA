@@ -482,7 +482,21 @@ body.dark .resetPassword {
 body.dark menu>div:hover i {
     color: var(--color5);
 }
+body.dark .aideMdp {
+    color: #111;
+}
 
+body.dark .fa-green {
+    color: var(--inputCorrect);
+}
+
+body.dark .fa-red {
+    color: var(--inputIncorrect);
+}
+
+body.dark .oeil {
+    color: #111;
+}
 /******************MEDIA QUERIES***************************/
 
 @media (max-width: 1514px) {
@@ -502,4 +516,3 @@ body.dark menu>div:hover i {
         flex: 0.02;
     }
   }
-

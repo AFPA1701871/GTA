@@ -1,7 +1,7 @@
 <nav>
     <aside class="cote"></aside>
     <menu class="flex">
-
+        <?php if ($roleConnecte >= 3) { ?>
         <div class="relative"><?= texte("Données administratives")?>
         <i class="fa-solid fa-angle-down"></i>
             <div class="sous-menu colonne">
@@ -42,6 +42,8 @@
                 </a>
             </div>
         </div>
+        <?php } else if ($roleConnecte == 2) { ?>
+        <?php } ?>
         <a href='?page=FormPointages'>
             <div><?= texte("Pointages")?></div>
         </a>
