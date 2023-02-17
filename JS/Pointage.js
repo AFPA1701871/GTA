@@ -13,9 +13,19 @@ listeCases.forEach(caseJour => {
     caseJour.addEventListener('blur', SelectColonne);
 });
 
-const sectionSideScroll = document.querySelectorAll('.grid-pointage');
+ sectionSideScroll = document.querySelectorAll('.grid-pointage');
 sectionSideScroll.forEach(element => {
-    element.addEventListener("wheel", function (e) {
+    element.addEventListener("wheel", scrollHoriz)});
+
+// eviter les méthodes aveugles dans les addeventlistener
+// on ne peut pas s'en resservir pour les elements générés après
+listeLignesPresta.forEach(LignePresta => {
+    LignePresta.addEventListener("click", expand);
+});
+
+
+function scrollHoriz(e) {
+    sectionSideScroll = document.querySelectorAll('.grid-pointage');
         const race = 125;
         if (e.deltaY > 0) {
             sectionSideScroll.forEach(balise => {
@@ -28,14 +38,7 @@ sectionSideScroll.forEach(element => {
             })
         }
         e.preventDefault();
-    })
-})
-// eviter les méthodes aveugles dans les addeventlistener
-// on ne peut pas s'en resservir pour les elements générés après
-listeLignesPresta.forEach(LignePresta => {
-    LignePresta.addEventListener("click", expand);
-});
-
+    }
 function expand(e) {
     e.target.classList.toggle("fa-open");
     e.target.classList.toggle("fa-close");
