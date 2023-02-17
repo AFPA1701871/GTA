@@ -7,24 +7,27 @@ echo '<div class="cote"></div>';
 echo '<section class="section1">';
 $idManager = $_SESSION['utilisateur']->getIdUtilisateur();
 $agents = UtilisateursManager::getList(['idUtilisateur','nomUtilisateur'], ['idRole'=>1, 'idManager'=>$idManager], 'nomUtilisateur');
+$date = new DateTime();
+$date = moisPrecedent($date);
 
-    // partie combobox mois/annee
-    // echo '<div id="divComboDate">';
-    //     foreach ($agents as $key => $agent) {
-    //         $pointages = PointagesManager::getList(null, ['idUtilisateur'=>$agent->getIdUtilisateur(), 'datePointage'=>])
-    //     }
-    //     $date = new DateTime();
-    //     $date = moisPrecedent($date);
-    //     echo creerSelectTab($date, tabMoisAnnee(), null, 'comboDate', true);
+    // *** partie combobox mois/annee ***
+    echo '<div id="divComboDate">';
+        // si dans le mois precedent, il y a au moins un pointage non validé, on affiche le pointage du mois precedent
+        $pointagesNonValide = View_PointagesManager::getList(null, ['idManager'=>$idManager, 'periode'=>$date, 'validePointage'=>0], 'nomUtilisateur');
+        if (empty($pointagesNonValide)){
+            $date = new DateTime();
+            echo creerSelectTab($date->format('Y-m'), tabMoisAnnee(), null, 'comboDate', true);
+        }
+        // sinon on affiche le mois en cours
+        else echo creerSelectTab($date, tabMoisAnnee(), null, 'comboDate', true);
     echo '</div>';
 
-    // partie tableau agents
+    // *** partie tableau agents ***
     echo '<div id="tabAgents">';
         echo '<div class="vCenter gras">Nom de l\'agent</div>';
         echo '<div class="vCenter gras">Rempli à</div>';
         echo '<div class="vCenter gras">Statut</div>';
         echo '<div class="cote"></div>';
-
 
         foreach ($agents as $key => $agent) {
             $bgc = ($key%2 == 0) ? '': 'bgc';
