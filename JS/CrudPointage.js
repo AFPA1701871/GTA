@@ -103,8 +103,12 @@ function clicPlus(event)
             element.children[0].value="";
             element.children[0].setAttribute("data-line",numPresta);
             // ajouter les evenements sur les cases
-
-        } 
+            element.children[0].addEventListener("change", changePointage);
+            element.children[0].addEventListener('change', ChangeCellule);
+            element.children[0].addEventListener('focus', SelectColonne);
+            element.children[0].addEventListener('blur', SelectColonne);
+            element.children[0].addEventListener("wheel", scrollHoriz);
+        }  
         
     }
     //le total et le pourcentage
