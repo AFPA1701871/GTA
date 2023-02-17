@@ -67,7 +67,6 @@ function clicPlus(event) {
 
 
   // mis à jour liste presta
-  //************************************Mettre une condition pour reduire les prestations */
   condition['idTypePrestation'] = idTypePrestation;
   selectPresta = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], 'class="inputPointage"', true, condition);
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', selectPresta);
