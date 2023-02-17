@@ -80,8 +80,7 @@ function clicPlus(event)
     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputMotif">', selectMotif);
   
     // trouver data-line
-  numPresta = ( document.querySelector("#numPrestaMax").value)*1 +1
-  console.log(numPresta);
+  numPresta = ( document.querySelector("#numPrestaMax").value)*1 +1;
   document.querySelector("#numPrestaMax").value = numPresta
    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('dataline=""', 'data-line="'+numPresta+'"');
   
@@ -112,14 +111,19 @@ function clicPlus(event)
         
     }
     //le total et le pourcentage
-    nouvellecasePointage.children[0].innerHtml="";
+    // nouvellecasePointage.children[0].innerHtml="";
     nouvellecasePointage.children[0].setAttribute("data-line",numPresta);
-    nouvellecasePointage.children[1].innerHtml="";
+    // nouvellecasePointage.children[1].innerHtml="";
     nouvellecasePointage.children[1].setAttribute("data-line",numPresta);
-    
+    //Remise à zéro des colonnes Total et pourcentage
+    SommeLigne(numPresta);
+    CalculPrctGTA(numPresta);
+
     /* evenement*/
     //on ajoute l'evenement pour expand
     nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
+    //on ajoute l'evenement pour favoris
+    nouvelleLigne.querySelector(".fa-fav").addEventListener("click", UpdateFav);
 }
 /**
  * Méthode d'appel ajax synchrone

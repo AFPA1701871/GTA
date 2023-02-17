@@ -217,11 +217,15 @@ function UpdateFav(e) {
     console.log(caseFav);
     let idPreference = caseFav.id;
     let idPrestation = caseFav.querySelector("[name='idPrestation']").value;
-    let idUO = caseFav.querySelector("[name='idUo']").value;
-    let idMotif = caseFav.querySelector("[name='idMotif']").value;
-    let idProjet = caseFav.querySelector("[name='idProjet']").value;
-    let idTypePrestation = caseFav.querySelector("[name='idPrestation']").getAttribute("data-line")[0].split("-")[0];
+    let idUO = (caseFav.querySelector("[name='idUO']")!=null)?caseFav.querySelector("[name='idUO']").value:'';
+    let idMotif = (caseFav.querySelector("[name='idMotif']")!=null)?caseFav.querySelector("[name='idMotif']").value:'';
+    let idProjet = (caseFav.querySelector("[name='idProjet']")!=null)?caseFav.querySelector("[name='idProjet']").value:'';
+    let idTypePrestation = caseFav.parentNode.querySelector("[name='idTypePrestation']").value;
     let idUtilisateur = document.querySelector("#IdUtilisateur").innerHTML;
+
+console.log(caseFav);
+console.log(idTypePrestation);
+
     let req = new XMLHttpRequest();
     req.open("POST", "index.php?page=MAJPreferencesAPI", true);// Initialisation de la requête avec une methode POST et le chemin de la page de traitement
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
