@@ -15,7 +15,7 @@ $agents = UtilisateursManager::getList(['idUtilisateur','nomUtilisateur'], ['idR
     //     }
     //     $date = new DateTime();
     //     $date = moisPrecedent($date);
-    //     echo creerSelectTab($date, tabMoisAnnee(), null, 'comboDate', true);
+    //     echo creerSelectTab($date, tabMoisAnnee(), 'comboDate', true, null);
     echo '</div>';
 
     // partie tableau agents
