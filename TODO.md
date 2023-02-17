@@ -22,7 +22,7 @@
 ## NAV
 
 * [X] Regrouper les boutons
-* [ ] Ajouter la gestion des droits
+* [X] Ajouter la gestion des droits
 
 ## Traduction (Fabien)
 

@@ -86,6 +86,18 @@ FROM gta_Prestations p
 INNER JOIN gta_Activites as a ON p.idActivite = a.idActivite;
 
 
+CREATE VIEW gta_View_Prestations as
+SELECT p.idPrestation, p.codePrestation, p.libellePrestation,a.idActivite, a.libelleActivite  
+FROM gta_Prestations p
+INNER JOIN gta_Activites as a ON p.idActivite = a.idActivite;
+
+CREATE VIEW gta_View_TypePrestations as
+SELECT p.idPrestation, p.codePrestation, p.libellePrestation,a.idActivite, a.libelleActivite,t.idTypePrestation, t.numeroTypePrestation, t.libelleTypePrestation  
+FROM gta_TypePrestations as t
+INNER JOIN gta_ActivitesParTypes at ON t.idTypePrestation = at.idTypePrestation
+INNER JOIN gta_Activites as a ON at.idActivite = a.idActivite
+INNER JOIN gta_Prestations p  ON a.idActivite  = p.idActivite;
+
 
 DROP VIEW IF EXISTS gta_View_Prestations_Pref_Point;
 CREATE VIEW gta_View_Prestations_Pref_Point as

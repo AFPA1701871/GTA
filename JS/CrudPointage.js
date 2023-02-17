@@ -16,10 +16,10 @@ function changePointage(event) {
   let idpointage = pointage.getAttribute('data-idpointage');// Id de le la case
   let ligne = pointage.dataset.line; // Dataset contenant le typePrestation suivit de la prestation
   let date = pointage.dataset.date; // Dataset contenant la date en format (YYYY-MM-DD)
-  
+
   // Récupération des différents ID de la ligne
-  let typePrestation = document.querySelector('input[data-line="' + ligne + '"][name="idTypePrestation"]').value; 
-  let uo = document.querySelector('input[data-line="' + ligne + '"][name="idUo"]').value; 
+  let typePrestation = document.querySelector('input[data-line="' + ligne + '"][name="idTypePrestation"]').value;
+  let uo = document.querySelector('input[data-line="' + ligne + '"][name="idUo"]').value;
   let motif = document.querySelector('input[data-line="' + ligne + '"][name="idMotif"]').value;
   let projet = document.querySelector('input[data-line="' + ligne + '"][name="idProjet"]').value;
   let prestation = document.querySelector('input[data-line="' + ligne + '"][name="idPrestation"]').value;
@@ -33,7 +33,7 @@ function changePointage(event) {
 
   if (idpointage) args += "&idPointage=" + idpointage; // Si la case possède déjà un ID
   req.send(args);
-console.log(args);
+  console.log(args);
 
   req.onreadystatechange = function (event) {   // Lorsque l'état de la requête change
     if (this.readyState === XMLHttpRequest.DONE) { // Si la requête a bien été executée
@@ -51,75 +51,76 @@ console.log(args);
  * Méthode qui permet d'ajouter une ligne lorsque l'on clique sur le plus à coté du type de Prestations
  * @param {*} event 
  */
-function clicPlus(event)
-{
-  plus= event.target;
+function clicPlus(event) {
+  plus = event.target;
   idTypePrestation = plus.parentNode.getAttribute("data-idtypeprestation");
+  condition = {}
   // on clone le template
   temp = document.querySelector("#lignePresta");
   contenu = temp.content.cloneNode(true);
   // on insert avant le prochain type
-    plus.parentNode.parentNode.insertBefore(contenu,plus.parentNode.nextElementSibling.nextElementSibling);
-    nouvelleLigne = plus.parentNode.nextElementSibling.nextElementSibling
+  plus.parentNode.parentNode.insertBefore(contenu, plus.parentNode.nextElementSibling.nextElementSibling);
+  nouvelleLigne = plus.parentNode.nextElementSibling.nextElementSibling
 
   /**  on modifie l'élément insérer */
- nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="idTypePrestation">', '<input name="idTypePrestation" type=hidden value="'+idTypePrestation+'"  dataline >');
-  
-  
+  nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="idTypePrestation">', '<input name="idTypePrestation" type=hidden value="' + idTypePrestation + '"  dataline >');
+
+
   // mis à jour liste presta
-    selectPresta = AppelAjax("Prestations",null,["IdPrestation","LibellePrestation"],'class="inputPointage"',true);
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', selectPresta);
-  
+  //************************************Mettre une condition pour reduire les prestations */
+  condition['idTypePrestation'] = idTypePrestation;
+  selectPresta = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], 'class="inputPointage"', true, condition);
+  nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', selectPresta);
+
   // mis à jour disabled dans motif/projet/uo
-    typePrestation = AppelAjax ("TypePrestations",idTypePrestation,null,"",false)[0];
-    selectUO =  (typePrestation.uoRequis==1)? AppelAjax("UOs",null,["NumeroUO","LibelleUO"],'class=""',true):'<input class="inputPointage notApplicable" dataline  type="text" name="inputUO" disabled>';
-    selectProjet =  (typePrestation.projetRequis==1)? AppelAjax("Projets",null,["CodeProjet"],'class=""',true):'<input class="inputPointage notApplicable" dataline  type="text" name="inputProjet" disabled>';
-    selectMotif =  (typePrestation.motifRequis==1)? AppelAjax("Motifs",null,["CodeMotif"],'class=""',true):'<input class="inputPointage notApplicable" dataline  type="text" name="inputMotif" disabled>';
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputUo">', selectUO);
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputProjet">', selectProjet);
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputMotif">', selectMotif);
-  
-    // trouver data-line
-  numPresta = ( document.querySelector("#numPrestaMax").value)*1 +1
+  typePrestation = AppelAjax("TypePrestations", idTypePrestation, null, "", false, null)[0];
+  selectUO = (typePrestation.uoRequis == 1) ? AppelAjax("UOs", null, ["NumeroUO", "LibelleUO"], 'class=""', true, null) : '<input class="inputPointage notApplicable" dataline  type="text" name="inputUO" disabled>';
+  selectProjet = (typePrestation.projetRequis == 1) ? AppelAjax("Projets", null, ["CodeProjet"], 'class=""', true, null) : '<input class="inputPointage notApplicable" dataline  type="text" name="inputProjet" disabled>';
+  selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif"], 'class=""', true, null) : '<input class="inputPointage notApplicable" dataline  type="text" name="inputMotif" disabled>';
+  nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputUo">', selectUO);
+  nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputProjet">', selectProjet);
+  nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputMotif">', selectMotif);
+
+  // trouver data-line
+  numPresta = (document.querySelector("#numPrestaMax").value) * 1 + 1
   console.log(numPresta);
   document.querySelector("#numPrestaMax").value = numPresta
-   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('dataline=""', 'data-line="'+numPresta+'"');
-  
-  
-    /**  mettre les cases */
+  nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('dataline=""', 'data-line="' + numPresta + '"');
+
+
+  /**  mettre les cases */
   // on sélectionne une ligne de case de pointage et on la duplique
-    gridpointage = document.querySelectorAll(".grid-pointage")[1].cloneNode(true);
-     // on l'ajoute à la dom
-     plus.parentNode.parentNode.insertBefore(gridpointage,plus.parentNode.nextElementSibling.nextElementSibling.nextElementSibling);
-    nouvellecasePointage = plus.parentNode.nextElementSibling.nextElementSibling.nextElementSibling;
-    
-    // on remet les pointages à "" et on met le bon data-line
-    //les inputs
-    for (let i = 3; i < nouvellecasePointage.children.length; i++) {
-        const element = nouvellecasePointage.children[i];
-        //element est une div. on modifie l'input à l'intérieur
-        if (element.children.length>0)
-        {
-            element.children[0].value="";
-            element.children[0].setAttribute("data-line",numPresta);
-            // ajouter les evenements sur les cases
-            element.children[0].addEventListener("change", changePointage);
-            element.children[0].addEventListener('change', ChangeCellule);
-            element.children[0].addEventListener('focus', SelectColonne);
-            element.children[0].addEventListener('blur', SelectColonne);
-            element.children[0].addEventListener("wheel", scrollHoriz);
-        }  
-        
+  gridpointage = document.querySelectorAll(".grid-pointage")[1].cloneNode(true);
+  // on l'ajoute à la dom
+  plus.parentNode.parentNode.insertBefore(gridpointage, plus.parentNode.nextElementSibling.nextElementSibling.nextElementSibling);
+  nouvellecasePointage = plus.parentNode.nextElementSibling.nextElementSibling.nextElementSibling;
+
+  // on remet les pointages à "" et on met le bon data-line
+  //les inputs
+  for (let i = 3; i < nouvellecasePointage.children.length; i++) {
+    const element = nouvellecasePointage.children[i];
+    //element est une div. on modifie l'input à l'intérieur
+    if (element.children.length > 0) {
+      element.children[0].value = "";
+      element.children[0].setAttribute("data-line", numPresta);
+      // ajouter les evenements sur les cases
+      element.children[0].addEventListener("change", changePointage);
+      element.children[0].addEventListener('change', ChangeCellule);
+      element.children[0].addEventListener('focus', SelectColonne);
+      element.children[0].addEventListener('blur', SelectColonne);
+      element.children[0].addEventListener("wheel", scrollHoriz);
     }
-    //le total et le pourcentage
-    nouvellecasePointage.children[0].innerHtml="";
-    nouvellecasePointage.children[0].setAttribute("data-line",numPresta);
-    nouvellecasePointage.children[1].innerHtml="";
-    nouvellecasePointage.children[1].setAttribute("data-line",numPresta);
-    
-    /* evenement*/
-    //on ajoute l'evenement pour expand
-    nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
+
+  }
+  //le total et le pourcentage
+  nouvellecasePointage.children[0].innerHtml = "";
+  nouvellecasePointage.children[0].setAttribute("data-line", numPresta);
+  nouvellecasePointage.children[1].innerHtml = "";
+  nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
+
+  /* evenement*/
+  //on ajoute l'evenement pour expand
+  nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
 }
 /**
  * Méthode d'appel ajax synchrone
@@ -130,18 +131,17 @@ function clicPlus(event)
  * @param {*} select // boolean vaut vrai pour un select faux pour une liste
  * @returns 
  */
-function AppelAjax(table,id,colonne,attribut,select)
-{
-    var req = new XMLHttpRequest();
-    req.open('POST', 'index.php?page=ListePointageAPI', false); // false signifie appel synchrone
-    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    args = ("table=" + table + "&id=" + id +"&colonne="+JSON.stringify(colonne) +  "&attribut=" + attribut + "&select=" + select);
-    console.log(args);
-    req.send(args);
-    if (req.status === 200) {
-        console.log(req.responseText);
-        if (!select)
-        return JSON.parse(req.responseText);
-        return req.responseText;
-    }
+function AppelAjax(table, id, colonne, attribut, select, condition) {
+  var req = new XMLHttpRequest();
+  req.open('POST', 'index.php?page=ListePointageAPI', false); // false signifie appel synchrone
+  req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  args = "table=" + table + "&id=" + id + "&colonne=" + JSON.stringify(colonne) + "&attribut=" + attribut + "&select=" + select + "&condition=" + JSON.stringify(condition);
+  console.log(args);
+  req.send(args);
+  if (req.status === 200) {
+    console.log(req.responseText);
+    if (!select)
+      return JSON.parse(req.responseText);
+    return req.responseText;
+  }
 }

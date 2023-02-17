@@ -6,15 +6,13 @@
   box-shadow: 2px 2px 3px var(--inputIncorrect);
 }
 
-.inputVide {
-}
-
-
 input, select {
     box-shadow: 2px 2px 3px black;
     padding: 0.5rem;
 }
-
+select >option{
+  text-align: left;
+}
 label {
   align-self: center;
 }

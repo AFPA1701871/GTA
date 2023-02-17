@@ -146,7 +146,7 @@ function appelGet($obj, $chaine)
 	 * 
  * @return void
  */
-function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $attributs = "", array $condition = null, string $orderBy = null, string $attributId = null)
+function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $attributs = "", ?array $condition = null, string $orderBy = null, string $attributId = null)
 {
 	$nomId= $table::getAttributes()[0];
 	$atrId = ($attributId == null ? $nomId : $attributId);

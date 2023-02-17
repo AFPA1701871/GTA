@@ -75,7 +75,7 @@ for ($i = 1; $i <= $nbrJoursMois; $i++) {
     echo '        <div data-date=' . $jour->format("Y-m-d") . ' class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
 }
 echo '    </div>';
-
+ $numPresta = 0;
 // Boucle sur les Types de Prestations
 foreach ($typesPrestations as $key => $typePresta) {
     $idTypePrestation = $typePresta->getIdTypePrestation();
@@ -84,7 +84,7 @@ foreach ($typesPrestations as $key => $typePresta) {
 
     // on récupère les prestations de ce type
     $listePrestation = View_Prestations_Pref_PointManager::getListePrestation($idUtilisateur, $periode, $idTypePrestation);
-    $numPresta = 0;
+   
     // boucle sur les prestations
     foreach ($listePrestation as $prestation) {
         $numPresta++; // permet de numéroter les prestations
