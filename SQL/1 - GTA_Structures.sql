@@ -183,8 +183,8 @@ CREATE TABLE gta_Pointages(
    idUtilisateur INT NOT NULL,
    idTypePrestation INT NOT NULL,
    datePointage DATE NOT NULL,
-   validePointage BOOLEAN,
-   reportePointage BOOLEAN,
+   validePointage BOOLEAN DEFAULT 0,
+   reportePointage BOOLEAN DEFAULT 0,
    nbHeuresPointage DECIMAL(15, 2)
 ) ENGINE = InnoDB;
 
