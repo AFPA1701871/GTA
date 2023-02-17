@@ -67,11 +67,19 @@
                     <i class="oeil fas fa-eye"></i>
                 </div>
             </div>
+            <div></div>
+                <div></div>
+            <div class="relative col-span-form-chg-pwd ligne">
+                <div></div>
+                <div>
+                <input class="btnPrincipale" type="submit" id="submit" value="<?= texte('Modifier')  ?>" disabled></button>
+                </div>
+            </div>
+
+
 
             <div></div>
-            <div></div>
-            <div></div>
-            <input class="btnPrincipale" type="submit" id="submit" value="<?= texte('Modifier')  ?>" disabled></button>
+            
         </form>
     </section>
 </main>
