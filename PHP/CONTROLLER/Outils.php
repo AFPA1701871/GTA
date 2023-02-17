@@ -155,7 +155,7 @@ function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $a
 	$methode = $table . 'Manager';
 	$libelle= $nomColonnes;
 	array_push($nomColonnes, $nomId);
-	$liste = $methode::getList($nomColonnes, $condition, $orderBy,  null);
+	$liste = $methode::getList($nomColonnes, $condition, $orderBy,  null,false,false);
 	if ($valeur == null) {
 			$select .= '<option value="" SELECTED>'.texte("inputDefault").'</option>';
 	} else {
@@ -185,7 +185,7 @@ function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $a
  * @param string $attributId
  * @return void
  */
-function creerSelectTab( $valeur, array $tab,  ?string $attributs = "",  string $attributId ,bool $tabAssoc)
+function creerSelectTab( $valeur, array $tab,  string $attributId ,bool $tabAssoc,  ?string $attributs = "")
 {
 	$select = '<select id="' . $attributId . '" name="' . $attributId . '"' . $attributs . '>';
 	
@@ -233,6 +233,12 @@ function tabMoisAnnee()
 	return $tabMoisAnnee;
 }
 
+function periodeEnCours($idUtilisateur)
+{
+	$anneeVisionne = date("Y");
+	$moisVisionne = date("m") * 1;
+	return $anneeVisionne.'-'.$moisVisionne;
+}
 function moisPrecedent(DateTime $date){
 	$date->modify('first day of this month'); // Positionne la date sur le premier jour du mois en cours
 	$month = $date->modify('-1 day')->format('Y-m'); // on retire un jour et on reformate au format ANNEE-MOIS

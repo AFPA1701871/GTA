@@ -1,7 +1,31 @@
+window.addEventListener("load", setGridPointage);
+listeLignesPresta = document.querySelectorAll(".expand-line");
 
-const sectionSideScroll = document.querySelectorAll('.grid-pointage');
+listeStarFav = document.querySelectorAll(".fa-fav");
+listeStarFav.forEach(etoile => {
+    etoile.addEventListener("click", UpdateFav);
+});
+
+listeCases = document.querySelectorAll('.casePointage');
+listeCases.forEach(caseJour => {
+    caseJour.addEventListener('change', ChangeCellule);
+    caseJour.addEventListener('focus', SelectColonne);
+    caseJour.addEventListener('blur', SelectColonne);
+});
+
+ sectionSideScroll = document.querySelectorAll('.grid-pointage');
 sectionSideScroll.forEach(element => {
-    element.addEventListener("wheel", function (e) {
+    element.addEventListener("wheel", scrollHoriz)});
+
+// eviter les méthodes aveugles dans les addeventlistener
+// on ne peut pas s'en resservir pour les elements générés après
+listeLignesPresta.forEach(LignePresta => {
+    LignePresta.addEventListener("click", expand);
+});
+
+
+function scrollHoriz(e) {
+    sectionSideScroll = document.querySelectorAll('.grid-pointage');
         const race = 125;
         if (e.deltaY > 0) {
             sectionSideScroll.forEach(balise => {
@@ -14,39 +38,32 @@ sectionSideScroll.forEach(element => {
             })
         }
         e.preventDefault();
-    })
-})
-
-
-listeLignesPresta = document.querySelectorAll(".expand-line");
-listeLignesPresta.forEach(LignePresta => {
-    LignePresta.addEventListener("click", function (e) {
-        e.target.classList.toggle("fa-open");
-        e.target.classList.toggle("fa-close");
-        ligne = e.target.parentNode.parentNode.parentNode;
-        listeCol = ligne.querySelectorAll(".colCachable");
-        listeCol.forEach(cell => {
-            cell.classList.toggle("noDisplay");
-        });
-        ligneActu = ligne.getAttribute("data-Line");
-        selectLine = document.querySelectorAll("div[data-line='" + ligneActu + "']");
-        selectLine.forEach(cell2 => {
-            cell2.classList.toggle("grid-lineDouble");
-            cell2.classList.toggle("grid-lineQuad");
-        })
-        listeInput = document.querySelectorAll(".grid-pointage input[data-line='" + ligneActu + "']");
-        listeInput.forEach(cell3 => {
-            cell3.parentNode.classList.toggle("grid-lineDouble");
-            cell3.parentNode.classList.toggle("grid-lineQuad");
-        })
+    }
+function expand(e) {
+    e.target.classList.toggle("fa-open");
+    e.target.classList.toggle("fa-close");
+    ligne = e.target.parentNode.parentNode.parentNode;
+    listeCol = ligne.querySelectorAll(".colCachable");
+    listeCol.forEach(cell => {
+        cell.classList.toggle("noDisplay");
     });
-})
+    ligneActu = ligne.getAttribute("data-Line");
+    selectLine = document.querySelectorAll("div[data-line='" + ligneActu + "']");
+    selectLine.forEach(cell2 => {
+        cell2.classList.toggle("grid-lineDouble");
+        cell2.classList.toggle("grid-lineQuad");
+    })
+    listeInput = document.querySelectorAll(".grid-pointage input[data-line='" + ligneActu + "']");
+    listeInput.forEach(cell3 => {
+        cell3.parentNode.classList.toggle("grid-lineDouble");
+        cell3.parentNode.classList.toggle("grid-lineQuad");
+    })
+}
 
 
-window.addEventListener("load", setGridPointage);
 function setGridPointage() {
     selectPeriode = document.querySelector("#periode");
-    tabPeriode=selectPeriode.value.split('-');
+    tabPeriode = selectPeriode.value.split('-');
     annee = tabPeriode[0];
     mois = tabPeriode[1];
     // selectAnnee.addEventListener("change", setGridPointage);
@@ -63,7 +80,7 @@ function setGridPointage() {
     theGridTemplateColumnsValue = tailleTotal + " " + taillePrct + " 0.1em ";
     for (let jour = 1; jour <= nbreJour; jour++) {
         jourActu = new Date(annee, mois - 1, jour);
-        SommeColonne(annee+"-"+mois+"-"+String(jour).padStart(2,'0'));
+        SommeColonne(annee + "-" + mois + "-" + String(jour).padStart(2, '0'));
         if (jourActu.getDay() == 0 || jourActu.getDay() == 6) {
             theGridTemplateColumnsValue += tailleWe + " ";
         }
@@ -74,18 +91,11 @@ function setGridPointage() {
     feuilleStyle.style.setProperty('--grid-template-columns', theGridTemplateColumnsValue);
 };
 
-listeCases = document.querySelectorAll('.casePointage');
-listeCases.forEach(caseJour => {
-    caseJour.addEventListener('change', ChangeCellule);
-    caseJour.addEventListener('focus', SelectColonne);
-    caseJour.addEventListener('blur', SelectColonne);
-}
-)
 function ChangeCellule(e) {
     let cell = e.target;
-    let ligne=cell.getAttribute("data-line");
-    let colonne=cell.getAttribute("data-date");
-    if (isNaN(parseFloat(cell.value))||(parseFloat(cell.value) < 0 || parseFloat(cell.value) > 1)) {
+    let ligne = cell.getAttribute("data-line");
+    let colonne = cell.getAttribute("data-date");
+    if (isNaN(parseFloat(cell.value)) || (parseFloat(cell.value) < 0 || parseFloat(cell.value) > 1)) {
         cell.value = "";
     }
     if (cell.getAttribute("data-line") == "0-1") {
@@ -95,7 +105,7 @@ function ChangeCellule(e) {
         SommeColonne(colonne);
     }
     SommeLigne(ligne);
-    CalculPrctGTA(e);
+    CalculPrctGTA(ligne);
 }
 
 function SommeLigne(ligne) {
@@ -167,59 +177,71 @@ function MarquageAbsent(colonne, valeur) {
     });
 }
 
-function SelectColonne(e){
+function SelectColonne(e) {
     let colonne = e.target.getAttribute("data-date");
     let inputsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
     inputsColonne.forEach(elt => {
         elt.classList.toggle("colSelected");
-        if(elt.nodeName=="DIV")
-        {
+        if (elt.nodeName == "DIV") {
             elt.classList.toggle("cellBottom");
         }
     });
 
 }
 
-function CalculPrctGTA(ligne){
-    let cellCible=document.querySelector(".colPrctGTA[data-line='"+ligne+"']");
-    let listeTousInputs=document.querySelectorAll(".casePointage");
-    let totalLigne=document.querySelector(".colTotal[data-line='"+ligne+"']").innerHTML;
-    let totalMois=0;
-    let totalPrctGTA=0;
+function CalculPrctGTA(ligne) {
+    let cellCible = document.querySelector(".colPrctGTA[data-line='" + ligne + "']");
+    let listeTousInputs = document.querySelectorAll(".casePointage");
+    let totalLigne = document.querySelector(".colTotal[data-line='" + ligne + "']").innerHTML;
+    let totalMois = 0;
+    let totalPrctGTA = 0;
     let ajout;
-    listeTousInputs.forEach(cellActu=>{
-        if(cellActu.getAttribute("data-line")!="0-1" && cellActu.value!=""){
-            ajout=cellActu.value;
-        }else{
-            ajout=0;
+    listeTousInputs.forEach(cellActu => {
+        if (cellActu.getAttribute("data-line") != "0-1" && cellActu.value != "" && !cellActu.disabled) {
+            ajout = cellActu.value;
+        } else {
+            ajout = 0;
         }
         totalMois = (parseFloat(totalMois) + parseFloat(ajout)).toFixed(2);
     })
-    
-    totalPrctGTA=((parseFloat(totalLigne)/parseFloat(totalMois))*100).toFixed(1);
-    if(isNaN(totalPrctGTA)){
-        totalPrctGTA=0;
+
+    totalPrctGTA = ((parseFloat(totalLigne) / parseFloat(totalMois)) * 100).toFixed(1);
+    if (isNaN(totalPrctGTA)) {
+        totalPrctGTA = 0;
     }
-    cellCible.innerHTML=totalPrctGTA+"%";
+    cellCible.innerHTML = totalPrctGTA + "%";
 }
 
-listeStarFav=document.querySelectorAll(".fa-fav");
-listeStarFav.forEach(etoile=>{
-    etoile.addEventListener("click", UpdateFav);
-});
+function UpdateFav(e) {
+    let caseFav = e.target.parentNode.parentNode.parentNode;
+    console.log(caseFav);
+    let idPreference = caseFav.id;
+    let idPrestation = caseFav.querySelector("[name='idPrestation']").value;
+    let idUO = caseFav.querySelector("[name='idUo']").value;
+    let idMotif = caseFav.querySelector("[name='idMotif']").value;
+    let idProjet = caseFav.querySelector("[name='idProjet']").value;
+    let idTypePrestation = caseFav.querySelector("[name='idPrestation']").getAttribute("data-line")[0].split("-")[0];
+    let idUtilisateur = document.querySelector("#IdUtilisateur").innerHTML;
+    let req = new XMLHttpRequest();
+    req.open("POST", "index.php?page=MAJPreferencesAPI", true);// Initialisation de la requête avec une methode POST et le chemin de la page de traitement
+    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    // Preparation des arguments qui seront envoyé par POST à la page de traitement
+    let args = "idUO=" + idUO + "&idMotif=" + idMotif + "&idProjet=" + idProjet + "&idPrestation=" + idPrestation + "&idTypePrestation=" + idTypePrestation + "&idUtilisateur=" + idUtilisateur;
+    if (idPreference) args += "&idPreference=" + idPreference; // Si la DIV possède déjà un ID
+    req.send(args);
 
-function UpdateFav(e){
-    let caseFav=e.target.parentNode.parentNode;
-    let idPrestation=caseFav.querySelector("[name='idPrestation']").value;
-    let idUO=caseFav.querySelector("[name='inputUO']").value;
-    let idMotif=caseFav.querySelector("[name='inputMotif']").value;
-    let idProjet=caseFav.querySelector("[name='inputProjet']").value;
-    let idTypePrestation=caseFav.querySelector("[name='idPrestation']").getAttribute("data-line")[0].split("-")[0];
-    let idUtilisateur=document.querySelector("#IdUtilisateur").innerHTML;
-    console.log(idMotif);
-    console.log(idPrestation);
-    console.log(idProjet);
-    console.log(idUO);
-    console.log(idUtilisateur);
-    console.log(idTypePrestation);
+    req.onreadystatechange = function (event) {   // Lorsque l'état de la requête change
+        if (this.readyState === XMLHttpRequest.DONE) { // Si la requête a bien été executée
+            if (this.status === 200) { // Si la requête est réussie
+                if (this.responseText) { // Si la réponse n'est pas vide
+                    let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
+                    caseFav.setAttribute("id", id); // Change l'attribut ID de la DIV
+                }
+
+                ///////////////////////////////////////////////////////////
+                //Ajouter Message indiquant la sauvegarde de l'état des préférences
+                ///////////////////////////////////////////////////////////
+            }
+        }
+    };
 }

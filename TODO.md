@@ -2,11 +2,11 @@
 
 ## Header
 
-* [X] Ajouter le titre de l'application(valentin)
+* [X] Ajouter le titre de l'application (Valentin)
 
 ## Formulaires
 
-* [X] Changer oeil -> ON/OFF plutôt que rester appuyé (valentin)
+* [X] Changer oeil -> ON/OFF plutôt que rester appuyé (Valentin)
 * [X] Enlever les icônes (? et v) (Yves)
 
 ## Crud Utilisateurs
@@ -22,7 +22,7 @@
 ## NAV
 
 * [X] Regrouper les boutons
-* [ ] Ajouter la gestion des droits
+* [X] Ajouter la gestion des droits (Yves)
 
 ## Traduction (Fabien)
 
@@ -55,7 +55,7 @@
 
 ## Crud Activités
 
-* [ ] Ajouter gestion des types associés
+* [X] Ajouter gestion des types associés (Yves)
 
 ## Gestion des pointages
 
@@ -63,12 +63,12 @@
 * [ ] Feuille de pointage individuel avec préférences (Florent)
 * [ ] Ajax étoiles préférences (Florent)
 * [X] % sur les lignes de pointage (Florent)
-* [X] Texte invisible en dark mod(valentin)
-* [X] Message informatif sauvegardes(valentin)
+* [X] Texte invisible en dark mode (Valentin)
+* [X] Message informatif sauvegardes (Valentin)
 * [ ] Récapitulatif pointage pour manager
 * [ ] Récapitulatif pointage pour ARH
 * [ ] Precision pour les RTT
-* [ ] Gestion des logs
+* [ ] Gestion des logs (Yves)
 * [ ] Gestion de l'envoi de mail
 
 ## Tableaux de bord (Fabien)
