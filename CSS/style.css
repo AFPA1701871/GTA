@@ -369,7 +369,7 @@ nav {
 }
 
 .fieldset {
-    max-width: 12vw;
+    width: 12vw;
     align-items: center;
     justify-content: center;
     height: 7vh;
