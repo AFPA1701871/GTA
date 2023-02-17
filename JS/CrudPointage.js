@@ -19,9 +19,9 @@ function changePointage(event) {
 
   // Récupération des différents ID de la ligne
   let typePrestation = document.querySelector('input[data-line="' + ligne + '"][name="idTypePrestation"]').value;
-  let uo = document.querySelector('input[data-line="' + ligne + '"][name="inputUo"]').value;
-  let motif = document.querySelector('input[data-line="' + ligne + '"][name="inputMotif"]').value;
-  let projet = document.querySelector('input[data-line="' + ligne + '"][name="inputProjet"]').value;
+  let uo = document.querySelector('input[data-line="' + ligne + '"][name="idUo"]').value;
+  let motif = document.querySelector('input[data-line="' + ligne + '"][name="idMotif"]').value;
+  let projet = document.querySelector('input[data-line="' + ligne + '"][name="idProjet"]').value;
   let prestation = document.querySelector('input[data-line="' + ligne + '"][name="idPrestation"]').value;
 
   // Requête
@@ -39,6 +39,7 @@ function changePointage(event) {
     if (this.readyState === XMLHttpRequest.DONE) { // Si la requête a bien été executée
       if (this.status === 200) { // Si la requête est réussie
         if (this.responseText) { // Si la réponse n'est pas vide
+          console.log(this.responseText);
           let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
           pointage.setAttribute("data-idpointage", idpointage); // Change l'attribut ID de la case
         }
@@ -73,9 +74,9 @@ function clicPlus(event) {
 
   // mis à jour disabled dans motif/projet/uo
   typePrestation = AppelAjax("TypePrestations", idTypePrestation, null, "", false, null)[0];
-  selectUo = (typePrestation.uoRequis == 1) ? AppelAjax("Uos", null, ["NumeroUo", "LibelleUo"], 'class=""', true, null) + '<input  class="inputPointage notApplicable" dataline  type="hidden" name="inputUo" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="inputUo" disabled>';
-  selectProjet = (typePrestation.projetRequis == 1) ? AppelAjax("Projets", null, ["CodeProjet"], 'class=""', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="inputProjet" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="inputProjet" disabled>';
-  selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif"], 'class=""', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="inputMotif" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="inputMotif" disabled>';
+  selectUo = (typePrestation.uoRequis == 1) ? AppelAjax("Uos", null, ["NumeroUo", "LibelleUo"], 'class=""', true, null) + '<input  class="inputPointage notApplicable" dataline  type="hidden" name="idUo" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idUo" disabled>';
+  selectProjet = (typePrestation.projetRequis == 1) ? AppelAjax("Projets", null, ["CodeProjet"], 'class=""', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idProjet" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idProjet" disabled>';
+  selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif"], 'class=""', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idMotif" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idMotif" disabled>';
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputUo">', selectUo);
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputProjet">', selectProjet);
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputMotif">', selectMotif);
@@ -163,7 +164,7 @@ function reportPrestation(event) {
 
 function reportSelect(event) {
   type = event.target.name.substring(2);
-  elementCherche = 'input[name="input' + type + '"]'
+  elementCherche = 'input[name="id' + type + '"]'
   ligne = event.target.parentNode.parentNode
   ligne.querySelector(elementCherche).value = event.target.value
 }

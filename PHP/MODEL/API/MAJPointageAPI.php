@@ -9,6 +9,7 @@ $pointage = (isset($listePointage[0]) ? $listePointage[0] : null);
 if ($pointage == null) {
     // Ajout et retour de l'idPointage créé
     $newId = PointagesManager::add($elm);
+    var_dump($elm);
     echo json_encode($newId);
 } else {
     // En cas de mise à jour, si le pointage modifié était déjà validé, on enregistre l'action
