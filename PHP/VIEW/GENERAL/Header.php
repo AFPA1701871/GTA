@@ -3,7 +3,7 @@
         <div class="cote"></div>
         <div>
 
-            <div><a class=logo href="index.php?page=<?= (isset($_SESSION['utilisateur']) && $nom != 'ChangePassword' || ($nom == 'ChangePassword' && !empty($_GET['src'])) ? 'Accueil' : 'Default'); ?>"><img src="./IMG/LogoGTA_blanc.png" alt=""><p class="titre">GTA</p></a></div>
+            <div><a class=logo href="index.php?page=<?= (isset($_SESSION['utilisateur']) && $nom != 'ChangePassword' ? 'Accueil' : ($nom == 'ChangePassword' && empty($_GET['src']) ? 'ChangePassword' : (isset($_GET['src']) ? 'Accueil' : 'Default'))); ?>"><img src="./IMG/LogoGTA_blanc.png" alt=""><p class="titre">GTA</p></a></div>
             <div class="">
                 <?php
                 if (isset($_SESSION['utilisateur'])) {
