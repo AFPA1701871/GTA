@@ -144,9 +144,10 @@ function appelGet($obj, $chaine)
 	 * 
  * @param string|null $attributId $attributId => null par défaut, contient un string qui contient le name à donner au formulaire s'il est différent de la table
 	 * 
+	 * @param string $invite l'invite de la combobox
  * @return void
  */
-function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $attributs = "", ?array $condition = null, string $orderBy = null, string $attributId = null)
+function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $attributs = "", ?array $condition = null, string $orderBy = null, string $attributId = null, string $invite = "inputDefault")
 {
 	$nomId= $table::getAttributes()[0];
 	$atrId = ($attributId == null ? $nomId : $attributId);
@@ -157,9 +158,9 @@ function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $a
 	array_push($nomColonnes, $nomId);
 	$liste = $methode::getList($nomColonnes, $condition, $orderBy,  null,false,false);
 	if ($valeur == null) {
-			$select .= '<option value="" SELECTED>'.texte("inputDefault").'</option>';
+			$select .= '<option value="" SELECTED>'.texte($invite).'</option>';
 	} else {
-			$select .= '<option value="">'.texte("inputDefault").'</option>';
+			$select .= '<option value="">'.texte($invite).'</option>';
 	}
 	foreach ($liste as $elt) {
 			$content = "";
@@ -185,14 +186,14 @@ function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $a
  * @param string $attributId
  * @return void
  */
-function creerSelectTab( $valeur, array $tab,  string $attributId ,bool $tabAssoc,  ?string $attributs = "")
+function creerSelectTab( $valeur, array $tab,  string $attributId ,bool $tabAssoc,  ?string $attributs = "", string $invite = "inputDefault")
 {
 	$select = '<select id="' . $attributId . '" name="' . $attributId . '"' . $attributs . '>';
 	
 	if ($valeur == null) {
-			$select .= '<option value="" SELECTED>'.texte("inputDefault").'</option>';
+			$select .= '<option value="" SELECTED>'.texte($invite).'</option>';
 	} else {
-			$select .= '<option value="">'.texte("inputDefault").'</option>';
+			$select .= '<option value="">'.texte($invite).'</option>';
 	}
 	foreach ($tab as $key=>$elt) {
 			$key = $tabAssoc? $key :$elt;

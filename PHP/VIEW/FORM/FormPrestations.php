@@ -32,15 +32,15 @@ echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'
 echo '<div></div><div></div>';
 
 echo '<label for=IdActivite class="caseForm labelForm">'.texte("LibelleActivite").'</label>';
-echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdActivite(),"Activites",["libelleActivite"],$disabled . ' required',null,"libelleActivite",null ).'</div>';
+echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdActivite(),"Activites",["libelleActivite"],$disabled . ' required',null,"libelleActivite",null,"Choisir une activité" ).'</div>';
 echo '<div></div><div></div>';
 
+echo '<div class="bigEspace fa-red col-span-form">'.texte('onlymnsp').'</div>';
 echo '<label for=IdActivite class="caseForm labelForm">'.texte("LibelleProjet").'</label>';
-echo '<div class="caseForm donneeForm">'.creerSelect(($projet?$projet->getIdProjet():0),"Projets",["libelleProjet"],$disabled,null,"libelleProjet",null).'</div>';
+echo '<div class="caseForm donneeForm">'.creerSelect(($projet?$projet->getIdProjet():0),"Projets",["libelleProjet"],$disabled,null,"libelleProjet",null,"Sélectionner un projet UNIQUEMENT POUR MNSP").'</div>';
 echo '<div></div><div></div>';
 echo '<div class="bigEspace"></div>';
 
-echo '<div class="bigEspace fa-red">'.texte('onlymnsp').'</div>';
 echo '<div class="caseForm col-span-form">
 	<div></div>
 	<div><a href="index.php?page=ListePrestations"><button type="button"><i class="fas fa-arrow-left fa-rotate-180"></i></button></a></div>

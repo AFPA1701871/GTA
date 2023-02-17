@@ -30,7 +30,7 @@ echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'
 echo '<div></div><div></div>';
 
 echo '<label for=IdTypePrestation class="caseForm labelForm">'.texte("IdTypePrestation").'</label>';
-echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdTypePrestation(), "TypePrestations", ["libelleTypePrestation"], $disabled . ' required') . '</div>';
+echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdTypePrestation(), "TypePrestations", ["libelleTypePrestation"], $disabled . ' required',null,null,null,"Choisir un type de prestation") . '</div>';
 echo '<div></div><div></div>';
 
 echo '<div class="bigEspace "></div>	';

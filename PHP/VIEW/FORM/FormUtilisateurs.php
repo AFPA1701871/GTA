@@ -36,15 +36,15 @@ echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'
 echo '<div></div><div></div>';
 
 echo '<label for=IdUO class="caseForm labelForm">'.texte("IdUO").'</label>';
-echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdUO(), 'Uos', ['numeroUO', 'libelleUO'], $disabled).'</div>';
+echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdUO(), 'Uos', ['numeroUO', 'libelleUO'], $disabled,null,null,null,"Choisir une UO").'</div>';
 echo '<div></div><div></div>';
 
 echo '<label for=IdRole class="caseForm labelForm">'.texte("IdRole").'</label>';
-echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdRole(), 'Roles', ['nomRole'], $disabled . ' required').'</div>';
+echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdRole(), 'Roles', ['nomRole'], $disabled . ' required',null,null,null,"Choisir un rôle").'</div>';
 echo '<div></div><div></div>';
 
 echo '<label for=IdManager class="caseForm labelForm">'.texte("IdManager").'</label>';
-echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdManager(), 'Utilisateurs', ['nomUtilisateur'], $disabled, ['idRole' => 2], null, 'idManager').'</div>';
+echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdManager(), 'Utilisateurs', ['nomUtilisateur'], $disabled, ['idRole' => 2], null, 'idManager',"Choisir un manager").'</div>';
 echo '<div></div><div></div>';
 
 echo '<div class="bigEspace "></div>	';
