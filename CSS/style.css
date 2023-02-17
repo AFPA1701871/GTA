@@ -482,3 +482,24 @@ body.dark .resetPassword {
 body.dark menu>div:hover i {
     color: var(--color5);
 }
+
+/******************MEDIA QUERIES***************************/
+
+@media (max-width: 1514px) {
+    menu {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .wrapperlogo {
+        flex: 0.5;
+    }
+
+  }
+
+  @media (max-width: 1350px) {
+
+    .cote{
+        flex: 0.02;
+    }
+  }
+

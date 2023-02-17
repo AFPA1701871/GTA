@@ -152,3 +152,10 @@
 .grid-col-5.grid-mini {
 	grid-template-columns: 2fr 2fr 0.3fr 0.3fr 0.3fr;
 }
+@media (max-width: 1514px) {
+
+    .grid-mini {
+        width: 80%;
+    }
+	
+  }

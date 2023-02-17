@@ -293,3 +293,13 @@ div .jourOK>input[type="text"] {
     outline: 1px solid var(--color8);
     /* color:var(--color8); */
 }
+/******************MEDIA QUERIES***************************/
+
+@media (max-width: 1514px) {
+    .grid-col2-reduct {
+        grid-template-columns: minmax(20rem, 0.8fr) 3fr;
+    }
+    .prestaLine {
+        grid-template-columns: 0.4fr 0.4fr 0.4fr 1.1fr;
+    }
+  }
