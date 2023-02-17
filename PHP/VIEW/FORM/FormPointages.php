@@ -4,11 +4,11 @@ global $joursSemaine;
 /* pour test */
 $idUtilisateur = 1;
 
-$periode = $anneeVisionne . '-0' . $moisVisionne;
+$periode = '2023-02';
 // Preparation des données issus de l'idUtilisateur et de la période
 $user = View_UtilisateursManager::getList(null, ["idUtilisateur" => $idUtilisateur])[0];
 $periodeTab = explode("-", $periode);
-$nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $periodeTab[1], $periodeTab[0]);
+$nbrJoursMois = cal_days_in_month(CAL_GREGORIAN,(int) $periodeTab[1], $periodeTab[0]);
 $listeFermeturesDuMois = FermeturesManager::getDates($periode);
 $tabJour = []; // contient pour chaque jour les classes et les contents à mettre sur l'entête et sur chaque ligne de prestation
 // $tabJour["jourOuvert"] : pour déterminer si le jour est plié (exemple week-end) ou déplié
@@ -54,7 +54,7 @@ echo '  <div class="grid-presta tabCol pointHead  cellBottom trans alert center"
 $nbJourPointe = 0;
 for ($i = 1; $i <= $nbrJoursMois; $i++) {
     //on crée la date au format DateTime
-    $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
+    $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
 
     // $jour->format('w') donne le jour dans la semaine 0 pour dimanche, 1 pour lundi
     if ($jour->format('w') == 0 || $jour->format('w') == 6) {
@@ -138,9 +138,9 @@ foreach ($typesPrestations as $key => $typePresta) {
         echo '                <div class="cellBottom center grid-lineDouble colPrctGTA border-left" ' . $dataline . '></div>';
         echo '                <div class="cellBottom grid-lineDouble"></div>';
         foreach ($tabJour as $i => $value) {
-            $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
+            $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
             $content = str_replace("data-line", $dataline, $value['content']);
-            $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
+            $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
             // on prépare les conditions pour aller chercher le pointage 
             $conditions["idTypePrestation"] = $idTypePrestation;
             $conditions["idUtilisateur"] = $idUtilisateur;
