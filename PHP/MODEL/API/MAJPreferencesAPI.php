@@ -12,4 +12,5 @@ if($preference==null){
 }else{
     // Si une entrée existe déjà, on la supprime
     PreferencesManager::delete($elt);
+    echo json_encode('');
 }

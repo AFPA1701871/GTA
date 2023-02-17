@@ -19,7 +19,7 @@ function changePointage(event) {
 
   // Récupération des différents ID de la ligne
   let typePrestation = document.querySelector('input[data-line="' + ligne + '"][name="idTypePrestation"]').value;
-  let uo = document.querySelector('input[data-line="' + ligne + '"][name="idUo"]').value;
+  let uo = document.querySelector('input[data-line="' + ligne + '"][name="idUO"]').value;
   let motif = document.querySelector('input[data-line="' + ligne + '"][name="idMotif"]').value;
   let projet = document.querySelector('input[data-line="' + ligne + '"][name="idProjet"]').value;
   let prestation = document.querySelector('input[data-line="' + ligne + '"][name="idPrestation"]').value;

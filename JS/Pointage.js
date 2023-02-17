@@ -13,9 +13,10 @@ listeCases.forEach(caseJour => {
     caseJour.addEventListener('blur', SelectColonne);
 });
 
- sectionSideScroll = document.querySelectorAll('.grid-pointage');
+sectionSideScroll = document.querySelectorAll('.grid-pointage');
 sectionSideScroll.forEach(element => {
-    element.addEventListener("wheel", scrollHoriz)});
+    element.addEventListener("wheel", scrollHoriz)
+});
 
 // eviter les méthodes aveugles dans les addeventlistener
 // on ne peut pas s'en resservir pour les elements générés après
@@ -26,19 +27,20 @@ listeLignesPresta.forEach(LignePresta => {
 
 function scrollHoriz(e) {
     sectionSideScroll = document.querySelectorAll('.grid-pointage');
-        const race = 125;
-        if (e.deltaY > 0) {
-            sectionSideScroll.forEach(balise => {
-                balise.scrollLeft += race;
-            })
-        }
-        else {
-            sectionSideScroll.forEach(balise => {
-                balise.scrollLeft -= race;
-            })
-        }
-        e.preventDefault();
+    const race = 125;
+    if (e.deltaY > 0) {
+        sectionSideScroll.forEach(balise => {
+            balise.scrollLeft += race;
+        })
     }
+    else {
+        sectionSideScroll.forEach(balise => {
+            balise.scrollLeft -= race;
+        })
+    }
+    e.preventDefault();
+}
+
 function expand(e) {
     e.target.classList.toggle("fa-open");
     e.target.classList.toggle("fa-close");
@@ -47,17 +49,6 @@ function expand(e) {
     listeCol.forEach(cell => {
         cell.classList.toggle("noDisplay");
     });
-    ligneActu = ligne.getAttribute("data-Line");
-    selectLine = document.querySelectorAll("div[data-line='" + ligneActu + "']");
-    selectLine.forEach(cell2 => {
-        cell2.classList.toggle("grid-lineDouble");
-        cell2.classList.toggle("grid-lineQuad");
-    })
-    listeInput = document.querySelectorAll(".grid-pointage input[data-line='" + ligneActu + "']");
-    listeInput.forEach(cell3 => {
-        cell3.parentNode.classList.toggle("grid-lineDouble");
-        cell3.parentNode.classList.toggle("grid-lineQuad");
-    })
 }
 
 
@@ -214,15 +205,16 @@ function CalculPrctGTA(ligne) {
 
 function UpdateFav(e) {
     let caseFav = e.target.parentNode.parentNode.parentNode;
-    let idPreference = (caseFav.querySelector("[name='idPreference']")!=null)?caseFav.querySelector("[name='idPreference']").value:'';
+    let idPreference = (caseFav.querySelector("[name='idPreference']") != null) ? caseFav.querySelector("[name='idPreference']").value : '';
     let idPrestation = caseFav.querySelector("[name='idPrestation']").value;
-    let idUO = (caseFav.querySelector("[name='idUO']")!=null)?caseFav.querySelector("[name='idUO']").value:'';
-    let idMotif = (caseFav.querySelector("[name='idMotif']")!=null)?caseFav.querySelector("[name='idMotif']").value:'';
-    let idProjet = (caseFav.querySelector("[name='idProjet']")!=null)?caseFav.querySelector("[name='idProjet']").value:'';
+    let idUO = (caseFav.querySelector("[name='idUO']") != null) ? caseFav.querySelector("[name='idUO']").value : '';
+    let idMotif = (caseFav.querySelector("[name='idMotif']") != null) ? caseFav.querySelector("[name='idMotif']").value : '';
+    let idProjet = (caseFav.querySelector("[name='idProjet']") != null) ? caseFav.querySelector("[name='idProjet']").value : '';
     let idTypePrestation = caseFav.parentNode.querySelector("[name='idTypePrestation']").value;
     let idUtilisateur = document.querySelector("#IdUtilisateur").innerHTML;
 
-    
+    e.target.classList.toggle("favActive", idPreference == '');
+
     let req = new XMLHttpRequest();
     req.open("POST", "index.php?page=MAJPreferencesAPI", true);// Initialisation de la requête avec une methode POST et le chemin de la page de traitement
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -236,7 +228,7 @@ function UpdateFav(e) {
             if (this.status === 200) { // Si la requête est réussie
                 if (this.responseText) { // Si la réponse n'est pas vide
                     let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
-                    caseFav.querySelector("[name='idPreference']").value=id; // Mise à jour de l'input
+                    caseFav.querySelector("[name='idPreference']").value = id; // Mise à jour de l'input
                 }
 
                 ///////////////////////////////////////////////////////////
