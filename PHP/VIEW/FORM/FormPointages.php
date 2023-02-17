@@ -8,7 +8,7 @@ $periode = '2023-02';
 // Preparation des données issus de l'idUtilisateur et de la période
 $user = View_UtilisateursManager::getList(null, ["idUtilisateur" => $idUtilisateur])[0];
 $periodeTab = explode("-", $periode);
-$nbrJoursMois = cal_days_in_month(CAL_GREGORIAN,(int) $periodeTab[1], $periodeTab[0]);
+$nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, (int) $periodeTab[1], $periodeTab[0]);
 $listeFermeturesDuMois = FermeturesManager::getDates($periode);
 $tabJour = []; // contient pour chaque jour les classes et les contents à mettre sur l'entête et sur chaque ligne de prestation
 // $tabJour["jourOuvert"] : pour déterminer si le jour est plié (exemple week-end) ou déplié
@@ -38,8 +38,8 @@ echo '        </div>
                 <div class=titreInfosUser>Centre de rattachement :</div>
                 <div>' . $user->getNomCentre() . '</div>
                 <div></div>
-                <div class=titreInfosUser>UO d\'affectation : </div>
-                <div>' . $user->getNumeroUO() . '</div>
+                <div class=titreInfosUser>Uo d\'affectation : </div>
+                <div>' . $user->getNumeroUo() . '</div>
                 <div class="grid-columns-span-17 espace"></div>
             </div>';
 // Entete de Prestations
@@ -75,7 +75,7 @@ for ($i = 1; $i <= $nbrJoursMois; $i++) {
     echo '        <div data-date=' . $jour->format("Y-m-d") . ' class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
 }
 echo '    </div>';
- $numPresta = 0;
+$numPresta = 0;
 // Boucle sur les Types de Prestations
 foreach ($typesPrestations as $key => $typePresta) {
     $idTypePrestation = $typePresta->getIdTypePrestation();
@@ -84,7 +84,7 @@ foreach ($typesPrestations as $key => $typePresta) {
 
     // on récupère les prestations de ce type
     $listePrestation = View_Prestations_Pref_PointManager::getListePrestation($idUtilisateur, $periode, $idTypePrestation);
-   
+
     // boucle sur les prestations
     foreach ($listePrestation as $prestation) {
         $numPresta++; // permet de numéroter les prestations
@@ -101,17 +101,17 @@ foreach ($typesPrestations as $key => $typePresta) {
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" ' . $dataline . '></i></div>
                             </div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight ">Code Prest.</div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>
+                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Uo de MAD</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" ' . $dataline . ' type="text" value = "' . $prestation->getCodePrestation() . '"></div>
+                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" ' . $dataline . ' type="text" value = "' . $prestation->getCodePrestation() . '" name=codePrestation></div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
-        if ($typePresta->getUORequis()) { // modifier la vue pour recupérer le libelle de l'UO iden projet et motif
-            echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputUo" value = "' . $prestation->getNumeroUO() . '" disabled title = "' . $prestation->getNumeroUO() . '">';
+        if ($typePresta->getUoRequis()) { // modifier la vue pour recupérer le libelle de l'Uo iden projet et motif
+            echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputUo" value = "' . $prestation->getNumeroUo() . '" disabled title = "' . $prestation->getNumeroUo() . '">';
         } else {
             echo '<input class="inputPointage notApplicable" ' . $dataline . ' type="text" name="inputUo" disabled>';
         }
-        echo '<input type=hidden name=idUo value = "' . $prestation->getIdUO() . '" ' . $dataline . '>';
+        echo '<input type=hidden name=idUo value = "' . $prestation->getIdUo() . '" ' . $dataline . '>';
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getMotifRequis()) {
@@ -149,7 +149,7 @@ foreach ($typesPrestations as $key => $typePresta) {
             $conditions["datePointage"] = $jour->format("Y-m-d");
             if ($prestation->getMotifRequis()) $conditions["idMotif"] = $prestation->getIdMotif();
             if ($prestation->getProjetRequis()) $conditions["idProjet"] = $prestation->getIdProjet();
-            if ($prestation->getUORequis()) $conditions["idUO"] = $prestation->getIdUO();;
+            if ($prestation->getUoRequis()) $conditions["idUo"] = $prestation->getIdUo();;
             $pointage = PointagesManager::getList(null, $conditions, null, null, false, false);
             if ($pointage != false) {
                 $content = str_replace("value", ' value="' . $pointage[0]->getNbHeuresPointage() . '" ', $content);
@@ -175,10 +175,10 @@ echo '<template id=lignePresta>
               <div class=" border-left expand-line vMini"><i class="fas fa-open" dataline ></i></div>
                     </div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight ">Code Prest.</div>
-                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">UO de MAD</div>
+                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Uo de MAD</div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
-                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" dataline  type="text" ></div>
+                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" dataline  type="text" name=codePrestation></div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
 
 echo '      <input name="inputUo">

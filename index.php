@@ -32,7 +32,7 @@ $routes = [
 
 	"ActionConnexion" => ["PHP/CONTROLLER/ACTION/", "ActionConnexion", "Action de la connexion", 0, false],
 	"ChangePassword" => ["PHP/VIEW/GENERAL/", "ChangePassword", "Modification du mot de passe", 0, false],
-	
+
 	"ListeAPI" => ["PHP/MODEL/API/", "ListeAPI", "ListeAPI", 0, true],
 	"ListePointageAPI" => ["PHP/MODEL/API/", "ListePointageAPI", "ListePointageAPI", 0, true],
 	"MAJActivitesParTypesAPI" => ["PHP/MODEL/API/", "MAJActivitesParTypesAPI", "MAJActivitesParTypesAPI", 0, true],
@@ -91,9 +91,9 @@ $routes = [
 	"FormTypePrestations" => ["PHP/VIEW/FORM/", "FormTypePrestations", "Formulaire TypePrestations", 3, false],
 	"ActionTypePrestations" => ["PHP/CONTROLLER/ACTION/", "ActionTypePrestations", "Action TypePrestations", 3, false],
 
-	"ListeUOs" => ["PHP/VIEW/LISTE/", "ListeUOs", "Liste UOs", 3, false],
-	"FormUOs" => ["PHP/VIEW/FORM/", "FormUOs", "Formulaire UOs", 3, false],
-	"ActionUOs" => ["PHP/CONTROLLER/ACTION/", "ActionUOs", "Action UOs", 3, false],
+	"ListeUos" => ["PHP/VIEW/LISTE/", "ListeUos", "Liste Uos", 3, false],
+	"FormUos" => ["PHP/VIEW/FORM/", "FormUos", "Formulaire Uos", 3, false],
+	"ActionUos" => ["PHP/CONTROLLER/ACTION/", "ActionUos", "Action Uos", 3, false],
 
 	"ListeUtilisateurs" => ["PHP/VIEW/LISTE/", "ListeUtilisateurs", "Liste Utilisateurs", 3, false],
 	"FormUtilisateurs" => ["PHP/VIEW/FORM/", "FormUtilisateurs", "Formulaire Utilisateurs", 3, false],

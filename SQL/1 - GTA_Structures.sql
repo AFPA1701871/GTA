@@ -61,14 +61,14 @@ CREATE TABLE gta_Conversions(
 ) ENGINE = InnoDB;
 
 --
--- Table UOs
+-- Table Uos
 --
-DROP TABLE IF EXISTS gta_UOs;
+DROP TABLE IF EXISTS gta_Uos;
 
-CREATE TABLE gta_UOs(
-   idUO INT AUTO_INCREMENT PRIMARY KEY,
-   numeroUO varchar(10) NOT NULL,
-   libelleUO VARCHAR(200)
+CREATE TABLE gta_Uos(
+   idUo INT AUTO_INCREMENT PRIMARY KEY,
+   numeroUo varchar(10) NOT NULL,
+   libelleUo VARCHAR(200)
 ) ENGINE = InnoDB;
 
 --
@@ -127,7 +127,7 @@ CREATE TABLE gta_Utilisateurs(
    mailUtilisateur VARCHAR(50) NOT NULL,
    matriculeUtilisateur VARCHAR(50) NOT NULL UNIQUE,
    passwordUtilisateur VARCHAR(250) NOT NULL,
-   idUO INT NULL,
+   idUo INT NULL,
    idRole INT NOT NULL,
    idManager INT
 ) ENGINE = InnoDB;
@@ -179,7 +179,7 @@ CREATE TABLE gta_Pointages(
    idMotif INT,
    idPrestation INT,
    idProjet INT,
-   idUO INT,
+   idUo INT,
    idUtilisateur INT NOT NULL,
    idTypePrestation INT NOT NULL,
    datePointage DATE NOT NULL,
@@ -198,7 +198,7 @@ CREATE TABLE gta_Preferences(
    idMotif INT,
    idPrestation INT NOT NULL,
    idProjet INT,
-   idUO INT,
+   idUo INT,
    idUtilisateur INT NOT NULL,
    idTypePrestation INT NOT NULL
 ) ENGINE = InnoDB;
@@ -214,10 +214,9 @@ CREATE TABLE gta_ActivitesParTypes(
    idActivite INT
 ) ENGINE = InnoDB;
 
-
 CREATE TABLE IF NOT EXISTS gta_Textes (
-idTexte int (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-codeTexte varchar (50) NOT NULL,
-fr LONGTEXT NOT NULL,
-en LONGTEXT NOT NULL
+   idTexte int (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   codeTexte varchar (50) NOT NULL,
+   fr LONGTEXT NOT NULL,
+   en LONGTEXT NOT NULL
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;

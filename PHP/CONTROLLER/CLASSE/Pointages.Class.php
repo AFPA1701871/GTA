@@ -1,6 +1,6 @@
 <?php
 
-class Pointages 
+class Pointages
 {
 
 	/*****************Attributs***************** */
@@ -9,14 +9,14 @@ class Pointages
 	private $_idMotif;
 	private $_idPrestation;
 	private $_idProjet;
-	private $_idUO;
+	private $_idUo;
 	private $_idUtilisateur;
 	private $_idTypePrestation;
 	private $_datePointage;
 	private $_validePointage;
 	private $_reportePointage;
 	private $_nbHeuresPointage;
-	private static $_attributes=["idPointage","idMotif","idPrestation","idProjet","idUO","idUtilisateur","idTypePrestation","datePointage","validePointage","reportePointage","nbHeuresPointage"];
+	private static $_attributes = ["idPointage", "idMotif", "idPrestation", "idProjet", "idUo", "idUtilisateur", "idTypePrestation", "datePointage", "validePointage", "reportePointage", "nbHeuresPointage"];
 	/***************** Accesseurs ***************** */
 
 
@@ -27,7 +27,7 @@ class Pointages
 
 	public function setIdPointage(?int $idPointage)
 	{
-		$this->_idPointage=$idPointage;
+		$this->_idPointage = $idPointage;
 	}
 
 	public function getIdMotif()
@@ -37,7 +37,7 @@ class Pointages
 
 	public function setIdMotif(?int $idMotif)
 	{
-		$this->_idMotif=$idMotif;
+		$this->_idMotif = $idMotif;
 	}
 
 	public function getIdPrestation()
@@ -47,7 +47,7 @@ class Pointages
 
 	public function setIdPrestation(?int $idPrestation)
 	{
-		$this->_idPrestation=$idPrestation;
+		$this->_idPrestation = $idPrestation;
 	}
 
 	public function getIdProjet()
@@ -57,17 +57,17 @@ class Pointages
 
 	public function setIdProjet(?int $idProjet)
 	{
-		$this->_idProjet=$idProjet;
+		$this->_idProjet = $idProjet;
 	}
 
-	public function getIdUO()
+	public function getIdUo()
 	{
-		return $this->_idUO;
+		return $this->_idUo;
 	}
 
-	public function setIdUO(?int $idUO)
+	public function setIdUo(?int $idUo)
 	{
-		$this->_idUO=$idUO;
+		$this->_idUo = $idUo;
 	}
 
 	public function getIdUtilisateur()
@@ -77,17 +77,17 @@ class Pointages
 
 	public function setIdUtilisateur(int $idUtilisateur)
 	{
-		$this->_idUtilisateur=$idUtilisateur;
+		$this->_idUtilisateur = $idUtilisateur;
 	}
 
 	public function getDatePointage()
 	{
-		return is_null($this->_datePointage)?null:$this->_datePointage->format('Y-n-j');
+		return is_null($this->_datePointage) ? null : $this->_datePointage->format('Y-n-j');
 	}
 
 	public function setDatePointage(string $datePointage)
 	{
-		$this->_datePointage=DateTime::createFromFormat("Y-n-j",$datePointage);
+		$this->_datePointage = DateTime::createFromFormat("Y-n-j", $datePointage);
 	}
 
 	public function getValidePointage()
@@ -97,7 +97,7 @@ class Pointages
 
 	public function setValidePointage(?int $validePointage)
 	{
-		$this->_validePointage=$validePointage;
+		$this->_validePointage = $validePointage;
 	}
 
 	public function getReportePointage()
@@ -107,7 +107,7 @@ class Pointages
 
 	public function setReportePointage(?int $reportePointage)
 	{
-		$this->_reportePointage=$reportePointage;
+		$this->_reportePointage = $reportePointage;
 	}
 
 	public function getNbHeuresPointage()
@@ -117,7 +117,7 @@ class Pointages
 
 	public function setNbHeuresPointage(?float $nbHeuresPointage)
 	{
-		$this->_nbHeuresPointage=$nbHeuresPointage;
+		$this->_nbHeuresPointage = $nbHeuresPointage;
 	}
 
 	public function getIdTypePrestation()
@@ -138,19 +138,18 @@ class Pointages
 
 	public function __construct(array $options = [])
 	{
- 		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
 		{
 			$this->hydrate($options);
 		}
 	}
 	public function hydrate($data)
 	{
- 		foreach ($data as $key => $value)
-		{
- 			$methode = "set".ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+		foreach ($data as $key => $value) {
+			$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
 			if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
 			{
-				$this->$methode($value===""?null:$value);
+				$this->$methode($value === "" ? null : $value);
 			}
 		}
 	}
@@ -158,13 +157,12 @@ class Pointages
 	/*****************Autres Méthodes***************** */
 
 	/**
-	* Transforme l'objet en chaine de caractères
-	*
-	* @return String
-	*/
+	 * Transforme l'objet en chaine de caractères
+	 *
+	 * @return String
+	 */
 	public function toString()
 	{
-		return "IdPointage : ".$this->getIdPointage()."IdMotif : ".$this->getIdMotif()."IdPrestation : ".$this->getIdPrestation()."IdProjet : ".$this->getIdProjet()."IdUO : ".$this->getIdUO()."IdUtilisateur : ".$this->getIdUtilisateur()."DatePointage : ".$this->getDatePointage()."ValidePointage : ".$this->getValidePointage()."ReportePointage : ".$this->getReportePointage()."NbHeuresPointage : ".$this->getNbHeuresPointage()."\n";
+		return "IdPointage : " . $this->getIdPointage() . "IdMotif : " . $this->getIdMotif() . "IdPrestation : " . $this->getIdPrestation() . "IdProjet : " . $this->getIdProjet() . "IdUo : " . $this->getIdUo() . "IdUtilisateur : " . $this->getIdUtilisateur() . "DatePointage : " . $this->getDatePointage() . "ValidePointage : " . $this->getValidePointage() . "ReportePointage : " . $this->getReportePointage() . "NbHeuresPointage : " . $this->getNbHeuresPointage() . "\n";
 	}
-
 }

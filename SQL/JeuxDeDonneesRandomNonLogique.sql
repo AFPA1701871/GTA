@@ -1,6 +1,6 @@
 USE GTA;
 
-INSERT INTO `gta_UOs` (`idUO`,`numeroUO`,`libelleUO`)
+INSERT INTO `gta_Uos` (`idUo`,`numeroUo`,`libelleUo`)
 VALUES
   (1,874,"purus"),
   (2,759,"Nam consequat dolor vitae dolor. Donec"),
@@ -53,7 +53,7 @@ VALUES
   (49,727,"faucibus id, libero. Donec"),
   (50,671,"lobortis ultrices. Vivamus");
 
-INSERT INTO `gta_Utilisateurs` (`idUtilisateur`,`nomUtilisateur`,`mailUtilisateur`,`matriculeUtilisateur`,`passwordUtilisateur`,`idUO`,`idRole`,`idManager`)
+INSERT INTO `gta_Utilisateurs` (`idUtilisateur`,`nomUtilisateur`,`mailUtilisateur`,`matriculeUtilisateur`,`passwordUtilisateur`,`idUo`,`idRole`,`idManager`)
 VALUES
   (1,"Ainsley Matthews","ainsleymatthews@hotmail.ca","4024007152416","sociis",3,1,28),
   (2,"Seth Bird","sethbird@yahoo.edu","4821667765324","nec,",3,1,4),
@@ -259,7 +259,7 @@ VALUES
   (29,515,"vel quam dignissim","1","0","1"),
   (30,354,"diam. Sed diam lorem, auctor quis,","1","1","0");
 
-INSERT INTO `gta_Pointages` (`idPointage`,`idMotif`,`idPrestation`,`idProjet`,`idUO`,`idUtilisateur`,`datePointage`,`validePointage`,`reportePointage`,`nbHeuresPointage`)
+INSERT INTO `gta_Pointages` (`idPointage`,`idMotif`,`idPrestation`,`idProjet`,`idUo`,`idUtilisateur`,`datePointage`,`validePointage`,`reportePointage`,`nbHeuresPointage`)
 VALUES
   (1,2,5,3,9,24,"2022-01-09","1","0",4),
   (2,2,7,6,9,19,"2022-01-27","1","1",6),

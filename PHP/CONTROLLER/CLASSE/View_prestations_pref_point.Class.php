@@ -1,6 +1,6 @@
 <?php
 
-class View_Prestations_Pref_Point 
+class View_Prestations_Pref_Point
 {
 
 	/*****************Attributs***************** */
@@ -16,8 +16,8 @@ class View_Prestations_Pref_Point
 	private $_idPreference;
 	private $_idMotif;
 	private $_codeMotif;
-	private $_idUO;
-	private $_numeroUO;
+	private $_idUo;
+	private $_numeroUo;
 	private $_idProjet;
 	private $_codeProjet;
 	private $_idTypePrestation;
@@ -25,7 +25,7 @@ class View_Prestations_Pref_Point
 	private $_idPointage;
 	private $_datePointage;
 	private $_periode;
-	private static $_attributes=["idPrestation","codePrestation","libellePrestation","numeroTypePrestation","libelleTypePrestation","motifRequis","uoRequis","projetRequis","idPreference","idMotif","codeMotif","idUO","numeroUO","idProjet","codeProjet","idTypePrestation","idUtilisateur","idPointage","datePointage","mois"];
+	private static $_attributes = ["idPrestation", "codePrestation", "libellePrestation", "numeroTypePrestation", "libelleTypePrestation", "motifRequis", "uoRequis", "projetRequis", "idPreference", "idMotif", "codeMotif", "idUo", "numeroUo", "idProjet", "codeProjet", "idTypePrestation", "idUtilisateur", "idPointage", "datePointage", "mois"];
 	/***************** Accesseurs ***************** */
 
 
@@ -36,7 +36,7 @@ class View_Prestations_Pref_Point
 
 	public function setIdPrestation(int $idPrestation)
 	{
-		$this->_idPrestation=$idPrestation;
+		$this->_idPrestation = $idPrestation;
 	}
 
 	public function getCodePrestation()
@@ -46,7 +46,7 @@ class View_Prestations_Pref_Point
 
 	public function setCodePrestation(string $codePrestation)
 	{
-		$this->_codePrestation=$codePrestation;
+		$this->_codePrestation = $codePrestation;
 	}
 
 	public function getLibellePrestation()
@@ -56,7 +56,7 @@ class View_Prestations_Pref_Point
 
 	public function setLibellePrestation(?string $libellePrestation)
 	{
-		$this->_libellePrestation=$libellePrestation;
+		$this->_libellePrestation = $libellePrestation;
 	}
 
 	public function getNumeroTypePrestation()
@@ -66,7 +66,7 @@ class View_Prestations_Pref_Point
 
 	public function setNumeroTypePrestation(?int $numeroTypePrestation)
 	{
-		$this->_numeroTypePrestation=$numeroTypePrestation;
+		$this->_numeroTypePrestation = $numeroTypePrestation;
 	}
 
 	public function getLibelleTypePrestation()
@@ -76,7 +76,7 @@ class View_Prestations_Pref_Point
 
 	public function setLibelleTypePrestation(?string $libelleTypePrestation)
 	{
-		$this->_libelleTypePrestation=$libelleTypePrestation;
+		$this->_libelleTypePrestation = $libelleTypePrestation;
 	}
 
 	public function getMotifRequis()
@@ -86,7 +86,7 @@ class View_Prestations_Pref_Point
 
 	public function setMotifRequis(?int $motifRequis)
 	{
-		$this->_motifRequis=$motifRequis;
+		$this->_motifRequis = $motifRequis;
 	}
 
 	public function getUoRequis()
@@ -96,7 +96,7 @@ class View_Prestations_Pref_Point
 
 	public function setUoRequis(?int $uoRequis)
 	{
-		$this->_uoRequis=$uoRequis;
+		$this->_uoRequis = $uoRequis;
 	}
 
 	public function getProjetRequis()
@@ -106,7 +106,7 @@ class View_Prestations_Pref_Point
 
 	public function setProjetRequis(?int $projetRequis)
 	{
-		$this->_projetRequis=$projetRequis;
+		$this->_projetRequis = $projetRequis;
 	}
 
 	public function getIdPreference()
@@ -116,7 +116,7 @@ class View_Prestations_Pref_Point
 
 	public function setIdPreference(?int $idPreference)
 	{
-		$this->_idPreference=$idPreference;
+		$this->_idPreference = $idPreference;
 	}
 
 	public function getIdMotif()
@@ -126,7 +126,7 @@ class View_Prestations_Pref_Point
 
 	public function setIdMotif(?int $idMotif)
 	{
-		$this->_idMotif=$idMotif;
+		$this->_idMotif = $idMotif;
 	}
 
 	public function getIdProjet()
@@ -136,7 +136,7 @@ class View_Prestations_Pref_Point
 
 	public function setIdProjet(?int $idProjet)
 	{
-		$this->_idProjet=$idProjet;
+		$this->_idProjet = $idProjet;
 	}
 
 	public function getIdTypePrestation()
@@ -146,7 +146,7 @@ class View_Prestations_Pref_Point
 
 	public function setIdTypePrestation(?int $idTypePrestation)
 	{
-		$this->_idTypePrestation=$idTypePrestation;
+		$this->_idTypePrestation = $idTypePrestation;
 	}
 
 	public function getIdUtilisateur()
@@ -156,7 +156,7 @@ class View_Prestations_Pref_Point
 
 	public function setIdUtilisateur(?int $idUtilisateur)
 	{
-		$this->_idUtilisateur=$idUtilisateur;
+		$this->_idUtilisateur = $idUtilisateur;
 	}
 
 	public function getIdPointage()
@@ -166,17 +166,17 @@ class View_Prestations_Pref_Point
 
 	public function setIdPointage(?int $idPointage)
 	{
-		$this->_idPointage=$idPointage;
+		$this->_idPointage = $idPointage;
 	}
 
 	public function getDatePointage()
 	{
-		return is_null($this->_datePointage)?null:$this->_datePointage->format('Y-n-j');
+		return is_null($this->_datePointage) ? null : $this->_datePointage->format('Y-n-j');
 	}
 
 	public function setDatePointage(?string $datePointage)
 	{
-		$this->_datePointage=is_null($datePointage)?null:DateTime::createFromFormat("Y-n-j",$datePointage);
+		$this->_datePointage = is_null($datePointage) ? null : DateTime::createFromFormat("Y-n-j", $datePointage);
 	}
 
 	public function getPeriode()
@@ -186,7 +186,7 @@ class View_Prestations_Pref_Point
 
 	public function setPeriode(?string $periode)
 	{
-		$this->_periode=$periode;
+		$this->_periode = $periode;
 	}
 
 	public function getCodeMotif()
@@ -199,24 +199,24 @@ class View_Prestations_Pref_Point
 		$this->_codeMotif = $codeMotif;
 	}
 
-	public function getIdUO()
+	public function getIdUo()
 	{
-		return $this->_idUO;
+		return $this->_idUo;
 	}
 
-	public function setIdUO($idUO)
+	public function setIdUo($idUo)
 	{
-		$this->_idUO = $idUO;
+		$this->_idUo = $idUo;
 	}
 
-	public function getNumeroUO()
+	public function getNumeroUo()
 	{
-		return $this->_numeroUO;
+		return $this->_numeroUo;
 	}
 
-	public function setNumeroUO($numeroUO)
+	public function setNumeroUo($numeroUo)
 	{
-		$this->_numeroUO = $numeroUO;
+		$this->_numeroUo = $numeroUo;
 	}
 
 	public function getCodeProjet()
@@ -237,19 +237,18 @@ class View_Prestations_Pref_Point
 
 	public function __construct(array $options = [])
 	{
- 		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
 		{
 			$this->hydrate($options);
 		}
 	}
 	public function hydrate($data)
 	{
- 		foreach ($data as $key => $value)
-		{
- 			$methode = "set".ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+		foreach ($data as $key => $value) {
+			$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
 			if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
 			{
-				$this->$methode($value===""?null:$value);
+				$this->$methode($value === "" ? null : $value);
 			}
 		}
 	}
@@ -257,13 +256,12 @@ class View_Prestations_Pref_Point
 	/*****************Autres Méthodes***************** */
 
 	/**
-	* Transforme l'objet en chaine de caractères
-	*
-	* @return String
-	*/
+	 * Transforme l'objet en chaine de caractères
+	 *
+	 * @return String
+	 */
 	public function toString()
 	{
-		return "IdPrestation : ".$this->getIdPrestation()."CodePrestation : ".$this->getCodePrestation()."LibellePrestation : ".$this->getLibellePrestation()."NumeroTypePrestation : ".$this->getNumeroTypePrestation()."LibelleTypePrestation : ".$this->getLibelleTypePrestation()."MotifRequis : ".$this->getMotifRequis()."UoRequis : ".$this->getUoRequis()."ProjetRequis : ".$this->getProjetRequis()."IdPreference : ".$this->getIdPreference()."IdMotif : ".$this->getIdMotif()."IdProjet : ".$this->getIdProjet()."IdTypePrestation : ".$this->getIdTypePrestation()."IdUtilisateur : ".$this->getIdUtilisateur()."IdPointage : ".$this->getIdPointage()."DatePointage : ".$this->getDatePointage()."Mois : ".$this->getPeriode()."\n";
+		return "IdPrestation : " . $this->getIdPrestation() . "CodePrestation : " . $this->getCodePrestation() . "LibellePrestation : " . $this->getLibellePrestation() . "NumeroTypePrestation : " . $this->getNumeroTypePrestation() . "LibelleTypePrestation : " . $this->getLibelleTypePrestation() . "MotifRequis : " . $this->getMotifRequis() . "UoRequis : " . $this->getUoRequis() . "ProjetRequis : " . $this->getProjetRequis() . "IdPreference : " . $this->getIdPreference() . "IdMotif : " . $this->getIdMotif() . "IdProjet : " . $this->getIdProjet() . "IdTypePrestation : " . $this->getIdTypePrestation() . "IdUtilisateur : " . $this->getIdUtilisateur() . "IdPointage : " . $this->getIdPointage() . "DatePointage : " . $this->getDatePointage() . "Mois : " . $this->getPeriode() . "\n";
 	}
-
 }

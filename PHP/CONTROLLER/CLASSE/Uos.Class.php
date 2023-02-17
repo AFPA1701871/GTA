@@ -1,45 +1,45 @@
 <?php
 
-class UOs
+class Uos
 {
 
 	/*****************Attributs***************** */
 
-	private $_idUO;
-	private $_numeroUO;
-	private $_libelleUO;
-	private static $_attributes = ["idUO", "numeroUO", "libelleUO"];
+	private $_idUo;
+	private $_numeroUo;
+	private $_libelleUo;
+	private static $_attributes = ["idUo", "numeroUo", "libelleUo"];
 	/***************** Accesseurs ***************** */
 
 
-	public function getIdUO()
+	public function getIdUo()
 	{
-		return $this->_idUO;
+		return $this->_idUo;
 	}
 
-	public function setIdUO(?int $idUO)
+	public function setIdUo(?int $idUo)
 	{
-		$this->_idUO = $idUO;
+		$this->_idUo = $idUo;
 	}
 
-	public function getNumeroUO()
+	public function getNumeroUo()
 	{
-		return $this->_numeroUO;
+		return $this->_numeroUo;
 	}
 
-	public function setNumeroUO(string $numeroUO)
+	public function setNumeroUo(string $numeroUo)
 	{
-		$this->_numeroUO = $numeroUO;
+		$this->_numeroUo = $numeroUo;
 	}
 
-	public function getLibelleUO()
+	public function getLibelleUo()
 	{
-		return $this->_libelleUO;
+		return $this->_libelleUo;
 	}
 
-	public function setLibelleUO(?string $libelleUO)
+	public function setLibelleUo(?string $libelleUo)
 	{
-		$this->_libelleUO = $libelleUO;
+		$this->_libelleUo = $libelleUo;
 	}
 
 	public static function getAttributes()
@@ -76,6 +76,6 @@ class UOs
 	 */
 	public function toString()
 	{
-		return "IdUO : " . $this->getIdUO() . "NumeroUO : " . $this->getNumeroUO() . "LibelleUO : " . $this->getLibelleUO() . "\n";
+		return "IdUo : " . $this->getIdUo() . "NumeroUo : " . $this->getNumeroUo() . "LibelleUo : " . $this->getLibelleUo() . "\n";
 	}
 }

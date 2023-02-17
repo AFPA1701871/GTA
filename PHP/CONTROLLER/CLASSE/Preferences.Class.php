@@ -1,6 +1,6 @@
 <?php
 
-class Preferences 
+class Preferences
 {
 
 	/*****************Attributs***************** */
@@ -9,10 +9,10 @@ class Preferences
 	private $_idMotif;
 	private $_idPrestation;
 	private $_idProjet;
-	private $_idUO;
+	private $_idUo;
 	private $_idUtilisateur;
 	private $_idTypePrestation;
-	private static $_attributes=["idPreference","idMotif","idPrestation","idProjet","idUO","idUtilisateur","idTypePrestation"];
+	private static $_attributes = ["idPreference", "idMotif", "idPrestation", "idProjet", "idUo", "idUtilisateur", "idTypePrestation"];
 	/***************** Accesseurs ***************** */
 
 
@@ -23,7 +23,7 @@ class Preferences
 
 	public function setIdPreference(?int $idPreference)
 	{
-		$this->_idPreference=$idPreference;
+		$this->_idPreference = $idPreference;
 	}
 
 	public function getIdPrestation()
@@ -33,7 +33,7 @@ class Preferences
 
 	public function setIdPrestation(?int $idPrestation)
 	{
-		$this->_idPrestation=$idPrestation;
+		$this->_idPrestation = $idPrestation;
 	}
 
 	public function getIdUtilisateur()
@@ -43,7 +43,7 @@ class Preferences
 
 	public function setIdUtilisateur(?int $idUtilisateur)
 	{
-		$this->_idUtilisateur=$idUtilisateur;
+		$this->_idUtilisateur = $idUtilisateur;
 	}
 
 	public function getIdMotif()
@@ -66,14 +66,14 @@ class Preferences
 		$this->_idProjet = $idProjet;
 	}
 
-	public function getIdUO()
+	public function getIdUo()
 	{
-		return $this->_idUO;
+		return $this->_idUo;
 	}
 
-	public function setIdUO($idUO)
+	public function setIdUo($idUo)
 	{
-		$this->_idUO = $idUO;
+		$this->_idUo = $idUo;
 	}
 
 	public function getIdTypePrestation()
@@ -94,19 +94,18 @@ class Preferences
 
 	public function __construct(array $options = [])
 	{
- 		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
 		{
 			$this->hydrate($options);
 		}
 	}
 	public function hydrate($data)
 	{
- 		foreach ($data as $key => $value)
-		{
- 			$methode = "set".ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+		foreach ($data as $key => $value) {
+			$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
 			if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
 			{
-				$this->$methode($value===""?null:$value);
+				$this->$methode($value === "" ? null : $value);
 			}
 		}
 	}
@@ -114,13 +113,12 @@ class Preferences
 	/*****************Autres Méthodes***************** */
 
 	/**
-	* Transforme l'objet en chaine de caractères
-	*
-	* @return String
-	*/
+	 * Transforme l'objet en chaine de caractères
+	 *
+	 * @return String
+	 */
 	public function toString()
 	{
-		return "IdPreference : ".$this->getIdPreference()."IdPrestation : ".$this->getIdPrestation()."IdUtilisateur : ".$this->getIdUtilisateur()."\n";
+		return "IdPreference : " . $this->getIdPreference() . "IdPrestation : " . $this->getIdPrestation() . "IdUtilisateur : " . $this->getIdUtilisateur() . "\n";
 	}
-
 }

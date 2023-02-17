@@ -1,6 +1,6 @@
 <?php
 
-class View_Utilisateurs_Preferences_Prestations 
+class View_Utilisateurs_Preferences_Prestations
 {
 
 	/*****************Attributs***************** */
@@ -11,14 +11,14 @@ class View_Utilisateurs_Preferences_Prestations
 	private $_mailUtilisateur;
 	private $_matriculeUtilisateur;
 	private $_passwordUtilisateur;
-	private $_idUO;
+	private $_idUo;
 	private $_idRole;
 	private $_idManager;
 	private $_idPrestation;
 	private $_codePrestation;
 	private $_libellePrestation;
 	private $_idActivite;
-	private static $_attributes=["idPreference","idUtilisateur","nomUtilisateur","mailUtilisateur","matriculeUtilisateur","passwordUtilisateur","idUO","idRole","idManager","idPrestation","codePrestation","libellePrestation","idActivite"];
+	private static $_attributes = ["idPreference", "idUtilisateur", "nomUtilisateur", "mailUtilisateur", "matriculeUtilisateur", "passwordUtilisateur", "idUo", "idRole", "idManager", "idPrestation", "codePrestation", "libellePrestation", "idActivite"];
 	/***************** Accesseurs ***************** */
 
 
@@ -29,7 +29,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setIdPreference(?int $idPreference)
 	{
-		$this->_idPreference=$idPreference;
+		$this->_idPreference = $idPreference;
 	}
 
 	public function getIdUtilisateur()
@@ -39,7 +39,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setIdUtilisateur(?int $idUtilisateur)
 	{
-		$this->_idUtilisateur=$idUtilisateur;
+		$this->_idUtilisateur = $idUtilisateur;
 	}
 
 	public function getNomUtilisateur()
@@ -49,7 +49,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setNomUtilisateur(?string $nomUtilisateur)
 	{
-		$this->_nomUtilisateur=$nomUtilisateur;
+		$this->_nomUtilisateur = $nomUtilisateur;
 	}
 
 	public function getMailUtilisateur()
@@ -59,7 +59,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setMailUtilisateur(?string $mailUtilisateur)
 	{
-		$this->_mailUtilisateur=$mailUtilisateur;
+		$this->_mailUtilisateur = $mailUtilisateur;
 	}
 
 	public function getMatriculeUtilisateur()
@@ -69,7 +69,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setMatriculeUtilisateur(?string $matriculeUtilisateur)
 	{
-		$this->_matriculeUtilisateur=$matriculeUtilisateur;
+		$this->_matriculeUtilisateur = $matriculeUtilisateur;
 	}
 
 	public function getPasswordUtilisateur()
@@ -79,17 +79,17 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setPasswordUtilisateur(?string $passwordUtilisateur)
 	{
-		$this->_passwordUtilisateur=$passwordUtilisateur;
+		$this->_passwordUtilisateur = $passwordUtilisateur;
 	}
 
-	public function getIdUO()
+	public function getIdUo()
 	{
-		return $this->_idUO;
+		return $this->_idUo;
 	}
 
-	public function setIdUO(?int $idUO)
+	public function setIdUo(?int $idUo)
 	{
-		$this->_idUO=$idUO;
+		$this->_idUo = $idUo;
 	}
 
 	public function getIdRole()
@@ -99,7 +99,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setIdRole(?int $idRole)
 	{
-		$this->_idRole=$idRole;
+		$this->_idRole = $idRole;
 	}
 
 	public function getIdManager()
@@ -109,7 +109,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setIdManager(?int $idManager)
 	{
-		$this->_idManager=$idManager;
+		$this->_idManager = $idManager;
 	}
 
 	public function getIdPrestation()
@@ -119,7 +119,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setIdPrestation(?int $idPrestation)
 	{
-		$this->_idPrestation=$idPrestation;
+		$this->_idPrestation = $idPrestation;
 	}
 
 	public function getCodePrestation()
@@ -129,7 +129,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setCodePrestation(?string $codePrestation)
 	{
-		$this->_codePrestation=$codePrestation;
+		$this->_codePrestation = $codePrestation;
 	}
 
 	public function getLibellePrestation()
@@ -139,7 +139,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setLibellePrestation(?string $libellePrestation)
 	{
-		$this->_libellePrestation=$libellePrestation;
+		$this->_libellePrestation = $libellePrestation;
 	}
 
 	public function getIdActivite()
@@ -149,7 +149,7 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function setIdActivite(?int $idActivite)
 	{
-		$this->_idActivite=$idActivite;
+		$this->_idActivite = $idActivite;
 	}
 
 	public static function getAttributes()
@@ -161,19 +161,18 @@ class View_Utilisateurs_Preferences_Prestations
 
 	public function __construct(array $options = [])
 	{
- 		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
 		{
 			$this->hydrate($options);
 		}
 	}
 	public function hydrate($data)
 	{
- 		foreach ($data as $key => $value)
-		{
- 			$methode = "set".ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+		foreach ($data as $key => $value) {
+			$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
 			if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
 			{
-				$this->$methode($value===""?null:$value);
+				$this->$methode($value === "" ? null : $value);
 			}
 		}
 	}
@@ -181,12 +180,12 @@ class View_Utilisateurs_Preferences_Prestations
 	/*****************Autres Méthodes***************** */
 
 	/**
-	* Transforme l'objet en chaine de caractères
-	*
-	* @return String
-	*/
+	 * Transforme l'objet en chaine de caractères
+	 *
+	 * @return String
+	 */
 	public function toString()
 	{
-		return "IdPreference : ".$this->getIdPreference()."IdUtilisateur : ".$this->getIdUtilisateur()."NomUtilisateur : ".$this->getNomUtilisateur()."MailUtilisateur : ".$this->getMailUtilisateur()."MatriculeUtilisateur : ".$this->getMatriculeUtilisateur()."PasswordUtilisateur : ".$this->getPasswordUtilisateur()."IdUO : ".$this->getIdUO()."IdRole : ".$this->getIdRole()."IdManager : ".$this->getIdManager()."IdPrestation : ".$this->getIdPrestation()."CodePrestation : ".$this->getCodePrestation()."LibellePrestation : ".$this->getLibellePrestation()."IdActivite : ".$this->getIdActivite()."\n";
+		return "IdPreference : " . $this->getIdPreference() . "IdUtilisateur : " . $this->getIdUtilisateur() . "NomUtilisateur : " . $this->getNomUtilisateur() . "MailUtilisateur : " . $this->getMailUtilisateur() . "MatriculeUtilisateur : " . $this->getMatriculeUtilisateur() . "PasswordUtilisateur : " . $this->getPasswordUtilisateur() . "IdUo : " . $this->getIdUo() . "IdRole : " . $this->getIdRole() . "IdManager : " . $this->getIdManager() . "IdPrestation : " . $this->getIdPrestation() . "CodePrestation : " . $this->getCodePrestation() . "LibellePrestation : " . $this->getLibellePrestation() . "IdActivite : " . $this->getIdActivite() . "\n";
 	}
 }

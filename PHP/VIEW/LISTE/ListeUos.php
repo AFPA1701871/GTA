@@ -7,39 +7,39 @@ echo '<div class="cote"></div>';
 echo '<div><section class="colonne">';
 
 
-$objets = UOsManager::getList(null, null, null, Parametres::getNbEltParPage());
+$objets = UosManager::getList(null, null, null, Parametres::getNbEltParPage());
 echo '<div class="noDisplay NbEltParPage">' . Parametres::getNbEltParPage() . '</div>';
 echo '<div class="bigEspace"></div>';
-echo '<div class="bigEspace"></div>';//Création du template de la grid
+echo '<div class="bigEspace"></div>'; //Création du template de la grid
 echo '<div class="grid-col-5 gridListe grid-mini">';
 
-echo '<div class="caseListe titreListe grid-columns-span-5">'.texte("Liste des Uos").'</div>';
+echo '<div class="caseListe titreListe grid-columns-span-5">' . texte("Liste des Uos") . '</div>';
 echo '<div class="bigEspace"></div>';
-echo '<div class="grid-columns-span-5"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="'.texte("infoSearch").'"></i><div class="demi"></div></div>';
+echo '<div class="grid-columns-span-5"><div class="demi"></div><input id=searchInList  title="' . texte("infoSearch") . '" placeholder="' . texte("mot à chercher") . '"/><i class="fa-solid fa-filter" title="' . texte("infoSearch") . '"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-5">
 <div></div>
 <div class="bigEspace"></div>
-<div class="caseListe"><a class="pyjama"  href="index.php?page=FormUOs&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
+<div class="caseListe"><a class="pyjama"  href="index.php?page=FormUos&mode=Ajouter"><i class="fas fa-plus"></i></a></div>
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "NumeroUO">'.texte("NumeroUO").'</div>';
-echo '<div class="caseListe labelListe left" data-name= "LibelleUO">'.texte("LibelleUO").'</div>';
+echo '<div class="caseListe labelListe" data-name= "NumeroUo">' . texte("NumeroUo") . '</div>';
+echo '<div class="caseListe labelListe left" data-name= "LibelleUo">' . texte("LibelleUo") . '</div>';
 
 //Remplissage de div vide pour la structure de la grid
 echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair "><p>'.texte('total').' :</p></div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class=" caseListe texteClair "><p>' . texte('total') . ' :</p></div><div class="mini" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-5 gridListe grid-contenu grid-mini"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';
-echo '<div class="donnees pyjama ">NumeroUO</div>';
-echo '<div class="donnees pyjama left">LibelleUO</div>';
-echo '<a class="pyjama"  href="index.php?page=FormUOs&mode=Afficher&id=IdUO"><i class="fas fa-file-contract"></i></a>';
+echo '<div class="donnees pyjama ">NumeroUo</div>';
+echo '<div class="donnees pyjama left">LibelleUo</div>';
+echo '<a class="pyjama"  href="index.php?page=FormUos&mode=Afficher&id=IdUo"><i class="fas fa-file-contract"></i></a>';
 
-echo '<a class="pyjama"  href="index.php?page=FormUOs&mode=Modifier&id=IdUO"><i class="fas fa-pen"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormUos&mode=Modifier&id=IdUo"><i class="fas fa-pen"></i></a>';
 
-echo '<a class="pyjama"  href="index.php?page=FormUOs&mode=Supprimer&id=IdUO"><i class="fas fa-trash-alt"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormUos&mode=Supprimer&id=IdUo"><i class="fas fa-trash-alt"></i></a>';
 echo '</template>';
 //Derniere ligne du tableau (bouton retour)
 echo '<div class="bigEspace"></div>';
@@ -55,6 +55,6 @@ echo '<div class="bigEspace grid-columns-span-9"></div>';
 echo '<div class="bigEspace grid-columns-span-9 pagination"></div>';
 
 echo '<div class="bigEspace grid-columns-span-9"></div>';
-echo'</div>'; //Div
+echo '</div>'; //Div
 echo '<div class="cote"></div>';
 echo '</section></main>';

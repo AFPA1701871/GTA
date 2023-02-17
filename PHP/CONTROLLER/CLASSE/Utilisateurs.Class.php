@@ -1,6 +1,6 @@
 <?php
 
-class Utilisateurs 
+class Utilisateurs
 {
 
 	/*****************Attributs***************** */
@@ -10,10 +10,10 @@ class Utilisateurs
 	private $_mailUtilisateur;
 	private $_matriculeUtilisateur;
 	private $_passwordUtilisateur;
-	private $_idUO;
+	private $_idUo;
 	private $_idRole;
 	private $_idManager;
-	private static $_attributes=["idUtilisateur","nomUtilisateur","mailUtilisateur","matriculeUtilisateur","passwordUtilisateur","idUO","idRole","idManager"];
+	private static $_attributes = ["idUtilisateur", "nomUtilisateur", "mailUtilisateur", "matriculeUtilisateur", "passwordUtilisateur", "idUo", "idRole", "idManager"];
 	/***************** Accesseurs ***************** */
 
 
@@ -24,7 +24,7 @@ class Utilisateurs
 
 	public function setIdUtilisateur(?int $idUtilisateur)
 	{
-		$this->_idUtilisateur=$idUtilisateur;
+		$this->_idUtilisateur = $idUtilisateur;
 	}
 
 	public function getNomUtilisateur()
@@ -34,7 +34,7 @@ class Utilisateurs
 
 	public function setNomUtilisateur(string $nomUtilisateur)
 	{
-		$this->_nomUtilisateur=$nomUtilisateur;
+		$this->_nomUtilisateur = $nomUtilisateur;
 	}
 
 	public function getMailUtilisateur()
@@ -44,7 +44,7 @@ class Utilisateurs
 
 	public function setMailUtilisateur(string $mailUtilisateur)
 	{
-		$this->_mailUtilisateur=$mailUtilisateur;
+		$this->_mailUtilisateur = $mailUtilisateur;
 	}
 
 	public function getMatriculeUtilisateur()
@@ -54,7 +54,7 @@ class Utilisateurs
 
 	public function setMatriculeUtilisateur(string $matriculeUtilisateur)
 	{
-		$this->_matriculeUtilisateur=$matriculeUtilisateur;
+		$this->_matriculeUtilisateur = $matriculeUtilisateur;
 	}
 
 	public function getPasswordUtilisateur()
@@ -64,17 +64,17 @@ class Utilisateurs
 
 	public function setPasswordUtilisateur(string $passwordUtilisateur)
 	{
-		$this->_passwordUtilisateur=$passwordUtilisateur;
+		$this->_passwordUtilisateur = $passwordUtilisateur;
 	}
 
-	public function getIdUO()
+	public function getIdUo()
 	{
-		return $this->_idUO;
+		return $this->_idUo;
 	}
 
-	public function setIdUO(?int $idUO)
+	public function setIdUo(?int $idUo)
 	{
-		$this->_idUO=$idUO;
+		$this->_idUo = $idUo;
 	}
 
 	public function getIdRole()
@@ -84,7 +84,7 @@ class Utilisateurs
 
 	public function setIdRole(int $idRole)
 	{
-		$this->_idRole=$idRole;
+		$this->_idRole = $idRole;
 	}
 
 	public function getIdManager()
@@ -94,7 +94,7 @@ class Utilisateurs
 
 	public function setIdManager(?int $idManager)
 	{
-		$this->_idManager=$idManager;
+		$this->_idManager = $idManager;
 	}
 
 	public static function getAttributes()
@@ -106,19 +106,18 @@ class Utilisateurs
 
 	public function __construct(array $options = [])
 	{
- 		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
 		{
 			$this->hydrate($options);
 		}
 	}
 	public function hydrate($data)
 	{
-        foreach ($data as $key => $value)
-		{
- 			$methode = "set".ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+		foreach ($data as $key => $value) {
+			$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
 			if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
 			{
-				$this->$methode($value===""?null:$value);
+				$this->$methode($value === "" ? null : $value);
 			}
 		}
 	}
@@ -126,12 +125,12 @@ class Utilisateurs
 	/*****************Autres Méthodes***************** */
 
 	/**
-	* Transforme l'objet en chaine de caractères
-	*
-	* @return String
-	*/
+	 * Transforme l'objet en chaine de caractères
+	 *
+	 * @return String
+	 */
 	public function toString()
 	{
-		return "IdUtilisateur : ".$this->getIdUtilisateur().", NomUtilisateur : ".$this->getNomUtilisateur().", MailUtilisateur : ".$this->getMailUtilisateur().", MatriculeUtilisateur : ".$this->getMatriculeUtilisateur().", PasswordUtilisateur : ".$this->getPasswordUtilisateur().", IdUO : ".$this->getIdUO().", IdRole : ".$this->getIdRole().", IdManager : ".$this->getIdManager()."\n";
+		return "IdUtilisateur : " . $this->getIdUtilisateur() . ", NomUtilisateur : " . $this->getNomUtilisateur() . ", MailUtilisateur : " . $this->getMailUtilisateur() . ", MatriculeUtilisateur : " . $this->getMatriculeUtilisateur() . ", PasswordUtilisateur : " . $this->getPasswordUtilisateur() . ", IdUo : " . $this->getIdUo() . ", IdRole : " . $this->getIdRole() . ", IdManager : " . $this->getIdManager() . "\n";
 	}
 }

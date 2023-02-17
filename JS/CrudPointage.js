@@ -19,9 +19,9 @@ function changePointage(event) {
 
   // Récupération des différents ID de la ligne
   let typePrestation = document.querySelector('input[data-line="' + ligne + '"][name="idTypePrestation"]').value;
-  let uo = document.querySelector('input[data-line="' + ligne + '"][name="idUo"]').value;
-  let motif = document.querySelector('input[data-line="' + ligne + '"][name="idMotif"]').value;
-  let projet = document.querySelector('input[data-line="' + ligne + '"][name="idProjet"]').value;
+  let uo = document.querySelector('input[data-line="' + ligne + '"][name="inputUo"]').value;
+  let motif = document.querySelector('input[data-line="' + ligne + '"][name="inputMotif"]').value;
+  let projet = document.querySelector('input[data-line="' + ligne + '"][name="inputProjet"]').value;
   let prestation = document.querySelector('input[data-line="' + ligne + '"][name="idPrestation"]').value;
 
   // Requête
@@ -29,7 +29,7 @@ function changePointage(event) {
   req.open("POST", "index.php?page=MAJPointageAPI", true); // Initialisation de la requête avec une methode POST et le chemin de la page de traitement
   req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   // Preparation des arguments qui seront envoyé par POST à la page de traitement
-  let args = "idUO=" + uo + "&idMotif=" + motif + "&idProjet=" + projet + "&idPrestation=" + prestation + "&idTypePrestation=" + typePrestation + "&datePointage=" + date + "&idUtilisateur=" + idUser + "&nbHeuresPointage=" + pointage.value;
+  let args = "idUo=" + uo + "&idMotif=" + motif + "&idProjet=" + projet + "&idPrestation=" + prestation + "&idTypePrestation=" + typePrestation + "&datePointage=" + date + "&idUtilisateur=" + idUser + "&nbHeuresPointage=" + pointage.value;
 
   if (idpointage) args += "&idPointage=" + idpointage; // Si la case possède déjà un ID
   req.send(args);
@@ -69,14 +69,14 @@ function clicPlus(event) {
   // mis à jour liste presta
   condition['idTypePrestation'] = idTypePrestation;
   selectPresta = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], 'class="inputPointage"', true, condition);
-  nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', selectPresta);
+  nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', selectPresta + '<input type=hidden name=idPrestation dataline >');
 
   // mis à jour disabled dans motif/projet/uo
   typePrestation = AppelAjax("TypePrestations", idTypePrestation, null, "", false, null)[0];
-  selectUO = (typePrestation.uoRequis == 1) ? AppelAjax("UOs", null, ["NumeroUO", "LibelleUO"], 'class=""', true, null) : '<input class="inputPointage notApplicable" dataline  type="text" name="inputUO" disabled>';
-  selectProjet = (typePrestation.projetRequis == 1) ? AppelAjax("Projets", null, ["CodeProjet"], 'class=""', true, null) : '<input class="inputPointage notApplicable" dataline  type="text" name="inputProjet" disabled>';
-  selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif"], 'class=""', true, null) : '<input class="inputPointage notApplicable" dataline  type="text" name="inputMotif" disabled>';
-  nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputUo">', selectUO);
+  selectUo = (typePrestation.uoRequis == 1) ? AppelAjax("Uos", null, ["NumeroUo", "LibelleUo"], 'class=""', true, null) + '<input  class="inputPointage notApplicable" dataline  type="hidden" name="inputUo" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="inputUo" disabled>';
+  selectProjet = (typePrestation.projetRequis == 1) ? AppelAjax("Projets", null, ["CodeProjet"], 'class=""', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="inputProjet" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="inputProjet" disabled>';
+  selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif"], 'class=""', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="inputMotif" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="inputMotif" disabled>';
+  nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputUo">', selectUo);
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputProjet">', selectProjet);
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputMotif">', selectMotif);
 
@@ -121,30 +121,49 @@ function clicPlus(event) {
     /* evenement*/
     //on ajoute l'evenement pour expand
     nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
+    nouvelleLigne.querySelector(".expand-line").dispatchEvent(new Event("click"));
     //on ajoute l'evenement pour favoris
     nouvelleLigne.querySelector(".fa-fav").addEventListener("click", UpdateFav);
+    // on ajoute des evenements pour reporter les elements selectionner dans les combo dans les input correspondants
+    nouvelleLigne.querySelector('select[name="idPrestation"]').addEventListener("change", reportPrestation);
+    if (nouvelleLigne.querySelector('select[name="idMotif"]')) nouvelleLigne.querySelector('select[name="idMotif"]').addEventListener("change", reportSelect);
+    if (nouvelleLigne.querySelector('select[name="idProjet"]')) nouvelleLigne.querySelector('select[name="idProjet"]').addEventListener("change", reportSelect);
+    if (nouvelleLigne.querySelector('select[name="idUo"]')) nouvelleLigne.querySelector('select[name="idUo"]').addEventListener("change", reportSelect);
   }
 }
-  /**
-   * Méthode d'appel ajax synchrone
-   * @param {*} table  // nom de la table pour la requete
-   * @param {*} id // valeur de l'id soit à selectionner pour un select soit pour le where dans les listes
-   * @param {*} colonne // colonnes à renvoyer tableau attendu
-   * @param {*} attribut // attribut à ajouter sur le select
-   * @param {*} select // boolean vaut vrai pour un select faux pour une liste
-   * @returns 
-   */
-  function AppelAjax(table, id, colonne, attribut, select, condition) {
-    var req = new XMLHttpRequest();
-    req.open('POST', 'index.php?page=ListePointageAPI', false); // false signifie appel synchrone
-    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    args = "table=" + table + "&id=" + id + "&colonne=" + JSON.stringify(colonne) + "&attribut=" + attribut + "&select=" + select + "&condition=" + JSON.stringify(condition);
-    console.log(args);
-    req.send(args);
-    if (req.status === 200) {
-      console.log(req.responseText);
-      if (!select)
-        return JSON.parse(req.responseText);
-      return req.responseText;
-    }
+/**
+ * Méthode d'appel ajax synchrone
+ * @param {*} table  // nom de la table pour la requete
+ * @param {*} id // valeur de l'id soit à selectionner pour un select soit pour le where dans les listes
+ * @param {*} colonne // colonnes à renvoyer tableau attendu
+ * @param {*} attribut // attribut à ajouter sur le select
+ * @param {*} select // boolean vaut vrai pour un select faux pour une liste
+ * @returns 
+ */
+function AppelAjax(table, id, colonne, attribut, select, condition) {
+  var req = new XMLHttpRequest();
+  req.open('POST', 'index.php?page=ListePointageAPI', false); // false signifie appel synchrone
+  req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+  args = "table=" + table + "&id=" + id + "&colonne=" + JSON.stringify(colonne) + "&attribut=" + attribut + "&select=" + select + "&condition=" + JSON.stringify(condition);
+  console.log(args);
+  req.send(args);
+  if (req.status === 200) {
+    console.log(req.responseText);
+    if (!select)
+      return JSON.parse(req.responseText);
+    return req.responseText;
   }
+}
+
+function reportPrestation(event) {
+  ligne = event.target.parentNode.parentNode
+  ligne.querySelector('input[name="idPrestation"]').value = event.target.value
+  ligne.querySelector('input[name="codePrestation"]').value = event.target.selectedOptions[0].label.substring(0, 4)
+}
+
+function reportSelect(event) {
+  type = event.target.name.substring(2);
+  elementCherche = 'input[name="input' + type + '"]'
+  ligne = event.target.parentNode.parentNode
+  ligne.querySelector(elementCherche).value = event.target.value
+}

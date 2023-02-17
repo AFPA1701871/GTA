@@ -159,7 +159,7 @@ function AfficherPage(index, filtre) {
                         contenu = temp.content.cloneNode(true);
                         grid.appendChild(contenu);
                         grid.innerHTML = grid.innerHTML.replaceAll("IdFermeture", element.idFermeture);
-                        grid.innerHTML = grid.innerHTML.replaceAll("DateFermeture", new Date(element.dateFermeture).toLocaleDateString('fr-FR', {year: 'numeric', month: '2-digit', day: '2-digit'}));
+                        grid.innerHTML = grid.innerHTML.replaceAll("DateFermeture", new Date(element.dateFermeture).toLocaleDateString('fr-FR', { year: 'numeric', month: '2-digit', day: '2-digit' }));
                         grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
                     });
                 } else if (page == "ListeMotifs") {
@@ -201,16 +201,16 @@ function AfficherPage(index, filtre) {
                         grid.innerHTML = grid.innerHTML.replaceAll("LibelleProjet", element.libelleProjet);
                         grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
                     });
-                } else if (page == "ListeUOs") {
+                } else if (page == "ListeUos") {
                     temp = document.getElementsByTagName("template")[0];
                     pair = 0;
                     liste.forEach(element => {
                         pyjama = (++pair % 2 == 0) ? " bgc" : "";
                         contenu = temp.content.cloneNode(true);
                         grid.appendChild(contenu);
-                        grid.innerHTML = grid.innerHTML.replaceAll("IdUO", element.idUO);
-                        grid.innerHTML = grid.innerHTML.replaceAll("NumeroUO", element.numeroUO);
-                        grid.innerHTML = grid.innerHTML.replaceAll("LibelleUO", element.libelleUO == null ? '' : element.libelleUO);
+                        grid.innerHTML = grid.innerHTML.replaceAll("IdUo", element.idUo);
+                        grid.innerHTML = grid.innerHTML.replaceAll("NumeroUo", element.numeroUo);
+                        grid.innerHTML = grid.innerHTML.replaceAll("LibelleUo", element.libelleUo == null ? '' : element.libelleUo);
                         grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
                     });
                 } else if (page == "ListeUtilisateurs") {
@@ -226,7 +226,7 @@ function AfficherPage(index, filtre) {
                         grid.innerHTML = grid.innerHTML.replaceAll("NomManager", element.nomManager == null ? '' : element.nomManager);
                         actif = element.actif == 1 ? '<i class="fas fa-check"></i>' : "";
                         grid.innerHTML = grid.innerHTML.replaceAll("Actif", actif);
-                        grid.innerHTML = grid.innerHTML.replaceAll("NumeroUO", element.numeroUO == null ? '' : element.numeroUO);
+                        grid.innerHTML = grid.innerHTML.replaceAll("NumeroUo", element.numeroUo == null ? '' : element.numeroUo);
                         grid.innerHTML = grid.innerHTML.replaceAll("NomRole", element.nomRole);
                         grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
                     });
