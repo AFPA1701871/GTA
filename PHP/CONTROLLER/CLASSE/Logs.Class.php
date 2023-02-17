@@ -26,12 +26,12 @@ class Logs
 
 	public function getDateLog()
 	{
-		return is_null($this->_dateLog)?null:$this->_dateLog->format('F Y');
+		return $this->_dateLog;
 	}
 
-	public function setDateLog(string $dateLog)
+	public function setDateLog($dateLog)
 	{
-		$this->_dateLog=DateTime::createFromFormat("Y-n-j H:i:s",$dateLog);
+		$this->_dateLog = $dateLog;
 	}
 
 	public function getActionLog()
