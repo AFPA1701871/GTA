@@ -30,30 +30,32 @@ sectionSideScroll.forEach(element => {
         e.preventDefault();
     })
 })
-
+// eviter les méthodes aveugles dans les addeventlistener
+// on ne peut pas s'en resservir pour les elements générés après
 listeLignesPresta.forEach(LignePresta => {
-    LignePresta.addEventListener("click", expand);});
+    LignePresta.addEventListener("click", expand);
+});
 
-    function expand(e) {
-        e.target.classList.toggle("fa-open");
-        e.target.classList.toggle("fa-close");
-        ligne = e.target.parentNode.parentNode.parentNode;
-        listeCol = ligne.querySelectorAll(".colCachable");
-        listeCol.forEach(cell => {
-            cell.classList.toggle("noDisplay");
-        });
-        ligneActu = ligne.getAttribute("data-Line");
-        selectLine = document.querySelectorAll("div[data-line='" + ligneActu + "']");
-        selectLine.forEach(cell2 => {
-            cell2.classList.toggle("grid-lineDouble");
-            cell2.classList.toggle("grid-lineQuad");
-        })
-        listeInput = document.querySelectorAll(".grid-pointage input[data-line='" + ligneActu + "']");
-        listeInput.forEach(cell3 => {
-            cell3.parentNode.classList.toggle("grid-lineDouble");
-            cell3.parentNode.classList.toggle("grid-lineQuad");
-        })
-    }
+function expand(e) {
+    e.target.classList.toggle("fa-open");
+    e.target.classList.toggle("fa-close");
+    ligne = e.target.parentNode.parentNode.parentNode;
+    listeCol = ligne.querySelectorAll(".colCachable");
+    listeCol.forEach(cell => {
+        cell.classList.toggle("noDisplay");
+    });
+    ligneActu = ligne.getAttribute("data-Line");
+    selectLine = document.querySelectorAll("div[data-line='" + ligneActu + "']");
+    selectLine.forEach(cell2 => {
+        cell2.classList.toggle("grid-lineDouble");
+        cell2.classList.toggle("grid-lineQuad");
+    })
+    listeInput = document.querySelectorAll(".grid-pointage input[data-line='" + ligneActu + "']");
+    listeInput.forEach(cell3 => {
+        cell3.parentNode.classList.toggle("grid-lineDouble");
+        cell3.parentNode.classList.toggle("grid-lineQuad");
+    })
+}
 
 
 function setGridPointage() {
@@ -232,7 +234,7 @@ function UpdateFav(e) {
                     let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
                     caseFav.setAttribute("id", id); // Change l'attribut ID de la DIV
                 }
-                
+
                 ///////////////////////////////////////////////////////////
                 //Ajouter Message indiquant la sauvegarde de l'état des préférences
                 ///////////////////////////////////////////////////////////

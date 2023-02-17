@@ -3,11 +3,19 @@ global $mois;
 global $joursSemaine;
 /* pour test */
 $idUtilisateur = 1;
-$user = View_UtilisateursManager::getList(null, ["idUtilisateur" => $idUtilisateur])[0];
 
-$anneeVisionne = date("Y");
-$moisVisionne = date("m") * 1;
 $periode = $anneeVisionne . '-0' . $moisVisionne;
+// Preparation des données issus de l'idUtilisateur et de la période
+$user = View_UtilisateursManager::getList(null, ["idUtilisateur" => $idUtilisateur])[0];
+$periodeTab = explode("-", $periode);
+$nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $periodeTab[1], $periodeTab[0]);
+$listeFermeturesDuMois = FermeturesManager::getDates($periode);
+$tabJour = []; // contient pour chaque jour les classes et les contents à mettre sur l'entête et sur chaque ligne de prestation
+// $tabJour["jourOuvert"] : pour déterminer si le jour est plié (exemple week-end) ou déplié
+// $tabJour["classeBG"] : pour déterminer si le jour est gris ou pas
+// $tabJour["content"] : pour déterminer le contenu des cases à l'intersection des lignes de prestations et des colonnes jours
+// il fera l'objet d'un replace  quand on aura l'information du pointage
+$typesPrestations = TypePrestationsManager::getList(null, null, "numeroTypePrestation", null, false, false);
 
 // ENTETE de PAGE
 echo '  <main>
@@ -18,7 +26,7 @@ echo '  <main>
                 <div class="grid-columns-span-2 center infosUser">
                     <div class=titreInfosUser>Année : </div>
                 <div>';
-echo creerSelectTab($periode, tabMoisAnnee(), null, "periode", true);
+echo            creerSelectTab($periode, tabMoisAnnee(), null, "periode", true);
 echo '        </div>
               <div></div>
                 <div class=titreInfosUser>Nom : </div>
@@ -34,9 +42,7 @@ echo '        </div>
                 <div>' . $user->getNumeroUO() . '</div>
                 <div class="grid-columns-span-17 espace"></div>
             </div>';
-
-$nbrJoursMois = cal_days_in_month(CAL_GREGORIAN, $moisVisionne, $anneeVisionne);
-$listeFermeturesDuMois = FermeturesManager::getDates($moisVisionne);
+// Entete de Prestations
 echo '  <div class="grid-presta tabCol pointHead  cellBottom trans alert center">
 <p>Changement sauveguardé</p><i class="fas fa-floppy-disk"></i>
 </div>
@@ -44,31 +50,24 @@ echo '  <div class="grid-presta tabCol pointHead  cellBottom trans alert center"
             <div class="cellBottom center grid-lineDouble bgc4">Total</div>
             <div class="cellBottom center grid-lineDouble bgc4 border-left">%GTA</div>
             <div class="cellBottom grid-lineDouble bgc4"></div>';
+// Entete de jours    + préparation des cases de pointage         
 $nbJourPointe = 0;
-$tabJour = [];
-for ($i = 1; $i <= $nbrJoursMois; $i++)
-{
+for ($i = 1; $i <= $nbrJoursMois; $i++) {
     //on crée la date au format DateTime
     $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
 
     // $jour->format('w') donne le jour dans la semaine 0 pour dimanche, 1 pour lundi
-    if ($jour->format('w') == 0 || $jour->format('w') == 6)
-    {
+    if ($jour->format('w') == 0 || $jour->format('w') == 6) {
         $tabJour[$i]["jourOuvert"] = "";
         $tabJour[$i]["classeBG"] = "noWork";
         $tabJour[$i]["content"] = "";
-    }
-    else
-    {
+    } else {
         $nbJourPointe++;
         $tabJour[$i]["jourOuvert"] = $jour->format("d") . "<br/>" . $joursSemaine[$jour->format('w')];
-        if (in_array($jour->format("Y-m-d"), $listeFermeturesDuMois))
-        {
+        if (in_array($jour->format("Y-m-d"), $listeFermeturesDuMois)) {
             $tabJour[$i]["classeBG"] = "notApplicable";
             $tabJour[$i]["content"] = "<input disabled class=' notApplicable inputPointage casePointage'>";
-        }
-        else
-        {
+        } else {
             $tabJour[$i]["classeBG"] = "work";
             $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage case" value type="text" idPointage >';
         }
@@ -76,23 +75,23 @@ for ($i = 1; $i <= $nbrJoursMois; $i++)
     echo '        <div data-date=' . $jour->format("Y-m-d") . ' class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
 }
 echo '    </div>';
-$typesPrestations = TypePrestationsManager::getList(null, null, "numeroTypePrestation", null, false, false);
-foreach ($typesPrestations as $key => $typePresta)
-{
+
+// Boucle sur les Types de Prestations
+foreach ($typesPrestations as $key => $typePresta) {
     $idTypePrestation = $typePresta->getIdTypePrestation();
-    echo '        <div class="center fullLine grid-lineSimple cellBottom left titreTypePrestation" data-idTypePrestation = '.$idTypePrestation.'>' . $typePresta->getNumeroTypePrestation() . " - " . $typePresta->getLibelleTypePrestation() . '<i id="AjoutPresta1" class="fas fa-plus plusRigth"></i></div>';
+    echo '        <div class="center fullLine grid-lineSimple cellBottom left titreTypePrestation" data-idTypePrestation = ' . $idTypePrestation . '>' . $typePresta->getNumeroTypePrestation() . " - " . $typePresta->getLibelleTypePrestation() . '<i id="AjoutPresta1" class="fas fa-plus plusRigth"></i></div>';
     echo '        <div class=" grid-lineSimple cellBottom titreTypePrestation ">&nbsp;</div>';
 
-    // remplacer par periode en cours
-    $listePrestation = View_Prestations_Pref_PointManager::getListePrestation($idUtilisateur, $anneeVisionne . "-0" . $moisVisionne, $idTypePrestation);
+    // on récupère les prestations de ce type
+    $listePrestation = View_Prestations_Pref_PointManager::getListePrestation($idUtilisateur, $periode, $idTypePrestation);
     $numPresta = 0;
-    foreach ($listePrestation as $prestation)
-    {
-        // var_dump($prestation);
-        $numPresta++;
+    // boucle sur les prestations
+    foreach ($listePrestation as $prestation) {
+        $numPresta++; // permet de numéroter les prestations
         $dataline = ' data-line="' . $numPresta . '"';
+        // 9 parties constituants la prestation
         echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
-                    <input name="idTypePrestation" type=hidden value='.$idTypePrestation.' '. $dataline .'>
+                    <input name="idTypePrestation" type=hidden value=' . $idTypePrestation . ' ' . $dataline . '>
               <div ' . $dataline . ' class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
                   <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '" ' . $dataline . '>
@@ -106,34 +105,25 @@ foreach ($typesPrestations as $key => $typePresta)
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" ' . $dataline . ' type="text" value = "' . $prestation->getCodePrestation() . '"></div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
-        if ($typePresta->getUORequis())
-        {// modifier la vue pour recupérer le libelle de l'UO iden projet et motif
-            echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputUo" value = "' . $prestation->getNumeroUO() . '" disabled title = "'.$prestation->getNumeroUO().'">';
-        }
-        else
-        {
+        if ($typePresta->getUORequis()) { // modifier la vue pour recupérer le libelle de l'UO iden projet et motif
+            echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputUo" value = "' . $prestation->getNumeroUO() . '" disabled title = "' . $prestation->getNumeroUO() . '">';
+        } else {
             echo '<input class="inputPointage notApplicable" ' . $dataline . ' type="text" name="inputUo" disabled>';
         }
         echo '<input type=hidden name=idUo value = "' . $prestation->getIdUO() . '" ' . $dataline . '>';
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
-        if ($typePresta->getMotifRequis())
-        {
-            echo '<input class="inputPointage" disabled ' . $dataline . ' type="text" name="inputMotif" value = "' . $prestation->getCodeMotif() . '" title="'.$prestation->getCodeMotif().'">';
-        }
-        else
-        {
+        if ($typePresta->getMotifRequis()) {
+            echo '<input class="inputPointage" disabled ' . $dataline . ' type="text" name="inputMotif" value = "' . $prestation->getCodeMotif() . '" title="' . $prestation->getCodeMotif() . '">';
+        } else {
             echo '<input class="inputPointage notApplicable" ' . $dataline . ' type="text" name="inputMotif" disabled>';
         }
         echo '<input type=hidden name=idMotif value = "' . $prestation->getIdMotif() . '" ' . $dataline . '>';
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
-        if ($typePresta->getProjetRequis())
-        {
-            echo '<input class="inputPointage" disabled ' . $dataline . ' type="text" name="inputProjet" value = "' . $prestation->getCodeProjet() . '" title="'.$prestation->getCodeProjet().'">';
-        }
-        else
-        {
+        if ($typePresta->getProjetRequis()) {
+            echo '<input class="inputPointage" disabled ' . $dataline . ' type="text" name="inputProjet" value = "' . $prestation->getCodeProjet() . '" title="' . $prestation->getCodeProjet() . '">';
+        } else {
             echo '<input class="inputPointage notApplicable" ' . $dataline . ' type="text" name="inputProjet" disabled>';
         }
         echo '<input type=hidden name=idProjet value = "' . $prestation->getIdProjet() . '" ' . $dataline . '>';
@@ -141,41 +131,40 @@ foreach ($typesPrestations as $key => $typePresta)
                             </div>
             </div>';
 
-////////////////////////////////
-        // Pointage
+        // Partie Pointage
 
         echo '    <div class="grid-pointage tabCol pointMove">';
         echo '                <div class="cellBottom center grid-lineDouble colTotal" ' . $dataline . '>0</div>';
         echo '                <div class="cellBottom center grid-lineDouble colPrctGTA border-left" ' . $dataline . '></div>';
         echo '                <div class="cellBottom grid-lineDouble"></div>';
-        foreach ($tabJour as $i => $value)
-        {
+        foreach ($tabJour as $i => $value) {
             $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
             $content = str_replace("data-line", $dataline, $value['content']);
             $jour = (new Datetime())->setDate($anneeVisionne, $moisVisionne, $i);
+            // on prépare les conditions pour aller chercher le pointage 
             $conditions["idTypePrestation"] = $idTypePrestation;
-            $conditions["idUtilisateur"] = $idUtilisateur; 
+            $conditions["idUtilisateur"] = $idUtilisateur;
             $conditions["idPrestation"] = $prestation->getIdPrestation();
             $conditions["datePointage"] = $jour->format("Y-m-d");
-            if ($prestation->getMotifRequis()) $conditions["idMotif"]=$prestation->getIdMotif();
-            if ($prestation->getProjetRequis()) $conditions["idProjet"]=$prestation->getIdProjet();
-            if ($prestation->getUORequis()) $conditions["idUO"]=$prestation->getIdUO();;
+            if ($prestation->getMotifRequis()) $conditions["idMotif"] = $prestation->getIdMotif();
+            if ($prestation->getProjetRequis()) $conditions["idProjet"] = $prestation->getIdProjet();
+            if ($prestation->getUORequis()) $conditions["idUO"] = $prestation->getIdUO();;
             $pointage = PointagesManager::getList(null, $conditions, null, null, false, false);
-            if ($pointage != false)
-            {
+            if ($pointage != false) {
                 $content = str_replace("value", ' value="' . $pointage[0]->getNbHeuresPointage() . '" ', $content);
                 $content = str_replace("idPointage", ' data-idPointage="' . $pointage[0]->getIdPointage() . '" ', $content);
             }
-
-            
             echo '        <div class="center grid-lineDouble cellBottom ' . $value["classeBG"] . '"  >' . $content . '</div>';
         }
         echo '</div>';
     }
 }
+
+// template pour reproduire la partie de gauche d'une ligne de pointage
+// plusieurs parties feront l'objet d'un remplacement pour mettre les bonnes références (data-line, idtypePresttaion, ...)
+// Certains input seront remplacés par des select
 echo '<template id=lignePresta>
-        ';
-echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
+        <div class="grid-presta tabCol pointMove leftStickyRigth">
       <input name="idTypePrestation">
       <div dataline class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
           <div class="center grid-lineDouble cellBottom grid-columns-span-4">
@@ -190,7 +179,7 @@ echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" dataline  type="text" ></div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
 
-    echo '      <input name="inputUo">
+echo '      <input name="inputUo">
             </div>
             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">
                 <input name="inputMotif">
@@ -201,6 +190,6 @@ echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
         </div>
     </div>
 </template>';
-
-echo '<input id=numPrestaMax type=hidden value='.$numPresta .'>';
+// pour retrouver le prochain numero de prestation en JS
+echo '<input id=numPrestaMax type=hidden value=' . $numPresta . '>';
 echo '</div></div><div class="cote"></main>';

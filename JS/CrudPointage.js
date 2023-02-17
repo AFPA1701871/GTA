@@ -47,6 +47,10 @@ console.log(args);
   };
 }
 
+/**
+ * Méthode qui permet d'ajouter une ligne lorsque l'on clique sur le plus à coté du type de Prestations
+ * @param {*} event 
+ */
 function clicPlus(event)
 {
   plus= event.target;
@@ -98,6 +102,8 @@ function clicPlus(event)
         {
             element.children[0].value="";
             element.children[0].setAttribute("data-line",numPresta);
+            // ajouter les evenements sur les cases
+
         } 
         
     }
@@ -111,11 +117,19 @@ function clicPlus(event)
     //on ajoute l'evenement pour expand
     nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
 }
-
+/**
+ * Méthode d'appel ajax synchrone
+ * @param {*} table  // nom de la table pour la requete
+ * @param {*} id // valeur de l'id soit à selectionner pour un select soit pour le where dans les listes
+ * @param {*} colonne // colonnes à renvoyer tableau attendu
+ * @param {*} attribut // attribut à ajouter sur le select
+ * @param {*} select // boolean vaut vrai pour un select faux pour une liste
+ * @returns 
+ */
 function AppelAjax(table,id,colonne,attribut,select)
 {
     var req = new XMLHttpRequest();
-    req.open('POST', 'index.php?page=ListePointageAPI', false);
+    req.open('POST', 'index.php?page=ListePointageAPI', false); // false signifie appel synchrone
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     args = ("table=" + table + "&id=" + id +"&colonne="+JSON.stringify(colonne) +  "&attribut=" + attribut + "&select=" + select);
     console.log(args);
@@ -126,14 +140,4 @@ function AppelAjax(table,id,colonne,attribut,select)
         return JSON.parse(req.responseText);
         return req.responseText;
     }
-
-    // req.onreadystatechange = function (event) {
-    //     if (this.readyState === XMLHttpRequest.DONE) {
-    //         if (this.status === 200) {
-    //             console.log(this.responseText);
-    //             reponse = JSON.parse(this.responseText);
-    //             return reponse;
-    //         }
-    //     }
-    // }
 }
