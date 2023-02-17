@@ -516,3 +516,10 @@ body.dark .oeil {
         flex: 0.02;
     }
   }
+  @media (max-width: 1193px) {
+
+    nav {
+        font-size: 1.1rem;
+    }
+  }
+  

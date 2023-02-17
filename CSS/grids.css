@@ -159,3 +159,11 @@
     }
 	
   }
+
+  @media (max-width: 1193px) {
+
+	.grid-mini {
+        width: 100%;
+    }
+  }
+  
