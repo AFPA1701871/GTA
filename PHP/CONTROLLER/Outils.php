@@ -185,7 +185,7 @@ function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $a
  * @param string $attributId
  * @return void
  */
-function creerSelectTab( $valeur, array $tab,  ?string $attributs = "",  string $attributId ,bool $tabAssoc)
+function creerSelectTab( $valeur, array $tab,  string $attributId ,bool $tabAssoc,  ?string $attributs = "")
 {
 	$select = '<select id="' . $attributId . '" name="' . $attributId . '"' . $attributs . '>';
 	

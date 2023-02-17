@@ -26,7 +26,7 @@ echo '  <main>
                 <div class="grid-columns-span-2 center infosUser">
                     <div class=titreInfosUser>Année : </div>
                 <div>';
-echo            creerSelectTab($periode, tabMoisAnnee(), null, "periode", true);
+echo            creerSelectTab($periode, tabMoisAnnee(), "periode", true, null);
 echo '        </div>
               <div></div>
                 <div class=titreInfosUser>Nom : </div>
