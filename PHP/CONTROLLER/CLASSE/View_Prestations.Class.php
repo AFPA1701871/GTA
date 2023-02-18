@@ -10,7 +10,11 @@ class View_Prestations
 	private $_libellePrestation;
 	private $_idActivite;
 	private $_libelleActivite;
-	private static $_attributes=["idPrestation","codePrestation","libellePrestation","idActivite","libelleActivite"];
+	private $_idProjet;
+	private $_codeProjet;
+	private $_libelleProjet;
+	
+	private static $_attributes=["idPrestation","codePrestation","libellePrestation","idActivite","libelleActivite","idProjet","codeProjet","libelleProjet"];
 	/***************** Accesseurs ***************** */
 
 
@@ -63,7 +67,35 @@ class View_Prestations
 	{
 		$this->_libelleActivite=$libelleActivite;
 	}
+	public function getIdProjet()
+	{
+		return $this->_idProjet;
+	}
 
+	public function setIdProjet($idProjet)
+	{
+		$this->_idProjet = $idProjet;
+	}
+
+	public function getCodeProjet()
+	{
+		return $this->_codeProjet;
+	}
+
+	public function setCodeProjet($codeProjet)
+	{
+		$this->_codeProjet = $codeProjet;
+	}
+
+	public function getLibelleProjet()
+	{
+		return $this->_libelleProjet;
+	}
+
+	public function setLibelleProjet($libelleProjet)
+	{
+		$this->_libelleProjet = $libelleProjet;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;
@@ -101,4 +133,6 @@ class View_Prestations
 	{
 		return "IdPrestation : ".$this->getIdPrestation()."CodePrestation : ".$this->getCodePrestation()."LibellePrestation : ".$this->getLibellePrestation()."IdActivite : ".$this->getIdActivite()."LibelleActivite : ".$this->getLibelleActivite()."\n";
 	}
+
+	
 }

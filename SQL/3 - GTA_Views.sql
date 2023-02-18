@@ -199,10 +199,15 @@ SELECT
     p.codePrestation,
     p.libellePrestation,
     a.idActivite,
-    a.libelleActivite
+    a.libelleActivite,
+    pr.idProjet,
+    pr.codeProjet,
+    pr.libelleProjet
 FROM
     gta_Prestations p
-    INNER JOIN gta_Activites as a ON p.idActivite = a.idActivite;
+    INNER JOIN gta_Activites as a ON p.idActivite = a.idActivite
+    LEFT JOIN gta_Associations ass ON p.idPrestation = ass.idPrestation
+    LEFT JOIN gta_Projets pr ON ass.idProjet = pr.idProjet;
 
 DROP VIEW IF EXISTS gta_View_TypePrestations;
 

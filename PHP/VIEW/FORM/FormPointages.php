@@ -97,7 +97,7 @@ foreach ($typesPrestations as $key => $typePresta) {
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
                   <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '" ' . $dataline . '>
                   <input type=hidden name=idPreference value = "' . $prestation->getIdPreference() . '" ' . $dataline . '>
-                  <input value = "' . $prestation->getLibellePrestation() . '" >
+                  <input value = "' . $prestation->getLibellePrestation() . '" disabled>
                       <div class="favorise vMini cellRight"><i class="fas fa-fav '.$classFavorisActif.' "></i></div>
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" ' . $dataline . '></i></div>
                             </div>
@@ -105,7 +105,7 @@ foreach ($typesPrestations as $key => $typePresta) {
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Uo de MAD</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
-                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" ' . $dataline . ' type="text" value = "' . $prestation->getCodePrestation() . '" name=codePrestation></div>
+                            <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" ' . $dataline . ' type="text" value = "' . $prestation->getCodePrestation() . '" disabled name=codePrestation></div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getUoRequis()) { // modifier la vue pour recupérer le libelle de l'Uo iden projet et motif
             echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputUo" value = "' . $prestation->getNumeroUo() . '" disabled title = "' . $prestation->getNumeroUo() . '">';
@@ -148,9 +148,9 @@ foreach ($typesPrestations as $key => $typePresta) {
             $conditions["idUtilisateur"] = $idUtilisateur;
             $conditions["idPrestation"] = $prestation->getIdPrestation();
             $conditions["datePointage"] = $jour->format("Y-m-d");
-            if ($prestation->getMotifRequis()) $conditions["idMotif"] = $prestation->getIdMotif();
-            if ($prestation->getProjetRequis()) $conditions["idProjet"] = $prestation->getIdProjet();
-            if ($prestation->getUoRequis()) $conditions["idUo"] = $prestation->getIdUo();;
+            if ($prestation->getMotifRequis() && $prestation->getIdMotif()!=null) $conditions["idMotif"] = $prestation->getIdMotif();
+            if ($prestation->getProjetRequis()&& $prestation->getIdProjet()!=null) $conditions["idProjet"] = $prestation->getIdProjet();
+            if ($prestation->getUoRequis()&& $prestation->getIdUo()!=null) $conditions["idUo"] = $prestation->getIdUo();;
             $pointage = PointagesManager::getList(null, $conditions, null, null, false, false);
             if ($pointage != false) {
                 $content = str_replace("value", ' value="' . $pointage[0]->getNbHeuresPointage() . '" ', $content);
@@ -179,7 +179,7 @@ echo '<template id=lignePresta>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Uo de MAD</div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Motif</div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
-                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" dataline  type="text" name=codePrestation></div>
+                    <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" dataline disabled type="text" name=codePrestation></div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
 
 echo '      <input name="inputUo">

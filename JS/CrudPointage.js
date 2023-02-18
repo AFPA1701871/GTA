@@ -14,7 +14,7 @@ listePlus.forEach(element => {
 function changePointage(event) {
   let pointage = event.target; // Case de pointage changée
   let idpointage = pointage.getAttribute('data-idpointage');// Id de le la case
-  let ligne = pointage.dataset.line; // Dataset contenant le typePrestation suivit de la prestation
+  let ligne = pointage.dataset.line; // Dataset contenant le numero de la prestation
   let date = pointage.dataset.date; // Dataset contenant la date en format (YYYY-MM-DD)
 
   // Récupération des différents ID de la ligne
@@ -42,10 +42,18 @@ function changePointage(event) {
           console.log(this.responseText);
           let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
           pointage.setAttribute("data-idpointage", idpointage); // Change l'attribut ID de la case
+
         }
       }
     }
   };
+  // si c'est le 1er pointage d'une prestation
+  // on transforme les select en input
+  if (document.querySelector('select[data-line="' + ligne + '"][name="idPrestation"]') != undefined)
+    SelectToInput("Prestation", ligne);
+  SelectToInput("Motif", ligne);
+  SelectToInput("Uo", ligne);
+  SelectToInput("Projet", ligne);
 }
 
 /**
@@ -69,14 +77,14 @@ function clicPlus(event) {
 
   // mis à jour liste presta
   condition['idTypePrestation'] = idTypePrestation;
-  selectPresta = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], 'class="inputPointage"', true, condition);
+  selectPresta = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], 'class="inputPointage" dataline', true, condition);
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', selectPresta + '<input type=hidden name=idPrestation dataline >');
 
   // mis à jour disabled dans motif/projet/uo
   typePrestation = AppelAjax("TypePrestations", idTypePrestation, null, "", false, null)[0];
-  selectUo = (typePrestation.uoRequis == 1) ? AppelAjax("Uos", null, ["NumeroUo", "LibelleUo"], 'class=""', true, null) + '<input  class="inputPointage notApplicable" dataline  type="hidden" name="idUo" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idUo" disabled>';
-  selectProjet = (typePrestation.projetRequis == 1) ? AppelAjax("Projets", null, ["CodeProjet"], 'class=""', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idProjet" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idProjet" disabled>';
-  selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif"], 'class=""', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idMotif" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idMotif" disabled>';
+  selectUo = (typePrestation.uoRequis == 1) ? AppelAjax("Uos", null, ["NumeroUo", "LibelleUo"], 'class="" dataline ', true, null) + '<input  class="inputPointage notApplicable" dataline  type="hidden" name="idUo" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idUo" disabled>';
+  selectProjet = (typePrestation.projetRequis == 1) ? AppelAjax("Projets", null, ["CodeProjet"], 'class="" dataline ', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idProjet" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idProjet" disabled>';
+  selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif"], 'class="" dataline ', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idMotif" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idMotif" disabled>';
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputUo">', selectUo);
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputProjet">', selectProjet);
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputMotif">', selectMotif);
@@ -160,6 +168,14 @@ function reportPrestation(event) {
   ligne = event.target.parentNode.parentNode
   ligne.querySelector('input[name="idPrestation"]').value = event.target.value
   ligne.querySelector('input[name="codePrestation"]').value = event.target.selectedOptions[0].label.substring(0, 4)
+  condition = {}
+  condition["idPrestation"] = event.target.value
+  // report du projet pour MNSP
+  projet = AppelAjax("View_Prestations", null, ["idProjet", "codeProjet", "libelleProjet"], null, false, condition)
+  if (projet != false) {
+    ligne.querySelector('input[name="idProjet"]').value = projet[0].idProjet
+    ligne.querySelector('select[name="idProjet"]').value = projet[0].idProjet
+  }
 }
 
 function reportSelect(event) {
@@ -167,4 +183,18 @@ function reportSelect(event) {
   elementCherche = 'input[name="id' + type + '"]'
   ligne = event.target.parentNode.parentNode
   ligne.querySelector(elementCherche).value = event.target.value
+}
+
+function SelectToInput(type, ligne) {
+  condSource = 'select[data-line="' + ligne + '"][name="id' + type + '"]'
+  classe=(type=="Prestation")?"":"inputPointage"
+  source = document.querySelector(condSource);
+  if (source != null) {
+    valeur = (source.value!="") ? source.selectedOptions[0].label : "";
+    cible = '<input class="'+classe+'" data-line="' + ligne + '" type="text" name="input' + type + '" value="' + valeur + '" disabled="" title=""></input>';
+    input = document.createElement("input")
+    input.innerHTML = cible
+    source.parentNode.replaceChild(input.children[0], source)
+  }
+
 }
