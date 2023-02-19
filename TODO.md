@@ -2,12 +2,12 @@
 
 ## Header
 
-* [X] Ajouter le titre de l'application (Valentin)
+* [X] Ajouter le titre de l'application
 
 ## Formulaires
 
-* [X] Changer oeil -> ON/OFF plutôt que rester appuyé (Valentin)
-* [X] Enlever les icônes (? et v) (Yves)
+* [X] Changer oeil -> ON/OFF plutôt que rester appuyé
+* [X] Enlever les icônes (? et v)
 
 ## Crud Utilisateurs
 
@@ -24,7 +24,7 @@
 * [X] Regrouper les boutons
 * [X] Ajouter la gestion des droits
 
-## Traduction (Fabien)
+## Traduction
 
 * [X] Ajouter les traductions pour les noms de colonne en français
 * [X] Ajouter les texte() dans les listes
@@ -39,37 +39,38 @@
 
 # Spécificités appli
 
-* [X] Ajouter un logo et un favicon (Colin)
+* [X] Ajouter un logo et un favicon
 
 ## Crud Utilisateurs
 
-* [X] Ajouter le reinit (Yves)
-* [X] Ajouter la gestion des contrats (Alexandre et Yves)
-* [X] Remplacer les input ID par des select (Yves)
-* [X] Ajouter un lien changer mot de passe dans le header (Valentin)
-* [X] Mettre un check sur actif (Alexandre)
+* [X] Ajouter le reinit
+* [X] Ajouter la gestion des contrats
+* [X] Remplacer les input ID par des select
+* [X] Ajouter un lien changer mot de passe dans le header
+* [X] Mettre un check sur actif
 
 ## Table Associations
 
-* [X] Gérer l'association entre les idPrestations et les idProjets (Yves)
+* [X] Gérer l'association entre les idPrestations et les idProjets
 
 ## Crud Activités
 
-* [X] Ajouter gestion des types associés (Yves)
+* [X] Ajouter gestion des types associés
 
 ## Gestion des pointages
 
-* [X] Créer la page en HTML (Florent)
-* [ ] Feuille de pointage individuel avec préférences (Florent)
-* [ ] Ajax étoiles préférences (Florent)
-* [X] % sur les lignes de pointage (Florent)
-* [X] Texte invisible en dark mode (Valentin)
-* [X] Message informatif sauvegardes (Valentin)
+* [X] Créer la page en HTML
+* [ ] Feuille de pointage individuel avec préférences
+* [ ] Ajax étoiles préférences
+* [X] % sur les lignes de pointage
+* [X] Texte invisible en dark mode
+* [X] Message informatif sauvegardes
 * [ ] Récapitulatif pointage pour manager
 * [ ] Récapitulatif pointage pour ARH
 * [ ] Precision pour les RTT
 * [ ] Gestion des logs (Yves)
 * [ ] Gestion de l'envoi de mail
+* [ ] Mettre les title sur les inputs (php + ajax)
 
 ## Tableaux de bord (Fabien)
 
@@ -78,36 +79,37 @@
 ## CRUD Prestations
 
 * [X] Mettre des checks plutot que 0/1
-* [X] Remplacer l'input IdActivite par un select dans FormPrestations (Alexandre)
+* [X] Remplacer l'input IdActivite par un select dans FormPrestations
 
 ## Connexion
 
 * [X] Supprimer la partie inscription
-* [X] Changer la connexion avec le matricule plutôt que l'adresse mail (Martine)
-* [X] Retravailler le formulaire de changement de mot de passe (Yves)
+* [X] Changer la connexion avec le matricule plutôt que l'adresse mail
+* [X] Retravailler le formulaire de changement de mot de passe
 
 ## CSS
 
-* [ ] Améliorer le design (Valentin)
+* [X] Améliorer le design
 
 ## Type Prestation
 
-* [X] CRUD Modifier par des checkBox (Colin)
-* [X] Ajouter le sous formulaire pour choisir les activités associées (Yves)
-* [X] AJAX pour gérer les activités associées (Alexandre)
+* [X] CRUD Modifier par des checkBox
+* [X] Ajouter le sous formulaire pour choisir les activités associées
+* [X] AJAX pour gérer les activités associées
 
 ## Jeux de données
 
-* [ ] Compléter le jeux de données (Martine)
+* [X] Compléter le jeux de données
+* [ ] Mettre à jour les préférences pour les utilisateurs finaux
 
 ## CRUD Motifs
 
-* [X] Remplacer l'input IdTypePrestation par un select (Alexandre)
+* [X] Remplacer l'input IdTypePrestation par un select
 
-## Gestion de l'archivage (Martine)
+## Gestion de l'archivage V2
 
 * [ ] HF
 
 ## Feriés
 
-* [X] Visuel du chargement des fériés de l'année (Yves)
+* [X] Visuel du chargement des fériés de l'année

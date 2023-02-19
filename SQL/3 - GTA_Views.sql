@@ -120,18 +120,18 @@ DROP VIEW IF EXISTS gta_View_Pointages_NbHeures;
 CREATE VIEW gta_View_Pointages_NbHeures AS
 SELECT
     date_format(po.datePointage, "%Y-%m") as periode,
-    po.nbHeuresPointage,
+    sum(po.nbHeuresPointage),
     u.idUtilisateur,
     u.nomUtilisateur,
     u.mailUtilisateur,
     u.matriculeUtilisateur,
-    u.passwordUtilisateur,
     u.idUo as "idUo_Utilisateur",
     u.idRole,
     u.idManager
 FROM
     gta_Pointages po
-    LEFT JOIN gta_Utilisateurs u ON po.idUtilisateur = u.idUtilisateur;
+    LEFT JOIN gta_Utilisateurs u ON po.idUtilisateur = u.idUtilisateur
+Group BY u.idUtilisateur, periode;
 
 --
 -- Vue Preferences
