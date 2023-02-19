@@ -121,6 +121,8 @@ CREATE VIEW gta_View_Pointages_Periode AS
 SELECT
     date_format(po.datePointage, "%Y-%m") as periode,
     sum(po.nbHeuresPointage) as cumulPointage,
+    po.validePointage,
+    po.reportePointage,
     u.idUtilisateur,
     u.nomUtilisateur,
     u.mailUtilisateur,
@@ -131,7 +133,7 @@ SELECT
 FROM
     gta_Pointages po
     LEFT JOIN gta_Utilisateurs u ON po.idUtilisateur = u.idUtilisateur
-Group BY u.idUtilisateur, periode;
+Group BY u.idUtilisateur, periode, po.validePointage, po.reportePointage;
 
 --
 -- Vue Preferences

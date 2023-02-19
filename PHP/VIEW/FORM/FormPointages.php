@@ -3,7 +3,7 @@ global $mois;
 global $joursSemaine;
 $idUtilisateur =  (isset($_GET['idUtilisateur']))?$_GET['idUtilisateur']:$_SESSION['utilisateur']->getIdUtilisateur();
 
-$periode = (isset($_GET['periode']))?$_GET['periode']:periodeEnCours($idUtilisateur);
+$periode = (isset($_GET['periode']))?$_GET['periode']:periodeEnCours($idUtilisateur,"Pointage");
 // Preparation des données issus de l'idUtilisateur et de la période
 $user = View_UtilisateursManager::getList(null, ["idUtilisateur" => $idUtilisateur])[0];
 $periodeTab = explode("-", $periode);

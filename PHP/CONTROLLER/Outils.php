@@ -228,16 +228,36 @@ function tabMoisAnnee()
 	return $tabMoisAnnee;
 }
 
-function periodeEnCours($idUtilisateur)
+function periodeEnCours($idUtilisateur, $type)
 {
 	// on teste uniquement sur le mois précédent
-	$periode = date("Y") . '-' . str_pad(date("m")*1-1, 2, "0", STR_PAD_LEFT);
-	$nbJour = View_Pointages_PeriodeManager::getList(null,['idUtilisateur'=>$idUtilisateur,"periode"=>$periode]);
-	$nbJourAPointe = NbJourParPeriode($periode);
-	if (count($nbJour)==0 || $nbJour[0]->getCumulPointage() < $nbJourAPointe)
-	return date("Y") . '-' . str_pad(date("m")*1-1, 2, "0", STR_PAD_LEFT);
-	return date("Y") . '-' . str_pad(date("m"), 2, "0", STR_PAD_LEFT);
+	$periode = date("Y") . '-' . str_pad(date("m") * 1 - 1, 2, "0", STR_PAD_LEFT);
+	switch ($type) {
+		case 'Pointage':
+			$nbJour = View_Pointages_PeriodeManager::SommePointage($idUtilisateur, $periode);
+			$nbJourAPointe = NbJourParPeriode($periode);
 
+			if ($nbJour == false || $nbJour < $nbJourAPointe)
+				return date("Y") . '-' . str_pad(date("m") * 1 - 1, 2, "0", STR_PAD_LEFT);
+			return date("Y") . '-' . str_pad(date("m"), 2, "0", STR_PAD_LEFT);
+			break;
+		case 'Valide':
+			$nbValide = View_Pointages_PeriodeManager::NbValide($idUtilisateur, $periode,"Manager");
+			$nbAgent = count(UtilisateursManager::getList(['idUtilisateur'], [ 'idManager' => $idUtilisateur]));
+			if ($nbValide < $nbAgent)
+				return date("Y") . '-' . str_pad(date("m") * 1 - 1, 2, "0", STR_PAD_LEFT);
+			return date("Y") . '-' . str_pad(date("m"), 2, "0", STR_PAD_LEFT);
+
+			break;
+		case 'Reporte':
+			$nbReporte = View_Pointages_PeriodeManager::NbReporte($idUtilisateur, $periode,"Manager");
+			$nbAgent = count(UtilisateursManager::getList(['idUtilisateur'], [ 'idManager' => $idUtilisateur]));
+			if ($nbReporte < $nbAgent)
+				return date("Y") . '-' . str_pad(date("m") * 1 - 1, 2, "0", STR_PAD_LEFT);
+			return date("Y") . '-' . str_pad(date("m"), 2, "0", STR_PAD_LEFT);
+
+			break;
+	}
 }
 function NbJourParPeriode($periode)
 {

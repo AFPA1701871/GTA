@@ -1,4 +1,5 @@
 <?php
+$periode = "2023-01";
 $nbReports = 0;
 $totalAgents = 0;
 echo '<div class="bigEspace"></div>';
@@ -20,9 +21,9 @@ echo '<section id="tabManagers">';
         $idManager = $manager->getIdUtilisateur();
         echo '<div class="vCenter '.$bgc.'">'.$manager->getNomUtilisateur().'</div>';
         $agents = UtilisateursManager::getList(null, ['idManager'=>$idManager]);
-        $saisi = View_PointagesManager::getList(null, ['idManager'=>$idManager]);
-        $valide = View_PointagesManager::getList(null, ['idManager'=>$idManager, 'validePointage'=>1]);
-        $reporte = View_PointagesManager::getList(null, ['idManager'=>$idManager, 'reportePointage'=>1]);
+        $saisi = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode]);
+        $valide = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode, 'validePointage'=>1]);
+        $reporte = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode, 'reportePointage'=>1]);
 
         echo '<div class="vCenter '.$bgc.'">'.count($saisi).'/'.count($agents).'</div>';
         echo '<div class="vCenter '.$bgc.'">'.count($valide).'/'.count($agents).'</div>';
