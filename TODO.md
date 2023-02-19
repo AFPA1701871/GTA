@@ -86,6 +86,7 @@
 * [X] Supprimer la partie inscription
 * [X] Changer la connexion avec le matricule plutôt que l'adresse mail
 * [X] Retravailler le formulaire de changement de mot de passe
+* [ ] Ajouter un message en cas d'erreur de connexion
 
 ## CSS
 
@@ -113,3 +114,7 @@
 ## Feriés
 
 * [X] Visuel du chargement des fériés de l'année
+
+## Questions
+
+* [ ] Est ce que l'on met une protection sur le pointage avec id dans l'url seul la personne, son manager et les ARH ou personne + tous les managers + tous les ARH ?

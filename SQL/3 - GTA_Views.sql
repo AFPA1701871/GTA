@@ -115,12 +115,12 @@ FROM
 --
 -- Vue Nombre heures pointages par personne par periode
 --
-DROP VIEW IF EXISTS gta_View_Pointages_NbHeures;
+DROP VIEW IF EXISTS gta_View_Pointages_Periode;
 
-CREATE VIEW gta_View_Pointages_NbHeures AS
+CREATE VIEW gta_View_Pointages_Periode AS
 SELECT
     date_format(po.datePointage, "%Y-%m") as periode,
-    sum(po.nbHeuresPointage),
+    sum(po.nbHeuresPointage) as cumulPointage,
     u.idUtilisateur,
     u.nomUtilisateur,
     u.mailUtilisateur,

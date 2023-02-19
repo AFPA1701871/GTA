@@ -1,10 +1,9 @@
 <?php
 global $mois;
 global $joursSemaine;
-/* pour test */
-$idUtilisateur = 1;
+$idUtilisateur =  (isset($_GET['idUtilisateur']))?$_GET['idUtilisateur']:$_SESSION['utilisateur']->getIdUtilisateur();
 
-$periode = '2023-02';
+$periode = (isset($_GET['periode']))?$_GET['periode']:periodeEnCours($idUtilisateur);
 // Preparation des données issus de l'idUtilisateur et de la période
 $user = View_UtilisateursManager::getList(null, ["idUtilisateur" => $idUtilisateur])[0];
 $periodeTab = explode("-", $periode);
@@ -62,12 +61,12 @@ for ($i = 1; $i <= $nbrJoursMois; $i++) {
         $tabJour[$i]["classeBG"] = "noWork";
         $tabJour[$i]["content"] = "";
     } else {
-        $nbJourPointe++;
         $tabJour[$i]["jourOuvert"] = $jour->format("d") . "<br/>" . $joursSemaine[$jour->format('w')];
         if (in_array($jour->format("Y-m-d"), $listeFermeturesDuMois)) {
             $tabJour[$i]["classeBG"] = "notApplicable";
             $tabJour[$i]["content"] = "<input disabled class=' notApplicable inputPointage casePointage'>";
         } else {
+            $nbJourPointe++;
             $tabJour[$i]["classeBG"] = "work";
             $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage case" value type="text" idPointage >';
         }
@@ -140,6 +139,7 @@ foreach ($typesPrestations as $key => $typePresta) {
         echo '                <div class="cellBottom center grid-lineDouble colPrctGTA border-left" ' . $dataline . '></div>';
         echo '                <div class="cellBottom grid-lineDouble"></div>';
         foreach ($tabJour as $i => $value) {
+            $conditions=[];
             $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
             $content = str_replace("data-line", $dataline, $value['content']);
             $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
@@ -149,8 +149,8 @@ foreach ($typesPrestations as $key => $typePresta) {
             $conditions["idPrestation"] = $prestation->getIdPrestation();
             $conditions["datePointage"] = $jour->format("Y-m-d");
             if ($prestation->getMotifRequis() && $prestation->getIdMotif()!=null) $conditions["idMotif"] = $prestation->getIdMotif();
-            if ($prestation->getProjetRequis()&& $prestation->getIdProjet()!=null) $conditions["idProjet"] = $prestation->getIdProjet();
-            if ($prestation->getUoRequis()&& $prestation->getIdUo()!=null) $conditions["idUo"] = $prestation->getIdUo();;
+            if ($prestation->getProjetRequis() && $prestation->getIdProjet()!=null) $conditions["idProjet"] = $prestation->getIdProjet();
+            if ($prestation->getUoRequis() && $prestation->getIdUo()!=null) $conditions["idUo"] = $prestation->getIdUo();
             $pointage = PointagesManager::getList(null, $conditions, null, null, false, false);
             if ($pointage != false) {
                 $content = str_replace("value", ' value="' . $pointage[0]->getNbHeuresPointage() . '" ', $content);

@@ -11,6 +11,17 @@ listePlus.forEach(element => {
   element.addEventListener("click", clicPlus);
 });
 
+/* gestion combo periode */
+comboPeriode = document.querySelector("#periode");
+comboPeriode.addEventListener("change", function (event) {
+  url = new URL(window.location.href);
+  idUser = url.searchParams.get('idUtilisateur')
+  if (idUser == null)
+    window.location.href = "index.php?page=FormPointages&periode=" + event.target.value;
+  else
+    window.location.href = "index.php?page=FormPointages&idUtilisateur=" + idUser + "&periode=" + event.target.value;
+})
+
 function changePointage(event) {
   let pointage = event.target; // Case de pointage changée
   let idpointage = pointage.getAttribute('data-idpointage');// Id de le la case
@@ -187,11 +198,11 @@ function reportSelect(event) {
 
 function SelectToInput(type, ligne) {
   condSource = 'select[data-line="' + ligne + '"][name="id' + type + '"]'
-  classe=(type=="Prestation")?"":"inputPointage"
+  classe = (type == "Prestation") ? "" : "inputPointage"
   source = document.querySelector(condSource);
   if (source != null) {
-    valeur = (source.value!="") ? source.selectedOptions[0].label : "";
-    cible = '<input class="'+classe+'" data-line="' + ligne + '" type="text" name="input' + type + '" value="' + valeur + '" disabled="" title=""></input>';
+    valeur = (source.value != "") ? source.selectedOptions[0].label : "";
+    cible = '<input class="' + classe + '" data-line="' + ligne + '" type="text" name="input' + type + '" value="' + valeur + '" disabled="" title=""></input>';
     input = document.createElement("input")
     input.innerHTML = cible
     source.parentNode.replaceChild(input.children[0], source)
