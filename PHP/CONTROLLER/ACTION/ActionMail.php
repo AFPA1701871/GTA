@@ -1,12 +1,18 @@
 <?php
 
+/**
+ * Permet d'envoyer un mail de relance pour la saisie du pointage
+ *
+ * @param string $adresseMail Adresse mail du destinataire
+ * @return void
+ */
 function envoiMailRelance($adresseMail)
 {
-	$sujet = "GTA - Relance pour la saisie du pointage";
+	$sujet = "GTA - Relance pour la saisie de votre pointage";
 	$from = "pointage@afpadunkerque.fr";
 
 	// Corps du texte
-	$message ='<!DOCTYPE html>
+	$message = '<!DOCTYPE html>
 	<html lang="fr">
 		<head>
 			<meta charset="UTF-8">
@@ -39,7 +45,7 @@ function envoiMailRelance($adresseMail)
 	</html>';
 
 	// Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
-	$headers = 'From: ' . $from . PHP_EOL; 
+	$headers = 'From: ' . $from . PHP_EOL;
 	$headers .= 'MIME-Version: 1.0' . PHP_EOL;
 	$headers .= "Content-Type: text/html; charset=UTF-8" . PHP_EOL;
 	$headers .= "Content-Transfer-Encoding: base64;";
@@ -48,4 +54,32 @@ function envoiMailRelance($adresseMail)
 	return mail($adresseMail, $sujet, $message, $headers);
 }
 
-envoiMailRelance("GTA@example.gr");
+
+/**
+ * Vérifie si le pointage d'un agent n'est pas rempli et le cas échéant envoie un mail de relance à l'agent
+ *
+ * @return void
+ */
+function checkEnvoiMail()
+{
+	// Récupération de la liste des agents
+	$agents = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur']);
+
+	// Pour chaque agent
+	foreach ($agents as $key => $agent) {
+		$idAgent = $agent->getIdUtilisateur();
+
+		// Calcul de la période
+		$periode = periodeEnCours($idAgent, "Valide");
+
+		// Récupération du pointage pour la période
+		$pointage = View_Pointages_PeriodeManager::SommePointage($idAgent, $periode);
+
+		// Si pointage vide ou si pointage incomplet
+		if ($pointage == null || $pointage < NbJourParPeriode($periode)) {
+			
+			// Envoi de mail
+			envoiMailRelance($agent->getMailUtilisateur());
+		}
+	}
+}
