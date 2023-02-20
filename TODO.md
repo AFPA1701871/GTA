@@ -60,8 +60,8 @@
 ## Gestion des pointages
 
 * [X] Créer la page en HTML
-* [ ] Feuille de pointage individuel avec préférences
-* [ ] Ajax étoiles préférences
+* [X] Feuille de pointage individuel avec préférences
+* [X] Ajax étoiles préférences
 * [X] % sur les lignes de pointage
 * [X] Texte invisible en dark mode
 * [X] Message informatif sauvegardes

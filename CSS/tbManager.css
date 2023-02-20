@@ -15,7 +15,7 @@ main {
 }
 #tabAgents {
     display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr 1fr;
+    grid-template-columns: 3fr 1.5fr 1fr 1fr 1fr 1fr;
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
@@ -37,4 +37,15 @@ flex-direction: column;
 
 .gras {
     font-weight: bold;
+}
+
+.fa-green {
+    color: green !important;
+}
+
+.fa-orange {
+    color: orange !important;
+}
+.fa-white {
+    color: white !important;
 }

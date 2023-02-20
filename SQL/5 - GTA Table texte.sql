@@ -378,4 +378,8 @@ VALUES
         'onlymnsp',
         'Le projet à renseigner ne concerne que les prestations MNSP !',
         'The project needs to be filled only for MNSP services!'
-    );
+    ),
+    (114, 'TbAssistante', 'Tableau de Bord Assistante', 'Assistant Dashboard'),
+    (115, 'TbManager', 'Tableau de Bord Manager', 'Manager Dashboard'),
+    (116, 'TableauBord', 'Tableau de Bord ', 'Dashboard')
+    ;

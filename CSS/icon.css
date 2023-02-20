@@ -140,3 +140,13 @@
     content: "\f0c7";
     margin-left: 0.5em;
 }
+.fa-clock::before {
+    content: "\f017";
+}
+
+.fa-user-check::before {
+    content: "\f4fc";
+}
+.fa-circle::before {
+    content: "\f111";
+}

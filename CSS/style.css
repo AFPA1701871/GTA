@@ -426,13 +426,12 @@ footer #backToTop {
 }
 
 .fa-green {
-    color: var(--inputCorrect);
+    color: var(--inputCorrect) !important;
 }
 
 .fa-red {
-    color: var(--inputIncorrect);
+    color: var(--inputIncorrect) !important;
 }
-
 .removeShadow {
     box-shadow: unset;
 }

@@ -88,7 +88,13 @@ foreach ($typesPrestations as $key => $typePresta) {
     foreach ($listePrestation as $prestation) {
         $numPresta++; // permet de numéroter les prestations
         $dataline = ' data-line="' . $numPresta . '"';
-        $classFavorisActif=($prestation->getIdPreference()!=null)?'favActive':'';
+        // recherche si prestation fait parti des preferences 
+        $cond =["idUtilisateur"=>$prestation->getIdUtilisateur(),"idTypePrestation"=>$prestation->getIdTypePrestation(),"idPrestation"=>$prestation->getIdPrestation()];
+        if ($prestation->getIdUo()!=null) $cond["idUo"]=$prestation->getIdUo();
+        if ($prestation->getIdMotif()!=null) $cond["idMotif"]=$prestation->getIdMotif();
+        if ($prestation->getIdProjet()!=null) $cond["idProjet"]=$prestation->getIdProjet();
+        $pref = PreferencesManager::getList(null,$cond);
+        $classFavorisActif=(count($pref)>0 && $pref[0]->getIdPreference()!=null)?'favActive':'';
         // 9 parties constituants la prestation
         echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
                     <input name="idTypePrestation" type=hidden value=' . $idTypePrestation . ' ' . $dataline . '>
