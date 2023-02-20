@@ -6,13 +6,15 @@ $totalRempli=0;
 $totalValide=0;
 // ********** PREMIERE COLONNE **********
 echo '<div class="cote"></div>';
-echo '<section class="section1">';
-$idManager = (isset($_GET['idManager'])) ? $_GET['idManager'] : $_SESSION['utilisateur']->getIdUtilisateur();
+echo '<section class=colonne>';
+$idManager = (isset($_GET['idUtilisateur'])) ? $_GET['idUtilisateur'] : $_SESSION['utilisateur']->getIdUtilisateur();
+$manager = UtilisateursManager::findById($idManager);
 $agents = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur'], ['idManager' => $idManager,"actif"=>1], 'nomUtilisateur');
-$periode = periodeEnCours($idManager, "Valide");
+$periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idManager, "Valide");
 // *** partie combobox mois/annee ***
-echo '<div id="divComboDate">';
-echo creerSelectTab($periode, tabMoisAnnee(), 'comboDate', true);
+echo '<div id="divComboDate" class="demi center">';
+echo creerSelectTab($periode, tabMoisAnnee(), 'periode', true);
+echo '<div class="mini"></div><div class="center">Manager concerné : '. $manager->getNomUtilisateur().'</div>';
 echo '</div>';
 
 // *** partie tableau agents ***
@@ -23,7 +25,6 @@ echo '<div class="vCenter gras">Rempli à</div>';
 echo '<div class="vCenter gras">Statut</div>';
 echo '<div class="vCenter gras">Valider</div>';
 echo '<div class="vCenter gras">Pointage</div>';
-echo '<div class="cote"></div>';
 
 foreach ($agents as $key => $agent) {
     $disabled=" <a></a>";
@@ -40,13 +41,13 @@ foreach ($agents as $key => $agent) {
     elseif ($valide == 1)
     {   //validé
         $statut = '<i class="fas fa-check fa-green"></i>';
-        $disabled='<a href="index.php?page=Synthese&id='.$agent->getIdUtilisateur().'"><i class="fas fa-user-check"></i></a>';
+        $disabled='<a href="index.php?page=Synthese&idUtilisateur='.$agent->getIdUtilisateur().'"><i class="fas fa-user-check"></i></a>';
         $totalRempli += $pointage;
         $totalValide += $pointage;
     }
     else {//terminé
         $statut = '<i class="fas fa-circle fa-green"></i>';
-        $disabled='<a href="index.php?page=Synthese&id='.$agent->getIdUtilisateur().'"><i class="fas fa-user-check"></i></a>';
+        $disabled='<a href="index.php?page=Synthese&idUtilisateur='.$agent->getIdUtilisateur().'&periode='.$periode.'"><i class="fas fa-user-check"></i></a>';
         $totalRempli += $pointage;
     }
     $bgc = ($key % 2 == 0) ? '' : 'bgc';
@@ -55,13 +56,13 @@ foreach ($agents as $key => $agent) {
     echo '<div class="vCenter ' . $bgc . '">'.$statut.'</div>';
     echo '<div class="vCenter ' . $bgc . '">'.$disabled.'</div>';
     echo '<div class="vCenter ' . $bgc . '"><a href="index.php?page=FormPointages&periode='.$periode.'&idUtilisateur='.$agent->getIdUtilisateur().'"><i class="fas fa-clock"></i></a></div>';
-    echo '<div class="cote"></div>';
+    
 }
 echo '</div>';
 echo '</section>';
-
+echo '<div class="cote"></div>';
 // ********** DEUXIEME COLONNE **********
-echo '<section class="section2">';
+echo '<section class="colonne">';
 echo '<input type="hidden" id="rempli" value='.$totalRempli / count($agents).'>';
 echo '<input type="hidden" id="valide" value='.$totalValide / count($agents).'>';
 
@@ -79,4 +80,5 @@ echo '</div>';
 
 // ********** FIN DEUXIEME COLONNE **********
 echo '</section>';
+echo '<div class="cote"></div>';
 echo '</main>';

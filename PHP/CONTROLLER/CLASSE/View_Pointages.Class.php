@@ -11,6 +11,8 @@ class View_Pointages
 	private $_validePointage;
 	private $_reportePointage;
 	private $_nbHeuresPointage;
+	private $_idUo_Pointage;
+	private $_idMotif;
 	private $_idUtilisateur;
 	private $_nomUtilisateur;
 	private $_mailUtilisateur;
@@ -19,13 +21,10 @@ class View_Pointages
 	private $_idUo_Utilisateur;
 	private $_idRole;
 	private $_idManager;
-	private $_idUo_Pointage;
 	private $_numeroUo;
 	private $_libelleUo;
-	private $_idMotif;
 	private $_codeMotif;
 	private $_libelleMotif;
-	private $_idTypePrestation;
 	private $_idProjet;
 	private $_codeProjet;
 	private $_libelleProjet;
@@ -33,7 +32,10 @@ class View_Pointages
 	private $_codePrestation;
 	private $_libellePrestation;
 	private $_idActivite;
-	private static $_attributes = ["idPointage", "datePointage", "validePointage", "reportePointage", "nbHeuresPointage", "idUtilisateur", "nomUtilisateur", "mailUtilisateur", "matriculeUtilisateur", "passwordUtilisateur", "idUo_Utilisateur", "idRole", "idManager", "idUo_Pointage", "numeroUo", "libelleUo", "idMotif", "codeMotif", "libelleMotif", "idTypePrestation", "idProjet", "codeProjet", "libelleProjet", "idPrestation", "codePrestation", "libellePrestation", "idActivite"];
+	private $_idTypePrestation;
+	private $_numeroTypePrestation;
+	private $_libelleTypePrestation;
+	private static $_attributes=["idPointage","datePointage","periode","validePointage","reportePointage","nbHeuresPointage","idUo_Pointage","idMotif","idUtilisateur","nomUtilisateur","mailUtilisateur","matriculeUtilisateur","passwordUtilisateur","idUo_Utilisateur","idRole","idManager","numeroUo","libelleUo","codeMotif","libelleMotif","idProjet","codeProjet","libelleProjet","idPrestation","codePrestation","libellePrestation","idActivite","idTypePrestation","numeroTypePrestation","libelleTypePrestation"];
 	/***************** Accesseurs ***************** */
 
 
@@ -316,7 +318,25 @@ class View_Pointages
 	{
 		$this->_idActivite = $idActivite;
 	}
+	public function getNumeroTypePrestation()
+	{
+		return $this->_numeroTypePrestation;
+	}
 
+	public function setNumeroTypePrestation($numeroTypePrestation)
+	{
+		$this->_numeroTypePrestation = $numeroTypePrestation;
+	}
+
+	public function getLibelleTypePrestation()
+	{
+		return $this->_libelleTypePrestation;
+	}
+
+	public function setLibelleTypePrestation($libelleTypePrestation)
+	{
+		$this->_libelleTypePrestation = $libelleTypePrestation;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;
@@ -353,4 +373,6 @@ class View_Pointages
 	{
 		return "IdPointage : " . $this->getIdPointage() . "DatePointage : " . $this->getDatePointage() . "ValidePointage : " . $this->getValidePointage() . "ReportePointage : " . $this->getReportePointage() . "NbHeuresPointage : " . $this->getNbHeuresPointage() . "IdUtilisateur : " . $this->getIdUtilisateur() . "NomUtilisateur : " . $this->getNomUtilisateur() . "MailUtilisateur : " . $this->getMailUtilisateur() . "MatriculeUtilisateur : " . $this->getMatriculeUtilisateur() . "PasswordUtilisateur : " . $this->getPasswordUtilisateur() . "IdUo_Utilisateur : " . $this->getIdUo_Utilisateur() . "IdRole : " . $this->getIdRole() . "IdManager : " . $this->getIdManager() . "IdUo_Pointage : " . $this->getIdUo_Pointage() . "NumeroUo : " . $this->getNumeroUo() . "LibelleUo : " . $this->getLibelleUo() . "IdMotif : " . $this->getIdMotif() . "CodeMotif : " . $this->getCodeMotif() . "LibelleMotif : " . $this->getLibelleMotif() . "IdTypePrestation : " . $this->getIdTypePrestation() . "IdProjet : " . $this->getIdProjet() . "CodeProjet : " . $this->getCodeProjet() . "LibelleProjet : " . $this->getLibelleProjet() . "IdPrestation : " . $this->getIdPrestation() . "CodePrestation : " . $this->getCodePrestation() . "LibellePrestation : " . $this->getLibellePrestation() . "IdActivite : " . $this->getIdActivite() . "\n";
 	}
+
+	
 }

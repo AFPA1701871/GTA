@@ -29,6 +29,7 @@ $routes = [
 	"Accueil" => ["PHP/VIEW/GENERAL/", "Accueil", "Accueil", 0, false],
 	"TbAssistante" => ["PHP/VIEW/GENERAL/", "TbAssistante", "Tableau de bord de l'assistante", 3, false],
 	"TbManager" => ["PHP/VIEW/GENERAL/", "TbManager", "Tableau de bord du manager", 2, false],
+	"Synthese" => ["PHP/VIEW/GENERAL/", "Synthese", "Synthese utilisateur", 2, false],
 
 	"ActionConnexion" => ["PHP/CONTROLLER/ACTION/", "ActionConnexion", "Action de la connexion", 0, false],
 	"ChangePassword" => ["PHP/VIEW/GENERAL/", "ChangePassword", "Modification du mot de passe", 0, false],

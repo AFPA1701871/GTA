@@ -2,18 +2,29 @@
 $periode = "2023-01";
 $nbReports = 0;
 $totalAgents = 0;
+
+$totalRempli=0;
+$totalValide=0;
+$idManager = $_SESSION['utilisateur']->getIdUtilisateur();
 echo '<div class="bigEspace"></div>';
 echo '<main>';
+$periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idManager, "Valide");
 
 // ********** PRMIERE COLONNE **********
 echo '<div class="cote"></div>';
-echo '<section id="tabManagers">';
+echo '<section class=colonne>';
+// *** partie combobox mois/annee ***
+echo '<div id="divComboDate" class="demi center">';
+echo creerSelectTab($periode, tabMoisAnnee(), 'periode', true);
+echo '<div ></div>';
+echo '</div>';
+
+echo '<div id="tabManagers">';
     echo '<div class="vCenter gras">Nom du Manager</div>';
     echo '<div class="vCenter gras">Saisis</div>';
     echo '<div class="vCenter gras">Validés</div>';
     echo '<div class="vCenter gras">Report SIRH</div>';
     echo '<div class="vCenter"></div>';
-    echo '<div class="cote"></div>';
 
     $managers = UtilisateursManager::getList(['idUtilisateur','nomUtilisateur'], ['idRole'=>2], 'nomUtilisateur');
     foreach ($managers as $key => $manager) {
@@ -28,19 +39,24 @@ echo '<section id="tabManagers">';
         echo '<div class="vCenter '.$bgc.'">'.count($saisi).'/'.count($agents).'</div>';
         echo '<div class="vCenter '.$bgc.'">'.count($valide).'/'.count($agents).'</div>';
         echo '<div class="vCenter '.$bgc.'">'.count($reporte).'/'.count($agents).'</div>';
-        echo '<div class="vCenter '.$bgc.'"><a class="'.$bgc.'" href="index.php?page=FormCentres&amp;mode=Afficher&amp;id=20"><i class="fas fa-file-contract"></i></a></div>';
-        echo '<div class="cote "></div>';
+        echo '<div class="vCenter '.$bgc.'"><a class="'.$bgc.'" href="index.php?page=TbManager&idUtilisateur='.$idManager.'&periode='.$periode.'"><i class="fas fa-file-contract"></i></a></div>';
         $nbReports += count($reporte);
         $totalAgents += count($agents);
+        $totalRempli += count($saisi);
+        $totalValide += count($valide);
     }
-echo '</section>';
+echo '</div></section>';
 
+echo '<div class="cote"></div>';
 // ********** DEUXIEME COLONNE **********
-echo '<section class="section2">';
+echo '<section class="colonne">';
+
     // ***** CAMEMBERT *****
     $reportPourcentage = $nbReports * 100 / $totalAgents;
     echo '<div class="camembert">';
-    echo '<input type="hidden" id="reporte" value='.$reportPourcentage.'>';
+    echo '<input type="hidden" id="rempli" value='.$totalRempli * 100 / $totalAgents.'>';
+    echo '<input type="hidden" id="valide" value='.$totalValide * 100 / $totalAgents.'>';
+    echo '<input type="hidden" id="reporte" value='.$nbReports * 100 / $totalAgents.'>';
     echo'<canvas id="chart" data-role="assistante"></canvas>';
     echo '</div>';
 

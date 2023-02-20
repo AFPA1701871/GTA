@@ -1,0 +1,65 @@
+main {
+    display: grid;
+    grid-template-columns: 0.5fr 3fr 0.5fr 2fr 0.5fr;
+}
+
+
+#tabAgents {
+    display: grid;
+    grid-template-columns: 3fr 1.5fr 1fr 1fr 1fr;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+#tabAgents >div, #tabManagers >div, #tabPointage >div{
+    padding: 0.3rem;
+}
+
+#tabManagers {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+    padding-bottom: 8rem;
+} 
+
+#tabReModif {
+    display: grid;
+    grid-template-columns: 1fr 2fr 0.5fr;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+#tabPointage
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+.vCenter {
+    align-items: center;
+    padding-left: 0.5rem;
+}
+
+.camembert {
+    height: 50vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.gras {
+    font-weight: bold;
+}
+
+.fa-green {
+    color: green !important;
+}
+
+.fa-orange {
+    color: orange !important;
+}
+.fa-white {
+    color: white !important;
+}
+button{
+    max-width: fit-content;
+    padding: 0.5rem;
+    cursor: pointer;
+}

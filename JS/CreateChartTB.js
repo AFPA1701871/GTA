@@ -1,6 +1,7 @@
 // Récupération du canvas
 const ctx = document.getElementById("chart");
 
+
 // Changement de la couleur des labels du camenbert
 dark = (checkbox.checked) ? '#F0EEED' : 'black';
 checkbox.addEventListener('change', () => {
@@ -50,16 +51,29 @@ if (ctx.getAttribute("data-role") == "manager") {
     // Chart Assistante
 
     // Récupération des valeurs
+    rempli = document.getElementById("rempli").value;
+    valide = document.getElementById("valide").value;
     reporte = document.getElementById("reporte").value;
 
     // Données du camembert
     data = {
-        labels: ["Reporté", "Non reporté"],
+        labels: ["Saisi", "Non saisi", "Validé", "Non validé","Reporté", "Non reporté"],
         datasets: [
             {
+                label: "Taux de remplissage agent du mois en cours",
+                data: [rempli, 100 - rempli],
+                backgroundColor: ["#A5EBF0", "#C6C6C6"],
+                hoverOffset: 4,
+            },
+            {
+                label: "Proportion de validation du mois en cours",
+                data: [valide, 100 - valide],
+                backgroundColor: ["#609EA2", "#898989"],
+                hoverOffset: 4,
+            },{
                 label: "Pourcentage de report du mois en cours",
                 data: [reporte, 100 - reporte],
-                backgroundColor: ["#A5EBF0", "#C6C6C6"],
+                backgroundColor: ["#F0EEED", "#C6C6C6"],
                 hoverOffset: 4,
             },
         ],
@@ -75,6 +89,7 @@ const config = {
         responsive: true,
         plugins: {
             legend: {
+                position:'right',
                 // desactiver le clic sur les labels
                 onClick: (e) => e.stopPropagation(),
                 labels: {

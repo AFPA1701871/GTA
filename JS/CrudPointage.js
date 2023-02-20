@@ -11,16 +11,6 @@ listePlus.forEach(element => {
   element.addEventListener("click", clicPlus);
 });
 
-/* gestion combo periode */
-comboPeriode = document.querySelector("#periode");
-comboPeriode.addEventListener("change", function (event) {
-  url = new URL(window.location.href);
-  idUser = url.searchParams.get('idUtilisateur')
-  if (idUser == null)
-    window.location.href = "index.php?page=FormPointages&periode=" + event.target.value;
-  else
-    window.location.href = "index.php?page=FormPointages&idUtilisateur=" + idUser + "&periode=" + event.target.value;
-})
 
 function changePointage(event) {
   let pointage = event.target; // Case de pointage changée

@@ -21,31 +21,28 @@ if (isset($page)) {
             <script src="./JS/Pagination.js"></script>
             ';
         } else if ($matches[0] == "Form") {
-            if ($page[1] != "FormPointages")
-            {
+            if ($page[1] != "FormPointages") {
                 echo '<script src="./JS/VerifForm.js"></script>';
             }
             if ($page[1] == "FormTypePrestations" && $_GET["mode"] == "Modifier") {
                 echo '<script src="./JS/CheckActivites.js"></script>';
             }
-            if ($page[1] == "FormPointages" ) {
+            if ($page[1] == "FormPointages") {
                 echo '<script src="./JS/CrudPointage.js"></script>';
                 echo ' <script src="./JS/Pointage.js"></script>';
             }
-        } 
+        }
     }
     switch ($page[1]) {
         case "ChangePassword":
             echo '<script src="./JS/VerifFormMdp.js"></script>';
             break;
         case "TbAssistante":
-            echo '<script src="./JS/Chart.js"></script>';
-            echo '<script src="./JS/CreateChartTB.js"></script>';
-            break;
         case "TbManager":
             echo '<script src="./JS/Chart.js"></script>';
             echo '<script src="./JS/CreateChartTB.js"></script>';
             break;
+        case "Synthese": 
         case 'ListeFermetures':
             echo '<script src="./JS/JoursFeries.js"></script>';
             break;

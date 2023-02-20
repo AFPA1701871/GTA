@@ -35,3 +35,15 @@ checkbox.addEventListener('change', ()=>{
     sessionStorage.setItem("darkmode", "false");
   }
 })
+
+// 
+/* gestion combo periode */
+comboPeriode = document.querySelector("#periode");
+comboPeriode.addEventListener("change", function (event) {
+  url = new URL(window.location.href);
+  idUser = url.searchParams.get('idUtilisateur')
+  if (idUser == null)
+    window.location.href = "index.php?page="+url.searchParams.get('page')+"&periode=" + event.target.value;
+  else
+    window.location.href = "index.php?page="+url.searchParams.get('page')+"&idUtilisateur=" + idUser + "&periode=" + event.target.value;
+})
