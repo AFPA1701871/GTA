@@ -12,17 +12,19 @@ if ($elm->getProjetRequis() == null) {
 	$elm->setProjetRequis(0);
 }
 
-// On désactive le rendu de < et >
-$libelle = htmlentities($elm->getLibelleTypePrestation());
-$elm->setLibelleTypePrestation($libelle);
-
 switch ($_GET['mode']) {
 	case "Ajouter": {
+		// On désactive le rendu de < et >
+		$libelle = htmlentities($elm->getLibelleTypePrestation());
+		$elm->setLibelleTypePrestation($libelle);
 		$elm = TypePrestationsManager::add($elm);
 		header("location:index.php?page=FormTypePrestations&mode=Modifier&id=" . $elm);
 		break;
 	}
 	case "Modifier": {
+		// On désactive le rendu de < et >
+		$libelle = htmlentities($elm->getLibelleTypePrestation());
+		$elm->setLibelleTypePrestation($libelle);
 		$elm = TypePrestationsManager::update($elm);
 		header("location:index.php?page=ListeTypePrestations");
 		break;

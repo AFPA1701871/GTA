@@ -1,16 +1,18 @@
 <?php
 $elm = new Centres($_POST);
 
-// On désactive le rendu de < et >
-$nom = htmlentities($elm->getNomCentre());
-$elm->setNomCentre($nom);
-
 switch ($_GET['mode']) {
 	case "Ajouter": {
+		// On désactive le rendu de < et >
+		$nom = htmlentities($elm->getNomCentre());
+		$elm->setNomCentre($nom);
 		$elm = CentresManager::add($elm);
 		break;
 	}
 	case "Modifier": {
+		// On désactive le rendu de < et >
+		$nom = htmlentities($elm->getNomCentre());
+		$elm->setNomCentre($nom);
 		$elm = CentresManager::update($elm);
 		break;
 	}

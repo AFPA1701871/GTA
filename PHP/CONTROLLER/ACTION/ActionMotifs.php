@@ -1,16 +1,18 @@
 <?php
 $elm = new Motifs($_POST);
 
-// On désactive le rendu de < et >
-$libelle = htmlentities($elm->getLibelleMotif());
-$elm->setLibelleMotif($libelle);
-
 switch ($_GET['mode']) {
 	case "Ajouter": {
+		// On désactive le rendu de < et >
+		$libelle = htmlentities($elm->getLibelleMotif());
+		$elm->setLibelleMotif($libelle);
 		$elm = MotifsManager::add($elm);
 		break;
 	}
 	case "Modifier": {
+		// On désactive le rendu de < et >
+		$libelle = htmlentities($elm->getLibelleMotif());
+		$elm->setLibelleMotif($libelle);
 		$elm = MotifsManager::update($elm);
 		break;
 	}
