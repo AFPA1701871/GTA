@@ -53,7 +53,8 @@ class View_Pointages_PeriodeManager
 	public static function NbReporte($idUtilisateur,$periode,$pointDeVue)
 	{
 		$db = DbConnect::getDb();
-        $q = $db->query('SELECT distinct idUtilisateur as nb FROM gta_View_Pointages_Periode WHERE id'.$pointDeVue.'=' . $idUtilisateur . '  AND periode = "' . $periode . '" AND reportePointage= 1');
+		$cond =  ($pointDeVue=="Utilisateur")?"idUtilisateur=" . $idUtilisateur ." AND ":""; 
+        $q = $db->query('SELECT distinct idUtilisateur as nb FROM gta_View_Pointages_Periode WHERE '.$cond.'  periode = "' . $periode . '" AND reportePointage= 1');
         $liste = [];
         if (!$q) {
             return false;

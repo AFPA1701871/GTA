@@ -6,7 +6,7 @@ main {
 
 #tabAgents {
     display: grid;
-    grid-template-columns: 3fr 1.5fr 1fr 1fr 1fr;
+    grid-template-columns: 3fr 1.5fr 1fr 1fr 1fr 1fr;
     padding-top: 5rem;
     padding-bottom: 5rem;
 }
@@ -32,6 +32,9 @@ main {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     padding-top: 5rem;
     padding-bottom: 5rem;
+}
+.span3{
+    grid-column: span 3;
 }
 .vCenter {
     align-items: center;

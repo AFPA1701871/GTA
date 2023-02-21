@@ -72,7 +72,7 @@
 * [ ] Gestion de l'envoi de mail
 * [ ] Mettre les title sur les inputs (php + ajax)
 
-## Tableaux de bord (Fabien)
+## Tableaux de bord 
 
 * [ ] Ajouter des titres aux grids
 

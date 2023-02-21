@@ -5,12 +5,12 @@ $totalAgents = 0;
 
 $totalRempli=0;
 $totalValide=0;
-$idManager = $_SESSION['utilisateur']->getIdUtilisateur();
+$idUtilisateur = $_SESSION['utilisateur']->getIdUtilisateur();
 echo '<div class="bigEspace"></div>';
 echo '<main>';
-$periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idManager, "Valide");
+$periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idUtilisateur, "Reporte");
 
-// ********** PRMIERE COLONNE **********
+// ********** PREMIERE COLONNE **********
 echo '<div class="cote"></div>';
 echo '<section class=colonne>';
 // *** partie combobox mois/annee ***

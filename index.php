@@ -40,6 +40,7 @@ $routes = [
 	"MAJPointageAPI" => ["PHP/MODEL/API/", "MAJPointageAPI", "MAJPointageAPI", 0, true],
 	"MAJPreferencesAPI" => ["PHP/MODEL/API/", "MAJPreferencesAPI", "MAJPreferencesAPI", 0, true],
 	"MAJJoursFeriesAPI" => ["PHP/MODEL/API/", "MAJJoursFeries", "MAJJoursFeries", 3, true],
+	"ValidePointageAPI" => ["PHP/MODEL/API/", "ValidePointageAPI", "ValidePointage", 2, true],
 
 	"ListeActivites" => ["PHP/VIEW/LISTE/", "ListeActivites", "Liste Activites", 3, false],
 	"FormActivites" => ["PHP/VIEW/FORM/", "FormActivites", "Formulaire Activites", 3, false],

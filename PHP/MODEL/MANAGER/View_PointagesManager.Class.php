@@ -11,7 +11,7 @@ class View_PointagesManager
 	public static function getSomme(int $idUtilisateur, string $periode)
 	{
 		$db = DbConnect::getDb();
-		$q = $db->query('SELECT sum(nbHeuresPointage) as nbHeuresPointage, periode,idUo_Pointage, idMotif,numeroUo, libelleUo, codeMotif, libelleMotif, idProjet, codeProjet, libelleProjet, codePrestation,  idTypePrestation, numeroTypePrestation, libelleTypePrestation FROM gta_View_Pointages
+		$q = $db->query('SELECT sum(nbHeuresPointage) as nbHeuresPointage, periode,idUo_Pointage, idMotif,numeroUo, libelleUo, codeMotif, libelleMotif, idProjet, codeProjet, libelleProjet, codePrestation,  idTypePrestation, numeroTypePrestation, libelleTypePrestation , validePointage, reportePointage FROM gta_View_Pointages
 			 WHERE idUtilisateur=' . $idUtilisateur . '  AND periode = "' . $periode . '" 
 			 GROUP BY idUtilisateur, idMotif, codePrestation, idProjet, idUo_Pointage,  idTypePrestation');
 		$liste = [];
