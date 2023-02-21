@@ -35,9 +35,11 @@ foreach ($agents as $key => $agent)
     $valide = View_Pointages_PeriodeManager::NbValide($idAgent, $periode, "Utilisateur");
     $report = View_Pointages_PeriodeManager::NbReporte($idAgent, $periode, "Utilisateur");
     $reporte = ($report==1)?'<i class="fas fa-check"></i>':"";
+    
+    $bgc = ($key % 2 == 0) ? '' : 'bgc';
     if ($pointage == null)
     {
-        $statut = '<i class="fas fa-circle fa-white"></i>';
+        $statut = '<i class="fas fa-circle-dot fa-black"></i>';
     }
     // non commencé
     elseif ($pointage < NbJourParPeriode($periode))
@@ -58,7 +60,6 @@ foreach ($agents as $key => $agent)
         $disabled = '<a href="index.php?page=Synthese&idUtilisateur=' . $agent->getIdUtilisateur() . '&periode=' . $periode . '"><i class="fas fa-user-check"></i></a>';
         $totalRempli += $pointage;
     }
-    $bgc = ($key % 2 == 0) ? '' : 'bgc';
     echo '<div class="vCenter ' . $bgc . '">' . $agent->getNomUtilisateur() . '</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $pointage . '</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $statut . '</div>';

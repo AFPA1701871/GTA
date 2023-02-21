@@ -61,6 +61,9 @@ main {
 .fa-white {
     color: white !important;
 }
+.fa-black {
+    color: black !important;
+}
 button{
     max-width: fit-content;
     padding: 0.5rem;

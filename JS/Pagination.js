@@ -230,6 +230,30 @@ function AfficherPage(index, filtre) {
                         grid.innerHTML = grid.innerHTML.replaceAll("NomRole", element.nomRole);
                         grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
                     });
+                }else if (page == "ListeLogs") {
+                    temp = document.getElementsByTagName("template")[0];
+                    pair = 0;
+                    if (CreerStringTris()=="") 
+                    liste.sort(function(a, b)
+                    {
+                        if ( a.prisEnCompte == b.prisEnCompte)
+                        return new Date(a.dateModifiee) - new Date(b.dateModifiee)
+                        return a.prisEnCompte -b.prisEnCompte
+                    })
+                    
+                    liste.forEach(element => {
+                        pyjama = (++pair % 2 == 0) ? " bgc" : "";
+                        contenu = temp.content.cloneNode(true);
+                        grid.appendChild(contenu);
+                        grid.innerHTML = grid.innerHTML.replaceAll("ActionLog", element.actionLog);
+                        newDate = new Date(element.dateModifiee)
+                        grid.innerHTML = grid.innerHTML.replaceAll("DateModifiee", newDate.toLocaleDateString('fr-FR', {  year: 'numeric', month: 'short', day: 'numeric' }));
+                        prisEnCompte = element.prisEnCompte == 1 ? '<i class="fas fa-check"></i>' : "";
+                        grid.innerHTML = grid.innerHTML.replaceAll("PrisEnCompte", prisEnCompte);
+                        grid.innerHTML = grid.innerHTML.replaceAll("DateLog", (new Date(element.dateLog)).toLocaleString('fr-FR', { timeZone: 'UTC' }));
+                        grid.innerHTML = grid.innerHTML.replaceAll("UserLog", element.userLog);
+                        grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
+                    });
                 }
 
 

@@ -65,14 +65,14 @@
 * [X] % sur les lignes de pointage
 * [X] Texte invisible en dark mode
 * [X] Message informatif sauvegardes
-* [ ] Récapitulatif pointage pour manager
-* [ ] Récapitulatif pointage pour ARH
+* [X] Récapitulatif pointage pour manager
+* [X] Récapitulatif pointage pour ARH
 * [ ] Precision pour les RTT
 * [ ] Gestion des logs (Yves)
 * [ ] Gestion de l'envoi de mail
 * [ ] Mettre les title sur les inputs (php + ajax)
 
-## Tableaux de bord 
+## Tableaux de bord
 
 * [ ] Ajouter des titres aux grids
 
@@ -86,7 +86,7 @@
 * [X] Supprimer la partie inscription
 * [X] Changer la connexion avec le matricule plutôt que l'adresse mail
 * [X] Retravailler le formulaire de changement de mot de passe
-* [ ] Ajouter un message en cas d'erreur de connexion
+* [X] Ajouter un message en cas d'erreur de connexion
 
 ## CSS
 
@@ -118,3 +118,4 @@
 ## Questions
 
 * [ ] Est ce que l'on met une protection sur le pointage avec id dans l'url seul la personne, son manager et les ARH ou personne + tous les managers + tous les ARH ?
+* [ ] pourquoi on garde les pointages à 0?

@@ -112,6 +112,7 @@ function clicPlus(event) {
     if (element.children.length > 0) {
       element.children[0].value = "";
       element.children[0].setAttribute("data-line", numPresta);
+      element.children[0].setAttribute("data-idPointage", "");
       // ajouter les evenements sur les cases
       element.children[0].addEventListener("change", changePointage);
       element.children[0].addEventListener('change', ChangeCellule);

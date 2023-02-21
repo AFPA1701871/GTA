@@ -43,6 +43,11 @@
 .grid-columns-span-7 {
 	grid-column:1/8;
 }
+.grid-col-6Log{
+	display : grid;
+	grid-template-columns : 4fr 1fr 0.5fr 1fr 1fr 0.5fr;
+}
+
 
 .grid-col-6 {
 	display : grid;

@@ -16,6 +16,8 @@ $periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idUtil
 $joursOuvres = NbJourParPeriode($periode);
 //on récupère la liste du pointage
 $listePointage = View_PointagesManager::getSomme($idUtilisateur,$periode);
+
+/**********************Il faut vérifier sur tous les pointages cas des changements après validation ******************** */
 $statut = ($listePointage[0]->getValidePointage()==1)?"validé ":"";
 $statut .= ($listePointage[0]->getReportePointage()==1)?"reporté SIRH ":"";
 // *** partie combobox mois/annee ***

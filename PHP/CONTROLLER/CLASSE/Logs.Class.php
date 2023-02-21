@@ -6,11 +6,13 @@ class Logs
 	/*****************Attributs***************** */
 
 	private $_idLog;
-	private $_dateLog;
 	private $_actionLog;
-	private $_prisEnCompte;
 	private $_idUtilisateur;
-	private static $_attributes=["idLog","dateLog","actionLog","prisEnCompte","idUtilisateur"];
+	private $_dateModifiee;
+	private $_prisEnCompte;
+	private $_dateLog;
+	private $_userLog;
+	private static $_attributes=["idLog", "actionLog", "idUtilisateur", "dateModifiee", "prisEnCompte", "dateLog", "userLog"];
 	/***************** Accesseurs ***************** */
 
 
@@ -63,7 +65,25 @@ class Logs
 	{
 		$this->_idUtilisateur=$idUtilisateur;
 	}
+	public function getDateModifiee()
+	{
+		return $this->_dateModifiee;
+	}
 
+	public function setDateModifiee($dateModifiee)
+	{
+		$this->_dateModifiee = $dateModifiee;
+	}
+
+	public function getUserLog()
+	{
+		return $this->_userLog;
+	}
+
+	public function setUserLog($userLog)
+	{
+		$this->_userLog = $userLog;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;
@@ -101,4 +121,6 @@ class Logs
 	{
 		return "IdLog : ".$this->getIdLog()."DateLog : ".$this->getDateLog()."ActionLog : ".$this->getActionLog()."PrisEnCompte : ".$this->getPrisEnCompte()."IdUtilisateur : ".$this->getIdUtilisateur()."\n";
 	}
+
+	
 }

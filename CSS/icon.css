@@ -150,3 +150,6 @@
 .fa-circle::before {
     content: "\f111";
 }
+.fa-circle-dot::before {
+    content: "\f1ce";
+}

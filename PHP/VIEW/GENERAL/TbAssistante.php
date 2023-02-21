@@ -19,6 +19,7 @@ echo creerSelectTab($periode, tabMoisAnnee(), 'periode', true);
 echo '<div ></div>';
 echo '</div>';
 
+echo '<div class="mini center titre" >Etat des pointages</div>';
 echo '<div id="tabManagers">';
     echo '<div class="vCenter gras">Nom du Manager</div>';
     echo '<div class="vCenter gras">Saisis</div>';
@@ -59,6 +60,7 @@ echo '<section class="colonne">';
     echo '<input type="hidden" id="reporte" value='.$nbReports * 100 / $totalAgents.'>';
     echo'<canvas id="chart" data-role="assistante"></canvas>';
     echo '</div>';
+    echo '<div class="mini center titre" >Pointages modifiés après saisie RH</div>';
 
     // ***** LISTE RE-MODIF *****
     echo '<div id="tabReModif">';
@@ -66,13 +68,14 @@ echo '<section class="colonne">';
     echo '<div class="vCenter gras">Nom de l\'agent</div>';
     echo '<div class="vCenter"></div>';
 
-    $logs = LogsManager::getList(['dateLog', 'idUtilisateur'], ['prisEnCompte'=>0],'dateLog');
+    $logs = LogsManager::getList(null, ['prisEnCompte'=>0],'dateLog',null,false,false);
+    
     foreach ($logs as $key => $log) {
         $bgc = ($key%2 == 0) ? '': 'bgc';
         $nomAgent = UtilisateursManager::getList(['nomUtilisateur'],['idUtilisateur' => $log->getIdUtilisateur()])[0]->getNomUtilisateur();
-        echo '<div class="vCenter '.$bgc.'">'.texte($log->getDateLog()).'</div>';
+        echo '<div class="vCenter '.$bgc.'">'.texte($log->getDateModifiee()).'</div>';
         echo '<div class="vCenter '.$bgc.'">'.$nomAgent.'</div>';
-        echo '<div class="vCenter '.$bgc.'"><a class="'.$bgc.'" href="index.php?page=FormCentres&amp;mode=Afficher&amp;id=20"><i class="fas fa-file-contract"></i></a></div>';
+        echo '<div class="vCenter '.$bgc.'"><a class="'.$bgc.'" href="index.php?page=ListeLogs&amp;mode=Afficher&amp;id=20"><i class="fas fa-file-contract"></i></a></div>';
     }
     echo '</div>';
 echo '</section>';
