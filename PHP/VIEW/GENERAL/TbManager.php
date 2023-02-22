@@ -35,7 +35,7 @@ foreach ($agents as $key => $agent)
     $valide = View_Pointages_PeriodeManager::NbValide($idAgent, $periode, "Utilisateur");
     $report = View_Pointages_PeriodeManager::NbReporte($idAgent, $periode, "Utilisateur");
     $reporte = ($report==1)?'<i class="fas fa-check"></i>':"";
-    
+
     $bgc = ($key % 2 == 0) ? '' : 'bgc';
     if ($pointage == null)
     {
@@ -61,7 +61,7 @@ foreach ($agents as $key => $agent)
         $totalRempli += $pointage;
     }
     echo '<div class="vCenter ' . $bgc . '">' . $agent->getNomUtilisateur() . '</div>';
-    echo '<div class="vCenter ' . $bgc . '">' . $pointage . '</div>';
+    echo '<div class="vCenter ' . $bgc . '">' . $pointage / $joursOuvres * 100 . '%</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $statut . '</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $reporte . '</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $disabled . '</div>';
