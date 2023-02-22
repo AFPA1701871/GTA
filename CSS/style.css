@@ -69,6 +69,7 @@ h1 {
     /* font-family: 'Comfortaa', cursive; */
     letter-spacing: 0.05rem;
     font-size: 1.3rem;
+    max-height: 5rem;
 }
 .btnPrincipale[disabled]{
     /* color: grey;
