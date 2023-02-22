@@ -4,7 +4,7 @@ echo '
     <aside class="cote"></aside>
     <menu class="flex">';
          if ($roleConnecte >= 3) { 
-            echo '<div class="relative">'. texte("Données administratives") .'
+            echo '<div class="relative center">'. texte("Données administratives") .'
                 <i class="fa-solid fa-angle-down"></i>
                 <div class="sous-menu colonne">
                     <a href="?page=ListeCentres">
@@ -24,7 +24,7 @@ echo '
             <a href="?page=ListeUtilisateurs">
                 <div>'. texte("Utilisateurs") .'</div>
             </a>
-            <div class="relative">'. texte("Données pointages") .'
+            <div class="relative center">'. texte("Données pointages") .'
                 <i class="fa-solid fa-angle-down"></i>
                 <div class="sous-menu colonne">
                     <a href="?page=ListeMotifs">
@@ -37,7 +37,7 @@ echo '
                         <div>'. texte("Projets") .'</div>
                     </a>
                     <a href="?page=ListeTypePrestations">
-                        <div>'. texte("TypePrestations") .'</div>
+                        <div class=center>'. texte("TypePrestations") .'</div>
                     </a>
                     <a href="?page=ListeActivites">
                         <div>'. texte("Activites") .'</div>
@@ -45,7 +45,7 @@ echo '
                 </div>
             </div>';
             if ($roleConnecte == 3) echo '<a href="?page=TbAssistante"><div>'. texte("TbAssistante") .'</div></a>';
-            else echo '<div class="relative">'. texte("TableauBord") .'
+            else echo '<div class="relative center">'. texte("TableauBord") .'
                             <i class="fa-solid fa-angle-down"></i>
                                 <div class="sous-menu colonne">
                                     <a href="?page=TbAssistante">
