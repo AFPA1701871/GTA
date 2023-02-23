@@ -137,13 +137,15 @@ CREATE TABLE gta_Utilisateurs(
 --
 DROP TABLE IF EXISTS gta_Logs;
 
-CREATE TABLE gta_Logs(
-   idLog INT AUTO_INCREMENT PRIMARY KEY,
-   dateLog DATETIME NOT NULL,
-   actionLog VARCHAR(100) NOT NULL,
-   prisEnCompte BOOLEAN,
-   idUtilisateur INT NOT NULL
-) ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS gta_Logs (
+  idLog int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  actionLog varchar(100) NOT NULL,
+  idUtilisateur int(11) NOT NULL,
+  dateModifiee date DEFAULT NULL,
+  prisEnCompte tinyint(1) DEFAULT '0',
+  dateLog datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  userLog varchar(50) DEFAULT NULL
+) ENGINE=InnoDB;
 
 --
 -- Table Associations

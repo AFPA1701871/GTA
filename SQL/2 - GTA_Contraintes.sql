@@ -146,3 +146,6 @@ ALTER TABLE
     gta_ActivitesParTypes
 ADD
     CONSTRAINT FK_ActivitesParTypes_Activites FOREIGN KEY(idActivite) REFERENCES gta_Activites(idActivite);
+
+ALTER TABLE gta_Logs
+  ADD CONSTRAINT FK_Logs_Utilisateurs FOREIGN KEY (idUtilisateur) REFERENCES gta_Utilisateurs (idUtilisateur);
