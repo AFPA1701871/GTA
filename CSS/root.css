@@ -109,7 +109,7 @@ a {
 }
 .highlight{
     background-color: var(--color3);
-    padding: 0.3rem 0;
+    padding: 0.3rem;
     color: var(--color1);
     font-size: 1.2rem;
 }
