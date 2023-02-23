@@ -44,7 +44,7 @@ echo '
                     </a>
                 </div>
             </div>';
-            if ($roleConnecte == 3) echo '<a href="?page=TbAssistante"><div>'. texte("TbAssistante") .'</div></a>';
+            if ($roleConnecte == 3) echo '<a href="?page=TbAssistante"><div>'. texte("TableauBord") .'</div></a>';
             else echo '<div class="relative center">'. texte("TableauBord") .'
                             <i class="fa-solid fa-angle-down"></i>
                                 <div class="sous-menu colonne">
@@ -58,7 +58,7 @@ echo '
                         </div>';
         } else if ($roleConnecte == 2) {
             echo '   <a href="?page=TbManager">
-            <div>'. texte("TbManager") .'</div>
+            <div>'. texte("TableauBord") .'</div>
         </a>';
         } 
     echo '   <a href="?page=FormPointages">

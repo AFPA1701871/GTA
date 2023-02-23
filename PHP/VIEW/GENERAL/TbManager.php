@@ -61,7 +61,7 @@ foreach ($agents as $key => $agent)
         $totalRempli += $pointage;
     }
     echo '<div class="vCenter ' . $bgc . '">' . $agent->getNomUtilisateur() . '</div>';
-    echo '<div class="vCenter ' . $bgc . '">' . $pointage / $joursOuvres * 100 . '%</div>';
+    echo '<div class="vCenter ' . $bgc . '">' . (round($pointage / $joursOuvres * 100 , 1)) . '%</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $statut . '</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $reporte . '</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $disabled . '</div>';
