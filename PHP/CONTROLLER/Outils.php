@@ -31,7 +31,7 @@ function crypte($mot)
 }
 function passwordDefault($uti)
 {
-	return $uti->getMatriculeUtilisateur();
+	return strtoupper($uti->getMatriculeUtilisateur());
 }
 function texte($codeTexte)
 {
