@@ -179,7 +179,7 @@ echo '<template id=lignePresta>
           <input name=idPrestation >
           <input type="hidden" name=idPreference dataline >
               <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
-              <div class=" border-left expand-line vMini"><i class="fas fa-open" dataline ></i></div>
+              <div class=" border-left expand-line vMini"><i class="fas fa-close" dataline ></i></div>
                     </div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight ">Code Prest.</div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Uo de MAD</div>

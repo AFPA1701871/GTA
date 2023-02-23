@@ -56,9 +56,12 @@ echo '
                                     </a>
                                 </div>
                         </div>';
-         } else if ($roleConnecte == 2) { 
-         } 
-     echo '   <a href="?page=FormPointages">
+        } else if ($roleConnecte == 2) {
+            echo '   <a href="?page=TbManager">
+            <div>'. texte("TbManager") .'</div>
+        </a>';
+        } 
+    echo '   <a href="?page=FormPointages">
             <div>'. texte("Pointages") .'</div>
         </a>
     </menu>

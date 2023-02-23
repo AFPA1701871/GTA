@@ -69,3 +69,7 @@ button{
     padding: 0.5rem;
     cursor: pointer;
 }
+
+body.dark .fa-black {
+    color: var(--color1) !important;
+}

@@ -258,6 +258,7 @@ header a {
 }
 header .logo  {
     max-width: fit-content;
+    max-width: -moz-fit-content;
     align-items: center;
 }
 
