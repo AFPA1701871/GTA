@@ -29,8 +29,8 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 					<td>
 						La saisie de votre pointage GTA pour le mois de ' . $periode;
 	if ($etat != null)
-		$message += ' est incomplète ';
-	else $message += ' n\'a pas encore été réalisée.';
+		$message += ' est incomplète. ';
+	else $message += ' n\'a pas encore été réalisée. ';
 
 	$message += 'Nous vous invitons à le faire rapidement.
 					</td>
@@ -86,7 +86,7 @@ function envoiMailRelanceValidation($adresseMail, $periode, $liste)
 				</tr>
 				<tr>
 					<td>
-						La validation du pointage GTA de vos collaborateur pour le mois de ' . $periode . ' n\'a pas encore été réalisée pour les personnes suivantes.
+						La validation du pointage GTA de vos collaborateurs pour le mois de ' . $periode . ' n\'a pas encore été réalisée pour les personnes suivantes.
 						</td>';
 	foreach ($liste as  $value) {
 		$message += '<td>' . $value . '</td>';
@@ -96,7 +96,7 @@ function envoiMailRelanceValidation($adresseMail, $periode, $liste)
 					</td>
 				</tr>
 				<tr>
-					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour validé les pointages, <a href="gta.afpadunkerque.fr/index.php?page=Default">cliquez sur ce lien</a>.</td>
+					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour valider les pointages, <a href="gta.afpadunkerque.fr/index.php?page=Default">cliquez sur ce lien</a>.</td>
 				</tr>
 				<tr>
 					<td class="pad-bttm" style="padding-bottom: 1rem;">Cordialement</td>
@@ -156,7 +156,7 @@ function envoiMailRelanceReport($adresseMail, $periode, $liste)
 					</td>
 				</tr>
 				<tr>
-					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour validé les pointages, <a href="gta.afpadunkerque.fr/index.php?page=Default">cliquez sur ce lien</a>.</td>
+					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour valider les pointages, <a href="gta.afpadunkerque.fr/index.php?page=Default">cliquez sur ce lien</a>.</td>
 				</tr>
 				<tr>
 					<td class="pad-bttm" style="padding-bottom: 1rem;">Cordialement</td>
