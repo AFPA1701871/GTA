@@ -41,8 +41,11 @@ function scrollHoriz(e) {
     e.preventDefault();
 }
 function expand(e) {
-    e.target.classList.toggle("fa-open");
-    e.target.classList.toggle("fa-close");
+    // Pour éviter qu'il applique aussi le toggle à la div contenant le I
+    if(e.target.nodeName=="I"){
+        e.target.classList.toggle("fa-open");
+        e.target.classList.toggle("fa-close");
+    }
     ligne = e.target.parentNode.parentNode.parentNode;
     listeCol = ligne.querySelectorAll(".colCachable");
     listeCol.forEach(cell => {
