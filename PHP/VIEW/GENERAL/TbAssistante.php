@@ -32,7 +32,7 @@ echo '<div id="tabManagers">';
         $bgc = ($key%2 == 0) ? '': 'bgc';
         $idManager = $manager->getIdUtilisateur();
         echo '<div class="vCenter '.$bgc.'">'.$manager->getNomUtilisateur().'</div>';
-        $agents = UtilisateursManager::getList(null, ['idManager'=>$idManager]);
+        $agents = View_UtilisateursManager::getList(null, ['idManager' => $idManager, "actif" => 1],null,null,false,false);
         $saisi = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode]);
         $valide = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode, 'validePointage'=>1]);
         $reporte = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode, 'reportePointage'=>1]);
