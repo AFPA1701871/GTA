@@ -244,15 +244,18 @@ SELECT
     w.idPreference,
     w.idMotif,
     m.codeMotif,
+    m.libelleMotif,
     u.idUo,
     u.numeroUo,
+    u.libelleUo,
     w.idProjet,
     pr.codeProjet,
+    pr.libelleProjet,
     w.idTypePrestation,
     w.idUtilisateur,
     null as idPointage,
     null as datePointage,
-    null as mois
+    null as periode
 FROM
     gta_View_Prestations p
     LEFT JOIN gta_Preferences w ON w.idPrestation = p.idPrestation
@@ -273,10 +276,13 @@ SELECT
     null as idPreference,
     po.idMotif,
     m.codeMotif,
+    m.libelleMotif,
     u.idUo,
     u.numeroUo,
+    u.libelleUo,
     po.idProjet,
     pr.codeProjet,
+    pr.libelleProjet,
     po.idTypePrestation,
     po.idUtilisateur,
     po.idPointage,

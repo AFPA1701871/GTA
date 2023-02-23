@@ -83,7 +83,7 @@ foreach ($typesPrestations as $key => $typePresta) {
 
     // on récupère les prestations de ce type
     $listePrestation = View_Prestations_Pref_PointManager::getListePrestation($idUtilisateur, $periode, $idTypePrestation);
-
+    
     // boucle sur les prestations
     foreach ($listePrestation as $prestation) {
         $numPresta++; // permet de numéroter les prestations
@@ -112,8 +112,9 @@ foreach ($typesPrestations as $key => $typePresta) {
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" ' . $dataline . ' type="text" value = "' . $prestation->getCodePrestation() . '" disabled name=codePrestation></div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
-        if ($typePresta->getUoRequis()) { // modifier la vue pour recupérer le libelle de l'Uo iden projet et motif
-            echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputUo" value = "' . $prestation->getNumeroUo() . '" disabled title = "' . $prestation->getNumeroUo() . '">';
+        if ($typePresta->getUoRequis()) { 
+            // modifier la vue pour recupérer le libelle de l'Uo iden projet et motif
+            echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputUo" value = "' . $prestation->getNumeroUo() . '" disabled title = "' . $prestation->getLibelleUo() . '">';
         } else {
             echo '<input class="inputPointage notApplicable" ' . $dataline . ' type="text" name="inputUo" disabled>';
         }
@@ -121,7 +122,7 @@ foreach ($typesPrestations as $key => $typePresta) {
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getMotifRequis()) {
-            echo '<input class="inputPointage" disabled ' . $dataline . ' type="text" name="inputMotif" value = "' . $prestation->getCodeMotif() . '" title="' . $prestation->getCodeMotif() . '">';
+            echo '<input class="inputPointage" disabled ' . $dataline . ' type="text" name="inputMotif" value = "' . $prestation->getCodeMotif() . '" title="' . $prestation->getLibelleMotif() . '">';
         } else {
             echo '<input class="inputPointage notApplicable" ' . $dataline . ' type="text" name="inputMotif" disabled>';
         }
@@ -129,7 +130,7 @@ foreach ($typesPrestations as $key => $typePresta) {
         echo '  </div>
                 <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
         if ($typePresta->getProjetRequis()) {
-            echo '<input class="inputPointage" disabled ' . $dataline . ' type="text" name="inputProjet" value = "' . $prestation->getCodeProjet() . '" title="' . $prestation->getCodeProjet() . '">';
+            echo '<input class="inputPointage" disabled ' . $dataline . ' type="text" name="inputProjet" value = "' . $prestation->getCodeProjet() . '" title="' . $prestation->getLibelleProjet() . '">';
         } else {
             echo '<input class="inputPointage notApplicable" ' . $dataline . ' type="text" name="inputProjet" disabled>';
         }
