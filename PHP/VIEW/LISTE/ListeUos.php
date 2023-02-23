@@ -23,12 +23,12 @@ echo '<div class="caseListe grid-columns-span-5">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "NumeroUo">' . texte("NumeroUo") . '</div>';
-echo '<div class="caseListe labelListe left" data-name= "LibelleUo">' . texte("LibelleUo") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "NumeroUo">' . texte("NumeroUo") . '</div>';
+echo '<div class="caseListe labelListe borderbottom  left" data-name= "LibelleUo">' . texte("LibelleUo") . '</div>';
 
 //Remplissage de div vide pour la structure de la grid
-echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair "><p>' . texte('total') . ' :</p></div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class="caseListe  borderbottom "></div>';
+echo '<div class=" caseListe texteClair borderbottom " ><p>' . texte('total') . ' :</p></div><div class="mini borderbottom" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-5 gridListe grid-contenu grid-mini"></div>';
 
 // Affichage des enregistrements de la base de données

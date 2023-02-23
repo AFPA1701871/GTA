@@ -2,7 +2,7 @@
 :root {
     --color1: #F0EEED;
     --color2:#609EA2;
-    --color3:#F0EEED;
+    --color3:#a3a1a0;
     --color4:#F0EEED;
     --color5:#332C39;
     --color6:#A5EBF0;
@@ -106,4 +106,13 @@ a {
 .bgc{
     background-color: var(--color2);
     color: var(--color1);
+}
+.highlight{
+    background-color: var(--color3);
+    padding: 0.3rem;
+    color: var(--color1);
+    font-size: 1.2rem;
+}
+.borderbottom{
+    border-bottom: var(--color3) 1px solid;
 }

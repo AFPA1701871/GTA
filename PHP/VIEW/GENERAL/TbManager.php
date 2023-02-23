@@ -14,18 +14,18 @@ $periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idMana
 // *** partie combobox mois/annee ***
 echo '<div id="divComboDate" class="demi center">';
 echo creerSelectTab($periode, tabMoisAnnee(), 'periode', true,"class='demi'");
-echo '<div class="mini"></div><div class="center">Manager concerné : ' . $manager->getNomUtilisateur() . '</div>';
+echo '<div class="mini"></div><div class="center highlight">Manager concerné : ' . $manager->getNomUtilisateur() . '</div>';
 echo '</div>';
 
 // *** partie tableau agents ***
 $joursOuvres = NbJourParPeriode($periode);
 echo '<div id="tabAgents">';
-echo '<div class="vCenter gras">Nom de l\'agent</div>';
-echo '<div class="vCenter gras">Rempli à</div>';
-echo '<div class="vCenter gras">Statut</div>';
-echo '<div class="vCenter gras">Report SIRH</div>';
-echo '<div class="vCenter gras">Valider</div>';
-echo '<div class="vCenter gras">Pointage</div>';
+echo '<div class="vCenter gras borderbottom">Nom de l\'agent</div>';
+echo '<div class="vCenter gras borderbottom">Rempli à</div>';
+echo '<div class="vCenter gras borderbottom">Statut</div>';
+echo '<div class="vCenter gras borderbottom">Report SIRH</div>';
+echo '<div class="vCenter gras borderbottom">Valider</div>';
+echo '<div class="vCenter gras borderbottom">Pointage</div>';
 
 foreach ($agents as $key => $agent)
 {
@@ -61,7 +61,7 @@ foreach ($agents as $key => $agent)
         $totalRempli += $pointage;
     }
     echo '<div class="vCenter ' . $bgc . '">' . $agent->getNomUtilisateur() . '</div>';
-    echo '<div class="vCenter ' . $bgc . '">' . $pointage / $joursOuvres * 100 . '%</div>';
+    echo '<div class="vCenter ' . $bgc . '">' . (round($pointage / $joursOuvres * 100 , 1)) . '%</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $statut . '</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $reporte . '</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $disabled . '</div>';
@@ -82,6 +82,12 @@ echo '<input type="hidden" id="" value=33>';
 echo '<canvas id="chart" data-role="manager"></canvas>';
 echo '</div>';
 
+echo '<div class="colonne espace"><div>Légende : </div>
+        <div> <i class="fas fa-circle-dot fa-black"></i>&nbsp; : Pointage non commencé </div>
+        <div> <i class="fas fa-circle fa-orange"></i>&nbsp; : Pointage commencé </div>
+        <div> <i class="fas fa-circle fa-green"></i>&nbsp; : Pointage non commencé </div>
+        <div> <i class="fas fa-check fa-green"></i>&nbsp; : Pointage validé par le manager </div>
+        </div>';
 // ***** CAMEMBERT 2*****
 echo '<div class="camembert">';
 echo '<input type="hidden" id="" value=50>';

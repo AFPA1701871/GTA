@@ -153,3 +153,6 @@
 .fa-circle-dot::before {
     content: "\f1ce";
 }
+.fa-box-archive::before {
+    content: "\f187";
+}

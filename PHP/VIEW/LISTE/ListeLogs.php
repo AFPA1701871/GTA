@@ -23,13 +23,13 @@ echo '<div class="caseListe grid-columns-span-6">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "ActionLog">ActionLog</div>';
-echo '<div class="caseListe labelListe" data-name= "DateModifiee">Date Modifiée</div>';
-echo '<div class="caseListe labelListe" data-name= "PrisEnCompte">Pris En Compte</div>';
-echo '<div class="caseListe labelListe" data-name= "DateLog">Date de la Modification</div>';
-echo '<div class="caseListe labelListe" data-name= "UserLog">Modifiée par</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "ActionLog">ActionLog</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "DateModifiee">Date Modifiée</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "PrisEnCompte">Pris En Compte</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "DateLog">Date de la Modification</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "UserLog">Modifiée par</div>';
 
-echo '<div><div class=" caseListe texteClair "><p>'.texte('total').' :</p></div><div class="mini" id="nbEnregs"></div></div>';
+echo '<div><div class=" caseListe texteClair borderbottom " ><p>'.texte('total').' :</p></div><div class="mini borderbottom" id="nbEnregs"></div></div>';
 echo '</div><div class="grid-col-6Log gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données

@@ -29,11 +29,11 @@ echo '<div class="caseListe grid-columns-span-4">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "DateFermeture">'.texte("DateFermeture").'</div>';
+echo '<div class="caseListe labelListe  borderbottom" data-name= "DateFermeture">'.texte("DateFermeture").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
-echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair "><p>'.texte('total').' :</p></div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class="caseListe borderbottom"></div>';
+echo '<div class=" caseListe texteClair  borderbottom"><p>'.texte('total').' :</p></div><div class="mini borderbottom" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-4 gridListe grid-contenu grid-mini"></div>';
 
 // Affichage des enregistrements de la base de données

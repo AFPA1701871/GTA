@@ -28,8 +28,8 @@ echo '  <main>
 echo            creerSelectTab($periode, tabMoisAnnee(), "periode", true, null);
 echo '        </div>
               <div></div>
-                <div class=titreInfosUser>Nom : </div>
-                <div>' . $user->getNomUtilisateur() . '</div>
+                <div class="titreInfosUser highlight">Nom : </div>
+                <div class="highlight">' . $user->getNomUtilisateur() . '</div>
                 <div></div>
                 <div class=titreInfosUser>Matricule : </div>
                 <div>' . $user->getMatriculeUtilisateur() . '</div>

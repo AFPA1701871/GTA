@@ -74,7 +74,7 @@
 
 ## Tableaux de bord
 
-* [ ] Ajouter des titres aux grids
+* [X] Ajouter des titres aux grids
 
 ## CRUD Prestations
 

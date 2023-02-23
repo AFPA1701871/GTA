@@ -10,9 +10,7 @@ echo '
                     <a href="?page=ListeCentres">
                         <div>'. texte("Centres") .'</div>
                     </a>
-                    <a href="?page=ListeConversions">
-                        <div>'. texte("Conversions") .'</div>
-                    </a>
+                    
                     <a href="?page=ListeFermetures">
                         <div>'. texte("Fermetures") .'</div>
                     </a>
@@ -21,7 +19,7 @@ echo '
                     </a>
                 </div>
             </div>
-            <a href="?page=ListeUtilisateurs">
+            <a href="?page=ListeUtilisateurs" class=center>
                 <div>'. texte("Utilisateurs") .'</div>
             </a>
             <div class="relative center">'. texte("Données pointages") .'
@@ -44,7 +42,7 @@ echo '
                     </a>
                 </div>
             </div>';
-            if ($roleConnecte == 3) echo '<a href="?page=TbAssistante"><div>'. texte("TbAssistante") .'</div></a>';
+            if ($roleConnecte == 3) echo '<a href="?page=TbAssistante"><div>'. texte("TableauBord") .'</div></a>';
             else echo '<div class="relative center">'. texte("TableauBord") .'
                             <i class="fa-solid fa-angle-down"></i>
                                 <div class="sous-menu colonne">
@@ -57,11 +55,11 @@ echo '
                                 </div>
                         </div>';
         } else if ($roleConnecte == 2) {
-            echo '   <a href="?page=TbManager">
-            <div>'. texte("TbManager") .'</div>
+            echo '   <a href="?page=TbManager" class=center>
+            <div>'. texte("TableauBord") .'</div>
         </a>';
         } 
-    echo '   <a href="?page=FormPointages">
+    echo '   <a href="?page=FormPointages" class=center>
             <div>'. texte("Pointages") .'</div>
         </a>
     </menu>

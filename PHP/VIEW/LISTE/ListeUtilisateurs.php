@@ -23,16 +23,16 @@ echo '<div class="caseListe grid-columns-span-10">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "NomUtilisateur">' . texte("NomUtilisateur") . '</div>';
-echo '<div class="caseListe labelListe" data-name= "MatriculeUtilisateur">' . texte("MatriculeUtilisateur") . '</div>';
-echo '<div class="caseListe labelListe" data-name= "NomManager">' . texte("NomManager") . '</div>';
-echo '<div class="caseListe labelListe" data-name= "Actif">' . texte("Actif") . '</div>';
-echo '<div class="caseListe labelListe" data-name= "NumeroUo">' . texte("NumeroUo") . '</div>';
-echo '<div class="caseListe labelListe" data-name= "NomRole">' . texte("NomRole") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "NomUtilisateur">' . texte("NomUtilisateur") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "MatriculeUtilisateur">' . texte("MatriculeUtilisateur") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "NomManager">' . texte("NomManager") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "Actif">' . texte("Actif") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "NumeroUo">' . texte("NumeroUo") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "NomRole">' . texte("NomRole") . '</div>';
 
 //Remplissage de div vide pour la structure de la grid
-echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair "><p>' . texte('total') . ' :</p></div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class="caseListe  borderbottom "></div>';
+echo '<div class=" caseListe texteClair borderbottom " ><p>' . texte('total') . ' :</p></div><div class="mini borderbottom" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-10 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
@@ -47,7 +47,7 @@ echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Afficher&id=
 
 echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Modifier&id=IdUtilisateur"><i class="fas fa-pen"></i></a>';
 
-echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Supprimer&id=IdUtilisateur"><i class="fas fa-trash-alt"></i></a>';
+echo '<a class="pyjama"  href="index.php?page=FormUtilisateurs&mode=Supprimer&id=IdUtilisateur"><i class="fas fa-box-archive"></i></a>';
 
 echo '<a class="pyjama"  href="index.php?page=ActionUtilisateurs&mode=Reinit&id=IdUtilisateur"><img src="IMG/refresh-lock.svg" class="resetPassword" alt="" /></a>';
 echo '</template>';

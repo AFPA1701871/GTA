@@ -30,8 +30,10 @@ switch ($_GET['mode']) {
 		break;
 	}
 	case "Supprimer": {
-		$elm = UtilisateursManager::delete($elm);
-		header("location:index.php?page=ListeUtilisateurs");
+		// ARCHIVAGE A CODER
+
+		// $elm = UtilisateursManager::delete($elm);
+		// header("location:index.php?page=ListeUtilisateurs");
 		break;
 	}
 	case "Reinit": {

@@ -21,11 +21,11 @@ echo '</div>';
 
 echo '<div class="mini center titre" >Etat des pointages</div>';
 echo '<div id="tabManagers">';
-    echo '<div class="vCenter gras">Nom du Manager</div>';
-    echo '<div class="vCenter gras">Saisis</div>';
-    echo '<div class="vCenter gras">Validés</div>';
-    echo '<div class="vCenter gras">Report SIRH</div>';
-    echo '<div class="vCenter"></div>';
+    echo '<div class="vCenter gras borderbottom ">Nom du Manager</div>';
+    echo '<div class="vCenter gras borderbottom ">Saisis</div>';
+    echo '<div class="vCenter gras borderbottom ">Validés</div>';
+    echo '<div class="vCenter gras borderbottom ">Report SIRH</div>';
+    echo '<div class="vCenter borderbottom "></div>';
 
     $managers = UtilisateursManager::getList(['idUtilisateur','nomUtilisateur'], ['idRole'=>2], 'nomUtilisateur');
     foreach ($managers as $key => $manager) {
@@ -64,9 +64,9 @@ echo '<section class="colonne">';
 
     // ***** LISTE RE-MODIF *****
     echo '<div id="tabReModif">';
-    echo '<div class="vCenter gras">Date</div>';
-    echo '<div class="vCenter gras">Nom de l\'agent</div>';
-    echo '<div class="vCenter"></div>';
+    echo '<div class="vCenter gras borderbottom ">Date</div>';
+    echo '<div class="vCenter gras borderbottom ">Nom de l\'agent</div>';
+    echo '<div class="vCenter borderbottom "></div>';
 
     $logs = LogsManager::getList(null, ['prisEnCompte'=>0],'dateLog',null,false,false);
     

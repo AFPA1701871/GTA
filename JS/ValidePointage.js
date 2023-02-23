@@ -15,5 +15,6 @@ function valider(event)
       if (this.status === 200) { // Si la requête est réussie
         if (this.responseText) { // Si la réponse n'est pas vide
           console.log(this.responseText);
+          window.history.back()
         }}}}
 }

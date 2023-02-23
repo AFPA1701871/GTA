@@ -18,14 +18,14 @@ echo '<div class="caseListe grid-columns-span-'.($formtype?'4-nobutton':7).'">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "IdCentre">'.texte("IdCentre").'</div>';
-echo '<div class="caseListe labelListe" data-name= "IdUtilisateur">'.texte("IdUtilisateur").'</div>';
-echo '<div class="caseListe labelListe" data-name= "DateDebutContrat">'.texte("DateDebutContrat").'</div>';
-echo '<div class="caseListe labelListe" data-name= "DateFinContrat">'.texte("DateFinContrat").'</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "IdCentre">'.texte("IdCentre").'</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "IdUtilisateur">'.texte("IdUtilisateur").'</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "DateDebutContrat">'.texte("DateDebutContrat").'</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "DateFinContrat">'.texte("DateFinContrat").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
-echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair "></div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class="caseListe  borderbottom "></div>';
+echo '<div class=" caseListe texteClair borderbottom " ></div><div class="mini borderbottom" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-'.($formtype?'4-nobutton':7).' gridListe grid-contenu">';
 
 // Affichage des enregistrements de la base de données

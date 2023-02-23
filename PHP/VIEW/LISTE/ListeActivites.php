@@ -31,11 +31,11 @@ if (!$formtype) {
 }
 
 if ($formtype) { echo '<div class="caseListe labelListe"></div>'; }
-echo '<div class="caseListe labelListe" data-name= "LibelleActivite">'.texte("LibelleActivite").'</div>';
+echo '<div class="caseListe labelListe borderbottom " data-name= "LibelleActivite">'.texte("LibelleActivite").'</div>';
 
 //Remplissage de div vide pour la structure de la grid
-echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair ">'.(!$formtype ? '<p>'.texte('total').' :</p>':'').'</div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class="caseListe  borderbottom "></div>';
+echo '<div class=" caseListe texteClair borderbottom " >'.(!$formtype ? '<p>'.texte('total').' :</p>':'').'</div><div class="mini borderbottom" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-'.($formtype?2:4).' gridListe grid-contenu grid-mini">';
 
 // Affichage des enregistrements de la base de données

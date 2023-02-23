@@ -24,9 +24,9 @@ $statut .= ($listePointage[0]->getReportePointage()==1)?"reporté SIRH ":"";
 echo '<div id="divComboDate" class="demi center">';
 echo    creerSelectTab($periode, tabMoisAnnee(), 'periode', true);
 echo '  <div class="mini"></div>
-        <div class="center">Utilisateur concerné : '. $utilisateur->getNomUtilisateur().'</div>
+        <div class="center highlight">Utilisateur concerné : '. $utilisateur->getNomUtilisateur().'</div>
         <div class="mini"></div>
-        <div class="center">Statut : '. $statut.'</div>';
+        <div class="center highlight">Statut : '. $statut.'</div>';
 echo '</div>';
 echo '</section><div class="cote"></div><div class="cote"></div><section> ';
 // *** partie tableau agents ***
