@@ -10,9 +10,7 @@ echo '
                     <a href="?page=ListeCentres">
                         <div>'. texte("Centres") .'</div>
                     </a>
-                    <a href="?page=ListeConversions">
-                        <div>'. texte("Conversions") .'</div>
-                    </a>
+                    
                     <a href="?page=ListeFermetures">
                         <div>'. texte("Fermetures") .'</div>
                     </a>

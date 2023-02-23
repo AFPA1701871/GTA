@@ -14,18 +14,18 @@ $periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idMana
 // *** partie combobox mois/annee ***
 echo '<div id="divComboDate" class="demi center">';
 echo creerSelectTab($periode, tabMoisAnnee(), 'periode', true,"class='demi'");
-echo '<div class="mini"></div><div class="center">Manager concerné : ' . $manager->getNomUtilisateur() . '</div>';
+echo '<div class="mini"></div><div class="center highlight">Manager concerné : ' . $manager->getNomUtilisateur() . '</div>';
 echo '</div>';
 
 // *** partie tableau agents ***
 $joursOuvres = NbJourParPeriode($periode);
 echo '<div id="tabAgents">';
-echo '<div class="vCenter gras">Nom de l\'agent</div>';
-echo '<div class="vCenter gras">Rempli à</div>';
-echo '<div class="vCenter gras">Statut</div>';
-echo '<div class="vCenter gras">Report SIRH</div>';
-echo '<div class="vCenter gras">Valider</div>';
-echo '<div class="vCenter gras">Pointage</div>';
+echo '<div class="vCenter gras borderbottom">Nom de l\'agent</div>';
+echo '<div class="vCenter gras borderbottom">Rempli à</div>';
+echo '<div class="vCenter gras borderbottom">Statut</div>';
+echo '<div class="vCenter gras borderbottom">Report SIRH</div>';
+echo '<div class="vCenter gras borderbottom">Valider</div>';
+echo '<div class="vCenter gras borderbottom">Pointage</div>';
 
 foreach ($agents as $key => $agent)
 {
