@@ -23,16 +23,16 @@ echo '<div class="caseListe grid-columns-span-10">
 <div></div>
 </div>';
 
-echo '<div class="caseListe labelListe" data-name= "NomUtilisateur">' . texte("NomUtilisateur") . '</div>';
-echo '<div class="caseListe labelListe" data-name= "MatriculeUtilisateur">' . texte("MatriculeUtilisateur") . '</div>';
-echo '<div class="caseListe labelListe" data-name= "NomManager">' . texte("NomManager") . '</div>';
-echo '<div class="caseListe labelListe" data-name= "Actif">' . texte("Actif") . '</div>';
-echo '<div class="caseListe labelListe" data-name= "NumeroUo">' . texte("NumeroUo") . '</div>';
-echo '<div class="caseListe labelListe" data-name= "NomRole">' . texte("NomRole") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "NomUtilisateur">' . texte("NomUtilisateur") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "MatriculeUtilisateur">' . texte("MatriculeUtilisateur") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "NomManager">' . texte("NomManager") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "Actif">' . texte("Actif") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "NumeroUo">' . texte("NumeroUo") . '</div>';
+echo '<div class="caseListe labelListe borderbottom" data-name= "NomRole">' . texte("NomRole") . '</div>';
 
 //Remplissage de div vide pour la structure de la grid
-echo '<div class="caseListe"></div>';
-echo '<div class=" caseListe texteClair "><p>' . texte('total') . ' :</p></div><div class="mini" id="nbEnregs"></div> ';
+echo '<div class="caseListe  borderbottom "></div>';
+echo '<div class=" caseListe texteClair borderbottom " ><p>' . texte('total') . ' :</p></div><div class="mini borderbottom" id="nbEnregs"></div> ';
 echo '</div><div class="grid-col-10 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données

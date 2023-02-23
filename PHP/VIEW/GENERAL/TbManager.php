@@ -82,11 +82,12 @@ echo '<input type="hidden" id="" value=33>';
 echo '<canvas id="chart" data-role="manager"></canvas>';
 echo '</div>';
 
-echo '<div>Légende : </div>
+echo '<div class="colonne espace"><div>Légende : </div>
         <div> <i class="fas fa-circle-dot fa-black"></i>&nbsp; : Pointage non commencé </div>
         <div> <i class="fas fa-circle fa-orange"></i>&nbsp; : Pointage commencé </div>
         <div> <i class="fas fa-circle fa-green"></i>&nbsp; : Pointage non commencé </div>
-        <div> <i class="fas fa-check fa-green"></i>&nbsp; : Pointage validé par le manager </div>';
+        <div> <i class="fas fa-check fa-green"></i>&nbsp; : Pointage validé par le manager </div>
+        </div>';
 // ***** CAMEMBERT 2*****
 echo '<div class="camembert">';
 echo '<input type="hidden" id="" value=50>';
