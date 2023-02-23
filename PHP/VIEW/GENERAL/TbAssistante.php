@@ -1,5 +1,5 @@
 <?php
-$periode = "2023-01";
+global $mois;
 $nbReports = 0;
 $totalAgents = 0;
 
@@ -68,14 +68,14 @@ echo '<section class="colonne">';
     echo '<div class="vCenter gras borderbottom ">Nom de l\'agent</div>';
     echo '<div class="vCenter borderbottom "></div>';
 
-    $logs = LogsManager::getList(null, ['prisEnCompte'=>0],'dateLog',null,false,false);
+    $logs = View_LogsManager::getList(null, ['prisEnCompte'=>0],"periode",null,false,false);
     
     foreach ($logs as $key => $log) {
+        $periode = $log->getPeriode();
         $bgc = ($key%2 == 0) ? '': 'bgc';
-        $nomAgent = UtilisateursManager::getList(['nomUtilisateur'],['idUtilisateur' => $log->getIdUtilisateur()])[0]->getNomUtilisateur();
-        echo '<div class="vCenter '.$bgc.'">'.texte($log->getDateModifiee()).'</div>';
-        echo '<div class="vCenter '.$bgc.'">'.$nomAgent.'</div>';
-        echo '<div class="vCenter '.$bgc.'"><a class="'.$bgc.'" href="index.php?page=ListeLogs&amp;mode=Afficher&amp;id=20"><i class="fas fa-file-contract"></i></a></div>';
+        echo '<div class="vCenter '.$bgc.'">'.tabMoisAnnee()[$periode].'</div>';
+        echo '<div class="vCenter '.$bgc.'">'.$log->getNomUtilisateur().'</div>';
+        echo '<div class="vCenter '.$bgc.'"><a class="'.$bgc.'" href="index.php?page=Synthese&periode='.$log->getPeriode().'&idUtilisateur='.$log->getIdUtilisateur().'"><i class="fas fa-file-contract"></i></a></div>';
     }
     echo '</div>';
 echo '</section>';

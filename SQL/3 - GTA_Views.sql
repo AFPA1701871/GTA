@@ -295,3 +295,10 @@ FROM
     LEFT JOIN gta_Motifs m ON po.idMotif = m.idMotif
     LEFT JOIN gta_Uos u ON po.idUo = u.idUo
     LEFT JOIN gta_Projets pr ON po.idProjet = pr.idProjet;
+
+DROP VIEW IF EXISTS gta_View_Logs;
+
+CREATE VIEW gta_View_Logs as
+SELECT distinct u.idUtilisateur, nomUtilisateur, prisEnCompte, date_format(dateModifiee, "%Y-%m") as periode 
+FROM gta_Logs l 
+INNER JOIN gta_Utilisateurs u On l.idUtilisateur=u.idUtilisateur;

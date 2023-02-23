@@ -33,7 +33,7 @@ foreach ($agents as $key => $agent) {
     $pointage = View_Pointages_PeriodeManager::SommePointage($idAgent, $periode);
     $valide = View_Pointages_PeriodeManager::NbValide($idAgent, $periode, "Utilisateur");
     $report = View_Pointages_PeriodeManager::NbReporte($idAgent, $periode, "Utilisateur");
-    $reporte = ($report == 1) ? '<i class="fas fa-check"></i>' : "";
+    $reporte="";
     $bgc = ($key % 2 == 0) ? '' : 'bgc';
     if ($pointage == null) {
         $statut = '<i class="fas fa-circle-dot fa-black"></i>';
@@ -42,7 +42,7 @@ foreach ($agents as $key => $agent) {
     elseif ($pointage < NbJourParPeriode($periode)) {
         $statut = '<i class="fas fa-circle fa-orange"></i>'; //en cours
         $totalRempli += $pointage;
-    } elseif ($valide == 1) { //validé
+    } elseif ($valide == $joursOuvres) { //validé
         $statut = '<i class="fas fa-check fa-green"></i>';
         if ($roleConnecte == 3) //lien vers la page de validation sur colonne SIRH
         {
@@ -60,6 +60,8 @@ foreach ($agents as $key => $agent) {
         $disabled = '<a href="index.php?page=Synthese&idUtilisateur=' . $agent->getIdUtilisateur() . '&periode=' . $periode . '"><i class="fas fa-user-check"></i></a>';
         $totalRempli += $pointage;
     }
+    $reporte = ($report == $joursOuvres) ? '<i class="fas fa-check"></i>' : $reporte;
+    
     echo '<div class="vCenter ' . $bgc . '">' . $agent->getNomUtilisateur() . '</div>';
     echo '<div class="vCenter ' . $bgc . '">' . (round($pointage / $joursOuvres * 100, 1)) . '%</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $statut . '</div>';
