@@ -500,6 +500,10 @@ body.dark .fa-red {
 body.dark .oeil {
     color: #111;
 }
+
+body.dark .fa-house {
+    color: #111;
+}
 /******************MEDIA QUERIES***************************/
 
 @media (max-width: 1514px) {
