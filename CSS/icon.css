@@ -156,3 +156,6 @@
 .fa-box-archive::before {
     content: "\f187";
 }
+.fa-todo::before {
+    content: "\f7d9";
+}

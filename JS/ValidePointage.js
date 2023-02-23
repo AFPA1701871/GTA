@@ -1,5 +1,9 @@
 btnValide = document.querySelector("#valide");
 btnValide.addEventListener("click",valider);
+btnRetour = document.querySelector("#retour");
+btnRetour.addEventListener("click",retour);
+
+
 function valider(event)
 {
     idUtilisateur = document.querySelector("#idUtilisateur").getAttribute("data-value");
@@ -17,4 +21,8 @@ function valider(event)
           console.log(this.responseText);
           window.history.back()
         }}}}
+}
+function retour()
+{
+  window.history.back()
 }

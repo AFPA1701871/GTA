@@ -32,7 +32,6 @@ class View_Pointages_PeriodeManager
 	{
 		$db = DbConnect::getDb();
         $q = $db->query('SELECT sum(cumulPointage) as somme FROM gta_View_Pointages_Periode WHERE idUtilisateur=' . $idUtilisateur . '  AND periode = "' . $periode . '" ');
-        $liste = [];
         if (!$q) {
             return false;
         }
@@ -44,7 +43,6 @@ class View_Pointages_PeriodeManager
 		// ou Manager pour savoir combien de personnes le manager a validé
 		$db = DbConnect::getDb();
         $q = $db->query('SELECT distinct idUtilisateur as nb FROM gta_View_Pointages_Periode WHERE id'.$pointDeVue.'=' . $idUtilisateur . '  AND periode = "' . $periode . '" AND validePointage= 1');
-        $liste = [];
         if (!$q) {
             return false;
         }
@@ -54,8 +52,7 @@ class View_Pointages_PeriodeManager
 	{
 		$db = DbConnect::getDb();
 		$cond =  ($pointDeVue=="Utilisateur")?"idUtilisateur=" . $idUtilisateur ." AND ":""; 
-        $q = $db->query('SELECT distinct idUtilisateur as nb FROM gta_View_Pointages_Periode WHERE '.$cond.'  periode = "' . $periode . '" AND reportePointage= 1');
-        $liste = [];
+        $q = $db->query('SELECT distinct idUtilisateur as nb FROM gta_View_Pointages_Periode WHERE '.$cond.'  AND periode = "' . $periode . '" AND reportePointage= 1');
         if (!$q) {
             return false;
         }
