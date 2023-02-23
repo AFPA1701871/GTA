@@ -19,7 +19,7 @@ echo '
                     </a>
                 </div>
             </div>
-            <a href="?page=ListeUtilisateurs">
+            <a href="?page=ListeUtilisateurs" class=center>
                 <div>'. texte("Utilisateurs") .'</div>
             </a>
             <div class="relative center">'. texte("Données pointages") .'
@@ -55,11 +55,11 @@ echo '
                                 </div>
                         </div>';
         } else if ($roleConnecte == 2) {
-            echo '   <a href="?page=TbManager">
+            echo '   <a href="?page=TbManager" class=center>
             <div>'. texte("TableauBord") .'</div>
         </a>';
         } 
-    echo '   <a href="?page=FormPointages">
+    echo '   <a href="?page=FormPointages" class=center>
             <div>'. texte("Pointages") .'</div>
         </a>
     </menu>
