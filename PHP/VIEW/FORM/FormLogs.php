@@ -42,7 +42,7 @@ echo '<div class="caseForm col-span-form">
 	<div></div>
 	<div><a href="index.php?page=ListeLogs"><button type="button"><i class="fas fa-arrow-left fa-rotate-180"></i></button></a></div>
 	<div class="cote"></div>';
-	echo ($mode == "Afficher") ? "" : " <div><button type=\"submit\"><i class=\"fas fa-paper-plane\"></i></button></div>";
+	echo ($mode == "Afficher") ? "" :(($mode == "Supprimer") ? "<div><button type=\"submit\"><i class=\"fas fa-trash-alt\"></i></button></div>" : " <div><button type=\"submit\"><i class=\"fas fa-paper-plane\"></i></button></div>");
 	echo'<div></div>
 	</div>';
 
