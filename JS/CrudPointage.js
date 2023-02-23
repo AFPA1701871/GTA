@@ -25,12 +25,17 @@ function changePointage(event) {
   let projet = document.querySelector('input[data-line="' + ligne + '"][name="idProjet"]').value;
   let prestation = document.querySelector('input[data-line="' + ligne + '"][name="idPrestation"]').value;
 
+  let valeur=preformatFloat(pointage.value);
+  if(valeur<0 || valeur>1){
+    valeur=0;
+  }
+
   // Requête
   let req = new XMLHttpRequest();
   req.open("POST", "index.php?page=MAJPointageAPI", true); // Initialisation de la requête avec une methode POST et le chemin de la page de traitement
   req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
   // Preparation des arguments qui seront envoyé par POST à la page de traitement
-  let args = "idUo=" + uo + "&idMotif=" + motif + "&idProjet=" + projet + "&idPrestation=" + prestation + "&idTypePrestation=" + typePrestation + "&datePointage=" + date + "&idUtilisateur=" + idUser + "&nbHeuresPointage=" + pointage.value;
+  let args = "idUo=" + uo + "&idMotif=" + motif + "&idProjet=" + projet + "&idPrestation=" + prestation + "&idTypePrestation=" + typePrestation + "&datePointage=" + date + "&idUtilisateur=" + idUser + "&nbHeuresPointage=" + valeur;
 
   if (idpointage) args += "&idPointage=" + idpointage; // Si la case possède déjà un ID
   req.send(args);

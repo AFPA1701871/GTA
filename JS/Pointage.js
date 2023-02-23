@@ -42,7 +42,7 @@ function scrollHoriz(e) {
 }
 function expand(e) {
     // Pour éviter qu'il applique aussi le toggle à la div contenant le I
-    if(e.target.nodeName=="I"){
+    if (e.target.nodeName == "I") {
         e.target.classList.toggle("fa-open");
         e.target.classList.toggle("fa-close");
     }
@@ -88,7 +88,8 @@ function ChangeCellule(e) {
     let cell = e.target;
     let ligne = cell.getAttribute("data-line");
     let colonne = cell.getAttribute("data-date");
-    if (isNaN(parseFloat(cell.value)) || (parseFloat(cell.value) < 0 || parseFloat(cell.value) > 1)) {
+    cell.value = preformatFloat(cell.value);
+    if (isNaN(cell.value) || (cell.value < 0 || cell.value > 1)) {
         cell.value = "";
     }
     if (cell.getAttribute("data-line") == "0-1") {
@@ -240,3 +241,53 @@ function UpdateFav(e) {
         }
     };
 }
+
+function preformatFloat(float) {
+    if (!float) {
+        return '';
+    };
+
+    //Présence de plusieurs virgules
+    if (float.match(/,/g) != null) {
+        if ((float.match(/,/g)).length > 1) {
+            let splitC = float.split(",");
+            if (splitC[1].includes(".") || splitC[1] == "") {
+                float = splitC[0];
+            } else {
+                float = splitC[0] + "." + splitC[1];
+            }
+        };
+    };
+
+    //Présence de plusieurs points
+    if ((float.match(/\./g)) != null) {
+        if ((float.match(/\./g)).length > 1) {
+            let splitFS = float.split(".");
+            if (splitFS[1].includes(",") || splitFS[1] == "") {
+                float = splitFS[0];
+            } else {
+                float = splitFS[0] + "." + splitFS[1];
+            }
+        };
+    };
+
+    //Index de la première virgule
+    const posC = float.indexOf(',');
+
+    if (posC === -1) {
+        //Pas de virgule trouvée, traite comme un float
+        return float;
+    };
+
+    //Index du premier point
+    const posFS = float.indexOf('.');
+
+    if (posFS === -1) {
+        //Utilise des virgules et pas des points - on les inverse (ex. 1,23 --> 1.23)
+        return float.replace(/\,/g, '.');
+    };
+
+
+    //Utilise des virgules et des points - On s'assure que l'ordre est correct on retire les points de séparation des milliers
+    return ((posC < posFS) ? (float.replace(/\,/g, '')) : (float.replace(/\./g, '').replace(',', '.')));
+};
