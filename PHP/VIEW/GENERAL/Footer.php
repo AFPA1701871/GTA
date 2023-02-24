@@ -39,6 +39,7 @@ if (isset($page)) {
             break;
         case "TbAssistante":
         case "TbManager":
+            echo '<script src="./JS/TBValideSirh.js"></script>';
             echo '<script src="./JS/Chart.js"></script>';
             echo '<script src="./JS/CreateChartTB.js"></script>';
             break;

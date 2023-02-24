@@ -59,10 +59,9 @@ echo '</div>';
 echo '</section>';
 echo '<div class="cote"></div>';
 $contenu = ($roleConnecte == 2) ? "Valider":"Reporter dans SIRH";
-$retour = ($roleConnecte == 2) ? "TbManager&periode=".$periode:"TbAssistante&periode=".$periode;
 echo '<section class=" vCenter">
 <div></div>
-<a href="?page='.$retour.'"><button><i class="fas fa-house"></i>&nbsp;Retour</button></a><div></div>
+<button id=retour><i class="fas fa-house"></i>&nbsp;Retour</button><div></div>
 <div></div>
 <button id=valide><i class="fas fa-check fa-green"></i>&nbsp;'.$contenu.'</button>
 <div></div>

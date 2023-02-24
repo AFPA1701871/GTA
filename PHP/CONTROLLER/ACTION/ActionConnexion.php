@@ -25,14 +25,14 @@ switch ($mode)
             }
             else
             {
-                echo '<h3>La connexion a échouée</h3>';
+                echo '<main class=center><h3>La connexion a échouée</h3></main>';
                 conn_log("connexion échouée", $uti->toString());
                 header("refresh:3;url=index.php?page=Default");
             }
         }
         else
         {
-            echo '<h3>La connexion a échouée</h3>';
+            echo '<main class=center><h3>La connexion a échouée</h3></main>';
             conn_log("l'utilisateur n'existe pas", $_POST["matriculeUtilisateur"]);
             header("refresh:3;url=index.php?page=Default");
         }

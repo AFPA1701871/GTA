@@ -244,15 +244,18 @@ SELECT
     w.idPreference,
     w.idMotif,
     m.codeMotif,
+    m.libelleMotif,
     u.idUo,
     u.numeroUo,
+    u.libelleUo,
     w.idProjet,
     pr.codeProjet,
+    pr.libelleProjet,
     w.idTypePrestation,
     w.idUtilisateur,
     null as idPointage,
     null as datePointage,
-    null as mois
+    null as periode
 FROM
     gta_View_Prestations p
     LEFT JOIN gta_Preferences w ON w.idPrestation = p.idPrestation
@@ -273,10 +276,13 @@ SELECT
     null as idPreference,
     po.idMotif,
     m.codeMotif,
+    m.libelleMotif,
     u.idUo,
     u.numeroUo,
+    u.libelleUo,
     po.idProjet,
     pr.codeProjet,
+    pr.libelleProjet,
     po.idTypePrestation,
     po.idUtilisateur,
     po.idPointage,
@@ -289,3 +295,10 @@ FROM
     LEFT JOIN gta_Motifs m ON po.idMotif = m.idMotif
     LEFT JOIN gta_Uos u ON po.idUo = u.idUo
     LEFT JOIN gta_Projets pr ON po.idProjet = pr.idProjet;
+
+DROP VIEW IF EXISTS gta_View_Logs;
+
+CREATE VIEW gta_View_Logs as
+SELECT distinct u.idUtilisateur, nomUtilisateur, prisEnCompte, date_format(dateModifiee, "%Y-%m") as periode 
+FROM gta_Logs l 
+INNER JOIN gta_Utilisateurs u On l.idUtilisateur=u.idUtilisateur;
