@@ -77,8 +77,9 @@ echo '    </div>';
 $numPresta = 0;
 // Boucle sur les Types de Prestations
 foreach ($typesPrestations as $key => $typePresta) {
+    $iconeAjoutLigne=($typePresta->getNumeroTypePrestation()!=1)?'<i id="AjoutPresta1" class="fas fa-plus plusRigth"></i>':'';
     $idTypePrestation = $typePresta->getIdTypePrestation();
-    echo '        <div class="center fullLine grid-lineSimple cellBottom left titreTypePrestation" data-idTypePrestation = ' . $idTypePrestation . '>' . $typePresta->getNumeroTypePrestation() . " - " . $typePresta->getLibelleTypePrestation() . '<i id="AjoutPresta1" class="fas fa-plus plusRigth"></i></div>';
+    echo '        <div class="center fullLine grid-lineSimple cellBottom left titreTypePrestation" data-idTypePrestation = ' . $idTypePrestation . '>' . $typePresta->getNumeroTypePrestation() . " - " . $typePresta->getLibelleTypePrestation() . ' '.$iconeAjoutLigne.'</div>';
     echo '        <div class=" grid-lineSimple cellBottom titreTypePrestation ">&nbsp;</div>';
 
     // on récupère les prestations de ce type
