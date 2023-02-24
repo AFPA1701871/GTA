@@ -102,7 +102,7 @@ foreach ($typesPrestations as $key => $typePresta) {
               <div ' . $dataline . ' class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
                   <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '" ' . $dataline . '>
-                  <input type=hidden name=idPreference value = "' . $prestation->getIdPreference() . '" ' . $dataline . '>
+                  <input type=hidden name=idPreference value = "' . $pref[0]->getIdPreference() . '" ' . $dataline . '>
                   <input value = "' . $prestation->getLibellePrestation() . '" disabled>
                       <div class="favorise vMini cellRight"><i class="fas fa-fav '.$classFavorisActif.' "></i></div>
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" ' . $dataline . '></i></div>

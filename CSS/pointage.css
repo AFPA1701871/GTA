@@ -126,6 +126,10 @@
 .dark .grid-presta i {
     color: var(--color5);
 }
+.dark .grid-presta i.favActive{
+    color: rgb(212, 212, 7);
+}
+
 .fa-expand::before {
     content: "\f424";
 }
