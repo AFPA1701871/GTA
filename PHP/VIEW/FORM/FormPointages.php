@@ -1,9 +1,9 @@
 <?php
 global $mois;
 global $joursSemaine;
-$idUtilisateur =  (isset($_GET['idUtilisateur']))?$_GET['idUtilisateur']:$_SESSION['utilisateur']->getIdUtilisateur();
+$idUtilisateur =  (isset($_GET['idUtilisateur'])) ? $_GET['idUtilisateur'] : $_SESSION['utilisateur']->getIdUtilisateur();
 
-$periode = (isset($_GET['periode']))?$_GET['periode']:periodeEnCours($idUtilisateur,"Pointage");
+$periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idUtilisateur, "Pointage");
 // Preparation des données issus de l'idUtilisateur et de la période
 $user = View_UtilisateursManager::getList(null, ["idUtilisateur" => $idUtilisateur])[0];
 $periodeTab = explode("-", $periode);
@@ -77,25 +77,29 @@ echo '    </div>';
 $numPresta = 0;
 // Boucle sur les Types de Prestations
 foreach ($typesPrestations as $key => $typePresta) {
-    $iconeAjoutLigne=($typePresta->getNumeroTypePrestation()!=1)?'<i id="AjoutPresta1" class="fas fa-plus plusRigth"></i>':'';
+    $iconeAjoutLigne = ($typePresta->getNumeroTypePrestation() != 1) ? '<i id="AjoutPresta1" class="fas fa-plus plusRigth"></i>' : '';
     $idTypePrestation = $typePresta->getIdTypePrestation();
-    echo '        <div class="center fullLine grid-lineSimple cellBottom left titreTypePrestation" data-idTypePrestation = ' . $idTypePrestation . '>' . $typePresta->getNumeroTypePrestation() . " - " . $typePresta->getLibelleTypePrestation() . ' '.$iconeAjoutLigne.'</div>';
+    echo '        <div class="center fullLine grid-lineSimple cellBottom left titreTypePrestation" data-idTypePrestation = ' . $idTypePrestation . '>' . $typePresta->getNumeroTypePrestation() . " - " . $typePresta->getLibelleTypePrestation() . ' ' . $iconeAjoutLigne . '</div>';
     echo '        <div class=" grid-lineSimple cellBottom titreTypePrestation ">&nbsp;</div>';
 
     // on récupère les prestations de ce type
     $listePrestation = View_Prestations_Pref_PointManager::getListePrestation($idUtilisateur, $periode, $idTypePrestation);
-    
+
     // boucle sur les prestations
     foreach ($listePrestation as $prestation) {
         $numPresta++; // permet de numéroter les prestations
         $dataline = ' data-line="' . $numPresta . '"';
         // recherche si prestation fait parti des preferences 
-        $cond =["idUtilisateur"=>$prestation->getIdUtilisateur(),"idTypePrestation"=>$prestation->getIdTypePrestation(),"idPrestation"=>$prestation->getIdPrestation()];
-        if ($prestation->getIdUo()!=null) $cond["idUo"]=$prestation->getIdUo();
-        if ($prestation->getIdMotif()!=null) $cond["idMotif"]=$prestation->getIdMotif();
-        if ($prestation->getIdProjet()!=null) $cond["idProjet"]=$prestation->getIdProjet();
-        $pref = PreferencesManager::getList(null,$cond);
-        $classFavorisActif=(count($pref)>0 && $pref[0]->getIdPreference()!=null)?'favActive':'';
+        $cond = ["idUtilisateur" => $prestation->getIdUtilisateur(), "idTypePrestation" => $prestation->getIdTypePrestation(), "idPrestation" => $prestation->getIdPrestation()];
+        if ($prestation->getIdUo() != null) $cond["idUo"] = $prestation->getIdUo();
+        if ($prestation->getIdMotif() != null) $cond["idMotif"] = $prestation->getIdMotif();
+        if ($prestation->getIdProjet() != null) $cond["idProjet"] = $prestation->getIdProjet();
+        $pref = PreferencesManager::getList(null, $cond);
+        $classFavorisActif = (count($pref) > 0 && $pref[0]->getIdPreference() != null) ? 'favActive' : '';
+
+        // Gestion de l'affichage de "Hors RTT" en rouge -> appelé 10 lignes plus bas
+        $classRTT = ($idTypePrestation == 1) ? ' class="classRTT" ' : '';
+
         // 9 parties constituants la prestation
         echo '    <div class="grid-presta tabCol pointMove leftStickyRigth">
                     <input name="idTypePrestation" type=hidden value=' . $idTypePrestation . ' ' . $dataline . '>
@@ -103,8 +107,8 @@ foreach ($typesPrestations as $key => $typePresta) {
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
                   <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '" ' . $dataline . '>
                   <input type=hidden name=idPreference value = "' . $pref[0]->getIdPreference() . '" ' . $dataline . '>
-                  <input value = "' . $prestation->getLibellePrestation() . '" disabled>
-                      <div class="favorise vMini cellRight"><i class="fas fa-fav '.$classFavorisActif.' "></i></div>
+                  <input value = "' . $prestation->getLibellePrestation() . '" ' . $classRTT . ' disabled>
+                      <div class="favorise vMini cellRight"><i class="fas fa-fav ' . $classFavorisActif . ' "></i></div>
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" ' . $dataline . '></i></div>
                             </div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight ">Code Prest.</div>
@@ -113,7 +117,7 @@ foreach ($typesPrestations as $key => $typePresta) {
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Code Projet</div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight"><input class="inputPointage" ' . $dataline . ' type="text" value = "' . $prestation->getCodePrestation() . '" disabled name=codePrestation></div>
                             <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight work">';
-        if ($typePresta->getUoRequis()) { 
+        if ($typePresta->getUoRequis()) {
             // modifier la vue pour recupérer le libelle de l'Uo iden projet et motif
             echo '<input class="inputPointage" ' . $dataline . ' type="text" name="inputUo" value = "' . $prestation->getNumeroUo() . '" disabled title = "' . $prestation->getLibelleUo() . '">';
         } else {
@@ -147,7 +151,7 @@ foreach ($typesPrestations as $key => $typePresta) {
         echo '                <div class="cellBottom center grid-lineDouble colPrctGTA border-left" ' . $dataline . '></div>';
         echo '                <div class="cellBottom grid-lineDouble"></div>';
         foreach ($tabJour as $i => $value) {
-            $conditions=[];
+            $conditions = [];
             $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
             $content = str_replace("data-line", $dataline, $value['content']);
             $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
@@ -156,9 +160,9 @@ foreach ($typesPrestations as $key => $typePresta) {
             $conditions["idUtilisateur"] = $idUtilisateur;
             $conditions["idPrestation"] = $prestation->getIdPrestation();
             $conditions["datePointage"] = $jour->format("Y-m-d");
-            if ($prestation->getMotifRequis() && $prestation->getIdMotif()!=null) $conditions["idMotif"] = $prestation->getIdMotif();
-            if ($prestation->getProjetRequis() && $prestation->getIdProjet()!=null) $conditions["idProjet"] = $prestation->getIdProjet();
-            if ($prestation->getUoRequis() && $prestation->getIdUo()!=null) $conditions["idUo"] = $prestation->getIdUo();
+            if ($prestation->getMotifRequis() && $prestation->getIdMotif() != null) $conditions["idMotif"] = $prestation->getIdMotif();
+            if ($prestation->getProjetRequis() && $prestation->getIdProjet() != null) $conditions["idProjet"] = $prestation->getIdProjet();
+            if ($prestation->getUoRequis() && $prestation->getIdUo() != null) $conditions["idUo"] = $prestation->getIdUo();
             $pointage = PointagesManager::getList(null, $conditions, null, null, false, false);
             if ($pointage != false) {
                 $content = str_replace("value", ' value="' . $pointage[0]->getNbHeuresPointage() . '" ', $content);
