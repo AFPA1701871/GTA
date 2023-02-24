@@ -17,9 +17,10 @@ switch (page) {
     case "ListeOffres":
         selection.idCentre = centreUser;
         break;*/
+    case "ListeUtilisateurs":
+        selection.idRole = "1->3";
+        break;
     default:
         console.log(selection);
         break;
-
 }
-
