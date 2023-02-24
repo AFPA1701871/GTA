@@ -17,7 +17,6 @@ class View_Prestations_Pref_PointManager
         if (!$q) {
             return false;
         }
-        //var_dump($q);
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) { // on récupère les enregistrements de la BDD
             if ($donnees != false) {
                 $liste[] = new View_Prestations_Pref_Point($donnees);

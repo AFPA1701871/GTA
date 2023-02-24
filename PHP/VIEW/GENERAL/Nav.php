@@ -60,7 +60,7 @@ echo '
         </a>';
         } 
     echo '   <a href="?page=FormPointages" class=center>
-            <div>'. texte("Pointages") .'</div>
+            <div>'. texte("Pointage") .'</div>
         </a>
     </menu>
     <aside class="cote"></aside>

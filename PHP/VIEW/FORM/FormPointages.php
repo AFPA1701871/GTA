@@ -84,7 +84,6 @@ foreach ($typesPrestations as $key => $typePresta) {
 
     // on récupère les prestations de ce type
     $listePrestation = View_Prestations_Pref_PointManager::getListePrestation($idUtilisateur, $periode, $idTypePrestation);
-
     // boucle sur les prestations
     foreach ($listePrestation as $prestation) {
         $numPresta++; // permet de numéroter les prestations
@@ -94,8 +93,9 @@ foreach ($typesPrestations as $key => $typePresta) {
         if ($prestation->getIdUo() != null) $cond["idUo"] = $prestation->getIdUo();
         if ($prestation->getIdMotif() != null) $cond["idMotif"] = $prestation->getIdMotif();
         if ($prestation->getIdProjet() != null) $cond["idProjet"] = $prestation->getIdProjet();
-        $pref = PreferencesManager::getList(null, $cond);
-        $classFavorisActif = (count($pref) > 0 && $pref[0]->getIdPreference() != null) ? 'favActive' : '';
+        $pref = PreferencesManager::getList(null, $cond,null,null,false,false);
+         $pref = ($pref !=false )?$pref[0]: new Preferences();
+        $classFavorisActif = ($pref->getIdPreference() != null) ? 'favActive' : '';
 
         // Gestion de l'affichage de "Hors RTT" en rouge -> appelé 10 lignes plus bas
         $classRTT = ($idTypePrestation == 1) ? ' class="classRTT" ' : '';
@@ -106,7 +106,7 @@ foreach ($typesPrestations as $key => $typePresta) {
               <div ' . $dataline . ' class="center grid-lineDouble cellBottom grid-columns-span-2 prestaLine">
                   <div class="center grid-lineDouble cellBottom grid-columns-span-4">
                   <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '" ' . $dataline . '>
-                  <input type=hidden name=idPreference value = "' . $pref[0]->getIdPreference() . '" ' . $dataline . '>
+                  <input type=hidden name=idPreference value = "' . $pref->getIdPreference() . '" ' . $dataline . '>
                   <input value = "' . $prestation->getLibellePrestation() . '" ' . $classRTT . ' disabled>
                       <div class="favorise vMini cellRight"><i class="fas fa-fav ' . $classFavorisActif . ' "></i></div>
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" ' . $dataline . '></i></div>
