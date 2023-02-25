@@ -15,7 +15,6 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 	$from = "pointage@afpadunkerque.fr";
 
 	// Corps du texte
-	$message_text="message_text";
 	$message = '<!DOCTYPE html>
 	<html lang="fr">
 		<head>
@@ -39,7 +38,7 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 	$message .= 'Nous vous invitons à le faire .
 					</td>
 				</tr>
-				<tr>	<td class="pad-bttm" style="padding-bottom: 1rem;">Pour saisir votre pointage, <a href="gta.afpadunkerque.fr/index.php?page=Default">cliquez sur ce lien</a>.</td>';
+				<tr>	<td class="pad-bttm" style="padding-bottom: 1rem;">Pour saisir votre pointage, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</td>';
 				$message .= '</tr>
 				<tr>
 					<td class="pad-bttm" style="padding-bottom: 1rem;">Cordialement</td>
@@ -47,22 +46,6 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 				<tr>
 					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Contactez directement Sylvie ou Fanny en cas de problème.</td>
 				</tr>
-
-				Martine POIX
-				Formateur Développeur Web et Web Mobile
-				Formateur Concepteur Développeur d’Application
-				AFPA de Dunkerque
-				06 81 30 69 04
-				
-				  
-				Agence nationale pour la formation professionnelle des adultes
-				
-						 
-				
-				www.afpa.fr
-				
-				
-
 			</table>
 		</body>
 	</html>';
@@ -111,17 +94,17 @@ function envoiMailRelanceValidation($adresseMail, $periode, $liste)
 		$message .= '<td>' . $value . '</td>';
 	}
 	$message .= '
-						<td>Nous vous invitons à le faire rapidement.
+						<td>Nous vous invitons à le faire dans les meilleurs délais.
 					</td>
 				</tr>
 				<tr>
-					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour valider les pointages, <a href="gta.afpadunkerque.fr/index.php?page=Default">cliquez sur ce lien</a>.</td>
+					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour valider les pointages, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</td>
 				</tr>
 				<tr>
 					<td class="pad-bttm" style="padding-bottom: 1rem;">Cordialement</td>
 				</tr>
 				<tr>
-					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Cet e-mail a été généré automatiquement, merci de ne pas y répondre.</td>
+					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Contactez Sylvie ou Fanny en cas de problème.</td>
 				</tr>
 			</table>
 		</body>
@@ -171,17 +154,17 @@ function envoiMailRelanceReport($adresseMail, $periode, $liste)
 		$message .= '<td>' . $value . '</td>';
 	}
 	$message .= '
-						<td>Nous vous invitons à le faire rapidement.
+						<td>Nous vous invitons à le faire.
 					</td>
 				</tr>
 				<tr>
-					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour valider les pointages, <a href="gta.afpadunkerque.fr/index.php?page=Default">cliquez sur ce lien</a>.</td>
+					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour valider les pointages, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</td>
 				</tr>
 				<tr>
 					<td class="pad-bttm" style="padding-bottom: 1rem;">Cordialement</td>
 				</tr>
 				<tr>
-					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Cet e-mail a été généré automatiquement, merci de ne pas y répondre.</td>
+					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Contactez Martine en cas de problème, LOL</td>
 				</tr>
 			</table>
 		</body>
