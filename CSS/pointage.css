@@ -198,7 +198,7 @@ select {
 
 .prestaLine {
     display: grid;
-    grid-template-columns: 0.5fr 0.5fr 0.5fr 1.1fr;
+    grid-template-columns: 0.5fr 0.7fr 0.5fr 1.1fr;
     height: 100%;
 }
 
@@ -296,6 +296,7 @@ div .jourOK>input[type="text"] {
 .casePointage {
     border: 2px solid var(--color7);
     padding: 0;
+    font-size: 1rem;
 }
 
 .jourOK {

@@ -52,6 +52,9 @@ echo '
                                     <a href="?page=TbManager">
                                         <div>'. texte("TbManager") .'</div>
                                     </a>
+                                    <a href="?page=ActionMail">
+                                        <div>'. texte("Envoi Mail test") .'</div>
+                                    </a>
                                 </div>
                         </div>';
         } else if ($roleConnecte == 2) {
