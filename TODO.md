@@ -50,7 +50,7 @@
 * [X] Remplacer les input ID par des select
 * [X] Ajouter un lien changer mot de passe dans le header
 * [X] Mettre un check sur actif
-* [ ] Ajouter une preferences absents à la création d'un user
+* [X] Ajouter une preferences absents à la création d'un user
 
 ## Table Associations
 
