@@ -41,7 +41,6 @@
 
 * [X] Ajouter un logo et un favicon
 * [ ] Vérifier le comportement après un timeout
-* [ ] Mettre la possibilité de chercher dans les select en commencant à écrire
 
 ## Crud Utilisateurs
 
