@@ -1933,3 +1933,5 @@ INSERT INTO `gta_Preferences`(`idPreference`, `idMotif`, `idPrestation`, `idProj
 INSERT INTO `gta_Preferences`(`idPreference`, `idMotif`, `idPrestation`, `idProjet`, `idUo`, `idUtilisateur`, `idTypePrestation`) VALUES (null,null,386,null,null,36,6);
 INSERT INTO `gta_Preferences`(`idPreference`, `idMotif`, `idPrestation`, `idProjet`, `idUo`, `idUtilisateur`, `idTypePrestation`) VALUES (null,null,386,null,70,96,6);
 INSERT INTO `gta_Preferences`(`idPreference`, `idMotif`, `idPrestation`, `idProjet`, `idUo`, `idUtilisateur`, `idTypePrestation`) VALUES (null,null,386,null,72,96,6);
+
+UPDATE gta_Contrats SET dateFinContrat = "2029-12-31";
