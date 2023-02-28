@@ -82,12 +82,12 @@ class Pointages
 
 	public function getDatePointage()
 	{
-		return is_null($this->_datePointage) ? null : $this->_datePointage->format('Y-n-j');
+		return $this->_datePointage;
 	}
 
 	public function setDatePointage(string $datePointage)
 	{
-		$this->_datePointage = DateTime::createFromFormat("Y-n-j", $datePointage);
+		$this->_datePointage =  $datePointage;
 	}
 
 	public function getValidePointage()

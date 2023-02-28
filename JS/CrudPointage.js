@@ -47,7 +47,7 @@ function changePointage(event) {
         if (this.responseText) { // Si la réponse n'est pas vide
           console.log(this.responseText);
           let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
-          pointage.setAttribute("data-idpointage", idpointage); // Change l'attribut ID de la case
+          pointage.setAttribute("data-idpointage", id); // Change l'attribut ID de la case
 
         }
       }
