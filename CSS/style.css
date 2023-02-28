@@ -6,6 +6,13 @@ header {
     padding: 0.6rem 0;
     text-transform: uppercase;
 }
+.err img {
+    max-width: 50vw;
+}
+.err a {
+    display: inline;
+    cursor: default;
+}
 *{
     scroll-behavior: smooth;
 }
