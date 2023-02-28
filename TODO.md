@@ -40,6 +40,7 @@
 # Spécificités appli
 
 * [X] Ajouter un logo et un favicon
+* [ ] Vérifier le comportement après un timeout
 
 ## Crud Utilisateurs
 
@@ -48,6 +49,7 @@
 * [X] Remplacer les input ID par des select
 * [X] Ajouter un lien changer mot de passe dans le header
 * [X] Mettre un check sur actif
+* [X] Ajouter une preferences absents à la création d'un user
 
 ## Table Associations
 
@@ -67,10 +69,10 @@
 * [X] Message informatif sauvegardes
 * [X] Récapitulatif pointage pour manager
 * [X] Récapitulatif pointage pour ARH
-* [ ] Precision pour les RTT
-* [ ] Gestion des logs (Yves)
-* [ ] Gestion de l'envoi de mail
-* [ ] Mettre les title sur les inputs (php + ajax)
+* [X] Precision pour les RTT
+* [X] Gestion des logs
+* [X] Gestion de l'envoi de mail
+* [X] Mettre les title sur les inputs (php + ajax)
 
 ## Tableaux de bord
 
@@ -101,7 +103,7 @@
 ## Jeux de données
 
 * [X] Compléter le jeux de données
-* [ ] Mettre à jour les préférences pour les utilisateurs finaux
+* [X] Mettre à jour les préférences pour les utilisateurs finaux
 
 ## CRUD Motifs
 

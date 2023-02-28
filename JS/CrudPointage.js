@@ -83,7 +83,7 @@ function clicPlus(event) {
 
   // mis à jour liste presta
   condition['idTypePrestation'] = idTypePrestation;
-  selectPresta = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], 'class="inputPointage" dataline', true, condition);
+  selectPresta = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], "class=inputPointage dataline", true, condition);
   nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', selectPresta + '<input type=hidden name=idPrestation dataline >');
 
   // mis à jour disabled dans motif/projet/uo

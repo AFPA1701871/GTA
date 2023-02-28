@@ -58,4 +58,27 @@ class View_Pointages_PeriodeManager
         }
         return count($q->fetchAll());
 	}
+	public static function JoursValides($idUtilisateur,$periode)
+    {
+        //pointDeVue permet d'alterner entre idUtilisateur pour savoir si l'utilisateur est validé
+        // ou Manager pour savoir combien de personnes le manager a validé
+        $db = DbConnect::getDb();
+        $q = $db->query('SELECT SUM(cumulPointage) as nb FROM gta_View_Pointages_Periode WHERE idUtilisateur=' . $idUtilisateur . '  AND periode = "' . $periode . '" AND validePointage= 1');
+        if (!$q) {
+            return false;
+        }
+        return $q->fetch(PDO::FETCH_ASSOC)['nb'];    // nombre d'utilisateur different valide pour la periode
+    }
+
+    public static function JoursReportes($idUtilisateur,$periode)
+    {
+        //pointDeVue permet d'alterner entre idUtilisateur pour savoir si l'utilisateur est validé
+        // ou Manager pour savoir combien de personnes le manager a validé
+        $db = DbConnect::getDb();
+        $q = $db->query('SELECT SUM(cumulPointage) as nb FROM gta_View_Pointages_Periode WHERE idUtilisateur=' . $idUtilisateur . '  AND periode = "' . $periode . '" AND reportePointage= 1');
+        if (!$q) {
+            return false;
+        }
+        return $q->fetch(PDO::FETCH_ASSOC)['nb'];    // nombre d'utilisateur different valide pour la periode
+    }
 }

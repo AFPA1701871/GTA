@@ -1,5 +1,8 @@
 <?php
 
+envoiMailRelancePointage("martine.poix@afpa.fr","2023-01",null);
+envoiMailRelancePointage("pointage@afpadunkerque.fr","2023-01",null);
+
 /**
  * Permet d'envoyer un mail de relance pour la saisie du pointage
  *
@@ -8,7 +11,7 @@
  */
 function envoiMailRelancePointage($adresseMail, $periode, $etat)
 {
-	$sujet = "GTA - Relance pour la saisie de votre pointage";
+	$sujet = "GTA - Relance pour la saisie de votre pointage pour ".tabMoisAnnee()[$periode];
 	$from = "pointage@afpadunkerque.fr";
 
 	// Corps du texte
@@ -18,7 +21,7 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 			<meta charset="UTF-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Relance pour le pointage GTA du mois de ' . $periode . '</title>
+			<title>Relance pour le pointage GTA du mois de ' .tabMoisAnnee()[$periode]. '</title>
 		</head>
 		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
 			<table>
@@ -27,22 +30,21 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 				</tr>
 				<tr>
 					<td>
-						La saisie de votre pointage GTA pour le mois de ' . $periode;
+						La saisie de votre pointage GTA pour le mois de ' .tabMoisAnnee()[$periode];
 	if ($etat != null)
-		$message += ' est incomplète. ';
-	else $message += ' n\'a pas encore été réalisée. ';
+		$message .= ' n\'est pas terminée. ';
+	else $message .= ' n\'a pas encore été réalisée. ';
 
-	$message += 'Nous vous invitons à le faire rapidement.
+	$message .= 'Nous vous invitons à le faire .
 					</td>
 				</tr>
-				<tr>
-					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour saisir votre pointage, <a href="gta.afpadunkerque.fr/index.php?page=Default">cliquez sur ce lien</a>.</td>
-				</tr>
+				<tr>	<td class="pad-bttm" style="padding-bottom: 1rem;">Pour saisir votre pointage, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</td>';
+				$message .= '</tr>
 				<tr>
 					<td class="pad-bttm" style="padding-bottom: 1rem;">Cordialement</td>
 				</tr>
 				<tr>
-					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Cet e-mail a été généré automatiquement, merci de ne pas y répondre.</td>
+					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Contactez directement Sylvie ou Fanny en cas de problème.</td>
 				</tr>
 			</table>
 		</body>
@@ -52,7 +54,7 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 	$headers = 'From: ' . $from . PHP_EOL;
 	$headers .= 'MIME-Version: 1.0' . PHP_EOL;
 	$headers .= "Content-Type: text/html; charset=UTF-8" . PHP_EOL;
-	$headers .= "Content-Transfer-Encoding: base64;";
+	//$headers .= "Content-Transfer-Encoding: base64;";
 
 	// Envoi du mail
 	return mail($adresseMail, $sujet, $message, $headers);
@@ -89,20 +91,20 @@ function envoiMailRelanceValidation($adresseMail, $periode, $liste)
 						La validation du pointage GTA de vos collaborateurs pour le mois de ' . $periode . ' n\'a pas encore été réalisée pour les personnes suivantes.
 						</td>';
 	foreach ($liste as  $value) {
-		$message += '<td>' . $value . '</td>';
+		$message .= '<td>' . $value . '</td>';
 	}
-	$message += '
-						<td>Nous vous invitons à le faire rapidement.
+	$message .= '
+						<td>Nous vous invitons à le faire dans les meilleurs délais.
 					</td>
 				</tr>
 				<tr>
-					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour valider les pointages, <a href="gta.afpadunkerque.fr/index.php?page=Default">cliquez sur ce lien</a>.</td>
+					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour valider les pointages, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</td>
 				</tr>
 				<tr>
 					<td class="pad-bttm" style="padding-bottom: 1rem;">Cordialement</td>
 				</tr>
 				<tr>
-					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Cet e-mail a été généré automatiquement, merci de ne pas y répondre.</td>
+					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Contactez Sylvie ou Fanny en cas de problème.</td>
 				</tr>
 			</table>
 		</body>
@@ -149,20 +151,20 @@ function envoiMailRelanceReport($adresseMail, $periode, $liste)
 						Le report du pointage GTA pour le mois de ' . $periode . ' n\'a pas encore été réalisée pour les personnes suivantes.
 						</td>';
 	foreach ($liste as  $value) {
-		$message += '<td>' . $value . '</td>';
+		$message .= '<td>' . $value . '</td>';
 	}
-	$message += '
-						<td>Nous vous invitons à le faire rapidement.
+	$message .= '
+						<td>Nous vous invitons à le faire.
 					</td>
 				</tr>
 				<tr>
-					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour valider les pointages, <a href="gta.afpadunkerque.fr/index.php?page=Default">cliquez sur ce lien</a>.</td>
+					<td class="pad-bttm" style="padding-bottom: 1rem;">Pour valider les pointages, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</td>
 				</tr>
 				<tr>
 					<td class="pad-bttm" style="padding-bottom: 1rem;">Cordialement</td>
 				</tr>
 				<tr>
-					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Cet e-mail a été généré automatiquement, merci de ne pas y répondre.</td>
+					<td class="italic" style="font-style: italic;padding-top: 0.5rem;">Contactez Martine en cas de problème, LOL</td>
 				</tr>
 			</table>
 		</body>

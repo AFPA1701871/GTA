@@ -52,6 +52,9 @@ echo '
                                     <a href="?page=TbManager">
                                         <div>'. texte("TbManager") .'</div>
                                     </a>
+                                    <a href="?page=ActionMail">
+                                        <div>'. texte("Envoi Mail test") .'</div>
+                                    </a>
                                 </div>
                         </div>';
         } else if ($roleConnecte == 2) {
@@ -60,7 +63,7 @@ echo '
         </a>';
         } 
     echo '   <a href="?page=FormPointages" class=center>
-            <div>'. texte("Pointages") .'</div>
+            <div>'. texte("Pointage") .'</div>
         </a>
     </menu>
     <aside class="cote"></aside>

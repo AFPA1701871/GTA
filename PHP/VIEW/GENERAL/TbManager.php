@@ -31,9 +31,8 @@ foreach ($agents as $key => $agent) {
     $disabled = " <a></a>";
     $idAgent = $agent->getIdUtilisateur();
     $pointage = View_Pointages_PeriodeManager::SommePointage($idAgent, $periode);
-    $valide = View_Pointages_PeriodeManager::NbValide($idAgent, $periode, "Utilisateur");
-    $report = View_Pointages_PeriodeManager::NbReporte($idAgent, $periode, "Utilisateur");
-    $reporte="";
+    $valide = View_Pointages_PeriodeManager::JoursValides($idAgent, $periode);
+    $report = View_Pointages_PeriodeManager::JoursReportes($idAgent, $periode, "Utilisateur");$reporte="";
     $bgc = ($key % 2 == 0) ? '' : 'bgc';
     if ($pointage == null) {
         $statut = '<i class="fas fa-circle-dot fa-black"></i>';
@@ -88,7 +87,7 @@ echo '<div class="colonne espace"><div class=>Légende : </div>
 <div class=>Colonne statut : </div>
 <div> <i class="fas fa-circle-dot fa-black"></i>&nbsp; : Pointage non commencé </div>
 <div> <i class="fas fa-circle fa-orange"></i>&nbsp; : Pointage commencé </div>
-<div> <i class="fas fa-circle fa-green"></i>&nbsp; : Pointage non commencé </div>
+<div> <i class="fas fa-circle fa-green"></i>&nbsp; : Pointage complet </div>
 <div> <i class="fas fa-check fa-green"></i>&nbsp; : Pointage validé par le manager </div>
 <div>&nbsp;</div>
         <div class=>Colonne Report SIRH : </div>

@@ -11,6 +11,8 @@ switch ($_GET['mode']) {
 		$elm->setPasswordUtilisateur(crypte(passwordDefault($elm)));
 		$elm = UtilisateursManager::add($elm);
 		if ($elm != 0) {
+			//on lui a joute une preference pour les absences
+			PreferencesManager::add(new Preferences(["idPrestation"=>1,"idUtilisateur"=>$elm,"idTypePrestation"=>1]));
 			// Utilisateur crée, redirection vers son formulaire de modification
 			header("location:index.php?page=FormUtilisateurs&mode=Modifier&id=" . $elm);
 		} else {
@@ -33,7 +35,7 @@ switch ($_GET['mode']) {
 		// ARCHIVAGE A CODER
 
 		// $elm = UtilisateursManager::delete($elm);
-		// header("location:index.php?page=ListeUtilisateurs");
+		 header("location:index.php?page=ListeUtilisateurs");
 		break;
 	}
 	case "Reinit": {

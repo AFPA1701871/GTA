@@ -5,7 +5,7 @@ class TextesManager
 
 	public static function findByCodes($codeLangue,$codeTexte)
 	{
-		 $texte=DAO::select([$codeLangue],"textes",["codeTexte" => $codeTexte],null,null,true);
+		 $texte=DAO::select([$codeLangue],"Textes",["codeTexte" => $codeTexte],null,null,true);
 		 if($texte==false) return false;
 		 return $texte[0][$codeLangue];
 	}
@@ -13,7 +13,7 @@ class TextesManager
 	public static function checkIfLangExist($codeLangue)
 	{
 		$db=DbConnect::getDb();
-		$q=$db->prepare("SHOW COLUMNS FROM textes LIKE :codeLangue");
+		$q=$db->prepare("SHOW COLUMNS FROM Textes LIKE :codeLangue");
 		$q->bindValue(":codeLangue", $codeLangue, PDO::PARAM_STR);
 		$q->execute();
 		$results = $q->fetch(PDO::FETCH_ASSOC);
