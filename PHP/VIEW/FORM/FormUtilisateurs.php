@@ -36,11 +36,11 @@ echo '<div class="caseForm donneeForm"><input type="text" ' . $disabled . 'value
 echo '<div></div><div></div>';
 
 echo '<label for=IdUo class="caseForm labelForm">' . texte("IdUo") . '</label>';
-echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdUo(), 'Uos', ['numeroUo', 'libelleUo'], $disabled, null, null, null, "Choisir une Uo") . '</div>';
+echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdUo(), 'Uos', ['numeroUo', 'libelleUo'], $disabled,null, null, null, "Choisir une Uo") . '</div>';
 echo '<div></div><div></div>';
 
 echo '<label for=IdRole class="caseForm labelForm">' . texte("IdRole") . '</label>';
-echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdRole(), 'Roles', ['nomRole'], $disabled . ' required', null, null, null, "Choisir un rôle") . '</div>';
+echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdRole(), 'Roles', ['nomRole'], $disabled . ' required',["idRole"=>"1->3"] , null, null, "Choisir un rôle") . '</div>';
 echo '<div></div><div></div>';
 
 echo '<label for=IdManager class="caseForm labelForm">' . texte("IdManager") . '</label>';
