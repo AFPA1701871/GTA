@@ -60,15 +60,32 @@ for ($i = 1; $i <= $nbrJoursMois; $i++) {
         $tabJour[$i]["jourOuvert"] = "";
         $tabJour[$i]["classeBG"] = "noWork";
         $tabJour[$i]["content"] = "";
+        $tabJour[$i]["contentL1"] = "";
     } else {
         $tabJour[$i]["jourOuvert"] = $jour->format("d") . "<br/>" . $joursSemaine[$jour->format('w')];
+
+        $condAbs["idTypePrestation"] = 1;
+        $condAbs["idUtilisateur"] = $idUtilisateur;
+        $condAbs["idPrestation"] = 1;
+        $condAbs["datePointage"] = $jour->format("Y-m-d");
+        $pointageAbs = PointagesManager::getList(null, $condAbs, null, null, false, false);
+
         if (in_array($jour->format("Y-m-d"), $listeFermeturesDuMois)) {
             $tabJour[$i]["classeBG"] = "notApplicable";
             $tabJour[$i]["content"] = "<input disabled class=' notApplicable inputPointage casePointage'>";
+            $tabJour[$i]["contentL1"] = "<input disabled class=' notApplicable inputPointage casePointage'>";
         } else {
             $nbJourPointe++;
-            $tabJour[$i]["classeBG"] = "work";
-            $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage case" value type="text" idPointage >';
+            if(($pointageAbs!=null && $pointageAbs[0]->getNbHeuresPointage()==1)){
+                $tabJour[$i]["classeBG"] = "notApplicable";
+                $tabJour[$i]["contentL1"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage case notApplicable" value type="text" idPointage >';
+                $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage case notApplicable" type="text" idPointage disabled>';
+            }
+            else{
+                $tabJour[$i]["classeBG"] = "work";
+                $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage case" value type="text" idPointage >';
+                $tabJour[$i]["contentL1"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage case" value type="text" idPointage >';
+            }
         }
     }
     echo '        <div data-date=' . $jour->format("Y-m-d") . ' class="center grid-lineDouble cellBottom ' . $tabJour[$i]["classeBG"] . '">' . $tabJour[$i]["jourOuvert"] . '</div>';
@@ -153,7 +170,10 @@ foreach ($typesPrestations as $key => $typePresta) {
         foreach ($tabJour as $i => $value) {
             $conditions = [];
             $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
-            $content = str_replace("data-line", $dataline, $value['content']);
+
+            $contentUsed=($idTypePrestation==1)?$value['contentL1']:$value['content'];
+
+            $content = str_replace("data-line", $dataline, $contentUsed);
             $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
             // on prépare les conditions pour aller chercher le pointage 
             $conditions["idTypePrestation"] = $idTypePrestation;
@@ -185,7 +205,7 @@ echo '<template id=lignePresta>
           <input name=idPrestation >
           <input type="hidden" name=idPreference dataline >
               <div class="favorise vMini cellRight"><i class="fas fa-fav"></i></div>
-              <div class=" border-left expand-line vMini"><i class="fas fa-close" dataline ></i></div>
+              <div class=" border-left expand-line vMini"><i class="fas fa-open" dataline ></i></div>
                     </div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight ">Code Prest.</div>
                     <div class="center grid-lineSimple colCachable noDisplay cellBottom cellRight">Uo de MAD</div>

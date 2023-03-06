@@ -92,14 +92,16 @@ function ChangeCellule(e) {
     if (isNaN(cell.value) || (cell.value < 0 || cell.value > 1)) {
         cell.value = "";
     }
-    if (cell.getAttribute("data-line") == "0-1") {
+    if (ligne == 1) {
         MarquageAbsent(colonne, cell.value);
     }
     else {
         SommeColonne(colonne);
     }
     SommeLigne(ligne);
-    CalculPrctGTA(ligne);
+    if (ligne != 1) {
+        CalculPrctGTA(ligne);
+    }
 }
 
 function SommeLigne(ligne) {
@@ -122,35 +124,51 @@ function SommeColonne(colonne) {
     let total = 0;
     let inputsColonne = document.querySelectorAll("input[data-date='" + colonne + "']");
     inputsColonne.forEach(cellule => {
-        if (cellule.getAttribute("data-line") != "0-1" && cellule.value != "") {
-            ajoutColonne = cellule.value;
-        } else {
+        if (cellule.value == "" || (cellule.getAttribute("data-line") == 1 && cellule.value == 1)) {
             ajoutColonne = 0;
         }
+        else {
+            ajoutColonne = cellule.value;
+        }
+        
+        // if (cellule.getAttribute("data-line") != 1) {
+        //     ajoutColonne = cellule.value;
+        // } else {
+        //     ajoutColonne = 0;
+        // }
         SommeLigne(cellule.getAttribute("data-line"));
-        CalculPrctGTA(cellule.getAttribute("data-line"));
+        if (cellule.getAttribute("data-line") != 1) {
+            CalculPrctGTA(cellule.getAttribute("data-line"));
+        }
         total = (parseFloat(total) + parseFloat(ajoutColonne)).toFixed(2);
     })
-    let cellsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
 
-    if (total == 1.00) {
-        isOK = true;
-        isWork = false;
-        isWarning = false;
-    } else if (total > 1.00) {
-        isOK = false;
-        isWork = false;
-        isWarning = true;
-    } else {
-        isOK = false;
-        isWork = true;
-        isWarning = false;
-    }
-    cellsColonne.forEach(cellule => {
-        cellule.classList.toggle("jourOK", isOK);
-        cellule.classList.toggle("work", isWork);
-        cellule.classList.toggle("jourWarn", isWarning);
-    })
+    let inputAbsJour = document.querySelector("input[data-date='" + colonne + "'][data-line='1']");
+    let valueAbsJour=(inputAbsJour!=null)?inputAbsJour.value:0;
+    //console.log(valueAbsJour);
+    //  if (valueAbsJour != 1) {
+        let cellsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
+
+        if (total == 1.00) {
+            isOK = true;
+            isWork = false;
+            isWarning = false;
+        } else if (total > 1.00) {
+            isOK = false;
+            isWork = false;
+            isWarning = true;
+        } else {
+            isOK = false;
+            isWork = true;
+            isWarning = false;
+        }
+        //console.log(cellsColonne)
+        cellsColonne.forEach(cellule => {
+            cellule.classList.toggle("jourOK", isOK);
+            cellule.classList.toggle("work", isWork);
+            cellule.classList.toggle("jourWarn", isWarning);
+        })
+    //  }
 }
 
 function MarquageAbsent(colonne, valeur) {
@@ -161,13 +179,17 @@ function MarquageAbsent(colonne, valeur) {
     else {
         inputDisabled = false;
     }
-    e.target.classList.toggle("notApplicable", inputDisabled);
+    let celAbsActu = document.querySelector("[data-date='" + colonne + "'][data-line='1']")
+    celAbsActu.classList.toggle("notApplicable", inputDisabled);
     inputsColonne.forEach(elt => {
-        if (elt.getAttribute("data-line") != "0-1") {
-            elt.value = "";
+        if (elt.getAttribute("data-line") != "1") {            
+            elt.value =(valeur==1)?"":elt.value;
+            let changeCellEvent= new Event("change")
+            elt.dispatchEvent(changeCellEvent);
             elt.disabled = inputDisabled;
             elt.classList.toggle("notApplicable", inputDisabled);
         }
+        elt.classList.remove("jourOK");
     });
 }
 
@@ -191,7 +213,7 @@ function CalculPrctGTA(ligne) {
     let totalPrctGTA = 0;
     let ajout;
     listeTousInputs.forEach(cellActu => {
-        if (cellActu.getAttribute("data-line") != "0-1" && cellActu.value != "" && !cellActu.disabled) {
+        if (cellActu.getAttribute("data-line") != "1" && cellActu.value != "" && !cellActu.disabled) {
             ajout = cellActu.value;
         } else {
             ajout = 0;
@@ -291,3 +313,4 @@ function preformatFloat(float) {
     //Utilise des virgules et des points - On s'assure que l'ordre est correct on retire les points de séparation des milliers
     return ((posC < posFS) ? (float.replace(/\,/g, '')) : (float.replace(/\./g, '').replace(',', '.')));
 };
+

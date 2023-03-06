@@ -40,7 +40,7 @@ echo '<div class="vCenter gras">UO de MAD</div>';
 echo '<div class="vCenter gras">Motif</div>';
 echo '<div class="vCenter gras">Nb Jours</div>';
 echo '<div class="vCenter gras">Pourcentage</div>';
-
+$joursAbs=0;
 foreach ($listePointage as $key=>$pointage) {
     
     $bgc = ($key % 2 == 0) ? '' : 'bgc';
@@ -50,8 +50,12 @@ foreach ($listePointage as $key=>$pointage) {
     echo '<div class="vCenter ' . $bgc . '">'.$pointage->getNumeroUO().'</div>';
     echo '<div class="vCenter ' . $bgc . '">'.$pointage->getCodeMotif().'</div>';
     echo '<div class="vCenter ' . $bgc . '">'.$pointage->getNbHeuresPointage().'</div>';
-    echo '<div class="vCenter ' . $bgc . '">'. Round($pointage->getNbHeuresPointage()/$joursOuvres*100,2).'%</div>';
-    
+    if($pointage->getNumeroTypePrestation()==1){
+        $joursAbs=$pointage->getNbHeuresPointage();
+        echo '<div class="vCenter ' . $bgc . '"></div>';
+    }else{
+    echo '<div class="vCenter ' . $bgc . '">'. Round($pointage->getNbHeuresPointage()/($joursOuvres-$joursAbs)*100,2).'%</div>';
+    }
 }
 echo '<div clas="NoDisplay" id=idUtilisateur data-value='.$idUtilisateur.'></div>';
 echo '<div clas="NoDisplay" id=idPeriode data-value="'.$periode.'"></div>';

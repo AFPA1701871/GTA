@@ -1,5 +1,5 @@
 <?php
-var_dump($_POST);
+//var_dump($_POST);
 $idUtilisateur = $_POST['idUtilisateur'];
 $periode = $_POST['periode'];
 $colonne= ($_POST['statut']=="V")?"ValidePointage":"ReportePointage";
@@ -7,6 +7,6 @@ $listePointage = PointagesManager::getList(null,['idUtilisateur'=>$idUtilisateur
 foreach ($listePointage as $key => $pointage) {
     $method = 'set'.$colonne;
     $pointage->$method("1");
-    var_dump($pointage);
+    //var_dump($pointage);
     PointagesManager::update($pointage);
 }
