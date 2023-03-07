@@ -228,7 +228,9 @@ function EnvoiMail()
 
 				// Récupération du pointage validé pour la période
 				$pointage = View_Pointages_PeriodeManager::SommePointage($idAgent, $periode);
-				$valide = View_Pointages_PeriodeManager::NbValide($idAgent, $periode, "Utilisateur");
+				$valide = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "valide", "Utilisateur");
+				// Ancienne version
+				// $valide = View_Pointages_PeriodeManager::NbValide($idAgent, $periode, "Utilisateur");
 
 				// Si pointage vide ou si pointage incomplet
 				if ($pointage == NbJourParPeriode($periode) && $valide != $pointage) {
@@ -250,7 +252,9 @@ function EnvoiMail()
 
 			// Récupération du pointage validé pour la période
 			$pointage = View_Pointages_PeriodeManager::SommePointage($idAgent, $periode);
-			$report = View_Pointages_PeriodeManager::NbReporte($idAgent, $periode, "Utilisateur");
+			$report = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "reporte", "Utilisateur");
+			// Ancienne version
+			// $report = View_Pointages_PeriodeManager::NbReporte($idAgent, $periode, "Utilisateur");
 
 			// Si pointage vide ou si pointage incomplet
 			if ($pointage == NbJourParPeriode($periode) && $report != $pointage) {

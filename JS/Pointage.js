@@ -1,5 +1,4 @@
 window.addEventListener("load", setGridPointage);
-listeLignesPresta = document.querySelectorAll(".expand-line");
 
 listeStarFav = document.querySelectorAll(".fa-fav");
 listeStarFav.forEach(etoile => {
@@ -20,13 +19,14 @@ sectionSideScroll.forEach(element => {
 
 // eviter les méthodes aveugles dans les addeventlistener
 // on ne peut pas s'en resservir pour les elements générés après
+listeLignesPresta = document.querySelectorAll(".expand-line");
 listeLignesPresta.forEach(LignePresta => {
     LignePresta.addEventListener("click", expand);
 });
 
 /**
  * Fonction imposant le scroll horizontal au survol de la zone de pointage
- * @param {*} e 
+ * @param {*} e Événement déclencheur
  */
 function scrollHoriz(e) {
     sectionSideScroll = document.querySelectorAll('.grid-pointage');
@@ -46,7 +46,7 @@ function scrollHoriz(e) {
 
 /**
  * Fonction permettant de montrer ou cacher les détails d'une prestation
- * @param {*} e 
+ * @param {*} e Événement déclencheur
  */
 function expand(e) {
     // Pour éviter qu'il applique aussi le toggle à la div contenant le I
@@ -107,7 +107,7 @@ function setGridPointage() {
 
 /**
  * Fonction gérant l'appel des diverses fonctions de modification d'apparence et de contenu des cellules
- * @param {*} e 
+ * @param {*} e Événement déclencheur
  */
 function ChangeCellule(e) {
     // Récupérations des infos de la cellule
@@ -272,7 +272,7 @@ function MarquageAbsent(colonne, valeur) {
 
 /**
  * Fonction permettant de mettre un cadre vert autour de chaque cellule de la colonne actuelle
- * @param {*} e 
+ * @param {*} e Événement déclencheur
  */
 function SelectColonne(e) {
     // Récupération de la colonne actuelle
@@ -331,7 +331,7 @@ function CalculPrctGTA(ligne) {
 
 /**
  * Mise à jour des favoris dans la base de donnée
- * @param {*} e 
+ * @param {*} e Événement déclencheur
  */
 function UpdateFav(e) {
     let caseFav = e.target.parentNode.parentNode.parentNode;
@@ -372,7 +372,7 @@ function UpdateFav(e) {
 /**
  * Traitement des pointages pour gérer les multiples ponctuations lors de la saisie
  * @param {*} float 
- * @returns 
+ * @returns
  */
 function preformatFloat(float) {
     if (!float) {

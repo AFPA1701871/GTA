@@ -31,8 +31,13 @@ foreach ($agents as $key => $agent) {
     $disabled = " <a></a>";
     $idAgent = $agent->getIdUtilisateur();
     $pointage = View_Pointages_PeriodeManager::SommePointage($idAgent, $periode);
-    $valide = View_Pointages_PeriodeManager::JoursValides($idAgent, $periode);
-    $report = View_Pointages_PeriodeManager::JoursReportes($idAgent, $periode, "Utilisateur");$reporte="";
+    $valide = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "valide");
+    // Ancienne version
+    // $valide = View_Pointages_PeriodeManager::JoursValides($idAgent, $periode);
+    $report = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "reporte");
+    // Ancienne version
+    //$report = View_Pointages_PeriodeManager::JoursReportes($idAgent, $periode, "Utilisateur");
+    $reporte="";
     $bgc = ($key % 2 == 0) ? '' : 'bgc';
     if ($pointage == null) {
         $statut = '<i class="fas fa-circle-dot fa-black"></i>';

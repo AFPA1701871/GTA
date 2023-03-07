@@ -25,9 +25,9 @@ function changePointage(event) {
   let projet = document.querySelector('input[data-line="' + ligne + '"][name="idProjet"]').value;
   let prestation = document.querySelector('input[data-line="' + ligne + '"][name="idPrestation"]').value;
 
-  let valeur=preformatFloat(pointage.value);
-  if(valeur<0 || valeur>1){
-    valeur=0;
+  let valeur = preformatFloat(pointage.value);
+  if (valeur < 0 || valeur > 1) {
+    valeur = 0;
   }
 
   // Requête
@@ -147,6 +147,7 @@ function clicPlus(event) {
     if (nouvelleLigne.querySelector('select[name="idUo"]')) nouvelleLigne.querySelector('select[name="idUo"]').addEventListener("change", reportSelect);
   }
 }
+
 /**
  * Méthode d'appel ajax synchrone
  * @param {*} table  // nom de la table pour la requete
@@ -154,6 +155,7 @@ function clicPlus(event) {
  * @param {*} colonne // colonnes à renvoyer tableau attendu
  * @param {*} attribut // attribut à ajouter sur le select
  * @param {*} select // boolean vaut vrai pour un select faux pour une liste
+ * @param {*} condition // condition à ajouter sur le select
  * @returns 
  */
 function AppelAjax(table, id, colonne, attribut, select, condition) {
@@ -171,37 +173,69 @@ function AppelAjax(table, id, colonne, attribut, select, condition) {
   }
 }
 
+/**
+ * Fonction qui attribue automatiquement les valeurs propres à la prestation
+ *
+ * @param   {*}  event  Événement déclencheur
+ *
+ */
 function reportPrestation(event) {
-  ligne = event.target.parentNode.parentNode
-  ligne.querySelector('input[name="idPrestation"]').value = event.target.value
-  ligne.querySelector('input[name="codePrestation"]').value = event.target.selectedOptions[0].label.substring(0, 4)
-  condition = {}
-  condition["idPrestation"] = event.target.value
-  // report du projet pour MNSP
-  projet = AppelAjax("View_Prestations", null, ["idProjet", "codeProjet", "libelleProjet"], null, false, condition)
+  // Récupération de la Node correspondante à la ligne en cours
+  ligne = event.target.parentNode.parentNode;
+
+  // Report de l'idPrestation et du codePrestation dans tous les cas
+  ligne.querySelector('input[name="idPrestation"]').value = event.target.value;
+  ligne.querySelector('input[name="codePrestation"]').value = event.target.selectedOptions[0].label.substring(0, 4);
+
+  condition = {};
+  condition["idPrestation"] = event.target.value;
+  // Report du projet pour MNSP
+  projet = AppelAjax("View_Prestations", null, ["idProjet", "codeProjet", "libelleProjet"], null, false, condition);
   if (projet != false) {
-    ligne.querySelector('input[name="idProjet"]').value = projet[0].idProjet
-    ligne.querySelector('select[name="idProjet"]').value = projet[0].idProjet
+    ligne.querySelector('input[name="idProjet"]').value = projet[0].idProjet;
+    ligne.querySelector('select[name="idProjet"]').value = projet[0].idProjet;
   }
 }
 
+/**
+ * Modifie la valeur de l'input de type hidden correspondant au select
+ *
+ * @param   {*}  event  Événement déclencheur
+ *
+ */
 function reportSelect(event) {
+  // Récupération du champs concerné (Motif, Projet ou Uo)
   type = event.target.name.substring(2);
-  elementCherche = 'input[name="id' + type + '"]'
-  ligne = event.target.parentNode.parentNode
-  ligne.querySelector(elementCherche).value = event.target.value
+  // Création de la condition pour la recherche de l'input
+  elementCherche = 'input[name="id' + type + '"]';
+  // Mise à jour de la valeur dans l'input
+  ligne = event.target.parentNode.parentNode;
+  ligne.querySelector(elementCherche).value = event.target.value;
 }
 
+/**
+ * Fonction changeant un select d'une prestation en input de type text désactivé
+ *
+ * @param   {string}  type   De quel champs il s'agit
+ * @param   {int}  ligne  La ligne où se trouve le select
+ *
+ */
 function SelectToInput(type, ligne) {
-  condSource = 'select[data-line="' + ligne + '"][name="id' + type + '"]'
-  classe = (type == "Prestation") ? "" : "inputPointage"
+  // Récupération du select voulu et attribution de classe
+  condSource = 'select[data-line="' + ligne + '"][name="id' + type + '"]';
+  classe = (type == "Prestation") ? "" : "inputPointage";
   source = document.querySelector(condSource);
+
+  // Si le select existe
   if (source != null) {
+    // le nouvel input aura pour valeur soit "" si le select est vide, soit le label de l'option choisie
     valeur = (source.value != "") ? source.selectedOptions[0].label : "";
+
+    // Création de l'input text avec les paramètres prédéfinis
     cible = '<input class="' + classe + '" data-line="' + ligne + '" type="text" name="input' + type + '" value="' + valeur + '" disabled="" title=""></input>';
-    input = document.createElement("input")
-    input.innerHTML = cible
-    source.parentNode.replaceChild(input.children[0], source)
+    input = document.createElement("input");
+    input.innerHTML = cible;
+    source.parentNode.replaceChild(input.children[0], source);
   }
 
 }
