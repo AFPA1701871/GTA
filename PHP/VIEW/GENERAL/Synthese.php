@@ -54,7 +54,7 @@ foreach ($listePointage as $key=>$pointage) {
         $joursAbs=$pointage->getNbHeuresPointage();
         echo '<div class="vCenter ' . $bgc . '"></div>';
     }else{
-    echo '<div class="vCenter ' . $bgc . '">'. Round($pointage->getNbHeuresPointage()/($joursOuvres-$joursAbs)*100,2).'%</div>';
+    echo '<div class="vCenter ' . $bgc . '">'. (($joursOuvres-$joursAbs!=0)?Round($pointage->getNbHeuresPointage()/($joursOuvres-$joursAbs)*100,2):0).'%</div>';
     }
 }
 echo '<div clas="NoDisplay" id=idUtilisateur data-value='.$idUtilisateur.'></div>';
