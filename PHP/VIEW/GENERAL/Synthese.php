@@ -62,7 +62,11 @@ echo '<div clas="NoDisplay" id=idPeriode data-value="'.$periode.'"></div>';
 echo '</div>';
 echo '</section>';
 echo '<div class="cote"></div>';
+
+// Autoriser les assistantes à valider un pointage avant de le reporter?
+//$contenu = ($roleConnecte == 2 || ($roleConnecte == 3 && $statut=="")) ? "Valider":"Reporter dans SIRH";
 $contenu = ($roleConnecte == 2) ? "Valider":"Reporter dans SIRH";
+
 echo '<section class=" vCenter">
 <div></div>
 <button id=retour><i class="fas fa-house"></i>&nbsp;Retour</button><div></div>
