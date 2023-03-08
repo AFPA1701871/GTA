@@ -228,7 +228,7 @@ function EnvoiMail()
 
 				// Récupération du pointage validé pour la période
 				$pointage = View_Pointages_PeriodeManager::SommePointage($idAgent, $periode);
-				$valide = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "valide", "Utilisateur");
+				$valide = View_Pointages_PeriodeManager::SyntheseV3($idAgent, $periode, "valide", "Utilisateur");
 				// Ancienne version
 				// $valide = View_Pointages_PeriodeManager::NbValide($idAgent, $periode, "Utilisateur");
 
@@ -252,7 +252,7 @@ function EnvoiMail()
 
 			// Récupération du pointage validé pour la période
 			$pointage = View_Pointages_PeriodeManager::SommePointage($idAgent, $periode);
-			$report = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "reporte", "Utilisateur");
+			$report = View_Pointages_PeriodeManager::SyntheseV3($idAgent, $periode, "reporte", "Utilisateur");
 			// Ancienne version
 			// $report = View_Pointages_PeriodeManager::NbReporte($idAgent, $periode, "Utilisateur");
 

@@ -31,10 +31,12 @@ foreach ($agents as $key => $agent) {
     $disabled = " <a></a>";
     $idAgent = $agent->getIdUtilisateur();
     $pointage = View_Pointages_PeriodeManager::SommePointage($idAgent, $periode);
-    $valide = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "valide");
+    $valide = View_Pointages_PeriodeManager::SyntheseV3($idAgent, $periode, "valide", "Utilisateur", false);
+    // $valide = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "valide");
     // Ancienne version
     // $valide = View_Pointages_PeriodeManager::JoursValides($idAgent, $periode);
-    $report = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "reporte");
+    $report = View_Pointages_PeriodeManager::SyntheseV3($idAgent, $periode, "reporte", "Utilisateur", false);
+    // $report = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "reporte");
     // Ancienne version
     //$report = View_Pointages_PeriodeManager::JoursReportes($idAgent, $periode, "Utilisateur");
     $reporte="";

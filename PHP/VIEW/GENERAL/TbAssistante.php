@@ -33,18 +33,26 @@ echo '<div id="tabManagers">';
         $idManager = $manager->getIdUtilisateur();
         echo '<div class="vCenter '.$bgc.'">'.$manager->getNomUtilisateur().'</div>';
         $agents = View_UtilisateursManager::getList(null, ['idManager' => $idManager, "actif" => 1],null,null,false,false);
-        $saisi = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode]);
-        $valide = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode, 'validePointage'=>1]);
-        $reporte = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode, 'reportePointage'=>1]);
+        $saisi = View_Pointages_PeriodeManager::SyntheseV3($idManager, $periode, null, "Manager");
+        //$saisi = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode]);
+        $valide = View_Pointages_PeriodeManager::SyntheseV3($idManager, $periode, "valide", "Manager");
+        //$valide = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode, 'validePointage'=>1]);
+        $reporte = View_Pointages_PeriodeManager::SyntheseV3($idManager, $periode, "reporte", "Manager", true);
+        // $reporte = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode, 'reportePointage'=>1]);
 
-        echo '<div class="vCenter '.$bgc.'">'.count($saisi).'/'.count($agents).'</div>';
-        echo '<div class="vCenter '.$bgc.'">'.count($valide).'/'.count($agents).'</div>';
-        echo '<div class="vCenter '.$bgc.'">'.count($reporte).'/'.count($agents).'</div>';
+        echo '<div class="vCenter '.$bgc.'">'.$saisi.'/'.count($agents).'</div>';
+        echo '<div class="vCenter '.$bgc.'">'.$valide.'/'.count($agents).'</div>';
+        // echo '<div class="vCenter '.$bgc.'">'.count($valide).'/'.count($agents).'</div>';
+        echo '<div class="vCenter '.$bgc.'">'.$reporte.'/'.count($agents).'</div>';
         echo '<div class="vCenter '.$bgc.'"><a class="'.$bgc.'" href="index.php?page=TbManager&idUtilisateur='.$idManager.'&periode='.$periode.'"><i class="fas fa-file-contract"></i></a></div>';
-        $nbReports += count($reporte);
+        $nbReports += $reporte;
         $totalAgents += count($agents);
-        $totalRempli += count($saisi);
-        $totalValide += count($valide);
+        $totalRempli += $saisi;
+        $totalValide += $valide;
+        // $nbReports += count($reporte);
+        // $totalAgents += count($agents);
+        // $totalRempli += count($saisi);
+        // $totalValide += count($valide);
     }
 echo '</div></section>';
 
