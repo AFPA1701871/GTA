@@ -14,7 +14,8 @@ if (!isset($_POST['idPointage']) ) {
     
     //si le pointage modifié était déjà validé, on dévalide la période pour l'utilisateur
     if ($pointage->getValidePointage() != null) 
-        EnleveCoche($pointage->getIdUtilisateur(), $periode,"Valide");
+        EnleveCocheUnit($pointage->getIdPointage(), "Valide");
+        //EnleveCoche($pointage->getIdUtilisateur(), $periode,"Valide");
 
     // En cas de mise à jour, si le pointage modifié était déjà reporté, on enregistre l'action
     if ($pointage->getReportePointage() != null) {
@@ -26,19 +27,32 @@ if (!isset($_POST['idPointage']) ) {
         LogsManager::add($log);
 
         //on enlève la coche SIRH sur tout le pointage de la periode pour la personne
-        EnleveCoche($pointage->getIdUtilisateur(), $periode,"Reporte");
+        EnleveCocheUnit($pointage->getIdPointage(), "Reporte");
+        //EnleveCoche($pointage->getIdUtilisateur(), $periode,"Reporte");
     }
 }
 
-  function EnleveCoche($idUtilisateur, $periode,$type)
+//   function EnleveCoche($idUtilisateur, $periode,$type)
+//    {
+//     $pointages = View_PointagesManager::getList(null,["idUtilisateur"=>$idUtilisateur,"periode"=>$periode]);
+//     foreach ($pointages as $pointageV) {
+//         $pointage = PointagesManager::findById($pointageV->getIdPointage());
+//         $method = "set".$type."Pointage";
+//         //call_user_func(array($pointage, $method,"0"));
+//         $pointage->$method(0);
+//         //var_dump($pointage);
+//         PointagesManager::update($pointage);
+//     }
+//    }
+
+   function EnleveCocheUnit($idPointage,$type)
    {
-    $pointages = View_PointagesManager::getList(null,["idUtilisateur"=>$idUtilisateur,"periode"=>$periode]);
-    foreach ($pointages as $pointageV) {
-        $pointage = PointagesManager::findById($pointageV->getIdPointage());
+    
+        $pointage = PointagesManager::findById($idPointage);
         $method = "set".$type."Pointage";
         //call_user_func(array($pointage, $method,"0"));
         $pointage->$method(0);
         //var_dump($pointage);
         PointagesManager::update($pointage);
-    }
+    
    }
