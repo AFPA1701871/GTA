@@ -49,3 +49,19 @@ if (comboPeriode != null) {
       window.location.href = "index.php?page=" + url.searchParams.get('page') + "&idUtilisateur=" + idUser + "&periode=" + event.target.value;
   })
 }
+
+comboUser = document.querySelector("#idUser");
+if(comboUser!=null){
+  comboUser.addEventListener("change", changePageSynthese);
+}
+function changePageSynthese(){
+  url = new URL(window.location.href);
+  if (comboUser.value!="" && comboUser.value!=url.searchParams.get('idUtilisateur'))
+  {
+    idUser = comboUser.value;
+  }
+  else{
+    idUser = url.searchParams.get('idUtilisateur');
+  }
+  window.location.href = "index.php?page=" + url.searchParams.get('page') + "&idUtilisateur=" + idUser + "&periode=" + comboPeriode.value;
+}

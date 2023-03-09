@@ -1,7 +1,11 @@
 btnValide = document.querySelector("#valide");
-btnValide.addEventListener("click", valider);
+if (btnValide != null) {
+  btnValide.addEventListener("click", valider);
+}
 btnRetour = document.querySelector("#retour");
-btnRetour.addEventListener("click", retour);
+if (btnRetour != null) {
+  btnRetour.addEventListener("click", retour);
+}
 
 /**
  * Fonction permettant de valider un pointage ou d'indiquer qu'il a été repporté sur SIRH
@@ -31,8 +35,15 @@ function valider(event) {
     if (this.readyState === XMLHttpRequest.DONE) { // Si la requête a bien été executée
       if (this.status === 200) { // Si la requête est réussie
         if (this.responseText) { // Si la réponse n'est pas vide
-          console.log(this.responseText);
-          window.history.back();
+          //console.log(this.responseText);
+          if (this.responseText == "Back") {
+            // Retour après validation par Manager
+            window.history.back();
+          }
+          if (this.responseText == "Reload"){
+            // Rechargement de la page après report SIRH
+            window.location.reload(true);
+          } 
         }
       }
     }

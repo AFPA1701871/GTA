@@ -83,4 +83,30 @@ class View_PointagesManager
 		// 
 		return (count($liste) == 1 && $liste[0] != null);
 	}
+
+	/**
+	 * Fonction récupérant la liste de tous les salariés ayant complétement remplis leur feuille de pointage pour une période donnée
+	 * Limité ou non en fonction de leur manager
+	 *
+	 * @param string $periode La période pour laquelle on veut que les salariés aient complétement saisie leur pointage
+	 * @param integer|null $idManager L'ID du Manager, pour synthèse des managers, sinon vide pour synthèse des assistantes 
+	 */
+	public static function getListSaisiesCompl(string $periode, ?int $idManager=null){
+		$db = DbConnect::getDb();
+		$stmt = 'SELECT idUtilisateur, nomUtilisateur FROM gta_View_Pointages WHERE ';
+		if($idManager!=null){
+			$stmt.= ' idManager='.$idManager.' AND ';
+		}
+		$stmt .=' periode = "'.$periode.'" GROUP BY idUtilisateur HAVING sum(nbHeuresPointage)='.NbJourParPeriode($periode).' ORDER BY nomUtilisateur;';
+		$q = $db->query($stmt);
+		if (!$q) return false;
+		$liste=[];
+		// return $q->fetchAll(PDO::FETCH_ASSOC);
+		while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) { // on récupère les enregistrements de la BDD
+			if ($donnees != false) {
+				$liste[$donnees["idUtilisateur"]] = $donnees["nomUtilisateur"];
+			}
+		}
+		return $liste;
+	}
 }
