@@ -42,19 +42,24 @@ echo '<div class="vCenter gras">Nb Jours</div>';
 echo '<div class="vCenter gras">Pourcentage</div>';
 $joursAbs=0;
 foreach ($listePointage as $key=>$pointage) {
-    
+    $estModif=View_PointagesManager::checkModif($idUtilisateur,$periode, $pointage->getIdTypePrestation(), $pointage->getCodePrestation(), $pointage->getIdProjet(), $pointage->getIdMotif(), $pointage->getIdUo_Pointage());
+    $styleModif="";
+    if($estModif)
+    {
+        $styleModif=" fa-red ";
+    }
     $bgc = ($key % 2 == 0) ? '' : 'bgc';
     echo '<div class="vCenter ' . $bgc . '">' . $pointage->getNumeroTypePrestation() . '</div>';
     echo '<div class="vCenter ' . $bgc . '">' . $pointage->getCodePrestation() . '</div>';
     echo '<div class="vCenter ' . $bgc . '">'.$pointage->getCodeProjet().'</div>';
     echo '<div class="vCenter ' . $bgc . '">'.$pointage->getNumeroUO().'</div>';
     echo '<div class="vCenter ' . $bgc . '">'.$pointage->getCodeMotif().'</div>';
-    echo '<div class="vCenter ' . $bgc . '">'.$pointage->getNbHeuresPointage().'</div>';
+    echo '<div class="vCenter ' . $styleModif . $bgc . '">'.$pointage->getNbHeuresPointage().'</div>';
     if($pointage->getNumeroTypePrestation()==1){
         $joursAbs=$pointage->getNbHeuresPointage();
         echo '<div class="vCenter ' . $bgc . '"></div>';
     }else{
-    echo '<div class="vCenter ' . $bgc . '">'. (($joursOuvres-$joursAbs!=0)?Round($pointage->getNbHeuresPointage()/($joursOuvres-$joursAbs)*100,2):0).'%</div>';
+    echo '<div class="vCenter ' . $styleModif . $bgc . '">'. (($joursOuvres-$joursAbs!=0)?Round($pointage->getNbHeuresPointage()/($joursOuvres-$joursAbs)*100,2):0).'%</div>';
     }
 }
 echo '<div clas="NoDisplay" id=idUtilisateur data-value='.$idUtilisateur.'></div>';
