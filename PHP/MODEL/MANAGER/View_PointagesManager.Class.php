@@ -28,16 +28,17 @@ class View_PointagesManager
 	/**
 	 * Fonction permettant de mettre en avant les prestations ayant été modifiées depuis le report SIRH
 	 *
-	 * @param integer $idUtilisateur
-	 * @param string $periode
-	 * @param integer $idTypePrestation
-	 * @param string $codePrestation
+	 * @param integer $idUtilisateur Utilisateur concerné
+	 * @param string $periode Période concerné
+	 * @param bool|null $details Veut-on l'info pour une prestation donnée?
+	 * @param integer|null $idTypePrestation 
+	 * @param string|null $codePrestation
 	 * @param integer|null $idProjet
 	 * @param integer|null $idMotif
 	 * @param integer|null $idUo_Pointage
 	 * @return bool Retourne si oui ou non elle à été modifié
 	 */
-	public static function checkModif(int $idUtilisateur, string $periode, ?bool $details = false, ?int $idTypePrestation = 0, ?string $codePrestation = "", ?int $idProjet = null, ?int $idMotif= null, ?int $idUo_Pointage=null)
+	public static function checkModif(int $idUtilisateur, string $periode, string $condition, ?bool $details = false, ?int $idTypePrestation = 0, ?string $codePrestation = "", ?int $idProjet = null, ?int $idMotif = null, ?int $idUo_Pointage = null)
 	{
 		// Connection à la base de données
 		$db = DbConnect::getDb();
@@ -45,21 +46,28 @@ class View_PointagesManager
 		$stmt = 'SELECT sum(nbHeuresPointage) as heuresDif FROM gta_View_Pointages
 		WHERE idUtilisateur=' . $idUtilisateur . '  AND periode = "' . $periode . '" ';
 
-		// Conditionné sur le fait qu'on ne veut que les pointages pas reportés
-		$stmt .= ' AND reportePointage = 0 ';
-
-		// Si que les non-validés
-		// $stmt.= ' AND validePointage = 0 ';
-		// Si on veut au moins l'un des deux
-		// $stmt.= ' AND (validePointage = 0 OR reportePointage = 0) ';
+		switch ($condition) {
+			case 'V':
+				// Conditionné sur le fait qu'on ne veut que les pointages pas validés
+				$stmt .= ' AND validePointage = 0 ';
+				break;
+			case 'R':
+				// Conditionné sur le fait qu'on ne veut que les pointages pas reportés
+				$stmt .= ' AND reportePointage = 0 ';
+				break;
+			case 'VR':
+				// Si on veut au moins l'un des deux
+				$stmt .= ' AND (validePointage = 0 OR reportePointage = 0) ';
+				break;
+		}
 
 		if ($details) {
 			// Gestion de la demande du mode détailé
 			$stmt .= ' AND idTypePrestation=' . $idTypePrestation . ' AND codePrestation="' . $codePrestation . '" ';
 			// Gestion des champs pouvants être null
-			$stmt .= ' AND ' . ($idProjet == null ? 'ISNULL(idProjet)' : 'idProjet="' . $idProjet . '" ');
-			$stmt .= ' AND ' . ($idMotif == null ? 'ISNULL(idMotif)' : 'idMotif="' . $idMotif . '" ');
-			$stmt .= ' AND ' . ($idUo_Pointage == null ? 'ISNULL(idUo_Pointage)' : 'idUo_Pointage="' . $idUo_Pointage . '" ');
+			$stmt .= ' AND idProjet' . ($idProjet == null ? ' IS NULL' : '="' . $idProjet . '" ');
+			$stmt .= ' AND idMotif' . ($idMotif == null ? ' IS NULL' : '="' . $idMotif . '" ');
+			$stmt .= ' AND idUo_Pointage' . ($idUo_Pointage == null ? ' IS NULL' : '="' . $idUo_Pointage . '" ');
 			// Complétion de la requête
 			$stmt .= ' GROUP BY idUtilisateur, idMotif, idPrestation, idProjet, idUo_Pointage,  idTypePrestation';
 		}

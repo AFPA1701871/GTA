@@ -198,7 +198,12 @@ class DAO
 				} else if (strpos((string) $valeur, "->")) { //cas between
 					$tab = explode("->", $valeur);
 					$req .= $nomColonne . " BETWEEN " . $tab[0] . " AND " . $tab[1] . " AND ";
-				} else { //cas valeur simple
+				} 
+				// Cas où l'on veut qu'une colonne soit à null
+				else if ($valeur==null){
+					$req .= $nomColonne." IS NULL AND ";
+				}
+				else { //cas valeur simple
 					$req .= $nomColonne . " = \"" . $valeur . "\" AND ";
 				}
 			} elseif($valeur!="") {

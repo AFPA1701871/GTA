@@ -16,10 +16,11 @@ $periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idUtil
 $joursOuvres = NbJourParPeriode($periode);
 //on récupère la liste du pointage
 $listePointage = View_PointagesManager::getSomme($idUtilisateur,$periode);
-$pointageModif = View_PointagesManager::checkModif($idUtilisateur, $periode);
+$pointageVModif = View_PointagesManager::checkModif($idUtilisateur, $periode, "V");
+$pointageRModif = View_PointagesManager::checkModif($idUtilisateur, $periode, "R");
 /**********************Il faut vérifier sur tous les pointages cas des changements après validation ******************** */
-$statut = ($listePointage[0]->getValidePointage()==1)?"validé ":"";
-$statut .= ($listePointage[0]->getReportePointage()==1)?"reporté SIRH ".(($pointageModif)?"(modifié) ":""):"";
+$statut = ($listePointage[0]->getValidePointage()==1)?"validé ".(($pointageVModif)?"(modifié) ":""):"";
+$statut .= ($listePointage[0]->getReportePointage()==1)?"reporté SIRH ".(($pointageRModif)?"(modifié) ":""):"";
 
 // *** partie combobox mois/annee ***
 echo '<div id="divComboDate" class="demi center">';
@@ -43,7 +44,7 @@ echo '<div class="vCenter gras">Nb Jours</div>';
 echo '<div class="vCenter gras">Pourcentage</div>';
 $joursAbs=0;
 foreach ($listePointage as $key=>$pointage) {
-    $estModif=View_PointagesManager::checkModif($idUtilisateur,$periode, true, $pointage->getIdTypePrestation(), $pointage->getCodePrestation(), $pointage->getIdProjet(), $pointage->getIdMotif(), $pointage->getIdUo_Pointage());
+    $estModif=View_PointagesManager::checkModif($idUtilisateur,$periode,"R", true, $pointage->getIdTypePrestation(), $pointage->getCodePrestation(), $pointage->getIdProjet(), $pointage->getIdMotif(), $pointage->getIdUo_Pointage());
     $styleModif="";
     if($estModif)
     {

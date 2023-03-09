@@ -107,9 +107,11 @@ foreach ($typesPrestations as $key => $typePresta) {
         $dataline = ' data-line="' . $numPresta . '"';
         // recherche si prestation fait parti des preferences 
         $cond = ["idUtilisateur" => $prestation->getIdUtilisateur(), "idTypePrestation" => $prestation->getIdTypePrestation(), "idPrestation" => $prestation->getIdPrestation()];
+
         if ($prestation->getIdUo() != null) $cond["idUo"] = $prestation->getIdUo();
         if ($prestation->getIdMotif() != null) $cond["idMotif"] = $prestation->getIdMotif();
         if ($prestation->getIdProjet() != null) $cond["idProjet"] = $prestation->getIdProjet();
+
         $pref = PreferencesManager::getList(null, $cond,null,null,false,false);
          $pref = ($pref !=false )?$pref[0]: new Preferences();
         $classFavorisActif = ($pref->getIdPreference() != null) ? 'favActive' : '';
@@ -180,9 +182,10 @@ foreach ($typesPrestations as $key => $typePresta) {
             $conditions["idUtilisateur"] = $idUtilisateur;
             $conditions["idPrestation"] = $prestation->getIdPrestation();
             $conditions["datePointage"] = $jour->format("Y-m-d");
-            if ($prestation->getMotifRequis() && $prestation->getIdMotif() != null) $conditions["idMotif"] = $prestation->getIdMotif();
-            if ($prestation->getProjetRequis() && $prestation->getIdProjet() != null) $conditions["idProjet"] = $prestation->getIdProjet();
-            if ($prestation->getUoRequis() && $prestation->getIdUo() != null) $conditions["idUo"] = $prestation->getIdUo();
+            if ($prestation->getMotifRequis() /*&& $prestation->getIdMotif() != null*/) $conditions["idMotif"] = $prestation->getIdMotif();
+            if ($prestation->getProjetRequis() /*&& $prestation->getIdProjet() != null*/) $conditions["idProjet"] = $prestation->getIdProjet();
+            if ($prestation->getUoRequis() /*&& $prestation->getIdUo() != null*/) $conditions["idUo"] = $prestation->getIdUo();
+            //echo json_encode($conditions);
             $pointage = PointagesManager::getList(null, $conditions, null, null, false, false);
             if ($pointage != false) {
                 $content = str_replace("value", ' value="' . $pointage[0]->getNbHeuresPointage() . '" ', $content);
