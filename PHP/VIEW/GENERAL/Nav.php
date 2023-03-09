@@ -22,6 +22,9 @@ echo '
             <a href="?page=ListeUtilisateurs" class=center>
                 <div>'. texte("Utilisateurs") .'</div>
             </a>
+            <a href="?page=Synthese" class=center>
+                <div>'. texte("Synthèses") .'</div>
+            </a>
             <div class="relative center">'. texte("Données pointages") .'
                 <i class="fa-solid fa-angle-down"></i>
                 <div class="sous-menu colonne">

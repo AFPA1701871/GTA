@@ -84,8 +84,39 @@ if (!$listePointage) {
     echo '<div clas="NoDisplay" id=idPeriode data-value="' . $periode . '"></div>';
     echo '</div>';
     echo '</section>';
-    echo '<div class="cote"></div>';
-
+    echo '<div class="cote"></div><div class="cards">';
+    foreach ($listePointage as $key => $pointage) {
+        $estModif = View_PointagesManager::checkModif($idUtilisateur, $periode, "R", true, $pointage->getIdTypePrestation(), $pointage->getCodePrestation(), $pointage->getIdProjet(), $pointage->getIdMotif(), $pointage->getIdUo_Pointage());
+        $styleModif = "";
+        if ($estModif) {
+            $styleModif = " modif ";
+        }
+    echo '
+    
+    <div class="card '.$styleModif.'">
+        <label>Type de Prestation</label>
+        <div class="right">' . $pointage->getLibelleTypePrestation() . '</div>
+        <label class="bgc">Prestation</label>
+        <div class="right bgc">' . $pointage->getCodePrestation() . '</div>
+        <label>Code Projet</label>
+        <div class="right">' . $pointage->getCodeProjet() . '</div>
+        <label class="bgc">UO de MAD</label>
+        <div class="right bgc">' . $pointage->getNumeroUO() . '</div>
+        <label>Motif</label>
+        <div class="right">' . $pointage->getCodeMotif() . '</div>
+        <label class="bgc">Nb Jours</label>
+        <div class="right bgc">' . $pointage->getNbHeuresPointage() . '</div>
+        <label>Pourcentage</label>';
+        if ($pointage->getNumeroTypePrestation() == 1) {
+            $joursAbs = $pointage->getNbHeuresPointage();
+            echo '<div></div>';
+        } else {
+            echo '<div>' . (($joursOuvres - $joursAbs != 0) ? Round($pointage->getNbHeuresPointage() / ($joursOuvres - $joursAbs) * 100, 2) : 0) . '%</div>';
+        }
+    echo '</div>
+    ';
+    }
+    echo '</div>';
     // Autoriser les assistantes à valider un pointage avant de le reporter?
     //$contenu = ($roleConnecte == 2 || ($roleConnecte == 3 && $statut=="")) ? "Valider":"Reporter dans SIRH";
     $contenu = ($roleConnecte == 2) ? "Valider" : "Reporter dans SIRH";

@@ -73,3 +73,22 @@ button{
 body.dark .fa-black {
     color: var(--color1) !important;
 }
+
+/*/////////////////*/
+.cards{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+}
+
+.card{
+    border: 0.2rem solid black;
+    border-radius: 2rem;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.card.modif{
+    border-color: red;
+}
