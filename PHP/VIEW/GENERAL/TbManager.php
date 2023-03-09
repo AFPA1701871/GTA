@@ -80,8 +80,9 @@ echo '</section>';
 echo '<div class="cote"></div>';
 // ********** DEUXIEME COLONNE **********
 echo '<section class="colonne">';
-echo '<input type="hidden" id="rempli" value=' . $totalRempli / count($agents) . '>';
-echo '<input type="hidden" id="valide" value=' . $totalValide / count($agents) . '>';
+// Nécessite "*$joursOuvres", contrairement à TbAssistante, car $totalRempli et $totalValide retournent le nombres d'heures et non le nombre de salarié ayant la totalité
+echo '<input type="hidden" id="rempli" value=' . (round(($totalRempli*100) / (count($agents)*$joursOuvres),1)) . '>';
+echo '<input type="hidden" id="valide" value=' . (round(($totalValide*100) / (count($agents)*$joursOuvres),1)) . '>';
 
 // ***** CAMEMBERT 1*****
 echo '<div class="camembert">';
