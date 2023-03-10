@@ -79,16 +79,89 @@ body.dark .fa-black {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2em;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
 }
 
 .card{
     border: 0.2rem solid black;
     border-radius: 2rem;
     padding: 1rem;
+}
+.deuxCol{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }
 
-.card.modif{
+.card.modif, .card3.modif{
     border-color: red;
+}
+.card3{
+    border: 0.2rem solid black;
+    border-radius: 2rem;
+    padding: 1rem;
+    column-gap: 2rem;
+    row-gap: 1rem;
+}
+.innerCard{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    align-items: stretch;
+    min-height: 3rem;
+    border: 0.1rem solid black;
+    border-radius: 1rem;
+    align-content: stretch;
+}
+.innerCard>label{
+    border-top-right-radius: 0.9rem;
+    border-top-left-radius: 0.9rem;
+}
+.innerCard>.line:not(label){
+    border-bottom-right-radius: 0.9rem;
+    border-bottom-left-radius: 0.9rem;
+}
+
+.right{
+    justify-content: right;
+}
+
+.card>.span-2, .card3>.span-2{
+    display: grid;
+    grid-column: span 2;
+    grid-template-columns: 2.5rem auto;
+    align-items: center;
+}
+.card>.span-2{
+    margin-bottom: 1rem;    
+}
+
+.numerotation{
+    border: 0.1rem solid black;
+    border-radius: 5rem;
+    padding: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+}
+.numerotation.modif{
+    background-color: red;
+}
+
+.line{
+    min-height: 1.5rem;
+    align-items: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+/*******temp*********/
+.liensTemp{
+    background-color: yellow;
+    justify-content: center;
+}
+.liensTemp>a{
+    justify-content: center;
 }
