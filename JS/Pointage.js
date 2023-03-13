@@ -146,7 +146,7 @@ function ChangeCellule(e) {
 function SommeLigne(ligne) {
     // Initialisation du total à 0
     let total = 0;
-    
+
     // Récupération de toutes les cases de pointages de la ligne
     let casesLigne = document.querySelectorAll("input.casePointage[data-line='" + ligne + "']");
 
@@ -255,12 +255,15 @@ function MarquageAbsent(colonne, valeur) {
     // Pour chacune des autres cellules de la colonne
     inputsColonne.forEach(elt => {
         if (elt.getAttribute("data-line") != "1") {
-            // Si la colonne est complètement absente, on efface la valeur. Sinon on la garde.
-            elt.value = (valeur == 1) ? "" : elt.value;
-            
-            // Trigger de l'event "change" sur la cellule pour mise à jour de la base de donnée
-            let changeCellEvent = new Event("change")
-            elt.dispatchEvent(changeCellEvent);
+
+            // Si la colonne est complétement absente et que la cellule n'était pas vide
+            if (valeur == 1 && elt.value !== "") {
+                // On "vide" la cellule
+                elt.value = "";
+                // Trigger de l'event "change" sur la cellule pour mise à jour de la base de donnée
+                let changeCellEvent = new Event("change")
+                elt.dispatchEvent(changeCellEvent);
+            }
 
             // Désactivation (ou non) de l'input
             elt.disabled = inputDisabled;
