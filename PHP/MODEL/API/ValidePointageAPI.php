@@ -20,6 +20,17 @@ if (isset($_POST['statut']) && ($_POST['statut']=="V" || $_POST['statut']=="R") 
         echo "Back";
     }
     else{
+        // Test si des entrées existent dans les logs indiquant un changement
+        $testLogs=LogsManager::getList(null, ['idUtilisateur' => $idUtilisateur, 'dateModifiee' => $periode.'%', 'prisEnCompte'=>0]);
+        // Si au moins une telle entrée existe
+        if(count($testLogs)!=0){
+            foreach($testLogs as $log){
+                // On indique que le changement a été pris en compte
+                $log->setPrisEnCompte(1);
+                // Et on sauvegarde la modifications des logs
+                LogsManager::update($log);
+            }
+        }
         echo "Reload";
     }
 }

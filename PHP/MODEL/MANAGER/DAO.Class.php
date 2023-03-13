@@ -200,7 +200,7 @@ class DAO
 					$req .= $nomColonne . " BETWEEN " . $tab[0] . " AND " . $tab[1] . " AND ";
 				} 
 				// Cas où l'on veut qu'une colonne soit à null
-				else if ($valeur==null){
+				else if (is_null($valeur)){
 					$req .= $nomColonne." IS NULL AND ";
 				}
 				else { //cas valeur simple
