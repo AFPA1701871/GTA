@@ -74,7 +74,7 @@ if (!$listePointage) {
         }
         echo '
 
-<div class="card3 ' . $styleModif . $displayClass . '">
+<div class="card ' . $styleModif . $displayClass . '">
     <div class="span-2"><div class="numerotation gras ' . $styleModif . '">' . str_pad($key, 2, "0", STR_PAD_LEFT) . '</div><div class="right gras">' . $pointage->getLibelleTypePrestation() . '</div></div>
     
     <div class="innerCard"><label class="gras bgc line">UO de MAD</label>
