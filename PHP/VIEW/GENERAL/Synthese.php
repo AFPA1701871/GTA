@@ -65,7 +65,15 @@ if (!$listePointage) {
     foreach ($listePointage as $key => $pointage) {
         $displayClass = " deuxCol ";
         if ($pointage->getNumeroTypePrestation() == 1) {
+            // Mémorisation des heures d'absences
             $joursAbs = $pointage->getNbHeuresPointage();
+            // On cache la carte des absences
+            $displayClass = " noDisplay ";
+            // On décrémente le numéro de la carte pour rester correct
+            $cardNum--;
+        }
+        $prct=(($joursOuvres - $joursAbs != 0) ? Round($pointage->getNbHeuresPointage() / ($joursOuvres - $joursAbs) * 100, 2) : 0);
+        if($prct==0){
             $displayClass = " noDisplay ";
         }
         $contCheckModif = $roleConnecte == 3 ? "R" : "V";
@@ -93,7 +101,7 @@ if (!$listePointage) {
     <div class=" line right">' . $pointage->getCodeMotif() . '</div></div>
     
     <div class="innerCard"><label class="gras bgc line">Pourcentage</label><div class=" line right">';
-        echo '' . (($joursOuvres - $joursAbs != 0) ? Round($pointage->getNbHeuresPointage() / ($joursOuvres - $joursAbs) * 100, 2) : 0) . '%';
+        echo '' . $prct . '%';
         echo '</div></div></div>
 ';
         $cardNum++;
