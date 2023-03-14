@@ -97,6 +97,8 @@ class View_PointagesManager
 		if($idManager!=null){
 			$stmt.= ' idManager='.$idManager.' AND ';
 		}
+		// Si on veut que tous les pointages soient validés
+		// $stmt .= ' validePointage=1 AND ';
 		$stmt .=' periode = "'.$periode.'" GROUP BY idUtilisateur HAVING sum(nbHeuresPointage)='.NbJourParPeriode($periode).' ORDER BY nomUtilisateur;';
 		$q = $db->query($stmt);
 		if (!$q) return false;
