@@ -1,3 +1,8 @@
+/* Mets à jour les pointage en base de données
+   Gestion du + pour ajouter les prestations
+   Fige les combobox après la saisie du 1er pointage
+*/
+
 var idUser = document.getElementById("IdUtilisateur").innerHTML;
 var inputs = document.querySelectorAll(".case");
 

@@ -1,3 +1,5 @@
+/* Permet la mise à jour immédiate en base de données des modifications d'activitésliées au type de prestation*/
+
 // Récupérer l'idTypePrestation dans l'url
 var urlcourante = document.location.href;
 var url = new URL(urlcourante);

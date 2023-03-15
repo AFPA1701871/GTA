@@ -1,3 +1,5 @@
+/* Permet de créer les camemberts sur les tableaux de bord */
+
 // Récupération du canvas
 const ctx = document.getElementById("chart");
 

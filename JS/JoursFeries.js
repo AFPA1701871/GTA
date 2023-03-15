@@ -1,3 +1,4 @@
+/* Ajout en base de données les jours fériés*/
 var save = document.querySelector('#ajoutJoursFeries');
 var input = save.previousElementSibling;
 
