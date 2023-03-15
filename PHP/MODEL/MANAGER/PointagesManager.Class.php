@@ -28,4 +28,20 @@ class PointagesManager
 		$nomColonnes = ($nomColonnes == null) ? Pointages::getAttributes() : $nomColonnes;
 		return DAO::select($nomColonnes, "Pointages",   $conditions,  $orderBy,  $limit,  $api,  $debug);
 	}
+
+	/**
+	 * Fonction supprimant de la base de donnée tous les pointages de 0h pour un utilisateur et une période donné
+	 *
+	 * @param integer $idUtilisateur Utilisateur dont on veut nettoyer les entrées
+	 * @param string $periode Période concernée
+	 * @return void
+	 */
+	public static function cleanUp(int $idUtilisateur, string $periode):void{
+		$listPointagesPeriode = self::getList(null, ["idUtilisateur"=>$idUtilisateur, "datePointage"=>$periode."%", "nbHeuresPointage"=>0]);
+		if(count($listPointagesPeriode)!=0){
+			foreach ($listPointagesPeriode as $pointagePartant) {
+				self::delete($pointagePartant);
+			}
+		}
+	}
 }

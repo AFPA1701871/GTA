@@ -381,5 +381,8 @@ VALUES
     ),
     (114, 'TbAssistante', 'Tableau de Bord Assistante', 'Assistant Dashboard'),
     (115, 'TbManager', 'Tableau de Bord Manager', 'Manager Dashboard'),
-    (116, 'TableauBord', 'Tableau de Bord ', 'Dashboard')
+    (116, 'TableauBord', 'Tableau de Bord ', 'Dashboard'),
+
+    (117, 'Syntheses', 'Synthèses', 'Syntheses'),
+    (118, 'Recaps', 'Récapitulatifs', 'Summaries')
     ;

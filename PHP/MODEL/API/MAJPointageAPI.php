@@ -11,28 +11,38 @@ if (!isset($_POST['idPointage'])) {
     }
 } else { // modification d'un pointage
     $pointage = PointagesManager::findById($_POST['idPointage']);
-    $pointage->setNbHeuresPointage((float)$_POST['nbHeuresPointage']);
-    PointagesManager::update($pointage);
-    //var_dump($pointage);
-    $periode = substr($pointage->getDatePointage(), 0, 7);
+    $nouvNbHeurePoint=(float)$_POST['nbHeuresPointage'];
+    // Si la nouvelle valeur du pointage est 0 et qu'il n'a pas encore été pris en compte pour le report SIRH
+    // Check reportePointage pour gestion affichage dans synthèse
+    // Peut pas indiquer qu'on a perdu des heures si pas de trace
+    if ($nouvNbHeurePoint == 0 && $pointage->getReportePointage()==0) {
+        // On le supprime
+        PointagesManager::delete($pointage);
+    } else {
 
-    //si le pointage modifié était déjà validé, on dévalide la période pour l'utilisateur
-    if ($pointage->getValidePointage() != null)
-        EnleveCocheUnit($pointage->getIdPointage(), "Valide");
-    //EnleveCoche($pointage->getIdUtilisateur(), $periode,"Valide");
+        $pointage->setNbHeuresPointage($nouvNbHeurePoint);
+        PointagesManager::update($pointage);
+        //var_dump($pointage);
+        $periode = substr($pointage->getDatePointage(), 0, 7);
 
-    // En cas de mise à jour, si le pointage modifié était déjà reporté, on enregistre l'action
-    if ($pointage->getReportePointage() != null) {
-        // On récupère le nom de la personne auquel le pointage a été modifié
-        $user = UtilisateursManager::findById($pointage->getIdUtilisateur());
+        //si le pointage modifié était déjà validé, on dévalide la période pour l'utilisateur
+        if ($pointage->getValidePointage() != null)
+            EnleveCocheUnit($pointage->getIdPointage(), "Valide");
+        //EnleveCoche($pointage->getIdUtilisateur(), $periode,"Valide");
 
-        // On ajout la modification dans les logs
-        $log = new Logs(['dateModifiee' => $pointage->getDatePointage(), 'actionLog' => 'Le pointage de ' . $user->getNomUtilisateur() . ' a été modifié', 'idUtilisateur' => $pointage->getIdUtilisateur(), "userLog" => $_SESSION['utilisateur']->getNomUtilisateur()]);
-        LogsManager::add($log);
+        // En cas de mise à jour, si le pointage modifié était déjà reporté, on enregistre l'action
+        if ($pointage->getReportePointage() != null) {
+            // On récupère le nom de la personne auquel le pointage a été modifié
+            $user = UtilisateursManager::findById($pointage->getIdUtilisateur());
 
-        //on enlève la coche SIRH sur tout le pointage de la periode pour la personne
-        EnleveCocheUnit($pointage->getIdPointage(), "Reporte");
-        //EnleveCoche($pointage->getIdUtilisateur(), $periode,"Reporte");
+            // On ajout la modification dans les logs
+            $log = new Logs(['dateModifiee' => $pointage->getDatePointage(), 'actionLog' => 'Le pointage de ' . $user->getNomUtilisateur() . ' a été modifié', 'idUtilisateur' => $pointage->getIdUtilisateur(), "userLog" => $_SESSION['utilisateur']->getNomUtilisateur()]);
+            LogsManager::add($log);
+
+            //on enlève la coche SIRH sur tout le pointage de la periode pour la personne
+            EnleveCocheUnit($pointage->getIdPointage(), "Reporte");
+            //EnleveCoche($pointage->getIdUtilisateur(), $periode,"Reporte");
+        }
     }
 }
 

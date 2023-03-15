@@ -16,7 +16,6 @@ if (isset($_POST['statut']) && ($_POST['statut']=="V" || $_POST['statut']=="R") 
     }
     if ($_POST['statut'] == "V") {
         // Envois d'une réponse pour valider le retour à la page pécédente automatique
-        // Pas mis en mode "ReportSIRH" pour permettre aux assistantes de changer d'utilisateur par select
         echo "Back";
     }
     else{
@@ -31,6 +30,11 @@ if (isset($_POST['statut']) && ($_POST['statut']=="V" || $_POST['statut']=="R") 
                 LogsManager::update($log);
             }
         }
+
+        // Retrait des éventuels pointages à 0 utiliser pour déterminer les différences depuis dernier report SIRH
+        PointagesManager::cleanUp($idUtilisateur, $periode);
+
+        // Message de retour entrainant le rechargement de la page
         echo "Reload";
     }
 }

@@ -188,7 +188,7 @@ foreach ($typesPrestations as $key => $typePresta) {
             //echo json_encode($conditions);
             $pointage = PointagesManager::getList(null, $conditions, null, null, false, false);
             if ($pointage != false) {
-                $content = str_replace("value", ' value="' . $pointage[0]->getNbHeuresPointage() . '" ', $content);
+                $content = str_replace("value", ' value="' . ($pointage[0]->getNbHeuresPointage()!=0?$pointage[0]->getNbHeuresPointage():"") . '" ', $content);
                 $content = str_replace("idPointage", ' data-idPointage="' . $pointage[0]->getIdPointage() . '" ', $content);
             }
             echo '        <div class="center grid-lineDouble cellBottom ' . $value["classeBG"] . '"  >' . $content . '</div>';
@@ -231,3 +231,21 @@ echo '      <input name="inputUo">
 // pour retrouver le prochain numero de prestation en JS
 echo '<input id=numPrestaMax type=hidden value=' . $numPresta . '>';
 echo '</div></div><div class="cote"></main>';
+
+// LightBox
+echo '<div id="lightBox" class="modal"><div class="cote"></div>';
+echo '  <div class="lbContent center">';
+echo '      <h1 class="colSpan2 center">Ajouter une ligne</h1>
+                <div class="bigEspace  colSpan2"></div>
+                <div class="noDisplay">
+                    <input type="hidden" valueIdTypePresta name="IdTypePrestation">
+                </div>
+                <label>Type de prestation :</label><Label class="gras">libelleTypePresta</label>
+                <label>Prestation :</label><div class="center"><input id="searchPrestaInList" title="Entrer le mot à chercher puis cliquer sur le filtre" placeholder="Recherche..."><i class="fa-solid fa-filter" title="Entrer le mot à chercher puis cliquer sur le filtre"></i></div>
+                <div class="noDisplay">
+                    <input type="hidden" valueIdPresta name="IdPrestation">
+                </div>
+
+';
+echo '  </div>';
+echo '<div class="cote"></div></div>';

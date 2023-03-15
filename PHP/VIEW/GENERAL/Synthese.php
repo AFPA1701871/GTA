@@ -72,12 +72,16 @@ if (!$listePointage) {
             // On décrémente le numéro de la carte pour rester correct
             $cardNum--;
         }
+        // Calcul du %GTA de la prestation 
         $prct=(($joursOuvres - $joursAbs != 0) ? Round($pointage->getNbHeuresPointage() / ($joursOuvres - $joursAbs) * 100, 2) : 0);
+        // Si 0, on n'affiche pas la carte
         if($prct==0){
             $displayClass = " noDisplay ";
         }
+        // En fonction du rôle, check si la prestation a été modifié au niveau des validations (managers=> "V") ou des reports (assistantes => "R")
         $contCheckModif = $roleConnecte == 3 ? "R" : "V";
         $estModif = View_PointagesManager::checkModif($idUtilisateur, $periode, $contCheckModif, true, $pointage->getIdTypePrestation(), $pointage->getCodePrestation(), $pointage->getIdProjet(), $pointage->getIdMotif(), $pointage->getIdUo_Pointage());
+        // Changement de l'affichage de la prestation si présence de pointages pas reportés
         $styleModif = "";
         if ($estModif) {
             $styleModif = " modif ";
