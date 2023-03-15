@@ -28,15 +28,6 @@ class View_Pointages_PeriodeManager
 		$nomColonnes = ($nomColonnes == null) ? View_Pointages_Periode::getAttributes() : $nomColonnes;
 		return DAO::select($nomColonnes, "View_Pointages_Periode",   $conditions,  $orderBy,  $limit,  $api,  $debug);
 	}
-	public static function SommePointage($idUtilisateur, $periode)
-	{
-		$db = DbConnect::getDb();
-		$q = $db->query('SELECT sum(cumulPointage) as somme FROM gta_View_Pointages_Periode WHERE idUtilisateur=' . $idUtilisateur . '  AND periode = "' . $periode . '" ');
-		if (!$q) {
-			return false;
-		}
-		return $q->fetch(PDO::FETCH_ASSOC)['somme'];
-	}
 	
 	/**
 	 * Fonction permettant de récupérer soit le nombre de jours Validés/Reportés, soit le nombre de salarié ayant la période complétement Saisie/Validé/Reporté

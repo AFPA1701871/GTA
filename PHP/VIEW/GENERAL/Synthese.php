@@ -20,6 +20,7 @@ $listeUtilisateursFiniPeriode = View_PointagesManager::getListSaisiesCompl($peri
 //var_dump($_SESSION);
 //on récupère la liste du pointage
 $listePointage = View_PointagesManager::getSomme($idUtilisateur, $periode);
+var_dump($listePointage);
 $pointageVModif = View_PointagesManager::checkModif($idUtilisateur, $periode, "V");
 $pointageRModif = View_PointagesManager::checkModif($idUtilisateur, $periode, "R");
 /**********************Il faut vérifier sur tous les pointages cas des changements après validation ******************** */
@@ -80,7 +81,7 @@ if (!$listePointage) {
         }
         // En fonction du rôle, check si la prestation a été modifié au niveau des validations (managers=> "V") ou des reports (assistantes => "R")
         $contCheckModif = $roleConnecte == 3 ? "R" : "V";
-        $estModif = View_PointagesManager::checkModif($idUtilisateur, $periode, $contCheckModif, true, $pointage->getIdTypePrestation(), $pointage->getCodePrestation(), $pointage->getIdProjet(), $pointage->getIdMotif(), $pointage->getIdUo_Pointage());
+        $estModif = View_PointagesManager::checkModif($idUtilisateur, $periode, $contCheckModif, $pointage);
         // Changement de l'affichage de la prestation si présence de pointages pas reportés
         $styleModif = "";
         if ($estModif) {
