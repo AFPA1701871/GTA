@@ -234,7 +234,7 @@ function periodeEnCours($idUtilisateur, $type)
 	$periode = date("Y") . '-' . str_pad(date("m") * 1 - 1, 2, "0", STR_PAD_LEFT);
 	switch ($type) {
 		case 'Pointage': // le mois précédent doit complètement être saisi pour passer au mois en cours
-			$nbJour = View_Pointages_PeriodeManager::SommePointage($idUtilisateur, $periode);
+			$nbJour = View_Pointages_PeriodeManager::RecupNombre($idUtilisateur, $periode, null, "Utilisateur", "Jours");
 			$nbJourAPointe = NbJourParPeriode($periode);
 
 			if ($nbJour == false || $nbJour < $nbJourAPointe)
@@ -242,7 +242,7 @@ function periodeEnCours($idUtilisateur, $type)
 			return date("Y") . '-' . str_pad(date("m"), 2, "0", STR_PAD_LEFT);
 			break;
 		case 'Valide': // le mois précédent doit complètement être validé pour tous les agents pour passer au mois en cours
-			$nbValide = View_Pointages_PeriodeManager::SyntheseV3($idUtilisateur, $periode, "valide","Manager");
+			$nbValide = View_Pointages_PeriodeManager::RecupNombre($idUtilisateur, $periode, "valide","Manager");
 			// Ancienne version
 			// $nbValide = View_Pointages_PeriodeManager::NbValide($idUtilisateur, $periode,"Manager");
 			$nbAgent = count(UtilisateursManager::getList(['idUtilisateur'], [ 'idManager' => $idUtilisateur]));
@@ -252,7 +252,7 @@ function periodeEnCours($idUtilisateur, $type)
 
 			break;
 		case 'Reporte': // le mois précédent doit complètement être reporté pour passer au mois en cours
-			$nbReporte = View_Pointages_PeriodeManager::SyntheseV3(null, $periode, "reporte",null);
+			$nbReporte = View_Pointages_PeriodeManager::RecupNombre(null, $periode, "reporte",null);
 			// Ancienne version
 			// $nbReporte = View_Pointages_PeriodeManager::NbReporte($idUtilisateur, $periode,"Manager");
 			

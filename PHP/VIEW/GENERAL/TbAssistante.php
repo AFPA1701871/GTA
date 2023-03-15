@@ -33,11 +33,11 @@ echo '<div id="tabManagers">';
         $idManager = $manager->getIdUtilisateur();
         echo '<div class="vCenter '.$bgc.'">'.$manager->getNomUtilisateur().'</div>';
         $agents = View_UtilisateursManager::getList(null, ['idManager' => $idManager, "actif" => 1],null,null,false,false);
-        $saisi = View_Pointages_PeriodeManager::SyntheseV3($idManager, $periode, null, "Manager");
+        $saisi = View_Pointages_PeriodeManager::RecupNombre($idManager, $periode, null, "Manager");
         //$saisi = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode]);
-        $valide = View_Pointages_PeriodeManager::SyntheseV3($idManager, $periode, "valide", "Manager");
+        $valide = View_Pointages_PeriodeManager::RecupNombre($idManager, $periode, "valide", "Manager");
         //$valide = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode, 'validePointage'=>1]);
-        $reporte = View_Pointages_PeriodeManager::SyntheseV3($idManager, $periode, "reporte", "Manager", true);
+        $reporte = View_Pointages_PeriodeManager::RecupNombre($idManager, $periode, "reporte", "Manager");
         // $reporte = View_Pointages_PeriodeManager::getList(null, ['idManager'=>$idManager,"periode"=>$periode, 'reportePointage'=>1]);
 
         echo '<div class="vCenter '.$bgc.'">'.$saisi.'/'.count($agents).'</div>';

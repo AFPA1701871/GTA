@@ -37,11 +37,7 @@ class View_Pointages_PeriodeManager
 		}
 		return $q->fetch(PDO::FETCH_ASSOC)['somme'];
 	}
-
-	// Remplacement dans TbManager Lignes 36 et 39
-	// ActionMail Lignes 233 et 257
-	// Outils Lignes 247 et 257
-
+	
 	/**
 	 * Fonction permettant de récupérer soit le nombre de jours Validés/Reportés, soit le nombre de salarié ayant la période complétement Saisie/Validé/Reporté
 	 *
@@ -49,9 +45,9 @@ class View_Pointages_PeriodeManager
 	 * @param string $periode Période sur laquelle porte la recherche (de la forme YYYY-MM)
 	 * @param string $mode Détermine si l'on recherche sur Saisie (null), Validé (valide) ou Reporté (reporte)
 	 * @param string $pointDeVue "Manager" ou "Utilisateur", détermine sur quel id la condition sera appliqué
-	 * @param boolean $gbH Détermine si l'on veut un nombre de jours (false) ou un nombre d'utilisateurs (true)
+	 * @param string $recherche Détermine si l'on veut un nombre de "Jours" ou un nombre d'"Utilisateurs"
 	 */
-	public static function SyntheseV3($idUtilisateur, $periode, $mode, $pointDeVue, bool $gbH = true)
+	public static function RecupNombre($idUtilisateur, $periode, $mode, $pointDeVue, $recherche = "Utilisateurs")
 	{
 		// Connection à la base de données
 		$db = DbConnect::getDb();
@@ -63,16 +59,16 @@ class View_Pointages_PeriodeManager
 		$condP = ($mode != null)?' ' . $mode . 'Pointage=1 AND ':"";
 		// Utilise-t-on un GROUP BY et faut-il que le cumul des pointages répondant aux autres critères soit égal au nombre de jours ouvrés du mois?
 		// Partous sauf dans le TbManagers
-		$condGBH = ($gbH)?' GROUP BY idUtilisateur HAVING nb=' . NbJourParPeriode($periode):"";
+		$condRecherche = ($recherche=="Utilisateurs")?' GROUP BY idUtilisateur HAVING nb=' . NbJourParPeriode($periode):"";
 		// Assemblage de la requête
-		$stmt = 'SELECT SUM(cumulPointage) as nb FROM gta_View_Pointages_Periode WHERE ' . $condID . $condP . ' periode="' . $periode . '" ' . $condGBH;
+		$stmt = 'SELECT SUM(cumulPointage) as nb FROM gta_View_Pointages_Periode WHERE ' . $condID . $condP . ' periode="' . $periode . '" ' . $condRecherche;
 		$q = $db->query($stmt);
 		// Si on rencontre un problème avec la requête, on retourne faux
 		if (!$q) {
 			return false;
 		}
 		// Sinon
-		if (!$gbH) {
+		if ($recherche=="Jours") {
 			// On retourne soit la somme des pointages => TbManagers
 			return $q->fetch(PDO::FETCH_ASSOC)['nb'];
 		} else {
