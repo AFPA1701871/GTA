@@ -1,3 +1,9 @@
+/* gestion de la grille de pointage
+    gestion des favoris, des scrolls, 
+    gestion des colonnes en fonction de la configuration du mois
+    gestion des apparences des cellules en fonction de l'état du pointage pour la journée
+    gestion des nombres décimaux
+*/
 window.addEventListener("load", setGridPointage);
 
 listeStarFav = document.querySelectorAll(".fa-fav");
@@ -290,7 +296,6 @@ function SelectColonne(e) {
             elt.classList.toggle("cellBottom");
         }
     });
-
 }
 
 /**
