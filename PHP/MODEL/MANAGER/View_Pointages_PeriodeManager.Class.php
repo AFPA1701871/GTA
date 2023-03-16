@@ -36,9 +36,9 @@ class View_Pointages_PeriodeManager
 	 * @param string $periode Période sur laquelle porte la recherche (de la forme YYYY-MM)
 	 * @param string $mode Détermine si l'on recherche sur Saisie (null), Validé (valide) ou Reporté (reporte)
 	 * @param string $pointDeVue "Manager" ou "Utilisateur", détermine sur quel id la condition sera appliqué
-	 * @param string $Regroupement Détermine si l'on veut un nombre de "Jours" ou un nombre d'"Utilisateurs"
+	 * @param string $regroupement Détermine si l'on veut un nombre de "Jours" ou un nombre d'"Utilisateurs"
 	 */
-	public static function NombrePointages($idUtilisateur, $periode, $mode, $pointDeVue, $Regroupement = "Utilisateurs")
+	public static function NombrePointages($idUtilisateur, $periode, $mode, $pointDeVue, $regroupement = "Utilisateurs")
 	{
 		// Connection à la base de données
 		$db = DbConnect::getDb();
@@ -50,7 +50,7 @@ class View_Pointages_PeriodeManager
 		$condP = ($mode != null)?' ' . $mode . 'Pointage=1 AND ':"";
 		// Utilise-t-on un GROUP BY et faut-il que le cumul des pointages répondant aux autres critères soit égal au nombre de jours ouvrés du mois?
 		// Partous sauf dans le TbManagers
-		$condRegroupement = ($Regroupement=="Utilisateurs")?' GROUP BY idUtilisateur HAVING nb=' . NbJourParPeriode($periode):"";
+		$condRegroupement = ($regroupement=="Utilisateurs")?' GROUP BY idUtilisateur HAVING nb=' . NbJourParPeriode($periode):"";
 		// Assemblage de la requête
 		$stmt = 'SELECT SUM(cumulPointage) as nb FROM gta_View_Pointages_Periode WHERE ' . $condID . $condP . ' periode="' . $periode . '" ' . $condRegroupement;
 		$q = $db->query($stmt);
@@ -59,7 +59,7 @@ class View_Pointages_PeriodeManager
 			return false;
 		}
 		// Sinon
-		if ($Regroupement=="Jours") {
+		if ($regroupement=="Jours") {
 			// On retourne soit la somme des pointages => TbManagers
 			return $q->fetch(PDO::FETCH_ASSOC)['nb'];
 		} else {
