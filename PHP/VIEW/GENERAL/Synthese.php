@@ -20,15 +20,25 @@ $listeUtilisateursFiniPeriode = View_PointagesManager::getListSaisiesCompl($peri
 //var_dump($_SESSION);
 //on récupère la liste du pointage
 $listePointage = View_PointagesManager::getSomme($idUtilisateur, $periode);
-var_dump($listePointage);
-$pointageVModif = View_PointagesManager::checkModif($idUtilisateur, $periode, "V");
-$pointageRModif = View_PointagesManager::checkModif($idUtilisateur, $periode, "R");
+
 /**********************Il faut vérifier sur tous les pointages cas des changements après validation ******************** */
+
 if (!$listePointage) {
     $statut = "Indisponible";
 } else {
-    $statut = ($listePointage[0]->getValidePointage() == 1) ? "validé " . (($pointageVModif) ? "(modifié) " : "") : "";
-    $statut .= ($listePointage[0]->getReportePointage() == 1) ? "reporté SIRH " . (($pointageRModif) ? "(modifié) " : "") : "";
+    $vStatut=0;
+    $rStatut=0;
+    $indStatut=0;
+    do{
+        $vStatut=MAX($vStatut, $listePointage[$indStatut]->getValidePointage());
+        $rStatut=MAX($rStatut, $listePointage[$indStatut]->getReportePointage());
+        $indStatut++;
+    }while (($rStatut==0 || $vStatut==0) && $indStatut<count($listePointage));
+
+    $statut = ($vStatut >0) ? "validé " : "";
+    $statut .= ($rStatut >0) ? "reporté SIRH " : "";
+    // $statut = ($listePointage[0]->getValidePointage() >0) ? "validé " : "";
+    // $statut .= ($listePointage[0]->getReportePointage() >0) ? "reporté SIRH " : "";
 }
 // *** partie combobox mois/annee ***
 echo '<div id="divComboDate" class="demi center">';
@@ -45,15 +55,14 @@ echo '</section><div class="cote"></div><div class="cote"></div>';
 //////////////////////////////////////////
 
 if (!$listePointage) {
-    echo '<section>';
-    echo '<div class="vCenter gras">';
     if (isset($_GET['idUtilisateur']) && $_GET['idUtilisateur'] != "") {
         $message = 'Désolé, la synthèse de ' . $utilisateur->getNomUtilisateur() . ' pour cette période n\'est pas disponible. Veuillez choisir une autre date.';
     } else {
         $message = 'Veuillez choisir un utilisateur parmis la liste.';
     }
-    echo $message;
-    echo '</div></section>';
+    echo '  <section>
+                <div class="vCenter gras">'.$message.'</div>
+            </section>';
 } else {
     //////////////////////////////////////////
     // Récapitulatif version carte V3       //
@@ -63,13 +72,17 @@ if (!$listePointage) {
     echo '<section class="cards">';
     $cardNum = 1;
     $joursAbs=0;
+    $modifAbsences=false;
     foreach ($listePointage as $key => $pointage) {
+
         $displayClass = " deuxCol ";
         if ($pointage->getNumeroTypePrestation() == 1) {
             // Mémorisation des heures d'absences
             $joursAbs = $pointage->getNbHeuresPointage();
             // On cache la carte des absences
             $displayClass = " noDisplay ";
+            // Si modif du nombre de jours absents => modif des % sur toutes les prestations
+            $modifAbsences=($pointage->getReportePointage()!=2);
             // On décrémente le numéro de la carte pour rester correct
             $cardNum--;
         }
@@ -79,39 +92,45 @@ if (!$listePointage) {
         if($prct==0){
             $displayClass = " noDisplay ";
         }
-        // En fonction du rôle, check si la prestation a été modifié au niveau des validations (managers=> "V") ou des reports (assistantes => "R")
-        $contCheckModif = $roleConnecte == 3 ? "R" : "V";
-        $estModif = View_PointagesManager::checkModif($idUtilisateur, $periode, $contCheckModif, $pointage);
+        // Check, en fonction du rôle, si la prestation en cours contient des pointages non-validés/non-reportés
+        $estModif = $roleConnecte>=3?($pointage->getReportePointage()!=2):($pointage->getValidePointage()!=2);
         // Changement de l'affichage de la prestation si présence de pointages pas reportés
         $styleModif = "";
-        if ($estModif) {
+        if ($estModif || $modifAbsences) {
             $styleModif = " modif ";
         }
         echo '
-
-<div class="card ' . $styleModif . $displayClass . '">
-    <div class="span-2"><div class="numerotation gras ' . $styleModif . '">' . str_pad($cardNum, 2, "0", STR_PAD_LEFT) . '</div><div class="right gras">' . $pointage->getLibelleTypePrestation() . '</div></div>
-    
-    <div class="innerCard"><label class="gras bgc line">UO de MAD</label>
-    <div class=" line right">' . $pointage->getNumeroUO() . '</div></div>
-
-    <div class="innerCard"><label class="gras bgc line">Prestation</label>
-    <div class=" line right">' . $pointage->getCodePrestation() . '</div></div>
-    
-    <div class="innerCard"><label class="gras bgc line">Code Projet</label>
-    <div class=" line right">' . $pointage->getCodeProjet() . '</div></div>
-    
-    
-    <div class="innerCard"><label class="gras bgc line">Motif</label>
-    <div class=" line right">' . $pointage->getCodeMotif() . '</div></div>
-    
-    <div class="innerCard"><label class="gras bgc line">Pourcentage</label><div class=" line right">';
-        echo '' . $prct . '%';
-        echo '</div></div></div>
-';
+        <div class="card ' . $styleModif . $displayClass . '">
+            <div class="span-2">
+                <div class="numerotation gras ' . $styleModif . '">' . str_pad($cardNum, 2, "0", STR_PAD_LEFT) . '</div>
+                <div class="right gras">' . $pointage->getLibelleTypePrestation() . '</div>
+            </div>            
+            <div class="innerCard">
+                <label class="bgc line">UO de MAD</label>
+                <div class=" line right gras">' . $pointage->getNumeroUO() . '</div>
+            </div>
+            <div class="innerCard">
+                <label class="bgc line">Prestation</label>
+                <div class=" line right gras">' . $pointage->getCodePrestation() . '</div>
+            </div>            
+            <div class="innerCard">
+                <label class="bgc line">Code Projet</label>
+                <div class=" line right gras">' . $pointage->getCodeProjet() . '</div>
+            </div>            
+            <div class="innerCard">
+                <label class="bgc line">Motif</label>
+                <div class=" line right gras">' . $pointage->getCodeMotif() . '</div>
+            </div>            
+            <div class="innerCard">
+                <label class="bgc line">Pourcentage</label>
+                <div class=" line right gras">'.$prct . '%</div>
+            </div>
+        </div>';
         $cardNum++;
     }
-    echo '</section>';
+    echo '</section>
+    ';
+    
 
     ///////////////////////////////////
     // Fin des différents affichages //
