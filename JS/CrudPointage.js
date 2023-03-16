@@ -4,11 +4,12 @@
 */
 
 var idUser = document.getElementById("IdUtilisateur").innerHTML;
-var inputs = document.querySelectorAll(".case");
-
+var inputs = document.querySelectorAll(".casePointage");
+oldValeur = 0;
 // On ajoute un evenement sur toutes les cases de pointage qui se déclanche lorsque la valeur de la case change
 inputs.forEach((element) => {
   element.addEventListener("change", changePointage);
+  element.addEventListener("focus", saveOldValeur);
 });
 
 listePlus = document.querySelectorAll(".fa-plus");
@@ -17,6 +18,9 @@ listePlus.forEach(element => {
   //element.addEventListener("click", openLightBox);
 });
 
+function saveOldValeur(event) {
+  oldValeur = event.target.value!=""?event.target.value:0;
+}
 
 function changePointage(event) {
   let pointage = event.target; // Case de pointage changée
@@ -35,7 +39,16 @@ function changePointage(event) {
   if (valeur < 0 || valeur > 1) {
     valeur = 0;
   }
-
+  // mise à jour de la somme sur la ligne
+  caseSomme = document.querySelector("div.colTotal[data-line='" + ligne + "']")
+  somme = parseFloat(caseSomme.textContent)
+  caseSomme.textContent = (somme + parseFloat(valeur) - parseFloat(oldValeur)).toFixed(2);
+  // mise à jour de la somme sur la colonne
+  caseSomme = document.querySelector("div.grid-lineDouble[data-date='" + date + "']")
+  somme = parseFloat(caseSomme.dataset.somme)
+  caseSomme.dataset.somme = ( somme + parseFloat(valeur) - parseFloat(oldValeur)).toFixed(2)
+  
+  ChangeCellule(pointage)
   // Requête
   let req = new XMLHttpRequest();
   req.open("POST", "index.php?page=MAJPointageAPI", true); // Initialisation de la requête avec une methode POST et le chemin de la page de traitement
@@ -54,7 +67,7 @@ function changePointage(event) {
           console.log(this.responseText);
           let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
           pointage.setAttribute("data-idpointage", id); // Change l'attribut ID de la case
-
+          pointageSave();
         }
       }
     }
@@ -68,6 +81,16 @@ function changePointage(event) {
   SelectToInput("Projet", ligne);
 }
 
+function pointageSave()
+{
+  save = document.querySelector(".trans")
+  save.classList.remove("invisible");
+  save.classList.add("visible");
+  setTimeout(() => {
+    save.classList.add("invisible");
+    save.classList.remove("visible");
+  }, 3000);
+}
 /**
  * Méthode qui permet d'ajouter une ligne lorsque l'on clique sur le plus à coté du type de Prestations
  * @param {*} event 
