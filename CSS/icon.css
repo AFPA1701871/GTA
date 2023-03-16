@@ -159,3 +159,20 @@
 .fa-todo::before {
     content: "\f7d9";
 }
+
+.fa-expand::before {
+    content: "\f424";
+}
+
+.fa-contract::before {
+    content: "\f422";
+}
+
+.fa-fav:before {
+    content: "\F5C0";
+    /* color: rgb(212, 212, 7); */
+}
+
+.favActive {
+    color: rgb(212, 212, 7);
+}
