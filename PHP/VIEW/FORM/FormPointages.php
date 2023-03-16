@@ -42,8 +42,8 @@ echo '        </div>
                 <div class="grid-columns-span-17 espace"></div>
             </div>';
 // Entete de Prestations
-echo '  <div class="grid-presta tabCol pointHead  cellBottom trans alert center">
-<p>Changement sauveguardé</p><i class="fas fa-floppy-disk"></i>
+echo '  <div class=" tabCol pointHead invisible cellBottom trans  center">
+<p>Changement sauvegardé</p><i class="fas fa-floppy-disk"></i>
 </div>
         <div class="grid-pointage tabCol pointHead">
             <div class="cellBottom center grid-lineDouble bgc4">Total</div>

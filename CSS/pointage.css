@@ -218,37 +218,21 @@ select {
 }
 
 
-.alert {
-    /* background-color: var(--color5); */
-    color: var(--color5);
-    /* opacity: 0.8; */
-    border-radius: 2px;
+.invisible {
     opacity: 0;
-    font-size: 1.3rem;
-    transition: all 0.3s;
-    display: flex;
-    max-height: 2.6em;
-    align-self: center;
 }
 
-.alert.active {
+.visible {
     opacity: 1;
 }
 
-.dark .alert {
+.dark p {
     color: var(--color1);
 }
 
-.dark .alert i {
-    color: var(--color1);
-}
 
 .fa-open:before {
     content: "\F107";
-}
-
-.dark .trans {
-    background-color: transparent;
 }
 
 .fa-close:before {
