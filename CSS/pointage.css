@@ -135,17 +135,6 @@
     color: rgb(212, 212, 7);
 }
 
-.fa-expand::before {
-    content: "\f424";
-}
-
-.fa-contract::before {
-    content: "\f422";
-}
-
-.rotate-45 {
-    transform: rotate(45deg);
-}
 
 .pointHead {
     position: sticky;
@@ -158,10 +147,6 @@
 
 .leftStickyRigth {
     border-right: 0.2em solid black;
-}
-
-.bgc4 {
-    background-color: var(--color4);
 }
 
 select {
@@ -181,19 +166,6 @@ select {
     color: var(--color1);
     padding-left: 1em;
     color: var(--color1);
-}
-
-.fa-fav:before {
-    content: "\F5C0";
-    /* color: rgb(212, 212, 7); */
-}
-
-.favActive {
-    color: rgb(212, 212, 7);
-}
-
-.favDesActive {
-    color: red;
 }
 
 .prestaLine {

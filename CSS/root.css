@@ -92,6 +92,10 @@ a {
 .color5{
     color: var(--color5);
 }
+.bgc4 {
+    background-color: var(--color4);
+}
+
 .bgc5{
     background-color: var(--color2);
     color: var(--color1);
