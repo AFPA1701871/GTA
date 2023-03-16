@@ -61,7 +61,7 @@ function expand(e) {
         e.target.classList.toggle("fa-close");
     }
     ligne = e.target.parentNode.parentNode.parentNode;
-    listeCol = ligne.querySelectorAll(".colCachable");
+    listeCol = ligne.querySelectorAll(".cellCachable");
     listeCol.forEach(cell => {
         cell.classList.toggle("noDisplay");
     });
@@ -292,9 +292,6 @@ function SelectColonne(e) {
     // Application de la classe à toutes les cellules
     inputsColonne.forEach(elt => {
         elt.classList.toggle("colSelected");
-        if (elt.nodeName == "DIV") {
-            elt.classList.toggle("cellBottom");
-        }
     });
 }
 
@@ -307,6 +304,41 @@ function CalculPrctGTA(ligne) {
     let cellCible = document.querySelector(".colPrctGTA[data-line='" + ligne + "']");
     // Récupération de la liste de toutes les cellules de pointage du mois
     let listeTousInputs = document.querySelectorAll(".casePointage");
+    // Récupération du total de la ligne actuelle
+    let totalLigne = document.querySelector(".colTotal[data-line='" + ligne + "']").innerHTML;
+    //Initialisation des variables
+    let totalMois = 0;
+    let totalPrctGTA = 0;
+    let ajout;
+    // Pour chacunes des cellules de pointage du mois en cours
+    listeTousInputs.forEach(cellActu => {
+        // Si l'on est pas sur la ligne des absences, que la cellule n'est pas vide ni désactivée
+        if (cellActu.getAttribute("data-line") != "1" && cellActu.value != "" && !cellActu.disabled) {
+            // On prend sa valeur
+            ajout = cellActu.value;
+        } else {
+            // Sinon on prend 0
+            ajout = 0;
+        }
+        // Mise à jour du totalMois pour cette itération
+        totalMois = (parseFloat(totalMois) + parseFloat(ajout)).toFixed(2);
+    })
+
+    // Calcul du %GTA
+    totalPrctGTA = ((parseFloat(totalLigne) / parseFloat(totalMois)) * 100).toFixed(1);
+    // En cas de problème, mise à 0 de la valeur
+    if (isNaN(totalPrctGTA)) {
+        totalPrctGTA = 0;
+    }
+    // Affichage du résultat à la bonne place
+    cellCible.innerHTML = totalPrctGTA + "%";
+}
+
+function CalculPrctGTAV2(ligne) {
+    // Récupération de la cellule dans laquelle mettre le résultat
+    let cellCible = document.querySelector(".colPrctGTA[data-line='" + ligne + "']");
+    // Récupération de la liste de tous les totaux des prestations
+    let listeTousTotaux = document.querySelectorAll(".colTotal");
     // Récupération du total de la ligne actuelle
     let totalLigne = document.querySelector(".colTotal[data-line='" + ligne + "']").innerHTML;
     //Initialisation des variables

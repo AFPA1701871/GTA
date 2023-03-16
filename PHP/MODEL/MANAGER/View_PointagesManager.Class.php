@@ -8,10 +8,17 @@ class View_PointagesManager
 		$nomColonnes = ($nomColonnes == null) ? View_Pointages::getAttributes() : $nomColonnes;
 		return DAO::select($nomColonnes, "View_Pointages",   $conditions,  $orderBy,  $limit,  $api,  $debug);
 	}
+
+	/**
+	 * Donne la liste de toutes les prestations d'un utilisateur pour une période donnée avec, pour chacune, le nombre de jours pointés pour la période. ATTENTION: validePointage et reportePointage modifié => 0 si aucun valide/reporte, 1 si a été modifié, 2 si complet
+	 *
+	 * @param integer $idUtilisateur Utilisateur concerné
+	 * @param string $periode Période sur laquelle porte la synthèse
+	 */
 	public static function getSomme(int $idUtilisateur, string $periode)
 	{
 		$db = DbConnect::getDb();
-		$q = $db->query('SELECT sum(nbHeuresPointage) as nbHeuresPointage, periode,idUo_Pointage, idMotif,numeroUo, libelleUo, codeMotif, libelleMotif, idProjet, codeProjet, libelleProjet, codePrestation,  idTypePrestation, numeroTypePrestation, libelleTypePrestation , validePointage, reportePointage FROM gta_View_Pointages
+		$q = $db->query('SELECT sum(nbHeuresPointage) as nbHeuresPointage, periode,idUo_Pointage, idMotif,numeroUo, libelleUo, codeMotif, libelleMotif, idProjet, codeProjet, libelleProjet, codePrestation,  idTypePrestation, numeroTypePrestation, libelleTypePrestation , AVG(DISTINCT validePointage)*2 as validePointage, AVG(DISTINCT reportePointage)*2 as reportePointage FROM gta_View_Pointages
 			 WHERE idUtilisateur=' . $idUtilisateur . '  AND periode = "' . $periode . '" 
 			 GROUP BY idUtilisateur, idMotif, codePrestation, idProjet, idUo_Pointage,  idTypePrestation
 			 ORDER BY idTypePrestation, codePrestation');
@@ -23,60 +30,6 @@ class View_PointagesManager
 			}
 		}
 		return $liste;
-	}
-
-	/**
-	 * Fonction permettant de mettre en avant les prestations ayant été modifiées depuis le report SIRH
-	 *
-	 * @param integer $idUtilisateur Utilisateur concerné
-	 * @param string $periode Période concerné
-	 * @param string $condition Sur quoi porte le contrôle ("V" => les pointages validés, "R" => les pointages reportés SIRH, "VR" => les deux)
-	 * @param View_Pointages|null $pointage View_Pointage pour lequel on veut le détail, si présent
-	 */
-	public static function checkModif(int $idUtilisateur, string $periode, string $condition, ?View_Pointages $pointage = null)
-	{
-		// Connection à la base de données
-		$db = DbConnect::getDb();
-		// Début de création de la requête
-		$stmt = 'SELECT sum(nbHeuresPointage) as heuresDif FROM gta_View_Pointages
-		WHERE idUtilisateur=' . $idUtilisateur . '  AND periode = "' . $periode . '" ';
-
-		switch ($condition) {
-			case 'V':
-				// Conditionné sur le fait qu'on ne veut que les pointages pas validés
-				$stmt .= ' AND validePointage = 0 ';
-				break;
-			case 'R':
-				// Conditionné sur le fait qu'on ne veut que les pointages pas reportés
-				$stmt .= ' AND reportePointage = 0 ';
-				break;
-			case 'VR':
-				// Si on veut au moins l'un des deux
-				$stmt .= ' AND (validePointage = 0 OR reportePointage = 0) ';
-				break;
-		}
-
-		if ($pointage!=null) {
-			// Gestion de la demande du mode détailé
-			$stmt .= ' AND idTypePrestation=' . $pointage->getIdTypePrestation() . ' AND codePrestation="' . $pointage->getCodePrestation() . '" ';
-			// Gestion des champs pouvants être null
-			$stmt .= ' AND idProjet' . ($pointage->getIdProjet() == null ? ' IS NULL' : '="' . $pointage->getIdProjet() . '" ');
-			$stmt .= ' AND idMotif' . ($pointage->getIdMotif() == null ? ' IS NULL' : '="' . $pointage->getIdMotif() . '" ');
-			$stmt .= ' AND idUo_Pointage' . ($pointage->getIdUo_Pointage() == null ? ' IS NULL' : '="' . $pointage->getIdUo_Pointage() . '" ');
-			// Complétion de la requête
-			$stmt .= ' GROUP BY idUtilisateur, idMotif, idPrestation, idProjet, idUo_Pointage,  idTypePrestation';
-		}
-		$q = $db->query($stmt);
-
-		$liste = [];
-		if (!$q) return false;
-		while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) { // on récupère les enregistrements de la BDD
-			if ($donnees != false) {
-				$liste[] = $donnees["heuresDif"];
-			}
-		}
-		// 
-		return (count($liste) == 1 && $liste[0] != null);
 	}
 
 	/**

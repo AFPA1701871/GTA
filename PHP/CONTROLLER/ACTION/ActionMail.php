@@ -204,7 +204,7 @@ function EnvoiMail()
 			$idAgent = $agent->getIdUtilisateur();
 
 			// Récupération du pointage pour la période
-			$pointage = View_Pointages_PeriodeManager::RecupNombre($idAgent, $periode, null, "Utilisateur", "Jours");
+			$pointage = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, null, "Utilisateur", "Jours");
 
 			// Si pointage vide ou si pointage incomplet
 			if ($pointage == null || $pointage < NbJourParPeriode($periode)) {
@@ -227,8 +227,8 @@ function EnvoiMail()
 				$idAgent = $agent->getIdUtilisateur();
 
 				// Récupération du pointage validé pour la période
-				$pointage = View_Pointages_PeriodeManager::RecupNombre($idAgent, $periode, null, "Utilisateur", "Jours");
-				$valide = View_Pointages_PeriodeManager::RecupNombre($idAgent, $periode, "valide", "Utilisateur");
+				$pointage = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, null, "Utilisateur", "Jours");
+				$valide = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, "valide", "Utilisateur");
 				// Ancienne version
 				// $valide = View_Pointages_PeriodeManager::NbValide($idAgent, $periode, "Utilisateur");
 
@@ -251,8 +251,8 @@ function EnvoiMail()
 			$idAgent = $agent->getIdUtilisateur();
 
 			// Récupération du pointage validé pour la période
-			$pointage = View_Pointages_PeriodeManager::RecupNombre($idAgent, $periode, null, "Utilisateur", "Jours");
-			$report = View_Pointages_PeriodeManager::RecupNombre($idAgent, $periode, "reporte", "Utilisateur");
+			$pointage = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, null, "Utilisateur", "Jours");
+			$report = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, "reporte", "Utilisateur");
 			// Ancienne version
 			// $report = View_Pointages_PeriodeManager::NbReporte($idAgent, $periode, "Utilisateur");
 
