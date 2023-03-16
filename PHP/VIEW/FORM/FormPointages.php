@@ -43,7 +43,7 @@ echo '        </div>
             </div>';
 // Entete de Prestations
 echo '  <div class=" tabCol pointHead invisible cellBottom trans  center">
-<p>Changement sauvegardé</p><i class="fas fa-floppy-disk"></i>
+<p>Changement sauvegardé</p><i class="fas fa-floppy-disk fa-margin"></i>
 </div>
         <div class="grid-pointage tabCol pointHead">
             <div class="cellBottom center grid-lineDouble bgc4">Total</div>
@@ -94,7 +94,7 @@ echo '    </div>';
 $numPresta = 0;
 // Boucle sur les Types de Prestations
 foreach ($typesPrestations as $key => $typePresta) {
-    $iconeAjoutLigne = ($typePresta->getNumeroTypePrestation() != 1) ? '<i id="AjoutPresta1" class="fas fa-plus plusRigth"></i>' : '';
+    $iconeAjoutLigne = ($typePresta->getNumeroTypePrestation() != 1) ? '<i id="AjoutPresta1" class="fas fa-plus left-auto"></i>' : '';
     $idTypePrestation = $typePresta->getIdTypePrestation();
     echo '        <div class="center fullLine grid-lineSimple cellBottom left titreTypePrestation" data-idTypePrestation = ' . $idTypePrestation . '>' . $typePresta->getNumeroTypePrestation() . " - " . $typePresta->getLibelleTypePrestation() . ' ' . $iconeAjoutLigne . '</div>';
     echo '        <div class=" grid-lineSimple cellBottom titreTypePrestation ">&nbsp;</div>';
@@ -241,7 +241,7 @@ echo '      <h1 class="colSpan2 center">Ajouter une ligne</h1>
                     <input type="hidden" valueIdTypePresta name="IdTypePrestation">
                 </div>
                 <label>Type de prestation :</label><Label class="gras">libelleTypePresta</label>
-                <label>Prestation :</label><div class="center"><input id="searchPrestaInList" title="Entrer le mot à chercher puis cliquer sur le filtre" placeholder="Recherche..."><i class="fa-solid fa-filter" title="Entrer le mot à chercher puis cliquer sur le filtre"></i></div>
+                <label>Prestation :</label><div class="center"><input id="searchPrestaInList" title="Entrer le mot à chercher puis cliquer sur le filtre" placeholder="Recherche..."><i class="fa-solid fa-filter fa-margin" title="Entrer le mot à chercher puis cliquer sur le filtre"></i></div>
                 <div class="noDisplay">
                     <input type="hidden" valueIdPresta name="IdPrestation">
                 </div>

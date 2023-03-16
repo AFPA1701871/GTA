@@ -83,17 +83,17 @@ h1 {
     background-color: transparent; */
     opacity: 0.5;
 }
-  .fa-moon {
+.fa-moon {
     margin-left: 5px;
     color: var(--color5);
     font-size: 0.9rem;
-  }
+}
 
-  .fa-sun {
+.fa-sun {
     color: rgb(252, 173, 27);
     font-size: 0.9rem;
     margin-right: 5px;
-  }
+}
 .titre,
 .titreListe,
 .labelListe {
@@ -273,17 +273,10 @@ header .logo  {
     height: 7.5rem;
 }
 
-header img {
-    margin-right: auto;
-}
 
 main {
     padding-bottom: 10vh;
 }
-/* section form {
-    max-width: 500px;
-    margin: 0 auto;
-} */
 .labelListe {
     grid-gap: 0.2rem;
 }
@@ -324,13 +317,9 @@ menu {
     padding-left: 10%;
     padding-right: 10%;
 }
-header i.fa-disconnect {
-    margin-left: 0.5rem;
-}
-menu i {
 
+menu i {
     transition: 0.5s all;
-    margin-left: 0.5rem;
 }
  nav {
     background-color: var(--color2);

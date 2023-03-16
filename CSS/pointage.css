@@ -86,8 +86,6 @@
 }
 
 .tabCol>div {
-    /* border-left: 0.1em solid black;
-    border-right: 0.1em solid black; */
     text-align: center;
 }
 
@@ -153,9 +151,6 @@ select {
     height: 100% !important;
 }
 
-.plusRigth {
-    margin-left: auto;
-}
 
 #btnMasque {
     padding-right: 0.5em;

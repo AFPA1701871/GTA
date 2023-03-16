@@ -15,7 +15,7 @@ echo '<div class="grid-col-6Log gridListe">';
 
 echo '<div class="caseListe titreListe grid-columns-span-6">Liste des changements après modification</div>';
 echo '<div class="bigEspace"></div>';
-echo '<div class="grid-columns-span-6"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter" title="'.texte("infoSearch").'"></i><div class="demi"></div></div>';
+echo '<div class="grid-columns-span-6"><div class="demi"></div><input id=searchInList  title="'.texte("infoSearch").'" placeholder="'.texte("mot à chercher").'"/><i class="fa-solid fa-filter fa-margin" title="'.texte("infoSearch").'"></i><div class="demi"></div></div>';
 echo '<div class="caseListe grid-columns-span-6">
 <div></div>
 <div class="bigEspace"></div>

@@ -8,7 +8,9 @@
     font-family: "font-awesome";
     font-style: normal;
 }
-
+.fa-margin{
+    margin-left: 0.5rem;
+}
 .fa-sort::before {
     content: "\f0dc";
 }
@@ -119,12 +121,7 @@
 }
 
 .fa-filter::before {
-    margin-left: 0.2rem;
     content: "\f0b0";
-}
-.fa-search::before {
-    margin-left: 0.3rem;
-    content: "\01F50D";
 }
 .fa-calculator::before{
     content: "\f1ec";
@@ -134,11 +131,9 @@
 }
 .fa-lock-open::before {
     content: "\F3C1";
-    margin-left: 0.5rem;
 }
 .fa-floppy-disk::before {
     content: "\f0c7";
-    margin-left: 0.5em;
 }
 .fa-clock::before {
     content: "\f017";
@@ -170,7 +165,6 @@
 
 .fa-fav:before {
     content: "\F5C0";
-    /* color: rgb(212, 212, 7); */
 }
 
 .favActive {
