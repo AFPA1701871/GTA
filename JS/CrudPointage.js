@@ -54,7 +54,7 @@ function changePointage(event) {
           console.log(this.responseText);
           let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
           pointage.setAttribute("data-idpointage", id); // Change l'attribut ID de la case
-
+          pointageSave();
         }
       }
     }
@@ -68,6 +68,16 @@ function changePointage(event) {
   SelectToInput("Projet", ligne);
 }
 
+function pointageSave()
+{
+  save = document.querySelector(".trans")
+  save.classList.remove("invisible");
+  save.classList.add("visible");
+  setTimeout(() => {
+    save.classList.add("invisible");
+    save.classList.remove("visible");
+  }, 3000);
+}
 /**
  * Méthode qui permet d'ajouter une ligne lorsque l'on clique sur le plus à coté du type de Prestations
  * @param {*} event 
