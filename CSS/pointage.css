@@ -135,17 +135,6 @@
     color: rgb(212, 212, 7);
 }
 
-.fa-expand::before {
-    content: "\f424";
-}
-
-.fa-contract::before {
-    content: "\f422";
-}
-
-.rotate-45 {
-    transform: rotate(45deg);
-}
 
 .pointHead {
     position: sticky;
@@ -158,10 +147,6 @@
 
 .leftStickyRigth {
     border-right: 0.2em solid black;
-}
-
-.bgc4 {
-    background-color: var(--color4);
 }
 
 select {
@@ -181,19 +166,6 @@ select {
     color: var(--color1);
     padding-left: 1em;
     color: var(--color1);
-}
-
-.fa-fav:before {
-    content: "\F5C0";
-    /* color: rgb(212, 212, 7); */
-}
-
-.favActive {
-    color: rgb(212, 212, 7);
-}
-
-.favDesActive {
-    color: red;
 }
 
 .prestaLine {
@@ -308,6 +280,32 @@ div .jourOK>input[type="text"] {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     color: white;
+}
+
+/******************* LightBox *****************************/
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 1rem;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+}
+
+.lbContent{
+    border: 0.1rem solid white;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    justify-items: center;
+    align-items: start;
+    max-height: 43rem;
+    align-content: space-evenly;
 }
 
 /******************MEDIA QUERIES***************************/

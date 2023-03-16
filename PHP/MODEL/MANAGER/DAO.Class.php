@@ -97,6 +97,7 @@ class DAO
 	 * qui peut prendre plusieurs formes en fonction de la complexité des conditions.
 	 *  Exemples : tableau associatif
 	 *  [nomColonne => '1'] => "WHERE nomColonne = 1"
+	 *  [nomColonne => ''] => "WHERE nomColonne is null "
 	 *  [nomColonne => ['1','3']] => "WHERE nomColonne in (1,3)"
 	 *  [nomColonne => '%abcd%'] => "WHERE nomColonne like "abcd" "
 	 *  [nomColonne => '1->5'] => "WHERE nomColonne BETWEEN 1 and 5 "

@@ -1,3 +1,8 @@
+/* Mets à jour les pointage en base de données
+   Gestion du + pour ajouter les prestations
+   Fige les combobox après la saisie du 1er pointage
+*/
+
 var idUser = document.getElementById("IdUtilisateur").innerHTML;
 var inputs = document.querySelectorAll(".case");
 
@@ -9,6 +14,7 @@ inputs.forEach((element) => {
 listePlus = document.querySelectorAll(".fa-plus");
 listePlus.forEach(element => {
   element.addEventListener("click", clicPlus);
+  //element.addEventListener("click", openLightBox);
 });
 
 
@@ -238,4 +244,19 @@ function SelectToInput(type, ligne) {
     source.parentNode.replaceChild(input.children[0], source);
   }
 
+}
+
+// LightBox
+function openLightBox(event) {
+  // Récupère informations TypePrestation
+  plus = event.target;
+  idTypePrestation = plus.parentNode.getAttribute("data-idtypeprestation");
+  TypePresta = AppelAjax("TypePrestations", idTypePrestation, null, "", false, null)[0];
+  // console.log();
+  // Affiche la lightBox
+  let lightBox = document.getElementById("lightBox");
+  lightBox.style.display="flex";
+  // Remplit la partie TypePresta
+  lightBox.innerHTML=lightBox.innerHTML.replaceAll("valueIdTypePresta", idTypePrestation);
+  lightBox.innerHTML=lightBox.innerHTML.replaceAll("libelleTypePresta", TypePresta.libelleTypePrestation);
 }

@@ -30,15 +30,10 @@ class View_PointagesManager
 	 *
 	 * @param integer $idUtilisateur Utilisateur concerné
 	 * @param string $periode Période concerné
-	 * @param bool|null $details Veut-on l'info pour une prestation donnée?
-	 * @param integer|null $idTypePrestation 
-	 * @param string|null $codePrestation
-	 * @param integer|null $idProjet
-	 * @param integer|null $idMotif
-	 * @param integer|null $idUo_Pointage
-	 * @return bool Retourne si oui ou non elle à été modifié
+	 * @param string $condition Sur quoi porte le contrôle ("V" => les pointages validés, "R" => les pointages reportés SIRH, "VR" => les deux)
+	 * @param View_Pointages|null $pointage View_Pointage pour lequel on veut le détail, si présent
 	 */
-	public static function checkModif(int $idUtilisateur, string $periode, string $condition, ?bool $details = false, ?int $idTypePrestation = 0, ?string $codePrestation = "", ?int $idProjet = null, ?int $idMotif = null, ?int $idUo_Pointage = null)
+	public static function checkModif(int $idUtilisateur, string $periode, string $condition, ?View_Pointages $pointage = null)
 	{
 		// Connection à la base de données
 		$db = DbConnect::getDb();
@@ -61,13 +56,13 @@ class View_PointagesManager
 				break;
 		}
 
-		if ($details) {
+		if ($pointage!=null) {
 			// Gestion de la demande du mode détailé
-			$stmt .= ' AND idTypePrestation=' . $idTypePrestation . ' AND codePrestation="' . $codePrestation . '" ';
+			$stmt .= ' AND idTypePrestation=' . $pointage->getIdTypePrestation() . ' AND codePrestation="' . $pointage->getCodePrestation() . '" ';
 			// Gestion des champs pouvants être null
-			$stmt .= ' AND idProjet' . ($idProjet == null ? ' IS NULL' : '="' . $idProjet . '" ');
-			$stmt .= ' AND idMotif' . ($idMotif == null ? ' IS NULL' : '="' . $idMotif . '" ');
-			$stmt .= ' AND idUo_Pointage' . ($idUo_Pointage == null ? ' IS NULL' : '="' . $idUo_Pointage . '" ');
+			$stmt .= ' AND idProjet' . ($pointage->getIdProjet() == null ? ' IS NULL' : '="' . $pointage->getIdProjet() . '" ');
+			$stmt .= ' AND idMotif' . ($pointage->getIdMotif() == null ? ' IS NULL' : '="' . $pointage->getIdMotif() . '" ');
+			$stmt .= ' AND idUo_Pointage' . ($pointage->getIdUo_Pointage() == null ? ' IS NULL' : '="' . $pointage->getIdUo_Pointage() . '" ');
 			// Complétion de la requête
 			$stmt .= ' GROUP BY idUtilisateur, idMotif, idPrestation, idProjet, idUo_Pointage,  idTypePrestation';
 		}

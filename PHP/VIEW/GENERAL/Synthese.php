@@ -20,6 +20,7 @@ $listeUtilisateursFiniPeriode = View_PointagesManager::getListSaisiesCompl($peri
 //var_dump($_SESSION);
 //on récupère la liste du pointage
 $listePointage = View_PointagesManager::getSomme($idUtilisateur, $periode);
+var_dump($listePointage);
 $pointageVModif = View_PointagesManager::checkModif($idUtilisateur, $periode, "V");
 $pointageRModif = View_PointagesManager::checkModif($idUtilisateur, $periode, "R");
 /**********************Il faut vérifier sur tous les pointages cas des changements après validation ******************** */
@@ -60,14 +61,28 @@ if (!$listePointage) {
     echo '<div clas="NoDisplay" id=idUtilisateur data-value=' . $idUtilisateur . '></div>';
     echo '<div clas="NoDisplay" id=idPeriode data-value="' . $periode . '"></div>';
     echo '<section class="cards">';
+    $cardNum = 1;
+    $joursAbs=0;
     foreach ($listePointage as $key => $pointage) {
         $displayClass = " deuxCol ";
         if ($pointage->getNumeroTypePrestation() == 1) {
+            // Mémorisation des heures d'absences
             $joursAbs = $pointage->getNbHeuresPointage();
+            // On cache la carte des absences
+            $displayClass = " noDisplay ";
+            // On décrémente le numéro de la carte pour rester correct
+            $cardNum--;
+        }
+        // Calcul du %GTA de la prestation 
+        $prct=(($joursOuvres - $joursAbs != 0) ? Round($pointage->getNbHeuresPointage() / ($joursOuvres - $joursAbs) * 100, 2) : 0);
+        // Si 0, on n'affiche pas la carte
+        if($prct==0){
             $displayClass = " noDisplay ";
         }
-        $contCheckModif=$roleConnecte==3?"R":"V";
-        $estModif = View_PointagesManager::checkModif($idUtilisateur, $periode, $contCheckModif, true, $pointage->getIdTypePrestation(), $pointage->getCodePrestation(), $pointage->getIdProjet(), $pointage->getIdMotif(), $pointage->getIdUo_Pointage());
+        // En fonction du rôle, check si la prestation a été modifié au niveau des validations (managers=> "V") ou des reports (assistantes => "R")
+        $contCheckModif = $roleConnecte == 3 ? "R" : "V";
+        $estModif = View_PointagesManager::checkModif($idUtilisateur, $periode, $contCheckModif, $pointage);
+        // Changement de l'affichage de la prestation si présence de pointages pas reportés
         $styleModif = "";
         if ($estModif) {
             $styleModif = " modif ";
@@ -75,7 +90,7 @@ if (!$listePointage) {
         echo '
 
 <div class="card ' . $styleModif . $displayClass . '">
-    <div class="span-2"><div class="numerotation gras ' . $styleModif . '">' . str_pad($key, 2, "0", STR_PAD_LEFT) . '</div><div class="right gras">' . $pointage->getLibelleTypePrestation() . '</div></div>
+    <div class="span-2"><div class="numerotation gras ' . $styleModif . '">' . str_pad($cardNum, 2, "0", STR_PAD_LEFT) . '</div><div class="right gras">' . $pointage->getLibelleTypePrestation() . '</div></div>
     
     <div class="innerCard"><label class="gras bgc line">UO de MAD</label>
     <div class=" line right">' . $pointage->getNumeroUO() . '</div></div>
@@ -91,9 +106,10 @@ if (!$listePointage) {
     <div class=" line right">' . $pointage->getCodeMotif() . '</div></div>
     
     <div class="innerCard"><label class="gras bgc line">Pourcentage</label><div class=" line right">';
-        echo '' . (($joursOuvres - $joursAbs != 0) ? Round($pointage->getNbHeuresPointage() / ($joursOuvres - $joursAbs) * 100, 2) : 0) . '%';
+        echo '' . $prct . '%';
         echo '</div></div></div>
 ';
+        $cardNum++;
     }
     echo '</section>';
 
