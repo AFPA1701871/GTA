@@ -30,12 +30,12 @@ echo '<div class="vCenter gras borderbottom">Pointage</div>';
 foreach ($agents as $key => $agent) {
     $disabled = " <a></a>";
     $idAgent = $agent->getIdUtilisateur();
-    $pointage = View_Pointages_PeriodeManager::RecupNombre($idAgent, $periode, null, "Utilisateur", "Jours");
-    $valide = View_Pointages_PeriodeManager::RecupNombre($idAgent, $periode, "valide", "Utilisateur", "Jours");
+    $pointage = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, null, "Utilisateur", "Jours");
+    $valide = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, "valide", "Utilisateur", "Jours");
     // $valide = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "valide");
     // Ancienne version
     // $valide = View_Pointages_PeriodeManager::JoursValides($idAgent, $periode);
-    $report = View_Pointages_PeriodeManager::RecupNombre($idAgent, $periode, "reporte", "Utilisateur", "Jours");
+    $report = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, "reporte", "Utilisateur", "Jours");
     // $report = View_Pointages_PeriodeManager::Synthese($idAgent, $periode, "reporte");
     // Ancienne version
     //$report = View_Pointages_PeriodeManager::JoursReportes($idAgent, $periode, "Utilisateur");
