@@ -28,3 +28,4 @@
   * [X] renommer colCachable en cellCachable,
   * [X] grid-lineSimple renommé en marginTopBottom
   * [ ] nettoyer css
+* [ ] Les méthodes ChangePointage et ChangeCellule (en js) sont déclenchées sur le même événement)

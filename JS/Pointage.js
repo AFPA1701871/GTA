@@ -13,7 +13,7 @@ listeStarFav.forEach(etoile => {
 
 listeCases = document.querySelectorAll('.casePointage');
 listeCases.forEach(caseJour => {
-    caseJour.addEventListener('change', ChangeCellule);
+    // caseJour.addEventListener('change', ChangeCellule);
     caseJour.addEventListener('focus', SelectColonne);
     caseJour.addEventListener('blur', SelectColonne);
 });
@@ -98,7 +98,7 @@ function setGridPointage() {
     theGridTemplateColumnsValue = tailleTotal + " " + taillePrct + " 0.1em ";
     for (let jour = 1; jour <= nbreJour; jour++) {
         jourActu = new Date(annee, mois - 1, jour);
-        SommeColonne(annee + "-" + mois + "-" + String(jour).padStart(2, '0'));
+        //SommeColonne(annee + "-" + mois + "-" + String(jour).padStart(2, '0'));
         if (jourActu.getDay() == 0 || jourActu.getDay() == 6) {
             theGridTemplateColumnsValue += tailleWe + " ";
         }
@@ -106,7 +106,7 @@ function setGridPointage() {
             theGridTemplateColumnsValue += tailleJo + " ";
         }
     }
-
+    SommeColonne();
     // Injection dans le CSS
     feuilleStyle.style.setProperty('--grid-template-columns', theGridTemplateColumnsValue);
 };
@@ -115,9 +115,9 @@ function setGridPointage() {
  * Fonction gérant l'appel des diverses fonctions de modification d'apparence et de contenu des cellules
  * @param {*} e Événement déclencheur
  */
-function ChangeCellule(e) {
+function ChangeCellule(cell) {
     // Récupérations des infos de la cellule
-    let cell = e.target;
+    //let cell = e.target;
     let ligne = cell.getAttribute("data-line");
     let colonne = cell.getAttribute("data-date");
     cell.value = preformatFloat(cell.value);
@@ -131,18 +131,19 @@ function ChangeCellule(e) {
     if (ligne == 1) {
         MarquageAbsent(colonne, cell.value);
     }
-    else {
-        // Sinon, on calcul la somme des valeurs de la colonne
-        SommeColonne(colonne);
-    }
+    FormatColonne(colonne)
+    // else {
+    //     // Sinon, on calcul la somme des valeurs de la colonne
+    //     SommeColonne(colonne);
+    // }
 
-    // On calcul la somme des valeurs de la ligne
-    SommeLigne(ligne);
+    // // On calcul la somme des valeurs de la ligne
+    // SommeLigne(ligne);
 
-    // Si l'on est pas sur la lignes des absences, on calcul le %GTA
-    if (ligne != 1) {
-        CalculPrctGTA(ligne);
-    }
+    // // Si l'on est pas sur la lignes des absences, on calcul le %GTA
+    // if (ligne != 1) {
+    //     CalculPrctGTA(ligne);
+    // }
 }
 
 /**
@@ -176,65 +177,64 @@ function SommeLigne(ligne) {
 }
 
 /**
- * Fonction calculant le total d'une journée et changeant l'apparence de cette dernière en conséquence
+ * Fonction changeant l'apparence de la colonne
  * @param {int} colonne 
  */
-function SommeColonne(colonne) {
-    // Initialisation du total à 0
-    let total = 0;
-    // Récupération de tous les inputs de la colonne/journée actuelle
-    let inputsColonne = document.querySelectorAll("input[data-date='" + colonne + "']");
-    // Boucle sur tous les éléments de cette liste
-    inputsColonne.forEach(cellule => {
-        // Gestion des champs nulls et des cas où la journée est entièrement "absent"
-        if (cellule.value == "" || (cellule.getAttribute("data-line") == 1 && cellule.value == 1)) {
-            ajoutColonne = 0;
-        }
-        // Autres cas
-        else {
-            ajoutColonne = cellule.value;
-        }
-
-        // Calcul de la somme des jours sur le mois pour la prestation actuelle
-        SommeLigne(cellule.getAttribute("data-line"));
-
-        // Calcul du %GTA seulement sur les lignes autres que la ligne des absences
-        if (cellule.getAttribute("data-line") != 1) {
-            CalculPrctGTA(cellule.getAttribute("data-line"));
-        }
-
-        // Mise à jour du total pour cette itération
-        total = (parseFloat(total) + parseFloat(ajoutColonne)).toFixed(2);
-    })
-
+function FormatColonne(colonne) {
     // Récupération de toutes les cellules (inputs et autres) de la colonne/journée actuelle
     let cellsColonne = document.querySelectorAll("[data-date='" + colonne + "']");
+    if (cellsColonne.length>0) {
+        total = cellsColonne[0].dataset.somme;
+        // Gestion des classes en fonction du total de la colonne
+        if (total == 1.00 && !cellsColonne[0].classList.contains("notApplicable")) {
+            // La journée est complète et il n'y a rien à ajouter => la colonne passe au vert
+            isOK = true;
+            isWork = false;
+            isWarning = false;
+        } else if (total > 1.00) {
+            // Il y a un problème sur la colonne et l'utilisateur doit corriger => la colonne passe au rouge
+            isOK = false;
+            isWork = false;
+            isWarning = true;
+        } else {
+            // La colonne n'est pas terminé => reste ou passe en blanc
+            isOK = false;
+            isWork = true;
+            isWarning = false;
+        }
 
-    // Gestion des classes en fonction du total de la colonne
-    if (total == 1.00) {
-        // La journée est complète et il n'y a rien à ajouter => la colonne passe au vert
-        isOK = true;
-        isWork = false;
-        isWarning = false;
-    } else if (total > 1.00) {
-        // Il y a un problème sur la colonne et l'utilisateur doit corriger => la colonne passe au rouge
-        isOK = false;
-        isWork = false;
-        isWarning = true;
-    } else {
-        // La colonne n'est pas terminé => reste ou passe en blanc
-        isOK = false;
-        isWork = true;
-        isWarning = false;
+        // Application des classes pour chaque cellule de la colonne
+        cellsColonne.forEach(cellule => {
+            cellule.classList.toggle("jourOK", isOK);
+            cellule.classList.toggle("work", isWork);
+            cellule.classList.toggle("jourWarn", isWarning);
+        })
     }
-    //console.log(cellsColonne)
+}
+/**
+ * Fonction calculant le total d'une journée au chargement de la page pour tous les jours
+ *  
+ */
+function SommeColonne() {
 
-    // Application des classes pour chaque cellule de la colonne
-    cellsColonne.forEach(cellule => {
-        cellule.classList.toggle("jourOK", isOK);
-        cellule.classList.toggle("work", isWork);
-        cellule.classList.toggle("jourWarn", isWarning);
-    })
+    casesDate = document.querySelectorAll("div.grid-lineDouble")
+    for (let i = 0; i < casesDate.length; i++) {
+        const element = casesDate[i];
+        colonne = element.dataset.date;
+
+        // Initialisation du total à 0
+        let total = 0;
+        // Récupération de tous les inputs de la colonne/journée actuelle
+        let inputsColonne = document.querySelectorAll("input[data-date='" + colonne + "']");
+        // Boucle sur tous les éléments de cette liste
+        for (let j = 0; j < inputsColonne.length; j++) {
+            const cellule = inputsColonne[j];
+            total += cellule.value == "" ? 0.00 : parseFloat(cellule.value);
+        }
+        // Mise à jour du total pour cette itération
+        element.dataset.somme = parseFloat(total).toFixed(2);
+        FormatColonne(colonne);
+    };
 }
 
 /**
