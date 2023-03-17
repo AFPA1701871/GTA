@@ -137,43 +137,10 @@ function ChangeCellule(cell) {
     //     SommeColonne(colonne);
     // }
 
-    // // On calcul la somme des valeurs de la ligne
-    // SommeLigne(ligne);
-
-    // // Si l'on est pas sur la lignes des absences, on calcul le %GTA
-    // if (ligne != 1) {
-    //     CalculPrctGTA(ligne);
-    // }
-}
-
-/**
- * Fonction calculant la somme des valeurs des cellules de la ligne
- * @param {*} ligne 
- */
-function SommeLigne(ligne) {
-    // Initialisation du total à 0
-    let total = 0;
-
-    // Récupération de toutes les cases de pointages de la ligne
-    let casesLigne = document.querySelectorAll("input.casePointage[data-line='" + ligne + "']");
-
-    // Pour chacune de ces cases
-    casesLigne.forEach(inputCase => {
-        if (inputCase.value != "") {
-            // Si la case n'est pas vide, on ajoute sa valuer
-            ajoutLigne = inputCase.value;
-        } else {
-            // Sinon, on ajoute 0
-            ajoutLigne = 0;
-        }
-        // Mise à jour du total pour cette itération
-        total = (parseFloat(total) + parseFloat(ajoutLigne)).toFixed(2);
-    })
-
-    // On récupére la cellule correspondante au "Total" pour cette ligne
-    let caseTotal = document.querySelector("div.colTotal[data-line='" + ligne + "']");
-    // Et on la rempli avec le total calculé
-    caseTotal.innerHTML = total;
+    // Si l'on est pas sur la lignes des absences, on calcul le %GTA
+    if (ligne != 1) {
+        CalculPrctGTA();
+    }
 }
 
 /**
@@ -235,6 +202,7 @@ function SommeColonne() {
         element.dataset.somme = parseFloat(total).toFixed(2);
         FormatColonne(colonne);
     };
+    CalculPrctGTA();
 }
 
 /**
@@ -296,78 +264,26 @@ function SelectColonne(e) {
 }
 
 /**
- * Fonction permettant de calculer le %GTA de la ligne
- * @param {int} ligne Ligne pour laquelle calculer le %GTA
+ * Fonction permettant de calculer les %GTA de toutes les lignes
+ *
  */
-function CalculPrctGTA(ligne) {
-    // Récupération de la cellule dans laquelle mettre le résultat
-    let cellCible = document.querySelector(".colPrctGTA[data-line='" + ligne + "']");
-    // Récupération de la liste de toutes les cellules de pointage du mois
-    let listeTousInputs = document.querySelectorAll(".casePointage");
-    // Récupération du total de la ligne actuelle
-    let totalLigne = document.querySelector(".colTotal[data-line='" + ligne + "']").innerHTML;
-    //Initialisation des variables
-    let totalMois = 0;
-    let totalPrctGTA = 0;
-    let ajout;
-    // Pour chacunes des cellules de pointage du mois en cours
-    listeTousInputs.forEach(cellActu => {
-        // Si l'on est pas sur la ligne des absences, que la cellule n'est pas vide ni désactivée
-        if (cellActu.getAttribute("data-line") != "1" && cellActu.value != "" && !cellActu.disabled) {
-            // On prend sa valeur
-            ajout = cellActu.value;
-        } else {
-            // Sinon on prend 0
-            ajout = 0;
-        }
-        // Mise à jour du totalMois pour cette itération
-        totalMois = (parseFloat(totalMois) + parseFloat(ajout)).toFixed(2);
-    })
-
-    // Calcul du %GTA
-    totalPrctGTA = ((parseFloat(totalLigne) / parseFloat(totalMois)) * 100).toFixed(1);
-    // En cas de problème, mise à 0 de la valeur
-    if (isNaN(totalPrctGTA)) {
-        totalPrctGTA = 0;
-    }
-    // Affichage du résultat à la bonne place
-    cellCible.innerHTML = totalPrctGTA + "%";
-}
-
-function CalculPrctGTAV2(ligne) {
-    // Récupération de la cellule dans laquelle mettre le résultat
-    let cellCible = document.querySelector(".colPrctGTA[data-line='" + ligne + "']");
+function CalculPrctGTA() {
+    // Récupération de la liste de tous les % des prestations
+    let listPrct = document.querySelectorAll(".colPrctGTA");
     // Récupération de la liste de tous les totaux des prestations
     let listeTousTotaux = document.querySelectorAll(".colTotal");
-    // Récupération du total de la ligne actuelle
-    let totalLigne = document.querySelector(".colTotal[data-line='" + ligne + "']").innerHTML;
     //Initialisation des variables
     let totalMois = 0;
-    let totalPrctGTA = 0;
-    let ajout;
-    // Pour chacunes des cellules de pointage du mois en cours
-    listeTousTotaux.forEach(cellActu => {
-        // Si l'on est pas sur la ligne des absences, que la cellule n'est pas vide ni désactivée
-        if (cellActu.getAttribute("data-line") != "1" && cellActu.innerHTML != "") {
-            // On prend sa valeur
-            ajout = cellActu.innerHTML;
-        } else {
-            // Sinon on prend 0
-            ajout = 0;
-        }
-        // Mise à jour du totalMois pour cette itération
-        totalMois = parseFloat(totalMois) + parseFloat(ajout);
-    })
-    console.log("Total Ligne : "+totalLigne);
-    console.log("Total Mois : "+totalMois);
-    // Calcul du %GTA
-    totalPrctGTA = ((parseFloat(totalLigne) / parseFloat(totalMois)) * 100).toFixed(1);
-    // En cas de problème, mise à 0 de la valeur
-    if (isNaN(totalPrctGTA)) {
-        totalPrctGTA = 0;
+    let prctActu=0;
+    for (let i = 1; i < listeTousTotaux.length; i++) {
+        const element = listeTousTotaux[i];
+        totalMois= parseFloat(totalMois) + parseFloat((element.innerHTML!="")?element.innerHTML:0);
     }
-    // Affichage du résultat à la bonne place
-    cellCible.innerHTML = totalPrctGTA + "%";
+    for (let j = 1; j < listPrct.length; j++) {
+        const element = listPrct[j];
+        prctActu=((parseFloat(listeTousTotaux[j].innerHTML)*100.00)/parseFloat(totalMois)).toFixed(2);
+        element.innerHTML=(isNaN(prctActu)?0:prctActu)+"%";
+    }
 }
 
 /**
