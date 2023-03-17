@@ -19,7 +19,7 @@ listePlus.forEach(element => {
 });
 
 function saveOldValeur(event) {
-  oldValeur = event.target.value!=""?event.target.value:0;
+  oldValeur = event.target.value != "" ? event.target.value : 0;
 }
 
 function changePointage(event) {
@@ -36,7 +36,7 @@ function changePointage(event) {
   let prestation = document.querySelector('input[data-line="' + ligne + '"][name="idPrestation"]').value;
 
   let valeur = preformatFloat(pointage.value);
-  if (valeur < 0 || valeur > 1) {
+  if (valeur < 0 || valeur > 1 || valeur == "") {
     valeur = 0;
   }
   // mise à jour de la somme sur la ligne
@@ -44,10 +44,10 @@ function changePointage(event) {
   somme = parseFloat(caseSomme.textContent)
   caseSomme.textContent = (somme + parseFloat(valeur) - parseFloat(oldValeur)).toFixed(2);
   // mise à jour de la somme sur la colonne
-  caseSomme = document.querySelector("div.grid-lineDouble[data-date='" + date + "']")
-  somme = parseFloat(caseSomme.dataset.somme)
-  caseSomme.dataset.somme = ( somme + parseFloat(valeur) - parseFloat(oldValeur)).toFixed(2)
-  
+  caseSomme = document.querySelector("div.grid-lineDouble[data-date='" + date + "']");
+  somme = parseFloat(caseSomme.dataset.somme);
+  caseSomme.dataset.somme = ( somme + parseFloat(valeur) - parseFloat(oldValeur)).toFixed(2);
+
   ChangeCellule(pointage)
   // Requête
   let req = new XMLHttpRequest();
@@ -65,9 +65,15 @@ function changePointage(event) {
       if (this.status === 200) { // Si la requête est réussie
         if (this.responseText) { // Si la réponse n'est pas vide
           console.log(this.responseText);
-          let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
-          pointage.setAttribute("data-idpointage", id); // Change l'attribut ID de la case
-          pointageSave();
+          if (this.responseText == "Delete") {
+            // Si l'on vient de supprimer le pointage de la BdD, on enlève le data-idPointage
+            pointage.removeAttribute('data-idpointage');
+          }
+          else {
+            let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
+            pointage.setAttribute("data-idpointage", id); // Change l'attribut ID de la case
+            pointageSave();
+          }
         }
       }
     }
@@ -81,8 +87,7 @@ function changePointage(event) {
   SelectToInput("Projet", ligne);
 }
 
-function pointageSave()
-{
+function pointageSave() {
   save = document.querySelector(".trans")
   save.classList.remove("invisible");
   save.classList.add("visible");
@@ -161,7 +166,7 @@ function clicPlus(event) {
     nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
     //Remise à zéro des colonnes Total et pourcentage
     SommeLigne(numPresta);
-    CalculPrctGTA(numPresta);
+    CalculPrctGTA();
 
     /* evenement*/
     //on ajoute l'evenement pour expand
@@ -278,8 +283,8 @@ function openLightBox(event) {
   // console.log();
   // Affiche la lightBox
   let lightBox = document.getElementById("lightBox");
-  lightBox.style.display="flex";
+  lightBox.style.display = "flex";
   // Remplit la partie TypePresta
-  lightBox.innerHTML=lightBox.innerHTML.replaceAll("valueIdTypePresta", idTypePrestation);
-  lightBox.innerHTML=lightBox.innerHTML.replaceAll("libelleTypePresta", TypePresta.libelleTypePrestation);
+  lightBox.innerHTML = lightBox.innerHTML.replaceAll("valueIdTypePresta", idTypePrestation);
+  lightBox.innerHTML = lightBox.innerHTML.replaceAll("libelleTypePresta", TypePresta.libelleTypePrestation);
 }

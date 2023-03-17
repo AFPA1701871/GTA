@@ -18,6 +18,7 @@ if (!isset($_POST['idPointage'])) {
     if ($nouvNbHeurePoint == 0 && $pointage->getReportePointage()==0) {
         // On le supprime
         PointagesManager::delete($pointage);
+        echo "Delete";
     } else {
 
         $pointage->setNbHeuresPointage($nouvNbHeurePoint);
