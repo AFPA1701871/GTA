@@ -154,7 +154,6 @@ function clicPlus(event) {
       element.children[0].setAttribute("data-idPointage", "");
       // ajouter les evenements sur les cases
       element.children[0].addEventListener("change", changePointage);
-      element.children[0].addEventListener('change', ChangeCellule);
       element.children[0].addEventListener('focus', SelectColonne);
       element.children[0].addEventListener('blur', SelectColonne);
       element.children[0].addEventListener("wheel", scrollHoriz);
@@ -165,8 +164,8 @@ function clicPlus(event) {
     // nouvellecasePointage.children[1].innerHtml="";
     nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
     //Remise à zéro des colonnes Total et pourcentage
-    SommeLigne(numPresta);
-    CalculPrctGTA();
+    document.querySelector("div.colTotal[data-line='" + ligne + "']").textContent="0.00"
+    document.querySelector("div.colPrctGTA[data-line='" + ligne + "']").textContent="0%"
 
     /* evenement*/
     //on ajoute l'evenement pour expand
