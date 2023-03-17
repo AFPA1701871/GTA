@@ -346,19 +346,20 @@ function CalculPrctGTAV2(ligne) {
     let totalPrctGTA = 0;
     let ajout;
     // Pour chacunes des cellules de pointage du mois en cours
-    listeTousInputs.forEach(cellActu => {
+    listeTousTotaux.forEach(cellActu => {
         // Si l'on est pas sur la ligne des absences, que la cellule n'est pas vide ni désactivée
-        if (cellActu.getAttribute("data-line") != "1" && cellActu.value != "" && !cellActu.disabled) {
+        if (cellActu.getAttribute("data-line") != "1" && cellActu.innerHTML != "") {
             // On prend sa valeur
-            ajout = cellActu.value;
+            ajout = cellActu.innerHTML;
         } else {
             // Sinon on prend 0
             ajout = 0;
         }
         // Mise à jour du totalMois pour cette itération
-        totalMois = (parseFloat(totalMois) + parseFloat(ajout)).toFixed(2);
+        totalMois = parseFloat(totalMois) + parseFloat(ajout);
     })
-
+    console.log("Total Ligne : "+totalLigne);
+    console.log("Total Mois : "+totalMois);
     // Calcul du %GTA
     totalPrctGTA = ((parseFloat(totalLigne) / parseFloat(totalMois)) * 100).toFixed(1);
     // En cas de problème, mise à 0 de la valeur

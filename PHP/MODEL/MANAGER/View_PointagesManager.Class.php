@@ -18,6 +18,11 @@ class View_PointagesManager
 	public static function getSomme(int $idUtilisateur, string $periode)
 	{
 		$db = DbConnect::getDb();
+		// Utilisation de la formule AVG(DISTINCT X) pour résultat trinaire:
+		// 	- Pointages tous à 0 (jamais reporté) => 0
+		//	- Au moins un pointage de chaque état (modif après report) => 0.5
+		//	- Pointages tous à 1 (entièrement reporté)=> 1
+		// Multiplication par 2 pour avoir un entier pour passage en objet View_Pointages
 		$q = $db->query('SELECT sum(nbHeuresPointage) as nbHeuresPointage, periode,idUo_Pointage, idMotif,numeroUo, libelleUo, codeMotif, libelleMotif, idProjet, codeProjet, libelleProjet, codePrestation,  idTypePrestation, numeroTypePrestation, libelleTypePrestation , AVG(DISTINCT validePointage)*2 as validePointage, AVG(DISTINCT reportePointage)*2 as reportePointage FROM gta_View_Pointages
 			 WHERE idUtilisateur=' . $idUtilisateur . '  AND periode = "' . $periode . '" 
 			 GROUP BY idUtilisateur, idMotif, codePrestation, idProjet, idUo_Pointage,  idTypePrestation
