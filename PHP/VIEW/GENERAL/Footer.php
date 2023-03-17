@@ -28,7 +28,6 @@ if (isset($page)) {
                 echo '<script src="./JS/CheckActivites.js"></script>';
             }
             if ($page[1] == "FormPointages") {
-                echo '<script src="./JS/CrudPointage.js"></script>';
                 echo ' <script src="./JS/Pointage.js"></script>';
             }
         }

@@ -144,7 +144,7 @@ function ChangeCellule(cell) {
 
     // Si le contenu de la cellule n'est pas valide, on l'efface
     if (isNaN(cell.value) || (cell.value < 0 || cell.value > 1)) {
-        cell.value = "";
+        cell.value = oldValeur;
     }
 
     // Si l'on est sur la ligne des absences, on voit si la colonne entière doit être mise en "absent"
