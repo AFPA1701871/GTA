@@ -80,8 +80,7 @@ $routes = [
 	"ActionMotifs" => ["PHP/CONTROLLER/ACTION/", "ActionMotifs", "Action Motifs", 3, false],
 	"Easter" => ["PHP/VIEW/FORM/", "FormEaster", "Easter", 0, false],
 
-	"FormPointages" => ["PHP/VIEW/FORM/", "FormPointages", "Formulaire Pointages", 0, false],
-
+	"FormPointages" => ["PHP/VIEW/FORM/", "FormPointages", "Formulaire Pointages", 1, false],
 
 	"ListePrestations" => ["PHP/VIEW/LISTE/", "ListePrestations", "Liste Prestations", 3, false],
 	"FormPrestations" => ["PHP/VIEW/FORM/", "FormPrestations", "Formulaire Prestations", 3, false],
