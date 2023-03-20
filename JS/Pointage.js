@@ -520,12 +520,13 @@ function clicPlus(event) {
         // nouvellecasePointage.children[1].innerHtml="";
         nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
         //Remise à zéro des colonnes Total et pourcentage
-        document.querySelector("div.colTotal[data-line='" + ligne + "']").textContent = "0.00"
-        document.querySelector("div.colPrctGTA[data-line='" + ligne + "']").textContent = "0%"
+        document.querySelector("div.colTotal[data-line='" + numPresta + "']").textContent = "0.00"
+        document.querySelector("div.colPrctGTA[data-line='" + numPresta + "']").textContent = "0%"
 
         /* evenement*/
         //on ajoute l'evenement pour expand
         nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
+        console.log(nouvelleLigne.querySelector(".expand-line"));
         nouvelleLigne.querySelector(".expand-line").dispatchEvent(new Event("click"));
         //on ajoute l'evenement pour favoris
         nouvelleLigne.querySelector(".fa-fav").addEventListener("click", UpdateFav);
