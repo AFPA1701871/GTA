@@ -82,7 +82,7 @@ if (!$listePointage) {
             // On cache la carte des absences
             $displayClass = " noDisplay ";
             // Si modif du nombre de jours absents => modif des % sur toutes les prestations
-            $modifAbsences=($pointage->getReportePointage()!=2);
+            $modifAbsences=$roleConnecte>=3?($pointage->getReportePointage()!=2):($pointage->getValidePointage()!=2);
             // On décrémente le numéro de la carte pour rester correct
             $cardNum--;
         }
