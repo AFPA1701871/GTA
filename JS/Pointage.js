@@ -514,6 +514,7 @@ function clicPlus(event) {
             element.children[0].addEventListener('blur', SelectColonne);
             element.children[0].addEventListener("wheel", scrollHoriz);
         }
+    }
         //le total et le pourcentage
         // nouvellecasePointage.children[0].innerHtml="";
         nouvellecasePointage.children[0].setAttribute("data-line", numPresta);
@@ -522,11 +523,10 @@ function clicPlus(event) {
         //Remise à zéro des colonnes Total et pourcentage
         document.querySelector("div.colTotal[data-line='" + numPresta + "']").textContent = "0.00"
         document.querySelector("div.colPrctGTA[data-line='" + numPresta + "']").textContent = "0%"
-
+    
         /* evenement*/
         //on ajoute l'evenement pour expand
-        nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
-        console.log(nouvelleLigne.querySelector(".expand-line"));
+        nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);        
         nouvelleLigne.querySelector(".expand-line").dispatchEvent(new Event("click"));
         //on ajoute l'evenement pour favoris
         nouvelleLigne.querySelector(".fa-fav").addEventListener("click", UpdateFav);
@@ -535,7 +535,7 @@ function clicPlus(event) {
         if (nouvelleLigne.querySelector('select[name="idMotif"]')) nouvelleLigne.querySelector('select[name="idMotif"]').addEventListener("change", reportSelect);
         if (nouvelleLigne.querySelector('select[name="idProjet"]')) nouvelleLigne.querySelector('select[name="idProjet"]').addEventListener("change", reportSelect);
         if (nouvelleLigne.querySelector('select[name="idUo"]')) nouvelleLigne.querySelector('select[name="idUo"]').addEventListener("change", reportSelect);
-    }
+    
 }
 
 /**
