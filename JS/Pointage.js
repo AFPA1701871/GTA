@@ -140,7 +140,7 @@ function ChangeCellule(cell) {
     //let cell = e.target;
     let ligne = cell.getAttribute("data-line");
     let colonne = cell.getAttribute("data-date");
-    cell.value = preformatFloat(cell.value);
+    cell.value = preformatFloat(cell.value)==0?"":preformatFloat(cell.value);
 
     // Si le contenu de la cellule n'est pas valide, on l'efface
     if (isNaN(cell.value) || (cell.value < 0 || cell.value > 1)) {
@@ -353,7 +353,7 @@ function UpdateFav(e) {
  */
 function preformatFloat(float) {
     if (!float) {
-        return '';
+        return 0;
     };
 
     let regFloat = [/,/g, /\./g];
