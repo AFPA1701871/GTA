@@ -140,7 +140,7 @@ function ChangeCellule(cell) {
     //let cell = e.target;
     let ligne = cell.getAttribute("data-line");
     let colonne = cell.getAttribute("data-date");
-    cell.value = preformatFloat(cell.value)==0?"":preformatFloat(cell.value);
+    cell.value = preformatFloat(cell.value) == 0 ? "" : preformatFloat(cell.value);
 
     // Si le contenu de la cellule n'est pas valide, on l'efface
     if (isNaN(cell.value) || (cell.value < 0 || cell.value > 1)) {
@@ -252,6 +252,11 @@ function MarquageAbsent(colonne, valeur) {
 
             // Si la colonne est complétement absente et que la cellule n'était pas vide
             if (valeur == 1 && elt.value !== "") {
+                // On retranche la valeur à la somme de la ligne
+                cellTotalLigne = document.querySelector(".colTotal[data-line='" + elt.getAttribute("data-line") + "'");
+                if (cellTotalLigne != null) {
+                    cellTotalLigne.innerHTML=parseFloat(cellTotalLigne.innerHTML) - parseFloat(elt.value);
+                }
                 // On "vide" la cellule
                 elt.value = "";
                 // Trigger de l'event "change" sur la cellule pour mise à jour de la base de donnée
@@ -358,14 +363,14 @@ function preformatFloat(float) {
 
     let regFloat = [/,/g, /\./g];
     let char = [',', '.'];
-    
+
     for (let i = 0; i < 2; i++) {
         if (float.match(regFloat[i]) != null) {
             if ((float.match(regFloat[i])).length >= 1) {
                 let split = float.split(char[i]);
                 if (split[1].includes(char[Math.abs(i - 1)]) || split[1] == "") {
                     float = split[0];
-                }else{
+                } else {
                     float = split[0] + "." + split[1];
                 }
             }
@@ -515,27 +520,27 @@ function clicPlus(event) {
             element.children[0].addEventListener("wheel", scrollHoriz);
         }
     }
-        //le total et le pourcentage
-        // nouvellecasePointage.children[0].innerHtml="";
-        nouvellecasePointage.children[0].setAttribute("data-line", numPresta);
-        // nouvellecasePointage.children[1].innerHtml="";
-        nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
-        //Remise à zéro des colonnes Total et pourcentage
-        document.querySelector("div.colTotal[data-line='" + numPresta + "']").textContent = "0.00"
-        document.querySelector("div.colPrctGTA[data-line='" + numPresta + "']").textContent = "0%"
-    
-        /* evenement*/
-        //on ajoute l'evenement pour expand
-        nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);        
-        nouvelleLigne.querySelector(".expand-line").dispatchEvent(new Event("click"));
-        //on ajoute l'evenement pour favoris
-        nouvelleLigne.querySelector(".fa-fav").addEventListener("click", UpdateFav);
-        // on ajoute des evenements pour reporter les elements selectionner dans les combo dans les input correspondants
-        nouvelleLigne.querySelector('select[name="idPrestation"]').addEventListener("change", reportPrestation);
-        if (nouvelleLigne.querySelector('select[name="idMotif"]')) nouvelleLigne.querySelector('select[name="idMotif"]').addEventListener("change", reportSelect);
-        if (nouvelleLigne.querySelector('select[name="idProjet"]')) nouvelleLigne.querySelector('select[name="idProjet"]').addEventListener("change", reportSelect);
-        if (nouvelleLigne.querySelector('select[name="idUo"]')) nouvelleLigne.querySelector('select[name="idUo"]').addEventListener("change", reportSelect);
-    
+    //le total et le pourcentage
+    // nouvellecasePointage.children[0].innerHtml="";
+    nouvellecasePointage.children[0].setAttribute("data-line", numPresta);
+    // nouvellecasePointage.children[1].innerHtml="";
+    nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
+    //Remise à zéro des colonnes Total et pourcentage
+    document.querySelector("div.colTotal[data-line='" + numPresta + "']").textContent = "0.00"
+    document.querySelector("div.colPrctGTA[data-line='" + numPresta + "']").textContent = "0%"
+
+    /* evenement*/
+    //on ajoute l'evenement pour expand
+    nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
+    nouvelleLigne.querySelector(".expand-line").dispatchEvent(new Event("click"));
+    //on ajoute l'evenement pour favoris
+    nouvelleLigne.querySelector(".fa-fav").addEventListener("click", UpdateFav);
+    // on ajoute des evenements pour reporter les elements selectionner dans les combo dans les input correspondants
+    nouvelleLigne.querySelector('select[name="idPrestation"]').addEventListener("change", reportPrestation);
+    if (nouvelleLigne.querySelector('select[name="idMotif"]')) nouvelleLigne.querySelector('select[name="idMotif"]').addEventListener("change", reportSelect);
+    if (nouvelleLigne.querySelector('select[name="idProjet"]')) nouvelleLigne.querySelector('select[name="idProjet"]').addEventListener("change", reportSelect);
+    if (nouvelleLigne.querySelector('select[name="idUo"]')) nouvelleLigne.querySelector('select[name="idUo"]').addEventListener("change", reportSelect);
+
 }
 
 /**
