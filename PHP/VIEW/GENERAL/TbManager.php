@@ -9,8 +9,8 @@ echo '<div class="cote"></div>';
 echo '<section class=colonne>';
 $idManager = (isset($_GET['idUtilisateur'])) ? $_GET['idUtilisateur'] : $_SESSION['utilisateur']->getIdUtilisateur();
 $manager = UtilisateursManager::findById($idManager);
-$agents = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur'], ['idManager' => $idManager, "actif" => 1], 'nomUtilisateur');
 $periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idManager, "Valide");
+$agents = View_UtilisateursManager::getListActifPeriode($periode,  $idManager);
 // *** partie combobox mois/annee ***
 echo '<div id="divComboDate" class="demi center">';
 echo creerSelectTab($periode, tabMoisAnnee(), 'periode', true, "class='demi'");
