@@ -18,14 +18,14 @@
   * [X] Je n'y ai pensé que plus tard et ai oublié de faire la modif, corrigé maintenant
 * [X] CheckModif : pourquoi la requete renvoi une colonne appelée heuresDif. A quoi ca corerespond?
   * [X] HeuresDif correspond à la somme des heures pointés pour lesquelles les pointages ont été modifié. CheckModif renvoit "Vrai" si la requête renvoit quelque chose autre que null (même une somme de 0 veut dire que des pointages de cette prestation ont été retirés)
-* [ ] Pointage.js : preformatFloat : cette méthode me parait trop compliquée. Pourquoi une gestion du point des miliers. essaie de variabiliser "." et "," pour ne pas faire 2 fois les mêmes traitements
+* [X] Pointage.js : preformatFloat : cette méthode me parait trop compliquée. Pourquoi une gestion du point des miliers. essaie de variabiliser "." et "," pour ne pas faire 2 fois les mêmes traitements
 * [X] Pointage.js : CalculPrctGTA , SommeLigne : Cela me semble très riche de refaire encore et encore les calculs de sommeLigne, sommeColonne, etc... à chaque modification d'une valeur.
   Ne peut on pas imaginer mémoriser la valeur sur event getFocus et appliquer le calcul sur le blur ou à l'enregistrement pour impacter la somme de la ligne et la somme de la colonne?
   Se baser sur ces résultats pour le calcul du pourcentage
-* [ ] Idem pour marquageAbsent qui déclenche l'event change qui relance tous les calculs
+* [X] Idem pour marquageAbsent qui déclenche l'event change qui relance tous les calculs
 * [ ] A quoi sert la class cellBottom, colCachable, grid-lineSimple?
   * [X] retirer cellBottom,
   * [X] renommer colCachable en cellCachable,
   * [X] grid-lineSimple renommé en marginTopBottom
   * [ ] nettoyer css
-* [ ] Les méthodes ChangePointage et ChangeCellule (en js) sont déclenchées sur le même événement)
+* [X] Les méthodes ChangePointage et ChangeCellule (en js) sont déclenchées sur le même événement)
