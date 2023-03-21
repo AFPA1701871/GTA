@@ -257,6 +257,10 @@ function MarquageAbsent(colonne, valeur) {
                 if (cellTotalLigne != null) {
                     cellTotalLigne.innerHTML=parseFloat(cellTotalLigne.innerHTML) - parseFloat(elt.value);
                 }
+                // On retranche la valeur à la somme de la colonne
+                if(elt.hasAttribute("data-line")){
+                    inputsColonne[0].dataset.somme = parseFloat(inputsColonne[0].dataset.somme)-parseFloat(elt.value);
+                }
                 // On "vide" la cellule
                 elt.value = "";
                 // Trigger de l'event "change" sur la cellule pour mise à jour de la base de donnée
