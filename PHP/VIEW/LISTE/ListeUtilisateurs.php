@@ -37,9 +37,9 @@ echo '</div><div class="grid-col-10 gridListe grid-contenu"></div>';
 
 // Affichage des enregistrements de la base de données
 echo '<template>';
-echo '<div class="donnees pyjama">NomUtilisateur</div>';
+echo '<div class="donnees left pyjama">NomUtilisateur</div>';
 echo '<div class="donnees pyjama">MatriculeUtilisateur</div>';
-echo '<div class="donnees pyjama">NomManager</div>';
+echo '<div class="donnees left pyjama">NomManager</div>';
 echo '<div class="donnees pyjama">Actif</div>';
 echo '<div class="donnees pyjama">NumeroUo</div>';
 echo '<div class="donnees pyjama">NomRole</div>';
