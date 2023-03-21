@@ -22,7 +22,7 @@ echo '<div class="caseForm titreForm col-span-form">' . texte("Formulaire Uos") 
 echo '<div class="bigEspace  col-span-form"></div>	';
 echo '<div class="noDisplay"><input type="hidden" value="' . $elm->getIdUo() . '" name=IdUo></div>';
 echo '<label for=NumeroUo class="caseForm labelForm">' . texte("NumeroUo") . '</label>';
-echo '<div class="caseForm donneeForm"><input type="number" ' . $disabled . 'value="' . $elm->getNumeroUo() . '" name=NumeroUo pattern="' . $regex["num"] . '" required></div>';
+echo '<div class="caseForm donneeForm"><input type="number" ' . $disabled . 'value="' . $elm->getNumeroUo() . '" name=NumeroUo pattern="' . $regex["numTirret"] . '" required></div>';
 echo '<div></div><div></div>';
 
 echo '<label for=LibelleUo class="caseForm labelForm">' . texte("LibelleUo") . '</label>';
