@@ -5,7 +5,7 @@ $id =  ($_POST['id'] == null) ? null : (int)$_POST['id'];
 $condition = $_POST['condition'] == 'null' ?  null : json_decode($_POST['condition'], true);
 if ($_POST['select'] == "true") {
     if ($_POST['table'] == "Uos") {
-        $orderBy = " convert(`numeroUo`, decimal), `libelleUo` ";
+        $orderBy = " LENGTH(`numeroUo`), `numeroUo`, `libelleUo` ";
     } else {
         $orderBy = implode(',', json_decode($_POST['colonne']));
     }
