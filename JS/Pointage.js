@@ -596,7 +596,7 @@ function reportPrestation(event) {
     condition["idPrestation"] = event.target.value;
     // Report du projet pour MNSP
     projet = AppelAjax("View_Prestations", null, ["idProjet", "codeProjet", "libelleProjet"], null, false, condition);
-    if (projet != false) {
+    if (projet != false && projet[0].idProjet!=null) {
         ligne.querySelector('input[name="idProjet"]').value = projet[0].idProjet;
         ligne.querySelector('select[name="idProjet"]').value = projet[0].idProjet;
     }
