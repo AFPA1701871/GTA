@@ -87,8 +87,13 @@ function openModale(e) {
             divSearch.addEventListener("change", () => {
                 updateSelectModale(element.champ);
             });
+            // Limite des motifs en fonction du type de prestation
+            let cond={};
+            if(element.champ=="Motif"){
+                cond["idTypePrestation"]=idTypePrestation;
+            }
             // On initialise le select avec toutes les valeurs possibles
-            divSelect.innerHTML = AppelAjax(element.champ + "s", id.value, element.colonnes, ' class="modSelect" ', true, null);
+            divSelect.innerHTML = AppelAjax(element.champ + "s", id.value, element.colonnes, ' class="modSelect" ', true, element.champ=="Motif"?cond:null);
             // On ajoute un eventListener sur le select pour MAJ du title
             divSelect.firstChild.addEventListener("change", updateTitle);
         }
@@ -158,7 +163,7 @@ function ajoutLigne() {
     let libelleSelectPresta = modale.querySelector('[name="idPrestation"]').selectedOptions[0].text;
 
     // On sépare le code ([0]) et le libelle ([1])
-    splitPresta = splitCodeLabelle(libelleSelectPresta);
+    splitPresta = splitCodeLibelle(libelleSelectPresta);
 
     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', '<input value="' + splitPresta[1] + '" disabled><input type=hidden name=idPrestation value="' + idPresta + '" dataline >');
 
@@ -169,12 +174,12 @@ function ajoutLigne() {
     typePrestation = AppelAjax("TypePrestations", idTypePresta, null, "", false, null)[0];
 
     // Assigne les valeur indiquant si le champ est "requis"
-    listSubFields[UO].besoin=typePresta.uoRequis;
-    listSubFields[MOTIF].besoin=typePresta.motifRequis;
-    listSubFields[PROJET].besoin=typePresta.projetRequis;
+    listSubFields[UO].besoin=typePrestation.uoRequis;
+    listSubFields[MOTIF].besoin=typePrestation.motifRequis;
+    listSubFields[PROJET].besoin=typePrestation.projetRequis;
 
     listSubFields.forEach(element => {
-        let input = {};
+        let input = "";
         if (element.besoin == 1) {
             let id = modale.querySelector('[name="modale' + element.champ + '"]').value;
             let title = "";
@@ -182,15 +187,15 @@ function ajoutLigne() {
             if (id != "" && id != null) {
                 let select = modale.querySelector('[name="id' + element.champ + '"').selectedOptions[0].text;
 
-                let split = splitCodeLabelle(select);
+                let split = splitCodeLibelle(select);
                 value = split[0];
                 title = split[1];
             }
-            input[element.champ] = '<input class="inputPointage" dataline type="text" name="input' + element.champ + '" value="' + value + '" disabled title="' + title + '"></input><input class="inputPointage notApplicable" dataline type="hidden" name="id' + element.champ + '" disabled value="' + id + '">';
+            input = '<input class="inputPointage" dataline type="text" name="input' + element.champ + '" value="' + value + '" disabled title="' + title + '"></input><input class="inputPointage notApplicable" dataline type="hidden" name="id' + element.champ + '" disabled value="' + id + '">';
         } else {
-            input[element.champ] = '<input class="inputPointage notApplicable" dataline  type="text" name="id' + element.champ + '" disabled>';
+            input= '<input class="inputPointage notApplicable" dataline  type="text" name="id' + element.champ + '" disabled>';
         }
-        nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="input' + element.champ + '">', input[element.champ]);
+        nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="input' + element.champ + '">', input);
     });
 
     // trouver data-line
@@ -221,9 +226,7 @@ function ajoutLigne() {
             element.children[0].addEventListener("wheel", scrollHoriz);
         }
         //le total et le pourcentage
-        // nouvellecasePointage.children[0].innerHtml="";
         nouvellecasePointage.children[0].setAttribute("data-line", numPresta);
-        // nouvellecasePointage.children[1].innerHtml="";
         nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
         //Remise à zéro des colonnes Total et pourcentage
         document.querySelector("div.colTotal[data-line='" + numPresta + "']").textContent = "0.00"
@@ -238,8 +241,11 @@ function ajoutLigne() {
     }
 }
 
-////////////////////////////////
-function splitCodeLabelle(string) {
+/**
+ * Fonction permettant de séparer le code (retour[0]) du libelle (retour[1])
+ *
+ */
+function splitCodeLibelle(string) {
     let splitLibelle = string.split(" | ");
     let code = splitLibelle[0];
     let libelle = "";
@@ -250,14 +256,31 @@ function splitCodeLabelle(string) {
     return [code, libelle];
 }
 
+/**
+ * Fonction mettant à jour l'attribut "title" d'un select après modif
+ * et mettant à jour l'ID dans l'input hidden
+ *
+ * @param   {[type]}  event  L'évenement déclancheur
+ *
+ */
 function updateTitle(event) {
+    // On détermine quel select est concerné
     let cible = event.target;
     let name = cible.name;
     let inputId = modale.querySelector('input[name="modale' + name.slice(2) + '"]');
+    // On met le text de l'option choisie dans son title
     cible.setAttribute("title", cible.selectedOptions[0].text);
+    // Et on en profite pour mettre à jour l'ID dans l'input hidden
     inputId.setAttribute("value", cible.value);
 }
 
+/**
+ * Fonction remplaçant un select pour application du filtre correspondant
+ *
+ * @param   {string}  champ  Le champ
+ *
+ * @return  {[type]}         [return description]
+ */
 function updateSelectModale(champ) {
     let idTypePrestation = modale.querySelector('[name="IdTypePrestation"]').value;
     let cible = modale.querySelector("#select" + champ);
@@ -284,7 +307,8 @@ function updateSelectModale(champ) {
     cible.firstChild.addEventListener("change", function () {
         updateTitle(event);
         id = modale.querySelector("input[name=modale" + champ + "]");
-        id.value = cible.firstChild.value;
+        id.value = cible.firstChild.value;        
+        reportPrestation(event);
     });
 }
 

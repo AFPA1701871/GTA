@@ -331,10 +331,6 @@ body.dark .lbContent fieldset, body.dark .lbContent i, body.dark .lbContent lege
 .lbContent div select{
     width:40rem;
     overflow: hidden;
-    -moz-white-space: pre-wrap;
-    -o-white-space: pre-wrap;
-    white-space: pre-wrap;
-  text-overflow: ellipsis;
 }
 
 /******************MEDIA QUERIES***************************/
