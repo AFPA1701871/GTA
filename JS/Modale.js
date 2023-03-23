@@ -1,9 +1,11 @@
+/** Gestion de la fenetre modale qui s'affiche lors de l'ajout d prestation à la feuille de pointage **/
+
 var modale = document.getElementById("modale");
 
 // Gestions des champs Uo, Motif et Projet
 // Liste d'objets correspondants aux champs, avec:
 // - "champ" le nom du champ/table, 
-// - "besoin" indiquant si se champ est demandé pour ce type de prestation et
+// - "besoin" indiquant si ce champ est demandé pour ce type de prestation et
 // - "colonnes" un tableau listant les colonnes qui seront demandées lors de l'appel ajax
 var listSubFields = [
     { champ: "Uo", besoin: 0, colonnes: ["NumeroUo", "LibelleUo"] },
@@ -59,8 +61,8 @@ function openModale(e) {
     inputSelectPresta.setAttribute("title", inputSelectPresta.selectedOptions[0].text)
     // Mise a jour du title du selectPresta
     inputSelectPresta.addEventListener("change", function () {
-        updateTitle(event);
-        reportPrestation(event);
+        updateTitle(e);
+        reportPrestation(e);
     });
 
     // Assigne les valeur indiquant si le champ est "requis"
@@ -305,7 +307,7 @@ function updateSelectModale(champ) {
     cible.innerHTML = select;
     cible.firstChild.setAttribute("title", cible.firstChild.selectedOptions[0].text);
     cible.firstChild.addEventListener("change", function () {
-        updateTitle(event);
+        updateTitle(e);
         id = modale.querySelector("input[name=modale" + champ + "]");
         id.value = cible.firstChild.value;        
         reportPrestation(event);

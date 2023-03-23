@@ -112,7 +112,7 @@ h1 {
     padding: 0.5rem;
     cursor: pointer;
 }
-.caseListe a i, .caseForm button i {
+.caseListe a i, .caseForm button i, .divBtnModale button i {
     cursor: pointer;
     font-size: 2.5rem;
 }
@@ -120,7 +120,7 @@ h1 {
 :focus-visible {
     outline: none;
 }
-.caseListe button, .caseForm button {
+.caseListe button, .caseForm button , .divBtnModale button{
     border: 0;
     padding: 0.5rem;
     cursor: pointer;
@@ -216,7 +216,7 @@ body {
     color: var(--color1);
 
 }
-body.dark i {
+body.dark i , .divBtnModale  i{
     color:var(--color1);
 }
 body.dark header .darkmode i{
