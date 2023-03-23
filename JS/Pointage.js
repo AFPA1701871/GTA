@@ -4,6 +4,8 @@
     gestion des apparences des cellules en fonction de l'état du pointage pour la journée
     gestion des nombres décimaux
 */
+
+/*********************************INITIALISATION ******************************************/
 window.addEventListener("load", setGridPointage);
 
 listeStarFav = document.querySelectorAll(".fa-fav");
@@ -50,6 +52,7 @@ listePlus.forEach(element => {
     //element.addEventListener("click", openLightBox);
 });
 
+/*********************************PRESENTATION ******************************************/
 /**
  * Fonction imposant le scroll horizontal au survol de la zone de pointage
  * @param {*} e Événement déclencheur
@@ -132,38 +135,6 @@ function setGridPointage() {
 };
 
 /**
- * Fonction gérant l'appel des diverses fonctions de modification d'apparence et de contenu des cellules
- * @param {*} e Événement déclencheur
- */
-function ChangeCellule(cell) {
-    // Récupérations des infos de la cellule
-    //let cell = e.target;
-    let ligne = cell.getAttribute("data-line");
-    let colonne = cell.getAttribute("data-date");
-    cell.value = preformatFloat(cell.value) == 0 ? "" : preformatFloat(cell.value);
-
-    // Si le contenu de la cellule n'est pas valide, on l'efface
-    if (isNaN(cell.value) || (cell.value < 0 || cell.value > 1)) {
-        cell.value = oldValeur;
-    }
-
-    // Si l'on est sur la ligne des absences, on voit si la colonne entière doit être mise en "absent"
-    if (ligne == 1) {
-        MarquageAbsent(colonne, cell.value);
-    }
-    FormatColonne(colonne)
-    // else {
-    //     // Sinon, on calcul la somme des valeurs de la colonne
-    //     SommeColonne(colonne);
-    // }
-
-    // Si l'on est pas sur la lignes des absences, on calcul le %GTA
-    if (ligne != 1) {
-        CalculPrctGTA();
-    }
-}
-
-/**
  * Fonction changeant l'apparence de la colonne
  * @param {int} colonne 
  */
@@ -197,32 +168,6 @@ function FormatColonne(colonne) {
             cellule.classList.toggle("jourWarn", isWarning);
         })
     }
-}
-/**
- * Fonction calculant le total d'une journée au chargement de la page pour tous les jours
- *  
- */
-function SommeColonne() {
-
-    casesDate = document.querySelectorAll("div.grid-lineDouble")
-    for (let i = 0; i < casesDate.length; i++) {
-        const element = casesDate[i];
-        colonne = element.dataset.date;
-
-        // Initialisation du total à 0
-        let total = 0;
-        // Récupération de tous les inputs de la colonne/journée actuelle
-        let inputsColonne = document.querySelectorAll("input[data-date='" + colonne + "']");
-        // Boucle sur tous les éléments de cette liste
-        for (let j = 0; j < inputsColonne.length; j++) {
-            const cellule = inputsColonne[j];
-            total += cellule.value == "" ? 0.00 : parseFloat(cellule.value);
-        }
-        // Mise à jour du total pour cette itération
-        element.dataset.somme = parseFloat(total).toFixed(2);
-        FormatColonne(colonne);
-    };
-    CalculPrctGTA();
 }
 
 /**
@@ -291,6 +236,67 @@ function SelectColonne(e) {
         elt.classList.toggle("colSelected");
     });
 }
+
+/*********************************CALCUL **************************************************/
+/**
+ * Fonction gérant l'appel des diverses fonctions de modification d'apparence et de contenu des cellules
+ * @param {*} e Événement déclencheur
+ */
+function ChangeCellule(cell) {
+    // Récupérations des infos de la cellule
+    //let cell = e.target;
+    let ligne = cell.getAttribute("data-line");
+    let colonne = cell.getAttribute("data-date");
+    cell.value = preformatFloat(cell.value) == 0 ? "" : preformatFloat(cell.value);
+
+    // Si le contenu de la cellule n'est pas valide, on l'efface
+    if (isNaN(cell.value) || (cell.value < 0 || cell.value > 1)) {
+        cell.value = oldValeur;
+    }
+
+    // Si l'on est sur la ligne des absences, on voit si la colonne entière doit être mise en "absent"
+    if (ligne == 1) {
+        MarquageAbsent(colonne, cell.value);
+    }
+    FormatColonne(colonne)
+    // else {
+    //     // Sinon, on calcul la somme des valeurs de la colonne
+    //     SommeColonne(colonne);
+    // }
+
+    // Si l'on est pas sur la lignes des absences, on calcul le %GTA
+    if (ligne != 1) {
+        CalculPrctGTA();
+    }
+}
+
+/**
+ * Fonction calculant le total d'une journée au chargement de la page pour tous les jours
+ *  
+ */
+function SommeColonne() {
+
+    casesDate = document.querySelectorAll("div.grid-lineDouble")
+    for (let i = 0; i < casesDate.length; i++) {
+        const element = casesDate[i];
+        colonne = element.dataset.date;
+
+        // Initialisation du total à 0
+        let total = 0;
+        // Récupération de tous les inputs de la colonne/journée actuelle
+        let inputsColonne = document.querySelectorAll("input[data-date='" + colonne + "']");
+        // Boucle sur tous les éléments de cette liste
+        for (let j = 0; j < inputsColonne.length; j++) {
+            const cellule = inputsColonne[j];
+            total += cellule.value == "" ? 0.00 : parseFloat(cellule.value);
+        }
+        // Mise à jour du total pour cette itération
+        element.dataset.somme = parseFloat(total).toFixed(2);
+        FormatColonne(colonne);
+    };
+    CalculPrctGTA();
+}
+
 
 /**
  * Fonction permettant de calculer les %GTA de toutes les lignes
@@ -489,7 +495,7 @@ function clicPlus(event) {
     typePrestation = AppelAjax("TypePrestations", idTypePrestation, null, "", false, null)[0];
     selectUo = (typePrestation.uoRequis == 1) ? AppelAjax("Uos", null, ["NumeroUo", "LibelleUo"], 'class="" dataline ', true, null) + '<input  class="inputPointage notApplicable" dataline  type="hidden" name="idUo" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idUo" disabled>';
     selectProjet = (typePrestation.projetRequis == 1) ? AppelAjax("Projets", null, ["CodeProjet"], 'class="" dataline ', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idProjet" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idProjet" disabled>';
-    selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif"], 'class="" dataline ', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idMotif" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idMotif" disabled>';
+    selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif","LibelleMotif"], 'class="" dataline ', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idMotif" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idMotif" disabled>';
     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputUo">', selectUo);
     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputProjet">', selectProjet);
     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputMotif">', selectMotif);
@@ -590,7 +596,7 @@ function reportPrestation(event) {
     condition["idPrestation"] = event.target.value;
     // Report du projet pour MNSP
     projet = AppelAjax("View_Prestations", null, ["idProjet", "codeProjet", "libelleProjet"], null, false, condition);
-    if (projet != false) {
+    if (projet != false && projet[0].idProjet!=null) {
         ligne.querySelector('input[name="idProjet"]').value = projet[0].idProjet;
         ligne.querySelector('select[name="idProjet"]').value = projet[0].idProjet;
     }
@@ -629,9 +635,9 @@ function SelectToInput(type, ligne) {
     if (source != null) {
         // le nouvel input aura pour valeur soit "" si le select est vide, soit le label de l'option choisie
         valeur = (source.value != "") ? source.selectedOptions[0].label : "";
-
+        
         // Création de l'input text avec les paramètres prédéfinis
-        cible = '<input class="' + classe + '" data-line="' + ligne + '" type="text" name="input' + type + '" value="' + valeur + '" disabled="" title=""></input>';
+        cible = '<input class="' + classe + '" data-line="' + ligne + '" type="text" name="input' + type + '" value="' + valeur + '" disabled="" title="'+valeur+'"></input>';
         input = document.createElement("input");
         input.innerHTML = cible;
         source.parentNode.replaceChild(input.children[0], source);
