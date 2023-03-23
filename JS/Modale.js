@@ -279,33 +279,44 @@ function updateTitle(event) {
 /**
  * Fonction remplaçant un select pour application du filtre correspondant
  *
- * @param   {string}  champ  Le champ
+ * @param   {string}  champ  Le champ concerné ("Prestation", "Uo", "Motif" ou "Projet")
  *
- * @return  {[type]}         [return description]
  */
 function updateSelectModale(champ) {
+    // On récupère l'ID du type de prestation
     let idTypePrestation = modale.querySelector('[name="IdTypePrestation"]').value;
+    // On récupère la div dans laquelle on mettra le select
     let cible = modale.querySelector("#select" + champ);
+    // On récupère le filtre
     let search = modale.querySelector("#search" + champ);
+    // Initialisation des conditions
     let cond = {};
     switch (champ) {
         case "Prestation":
+            // Si "Prestation", les conditions sont l'idTypePrestation et le filtre
             cond['idTypePrestation'] = idTypePrestation;
             cond.fullTexte = search.value;
+            // On crée le nouveau select
             select = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], ' class="modSelect" ', true, cond);
             break;
         case "Uo":
         case "Motif":
         case "Projet":
+            // Si "Uo", "Motif" ou "Projet", la condition n'est que le filtre
             cond.fullTexte = search.value;
+            // On récupère la constante correspondante au champ
             numSubField=eval(champ.toUpperCase());
+            // On crée le nouveau select
             select = AppelAjax(champ+"s", modale.querySelector("input[name=modale" + champ + "]").value, listSubFields[numSubField].colonnes, ' class="modSelect" ', true, cond);
             break;
         default:
             break;
     }
+    // On place le select au bon endroit
     cible.innerHTML = select;
+    // On remet le title
     cible.firstChild.setAttribute("title", cible.firstChild.selectedOptions[0].text);
+    // On remet l'eventListener sur le changement du nouveau select
     cible.firstChild.addEventListener("change", function () {
         updateTitle(e);
         id = modale.querySelector("input[name=modale" + champ + "]");
@@ -314,7 +325,12 @@ function updateSelectModale(champ) {
     });
 }
 
-
+/**
+ * Fonction qui attribue automatiquement les valeurs propres à la prestation
+ *
+ * @param   {*}  event  Événement déclencheur
+ *
+ */
 function reportPrestation(event) {
     let selectPresta = event.target;
     let field = document.getElementById("modale");
