@@ -48,8 +48,11 @@ inputs.forEach((element) => {
 
 listePlus = document.querySelectorAll(".fa-plus");
 listePlus.forEach(element => {
-    element.addEventListener("click", clicPlus);
-    //element.addEventListener("click", openLightBox);
+    //element.addEventListener("click", clicPlus);
+    element.addEventListener("click",()=>{ 
+        openModale(event);
+        btnsModale();
+    });
 });
 
 /*********************************PRESENTATION ******************************************/
@@ -471,87 +474,87 @@ function pointageSave() {
  * Méthode qui permet d'ajouter une ligne lorsque l'on clique sur le plus à coté du type de Prestations
  * @param {*} event 
  */
-function clicPlus(event) {
-    plus = event.target;
-    idTypePrestation = plus.parentNode.getAttribute("data-idtypeprestation");
-    condition = {}
-    // on clone le template
-    temp = document.querySelector("#lignePresta");
-    contenu = temp.content.cloneNode(true);
-    // on insert avant le prochain type
-    plus.parentNode.parentNode.insertBefore(contenu, plus.parentNode.nextElementSibling.nextElementSibling);
-    nouvelleLigne = plus.parentNode.nextElementSibling.nextElementSibling
+// function clicPlus(event) {
+//     plus = event.target;
+//     idTypePrestation = plus.parentNode.getAttribute("data-idtypeprestation");
+//     condition = {}
+//     // on clone le template
+//     temp = document.querySelector("#lignePresta");
+//     contenu = temp.content.cloneNode(true);
+//     // on insert avant le prochain type
+//     plus.parentNode.parentNode.insertBefore(contenu, plus.parentNode.nextElementSibling.nextElementSibling);
+//     nouvelleLigne = plus.parentNode.nextElementSibling.nextElementSibling
 
-    /**  on modifie l'élément insérer */
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="idTypePrestation">', '<input name="idTypePrestation" type=hidden value="' + idTypePrestation + '"  dataline >');
-
-
-    // mis à jour liste presta
-    condition['idTypePrestation'] = idTypePrestation;
-    selectPresta = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], "class=inputPointage dataline", true, condition);
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', selectPresta + '<input type=hidden name=idPrestation dataline >');
-
-    // mis à jour disabled dans motif/projet/uo
-    typePrestation = AppelAjax("TypePrestations", idTypePrestation, null, "", false, null)[0];
-    selectUo = (typePrestation.uoRequis == 1) ? AppelAjax("Uos", null, ["NumeroUo", "LibelleUo"], 'class="" dataline ', true, null) + '<input  class="inputPointage notApplicable" dataline  type="hidden" name="idUo" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idUo" disabled>';
-    selectProjet = (typePrestation.projetRequis == 1) ? AppelAjax("Projets", null, ["CodeProjet"], 'class="" dataline ', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idProjet" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idProjet" disabled>';
-    selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif","LibelleMotif"], 'class="" dataline ', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idMotif" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idMotif" disabled>';
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputUo">', selectUo);
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputProjet">', selectProjet);
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputMotif">', selectMotif);
-
-    // trouver data-line
-    numPresta = (document.querySelector("#numPrestaMax").value) * 1 + 1
-    console.log(numPresta);
-    document.querySelector("#numPrestaMax").value = numPresta
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('dataline=""', 'data-line="' + numPresta + '"');
+//     /**  on modifie l'élément insérer */
+//     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="idTypePrestation">', '<input name="idTypePrestation" type=hidden value="' + idTypePrestation + '"  dataline >');
 
 
-    /**  mettre les cases */
-    // on sélectionne une ligne de case de pointage et on la duplique
-    gridpointage = document.querySelectorAll(".grid-pointage")[1].cloneNode(true);
-    // on l'ajoute à la dom
-    plus.parentNode.parentNode.insertBefore(gridpointage, plus.parentNode.nextElementSibling.nextElementSibling.nextElementSibling);
-    nouvellecasePointage = plus.parentNode.nextElementSibling.nextElementSibling.nextElementSibling;
+//     // mis à jour liste presta
+//     condition['idTypePrestation'] = idTypePrestation;
+//     selectPresta = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], "class=inputPointage dataline", true, condition);
+//     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', selectPresta + '<input type=hidden name=idPrestation dataline >');
 
-    // on remet les pointages à "" et on met le bon data-line
-    //les inputs
-    for (let i = 3; i < nouvellecasePointage.children.length; i++) {
-        const element = nouvellecasePointage.children[i];
-        //element est une div. on modifie l'input à l'intérieur
-        if (element.children.length > 0) {
-            element.children[0].value = "";
-            element.children[0].setAttribute("data-line", numPresta);
-            element.children[0].setAttribute("data-idPointage", "");
-            // ajouter les evenements sur les cases
-            element.children[0].addEventListener("change", changePointage);
-            element.children[0].addEventListener('focus', SelectColonne);
-            element.children[0].addEventListener('blur', SelectColonne);
-            element.children[0].addEventListener("wheel", scrollHoriz);
-        }
-    }
-    //le total et le pourcentage
-    // nouvellecasePointage.children[0].innerHtml="";
-    nouvellecasePointage.children[0].setAttribute("data-line", numPresta);
-    // nouvellecasePointage.children[1].innerHtml="";
-    nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
-    //Remise à zéro des colonnes Total et pourcentage
-    document.querySelector("div.colTotal[data-line='" + numPresta + "']").textContent = "0.00"
-    document.querySelector("div.colPrctGTA[data-line='" + numPresta + "']").textContent = "0%"
+//     // mis à jour disabled dans motif/projet/uo
+//     typePrestation = AppelAjax("TypePrestations", idTypePrestation, null, "", false, null)[0];
+//     selectUo = (typePrestation.uoRequis == 1) ? AppelAjax("Uos", null, ["NumeroUo", "LibelleUo"], 'class="" dataline ', true, null) + '<input  class="inputPointage notApplicable" dataline  type="hidden" name="idUo" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idUo" disabled>';
+//     selectProjet = (typePrestation.projetRequis == 1) ? AppelAjax("Projets", null, ["CodeProjet"], 'class="" dataline ', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idProjet" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idProjet" disabled>';
+//     selectMotif = (typePrestation.motifRequis == 1) ? AppelAjax("Motifs", null, ["CodeMotif","LibelleMotif"], 'class="" dataline ', true, null) + '<input class="inputPointage notApplicable" dataline  type="hidden" name="idMotif" disabled>' : '<input class="inputPointage notApplicable" dataline  type="text" name="idMotif" disabled>';
+//     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputUo">', selectUo);
+//     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputProjet">', selectProjet);
+//     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('<input name="inputMotif">', selectMotif);
 
-    /* evenement*/
-    //on ajoute l'evenement pour expand
-    nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
-    nouvelleLigne.querySelector(".expand-line").dispatchEvent(new Event("click"));
-    //on ajoute l'evenement pour favoris
-    nouvelleLigne.querySelector(".fa-fav").addEventListener("click", UpdateFav);
-    // on ajoute des evenements pour reporter les elements selectionner dans les combo dans les input correspondants
-    nouvelleLigne.querySelector('select[name="idPrestation"]').addEventListener("change", reportPrestation);
-    if (nouvelleLigne.querySelector('select[name="idMotif"]')) nouvelleLigne.querySelector('select[name="idMotif"]').addEventListener("change", reportSelect);
-    if (nouvelleLigne.querySelector('select[name="idProjet"]')) nouvelleLigne.querySelector('select[name="idProjet"]').addEventListener("change", reportSelect);
-    if (nouvelleLigne.querySelector('select[name="idUo"]')) nouvelleLigne.querySelector('select[name="idUo"]').addEventListener("change", reportSelect);
+//     // trouver data-line
+//     numPresta = (document.querySelector("#numPrestaMax").value) * 1 + 1
+//     console.log(numPresta);
+//     document.querySelector("#numPrestaMax").value = numPresta
+//     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replaceAll('dataline=""', 'data-line="' + numPresta + '"');
 
-}
+
+//     /**  mettre les cases */
+//     // on sélectionne une ligne de case de pointage et on la duplique
+//     gridpointage = document.querySelectorAll(".grid-pointage")[1].cloneNode(true);
+//     // on l'ajoute à la dom
+//     plus.parentNode.parentNode.insertBefore(gridpointage, plus.parentNode.nextElementSibling.nextElementSibling.nextElementSibling);
+//     nouvellecasePointage = plus.parentNode.nextElementSibling.nextElementSibling.nextElementSibling;
+
+//     // on remet les pointages à "" et on met le bon data-line
+//     //les inputs
+//     for (let i = 3; i < nouvellecasePointage.children.length; i++) {
+//         const element = nouvellecasePointage.children[i];
+//         //element est une div. on modifie l'input à l'intérieur
+//         if (element.children.length > 0) {
+//             element.children[0].value = "";
+//             element.children[0].setAttribute("data-line", numPresta);
+//             element.children[0].setAttribute("data-idPointage", "");
+//             // ajouter les evenements sur les cases
+//             element.children[0].addEventListener("change", changePointage);
+//             element.children[0].addEventListener('focus', SelectColonne);
+//             element.children[0].addEventListener('blur', SelectColonne);
+//             element.children[0].addEventListener("wheel", scrollHoriz);
+//         }
+//     }
+//     //le total et le pourcentage
+//     // nouvellecasePointage.children[0].innerHtml="";
+//     nouvellecasePointage.children[0].setAttribute("data-line", numPresta);
+//     // nouvellecasePointage.children[1].innerHtml="";
+//     nouvellecasePointage.children[1].setAttribute("data-line", numPresta);
+//     //Remise à zéro des colonnes Total et pourcentage
+//     document.querySelector("div.colTotal[data-line='" + numPresta + "']").textContent = "0.00"
+//     document.querySelector("div.colPrctGTA[data-line='" + numPresta + "']").textContent = "0%"
+
+//     /* evenement*/
+//     //on ajoute l'evenement pour expand
+//     nouvelleLigne.querySelector(".expand-line").addEventListener("click", expand);
+//     nouvelleLigne.querySelector(".expand-line").dispatchEvent(new Event("click"));
+//     //on ajoute l'evenement pour favoris
+//     nouvelleLigne.querySelector(".fa-fav").addEventListener("click", UpdateFav);
+//     // on ajoute des evenements pour reporter les elements selectionner dans les combo dans les input correspondants
+//     nouvelleLigne.querySelector('select[name="idPrestation"]').addEventListener("change", reportPrestation);
+//     if (nouvelleLigne.querySelector('select[name="idMotif"]')) nouvelleLigne.querySelector('select[name="idMotif"]').addEventListener("change", reportSelect);
+//     if (nouvelleLigne.querySelector('select[name="idProjet"]')) nouvelleLigne.querySelector('select[name="idProjet"]').addEventListener("change", reportSelect);
+//     if (nouvelleLigne.querySelector('select[name="idUo"]')) nouvelleLigne.querySelector('select[name="idUo"]').addEventListener("change", reportSelect);
+
+// }
 
 /**
  * Méthode d'appel ajax synchrone
@@ -584,23 +587,23 @@ function AppelAjax(table, id, colonne, attribut, select, condition) {
  * @param   {*}  event  Événement déclencheur
  *
  */
-function reportPrestation(event) {
-    // Récupération de la Node correspondante à la ligne en cours
-    ligne = event.target.parentNode.parentNode;
+// function reportPrestation(event) {
+//     // Récupération de la Node correspondante à la ligne en cours
+//     ligne = event.target.parentNode.parentNode;
 
-    // Report de l'idPrestation et du codePrestation dans tous les cas
-    ligne.querySelector('input[name="idPrestation"]').value = event.target.value;
-    ligne.querySelector('input[name="codePrestation"]').value = event.target.selectedOptions[0].label.substring(0, 4);
+//     // Report de l'idPrestation et du codePrestation dans tous les cas
+//     ligne.querySelector('input[name="idPrestation"]').value = event.target.value;
+//     ligne.querySelector('input[name="codePrestation"]').value = event.target.selectedOptions[0].label.substring(0, 4);
 
-    condition = {};
-    condition["idPrestation"] = event.target.value;
-    // Report du projet pour MNSP
-    projet = AppelAjax("View_Prestations", null, ["idProjet", "codeProjet", "libelleProjet"], null, false, condition);
-    if (projet != false && projet[0].idProjet!=null) {
-        ligne.querySelector('input[name="idProjet"]').value = projet[0].idProjet;
-        ligne.querySelector('select[name="idProjet"]').value = projet[0].idProjet;
-    }
-}
+//     condition = {};
+//     condition["idPrestation"] = event.target.value;
+//     // Report du projet pour MNSP
+//     projet = AppelAjax("View_Prestations", null, ["idProjet", "codeProjet", "libelleProjet"], null, false, condition);
+//     if (projet != false && projet[0].idProjet!=null) {
+//         ligne.querySelector('input[name="idProjet"]').value = projet[0].idProjet;
+//         ligne.querySelector('select[name="idProjet"]').value = projet[0].idProjet;
+//     }
+// }
 
 /**
  * Modifie la valeur de l'input de type hidden correspondant au select
@@ -643,19 +646,4 @@ function SelectToInput(type, ligne) {
         source.parentNode.replaceChild(input.children[0], source);
     }
 
-}
-
-// LightBox
-function openLightBox(event) {
-    // Récupère informations TypePrestation
-    plus = event.target;
-    idTypePrestation = plus.parentNode.getAttribute("data-idtypeprestation");
-    TypePresta = AppelAjax("TypePrestations", idTypePrestation, null, "", false, null)[0];
-    // console.log();
-    // Affiche la lightBox
-    let lightBox = document.getElementById("lightBox");
-    lightBox.style.display = "flex";
-    // Remplit la partie TypePresta
-    lightBox.innerHTML = lightBox.innerHTML.replaceAll("valueIdTypePresta", idTypePrestation);
-    lightBox.innerHTML = lightBox.innerHTML.replaceAll("libelleTypePresta", TypePresta.libelleTypePrestation);
 }

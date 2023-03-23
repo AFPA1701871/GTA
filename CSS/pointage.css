@@ -279,7 +279,7 @@ div .jourOK>input[type="text"] {
 
 /******************* LightBox *****************************/
 
-.modal {
+#modale {
     display: none;
     position: fixed;
     z-index: 1;
@@ -289,18 +289,52 @@ div .jourOK>input[type="text"] {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.85);
     color: white;
 }
 
 .lbContent{
-    border: 0.1rem solid white;
     display: grid;
-    grid-template-columns: 1fr 3fr;
     justify-items: center;
     align-items: start;
-    max-height: 43rem;
     align-content: space-evenly;
+}
+
+.divBtnModale{
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    column-gap: 3rem;
+}
+
+.modHeight{
+    height: 50rem;
+}
+
+.lbContent fieldset{
+    flex-direction: column;
+    align-items: center;
+}
+.lbContent fieldset, .lbContent i, .lbContent legend{
+    color: black;
+    background-color: var(--color1);
+}
+body.dark .lbContent fieldset, body.dark .lbContent i, body.dark .lbContent legend{
+    color: white;
+    background-color: var(--color5);
+}
+
+.lbContent legend{
+    border-radius: 2rem;
+    padding: 0.1rem 1rem
+}
+
+.lbContent div select{
+    width:40rem;
+    overflow: hidden;
+    -moz-white-space: pre-wrap;
+    -o-white-space: pre-wrap;
+    white-space: pre-wrap;
+  text-overflow: ellipsis;
 }
 
 /******************MEDIA QUERIES***************************/

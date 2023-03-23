@@ -237,20 +237,81 @@ echo '      <input name="inputUo">
 echo '<input id=numPrestaMax type=hidden value=' . $numPresta . '>';
 echo '</div></div><div class="cote"></main>';
 
-// LightBox
-echo '<div id="lightBox" class="modal"><div class="cote"></div>';
-echo '  <div class="lbContent center">';
-echo '      <h1 class="colSpan2 center">Ajouter une ligne</h1>
-                <div class="bigEspace  colSpan2"></div>
+// Div modale
+echo '<div id="modale"></div>';
+// Template de la Modale
+echo '<template id="contentModale">
+        <div class="cote"></div>
+        <div class="lbContent center">    
+            <div class="espace colSpan2"></div>
+            <!--<h1 class="center colSpan2">Ajouter une ligne</h1>
+                <div class="espace colSpan2"></div>-->
                 <div class="noDisplay">
-                    <input type="hidden" valueIdTypePresta name="IdTypePrestation">
+                    <input type="hidden" value=valueidtypepresta name="IdTypePrestation">
                 </div>
                 <label>Type de prestation :</label><Label class="gras">libelleTypePresta</label>
-                <label>Prestation :</label><div class="center"><input id="searchPrestaInList" title="Entrer le mot à chercher puis cliquer sur le filtre" placeholder="Recherche..."><i class="fa-solid fa-filter fa-margin" title="Entrer le mot à chercher puis cliquer sur le filtre"></i></div>
-                <div class="noDisplay">
-                    <input type="hidden" valueIdPresta name="IdPrestation">
+
+                <div class="espace colSpan2"></div>
+
+                <fieldset>
+                    <legend>Prestation :</legend>
+                    <div class="center marginTopBottom">
+                        <input id="searchPrestation" title="Entrer le mot à chercher puis cliquer sur le filtre" placeholder="Recherche...">
+                        <i class="fa-solid fa-filter fa-margin" title="Entrer le mot à chercher puis cliquer sur le filtre"></i>
+                    </div>
+                    <div class="noDisplay">
+                        <input type="hidden" valueIdPresta name="modalePrestation">
+                    </div>
+                    <div id="selectPrestation" class="marginTopBottom"></div>
+                </fieldset>
+
+                <div class="espace colSpan2"></div>
+
+                <fieldset id="fldUo">
+                    <legend>UO de MAD :</legend>
+                    <div class="center marginTopBottom">
+                        <input id="searchUo" title="Entrer le mot à chercher puis cliquer sur le filtre" placeholder="Recherche...">
+                        <i class="fa-solid fa-filter fa-margin" title="Entrer le mot à chercher puis cliquer sur le filtre"></i>
+                    </div>
+                    <div class="noDisplay">
+                        <input type="hidden" name="modaleUo">
+                    </div>
+                    <div id="selectUo" class="marginTopBottom"></div>
+                </fieldset>
+
+                <fieldset id="fldMotif">
+                    <legend>Code Motif :</legend>
+                    <div class="center marginTopBottom">
+                        <input id="searchMotif" title="Entrer le mot à chercher puis cliquer sur le filtre" placeholder="Recherche...">
+                        <i class="fa-solid fa-filter fa-margin" title="Entrer le mot à chercher puis cliquer sur le filtre"></i>
+                    </div>
+                    <div class="noDisplay">
+                        <input type="hidden" name="modaleMotif">
+                    </div>
+                    <div id="selectMotif" class="marginTopBottom"></div>
+                </fieldset>
+
+                <fieldset id="fldProjet">
+                    <legend>Code Projet :</legend>
+                    <div class="center marginTopBottom">
+                        <input id="searchProjet" title="Entrer le mot à chercher puis cliquer sur le filtre" placeholder="Recherche...">
+                        <i class="fa-solid fa-filter fa-margin" title="Entrer le mot à chercher puis cliquer sur le filtre"></i>
+                    </div>
+                    <div class="noDisplay">
+                        <input type="hidden" name="modaleProjet">
+                    </div>
+                    <div id="selectProjet" class="marginTopBottom"></div>
+                </fieldset>
+
+                <div class="espace colSpan2"></div>
+
+                <div class="colSpan2 divBtnModale">
+                    <button name="closeModale" type="button"><i class="fas fa-arrow-left fa-rotate-180"></i></button>
+                    <button name="addModale" type="button" disabled><i class="fas fa-paper-plane"></i></button>
                 </div>
 
-';
-echo '  </div>';
-echo '<div class="cote"></div></div>';
+                <div class="espace"></div>
+            </div>
+            <div class="cote"></div>
+</template>';
+
