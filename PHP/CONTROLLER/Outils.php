@@ -160,8 +160,11 @@ function creerSelect(?int $valeur, string $table, array $nomColonnes, ?string $a
 	foreach ($liste as $elt) {
 		$content = "";
 		foreach ($libelle as $value) {
-			$content .= appelGet($elt, $value) . " ";
+			$content .= appelGet($elt, $value) . " | ";
 		}
+
+		$content=substr($content, 0,-3);
+
 		if ($valeur == appelGet($elt, $nomId)) {
 			$select .= '<option value="' . appelGet($elt, $nomId) . '" SELECTED>' . $content . '</option>';
 		} else {
