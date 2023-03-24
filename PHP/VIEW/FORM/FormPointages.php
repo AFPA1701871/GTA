@@ -244,8 +244,6 @@ echo '<template id="contentModale">
         <div class="cote"></div>
         <div class="lbContent center">    
             <div class="espace colSpan2"></div>
-            <!--<h1 class="center colSpan2">Ajouter une ligne</h1>
-                <div class="espace colSpan2"></div>-->
                 <div class="noDisplay">
                     <input type="hidden" value=valueidtypepresta name="IdTypePrestation">
                 </div>

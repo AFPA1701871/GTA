@@ -61,8 +61,8 @@ function openModale(e) {
     inputSelectPresta.setAttribute("title", inputSelectPresta.selectedOptions[0].text)
     // Mise a jour du title du selectPresta
     inputSelectPresta.addEventListener("change", function () {
-        updateTitle(e);
-        reportPrestation(e);
+        updateTitle(event);
+        reportPrestation(event);
     });
 
     // Assigne les valeur indiquant si le champ est "requis"
@@ -123,6 +123,7 @@ function btnsModale() {
  *
  */
 function closeModale() {
+    // On referme la modale
     modale.style.display = "none";
 }
 
@@ -297,13 +298,16 @@ function updateSelectModale(champ) {
             cond['idTypePrestation'] = idTypePrestation;
             cond.fullTexte = search.value;
             // On crée le nouveau select
-            select = AppelAjax("View_TypePrestations", null, ["CodePrestation", "LibellePrestation"], ' class="modSelect" ', true, cond);
+            select = AppelAjax("View_TypePrestations", modale.querySelector("input[name=modale" + champ + "]").value, ["CodePrestation", "LibellePrestation"], ' class="modSelect" ', true, cond);
             break;
         case "Uo":
         case "Motif":
         case "Projet":
             // Si "Uo", "Motif" ou "Projet", la condition n'est que le filtre
             cond.fullTexte = search.value;
+            if(champ=="Motif"){
+                cond.idTypePrestation=idTypePrestation;
+            }
             // On récupère la constante correspondante au champ
             numSubField=eval(champ.toUpperCase());
             // On crée le nouveau select
@@ -318,10 +322,12 @@ function updateSelectModale(champ) {
     cible.firstChild.setAttribute("title", cible.firstChild.selectedOptions[0].text);
     // On remet l'eventListener sur le changement du nouveau select
     cible.firstChild.addEventListener("change", function () {
-        updateTitle(e);
+        updateTitle(event);
         id = modale.querySelector("input[name=modale" + champ + "]");
-        id.value = cible.firstChild.value;        
-        reportPrestation(event);
+        id.value = cible.firstChild.value;
+        if(champ=="Prestation"){      
+            reportPrestation(event);
+        }
     });
 }
 
@@ -344,8 +350,10 @@ function reportPrestation(event) {
     if (projet != false && projet[0].idProjet != null) {
         field.querySelector('input[name="modaleProjet"]').value = projet[0].idProjet;
         field.querySelector('select[name="idProjet"]').value = projet[0].idProjet;
+        field.querySelector('select[name="idProjet"]').title = projet[0].libelleProjet;
     }
 
     // Active ou désactive le bouton "Valider" en fonction de la prestation
+    console.log(selectPresta.value);
     gestionBtnValid(selectPresta.value != null && selectPresta.value != "");
 }

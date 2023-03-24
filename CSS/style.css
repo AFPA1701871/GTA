@@ -502,6 +502,11 @@ body.dark .oeil {
 body.dark .fa-house {
     color: #111;
 }
+
+body.dark button:disabled>i{
+    color: gray;
+}
+
 /******************MEDIA QUERIES***************************/
 
 @media (max-width: 1514px) {
