@@ -354,11 +354,8 @@ function UpdateFav(e) {
                 if (this.responseText) { // Si la réponse n'est pas vide
                     let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
                     caseFav.querySelector("[name='idPreference']").value = id; // Mise à jour de l'input
+                    pointageSave();
                 }
-
-                ///////////////////////////////////////////////////////////
-                //Ajouter Message indiquant la sauvegarde de l'état des préférences ?
-                ///////////////////////////////////////////////////////////
             }
         }
     };
