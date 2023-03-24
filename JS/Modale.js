@@ -36,6 +36,8 @@ function openModale(e) {
 
     // Affiche la Modale
     modale.style.display = "flex";
+    // Désactiver le scrolling sur le body tant que la modale est ouverte
+    document.body.classList.add("modaleOpen");
 
     // Calcul le nombre de champs secondaires possibles pour le type de prestation
     let nbSubFld = typePresta.uoRequis * 1 + typePresta.motifRequis * 1 + typePresta.projetRequis * 1;
@@ -125,6 +127,8 @@ function btnsModale() {
 function closeModale() {
     // On referme la modale
     modale.style.display = "none";
+    // Réactive le scrolling sur le body
+    document.body.classList.remove("modaleOpen");
 }
 
 /**

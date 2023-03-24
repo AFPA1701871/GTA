@@ -333,6 +333,10 @@ body.dark .lbContent fieldset, body.dark .lbContent legend{
     overflow: hidden;
 }
 
+body.modaleOpen{
+    overflow: hidden;
+}
+
 /******************MEDIA QUERIES***************************/
 
 @media (max-width: 1514px) {
