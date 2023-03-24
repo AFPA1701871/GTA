@@ -354,6 +354,5 @@ function reportPrestation(event) {
     }
 
     // Active ou désactive le bouton "Valider" en fonction de la prestation
-    console.log(selectPresta.value);
     gestionBtnValid(selectPresta.value != null && selectPresta.value != "");
 }

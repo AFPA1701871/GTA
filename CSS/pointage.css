@@ -318,7 +318,7 @@ div .jourOK>input[type="text"] {
     color: black;
     background-color: var(--color1);
 }
-body.dark .lbContent fieldset, body.dark .lbContent i, body.dark .lbContent legend{
+body.dark .lbContent fieldset, body.dark .lbContent legend{
     color: white;
     background-color: var(--color5);
 }

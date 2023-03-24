@@ -505,6 +505,7 @@ body.dark .fa-house {
 
 body.dark button:disabled>i{
     color: gray;
+    background-color: transparent; 
 }
 
 /******************MEDIA QUERIES***************************/
