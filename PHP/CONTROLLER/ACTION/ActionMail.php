@@ -55,6 +55,7 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 	//$headers .= "Content-Transfer-Encoding: base64;";
 
 	// Envoi du mail
+	echo $adresseMail."<br>\n";
 	return mail('martine.poix@afpa.fr',$adresseMail .  $sujet, $message, $headers);
 }
 
