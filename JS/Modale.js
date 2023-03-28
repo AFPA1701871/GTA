@@ -229,6 +229,7 @@ function ajoutLigne() {
             // ajouter les evenements sur les cases
             element.children[0].addEventListener("change", changePointage);
             element.children[0].addEventListener('focus', SelectColonne);
+            element.children[0].addEventListener("focus", saveOldValeur);
             element.children[0].addEventListener('blur', SelectColonne);
             element.children[0].addEventListener("wheel", scrollHoriz);
         }

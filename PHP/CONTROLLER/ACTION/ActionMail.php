@@ -1,5 +1,5 @@
 <?php
-
+EnvoiMail();
 
 /**
  * Permet d'envoyer un mail de relance pour la saisie du pointage
@@ -56,7 +56,10 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 
 	// Envoi du mail
 	echo $adresseMail."<br>\n";
-	return mail('martine.poix@afpa.fr',$adresseMail .  $sujet, $message, $headers);
+	if ($adresseMail=='fanny.fardel2@afpa.fr')
+	{	
+		return mail($adresseMail ,  $sujet, $message, $headers);
+	}
 }
 
 
