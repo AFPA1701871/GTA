@@ -503,7 +503,7 @@ body.dark .fa-house {
     color: #111;
 }
 
-body.dark button:disabled>i{
+body.dark button:disabled>i, #modale button:disabled>i{
     color: gray;
     background-color: transparent; 
 }

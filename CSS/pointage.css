@@ -268,6 +268,9 @@ div .jourOK>input[type="text"] {
     /* color:var(--color8); */
 }
 
+.colPrctGTA, .colTotal{
+    font-size: 0.8em;
+}
 /* Permet d'avoir seulement "Hors RTT" en rouge */
 .classRTT {
     background: linear-gradient(to right, black, black 28%, red 28%, red 90%, transparent 100%);

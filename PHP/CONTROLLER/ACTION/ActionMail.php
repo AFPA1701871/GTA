@@ -1,7 +1,5 @@
 <?php
 
-envoiMailRelancePointage("martine.poix@afpa.fr","2023-01",null);
-envoiMailRelancePointage("pointage@afpadunkerque.fr","2023-01",null);
 
 /**
  * Permet d'envoyer un mail de relance pour la saisie du pointage
@@ -57,7 +55,8 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 	//$headers .= "Content-Transfer-Encoding: base64;";
 
 	// Envoi du mail
-	return mail($adresseMail, $sujet, $message, $headers);
+	echo $adresseMail."<br>\n";
+	return mail('martine.poix@afpa.fr',$adresseMail .  $sujet, $message, $headers);
 }
 
 
@@ -216,54 +215,54 @@ function EnvoiMail()
 
 		/*  Validation  */
 		// Récupération de la liste des manager
-		$managers = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur'], ["idRole" => 2]);
-		foreach ($managers as $manager) {
+		// $managers = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur'], ["idRole" => 2]);
+		// foreach ($managers as $manager) {
 
-			$listeAgentsConcernes = [];
-			// Récupération de la liste des agents actifs de ce manager
-			$agents = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur'], ["actif" => 1, "idManager" => $manager->getIdUtilisateur()]);
-			// Pour chaque agent
-			foreach ($agents as $agent) {
-				$idAgent = $agent->getIdUtilisateur();
+		// 	$listeAgentsConcernes = [];
+		// 	// Récupération de la liste des agents actifs de ce manager
+		// 	$agents = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur'], ["actif" => 1, "idManager" => $manager->getIdUtilisateur()]);
+		// 	// Pour chaque agent
+		// 	foreach ($agents as $agent) {
+		// 		$idAgent = $agent->getIdUtilisateur();
 
-				// Récupération du pointage validé pour la période
-				$pointage = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, null, "Utilisateur", "Jours");
-				$valide = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, "valide", "Utilisateur");
-				// Ancienne version
-				// $valide = View_Pointages_PeriodeManager::NbValide($idAgent, $periode, "Utilisateur");
+		// 		// Récupération du pointage validé pour la période
+		// 		$pointage = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, null, "Utilisateur", "Jours");
+		// 		$valide = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, "valide", "Utilisateur");
+		// 		// Ancienne version
+		// 		// $valide = View_Pointages_PeriodeManager::NbValide($idAgent, $periode, "Utilisateur");
 
-				// Si pointage vide ou si pointage incomplet
-				if ($pointage == NbJourParPeriode($periode) && $valide != $pointage) {
-					$listeAgentsConcernes[] = $agent->getNomUtilisateur();
-				}
-			}
-			// Envoi de mail
-			envoiMailRelanceValidation($manager->getMailUtilisateur(), $periode, $listeAgentsConcernes);
-		}
+		// 		// Si pointage vide ou si pointage incomplet
+		// 		if ($pointage == NbJourParPeriode($periode) && $valide != $pointage) {
+		// 			$listeAgentsConcernes[] = $agent->getNomUtilisateur();
+		// 		}
+		// 	}
+		// 	// Envoi de mail
+		// 	envoiMailRelanceValidation($manager->getMailUtilisateur(), $periode, $listeAgentsConcernes);
+		// }
 
-		/*  Report  */
-		$assistantes = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur'], ["idRole" => 3]);
-		$listeAgentsConcernes = [];
-		// Récupération de la liste des agents actifs de ce manager
-		$agents = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur'], ["actif" => 1, "idManager" => $manager->getIdUtilisateur()]);
-		// Pour chaque agent
-		foreach ($agents as $agent) {
-			$idAgent = $agent->getIdUtilisateur();
+		// /*  Report  */
+		// $assistantes = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur'], ["idRole" => 3]);
+		// $listeAgentsConcernes = [];
+		// // Récupération de la liste des agents actifs de ce manager
+		// $agents = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur'], ["actif" => 1, "idManager" => $manager->getIdUtilisateur()]);
+		// // Pour chaque agent
+		// foreach ($agents as $agent) {
+		// 	$idAgent = $agent->getIdUtilisateur();
 
-			// Récupération du pointage validé pour la période
-			$pointage = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, null, "Utilisateur", "Jours");
-			$report = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, "reporte", "Utilisateur");
-			// Ancienne version
-			// $report = View_Pointages_PeriodeManager::NbReporte($idAgent, $periode, "Utilisateur");
+		// 	// Récupération du pointage validé pour la période
+		// 	$pointage = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, null, "Utilisateur", "Jours");
+		// 	$report = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, "reporte", "Utilisateur");
+		// 	// Ancienne version
+		// 	// $report = View_Pointages_PeriodeManager::NbReporte($idAgent, $periode, "Utilisateur");
 
-			// Si pointage vide ou si pointage incomplet
-			if ($pointage == NbJourParPeriode($periode) && $report != $pointage) {
-				$listeAgentsConcernes[] = $agent->getNomUtilisateur();
-			}
-		}
-		foreach ($assistantes as $assistante) {
-			// Envoi de mail
-			envoiMailRelanceReport($assistante->getMailUtilisateur(), $periode, $listeAgentsConcernes);
-		}
+		// 	// Si pointage vide ou si pointage incomplet
+		// 	if ($pointage == NbJourParPeriode($periode) && $report != $pointage) {
+		// 		$listeAgentsConcernes[] = $agent->getNomUtilisateur();
+		// 	}
+		// }
+		// foreach ($assistantes as $assistante) {
+		// 	// Envoi de mail
+		// 	envoiMailRelanceReport($assistante->getMailUtilisateur(), $periode, $listeAgentsConcernes);
+		// }
 	}
 }

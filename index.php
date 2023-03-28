@@ -118,5 +118,5 @@ if (isset($_GET["page"])) {
 		AfficherPage($routes["Default"]);
 	}
 } else {
-	AfficherPage($routes["Attente"]);
+	AfficherPage($routes["Default"]);
 }
