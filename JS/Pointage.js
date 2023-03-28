@@ -439,6 +439,7 @@ function changePointage(event) {
                     if (this.responseText == "Delete") {
                         // Si l'on vient de supprimer le pointage de la BdD, on enlève le data-idPointage
                         pointage.removeAttribute('data-idpointage');
+                        pointageSave();
                     }
                     else {
                         let id = (this.responseText).replace(/"/g, ""); // Enlève les "" de l'id récupéré car reçu en JSON
