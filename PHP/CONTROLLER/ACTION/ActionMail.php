@@ -1,6 +1,6 @@
 <?php
-EnvoiMail();
-
+//EnvoiMail();
+envoiMailRelancePointage('dorothee.defever@afpa.fr','2023-03',null);
 /**
  * Permet d'envoyer un mail de relance pour la saisie du pointage
  *
@@ -9,9 +9,10 @@ EnvoiMail();
  */
 function envoiMailRelancePointage($adresseMail, $periode, $etat)
 {
-	$sujet = "GTA - Relance pour la saisie de votre pointage pour ".tabMoisAnnee()[$periode];
+	$sujet = "GTA - Information pour la saisie de votre pointage pour ".tabMoisAnnee()[$periode];
+	//$sujet = "GTA - Relance pour la saisie de votre pointage pour ".tabMoisAnnee()[$periode];
 	$from = "pointage@afpadunkerque.fr";
-
+// <title>Relance pour le pointage GTA du mois de ' .tabMoisAnnee()[$periode]. '</title>
 	// Corps du texte
 	$message = '<!DOCTYPE html>
 	<html lang="fr">
@@ -19,7 +20,8 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 			<meta charset="UTF-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Relance pour le pointage GTA du mois de ' .tabMoisAnnee()[$periode]. '</title>
+			<title>Information pour le pointage GTA du mois de ' .tabMoisAnnee()[$periode]. '</title>
+			
 		</head>
 		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
 			<table>
@@ -28,12 +30,12 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 				</tr>
 				<tr>
 					<td>
-						La saisie de votre pointage GTA pour le mois de ' .tabMoisAnnee()[$periode];
-	if ($etat != null)
-		$message .= ' n\'est pas terminée. ';
-	else $message .= ' n\'a pas encore été réalisée. ';
+						Pour effectuer la saisie de votre pointage GTA pour le mois de ' .tabMoisAnnee()[$periode];
+	// if ($etat != null)
+	// 	$message .= ' n\'est pas terminée. ';
+	// else $message .= ' n\'a pas encore été réalisée. ';
 
-	$message .= 'Nous vous invitons à le faire .
+	$message .= '. Nous vous invitons à aller sur la nouvelle application .
 					</td>
 				</tr>
 				<tr>	<td class="pad-bttm" style="padding-bottom: 1rem;">Pour saisir votre pointage, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</td>';
@@ -56,10 +58,8 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 
 	// Envoi du mail
 	echo $adresseMail."<br>\n";
-	if ($adresseMail=='fanny.fardel2@afpa.fr')
-	{	
+	
 		return mail($adresseMail ,  $sujet, $message, $headers);
-	}
 }
 
 
