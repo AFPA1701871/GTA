@@ -87,7 +87,7 @@ if (change) {
         let aideMdp = document.getElementsByClassName("aideMdp")[0];
         aideMdp.style.display = "flex";
         let lesImages = aideMdp.getElementsByTagName("i");
-        let lesCheck = ["([a-zA-Z0-9!@#\$%\^&\*+]{8,})", "(?=.*[A-Z])", "(?=.*[a-z])", "(?=.*[0-9])", "(?=.*[!@#\$%\^&\*+])"];
+        let lesCheck = ["([a-zA-Z0-9!@#\$%\^&\*+\-\/.~²'{([|`_^)=}¨£¤µ?,;:§<>]{8,})", "(?=.*[A-Z])", "(?=.*[a-z])", "(?=.*[0-9])", "(?=.*[!@#\$%\^&\*+\-\/.~²'{([|`_^)=}¨£¤µ?,;:§<>])"];
         for (let i = 0; i < lesCheck.length; i++) {
             if (RegExp(lesCheck[i]).test(mdp.value)) {
                 //la condition est vérifiée, on met la coche verte correspondente

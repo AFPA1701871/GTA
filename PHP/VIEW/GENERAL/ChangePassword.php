@@ -25,7 +25,7 @@
             <div class="relative col-span-form-chg-pwd ligne">
                 <label for="passwordUtilisateur" class=center><?= texte('Mdp'); ?> :</label>
                 <div>
-                    <input type="password" id="mdpUser" name="passwordUtilisateur" required class="minWidth" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
+                    <input type="password" id="mdpUser" name="passwordUtilisateur" required class="minWidth" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+\-\/.~([|`_^)=}¨£¤µ?,;:§<>])[a-zA-Z\d!@#\$%\^&\*+\-\/.~²'{([|`_^)=}¨£¤µ?,;:§<>]{8,}$">
                     <i class="oeil fas fa-eye"></i>
                 </div>
 
@@ -62,7 +62,7 @@
             <div class="relative col-span-form-chg-pwd ligne">
                 <label for="confirmation"  class=center>Confirmation de mot de passe :</label>
                 <div>
-                    <input type="password" id="confirmation" name="confirmation" title="remettre le même mot de passe" class="minWidth" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+])[a-zA-Z\d!@#\$%\^&\*+]{8,}$">
+                    <input type="password" id="confirmation" name="confirmation" title="remettre le même mot de passe" class="minWidth" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+\-\/.~([|`_^)=}¨£¤µ?,;:§<>])[a-zA-Z\d!@#\$%\^&\*+\-\/.~²'{([|`_^)=}¨£¤µ?,;:§<>]{8,}$">
 
                     <i class="oeil fas fa-eye"></i>
                 </div>
