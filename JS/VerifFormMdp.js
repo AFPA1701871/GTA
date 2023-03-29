@@ -31,7 +31,7 @@ function checkAllValidity(){
     for (var key in tabErreur) {
         if (tabErreur[key]==0)
         valider.disabled =true;
-    }
+    }    
 }
 
 url = window.location.search;
@@ -116,8 +116,8 @@ if (change) {
             else{
                 tabErreur["confirmer"] = 1;
             }
-            checkAllValidity();
         }
+        checkAllValidity();
     });
     mdp.addEventListener("input",function (e){
         isValid = mdp.checkValidity();
@@ -126,6 +126,12 @@ if (change) {
         }
         else{
             tabErreur["mdp"] = 1;
+            if (confirmer.value != mdp.value) {
+                tabErreur["confirmer"] = 0;
+            }
+            else{
+                tabErreur["confirmer"] = 1;
+            }
         }
         checkAllValidity();
     });
