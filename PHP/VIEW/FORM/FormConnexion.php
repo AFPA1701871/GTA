@@ -25,7 +25,7 @@ global $regex;
             <input class="btnPrincipale" type="submit" value="<?php echo texte('Se connecter') ?>">
         </form>
 
-        <h3>A la première connexion, votre identifiant et votre mot de passe correspondent à votre matricule en MAJUSCULE</h3>
+        <h3>A la première connexion, votre identifiant = votre matricule en MAJUSCULE</h3><h3>et votre mot de passe = votre matricule en MAJUSCULE</h3>
     </section>
 
 </main>
