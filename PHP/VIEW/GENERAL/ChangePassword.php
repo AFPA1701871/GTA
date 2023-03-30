@@ -1,11 +1,11 @@
 <?php
 global $regex;
-                if (isset($_GET['src'])) {
-                    if ($_GET['src']) {
-                       include './PHP/VIEW/GENERAL/Nav.php';
-                    }
-                }
-                ?>
+if (isset($_GET['src'])) {
+    if ($_GET['src']) {
+        include './PHP/VIEW/GENERAL/Nav.php';
+    }
+}
+?>
 <main>
 
     <section class="center colonne">
@@ -16,11 +16,11 @@ global $regex;
                     if ($_GET['src']) {
                         echo '<h1 class=titre>Changement de mot de passe</h1>';
                     }
-                }else{
+                } else {
                     echo '<h1 class=titre>Vous devez changer votre mot de passe pour continuer</h1>';
                 }
                 ?>
-                
+
             </div>
             <div class="bigEspace"></div>
             <div class="relative col-span-form-chg-pwd ligne">
@@ -32,11 +32,6 @@ global $regex;
 
                 <div class="aideMdp absolu">
                     <div>Liste des critères à respecter !! </div>
-                    <div>
-                        <div class="mini"><i class="fas fa-times-circle fa-red"></i>
-                        </div>
-                        <div> 8 caractères minimum</div>
-                    </div>
                     <div>
                         <div class="mini"><i class="fas fa-times-circle fa-red"></i>
                         </div>
@@ -57,11 +52,16 @@ global $regex;
                         </div>
                         <div>caractères spéciaux</div>
                     </div>
+                    <div>
+                        <div class="mini"><i class="fas fa-times-circle fa-red"></i>
+                        </div>
+                        <div> 8 caractères minimum</div>
+                    </div>
                 </div>
             </div>
 
             <div class="relative col-span-form-chg-pwd ligne">
-                <label for="confirmation"  class=center>Confirmation de mot de passe :</label>
+                <label for="confirmation" class=center>Confirmation de mot de passe :</label>
                 <div>
                     <input type="password" id="confirmation" name="confirmation" title="remettre le même mot de passe" class="minWidth" required pattern="<?= $regex["pwd"] ?>">
 
@@ -69,16 +69,16 @@ global $regex;
                 </div>
             </div>
             <div></div>
-                <div></div>
+            <div></div>
             <div class="relative col-span-form-chg-pwd ligne">
                 <div></div>
                 <div>
-                <input class="btnPrincipale" type="submit" id="submit" value="<?= texte('Modifier')  ?>" disabled></button>
+                    <input class="btnPrincipale" type="submit" id="submit" value="<?= texte('Modifier')  ?>" disabled></button>
                 </div>
             </div>
 
             <div></div>
-            
+
         </form>
     </section>
 </main>

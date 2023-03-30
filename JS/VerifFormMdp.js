@@ -122,7 +122,7 @@ if (change) {
             tabErreur["confirmer"] = 0;
         } else {
             isValid = confirmer.checkValidity();
-            if (!isValid && confirmer.value == "") {
+            if (!isValid || confirmer.value == "") {
                 tabErreur["confirmer"] = 0;
             }
             else{
@@ -133,6 +133,7 @@ if (change) {
     });
     mdp.addEventListener("input",function (e){
         isValid = mdp.checkValidity();
+        //console.log(isValid);
         if (!isValid || mdp.value == "") {
             tabErreur["mdp"] = 0;
         }
