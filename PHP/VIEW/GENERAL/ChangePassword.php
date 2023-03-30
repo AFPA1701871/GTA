@@ -1,4 +1,5 @@
 <?php
+global $regex;
                 if (isset($_GET['src'])) {
                     if ($_GET['src']) {
                        include './PHP/VIEW/GENERAL/Nav.php';
@@ -25,7 +26,7 @@
             <div class="relative col-span-form-chg-pwd ligne">
                 <label for="passwordUtilisateur" class=center><?= texte('Mdp'); ?> :</label>
                 <div>
-                    <input type="password" id="mdpUser" name="passwordUtilisateur" required class="minWidth" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+\-\/.~([|`_^)=}¨£¤µ?,;:§<>])[a-zA-Z\d!@#\$%\^&\*+\-\/.~²'{([|`_^)=}¨£¤µ?,;:§<>]{8,}$">
+                    <input type="password" id="mdpUser" name="passwordUtilisateur" required class="minWidth" pattern="<?= $regex["pwd"] ?>">
                     <i class="oeil fas fa-eye"></i>
                 </div>
 
@@ -62,7 +63,7 @@
             <div class="relative col-span-form-chg-pwd ligne">
                 <label for="confirmation"  class=center>Confirmation de mot de passe :</label>
                 <div>
-                    <input type="password" id="confirmation" name="confirmation" title="remettre le même mot de passe" class="minWidth" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[!@#\$%\^&\*+\-\/.~([|`_^)=}¨£¤µ?,;:§<>])[a-zA-Z\d!@#\$%\^&\*+\-\/.~²'{([|`_^)=}¨£¤µ?,;:§<>]{8,}$">
+                    <input type="password" id="confirmation" name="confirmation" title="remettre le même mot de passe" class="minWidth" required pattern="<?= $regex["pwd"] ?>">
 
                     <i class="oeil fas fa-eye"></i>
                 </div>
@@ -75,8 +76,6 @@
                 <input class="btnPrincipale" type="submit" id="submit" value="<?= texte('Modifier')  ?>" disabled></button>
                 </div>
             </div>
-
-
 
             <div></div>
             

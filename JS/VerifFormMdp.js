@@ -1,3 +1,22 @@
+var mdp = document.querySelector('#mdpUser');
+var confirmer = document.querySelector('#confirmation');
+var email = document.querySelector('#email');
+var valider = document.querySelector('#submit');
+var erreur = document.querySelector('.erreur');
+
+/**
+ * Récupération du regex pour les mots de passe
+ */
+let regexPwd = mdp.pattern;
+var listRegexPwd = regexPwd.split(")(");
+for (let index = 0; index < listRegexPwd.length; index++) {
+    if(index!=0){
+        listRegexPwd[index]="("+listRegexPwd[index];
+    }
+    if(index!=listRegexPwd.length-1){
+        listRegexPwd[index]=listRegexPwd[index]+")";
+    }
+}
 
 /**
  * Change le type de l'input mot de passe
@@ -51,12 +70,6 @@ if (url.indexOf("Change") > 0) {
         "confirmer":1
     }
 }
-var mdp = document.querySelector('#mdpUser');
-var confirmer = document.querySelector('#confirmation');
-var email = document.querySelector('#email');
-var valider = document.querySelector('#submit');
-var erreur = document.querySelector('.erreur');
-
 
 //gestion de l'oeil dans le mot de passe
 var listeOeil = document.getElementsByClassName("oeil");
@@ -87,9 +100,8 @@ if (change) {
         let aideMdp = document.getElementsByClassName("aideMdp")[0];
         aideMdp.style.display = "flex";
         let lesImages = aideMdp.getElementsByTagName("i");
-        let lesCheck = ["([a-zA-Z0-9!@#\$%\^&\*+\-\/.~²'{([|`_^)=}¨£¤µ?,;:§<>]{8,})", "(?=.*[A-Z])", "(?=.*[a-z])", "(?=.*[0-9])", "(?=.*[!@#\$%\^&\*+\-\/.~²'{([|`_^)=}¨£¤µ?,;:§<>])"];
-        for (let i = 0; i < lesCheck.length; i++) {
-            if (RegExp(lesCheck[i]).test(mdp.value)) {
+        for (let i = 0; i < listRegexPwd.length; i++) {
+            if (RegExp(listRegexPwd[i]).test(mdp.value)) {
                 //la condition est vérifiée, on met la coche verte correspondente
                 lesImages[i].classList = "fas fa-check-circle fa-green";
             } else {
