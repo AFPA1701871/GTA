@@ -172,7 +172,7 @@ function ajoutLigne() {
     // On sépare le code ([0]) et le libelle ([1])
     splitPresta = splitCodeLibelle(libelleSelectPresta);
 
-    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', '<input value="' + splitPresta[1] + '" disabled><input type=hidden name=idPrestation value="' + idPresta + '" dataline >');
+    nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('<input name="idPrestation">', (splitPresta[1].length>30?'<textarea disabled>'+ splitPresta[1] + '</textarea>':'<input value="' + splitPresta[1] + '" disabled>')+'<input type=hidden name=idPrestation value="' + idPresta + '" dataline >');
 
     // Code Prestation
     nouvelleLigne.innerHTML = nouvelleLigne.innerHTML.replace('"codePrestation"', '"codePrestation" value="' + splitPresta[0] + '" title="' + splitPresta[0] + '"');

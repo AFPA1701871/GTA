@@ -340,6 +340,23 @@ body.modaleOpen{
     overflow: hidden;
 }
 
+/**************Textarea pour les prestations**************/
+
+textarea{
+    width: 100%;
+    height: 100%;
+    resize: none;
+    font-size: 1.2rem;
+    max-height: 2.8rem;
+    -ms-overflow-style: none;
+    scrollbar-width: none;    
+    font-family: 'Roboto', sans-serif;
+}
+textarea::-webkit-scrollbar{
+    display:none;
+}
+
+
 /******************MEDIA QUERIES***************************/
 
 @media (max-width: 1514px) {

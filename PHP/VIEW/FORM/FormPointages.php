@@ -76,12 +76,11 @@ for ($i = 1; $i <= $nbrJoursMois; $i++) {
             $tabJour[$i]["contentL1"] = "<input disabled class=' notApplicable inputPointage casePointage'>";
         } else {
             $nbJourPointe++;
-            if(($pointageAbs!=null && $pointageAbs[0]->getNbHeuresPointage()==1)){
+            if (($pointageAbs != null && $pointageAbs[0]->getNbHeuresPointage() == 1)) {
                 $tabJour[$i]["classeBG"] = "notApplicable";
                 $tabJour[$i]["contentL1"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage  notApplicable" value type="text" idPointage >';
                 $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage  notApplicable" type="text" idPointage disabled>';
-            }
-            else{
+            } else {
                 $tabJour[$i]["classeBG"] = "work";
                 $tabJour[$i]["content"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage " value type="text" idPointage >';
                 $tabJour[$i]["contentL1"] = '<input data-date="' . $jour->format("Y-m-d") . '" data-line class="inputPointage casePointage " value type="text" idPointage >';
@@ -112,8 +111,8 @@ foreach ($typesPrestations as $key => $typePresta) {
         if ($prestation->getIdMotif() != null) $cond["idMotif"] = $prestation->getIdMotif();
         if ($prestation->getIdProjet() != null) $cond["idProjet"] = $prestation->getIdProjet();
 
-        $pref = PreferencesManager::getList(null, $cond,null,null,false,false);
-         $pref = ($pref !=false )?$pref[0]: new Preferences();
+        $pref = PreferencesManager::getList(null, $cond, null, null, false, false);
+        $pref = ($pref != false) ? $pref[0] : new Preferences();
         $classFavorisActif = ($pref->getIdPreference() != null) ? 'favActive' : '';
 
         // Gestion de l'affichage de "Hors RTT" en rouge -> appelé 10 lignes plus bas
@@ -125,8 +124,14 @@ foreach ($typesPrestations as $key => $typePresta) {
               <div ' . $dataline . ' class="center grid-lineDouble grid-columns-span-2 prestaLine">
                   <div class="center grid-lineDouble  grid-columns-span-4">
                   <input type=hidden name=idPrestation value = "' . $prestation->getIdPrestation() . '" ' . $dataline . '>
-                  <input type=hidden name=idPreference value = "' . $pref->getIdPreference() . '" ' . $dataline . '>
-                  <input value = "' . $prestation->getLibellePrestation() . '" ' . $classRTT . ' disabled>
+                  <input type=hidden name=idPreference value = "' . $pref->getIdPreference() . '" ' . $dataline . '>';
+        if (strlen($prestation->getLibellePrestation()) > 30) {
+            echo '<textarea ' . $classRTT . ' disabled>' . $prestation->getLibellePrestation() . '</textarea>';
+        } else {
+            echo '<input value = "' . $prestation->getLibellePrestation() . '" ' . $classRTT . ' disabled>';
+        }
+
+        echo '
                       <div class="favorise vMini cellRight"><i class="fas fa-fav ' . $classFavorisActif . ' "></i></div>
                       <div class=" border-left expand-line vMini"><i class="fas fa-open" ' . $dataline . '></i></div>
                             </div>
@@ -164,36 +169,36 @@ foreach ($typesPrestations as $key => $typePresta) {
             </div>';
 
         // Partie Pointage
-            $conditions = [];
-            $total = 0;
-           // on prépare les conditions pour aller chercher le pointage 
-           $conditions["idTypePrestation"] = $idTypePrestation;
-           $conditions["idUtilisateur"] = $idUtilisateur;
-           $conditions["idPrestation"] = $prestation->getIdPrestation();
-           if ($prestation->getMotifRequis() ) $conditions["idMotif"] = $prestation->getIdMotif();
-           if ($prestation->getProjetRequis() ) $conditions["idProjet"] = $prestation->getIdProjet();
-           if ($prestation->getUoRequis() ) $conditions["idUo"] = $prestation->getIdUo();
-           $conditions["datePointage"]=$periode."%";
-           $pointages = PointagesManager::getList(null, $conditions, null, null, false, false);
-            foreach ($pointages as $value) {
-               $total += $value->getNbHeuresPointage();  
-            }
+        $conditions = [];
+        $total = 0;
+        // on prépare les conditions pour aller chercher le pointage 
+        $conditions["idTypePrestation"] = $idTypePrestation;
+        $conditions["idUtilisateur"] = $idUtilisateur;
+        $conditions["idPrestation"] = $prestation->getIdPrestation();
+        if ($prestation->getMotifRequis()) $conditions["idMotif"] = $prestation->getIdMotif();
+        if ($prestation->getProjetRequis()) $conditions["idProjet"] = $prestation->getIdProjet();
+        if ($prestation->getUoRequis()) $conditions["idUo"] = $prestation->getIdUo();
+        $conditions["datePointage"] = $periode . "%";
+        $pointages = PointagesManager::getList(null, $conditions, null, null, false, false);
+        foreach ($pointages as $value) {
+            $total += $value->getNbHeuresPointage();
+        }
         echo '    <div class="grid-pointage tabCol pointMove">';
-        echo '                <div class=" center grid-lineDouble colTotal" ' . $dataline . '>'.$total.'</div>';
+        echo '                <div class=" center grid-lineDouble colTotal" ' . $dataline . '>' . $total . '</div>';
         echo '                <div class=" center grid-lineDouble colPrctGTA border-left" ' . $dataline . '></div>';
         echo '                <div class=" grid-lineDouble"></div>';
         foreach ($tabJour as $i => $value) {
-           $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
+            $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
 
-            $contentUsed=($idTypePrestation==1)?$value['contentL1']:$value['content'];
+            $contentUsed = ($idTypePrestation == 1) ? $value['contentL1'] : $value['content'];
 
             $content = str_replace("data-line", $dataline, $contentUsed);
             $jour = (new Datetime())->setDate($periodeTab[0], $periodeTab[1], $i);
             $conditions["datePointage"] = $jour->format("Y-m-d");
-             //echo json_encode($conditions);
+            //echo json_encode($conditions);
             $pointage = PointagesManager::getList(null, $conditions, null, null, false, false);
             if ($pointage != false) {
-                $content = str_replace("value", ' value="' . ($pointage[0]->getNbHeuresPointage()!=0?$pointage[0]->getNbHeuresPointage():"") . '" ', $content);
+                $content = str_replace("value", ' value="' . ($pointage[0]->getNbHeuresPointage() != 0 ? $pointage[0]->getNbHeuresPointage() : "") . '" ', $content);
                 $content = str_replace("idPointage", ' data-idPointage="' . $pointage[0]->getIdPointage() . '" ', $content);
             }
             echo '        <div class="center grid-lineDouble  ' . $value["classeBG"] . '"  >' . $content . '</div>';
@@ -312,4 +317,3 @@ echo '<template id="contentModale">
             </div>
             <div class="cote"></div>
 </template>';
-
