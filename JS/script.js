@@ -65,3 +65,20 @@ function changePageSynthese(){
   }
   window.location.href = "index.php?page=" + url.searchParams.get('page') + "&idUtilisateur=" + idUser + "&periode=" + comboPeriode.value;
 }
+
+/**************************************************************************/
+/* Script pour affichage des totaux en titre de colonne dans TbAssistante */
+/**************************************************************************/
+
+if(window.location.href.indexOf("TbAssistante")>-1){
+  let titreSaisis = document.querySelector('[id="titreSaisis"]');
+  let titreValides = document.querySelector('[id="titreValides"]');
+  let titreReportes = document.querySelector('[id="titreReportes"]');
+  let totalAgents = document.querySelector('input[name="totalAgents"]').value;
+  let totalSaisis = document.querySelector('input[name="totalRemplis"]').value;
+  let totalValides = document.querySelector('input[name="totalValides"]').value;
+  let totalReportes = document.querySelector('input[name="totalReportes"]').value;
+  titreSaisis.innerHTML+="<br />"+totalSaisis+"/"+totalAgents;
+  titreValides.innerHTML+="<br />"+totalValides+"/"+totalAgents;
+  titreReportes.innerHTML+="<br />"+totalReportes+"/"+totalAgents;
+}
