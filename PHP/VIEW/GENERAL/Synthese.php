@@ -26,17 +26,17 @@ $listePointage = View_PointagesManager::getSomme($idUtilisateur, $periode);
 if (!$listePointage) {
     $statut = "Indisponible";
 } else {
-    $vStatut=0;
-    $rStatut=0;
-    $indStatut=0;
-    do{
-        $vStatut=MAX($vStatut, $listePointage[$indStatut]->getValidePointage());
-        $rStatut=MAX($rStatut, $listePointage[$indStatut]->getReportePointage());
+    $vStatut = 0;
+    $rStatut = 0;
+    $indStatut = 0;
+    do {
+        $vStatut = MAX($vStatut, $listePointage[$indStatut]->getValidePointage());
+        $rStatut = MAX($rStatut, $listePointage[$indStatut]->getReportePointage());
         $indStatut++;
-    }while (($rStatut==0 || $vStatut==0) && $indStatut<count($listePointage));
+    } while (($rStatut == 0 || $vStatut == 0) && $indStatut < count($listePointage));
 
-    $statut = ($vStatut >0) ? "validé " : "";
-    $statut .= ($rStatut >0) ? "reporté SIRH " : "";
+    $statut = ($vStatut > 0) ? "validé " : "";
+    $statut .= ($rStatut > 0) ? "reporté SIRH " : "";
     // $statut = ($listePointage[0]->getValidePointage() >0) ? "validé " : "";
     // $statut .= ($listePointage[0]->getReportePointage() >0) ? "reporté SIRH " : "";
 }
@@ -61,7 +61,7 @@ if (!$listePointage) {
         $message = 'Veuillez choisir un utilisateur parmis la liste.';
     }
     echo '  <section>
-                <div class="vCenter gras">'.$message.'</div>
+                <div class="vCenter gras">' . $message . '</div>
             </section>';
 } else {
     //////////////////////////////////////////
@@ -71,10 +71,11 @@ if (!$listePointage) {
     echo '<div clas="NoDisplay" id=idPeriode data-value="' . $periode . '"></div>';
     echo '<section class="cards">';
     $cardNum = 1;
-    $joursAbs=0;
-    $modifAbsences=false;
+    $joursAbs = 0;
+    $modifAbsences = false;
+    $totalPrct = 0;
     foreach ($listePointage as $key => $pointage) {
-
+        $prct=0;
         $displayClass = " deuxCol ";
         if ($pointage->getNumeroTypePrestation() == 1) {
             // Mémorisation des heures d'absences
@@ -82,18 +83,21 @@ if (!$listePointage) {
             // On cache la carte des absences
             $displayClass = " noDisplay ";
             // Si modif du nombre de jours absents => modif des % sur toutes les prestations
-            $modifAbsences=$roleConnecte>=3?($pointage->getReportePointage()!=2):($pointage->getValidePointage()!=2);
+            $modifAbsences = $roleConnecte >= 3 ? ($pointage->getReportePointage() != 2) : ($pointage->getValidePointage() != 2);
             // On décrémente le numéro de la carte pour rester correct
             $cardNum--;
         }
         // Calcul du %GTA de la prestation 
-        $prct=(($joursOuvres - $joursAbs != 0) ? Round($pointage->getNbHeuresPointage() / ($joursOuvres - $joursAbs) * 100, 2) : 0);
+        if ($pointage->getNumeroTypePrestation() != 1) {
+            $prct = (($joursOuvres - $joursAbs != 0) ? Round($pointage->getNbHeuresPointage() / ($joursOuvres - $joursAbs) * 100, 2) : 0);
+            $totalPrct += $prct;
+        }
         // Si 0, on n'affiche pas la carte
-        if($prct==0){
+        if ($prct == 0) {
             $displayClass = " noDisplay ";
         }
         // Check, en fonction du rôle, si la prestation en cours contient des pointages non-validés/non-reportés
-        $estModif = $roleConnecte>=3?($pointage->getReportePointage()!=2):($pointage->getValidePointage()!=2);
+        $estModif = $roleConnecte >= 3 ? ($pointage->getReportePointage() != 2) : ($pointage->getValidePointage() != 2);
         // Changement de l'affichage de la prestation si présence de pointages pas reportés
         $styleModif = "";
         if ($estModif || $modifAbsences) {
@@ -123,14 +127,15 @@ if (!$listePointage) {
             </div>            
             <div class="innerCard">
                 <label class="bgc line">Pourcentage</label>
-                <div class=" line right gras">'.$prct . '%</div>
+                <div class=" line right gras">' . $prct . '%</div>
             </div>
         </div>';
         $cardNum++;
     }
     echo '</section>
+    <section class=" vCenter center"><div>Pourcentage total: ' . $totalPrct . '%</div></section>
     ';
-    
+
 
     ///////////////////////////////////
     // Fin des différents affichages //
