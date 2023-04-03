@@ -1,6 +1,6 @@
 <?php
-//EnvoiMail();
-envoiMailRelancePointage('dorothee.defever@afpa.fr','2023-03',null);
+EnvoiMail();
+//envoiMailRelancePointage('dorothee.defever@afpa.fr','2023-03',null);
 /**
  * Permet d'envoyer un mail de relance pour la saisie du pointage
  *
