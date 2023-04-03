@@ -21,11 +21,10 @@ echo '</div>';
 
 echo '<div class="mini center titre" >Etat des pointages</div>';
 echo '<div id="tabManagers">';
-    // Ajout d'ID sur les titres des colonnes "Saisis", "Validés" et "Report SIRH" pour ajout des totaux par JS
     echo '<div class="vCenter gras borderbottom ">Nom du Manager</div>';
-    echo '<div class="vCenter gras borderbottom " id="titreSaisis">Saisis</div>';
-    echo '<div class="vCenter gras borderbottom " id="titreValides">Validés</div>';
-    echo '<div class="vCenter gras borderbottom " id="titreReportes">Report SIRH</div>';
+    echo '<div class="vCenter gras borderbottom ">Saisis</div>';
+    echo '<div class="vCenter gras borderbottom ">Validés</div>';
+    echo '<div class="vCenter gras borderbottom ">Report SIRH</div>';
     echo '<div class="vCenter borderbottom "></div>';
 
     $managers = View_UtilisateursManager::getList(['idUtilisateur','nomUtilisateur'], ['idRole'=>2, 'Actif'=>1], 'nomUtilisateur');
@@ -62,18 +61,6 @@ echo '<div id="tabManagers">';
     ////////////////////////////////////////////////////
 
 echo '</div></section>';
-
-////////////////////////////////////////////////////
-// Début stockage des totaux pour passage JS
-////////////////////////////////////////////////////
-echo '<input type="hidden" name="totalAgents" value='.$totalAgents.' />';
-echo '<input type="hidden" name="totalRemplis" value='.$totalRempli.' />';
-echo '<input type="hidden" name="totalValides" value='.$totalValide.' />';
-echo '<input type="hidden" name="totalReportes" value='.$nbReports.' />';
-////////////////////////////////////////////////////
-// Fin stockage des totaux pour passage JS
-////////////////////////////////////////////////////
-
 echo '<div class="cote"></div>';
 // ********** DEUXIEME COLONNE **********
 echo '<section class="colonne">';
