@@ -170,3 +170,11 @@
 .favActive {
     color: rgb(212, 212, 7);
 }
+
+.fa-pointages::before{
+    content: "\F00B";
+}
+
+.fa-syntheses::before{
+    content: "\F00A";
+}

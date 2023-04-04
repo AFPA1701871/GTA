@@ -21,6 +21,10 @@ $listeUtilisateursFiniPeriode = View_PointagesManager::getListSaisiesCompl($peri
 //on récupère la liste du pointage
 $listePointage = View_PointagesManager::getSomme($idUtilisateur, $periode);
 
+// Pour le retour au TbManager
+$idManager  = ($roleConnecte>=3)?$utilisateur->getIdManager():$_SESSION['utilisateur']->getIdUtilisateur();
+echo '<input type="hidden" name="retourManager" value='.$idManager.'>';
+
 /**********************Il faut vérifier sur tous les pointages cas des changements après validation ******************** */
 
 if (!$listePointage) {
@@ -70,7 +74,7 @@ if (!$listePointage) {
     echo '<div clas="NoDisplay" id=idUtilisateur data-value=' . $idUtilisateur . '></div>';
     echo '<div clas="NoDisplay" id=idPeriode data-value="' . $periode . '"></div>';
     echo '<div class="cote"></div>
-            <div><div></div><div class="mini"><a class="" href="?page=FormPointages&idUtilisateur='.$idUtilisateur.'&periode='.$periode.'">Son pointage</a></div></div>
+            <div><div></div><div class="mini vCenter"><a class="vCenter" href="?page=FormPointages&idUtilisateur='.$idUtilisateur.'&periode='.$periode.'"><i class="fas fa-pointages"></i>&nbsp;Son pointage</a></div></div>
         <div class="cote"></div>';
     echo '<section class="cards">';
     $cardNum = 1;
