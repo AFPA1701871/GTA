@@ -69,6 +69,9 @@ if (!$listePointage) {
     //////////////////////////////////////////
     echo '<div clas="NoDisplay" id=idUtilisateur data-value=' . $idUtilisateur . '></div>';
     echo '<div clas="NoDisplay" id=idPeriode data-value="' . $periode . '"></div>';
+    echo '<div class="cote"></div>
+            <div><div></div><div class="mini"><a class="" href="?page=FormPointages&idUtilisateur='.$idUtilisateur.'&periode='.$periode.'">Son pointage</a></div></div>
+        <div class="cote"></div>';
     echo '<section class="cards">';
     $cardNum = 1;
     $joursAbs = 0;
