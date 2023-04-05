@@ -196,7 +196,7 @@ function EnvoiMail()
 		if ($jourMois > 25)
 			$periode = $dateJour->format("Y-m"); // mois en cours
 		else //mois précédent
-			$periode = $dateJour->format("Y") . '-' . $dateJour->format("m"); // mois en cours
+			$periode = $dateJour->format("Y") . '-' . ($dateJour->format("m")-1); // mois en cours
 
 		/*  Pointage  */
 		// Récupération de la liste des agents actifs
