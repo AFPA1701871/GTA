@@ -27,7 +27,7 @@ echo '<div id="tabManagers">';
     echo '<div class="vCenter gras borderbottom ">Report SIRH</div>';
     echo '<div class="vCenter borderbottom "></div>';
 
-    $managers = UtilisateursManager::getList(['idUtilisateur','nomUtilisateur'], ['idRole'=>2], 'nomUtilisateur');
+    $managers = View_UtilisateursManager::getList(['idUtilisateur','nomUtilisateur'], ['idRole'=>2, 'Actif'=>1], 'nomUtilisateur');
     foreach ($managers as $key => $manager) {
         $bgc = ($key%2 == 0) ? '': 'bgc';
         $idManager = $manager->getIdUtilisateur();
@@ -46,8 +46,21 @@ echo '<div id="tabManagers">';
         $totalRempli += $saisi;
         $totalValide += $valide;
     }
-echo '</div></section>';
 
+    ////////////////////////////////////////////////////
+    // Début Affichages des totaux après le tableau
+    ////////////////////////////////////////////////////
+    $bgc = ($bgc=='bgc')?'':'bgc';
+    echo '<div class="vCenter gras '.$bgc.'">Totaux</div>';
+    echo '<div class="vCenter gras '.$bgc.'">'.$totalRempli.'/'.$totalAgents.'</div>';
+    echo '<div class="vCenter gras '.$bgc.'">'.$totalValide.'/'.$totalAgents.'</div>';
+    echo '<div class="vCenter gras '.$bgc.'">'.$nbReports.'/'.$totalAgents.'</div>';
+    echo '<div class="vCenter '.$bgc.'"></div>';
+    ////////////////////////////////////////////////////
+    // Fin Affichages des totaux après le tableau
+    ////////////////////////////////////////////////////
+
+echo '</div></section>';
 echo '<div class="cote"></div>';
 // ********** DEUXIEME COLONNE **********
 echo '<section class="colonne">';

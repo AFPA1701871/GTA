@@ -39,7 +39,13 @@ echo '        </div>
                 <div></div>
                 <div class=titreInfosUser>Uo d\'affectation : </div>
                 <div>' . $user->getNumeroUo() . '</div>
-                <div class="grid-columns-span-17 espace"></div>
+                <div class="grid-columns-span-17 espace"></div>';
+if ($roleConnecte >= 2) {
+    echo '
+                <div class="grid-columns-span-17 espace"><div></div><div class="mini vCenter"><a class="vCenter" href="?page=Synthese&idUtilisateur=' . $idUtilisateur . '&periode=' . $periode . '"><i class="fas fa-syntheses"></i>&nbsp;Sa synthèse</a></div></div>
+                <div class="grid-columns-span-17 espace"></div>';
+}
+echo '
             </div>';
 // Entete de Prestations
 echo '  <div class=" tabCol pointHead invisible trans  center">

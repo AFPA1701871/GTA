@@ -55,5 +55,7 @@ function valider(event) {
  *
  */
 function retour() {
-  window.history.back();
+  let idManager=document.querySelector('input[name="retourManager"]').value;
+  let periode = document.querySelector("#idPeriode").getAttribute("data-value");
+  window.location.href= "index.php?page=TbManager&idUtilisateur="+idManager+"&periode=" + periode;
 }
