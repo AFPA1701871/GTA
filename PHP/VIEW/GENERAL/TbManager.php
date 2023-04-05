@@ -14,7 +14,13 @@ $agents = View_UtilisateursManager::getListActifPeriode($periode,  $idManager);
 // *** partie combobox mois/annee ***
 echo '<div id="divComboDate" class="demi center">';
 echo creerSelectTab($periode, tabMoisAnnee(), 'periode', true, "class='demi'");
-echo '<div class="mini"></div><div class="center highlight">Manager concerné : ' . $manager->getNomUtilisateur() . '</div>';
+echo '<div class="mini"></div><div class="center highlight">Manager concerné : ';
+if($roleConnecte>=3){
+    echo creerSelect($idManager, "Utilisateurs", ["nomUtilisateur"], "", ["idRole"=>2], "nomUtilisateur", "idUser", "Choisissez un manager");
+}else{
+    echo $manager->getNomUtilisateur();
+}
+echo '</div>';
 echo '</div>';
 
 // *** partie tableau agents ***

@@ -24,22 +24,29 @@ echo '  <main>
             <div class="mainGrid grid-col2-reduct">
                 <div class="grid-columns-span-2 center infosUser">
                     <div class=titreInfosUser>Année : </div>
-                <div>';
-echo            creerSelectTab($periode, tabMoisAnnee(), "periode", true, null);
-echo '        </div>
-              <div></div>
-                <div class="titreInfosUser highlight">Nom : </div>
-                <div class="highlight">' . $user->getNomUtilisateur() . '</div>
-                <div></div>
-                <div class=titreInfosUser>Matricule : </div>
-                <div>' . $user->getMatriculeUtilisateur() . '</div>
-                <div></div>
-                <div class=titreInfosUser>Centre de rattachement :</div>
-                <div>' . $user->getNomCentre() . '</div>
-                <div></div>
-                <div class=titreInfosUser>Uo d\'affectation : </div>
-                <div>' . $user->getNumeroUo() . '</div>
-                <div class="grid-columns-span-17 espace"></div>';
+                    <div>';
+echo                    creerSelectTab($periode, tabMoisAnnee(), "periode", true, null);
+echo '              </div>
+                    <div></div>
+                    <div class="highlight center">
+                        <div class="titreInfosUser">Nom : </div>';
+                        if ($roleConnecte >= 2) {
+                            $listeActifPeriode = View_UtilisateursManager::getList(["idUtilisateur", "nomUtilisateur"], ["Actif"=>1], "nomUtilisateur", null, false, false);
+                            echo '<div>' . creerSelect($idUtilisateur, "View_Utilisateurs", ["nomUtilisateur"], "", ["Actif"=>1], "nomUtilisateur", "idUser", "Choisissez un utilisateur") . '</div>';
+                        } else {
+                            echo '<div>' . $user->getNomUtilisateur() . '</div>';
+                        }
+echo '              </div>
+                    <div></div>
+                    <div class=titreInfosUser>Matricule : </div>
+                    <div>' . $user->getMatriculeUtilisateur() . '</div>
+                    <div></div>
+                    <div class=titreInfosUser>Centre de rattachement :</div>
+                    <div>' . $user->getNomCentre() . '</div>
+                    <div></div>
+                    <div class=titreInfosUser>Uo d\'affectation : </div>
+                    <div>' . $user->getNumeroUo() . '</div>
+                    <div class="grid-columns-span-17 espace"></div>';
 if ($roleConnecte >= 2) {
     echo '
                 <div class="grid-columns-span-17 espace"><div></div><div class="mini vCenter"><a class="vCenter" href="?page=Synthese&idUtilisateur=' . $idUtilisateur . '&periode=' . $periode . '"><i class="fas fa-syntheses"></i>&nbsp;Sa synthèse</a></div></div>
