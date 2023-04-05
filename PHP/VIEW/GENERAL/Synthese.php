@@ -15,7 +15,7 @@ $periode = (isset($_GET['periode'])) ? $_GET['periode'] : periodeEnCours($idUtil
 //on récupère le nombre de jour ouvré
 $joursOuvres = NbJourParPeriode($periode);
 // On récupère la liste de tous les utilisateurs ayant complètement saisie la période
-$syntheseManager = ($_SESSION['utilisateur']->getIdRole() != 3) ? $_SESSION['utilisateur']->getIdUtilisateur() : null;
+$syntheseManager = ($_SESSION['utilisateur']->getIdRole() < 3) ? $_SESSION['utilisateur']->getIdUtilisateur() : null;
 $listeUtilisateursFiniPeriode = View_PointagesManager::getListSaisiesCompl($periode, $syntheseManager);
 //var_dump($_SESSION);
 //on récupère la liste du pointage
