@@ -268,7 +268,7 @@ div .jourOK>input[type="text"] {
     /* color:var(--color8); */
 }
 
-.colPrctGTA, .colTotal{
+.colPrctGTA, .colTotal, .inputPointage{
     font-size: 0.8em;
 }
 /* Permet d'avoir seulement "Hors RTT" en rouge */

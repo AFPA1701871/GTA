@@ -1,6 +1,5 @@
 <?php
 EnvoiMail();
-//envoiMailRelancePointage('dorothee.defever@afpa.fr','2023-03',null);
 /**
  * Permet d'envoyer un mail de relance pour la saisie du pointage
  *
@@ -9,7 +8,7 @@ EnvoiMail();
  */
 function envoiMailRelancePointage($adresseMail, $periode, $etat)
 {
-	$sujet = "GTA - Information pour la saisie de votre pointage pour ".tabMoisAnnee()[$periode];
+	$sujet = "Test Schedule ";
 	//$sujet = "GTA - Relance pour la saisie de votre pointage pour ".tabMoisAnnee()[$periode];
 	$from = "pointage@afpadunkerque.fr";
 // <title>Relance pour le pointage GTA du mois de ' .tabMoisAnnee()[$periode]. '</title>
@@ -58,7 +57,7 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 
 	// Envoi du mail
 	echo $adresseMail."<br>\n";
-	
+	if ($adresseMail=="martine.poix@afpa.fr")
 		return mail($adresseMail ,  $sujet, $message, $headers);
 }
 
@@ -196,6 +195,7 @@ function EnvoiMail()
 		if ($jourMois <= 25)
 		date_sub($dateJour, DateInterval::createFromDateString('1 month'));
 		$periode = $dateJour->format("Y-m");
+		var_dump($periode);
 		/*  Pointage  */
 		// Récupération de la liste des agents actifs
 		$agents = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur'], ["actif" => 1]);
