@@ -31,8 +31,13 @@ echo '              </div>
                     <div class="highlight center">
                         <div class="titreInfosUser">Nom : </div>';
                         if ($roleConnecte >= 2) {
-                            $listeActifPeriode = View_UtilisateursManager::getList(["idUtilisateur", "nomUtilisateur"], ["Actif"=>1], "nomUtilisateur", null, false, false);
-                            echo '<div>' . creerSelect($idUtilisateur, "View_Utilisateurs", ["nomUtilisateur"], "", ["Actif"=>1], "nomUtilisateur", "idUser", "Choisissez un utilisateur") . '</div>';
+                            $listeActifPeriode = View_UtilisateursManager::getListActifPeriode($periode, null);
+                            $listeUtilisateurs=[];
+                            foreach ($listeActifPeriode as $utilisateurActif) {
+                                $listeUtilisateurs[$utilisateurActif->getIdUtilisateur()]=$utilisateurActif->getNomUtilisateur();
+                            }
+                            echo '<div>' . creerSelectTab($idUtilisateur, $listeUtilisateurs, "idUser", true, "", "Choisissez un utilisateur") . '</div>';
+                            //echo '<div>' . creerSelect($idUtilisateur, "View_Utilisateurs", ["nomUtilisateur"], "", ["Actif"=>1], "nomUtilisateur", "idUser", "Choisissez un utilisateur") . '</div>';
                         } else {
                             echo '<div>' . $user->getNomUtilisateur() . '</div>';
                         }
