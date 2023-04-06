@@ -56,7 +56,7 @@ function envoiMailRelancePointage($adresseMail, $periode, $etat)
 	//$headers .= "Content-Transfer-Encoding: base64;";
 
 	// Envoi du mail
-	echo $adresseMail."<br>\n";
+	//echo $adresseMail."<br>\n";
 	if ($adresseMail=="martine.poix@afpa.fr")
 		return mail($adresseMail ,  $sujet, $message, $headers);
 }
@@ -195,7 +195,7 @@ function EnvoiMail()
 		if ($jourMois <= 25)
 		date_sub($dateJour, DateInterval::createFromDateString('1 month'));
 		$periode = $dateJour->format("Y-m");
-		var_dump($periode);
+		//var_dump($periode);
 		/*  Pointage  */
 		// Récupération de la liste des agents actifs
 		$agents = View_UtilisateursManager::getList(['idUtilisateur', 'nomUtilisateur', 'mailUtilisateur'], ["actif" => 1]);
