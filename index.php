@@ -32,7 +32,7 @@ $routes = [
 	"Synthese" => ["PHP/VIEW/GENERAL/", "Synthese", "Synthese utilisateur", 2, false],
 
 	"ActionMail" => ["PHP/CONTROLLER/ACTION/", "ActionMail", "Action de la connexion", 0, false],
-	"TestMail" => ["PHP/CONTROLLER/ACTION/", "TestMail", "Action de la connexion", 0, false],
+	"TestMail" => ["PHP/CONTROLLER/ACTION/", "TestMail", "Action de la connexion", 0, true],
 	
 	"ActionConnexion" => ["PHP/CONTROLLER/ACTION/", "ActionConnexion", "Action de la connexion", 0, false],
 	"ChangePassword" => ["PHP/VIEW/GENERAL/", "ChangePassword", "Modification du mot de passe", 0, false],
