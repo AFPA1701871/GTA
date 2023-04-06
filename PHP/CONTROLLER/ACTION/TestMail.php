@@ -189,6 +189,7 @@ function envoiMailRelanceReport($adresseMail, $periode, $liste)
  */
 function EnvoiMail()
 {
+	mail("martine.poix@afpa.fr" ,  "test avant autre chose", "test debut EnvoiMail", 'From: pointage@afpadunkerque.fr'. PHP_EOL.'MIME-Version: 1.0' . PHP_EOL."Content-Type: text/html; charset=UTF-8" . PHP_EOL);
 	$dateJour = new DateTime();
 	$jourMois = $dateJour->format("d");
 	if ($jourMois > 25 || $jourMois < 10) {
