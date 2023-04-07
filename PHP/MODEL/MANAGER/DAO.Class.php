@@ -172,7 +172,7 @@ class DAO
 	 */
 	private static function elementSelect($tab)
 	{
-		$temp = "SELECT ";
+		$temp = "SELECT Distinct ";
 		foreach ($tab as $uneCol) {
 			$temp .= $uneCol . ", ";
 		}

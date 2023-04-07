@@ -3,7 +3,7 @@
 $table = $_POST["table"];
 //var_dump($table);
 $table = ($table=="Motifs" || $table=="Prestations"|| $table=="Utilisateurs")?"View_".$table:$table;
-$nomColonnes = $table::getAttributes();
+$nomColonnes = ($table=="View_Utilisateurs")?["idUtilisateur", "nomUtilisateur",  "matriculeUtilisateur",  "nomManager",  "actif", "numeroUo", "nomRole"]:$table::getAttributes();
 $conditions = json_decode($_POST["conditions"], true);
 $selection = json_decode($_POST["selection"], true);
 if (count($selection) == 0 && count($conditions) == 0) {
