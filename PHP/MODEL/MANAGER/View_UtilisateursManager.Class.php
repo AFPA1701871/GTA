@@ -8,7 +8,7 @@ class View_UtilisateursManager
 		$nomColonnes = ($nomColonnes == null) ? View_Utilisateurs::getAttributes() : $nomColonnes;
 		return DAO::select($nomColonnes, "View_Utilisateurs",   $conditions,  $orderBy,  $limit,  $api,  $debug);
 	}
-	public static function getListActifPeriode($periode ,$idManager=null)
+	public static function getListActifPeriode($periode ,$idManager=null, $idRole=null)
 	{
 		$db = DbConnect::getDb();
 
@@ -18,6 +18,9 @@ FROM gta_Utilisateurs u LEFT JOIN gta_Contrats as c ON c.idContrat in (
         SELECT idContrat FROM gta_Contrats WHERE gta_Contrats.idUtilisateur = u.idUtilisateur) WHERE u.idUtilisateur!=1 ';
 		if($idManager!=null){
 			$req.=' AND idManager='.$idManager;
+		}
+		if($idRole!=null){
+			$req.=' AND idRole='.$idRole;
 		}
 		$req.=' having actif=1 order by nomUtilisateur';
 		$q = $db->query($req);
