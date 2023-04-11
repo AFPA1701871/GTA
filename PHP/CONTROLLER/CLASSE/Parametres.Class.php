@@ -8,7 +8,9 @@ class Parametres
 	private static $_pwd;
 	private static $_nbEltParPage;
 	private static $_anneeDisponible;
-
+	private static $_jourInformation;
+	private static $_jourRelanceDebut;
+	private static $_jourRelanceFin;
 	static function getHost()
 	{
 		return self::$_host;
@@ -41,6 +43,20 @@ class Parametres
 	{
 		return self::$_anneeDisponible;
 	}
+	public static function getJourInformation()
+	{
+		return self::$_jourInformation;
+	}
+
+	public static function getJourRelanceDebut()
+	{
+		return self::$_jourRelanceDebut;
+	}
+
+	public static function getJourRelanceFin()
+	{
+		return self::$_jourRelanceFin;
+	}
 	static function init()
 	{
 		if (file_exists("config.json")) {
@@ -50,6 +66,9 @@ class Parametres
 			self::$_dbname = decode($parametre->DbName);
 			self::$_login = decode($parametre->Login);
 			self::$_nbEltParPage = decode($parametre->NbEltParPage);
+			self::$_jourInformation = $parametre->JourInformation;
+			self::$_jourRelanceDebut = $parametre->JourRelanceDebut;
+			self::$_jourRelanceFin = $parametre->JourRelanceFin;
 			self::$_anneeDisponible = decode($parametre->AnneeDisponible);
 			if (strlen($parametre->Pwd) == 0)
 				self::$_pwd = $parametre->Pwd; //developpement
@@ -57,8 +76,4 @@ class Parametres
 				self::$_pwd = decode($parametre->Pwd); //production
 		}
 	}
-
-	
-
-	
 }
