@@ -31,7 +31,18 @@ echo '              </div>
                     <div class="highlight center">
                         <div class="titreInfosUser">Nom : </div>';
                         if ($roleConnecte >= 2) {
-                            $listeActifPeriode = View_UtilisateursManager::getListActifPeriode($periode, null);
+                            $condManager=$roleConnecte >= 3?null:$_SESSION['utilisateur']->getIdUtilisateur();
+                            $listeActifPeriode = View_UtilisateursManager::getListActifPeriode($periode, $condManager);
+                            if(!in_array($_SESSION['utilisateur'],$listeActifPeriode)){
+                                $listeActifPeriode[]=$_SESSION['utilisateur'];
+                            }
+                            usort($listeActifPeriode,function ($a, $b)
+                            {
+                                if ($a->getNomUtilisateur() == $b->getNomUtilisateur()) {
+                                    return 0;
+                                }
+                                return ($a->getNomUtilisateur() < $b->getNomUtilisateur()) ? -1 : 1;
+                            });
                             $listeUtilisateurs=[];
                             foreach ($listeActifPeriode as $utilisateurActif) {
                                 $listeUtilisateurs[$utilisateurActif->getIdUtilisateur()]=$utilisateurActif->getNomUtilisateur();
@@ -52,7 +63,7 @@ echo '              </div>
                     <div class=titreInfosUser>Uo d\'affectation : </div>
                     <div>' . $user->getNumeroUo() . '</div>
                     <div class="grid-columns-span-17 espace"></div>';
-if ($roleConnecte >= 2) {
+if (($roleConnecte == 2 && ($_SESSION['utilisateur']->getIdManager()==$idUtilisateur || $idUtilisateur!=$_SESSION['utilisateur']->getIdUtilisateur())) || $roleConnecte >= 3 ){
     echo '
                 <div class="grid-columns-span-17 espace"><div></div><div class="mini vCenter"><a class="vCenter" href="?page=Synthese&idUtilisateur=' . $idUtilisateur . '&periode=' . $periode . '"><i class="fas fa-syntheses"></i>&nbsp;Sa synthèse</a></div></div>
                 <div class="grid-columns-span-17 espace"></div>';
