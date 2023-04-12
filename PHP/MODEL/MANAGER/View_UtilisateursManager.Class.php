@@ -38,7 +38,7 @@ FROM gta_Utilisateurs u LEFT JOIN gta_Contrats as c ON c.idContrat in (
 	{
 		$db = DbConnect::getDb();
 
-		$req = 'SELECT u.idUtilisateur, u.nomUtilisateur,  u.idManager,u.nomManager,u.idRole,u.actif,
+		$req = 'SELECT u.idUtilisateur, u.nomUtilisateur, u.mailUtilisateur, u.idManager,u.nomManager,u.idRole,u.actif,
     (substring(c.dateDebutContrat,1,7) <= "' . $periode . '" AND substring(c.dateFinContrat,1,7) >= "' . $periode . '" ) as actifPeriode
 FROM gta_View_Utilisateurs u LEFT JOIN gta_Contrats as c ON c.idContrat in (
         SELECT idContrat FROM gta_Contrats WHERE gta_Contrats.idUtilisateur = u.idUtilisateur) WHERE u.idUtilisateur!=1 ';
