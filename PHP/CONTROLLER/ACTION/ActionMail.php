@@ -1,11 +1,13 @@
 <?php
 
 // Déclaration des constantes qui seront utilisées à plusieurs reprises et à plusieurs endroits
-const SUJET = "GTA - Relance pour le mois de ";
+const SUJET = "GTA - Relance pour le mois de PERIODE";
 const FROM = "pointage@afpadunkerque.fr";
 const FINCORPMAIL = '<div style="padding-bottom: 1rem;">Pour accéder à GTA, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</div><div style="padding-bottom: 1rem;">Cordialement</div><div style="font-style: italic">Contactez <a href="mailto:sylvie.hannequin@afpa.fr?subject=GTA">Sylvie</a> ou <a href="mailto:fanny.fardel@afpa.fr?subject=GTA">Fanny</a> en cas de problème.</div>';
-const HEADER='From: ' . FROM . PHP_EOL.'MIME-Version: 1.0' . PHP_EOL.'Content-Type: text/html; charset=UTF-8' . PHP_EOL.'Content-Transfer-Encoding: base64;';
-const DEBUTMAIL = '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0">';
+const HEADER = 'From: ' . FROM . PHP_EOL . 'MIME-Version: 1.0' . PHP_EOL . 'Content-Type: text/html; charset=UTF-8' . PHP_EOL . 'Content-Transfer-Encoding: base64;';
+const DEBUTMAIL = '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Relance pour le pointage GTA du mois de PERIODE</title></head><body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;"><div style="padding-bottom: 1rem;">Bonjour AGENT,</div>';
+const RAPPELALORDRE = ["Vide" => '<div style="padding-bottom: 1rem;">Vous ne semblez pas encore avoir commencé votre pointage GTA pour le mois de PERIODE.</div>', "Incomplet" => '<div style="padding-bottom: 1rem;">Vous ne semblez pas encore avoir fini de remplir votre pointage GTA pour le mois de PERIODE.</div>', "Complet"=>""];
+const RAPPELSPEC = '<div>Vous n\'avez pas encore effectué ACTION des pointages GTA, pour le mois de PERIODE, pour les personnes suivantes:</div>';
 $mailControle = "";
 EnvoiMail();
 
@@ -20,34 +22,20 @@ EnvoiMail();
 function envoiMailPointageAgent($agent, $periode, $etat)
 {
 	global $mailControle;
-	$sujet = SUJET . tabMoisAnnee()[$periode];
-	//$sujet = "GTA - Relance pour la saisie de votre pointage pour " . tabMoisAnnee()[$periode];
+	$sujet = str_replace("PERIODE",tabMoisAnnee()[$periode], SUJET);
 	// Corps du texte
-	$message = DEBUTMAIL.'<title>Relance pour le pointage GTA du mois de ' . tabMoisAnnee()[$periode] . '</title></head>
-		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
-			<div style="padding-bottom: 1rem;">Bonjour ' . $agent->getNomUtilisateur() . ',</div>
-			<div style="padding-bottom: 1rem;">La saisie de votre pointage GTA pour le mois de ' . tabMoisAnnee()[$periode];
-	switch ($etat) {
-		case 'Vide':
-			$message .= ' n\'est pas terminée.';
-			break;
-		case 'Incomplet':
-			$message .= ' n\'a pas encore été réalisée.';
-			break;
-		default:
-			break;
-	}
-
-	$message .= ' Nous vous invitons à le faire.</div>';
+	$rplc = ["PERIODE"=>tabMoisAnnee()[$periode], "AGENT"=>$agent->getNomUtilisateur()];
+	$message = strtr(DEBUTMAIL, $rplc);
+	$message .= str_replace("PERIODE",tabMoisAnnee()[$periode], RAPPELALORDRE[$etat]);
+	$message .= '<div style="padding-bottom: 1rem;">Nous vous invitons à le faire.</div>';
 	$message .= FINCORPMAIL;
 	$message .= '</body>
 	</html>';
 
 	// Envoi du mail
 	//echo $agent->getMailUtilisateur() . "<br>\n";
-	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
 	//echo  $message;
-	$mailControle .= $message;
+	$mailControle .= $message."***********************************************<br />";
 	// return mail($agent->getMailUtilisateur(),  $sujet, $message, HEADER);
 }
 
@@ -76,37 +64,20 @@ function envoiMailManager($manager, $periode, $etat, $listePointagesDefauts = nu
 
 	$nom = $manager->getNomUtilisateur();
 
-	$sujet = SUJET . tabMoisAnnee()[$periode];
+	$sujet = str_replace("PERIODE",tabMoisAnnee()[$periode], SUJET);
 
 	// Corps du texte
-	$message = DEBUTMAIL.'
-			<title>Relance pour le traitement des pointages vous concernant pour le mois de ' . tabMoisAnnee()[$periode] . '</title>
-		</head>
-		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
-			<div style="padding-bottom: 1rem;">Bonjour ' . $manager->getNomUtilisateur() . ',</div>';
+	$rplcDebMail = ["PERIODE"=>tabMoisAnnee()[$periode], "AGENT"=>$manager->getNomUtilisateur()];
+	$message = strtr(DEBUTMAIL, $rplcDebMail);
 
 	// Si le manager est lui-même en défaut pour son propre pointage
-	if ($etat != "Complet") {
-		$message .= '<div style="padding-bottom: 1rem;">Vous ne semblez pas encore avoir';
-		switch ($etat) {
-			case 'Vide':
-				$message .= ' commencé ';
-				break;
-			case 'Incomplet':
-				$message .= ' finit de remplir ';
-				break;
-			default:
-				break;
-		}
-		$message .= 'votre pointage GTA pour le mois de ' . tabMoisAnnee()[$periode] . '.</div>';
-	}
+	$message .= str_replace("PERIODE",tabMoisAnnee()[$periode], RAPPELALORDRE[$etat]);
 
 	// Si le manager n'a pas encore validé les pointages de certains collaborateurs
 	if ($testValidation) {
-		$message .= '<div>' . (($etat != "Complet") ? 'De plus, v' : 'V') . 'ous n\'avez pas encore validé les pointages GTA, pour ' . (($etat != "Complet") ? 'cette même période' : 'le mois de ' . tabMoisAnnee()[$periode]) . ', des collaborateurs suivants:</div><ul>';
-		foreach ($listeValidationDefauts as  $CollabNonValid) {
-			$message .= '<li>' . $CollabNonValid . '</li>';
-		}
+		$rplcRapSpec=["ACTION"=>"la validation", "PERIODE"=>tabMoisAnnee()[$periode]];
+		$message.=strtr(RAPPELSPEC,$rplcRapSpec)."<ul>";
+		$message .= implode($listeValidationDefauts);
 		$message .= '</ul>';
 	}
 
@@ -152,7 +123,7 @@ function envoiMailManager($manager, $periode, $etat, $listePointagesDefauts = nu
 	//return $message;
 	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
 	echo  $message;
-	$mailControle .= $message;
+	$mailControle .= $message."***********************************************<br />";
 	//return mail($manager->getMailUtilisateur(), $sujet, $message, HEADER);
 }
 
@@ -171,36 +142,20 @@ function envoiMailManager($manager, $periode, $etat, $listePointagesDefauts = nu
 function envoiMailAssistantes($assistante, $periode, $etat, $listeReportsAFaire, $listeManagers)
 {
 	global $mailControle;
-	$sujet = SUJET . tabMoisAnnee()[$periode];
-	//$sujet = "GTA - Relance pour le report du pointage dans le système RH";
+	$sujet = str_replace("PERIODE",tabMoisAnnee()[$periode], SUJET);
 
 	// Corps du texte
-	$message = DEBUTMAIL.'
-			<title>Relance pour la validation du pointage dans le système RH du mois de ' . tabMoisAnnee()[$periode] . '</title>
-		</head>
-		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
-			<div style="padding-bottom: 1rem;">Bonjour ' . $assistante->getNomUtilisateur() . ',</div>';
-	if ($etat != "Complet") {
-		$message .= '<div style="padding-bottom: 1rem;">Vous ne semblez pas encore avoir';
-		switch ($etat) {
-			case 'Vide':
-				$message .= ' commencé ';
-				break;
-			case 'Incomplet':
-				$message .= ' finit de remplir ';
-				break;
-			default:
-				break;
-		}
-		$message .= 'votre pointage GTA pour le mois de ' . tabMoisAnnee()[$periode] . '.</div>';
-	}
+	$rplc = ["PERIODE"=>tabMoisAnnee()[$periode], "AGENT"=>$assistante->getNomUtilisateur()];
+	$message = strtr(DEBUTMAIL, $rplc);
+
+	// Si l'assistante est elle-même en défaut pour son propre pointage
+	$message .= str_replace("PERIODE",tabMoisAnnee()[$periode], RAPPELALORDRE[$etat]);
+
 	$message .= '<div>' . ($etat != "Complet" ? 'De plus, l' : 'L') . 'e report du pointage GTA pour ' . ($etat != "Complet" ? 'cette même période' : 'le mois de ' . tabMoisAnnee()[$periode]) . ' n\'a pas encore été réalisée pour les personnes suivantes.</div>
 			<ul>';
 	foreach ($listeReportsAFaire as $idManager => $listeReportAttente) {
 		$message .= '<li>Pour ' . $listeManagers[$idManager] . '</li><ul>';
-		foreach ($listeReportAttente as $collaborateur) {
-			$message .= '<li>' . $collaborateur . '</li>';
-		}
+		$message .= implode($listeReportAttente);
 		$message .= '</ul>';
 	}
 
@@ -214,7 +169,7 @@ function envoiMailAssistantes($assistante, $periode, $etat, $listeReportsAFaire,
 	// Envoi du mail
 	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
 	echo $message;
-	$mailControle .= $message;
+	$mailControle .= $message."***********************************************<br />";
 	//return mail($assistante->getMailUtilisateur(), $sujet, $message, HEADER);
 }
 
@@ -233,11 +188,8 @@ function envoiMailControle($periode)
 	global $mailControle;
 	$sujet = "Mail de contrôle GTA pour le mois de " . tabMoisAnnee()[$periode];
 	// Corps du texte
-	$message = DEBUTMAIL.'
-			<title>Mail de contrôle GTA pour le mois de ' . tabMoisAnnee()[$periode] . '</title>
-		</head>
-		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
-		<div style="padding-bottom: 1rem;">Bonjour,</div>';
+	$rplc = ["PERIODE"=>tabMoisAnnee()[$periode], " AGENT"=>""];
+	$message = strtr(DEBUTMAIL, $rplc);
 	$message .= '<div style="padding-bottom: 1rem;">Voici où en sont les pointages à ce jour:</div>';
 	$message .= $mailControle . '
 		</body>
@@ -255,14 +207,12 @@ function envoiMailControle($periode)
  * @param Utilisateurs $agent Agent
  * @return void
  */
-function envoiMailMiMois($periode, $agent){
+function envoiMailMiMois($periode, $agent)
+{
 	$sujet = "Mail de rappel GTA pour le mois de " . tabMoisAnnee()[$periode];
 	// Corps du texte
-	$message = DEBUTMAIL.'
-			<title>Mail de rappel GTA pour le mois de ' . tabMoisAnnee()[$periode] . '</title>
-		</head>
-		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
-		<div style="padding-bottom: 1rem;">Bonjour '.$agent->getNomUtilisateur().',</div>';
+	$rplc = ["PERIODE"=>tabMoisAnnee()[$periode], "AGENT"=>$agent->getNomUtilisateur()];
+	$message = strtr(DEBUTMAIL, $rplc);
 	$message .= '<div style="padding-bottom: 1rem;">Nous arrivons en fin de mois, pensez à votre pointage.</div>';
 	$message .= FINCORPMAIL;
 	$message .= '	
@@ -282,12 +232,11 @@ function EnvoiMail()
 {
 	$dateJour = new DateTime();
 	$jourMois = $dateJour->format("d");
-	if ($jourMois > Parametres::getJourRelanceDebut() || $jourMois < Parametres::getJourRelanceFin() ) {
+	if ($jourMois > Parametres::getJourRelanceDebut() || $jourMois < Parametres::getJourRelanceFin()) {
 
 		// Repère durée de travail
-		$tempsDebut=microtime(true);
-		
-		
+		$tempsDebut = microtime(true);
+
 		if ($jourMois <= Parametres::getJourRelanceDebut())
 			date_sub($dateJour, DateInterval::createFromDateString('1 month'));
 		$periode = $dateJour->format("Y-m");
@@ -300,7 +249,7 @@ function EnvoiMail()
 		$assistantes = View_UtilisateursManager::getListActifPeriode($periode, null, 3);
 
 		// Récupération de la liste des ID des utilisateurs actif en date du jour
-		$contractsActif=View_UtilisateursManager::getList(["idUtilisateur"], ["Actif" => 1], null, null, true, false);
+		$contractsActif = View_UtilisateursManager::getList(["idUtilisateur"], ["Actif" => 1], null, null, true, false);
 
 		$listeManagers = []; //Mémorisation association idManager<=>Nom pour réutilisation pour les assistantes
 		//Pour chaque agent
@@ -322,7 +271,7 @@ function EnvoiMail()
 				$listePointageAgents[$agent->getIdManager()][$agent->getNomUtilisateur()] = $etat;
 
 				// Envoi de mail si niveau agent, actif durant la période et toujours actif aujourd'hui
-				if ($agent->getIdRole() == 1 && array_search($agent->getIdUtilisateur(), array_column($contractsActif,"idUtilisateur"))) {
+				if ($agent->getIdRole() == 1 && array_search($agent->getIdUtilisateur(), array_column($contractsActif, "idUtilisateur"))) {
 					envoiMailPointageAgent($agent, $periode, $etat);
 				}
 			}
@@ -334,7 +283,7 @@ function EnvoiMail()
 			// Récupération du pointage validé pour la période
 			$valide = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, "valide", "Utilisateur");
 			if ($pointage == NbJourParPeriode($periode) && $valide != $pointage) {
-				$listeValidationAFaire[$agent->getIdManager()][] = $agent->getNomUtilisateur();
+				$listeValidationAFaire[$agent->getIdManager()][] = "<li>".$agent->getNomUtilisateur()."</li>";
 			}
 
 			/////////////////////////////////////////////
@@ -345,10 +294,10 @@ function EnvoiMail()
 			$report = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, "reporte", "Utilisateur");
 			// Si pointage vide ou si pointage incomplet
 			if ($pointage == NbJourParPeriode($periode) && $report != $pointage) {
-				$listeReportAFaire[$agent->getIdManager()][] = $agent->getNomUtilisateur();
+				$listeReportAFaire[$agent->getIdManager()][] = "<li>".$agent->getNomUtilisateur()."</li>";
 			}
 		}
-
+var_dump($listeValidationAFaire,$listeReportAFaire);
 		///////////////////////////////////////
 		// Gestion de l'envois des mails pour les managers
 		///////////////////////////////////////
@@ -356,13 +305,13 @@ function EnvoiMail()
 			$idUser = $manager->getIdUtilisateur();
 			$nomUser = $manager->getNomUtilisateur();
 
-			$etatManager = array_search_2dim($nomUser, "Vide", $listePointageAgents) ? "Vide" : (array_search_2dim($nomUser, "Incomplet", $listePointageAgents) ? "Incomplet" : "Complet");
-			
+			//$etatManager = array_search_2dim($nomUser, "Vide", $listePointageAgents) ? "Vide" : (array_search_2dim($nomUser, "Incomplet", $listePointageAgents) ? "Incomplet" : "Complet");
+			$etatManager="";
 			// Certains des collaborateurs de ce managers sont en défaut
 			$listPointDef = (isset($listePointageAgents[$idUser])) ? $listePointageAgents[$idUser] : null;
 			// Ce manager n'a pas validé tous ses collaborateurs
 			$listValidDef = (isset($listeValidationAFaire[$idUser])) ? $listeValidationAFaire[$idUser] : null;
-			
+
 			if ($etatManager != "Complet" || $listPointDef != null || $listValidDef != null) {
 				envoiMailManager($manager, $periode, $etatManager, $listPointDef, $listValidDef);
 			}
@@ -379,10 +328,10 @@ function EnvoiMail()
 				envoiMailAssistantes($assistante, $periode, $etatAssistante, $listeReportAFaire, $listeManagers);
 			}
 		}
-		echo envoiMailControle($periode);
+		envoiMailControle($periode);
 
 		// Repère durée de travail
-		$tempsFin=microtime(true);
-		echo "<br /><br /><br />Travail fait en ".($tempsFin-$tempsDebut)." secondes.";
+		$tempsFin = microtime(true);
+		echo "<br /><br /><br />Travail fait en " . ($tempsFin - $tempsDebut) . " secondes.";
 	}
 }

@@ -5,6 +5,7 @@ class ContenuMail
     /*****************Attributs***************** */
     private $_idUtilisateur;
     private $_nomUtilisateur;
+    private $_mailUtilisateur;
     private $_idRole;
     private $_idManager;
     private $_nomManager;
@@ -37,6 +38,16 @@ class ContenuMail
     public function setNomUtilisateur($nomUtilisateur)
     {
         $this->_nomUtilisateur = $nomUtilisateur;
+    }
+    
+
+    public function getMailUtilisateur()
+    {
+        return $this->_mailUtilisateur;
+    }
+    public function setMailUtilisateur($mailUtilisateur)
+    {
+        $this->_mailUtilisateur = $mailUtilisateur;
     }
 
     public function getListeAReporter()
