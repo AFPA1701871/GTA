@@ -7,6 +7,7 @@ switch ($_GET['mode']) {
 		$libelle = htmlentities($elm->getLibelleProjet());
 		$elm->setLibelleProjet($libelle);
 		$elm = ProjetsManager::add($elm);
+		header("location:index.php?page=ListeProjets");
 		break;
 	}
 	case "Modifier": {
@@ -14,12 +15,27 @@ switch ($_GET['mode']) {
 		$libelle = htmlentities($elm->getLibelleProjet());
 		$elm->setLibelleProjet($libelle);
 		$elm = ProjetsManager::update($elm);
+		header("location:index.php?page=ListeProjets");
 		break;
 	}
 	case "Supprimer": {
-		$elm = ProjetsManager::delete($elm);
+		$reponse = ProjetsManager::delete($elm);
+		if ($reponse == false) {
+			$_SESSION['erreur']['message'] = "Impossible de supprimer le projet, il est déjà utilisée";
+			$_SESSION['erreur']['redirection'] = "?page=ListeProjets";
+			$_SESSION['erreur']['detail'] ="";
+			$pointages = View_PointagesManager::getList(null, ["idProjet" => $elm->getIdProjet()]);
+			foreach ($pointages as  $pointage) {
+				$_SESSION['erreur']['detail'] .= "pour le pointage de  : ". $pointage->getNomUtilisateur()." en date du " .$pointage->getDatePointage()."<br>";
+			}
+			$preferences =PreferencesManager::getList(null, ["idProjet" => $elm->getIdProjet()]);
+			foreach ($preferences as  $preference) {
+				$_SESSION['erreur']['detail'] .= "pour la preference de  : ". UtilisateursManager::findById($preference->getIdUtilisateur())->getNomUtilisateur()."<br>";
+			}
+
+			header("location:index.php?page=Erreur");
+		} else { header("location:index.php?page=ListeProjets");
+		}
 		break;
 	}
 }
-
-header("location:index.php?page=ListeProjets");

@@ -105,6 +105,7 @@ $routes = [
 	
 	
 	"Attente" => ["PHP/VIEW/GENERAL/", "Attente", "Encore un peu de patience", 0, false],
+	"Erreur" => ["PHP/VIEW/GENERAL/", "Erreur", "Une erreur est survenue", 0, false],
 
 
 ];

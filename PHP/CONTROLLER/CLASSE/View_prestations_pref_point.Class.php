@@ -28,7 +28,7 @@ class View_Prestations_Pref_Point
 	private $_idPointage;
 	private $_datePointage;
 	private $_periode;
-	private static $_attributes = ["idPrestation", "codePrestation", "libellePrestation", "numeroTypePrestation", "libelleTypePrestation", "motifRequis", "uoRequis", "projetRequis", "idPreference", "idMotif", "codeMotif", "libelleMotif","idUo", "numeroUo","libelleUo", "idProjet", "codeProjet", "libellePorjet","idTypePrestation", "idUtilisateur", "idPointage", "datePointage", "mois"];
+	private static $_attributes = ["idPrestation", "codePrestation", "libellePrestation", "numeroTypePrestation", "libelleTypePrestation", "motifRequis", "uoRequis", "projetRequis", "idPreference", "idMotif", "codeMotif", "libelleMotif","idUo", "numeroUo","libelleUo", "idProjet", "codeProjet", "libelleProjet","idTypePrestation", "idUtilisateur", "idPointage", "datePointage", "periode"];
 	/***************** Accesseurs ***************** */
 
 

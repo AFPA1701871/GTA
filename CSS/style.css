@@ -112,7 +112,7 @@ h1 {
     padding: 0.5rem;
     cursor: pointer;
 }
-.caseListe a i, .caseForm button i, .divBtnModale button i {
+.caseListe a i, .caseForm button i, .divBtnModale button i , button i {
     cursor: pointer;
     font-size: 2.5rem;
 }
@@ -120,7 +120,7 @@ h1 {
 :focus-visible {
     outline: none;
 }
-.caseListe button, .caseForm button , .divBtnModale button{
+.caseListe button, .caseForm button , .divBtnModale button, button{
     border: 0;
     padding: 0.5rem;
     cursor: pointer;
