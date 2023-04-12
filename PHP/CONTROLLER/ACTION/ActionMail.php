@@ -237,7 +237,7 @@ function envoiMailControle($periode)
 			<title>Mail de contrôle GTA pour le mois de ' . tabMoisAnnee()[$periode] . '</title>
 		</head>
 		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
-		<div style="padding-bottom: 1rem;">Bonjour,</div><ul>';
+		<div style="padding-bottom: 1rem;">Bonjour,</div>';
 	$message .= '<div style="padding-bottom: 1rem;">Voici où en sont les pointages à ce jour:</div>';
 	$message .= $mailControle . '
 		</body>
@@ -283,6 +283,11 @@ function EnvoiMail()
 	$dateJour = new DateTime();
 	$jourMois = $dateJour->format("d");
 	if ($jourMois > Parametres::getJourRelanceDebut() || $jourMois < Parametres::getJourRelanceFin() ) {
+
+		// Repère durée de travail
+		$tempsDebut=microtime(true);
+		
+		
 		if ($jourMois <= Parametres::getJourRelanceDebut())
 			date_sub($dateJour, DateInterval::createFromDateString('1 month'));
 		$periode = $dateJour->format("Y-m");
@@ -375,5 +380,9 @@ function EnvoiMail()
 			}
 		}
 		echo envoiMailControle($periode);
+
+		// Repère durée de travail
+		$tempsFin=microtime(true);
+		echo "<br /><br /><br />Travail fait en ".($tempsFin-$tempsDebut)." secondes.";
 	}
 }
