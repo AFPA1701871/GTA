@@ -18,7 +18,7 @@ switch (page) {
         selection.idCentre = centreUser;
         break;*/
     case "ListeUtilisateurs":
-        selection.idRole = "1->3";
+        selection.idRole = "1->4";
         break;
     default:
         console.log(selection);

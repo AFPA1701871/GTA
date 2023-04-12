@@ -293,9 +293,3 @@ function moisPrecedent(DateTime $date)
 	$month = $date->modify('-1 day')->format('Y-m'); // on retire un jour et on reformate au format ANNEE-MOIS
 	return $month;
 }
-
-function array_search_2dim($champ, $valeur, $tableau) {
-    return array_filter($tableau, function ($item) use($champ, $valeur) {
-        return isset($item[$champ]) && $item[$champ] === $valeur;
-    });
-}

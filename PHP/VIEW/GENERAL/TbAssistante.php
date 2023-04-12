@@ -27,7 +27,7 @@ echo '<div id="tabManagers">';
     echo '<div class="vCenter gras borderbottom ">Report SIRH</div>';
     echo '<div class="vCenter borderbottom "></div>';
 
-    $managers = View_UtilisateursManager::getList(['idUtilisateur','nomUtilisateur'], ['idRole'=>2, 'Actif'=>1], 'nomUtilisateur');
+    $managers = View_UtilisateursManager::getList(['idUtilisateur','nomUtilisateur'], ['idRole'=>['2','4'], 'Actif'=>1], 'nomUtilisateur');
     foreach ($managers as $key => $manager) {
         $bgc = ($key%2 == 0) ? '': 'bgc';
         $idManager = $manager->getIdUtilisateur();

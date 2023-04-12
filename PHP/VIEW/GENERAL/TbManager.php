@@ -16,7 +16,7 @@ echo '<div id="divComboDate" class="demi center">';
 echo creerSelectTab($periode, tabMoisAnnee(), 'periode', true, "class='demi'");
 echo '<div class="mini"></div><div class="center highlight">Manager concerné : ';
 if($roleConnecte>=3){
-    echo creerSelect($idManager, "Utilisateurs", ["nomUtilisateur"], "", ["idRole"=>2], "nomUtilisateur", "idUser", "Choisissez un manager");
+    echo creerSelect($idManager, "Utilisateurs", ["nomUtilisateur"], "", ["idRole"=>[2,4]], "nomUtilisateur", "idUser", "Choisissez un manager");
 }else{
     echo $manager->getNomUtilisateur();
 }

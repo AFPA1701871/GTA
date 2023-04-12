@@ -37,8 +37,9 @@ class View_Pointages_PeriodeManager
 	 * @param string $mode Détermine si l'on recherche sur Saisie (null), Validé (valide) ou Reporté (reporte)
 	 * @param string $pointDeVue "Manager" ou "Utilisateur", détermine sur quel id la condition sera appliqué
 	 * @param string $regroupement Détermine si l'on veut un nombre de "Jours" ou un nombre d'"Utilisateurs"
+	 * @param string $repartition Recupere tout le pointage avec la repartition valide / reporte
 	 */
-	public static function NombrePointages($idUtilisateur, $periode, $mode, $pointDeVue, $regroupement = "Utilisateurs")
+	public static function NombrePointages($idUtilisateur, $periode, $mode, $pointDeVue, $regroupement = "Utilisateurs",$repartition=null)
 	{
 		// Connection à la base de données
 		$db = DbConnect::getDb();
@@ -51,15 +52,33 @@ class View_Pointages_PeriodeManager
 		// Utilise-t-on un GROUP BY et faut-il que le cumul des pointages répondant aux autres critères soit égal au nombre de jours ouvrés du mois?
 		// Partous sauf dans le TbManagers
 		$condRegroupement = ($regroupement=="Utilisateurs")?' GROUP BY idUtilisateur HAVING nb=' . NbJourParPeriode($periode):"";
+		if ($repartition!=null){
+			$listeChamp = " , validePointage, reportePointage ";
+			$groupby = "GROUP BY idUtilisateur, validePointage, reportePointage";
+		}
+		else{
+			$listeChamp = "";
+			$groupby ="";
+		}
 		// Assemblage de la requête
-		$stmt = 'SELECT SUM(cumulPointage) as nb FROM gta_View_Pointages_Periode WHERE ' . $condID . $condP . ' periode="' . $periode . '" ' . $condRegroupement;
+		$stmt = 'SELECT SUM(cumulPointage) as nb '.$listeChamp.' FROM gta_View_Pointages_Periode WHERE ' . $condID . $condP . ' periode="' . $periode . '" ' . $condRegroupement . $groupby;
 		$q = $db->query($stmt);
 		// Si on rencontre un problème avec la requête, on retourne faux
 		if (!$q) {
 			return false;
 		}
 		// Sinon
-		if ($regroupement=="Jours") {
+		if ($repartition != null)
+		{
+			$liste = [];
+			while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) { // on récupère les enregistrements de la BDD
+				if ($donnees != false) {
+					$liste[] = $donnees;
+				}
+			}
+			return $liste;
+		}
+		elseif ($regroupement=="Jours") {
 			// On retourne soit la somme des pointages => TbManagers
 			return $q->fetch(PDO::FETCH_ASSOC)['nb'];
 		} else {

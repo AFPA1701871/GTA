@@ -34,4 +34,24 @@ FROM gta_Utilisateurs u LEFT JOIN gta_Contrats as c ON c.idContrat in (
 		}
 		return $liste;
 	}
+	public static function getListActifPeriodeMail($periode)
+	{
+		$db = DbConnect::getDb();
+
+		$req = 'SELECT u.idUtilisateur, u.nomUtilisateur,  u.idManager,u.nomManager,u.idRole,u.actif,
+    (substring(c.dateDebutContrat,1,7) <= "' . $periode . '" AND substring(c.dateFinContrat,1,7) >= "' . $periode . '" ) as actifPeriode
+FROM gta_View_Utilisateurs u LEFT JOIN gta_Contrats as c ON c.idContrat in (
+        SELECT idContrat FROM gta_Contrats WHERE gta_Contrats.idUtilisateur = u.idUtilisateur) WHERE u.idUtilisateur!=1 ';
+		$req.=' having actifPeriode=1 order by idRole, idManager, nomUtilisateur';
+		$q = $db->query($req);
+		//echo $req;
+		$liste = [];
+		if (!$q) return false;
+		while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) { // on récupère les enregistrements de la BDD
+			if ($donnees != false) {
+				$liste[$donnees['idUtilisateur']] = new ContenuMail($donnees);
+			}
+		}
+		return $liste;
+	}
 }
