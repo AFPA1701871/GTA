@@ -4,6 +4,8 @@
 const SUJET = "GTA - Relance pour le mois de ";
 const FROM = "pointage@afpadunkerque.fr";
 const FINCORPMAIL = '<div style="padding-bottom: 1rem;">Pour accéder à GTA, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</div><div style="padding-bottom: 1rem;">Cordialement</div><div style="font-style: italic">Contactez <a href="mailto:sylvie.hannequin@afpa.fr?subject=GTA">Sylvie</a> ou <a href="mailto:fanny.fardel@afpa.fr?subject=GTA">Fanny</a> en cas de problème.</div>';
+const HEADER='From: ' . FROM . PHP_EOL.'MIME-Version: 1.0' . PHP_EOL.'Content-Type: text/html; charset=UTF-8' . PHP_EOL.'Content-Transfer-Encoding: base64;';
+const DEBUTMAIL = '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0">';
 $mailControle = "";
 EnvoiMail();
 
@@ -21,18 +23,10 @@ function envoiMailPointageAgent($agent, $periode, $etat)
 	$sujet = SUJET . tabMoisAnnee()[$periode];
 	//$sujet = "GTA - Relance pour la saisie de votre pointage pour " . tabMoisAnnee()[$periode];
 	// Corps du texte
-	$message = '<!DOCTYPE html>
-	<html lang="fr">
-		<head>
-			<meta charset="UTF-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>Relance pour le pointage GTA du mois de ' . tabMoisAnnee()[$periode] . '</title>
-			
-		</head>
+	$message = DEBUTMAIL.'<title>Relance pour le pointage GTA du mois de ' . tabMoisAnnee()[$periode] . '</title></head>
 		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
-					<div style="padding-bottom: 1rem;">Bonjour ' . $agent->getNomUtilisateur() . ',</div>
-					<div style="padding-bottom: 1rem;">La saisie de votre pointage GTA pour le mois de ' . tabMoisAnnee()[$periode];
+			<div style="padding-bottom: 1rem;">Bonjour ' . $agent->getNomUtilisateur() . ',</div>
+			<div style="padding-bottom: 1rem;">La saisie de votre pointage GTA pour le mois de ' . tabMoisAnnee()[$periode];
 	switch ($etat) {
 		case 'Vide':
 			$message .= ' n\'est pas terminée.';
@@ -46,24 +40,15 @@ function envoiMailPointageAgent($agent, $periode, $etat)
 
 	$message .= ' Nous vous invitons à le faire.</div>';
 	$message .= FINCORPMAIL;
-	// $message .= '<div style="padding-bottom: 1rem;">Pour saisir votre pointage, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</div>
-	// 				<div class="pad-bttm" style="padding-bottom: 1rem;">Cordialement</div>
-	// 				<div class="italic" style="font-style: italic;padding-top: 0.5rem;">Contactez directement Sylvie ou Fanny en cas de problème.</div>';
 	$message .= '</body>
 	</html>';
 
-	// Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
-	$headers = 'From: ' . FROM . PHP_EOL;
-	$headers .= 'MIME-Version: 1.0' . PHP_EOL;
-	$headers .= "Content-Type: text/html; charset=UTF-8" . PHP_EOL;
-	//$headers .= "Content-Transfer-Encoding: base64;";
-
 	// Envoi du mail
 	//echo $agent->getMailUtilisateur() . "<br>\n";
-	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, $headers);
+	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
 	//echo  $message;
 	$mailControle .= $message;
-	//return mail($agent->getMailUtilisateur(),  $sujet, $message, $headers);
+	// return mail($agent->getMailUtilisateur(),  $sujet, $message, HEADER);
 }
 
 /**
@@ -94,16 +79,11 @@ function envoiMailManager($manager, $periode, $etat, $listePointagesDefauts = nu
 	$sujet = SUJET . tabMoisAnnee()[$periode];
 
 	// Corps du texte
-	$message = '<!DOCTYPE html>
-	<html lang="fr">
-		<head>
-			<meta charset="UTF-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	$message = DEBUTMAIL.'
 			<title>Relance pour le traitement des pointages vous concernant pour le mois de ' . tabMoisAnnee()[$periode] . '</title>
 		</head>
 		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
-			<div style="padding-bottom: 1rem;">Bonjour ' . $nom . ',</div>';
+			<div style="padding-bottom: 1rem;">Bonjour ' . $manager->getNomUtilisateur() . ',</div>';
 
 	// Si le manager est lui-même en défaut pour son propre pointage
 	if ($etat != "Complet") {
@@ -168,18 +148,12 @@ function envoiMailManager($manager, $periode, $etat, $listePointagesDefauts = nu
 		</body>
 	</html>';
 
-	// Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
-	$headers = 'From: ' . FROM . PHP_EOL;
-	$headers .= 'MIME-Version: 1.0' . PHP_EOL;
-	$headers .= "Content-Type: text/html; charset=UTF-8" . PHP_EOL;
-	$headers .= "Content-Transfer-Encoding: base64;";
-
 	// Envoi du mail
 	//return $message;
-	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, $headers);
+	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
 	echo  $message;
 	$mailControle .= $message;
-	//return mail($manager->getMailUtilisateur(), $sujet, $message, $headers);
+	//return mail($manager->getMailUtilisateur(), $sujet, $message, HEADER);
 }
 
 /**
@@ -201,12 +175,7 @@ function envoiMailAssistantes($assistante, $periode, $etat, $listeReportsAFaire,
 	//$sujet = "GTA - Relance pour le report du pointage dans le système RH";
 
 	// Corps du texte
-	$message = '<!DOCTYPE html>
-	<html lang="fr">
-		<head>
-			<meta charset="UTF-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	$message = DEBUTMAIL.'
 			<title>Relance pour la validation du pointage dans le système RH du mois de ' . tabMoisAnnee()[$periode] . '</title>
 		</head>
 		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
@@ -242,17 +211,11 @@ function envoiMailAssistantes($assistante, $periode, $etat, $listeReportsAFaire,
 		</body>
 	</html>';
 
-	// Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
-	$headers = 'From: ' . FROM . PHP_EOL;
-	$headers .= 'MIME-Version: 1.0' . PHP_EOL;
-	$headers .= "Content-Type: text/html; charset=UTF-8" . PHP_EOL;
-	$headers .= "Content-Transfer-Encoding: base64;";
-
 	// Envoi du mail
-	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, $headers);
+	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
 	echo $message;
 	$mailControle .= $message;
-	//return mail($assistante->getMailUtilisateur(), $sujet, $message, $headers);
+	//return mail($assistante->getMailUtilisateur(), $sujet, $message, HEADER);
 }
 
 /**
@@ -270,29 +233,44 @@ function envoiMailControle($periode)
 	global $mailControle;
 	$sujet = "Mail de contrôle GTA pour le mois de " . tabMoisAnnee()[$periode];
 	// Corps du texte
-	$message = '<!DOCTYPE html>
-	<html lang="fr">
-		<head>
-			<meta charset="UTF-8">
-			<meta http-equiv="X-UA-Compatible" content="IE=edge">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	$message = DEBUTMAIL.'
 			<title>Mail de contrôle GTA pour le mois de ' . tabMoisAnnee()[$periode] . '</title>
 		</head>
 		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
-		<div style="padding-bottom: 1rem;">Bonjour,</div><ul>';
+		<div style="padding-bottom: 1rem;">Bonjour,</div>';
 	$message .= '<div style="padding-bottom: 1rem;">Voici où en sont les pointages à ce jour:</div>';
 	$message .= $mailControle . '
 		</body>
 	</html>';
-	// Pour envoyer un mail HTML, l'en-tête Content-type doit être défini
-	$headers = 'From: ' . FROM . PHP_EOL;
-	$headers .= 'MIME-Version: 1.0' . PHP_EOL;
-	$headers .= "Content-Type: text/html; charset=UTF-8" . PHP_EOL;
-	$headers .= "Content-Transfer-Encoding: base64;";
 
 	// Envoi du mail
 	echo $message;
-	//return mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, $headers);
+	//return mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
+}
+
+/**
+ * Envoi de mail à tous les agents actifs dans le mois en date du 20 pour leur rappeler de commencer leur pointage
+ *
+ * @param string $periode Mois en cours (AAAA-MM)
+ * @param Utilisateurs $agent Agent
+ * @return void
+ */
+function envoiMailMiMois($periode, $agent){
+	$sujet = "Mail de rappel GTA pour le mois de " . tabMoisAnnee()[$periode];
+	// Corps du texte
+	$message = DEBUTMAIL.'
+			<title>Mail de rappel GTA pour le mois de ' . tabMoisAnnee()[$periode] . '</title>
+		</head>
+		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
+		<div style="padding-bottom: 1rem;">Bonjour '.$agent->getNomUtilisateur().',</div>';
+	$message .= '<div style="padding-bottom: 1rem;">Nous arrivons en fin de mois, pensez à votre pointage.</div>';
+	$message .= FINCORPMAIL;
+	$message .= '	
+		</body>
+	</html>';
+
+	// Envoi du mail
+	return mail($agent->getMailUtilisateur(), $sujet, $message, HEADER);
 }
 
 /**
@@ -305,6 +283,11 @@ function EnvoiMail()
 	$dateJour = new DateTime();
 	$jourMois = $dateJour->format("d");
 	if ($jourMois > Parametres::getJourRelanceDebut() || $jourMois < Parametres::getJourRelanceFin() ) {
+
+		// Repère durée de travail
+		$tempsDebut=microtime(true);
+		
+		
 		if ($jourMois <= Parametres::getJourRelanceDebut())
 			date_sub($dateJour, DateInterval::createFromDateString('1 month'));
 		$periode = $dateJour->format("Y-m");
@@ -317,9 +300,7 @@ function EnvoiMail()
 		$assistantes = View_UtilisateursManager::getListActifPeriode($periode, null, 3);
 
 		// Récupération de la liste des ID des utilisateurs actif en date du jour
-		foreach (View_UtilisateursManager::getList(["idUtilisateur"], ["Actif" => 1], null, null, true, false) as $value) {
-			$contractsActif[] = $value["idUtilisateur"];
-		}
+		$contractsActif=View_UtilisateursManager::getList(["idUtilisateur"], ["Actif" => 1], null, null, true, false);
 
 		$listeManagers = []; //Mémorisation association idManager<=>Nom pour réutilisation pour les assistantes
 		//Pour chaque agent
@@ -327,7 +308,7 @@ function EnvoiMail()
 			$idAgent = $agent->getIdUtilisateur();
 
 			if ($agent->getIdRole() == 2) {
-				$listeManagers[$idAgent] = $agent->getNomUtilisateur();
+				$listeManagers[$idAgent] = $agent->getNomUtilisateur(); //Mémorisation association idManager<=>Nom pour réutilisation pour les assistantes
 			}
 			// Récupération du pointage pour la période
 			$pointage = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, null, "Utilisateur", "Jours");
@@ -341,7 +322,7 @@ function EnvoiMail()
 				$listePointageAgents[$agent->getIdManager()][$agent->getNomUtilisateur()] = $etat;
 
 				// Envoi de mail si niveau agent, actif durant la période et toujours actif aujourd'hui
-				if ($agent->getIdRole() == 1 && in_array($idAgent, $contractsActif)) {
+				if ($agent->getIdRole() == 1 && array_search($agent->getIdUtilisateur(), array_column($contractsActif,"idUtilisateur"))) {
 					envoiMailPointageAgent($agent, $periode, $etat);
 				}
 			}
@@ -399,5 +380,9 @@ function EnvoiMail()
 			}
 		}
 		echo envoiMailControle($periode);
+
+		// Repère durée de travail
+		$tempsFin=microtime(true);
+		echo "<br /><br /><br />Travail fait en ".($tempsFin-$tempsDebut)." secondes.";
 	}
 }
