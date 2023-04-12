@@ -6,7 +6,7 @@ const FROM = "pointage@afpadunkerque.fr";
 const FINCORPMAIL = '<div style="padding-bottom: 1rem;">Pour accéder à GTA, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</div><div style="padding-bottom: 1rem;">Cordialement</div><div style="font-style: italic">Contactez <a href="mailto:sylvie.hannequin@afpa.fr?subject=GTA">Sylvie</a> ou <a href="mailto:fanny.fardel@afpa.fr?subject=GTA">Fanny</a> en cas de problème.</div>';
 const HEADER='From: ' . FROM . PHP_EOL.'MIME-Version: 1.0' . PHP_EOL.'Content-Type: text/html; charset=UTF-8' . PHP_EOL.'Content-Transfer-Encoding: base64;';
 const DEBUTMAIL = '<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0">';
-
+$mailControle = "";
 EnvoiMail();
 
 /**
@@ -19,6 +19,7 @@ EnvoiMail();
  */
 function envoiMailPointageAgent($agent, $periode, $etat)
 {
+	global $mailControle;
 	$sujet = SUJET . tabMoisAnnee()[$periode];
 	//$sujet = "GTA - Relance pour la saisie de votre pointage pour " . tabMoisAnnee()[$periode];
 	// Corps du texte
@@ -44,9 +45,9 @@ function envoiMailPointageAgent($agent, $periode, $etat)
 
 	// Envoi du mail
 	//echo $agent->getMailUtilisateur() . "<br>\n";
-	// mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
-	echo $message;
-
+	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
+	//echo  $message;
+	$mailControle .= $message;
 	// return mail($agent->getMailUtilisateur(),  $sujet, $message, HEADER);
 }
 
@@ -64,18 +65,18 @@ function envoiMailPointageAgent($agent, $periode, $etat)
  */
 function envoiMailManager($manager, $periode, $etat, $listePointagesDefauts = null, $listeValidationDefauts = null)
 {
+	global $mailControle;
+	//On trie sur l'état du pointage
+	arsort($listePointagesDefauts);
 	/////////////////////////////////
 	//Simplification des condition
 	/////////////////////////////////
 	// Tous ses collaborateurs ne sont pas validé
 	$testValidation = $listeValidationDefauts != null && count($listeValidationDefauts) != 0;
-	// Certains de ses collaborateurs n'ont pas commencé leur pointage
-	$testPointagesVide = $listePointagesDefauts != null && isset($listePointagesDefauts[0]) && count($listePointagesDefauts[0]) != 0;
-	// Certains de ses collaborateurs n'ont pas fini leur pointage
-	$testPointagesIncomp = $listePointagesDefauts != null && isset($listePointagesDefauts[1]) && count($listePointagesDefauts[1]) != 0;
+
+	$nom = $manager->getNomUtilisateur();
 
 	$sujet = SUJET . tabMoisAnnee()[$periode];
-	//$sujet = "GTA - Relance pour le mois de " . tabMoisAnnee()[$periode];
 
 	// Corps du texte
 	$message = DEBUTMAIL.'
@@ -109,26 +110,33 @@ function envoiMailManager($manager, $periode, $etat, $listePointagesDefauts = nu
 		$message .= '</ul>';
 	}
 
+	$long = count($listePointagesDefauts); //nb de defaut
+	$keys = array_keys($listePointagesDefauts); // nom des agents sous ce manager avec defaut
 	// Si ses collaborateurs sont en défaut
-	if ($testPointagesVide || $testPointagesIncomp) {
+	if ($long > 0) {
 		$message .= '<div>Nous vous informons ' . (($etat != null || $listeValidationDefauts != null) ? 'aussi ' : '') . 'que ces collaborateurs sont en défaut:</div><ul>';
 		// Des collaborateur n'ont même pas commencé leur pointage
-		if ($testPointagesVide) {
+		$i = 0;
+		// d'abors les pointages vide puis incomplet
+		if ($listePointagesDefauts[$keys[0]] == "Vide") {
 			$message .= '<li>N\'ont pas encore commencé à remplir leur pointage GTA:</li><ul>';
-			foreach ($listePointagesDefauts[0] as $value) {
-				if ($value != $manager->getNomUtilisateur()) {
-					$message .= '<li>' . $value . '</li>';
+
+			while ($i < $long && $listePointagesDefauts[$keys[$i]] == "Vide") {
+				if ($keys[$i] != $nom) {
+					$message .= '<li>' . $keys[$i] . '</li>';
 				}
+				$i++;
 			}
 			$message .= '</ul>';
 		}
 		// Des collaborateur n'ont pas fini leur pointage
-		if ($testPointagesIncomp) {
+		if ($i < $long && $listePointagesDefauts[$keys[$i]] == "Incomplet") {
 			$message .= '<li>N\'ont pas encore terminé de remplir leur pointage GTA:</li><ul>';
-			foreach ($listePointagesDefauts[1] as $value) {
-				if ($value != $manager->getNomUtilisateur()) {
-					$message .= '<li>' . $value . '</li>';
+			while ($i < $long) {
+				if ($keys[$i] != $nom) {
+					$message .= '<li>' . $keys[$i] . '</li>';
 				}
+				$i++;
 			}
 			$message .= '</ul>';
 		}
@@ -143,7 +151,8 @@ function envoiMailManager($manager, $periode, $etat, $listePointagesDefauts = nu
 	// Envoi du mail
 	//return $message;
 	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
-echo $message;
+	echo  $message;
+	$mailControle .= $message;
 	//return mail($manager->getMailUtilisateur(), $sujet, $message, HEADER);
 }
 
@@ -161,6 +170,7 @@ echo $message;
  */
 function envoiMailAssistantes($assistante, $periode, $etat, $listeReportsAFaire, $listeManagers)
 {
+	global $mailControle;
 	$sujet = SUJET . tabMoisAnnee()[$periode];
 	//$sujet = "GTA - Relance pour le report du pointage dans le système RH";
 
@@ -204,6 +214,7 @@ function envoiMailAssistantes($assistante, $periode, $etat, $listeReportsAFaire,
 	// Envoi du mail
 	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
 	echo $message;
+	$mailControle .= $message;
 	//return mail($assistante->getMailUtilisateur(), $sujet, $message, HEADER);
 }
 
@@ -217,8 +228,9 @@ function envoiMailAssistantes($assistante, $periode, $etat, $listeReportsAFaire,
  * @param array $listeManagers Tableau permettant d'associer l'identifiant des managers actif (en index) avec leur nom (en valeur)
  * @return void
  */
-function envoiMailControle($periode, $listePointageAgents, $listeValidationAFaire, $listeReportAFaire, $listeManagers)
+function envoiMailControle($periode)
 {
+	global $mailControle;
 	$sujet = "Mail de contrôle GTA pour le mois de " . tabMoisAnnee()[$periode];
 	// Corps du texte
 	$message = DEBUTMAIL.'
@@ -227,45 +239,7 @@ function envoiMailControle($periode, $listePointageAgents, $listeValidationAFair
 		<body style="font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif;">
 		<div style="padding-bottom: 1rem;">Bonjour,</div><ul>';
 	$message .= '<div style="padding-bottom: 1rem;">Voici où en sont les pointages à ce jour:</div>';
-	foreach ($listeManagers as $idManager => $nomManager) {
-		$testCollVide = (isset($listePointageAgents[$idManager][0]));
-		$testCollIncomp = (isset($listePointageAgents[$idManager][1]));
-		$testAValid = (isset($listeValidationAFaire[$idManager]));
-		$testAReport = (isset($listeReportAFaire[$idManager]));
-		if ($testCollVide || $testCollIncomp || $testAValid) {
-			$message .= '<li>Manager ' . $nomManager . ':</li><ul>';
-			if ($testCollVide) {
-				$message .= '<li>Utilisateurs n\'ayant pas commencé leur pointage:</li><ul>';
-				foreach ($listePointageAgents[$idManager][0] as $pointageVide) {
-					$message .= '<li>' . $pointageVide . '</li>';
-				}
-				$message .= '</ul>';
-			}
-			if ($testCollIncomp) {
-				$message .= '<li>Utilisateurs n\'ayant pas terminé leur pointage:</li><ul>';
-				foreach ($listePointageAgents[$idManager][1] as $pointageIncomp) {
-					$message .= '<li>' . $pointageIncomp . '</li>';
-				}
-				$message .= '</ul>';
-			}
-			if ($testAValid) {
-				$message .= '<li>Utilisateurs n\'ayant pas encore été validés:</li><ul>';
-				foreach ($listeValidationAFaire[$idManager] as $pointageAValid) {
-					$message .= '<li>' . $pointageAValid . '</li>';
-				}
-				$message .= '</ul>';
-			}
-			if ($testAReport) {
-				$message .= '<li>Utilisateurs n\'ayant pas encore été reportés sur SIRH:</li><ul>';
-				foreach ($listeReportAFaire[$idManager] as $pointageAReport) {
-					$message .= '<li>' . $pointageAReport . '</li>';
-				}
-				$message .= '</ul>';
-			}
-			$message .= '</ul>';
-		}
-	}
-	$message .= '</ul>
+	$message .= $mailControle . '
 		</body>
 	</html>';
 
@@ -308,9 +282,8 @@ function EnvoiMail()
 {
 	$dateJour = new DateTime();
 	$jourMois = $dateJour->format("d");
-	if ($jourMois > 25 || $jourMois < 15) {
-
-		if ($jourMois <= 25)
+	if ($jourMois > Parametres::getJourRelanceDebut() || $jourMois < Parametres::getJourRelanceFin() ) {
+		if ($jourMois <= Parametres::getJourRelanceDebut())
 			date_sub($dateJour, DateInterval::createFromDateString('1 month'));
 		$periode = $dateJour->format("Y-m");
 		/*  Pointage  */
@@ -324,7 +297,7 @@ function EnvoiMail()
 		// Récupération de la liste des ID des utilisateurs actif en date du jour
 		$contractsActif=View_UtilisateursManager::getList(["idUtilisateur"], ["Actif" => 1], null, null, true, false);
 
-		$listeManagers = [];
+		$listeManagers = []; //Mémorisation association idManager<=>Nom pour réutilisation pour les assistantes
 		//Pour chaque agent
 		foreach ($agents as $key => $agent) {
 			$idAgent = $agent->getIdUtilisateur();
@@ -332,7 +305,6 @@ function EnvoiMail()
 			if ($agent->getIdRole() == 2) {
 				$listeManagers[$idAgent] = $agent->getNomUtilisateur(); //Mémorisation association idManager<=>Nom pour réutilisation pour les assistantes
 			}
-
 			// Récupération du pointage pour la période
 			$pointage = View_Pointages_PeriodeManager::NombrePointages($idAgent, $periode, null, "Utilisateur", "Jours");
 
@@ -340,13 +312,9 @@ function EnvoiMail()
 			// Si pointage vide ou si pointage incomplet
 			/////////////////////////////////////////////
 			if ($pointage == null || $pointage < NbJourParPeriode($periode)) {
-				if ($pointage == null) {
-					$etat = "Vide";
-					$listePointageAgents[$agent->getIdManager()][0][] = $agent->getNomUtilisateur();
-				} else {
-					$etat = "Incomplet";
-					$listePointageAgents[$agent->getIdManager()][1][] = $agent->getNomUtilisateur();
-				}
+
+				$etat = ($pointage == null) ? "Vide" : "Incomplet";
+				$listePointageAgents[$agent->getIdManager()][$agent->getNomUtilisateur()] = $etat;
 
 				// Envoi de mail si niveau agent, actif durant la période et toujours actif aujourd'hui
 				if ($agent->getIdRole() == 1 && array_search($agent->getIdUtilisateur(), array_column($contractsActif,"idUtilisateur"))) {
@@ -379,33 +347,18 @@ function EnvoiMail()
 		///////////////////////////////////////
 		// Gestion de l'envois des mails pour les managers
 		///////////////////////////////////////
-
 		foreach ($managers as $manager) {
 			$idUser = $manager->getIdUtilisateur();
 			$nomUser = $manager->getNomUtilisateur();
 
-			//////////////////////////////////
-			// Simplification des conditions
-			//////////////////////////////////
-			// Ce manager n'a pas commencé à remplir son pointage
-			$testPointVide = isset($listePointageAgents[$manager->getIdManager()][0]) && in_array($nomUser, $listePointageAgents[$manager->getIdManager()][0]);
-			// Ce manager n'a pas finit de remplir son pointage
-			$testPointIncomp = isset($listePointageAgents[$manager->getIdManager()][1]) && in_array($nomUser, $listePointageAgents[$manager->getIdManager()][1]);
+			$etatManager = array_search_2dim($nomUser, "Vide", $listePointageAgents) ? "Vide" : (array_search_2dim($nomUser, "Incomplet", $listePointageAgents) ? "Incomplet" : "Complet");
+			
 			// Certains des collaborateurs de ce managers sont en défaut
-			$testDefColl = isset($listePointageAgents) && array_key_exists($idUser, $listePointageAgents);
+			$listPointDef = (isset($listePointageAgents[$idUser])) ? $listePointageAgents[$idUser] : null;
 			// Ce manager n'a pas validé tous ses collaborateurs
-			$testValidColl = isset($listeValidationAFaire) && array_key_exists($idUser, $listeValidationAFaire);
-			if ($testPointVide || $testPointIncomp || $testDefColl || $testValidColl) {
-				// Détermine l'état du pointage du manager
-				if ($testPointVide) {
-					$etatManager = "Vide";
-				} elseif ($testPointIncomp) {
-					$etatManager = "Incomplet";
-				} else {
-					$etatManager = "Complet";
-				}
-				$listPointDef = isset($listePointageAgents[$idUser])?$listePointageAgents[$idUser]:null;
-				$listValidDef = isset($listeValidationAFaire[$idUser])?$listeValidationAFaire[$idUser]:null;
+			$listValidDef = (isset($listeValidationAFaire[$idUser])) ? $listeValidationAFaire[$idUser] : null;
+			
+			if ($etatManager != "Complet" || $listPointDef != null || $listValidDef != null) {
 				envoiMailManager($manager, $periode, $etatManager, $listPointDef, $listValidDef);
 			}
 		}
@@ -415,27 +368,12 @@ function EnvoiMail()
 		///////////////////////////////////////
 
 		foreach ($assistantes as $assistante) {
-			// Cette assistante n'a pas commencé à remplir son pointage
-			$testPointVide = isset($listePointageAgents[$assistante->getIdManager()][0]) && in_array($assistante->getNomUtilisateur(), $listePointageAgents[$assistante->getIdManager()][0]);
-			// Cette assistante n'a pas finit de remplir son pointage
-			$testPointIncomp = isset($listePointageAgents[$assistante->getIdManager()][1]) && in_array($assistante->getNomUtilisateur(), $listePointageAgents[$assistante->getIdManager()][1]);
-			// Attribution du défaut correspondant
-			$etatAssistante = ($testPointVide ? 'Vide' : ($testPointIncomp ? 'Incomplet' : 'Complet'));
+			$etatAssistante = isset($listePointageAgents[$assistante->getIdManager()]) && in_array($nomUser, $listePointageAgents[$assistante->getIdManager()]) ? array_shift(array_keys($listePointageAgents[$assistante->getIdManager()])) : "Complet";
 			// Envois du mail s'il reste des pointages à reporter ou si elle est elle-même en défaut
-			if (isset($listeReportAFaire) || $etatAssistante != null) {
+			if (isset($listeReportAFaire) || $etatAssistante != "Complet") {
 				envoiMailAssistantes($assistante, $periode, $etatAssistante, $listeReportAFaire, $listeManagers);
 			}
 		}
-
-		echo envoiMailControle($periode, $listePointageAgents, $listeValidationAFaire, $listeReportAFaire, $listeManagers);
-	}elseif($jourMois==20){
-		$periode = $dateJour->format("Y-m");
-		// Récupération de la liste des agents actifs durant la période
-		$agents = View_UtilisateursManager::getListActifPeriode($periode);
-		
-		foreach ($agents as $agent) {
-			//Tester si pointage déja remplit
-			 envoiMailMiMois($periode, $agent);
-		}
+		echo envoiMailControle($periode);
 	}
 }
