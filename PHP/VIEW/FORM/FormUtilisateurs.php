@@ -40,7 +40,7 @@ echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdUo(), 'Uos', [
 echo '<div></div><div></div>';
 
 echo '<label for=IdRole class="caseForm labelForm">' . texte("IdRole") . '</label>';
-echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdRole(), 'Roles', ['nomRole'], $disabled . ' required',["idRole"=>"1->3"] , null, null, "Choisir un rôle") . '</div>';
+echo '<div class="caseForm donneeForm">' . creerSelect($elm->getIdRole(), 'Roles', ['nomRole'], $disabled . ' required',["idRole"=>"1->4"] , null, null, "Choisir un rôle") . '</div>';
 echo '<div></div><div></div>';
 
 echo '<label for=IdManager class="caseForm labelForm">' . texte("IdManager") . '</label>';
