@@ -33,7 +33,7 @@ function envoiMail($agent, $periode)
 	$listeAReporter = $agent->getListeAReporter();
 
 	// Détermine si un mail doit, ou non, être envoyé à l'agent en question
-	if ($etat != "Complet" || $listeARelancer != null || $listeAValider != null || $listeAReporter != null) {
+	if (($etat != "Complet" || $listeARelancer != null || $listeAValider != null || $listeAReporter != null) && $agent->getActif==1) {
 		$sujet = SUJET . tabMoisAnnee()[$periode];
 
 		// Corps du texte
