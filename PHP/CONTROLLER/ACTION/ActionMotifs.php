@@ -25,9 +25,9 @@ switch ($_GET['mode']) {
 				$_SESSION['erreur']['redirection'] = "?page=ListeMotifs";
 				$_SESSION['erreur']['detail'] = "<br>";
 
-				$pointages = View_PointagesManager::getList(null, ["idMotif" => $elm->getIdMotif()]);
+				$pointages = View_PointagesManager::getList(['NomUtilisateur','Periode'], ["idMotif" => $elm->getIdMotif()]);
 				foreach ($pointages as  $pointage) {
-					$_SESSION['erreur']['detail'] .= "pour le pointage de  : " . $pointage->getNomUtilisateur() . " en date du " . $pointage->getDatePointage() . "<br>";
+					$_SESSION['erreur']['detail'] .= "pour le pointage de  : " . $pointage->getNomUtilisateur() . " pour la période " . $pointage->getPeriode() . "<br>";
 				}
 				$_SESSION['erreur']['detail'] .= "<br>";
 				$preferences = PreferencesManager::getList(null, ["idMotif" => $elm->getIdMotif()]);
