@@ -10,6 +10,9 @@ switch ($mode)
             if ($uti->getPasswordUtilisateur() == crypte($_POST['passwordUtilisateur']))
             {
                 echo 'connection reussie';
+                if($uti->getIdRole()==4){
+                    $uti->setIdRole(2);
+                }
                 $_SESSION['utilisateur'] = $uti;
                 /* On vérifie qu'il ne s'agit pas du mot de passe par défaut  */
                 if (crypte($_POST['passwordUtilisateur']) == crypte(passwordDefault($uti)))
