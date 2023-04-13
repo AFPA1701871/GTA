@@ -23,22 +23,25 @@ switch ($_GET['mode']) {
 			if ($reponse == false) {
 				$_SESSION['erreur']['message'] = "Impossible de supprimer l'UO, elle est déjà utilisée";
 				$_SESSION['erreur']['redirection'] = "?page=ListeUos";
-				$_SESSION['erreur']['detail'] ="";
+				$_SESSION['erreur']['detail'] = "<br>";
 				$users = UtilisateursManager::getList(null, ["idUo" => $elm->getIdUo()]);
 				foreach ($users as  $user) {
-					$_SESSION['erreur']['detail'] .= "pour l'utilisateur : ". $user->getNomUtilisateur()."<br>";
+					$_SESSION['erreur']['detail'] .= "pour l'utilisateur : " . $user->getNomUtilisateur() . "<br>";
 				}
-				$pointages = View_PointagesManager::getList(null, ["idUo_Pointage" => $elm->getIdUo()]);
+				$_SESSION['erreur']['detail'] .= "<br>";
+				$pointages = View_PointagesManager::getList(['NomUtilisateur','Periode'], ["idUo_Pointage" => $elm->getIdUo()]);
 				foreach ($pointages as  $pointage) {
-					$_SESSION['erreur']['detail'] .= "pour le pointage de  : ". $pointage->getNomUtilisateur()." en date du " .$pointage->getDatePointage()."<br>";
+					$_SESSION['erreur']['detail'] .= "pour le pointage de  : " . $pointage->getNomUtilisateur() . " pour la période " . $pointage->getPeriode() . "<br>";
 				}
-				$preferences =PreferencesManager::getList(null, ["idUo" => $elm->getIdUo()]);
+				$_SESSION['erreur']['detail'] .= "<br>";
+				$preferences = PreferencesManager::getList(null, ["idUo" => $elm->getIdUo()]);
 				foreach ($preferences as  $preference) {
-					$_SESSION['erreur']['detail'] .= "pour la preference de  : ". UtilisateursManager::findById($preference->getIdUtilisateur())->getNomUtilisateur()."<br>";
+					$_SESSION['erreur']['detail'] .= "pour la preference de  : " . UtilisateursManager::findById($preference->getIdUtilisateur())->getNomUtilisateur() . "<br>";
 				}
 
 				header("location:index.php?page=Erreur");
-			} else { header("location:index.php?page=ListeUos");
+			} else {
+				header("location:index.php?page=ListeUos");
 			}
 			break;
 		}

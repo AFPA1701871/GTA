@@ -140,7 +140,7 @@ class View_Utilisateurs
 		return $this->_numeroUo;
 	}
 
-	public function setNumeroUo(?int $numeroUo)
+	public function setNumeroUo(?string $numeroUo)
 	{
 		$this->_numeroUo = $numeroUo;
 	}

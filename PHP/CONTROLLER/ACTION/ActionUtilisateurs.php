@@ -41,6 +41,7 @@ switch ($_GET['mode']) {
 				PreferencesManager::add($prefAbsence);
 				$_SESSION['erreur']['message'] = "Impossible de supprimer l'utilisateur, il a déjà un contrat, du pointage ou des favoris";
 				$_SESSION['erreur']['redirection'] = "?page=ListeUtilisateurs";
+				$_SESSION['erreur']['detail'] = "<br>";
 				header("location:index.php?page=Erreur");
 			} else  header("location:index.php?page=ListeUtilisateurs");
 			break;

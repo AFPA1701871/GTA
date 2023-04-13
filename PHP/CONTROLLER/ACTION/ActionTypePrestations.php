@@ -33,12 +33,13 @@ switch ($_GET['mode']) {
 		$reponse = TypePrestationsManager::delete($elm);if ($reponse == false) {
 			$_SESSION['erreur']['message'] = "Impossible de supprimer le type de prestation, il est déjà utilisée";
 			$_SESSION['erreur']['redirection'] = "?page=ListeTypePrestations";
-			$_SESSION['erreur']['detail'] ="Enlever les activités associées<br>";
-			$pointages = View_PointagesManager::getList(null, ["idTypePrestation" => $elm->getIdTypePrestation()]);
+			$_SESSION['erreur']['detail'] ="Enlever les activités associées<br><br>";
+			$pointages = View_PointagesManager::getList(['NomUtilisateur','Periode'], ["idTypePrestation" => $elm->getIdTypePrestation()]);
 			foreach ($pointages as  $pointage) {
-				$_SESSION['erreur']['detail'] .= "pour le pointage de  : ". $pointage->getNomUtilisateur()." en date du " .$pointage->getDatePointage()."<br>";
+				$_SESSION['erreur']['detail'] .= "pour le pointage de  : ". $pointage->getNomUtilisateur()." pour la période " .$pointage->getPeriode()."<br>";
 			}
-			$preferences =PreferencesManager::getList(null, ["idTypePrestation" => $elm->getIdTypePrestation()]);
+			$_SESSION['erreur']['detail'] .= "<br>";
+			$preferences =PreferencesManager::getList(['IdUtilisateur'], ["idTypePrestation" => $elm->getIdTypePrestation()]);
 			foreach ($preferences as  $preference) {
 				$_SESSION['erreur']['detail'] .= "pour la preference de  : ". UtilisateursManager::findById($preference->getIdUtilisateur())->getNomUtilisateur()."<br>";
 			}
