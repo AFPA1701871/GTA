@@ -11,6 +11,7 @@ class Parametres
 	private static $_jourInformation;
 	private static $_jourRelanceDebut;
 	private static $_jourRelanceFin;
+	private static $_assistantes;
 	static function getHost()
 	{
 		return self::$_host;
@@ -57,6 +58,10 @@ class Parametres
 	{
 		return self::$_jourRelanceFin;
 	}
+	public static function getAssistantes()
+	{
+		return self::$_assistantes;
+	}
 	static function init()
 	{
 		if (file_exists("config.json")) {
@@ -70,10 +75,13 @@ class Parametres
 			self::$_jourRelanceDebut = $parametre->JourRelanceDebut;
 			self::$_jourRelanceFin = $parametre->JourRelanceFin;
 			self::$_anneeDisponible = decode($parametre->AnneeDisponible);
+			self::$_assistantes = $parametre->Assistantes;
 			if (strlen($parametre->Pwd) == 0)
 				self::$_pwd = $parametre->Pwd; //developpement
 			else
 				self::$_pwd = decode($parametre->Pwd); //production
 		}
 	}
+
+	
 }
