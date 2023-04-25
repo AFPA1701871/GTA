@@ -7,6 +7,13 @@
 	"NbEltParPage":30,
 	"AnneeDisponible":[2023,2024],
 	"JourInformation":20,
-	"JourRelanceDebut":25,
-	"JourRelanceFin":15
+	"JourRelanceDebut":-3,
+	"JourRelanceFin":10,
+	"Assistantes":[{
+		"Nom":"Sylvie",
+		"Mail":"sylvie.hannequin@afpa.fr"
+	}, {
+		"Nom":"Fanny",
+		"Mail":"fanny.fardel2@afpa.fr"
+	}]
 }
