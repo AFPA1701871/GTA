@@ -50,8 +50,9 @@ function EnvoiMail($agent, $periode, $objectif = "Relance")
 		} else {
 			$dateJour = new DateTime();
 			$jourMois = $dateJour->format("d");
+			$debutRelance= date("d",strtotime("last day of this month ".Parametres::getJourRelanceDebut()." weekdays"));
 			// Défaut pour son propre pointage
-			if($jourMois<Parametres::getJourRelanceDebut()){
+			if($jourMois<$debutRelance){
 				$rplcRAO=["LIMITE"=>"à ce jour.</div><div style='padding-bottom: 1rem;'>Pour rappel, celui-ci est reporté dans SIRH afin d'obtenir des extractions de résultats mensuels au plus près de la réalité."];
 			}else{
 				$rplcRAO=["LIMITE"=>"pour le dernier jour travaillé du mois."];
@@ -183,7 +184,7 @@ function PrepaMail()
 		if ($jourMois <= $debutRelance)
 			date_sub($dateJour, DateInterval::createFromDateString('1 month'));
 		$periode = $dateJour->format("Y-m");
-		var_dump($periode);
+		
 		/*  Pointage  */
 		// Récupération de la liste des agents actifs durant la période
 		$agents = View_UtilisateursManager::getListActifPeriodeMail($periode);
