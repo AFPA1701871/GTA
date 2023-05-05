@@ -1,7 +1,7 @@
 <?php
 
 // Déclaration des constantes qui seront utilisées à plusieurs reprises et à plusieurs endroits
-const SUJET = ["Relance" => "Mail de relance concernant le GTA pour le mois de PERIODE", "Info" => "Mail d'information concernant le GTA pour le mois de PERIODE", "Controle" => "Mail de contrôle GTA pour le mois de PERIODE"];
+const SUJET = "GTA - Relance pour le mois de PERIODE";
 const FROM = "pointage@afpadunkerque.fr";
 // Personnes à contacter en fonction du rôle
 $cont="";
@@ -45,18 +45,8 @@ function EnvoiMail($agent, $periode, $objectif = "Relance")
 		$rplcDebMail = ["TITRE" => $sujet, "PERIODE" => tabMoisAnnee()[$periode], "AGENT" => $agent->getNomUtilisateur()];
 		$message = strtr(DEBUTMAIL, $rplcDebMail);
 
-		if ($objectif == "Info") {
-			$message .= str_replace("PERIODE", tabMoisAnnee()[$periode], RAPPELALORDRE[$objectif]);
-		} else {
-			$dateJour = new DateTime();
-			$jourMois = $dateJour->format("d");
-			// Défaut pour son propre pointage
-			if($jourMois<Parametres::getJourRelanceDebut()){
-				$rplcRAO=["LIMITE"=>"à ce jour.</div><div style='padding-bottom: 1rem;'>Pour rappel, celui-ci est reporté dans SIRH afin d'obtenir des extractions de résultats mensuels au plus près de la réalité."];
-			}else{
-				$rplcRAO=["LIMITE"=>"pour le dernier jour travaillé du mois."];
-			}
-			$message .= strtr(RAPPELALORDRE[$etat],$rplcRAO);
+	// Si le manager est lui-même en défaut pour son propre pointage
+	$message .= str_replace("PERIODE",tabMoisAnnee()[$periode], RAPPELALORDRE[$etat]);
 
 			// A Valider
 			// Si le manager n'a pas encore validé les pointages de certains collaborateurs
@@ -136,12 +126,18 @@ function EnvoiMail($agent, $periode, $objectif = "Relance")
 		$role = ($agent->getIdRole() == 3) ? "Assistantes" : "Autres";
 		$message .= str_replace("CONTACTER", CONTACT[$role], FINCORPMAIL);
 
+	$message .= '</ul><div>Nous vous invitons à le faire.</div>
+				<div style="padding-bottom: 1rem;">Pour accéder à GTA, <a href="gta.afpadunkerque.fr/">cliquez sur ce lien</a>.</div>
+				<div style="padding-bottom: 1rem;">Cordialement</div>
+				<div style="font-style: italic;">Contactez <a href="mailto:martine.poix@afpa.fr?subject=GTA">Martine</a> en cas de problème.</div>
+		</body>
+	</html>';
 
-		//Ajout d'une copie du mail d'information dans le mail de controle
-		$mailControle .= "<li style='margin-bottom:1rem;'>" . $message . "</li>";
-		// Envoi du mail
-		//return mail($agent->getMailUtilisateur(), $sujet, $message, HEADER);
-	}
+	// Envoi du mail
+	//mail("martine.poix@afpa.fr, florent.delaliaux@gmail.com", $sujet, $message, HEADER);
+	echo $message;
+	$mailControle .= $message."***********************************************<br />";
+	//return mail($assistante->getMailUtilisateur(), $sujet, $message, HEADER);
 }
 
 /**
@@ -184,6 +180,7 @@ function PrepaMail()
 		if ($jourMois <= $debutRelance)
 			date_sub($dateJour, DateInterval::createFromDateString('1 month'));
 		$periode = $dateJour->format("Y-m");
+		
 		/*  Pointage  */
 		// Récupération de la liste des agents actifs durant la période
 		$agents = View_UtilisateursManager::getListActifPeriodeMail($periode);
