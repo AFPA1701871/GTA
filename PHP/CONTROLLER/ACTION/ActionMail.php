@@ -182,7 +182,7 @@ function PrepaMail()
 	$debutRelance= date("d",strtotime("last day of this month ".Parametres::getJourRelanceDebut()." weekdays"));
 
 	if ($jourMois >= $debutRelance || $jourMois < Parametres::getJourRelanceFin() || $jourMois == Parametres::getJourInformation()) {
-		if ($jourMois <= $debutRelance)
+		if ($jourMois <= Parametres::getJourRelanceFin())
 			date_sub($dateJour, DateInterval::createFromDateString('1 month'));
 		$periode = $dateJour->format("Y-m");
 		/*  Pointage  */
