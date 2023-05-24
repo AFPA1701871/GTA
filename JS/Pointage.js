@@ -10,7 +10,11 @@ window.addEventListener("load", setGridPointage);
 
 listeStarFav = document.querySelectorAll(".fa-fav");
 listeStarFav.forEach(etoile => {
-    etoile.addEventListener("click", UpdateFav);
+    //Ignore le clic sur le favoris pour les absences
+    if (etoile.parentNode.parentNode.parentNode.dataset.line != 1) {
+        console.log(etoile.parentNode.parentNode.parentNode)
+        etoile.addEventListener("click", UpdateFav);
+    }
 });
 
 listeCases = document.querySelectorAll('.casePointage');
@@ -49,7 +53,7 @@ inputs.forEach((element) => {
 listePlus = document.querySelectorAll(".fa-plus");
 listePlus.forEach(element => {
     //element.addEventListener("click", clicPlus);
-    element.addEventListener("click",()=>{ 
+    element.addEventListener("click", () => {
         openModale(event);
         btnsModale();
     });
@@ -203,11 +207,11 @@ function MarquageAbsent(colonne, valeur) {
                 // On retranche la valeur à la somme de la ligne
                 cellTotalLigne = document.querySelector(".colTotal[data-line='" + elt.getAttribute("data-line") + "'");
                 if (cellTotalLigne != null) {
-                    cellTotalLigne.innerHTML=parseFloat(cellTotalLigne.innerHTML) - parseFloat(elt.value);
+                    cellTotalLigne.innerHTML = parseFloat(cellTotalLigne.innerHTML) - parseFloat(elt.value);
                 }
                 // On retranche la valeur à la somme de la colonne
-                if(elt.hasAttribute("data-line")){
-                    inputsColonne[0].dataset.somme = parseFloat(inputsColonne[0].dataset.somme)-parseFloat(elt.value);
+                if (elt.hasAttribute("data-line")) {
+                    inputsColonne[0].dataset.somme = parseFloat(inputsColonne[0].dataset.somme) - parseFloat(elt.value);
                 }
                 // On "vide" la cellule
                 elt.value = "";
@@ -636,9 +640,9 @@ function SelectToInput(type, ligne) {
     if (source != null) {
         // le nouvel input aura pour valeur soit "" si le select est vide, soit le label de l'option choisie
         valeur = (source.value != "") ? source.selectedOptions[0].label : "";
-        
+
         // Création de l'input text avec les paramètres prédéfinis
-        cible = '<input class="' + classe + '" data-line="' + ligne + '" type="text" name="input' + type + '" value="' + valeur + '" disabled="" title="'+valeur+'"></input>';
+        cible = '<input class="' + classe + '" data-line="' + ligne + '" type="text" name="input' + type + '" value="' + valeur + '" disabled="" title="' + valeur + '"></input>';
         input = document.createElement("input");
         input.innerHTML = cible;
         source.parentNode.replaceChild(input.children[0], source);
