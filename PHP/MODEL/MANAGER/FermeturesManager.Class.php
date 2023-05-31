@@ -5,7 +5,15 @@ class FermeturesManager
 
 	public static function add(Fermetures $obj)
 	{
- 		return DAO::add($obj);
+ 		// Check si des pointages ont déjà été fait pour la date devenue "Fermée"
+		$listePointageEfface=PointagesManager::getList(null, ["datePointage"=>$obj->getDateFermeture()]);
+		if($listePointageEfface!=null){
+			// S'il en existe, les effacer de la base de donnée
+			foreach ($listePointageEfface as $pointage) {
+				PointagesManager::delete($pointage);
+			}
+		}
+		return DAO::add($obj);
 	}
 
 	public static function update(Fermetures $obj)
