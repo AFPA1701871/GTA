@@ -14,6 +14,9 @@ switch ($mode)
                     $uti->setIdRole(2);
                 }
                 $_SESSION['utilisateur'] = $uti;
+                // On cherche l'entite correspondante
+                $contrats = ContratsManager::getList(null,['IdUtilisateur'=>$uti->getIdUtilisateur()],"DateFinContrat desc");
+                $_SESSION["entite"]=$contrats[0]->getIdEntite();
                 /* On vérifie qu'il ne s'agit pas du mot de passe par défaut  */
                 if (crypte($_POST['passwordUtilisateur']) == crypte(passwordDefault($uti)))
                 {

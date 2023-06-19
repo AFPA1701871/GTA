@@ -7,6 +7,7 @@
             <div class="">
                 <?php
                 if (isset($_SESSION['utilisateur'])) {
+                    echo '<input type=hidden id=idEntite value='.$_SESSION["entite"].'>';
                     echo '<div class="center demi">' . texte('Bonjour') . " " . $_SESSION['utilisateur']->getNomUtilisateur() . '</div>';
                     if (($nom == 'ChangePassword' && !empty($_GET['src'])) || $nom != 'ChangePassword')
                     {
