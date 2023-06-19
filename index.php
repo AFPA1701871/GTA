@@ -5,6 +5,7 @@ include "./PHP/CONTROLLER/Outils.php";
 spl_autoload_register("ChargerClasse");
 
 Parametres::init();
+Parametres::initByEntite(1);
 
 DbConnect::init();
 

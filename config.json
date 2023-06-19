@@ -1,19 +1,43 @@
 {
-	"Host":"localhost",
-	"Port":"3306",
-	"DbName":"gta",
-	"Login":"root",
-	"Pwd":"",
-	"NbEltParPage":30,
-	"AnneeDisponible":[2023,2024],
-	"JourInformation":20,
-	"JourRelanceDebut":-3,
-	"JourRelanceFin":10,
-	"Assistantes":[{
-		"Nom":"Sylvie",
-		"Mail":"sylvie.hannequin@afpa.fr"
-	}, {
-		"Nom":"Fanny",
-		"Mail":"fanny.fardel2@afpa.fr"
-	}]
+	"Host": "localhost",
+	"Port": "3306",
+	"DbName": "gta",
+	"Login": "root",
+	"Pwd": "",
+	"AnneeDisponible": [
+		2023,
+		2024
+	],
+	"Entites": [
+		{
+			"IdEntite": 1,
+			"NbEltParPage": 30,
+			"JourInformation": 20,
+			"JourRelanceDebut": -3,
+			"JourRelanceFin": 10,
+			"Assistantes": [
+				{
+					"Nom": "Sylvie",
+					"Mail": "sylvie.hannequin@afpa.fr"
+				},
+				{
+					"Nom": "Fanny",
+					"Mail": "fanny.fardel2@afpa.fr"
+				}
+			]
+		},
+		{
+			"IdEntite": 2,
+			"NbEltParPage": 20,
+			"JourInformation": 20,
+			"JourRelanceDebut": -3,
+			"JourRelanceFin": 10,
+			"Assistantes": [
+				{
+					"Nom": "Toto",
+					"Mail": "toto@afpa.fr"
+				}
+			]
+		}
+	]
 }

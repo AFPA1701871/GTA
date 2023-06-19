@@ -70,18 +70,26 @@ class Parametres
 			self::$_port = $parametre->Port;
 			self::$_dbname = decode($parametre->DbName);
 			self::$_login = decode($parametre->Login);
-			self::$_nbEltParPage = decode($parametre->NbEltParPage);
-			self::$_jourInformation = $parametre->JourInformation;
-			self::$_jourRelanceDebut = $parametre->JourRelanceDebut;
-			self::$_jourRelanceFin = $parametre->JourRelanceFin;
 			self::$_anneeDisponible = decode($parametre->AnneeDisponible);
-			self::$_assistantes = $parametre->Assistantes;
 			if (strlen($parametre->Pwd) == 0)
 				self::$_pwd = $parametre->Pwd; //developpement
 			else
 				self::$_pwd = decode($parametre->Pwd); //production
 		}
 	}
-
-	
+	static function initByEntite($idEntite)
+	{
+		if (file_exists("config.json")) {
+			$parametre  = json_decode(file_get_contents("config.json"));
+			foreach ($parametre->Entites as $entite) {
+				if ($entite->IdEntite == $idEntite) {
+					self::$_nbEltParPage = decode($entite->NbEltParPage);
+					self::$_jourInformation = $entite->JourInformation;
+					self::$_jourRelanceDebut = $entite->JourRelanceDebut;
+					self::$_jourRelanceFin = $entite->JourRelanceFin;
+					self::$_assistantes = $entite->Assistantes;
+				}
+			}
+		}
+	}
 }
