@@ -3,13 +3,17 @@ echo '
 <nav>
     <aside class="cote"></aside>
     <menu class="flex">';
+
 if ($roleConnecte >= 3) {
     echo '<div class="relative center">' . texte("Données administratives") . '<i class="fa-solid fa-angle-down fa-margin"></i>
     <div class="sous-menu colonne">
         <a href="?page=ListeCentres"><div>' . texte("Centres") . '</div></a>
         <a href="?page=ListeFermetures"><div>' . texte("Fermetures") . '</div></a>
-        <a href="?page=ListeUos"><div>' . texte("Uos") . '</div></a>
-    </div>
+        <a href="?page=ListeUos"><div>' . texte("Uos") . '</div></a>';
+    if ($roleConnecte == 5) {
+        echo ' <a href="?page=ListeEntites"><div>' . texte("Entites") . '</div></a>';
+    }
+    echo '</div>
 </div>
 <div class="relative center">' . texte("Données pointages") . '<i class="fa-solid fa-angle-down fa-margin"></i>
     <div class="sous-menu colonne">
@@ -23,7 +27,7 @@ if ($roleConnecte >= 3) {
 </div>';
     if ($roleConnecte == 3) {
         echo '<div class="relative center">' . texte("Recaps") . '<i class="fa-solid fa-angle-down fa-margin"></i>
-            <div class="sous-menu colonne"><a href="?page=TbAssistante"><div>'.texte("TableauBord").'</div></a><a href="?page=Synthese"><div>'.texte("Syntheses").'</div></a></div></div>';
+            <div class="sous-menu colonne"><a href="?page=TbAssistante"><div>' . texte("TableauBord") . '</div></a><a href="?page=Synthese"><div>' . texte("Syntheses") . '</div></a></div></div>';
     } else {
         echo '<div class="relative center">' . texte("TableauBord") . '<i class="fa-solid fa-angle-down fa-margin"></i>
     <div class="sous-menu colonne">

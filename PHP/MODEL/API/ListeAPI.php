@@ -18,7 +18,7 @@ elseif (count($selection) != 0)
 $orderBy = $_POST["orderBy"];
 $limit = $_POST["limit"];
 // par défaut, on trie par le 2ème attribue de la classe
-$orderBy = ($orderBy == "null" || $orderBy == "") ? ($table=="Uos" ? " LENGTH(NumeroUo), NumeroUo " : $nomColonnes[1]) : $orderBy;
+$orderBy = ($orderBy == "null" || $orderBy == "") ? ($table=="Uos" ? " LENGTH(NumeroUo), NumeroUo " : (count($nomColonnes)>2?$nomColonnes[2]:$nomColonnes[1]) ): $orderBy;
 $limit = ($limit == "null") ? null : $limit;
 $compte = DAO::count($nomColonnes, $table, $conditions,  $orderBy,  null,  true,  false);
 $liste = DAO::select($nomColonnes, $table, $conditions,  $orderBy,  $limit,  true,  false);

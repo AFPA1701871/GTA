@@ -128,6 +128,17 @@ function AfficherPage(index, filtre) {
                         grid.innerHTML = grid.innerHTML.replaceAll("LibelleActivite", element.libelleActivite);
                         grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
                     });
+                } else if (page == "ListeEntites") {
+                    temp = document.getElementsByTagName("template")[0];
+                    pair = 0;
+                    liste.forEach(element => {
+                        pyjama = (++pair % 2 == 0) ? " bgc" : "";
+                        contenu = temp.content.cloneNode(true);
+                        grid.appendChild(contenu);
+                        grid.innerHTML = grid.innerHTML.replaceAll("IdEntite", element.idEntite);
+                        grid.innerHTML = grid.innerHTML.replaceAll("LibelleEntite", element.libelleEntite);
+                        grid.innerHTML = grid.innerHTML.replaceAll("pyjama", pyjama);
+                    });
                 } else if (page == "ListeCentres") {
                     temp = document.getElementsByTagName("template")[0];
                     pair = 0;

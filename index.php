@@ -46,6 +46,10 @@ $routes = [
 	"MAJJoursFeriesAPI" => ["PHP/MODEL/API/", "MAJJoursFeries", "MAJJoursFeries", 3, true],
 	"ValidePointageAPI" => ["PHP/MODEL/API/", "ValidePointageAPI", "ValidePointage", 2, true],
 
+	"ListeEntites" => ["PHP/VIEW/LISTE/", "ListeEntites", "Liste Entites", 3, false],
+	"FormEntites" => ["PHP/VIEW/FORM/", "FormEntites", "Formulaire Entites", 3, false],
+	"ActionEntites" => ["PHP/CONTROLLER/ACTION/", "ActionEntites", "Action Entites", 3, false],
+	
 	"ListeActivites" => ["PHP/VIEW/LISTE/", "ListeActivites", "Liste Activites", 3, false],
 	"FormActivites" => ["PHP/VIEW/FORM/", "FormActivites", "Formulaire Activites", 3, false],
 	"ActionActivites" => ["PHP/CONTROLLER/ACTION/", "ActionActivites", "Action Activites", 3, false],
