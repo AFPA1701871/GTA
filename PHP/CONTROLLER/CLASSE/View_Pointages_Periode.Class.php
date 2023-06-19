@@ -7,6 +7,7 @@ class View_Pointages_Periode
 
 	private $_periode;
 	private $_cumulPointage;
+	private $_idEntite;
 	private $_idUtilisateur;
 	private $_nomUtilisateur;
 	private $_mailUtilisateur;
@@ -14,7 +15,7 @@ class View_Pointages_Periode
 	private $_idUo_Utilisateur;
 	private $_idRole;
 	private $_idManager;
-	private static $_attributes=["periode","cumulPointage","idUtilisateur","nomUtilisateur","mailUtilisateur","matriculeUtilisateur","idUo_Utilisateur","idRole","idManager"];
+	private static $_attributes=["periode","cumulPointage","idEntite","idUtilisateur","nomUtilisateur","mailUtilisateur","matriculeUtilisateur","idUo_Utilisateur","idRole","idManager"];
 	/***************** Accesseurs ***************** */
 
 
@@ -107,7 +108,15 @@ class View_Pointages_Periode
 	{
 		$this->_idManager=$idManager;
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;

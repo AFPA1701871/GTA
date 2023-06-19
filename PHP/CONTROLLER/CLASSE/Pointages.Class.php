@@ -6,6 +6,7 @@ class Pointages
 	/*****************Attributs***************** */
 
 	private $_idPointage;
+	private $_idEntite;
 	private $_idMotif;
 	private $_idPrestation;
 	private $_idProjet;
@@ -16,7 +17,7 @@ class Pointages
 	private $_validePointage;
 	private $_reportePointage;
 	private $_nbHeuresPointage;
-	private static $_attributes = ["idPointage", "idMotif", "idPrestation", "idProjet", "idUo", "idUtilisateur", "idTypePrestation", "datePointage", "validePointage", "reportePointage", "nbHeuresPointage"];
+	private static $_attributes = ["idPointage", "idEntite", "idMotif", "idPrestation", "idProjet", "idUo", "idUtilisateur", "idTypePrestation", "datePointage", "validePointage", "reportePointage", "nbHeuresPointage"];
 	/***************** Accesseurs ***************** */
 
 
@@ -128,6 +129,15 @@ class Pointages
 	public function setIdTypePrestation($idTypePrestation)
 	{
 		$this->_idTypePrestation = $idTypePrestation;
+	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
+
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
 	}
 	public static function getAttributes()
 	{

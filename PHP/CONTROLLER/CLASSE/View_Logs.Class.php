@@ -6,10 +6,11 @@ class View_Logs
 	/*****************Attributs***************** */
 
 	private $_idUtilisateur;
+	private $_idEntite;
 	private $_nomUtilisateur;
 	private $_prisEnCompte;
 	private $_periode;
-	private static $_attributes=[ "idUtilisateur", "nomUtilisateur", "prisEnCompte",  "periode"];
+	private static $_attributes=[ "idUtilisateur","idEntite", "nomUtilisateur", "prisEnCompte",  "periode"];
 	/***************** Accesseurs ***************** */
 
 
@@ -52,6 +53,15 @@ class View_Logs
 	public function setPeriode($periode)
 	{
 		$this->_periode = $periode;
+	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
+
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
 	}
 	public static function getAttributes()
 	{

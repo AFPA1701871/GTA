@@ -1,11 +1,12 @@
 <?php
 
-class View_Prestations 
+class View_Prestations
 {
 
 	/*****************Attributs***************** */
 
 	private $_idPrestation;
+	private $_idEntite;
 	private $_codePrestation;
 	private $_libellePrestation;
 	private $_idActivite;
@@ -13,8 +14,8 @@ class View_Prestations
 	private $_idProjet;
 	private $_codeProjet;
 	private $_libelleProjet;
-	
-	private static $_attributes=["idPrestation","codePrestation","libellePrestation","idActivite","libelleActivite","idProjet","codeProjet","libelleProjet"];
+
+	private static $_attributes = ["idPrestation", "idEntite", "codePrestation", "libellePrestation", "idActivite", "libelleActivite", "idProjet", "codeProjet", "libelleProjet"];
 	/***************** Accesseurs ***************** */
 
 
@@ -25,7 +26,7 @@ class View_Prestations
 
 	public function setIdPrestation(?int $idPrestation)
 	{
-		$this->_idPrestation=$idPrestation;
+		$this->_idPrestation = $idPrestation;
 	}
 
 	public function getCodePrestation()
@@ -35,7 +36,7 @@ class View_Prestations
 
 	public function setCodePrestation(string $codePrestation)
 	{
-		$this->_codePrestation=$codePrestation;
+		$this->_codePrestation = $codePrestation;
 	}
 
 	public function getLibellePrestation()
@@ -45,7 +46,7 @@ class View_Prestations
 
 	public function setLibellePrestation(?string $libellePrestation)
 	{
-		$this->_libellePrestation=$libellePrestation;
+		$this->_libellePrestation = $libellePrestation;
 	}
 
 	public function getIdActivite()
@@ -55,7 +56,7 @@ class View_Prestations
 
 	public function setIdActivite(int $idActivite)
 	{
-		$this->_idActivite=$idActivite;
+		$this->_idActivite = $idActivite;
 	}
 
 	public function getLibelleActivite()
@@ -65,7 +66,7 @@ class View_Prestations
 
 	public function setLibelleActivite(string $libelleActivite)
 	{
-		$this->_libelleActivite=$libelleActivite;
+		$this->_libelleActivite = $libelleActivite;
 	}
 	public function getIdProjet()
 	{
@@ -96,6 +97,15 @@ class View_Prestations
 	{
 		$this->_libelleProjet = $libelleProjet;
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
+
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;
@@ -105,19 +115,18 @@ class View_Prestations
 
 	public function __construct(array $options = [])
 	{
- 		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
 		{
 			$this->hydrate($options);
 		}
 	}
 	public function hydrate($data)
 	{
- 		foreach ($data as $key => $value)
-		{
- 			$methode = "set".ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+		foreach ($data as $key => $value) {
+			$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
 			if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
 			{
-				$this->$methode($value===""?null:$value);
+				$this->$methode($value === "" ? null : $value);
 			}
 		}
 	}
@@ -125,14 +134,12 @@ class View_Prestations
 	/*****************Autres Méthodes***************** */
 
 	/**
-	* Transforme l'objet en chaine de caractères
-	*
-	* @return String
-	*/
+	 * Transforme l'objet en chaine de caractères
+	 *
+	 * @return String
+	 */
 	public function toString()
 	{
-		return "IdPrestation : ".$this->getIdPrestation()."CodePrestation : ".$this->getCodePrestation()."LibellePrestation : ".$this->getLibellePrestation()."IdActivite : ".$this->getIdActivite()."LibelleActivite : ".$this->getLibelleActivite()."\n";
+		return "IdPrestation : " . $this->getIdPrestation() . "CodePrestation : " . $this->getCodePrestation() . "LibellePrestation : " . $this->getLibellePrestation() . "IdActivite : " . $this->getIdActivite() . "LibelleActivite : " . $this->getLibelleActivite() . "\n";
 	}
-
-	
 }

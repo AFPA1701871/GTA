@@ -6,10 +6,11 @@ class Motifs
 	/*****************Attributs***************** */
 
 	private $_idMotif;
+	private $_idEntite;
 	private $_codeMotif;
 	private $_libelleMotif;
 	private $_idTypePrestation;
-	private static $_attributes=["idMotif","codeMotif","libelleMotif","idTypePrestation"];
+	private static $_attributes=["idMotif","idEntite","codeMotif","libelleMotif","idTypePrestation"];
 	/***************** Accesseurs ***************** */
 
 
@@ -52,7 +53,15 @@ class Motifs
 	{
 		$this->_idTypePrestation=$idTypePrestation;
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;

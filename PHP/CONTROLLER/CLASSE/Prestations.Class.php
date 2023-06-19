@@ -6,10 +6,11 @@ class Prestations
 	/*****************Attributs***************** */
 
 	private $_idPrestation;
+	private $_idEntite;
 	private $_codePrestation;
 	private $_libellePrestation;
 	private $_idActivite;
-	private static $_attributes=["idPrestation","codePrestation","libellePrestation","idActivite"];
+	private static $_attributes=["idPrestation","idEntite","codePrestation","libellePrestation","idActivite"];
 	/***************** Accesseurs ***************** */
 
 
@@ -52,7 +53,15 @@ class Prestations
 	{
 		$this->_idActivite=$idActivite;
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;

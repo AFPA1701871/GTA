@@ -6,6 +6,7 @@ class View_Motifs
 	/*****************Attributs***************** */
 
 	private $_idMotif;
+	private $_idEntite;
 	private $_codeMotif;
 	private $_libelleMotif;
 	private $_idTypePrestation;
@@ -14,7 +15,7 @@ class View_Motifs
 	private $_motifRequis;
 	private $_uoRequis;
 	private $_projetRequis;
-	private static $_attributes=["idMotif","codeMotif","libelleMotif","idTypePrestation","numeroTypePrestation","libelleTypePrestation","motifRequis","uoRequis","projetRequis"];
+	private static $_attributes=["idMotif","idEntite","codeMotif","libelleMotif","idTypePrestation","numeroTypePrestation","libelleTypePrestation","motifRequis","uoRequis","projetRequis"];
 	/***************** Accesseurs ***************** */
 
 
@@ -107,7 +108,15 @@ class View_Motifs
 	{
 		$this->_projetRequis=$projetRequis;
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;

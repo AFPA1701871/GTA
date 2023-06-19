@@ -6,6 +6,7 @@ class View_Pointages
 	/*****************Attributs***************** */
 
 	private $_idPointage;
+	private $_idEntite;
 	private $_datePointage;
 	private $_periode;
 	private $_validePointage;
@@ -35,7 +36,7 @@ class View_Pointages
 	private $_idTypePrestation;
 	private $_numeroTypePrestation;
 	private $_libelleTypePrestation;
-	private static $_attributes=["idPointage","datePointage","periode","validePointage","reportePointage","nbHeuresPointage","idUo_Pointage","idMotif","idUtilisateur","nomUtilisateur","mailUtilisateur","matriculeUtilisateur","passwordUtilisateur","idUo_Utilisateur","idRole","idManager","numeroUo","libelleUo","codeMotif","libelleMotif","idProjet","codeProjet","libelleProjet","idPrestation","codePrestation","libellePrestation","idActivite","idTypePrestation","numeroTypePrestation","libelleTypePrestation"];
+	private static $_attributes=["idPointage","idEntite","datePointage","periode","validePointage","reportePointage","nbHeuresPointage","idUo_Pointage","idMotif","idUtilisateur","nomUtilisateur","mailUtilisateur","matriculeUtilisateur","passwordUtilisateur","idUo_Utilisateur","idRole","idManager","numeroUo","libelleUo","codeMotif","libelleMotif","idProjet","codeProjet","libelleProjet","idPrestation","codePrestation","libellePrestation","idActivite","idTypePrestation","numeroTypePrestation","libelleTypePrestation"];
 	/***************** Accesseurs ***************** */
 
 
@@ -336,6 +337,15 @@ class View_Pointages
 	public function setLibelleTypePrestation($libelleTypePrestation)
 	{
 		$this->_libelleTypePrestation = $libelleTypePrestation;
+	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
+
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
 	}
 	public static function getAttributes()
 	{

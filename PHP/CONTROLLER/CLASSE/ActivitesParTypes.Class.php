@@ -1,14 +1,15 @@
 <?php
 
-class ActivitesParTypes 
+class ActivitesParTypes
 {
 
 	/*****************Attributs***************** */
 
 	private $_idActivitesParTypes;
+	private $_idEntite;
 	private $_idTypePrestation;
 	private $_idActivite;
-	private static $_attributes=["idActivitesParTypes","idTypePrestation","idActivite"];
+	private static $_attributes = ["idActivitesParTypes", "idEntite", "idTypePrestation", "idActivite"];
 	/***************** Accesseurs ***************** */
 
 
@@ -19,7 +20,7 @@ class ActivitesParTypes
 
 	public function setIdActivitesParTypes(?int $idActivitesParTypes)
 	{
-		$this->_idActivitesParTypes=$idActivitesParTypes;
+		$this->_idActivitesParTypes = $idActivitesParTypes;
 	}
 
 	public function getIdTypePrestation()
@@ -29,7 +30,7 @@ class ActivitesParTypes
 
 	public function setIdTypePrestation(?int $idTypePrestation)
 	{
-		$this->_idTypePrestation=$idTypePrestation;
+		$this->_idTypePrestation = $idTypePrestation;
 	}
 
 	public function getIdActivite()
@@ -39,9 +40,17 @@ class ActivitesParTypes
 
 	public function setIdActivite(?int $idActivite)
 	{
-		$this->_idActivite=$idActivite;
+		$this->_idActivite = $idActivite;
+	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
 	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;
@@ -51,19 +60,18 @@ class ActivitesParTypes
 
 	public function __construct(array $options = [])
 	{
- 		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
+		if (!empty($options)) // empty : renvoi vrai si le tableau est vide
 		{
 			$this->hydrate($options);
 		}
 	}
 	public function hydrate($data)
 	{
- 		foreach ($data as $key => $value)
-		{
- 			$methode = "set".ucfirst($key); //ucfirst met la 1ere lettre en majuscule
+		foreach ($data as $key => $value) {
+			$methode = "set" . ucfirst($key); //ucfirst met la 1ere lettre en majuscule
 			if (is_callable(([$this, $methode]))) // is_callable verifie que la methode existe
 			{
-				$this->$methode($value===""?null:$value);
+				$this->$methode($value === "" ? null : $value);
 			}
 		}
 	}
@@ -71,12 +79,12 @@ class ActivitesParTypes
 	/*****************Autres Méthodes***************** */
 
 	/**
-	* Transforme l'objet en chaine de caractères
-	*
-	* @return String
-	*/
+	 * Transforme l'objet en chaine de caractères
+	 *
+	 * @return String
+	 */
 	public function toString()
 	{
-		return "IdActivitesParTypes : ".$this->getIdActivitesParTypes()."IdTypePrestation : ".$this->getIdTypePrestation()."IdActivite : ".$this->getIdActivite()."\n";
+		return "IdActivitesParTypes : " . $this->getIdActivitesParTypes() . "IdTypePrestation : " . $this->getIdTypePrestation() . "IdActivite : " . $this->getIdActivite() . "\n";
 	}
 }

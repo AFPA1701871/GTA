@@ -6,9 +6,10 @@ class Uos
 	/*****************Attributs***************** */
 
 	private $_idUo;
+	private $_idEntite;
 	private $_numeroUo;
 	private $_libelleUo;
-	private static $_attributes = ["idUo", "numeroUo", "libelleUo"];
+	private static $_attributes = ["idUo","idEntite", "numeroUo", "libelleUo"];
 	/***************** Accesseurs ***************** */
 
 
@@ -41,7 +42,15 @@ class Uos
 	{
 		$this->_libelleUo = $libelleUo;
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;

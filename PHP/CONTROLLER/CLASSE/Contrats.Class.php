@@ -6,11 +6,12 @@ class Contrats
 	/*****************Attributs***************** */
 
 	private $_idContrat;
+	private $_idEntite;
 	private $_idCentre;
 	private $_idUtilisateur;
 	private $_dateDebutContrat;
 	private $_dateFinContrat;
-	private static $_attributes=["idContrat","idCentre","idUtilisateur","dateDebutContrat","dateFinContrat"];
+	private static $_attributes=["idContrat","idEntite","idCentre","idUtilisateur","dateDebutContrat","dateFinContrat"];
 	/***************** Accesseurs ***************** */
 
 
@@ -63,7 +64,15 @@ class Contrats
 	{
 		$this->_dateFinContrat=DateTime::createFromFormat("Y-n-j",$dateFinContrat);
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;

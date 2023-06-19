@@ -6,13 +6,14 @@ class Logs
 	/*****************Attributs***************** */
 
 	private $_idLog;
+	private $_idEntite;
 	private $_actionLog;
 	private $_idUtilisateur;
 	private $_dateModifiee;
 	private $_prisEnCompte;
 	private $_dateLog;
 	private $_userLog;
-	private static $_attributes=["idLog", "actionLog", "idUtilisateur", "dateModifiee", "prisEnCompte", "dateLog", "userLog"];
+	private static $_attributes=["idLog","idEntite", "actionLog", "idUtilisateur", "dateModifiee", "prisEnCompte", "dateLog", "userLog"];
 	/***************** Accesseurs ***************** */
 
 
@@ -83,6 +84,14 @@ class Logs
 	public function setUserLog($userLog)
 	{
 		$this->_userLog = $userLog;
+	}public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
+
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
 	}
 	public static function getAttributes()
 	{

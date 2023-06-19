@@ -6,13 +6,14 @@ class Preferences
 	/*****************Attributs***************** */
 
 	private $_idPreference;
+	private $_idEntite;
 	private $_idMotif;
 	private $_idPrestation;
 	private $_idProjet;
 	private $_idUo;
 	private $_idUtilisateur;
 	private $_idTypePrestation;
-	private static $_attributes = ["idPreference", "idMotif", "idPrestation", "idProjet", "idUo", "idUtilisateur", "idTypePrestation"];
+	private static $_attributes = ["idPreference","idEntite", "idMotif", "idPrestation", "idProjet", "idUo", "idUtilisateur", "idTypePrestation"];
 	/***************** Accesseurs ***************** */
 
 
@@ -84,6 +85,14 @@ class Preferences
 	public function setIdTypePrestation($idTypePrestation)
 	{
 		$this->_idTypePrestation = $idTypePrestation;
+	}public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
+
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
 	}
 	public static function getAttributes()
 	{

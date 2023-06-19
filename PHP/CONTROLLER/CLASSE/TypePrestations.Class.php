@@ -6,12 +6,13 @@ class TypePrestations
 	/*****************Attributs***************** */
 
 	private $_idTypePrestation;
+	private $_idEntite;
 	private $_numeroTypePrestation;
 	private $_libelleTypePrestation;
 	private $_motifRequis;
 	private $_uoRequis;
 	private $_projetRequis;
-	private static $_attributes=["idTypePrestation","numeroTypePrestation","libelleTypePrestation","motifRequis","uoRequis","projetRequis"];
+	private static $_attributes=["idTypePrestation","idEntite","numeroTypePrestation","libelleTypePrestation","motifRequis","uoRequis","projetRequis"];
 	/***************** Accesseurs ***************** */
 
 
@@ -74,7 +75,15 @@ class TypePrestations
 	{
 		$this->_projetRequis=$projetRequis;
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;

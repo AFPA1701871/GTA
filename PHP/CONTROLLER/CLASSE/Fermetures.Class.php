@@ -6,8 +6,9 @@ class Fermetures
 	/*****************Attributs***************** */
 
 	private $_idFermeture;
+	private $_idEntite;
 	private $_dateFermeture;
-	private static $_attributes=["idFermeture","dateFermeture"];
+	private static $_attributes=["idFermeture","idEntite","dateFermeture"];
 	/***************** Accesseurs ***************** */
 
 
@@ -29,6 +30,14 @@ class Fermetures
 	public function setDateFermeture(string $dateFermeture)
 	{
 		$this->_dateFermeture=DateTime::createFromFormat("Y-n-j",$dateFermeture);
+	}public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
+
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
 	}
 
 	public static function getAttributes()

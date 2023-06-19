@@ -6,9 +6,10 @@ class Associations
 	/*****************Attributs***************** */
 
 	private $_idAssociation;
+	private $_idEntite;
 	private $_idPrestation;
 	private $_idProjet;
-	private static $_attributes=["idAssociation","idPrestation","idProjet"];
+	private static $_attributes=["idAssociation","idEntite","idPrestation","idProjet"];
 	/***************** Accesseurs ***************** */
 
 
@@ -41,7 +42,15 @@ class Associations
 	{
 		$this->_idProjet=$idProjet;
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;

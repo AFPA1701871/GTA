@@ -6,9 +6,10 @@ class Projets
 	/*****************Attributs***************** */
 
 	private $_idProjet;
+	private $_idEntite;
 	private $_codeProjet;
 	private $_libelleProjet;
-	private static $_attributes=["idProjet","codeProjet","libelleProjet"];
+	private static $_attributes=["idProjet","idEntite","codeProjet","libelleProjet"];
 	/***************** Accesseurs ***************** */
 
 
@@ -41,7 +42,15 @@ class Projets
 	{
 		$this->_libelleProjet=$libelleProjet;
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;

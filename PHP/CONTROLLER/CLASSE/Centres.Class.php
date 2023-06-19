@@ -6,9 +6,10 @@ class Centres
 	/*****************Attributs***************** */
 
 	private $_idCentre;
+	private $_idEntite;
 	private $_nomCentre;
 	private $_numeroCentre;
-	private static $_attributes=["idCentre","nomCentre","numeroCentre"];
+	private static $_attributes=["idCentre","idEntite","nomCentre","numeroCentre"];
 	/***************** Accesseurs ***************** */
 
 
@@ -41,7 +42,15 @@ class Centres
 	{
 		$this->_numeroCentre=$numeroCentre;
 	}
+	public function getIdEntite()
+	{
+		return $this->_idEntite;
+	}
 
+	public function setIdEntite($idEntite)
+	{
+		$this->_idEntite = $idEntite;
+	}
 	public static function getAttributes()
 	{
 		return self::$_attributes;
