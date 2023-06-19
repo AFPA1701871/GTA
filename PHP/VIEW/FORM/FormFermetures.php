@@ -21,6 +21,7 @@ echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Fermetures").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdFermeture().'" name=IdFermeture></div>';
+	echo '<input type=hidden name=idEntite value=' . $_SESSION["entite"] . '> ';
 echo '<label for=DateFermeture class="caseForm labelForm">'.texte("DateFermeture").'</label>';
 echo '<div class="caseForm donneeForm"><input type="date" '.$disabled .'value="'.date('Y-m-d', strtotime($elm->getDateFermeture() ?? date('Y-m-d'))).'" name=DateFermeture pattern="'.$regex["date"].'"></div>';
 echo '<div></div><div></div>';

@@ -21,6 +21,7 @@ echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">' . texte("Formulaire Uos") . '</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 echo '<div class="noDisplay"><input type="hidden" value="' . $elm->getIdUo() . '" name=IdUo></div>';
+echo '<input type=hidden name=idEntite value=' . $_SESSION["entite"] . '> ';
 echo '<label for=NumeroUo class="caseForm labelForm">' . texte("NumeroUo") . '</label>';
 echo '<div class="caseForm donneeForm"><input type="text" ' . $disabled . 'value="' . $elm->getNumeroUo() . '" name=NumeroUo pattern="' . $regex["numTirret"] . '" required></div>';
 echo '<div></div><div></div>';

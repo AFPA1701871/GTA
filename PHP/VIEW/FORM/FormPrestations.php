@@ -23,6 +23,7 @@ echo '<div class="bigEspace"></div>';
 echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Prestations").'</div>';
 echo '<div class="bigEspace col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdPrestation().'" name=IdPrestation></div>';
+	echo '<input type=hidden name=idEntite value=' . $_SESSION["entite"] . '> ';
 echo '<label for=CodePrestation class="caseForm labelForm">'.texte("CodePrestation").'</label>';
 echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getCodePrestation().'" name=CodePrestation pattern="'.$regex["*"].'" required></div>';
 echo '<div></div><div></div>';

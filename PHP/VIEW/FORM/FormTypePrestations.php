@@ -22,6 +22,7 @@ echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">' . texte("Formulaire TypePrestations") . '</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 echo '<div class="noDisplay"><input type="hidden" value="' . $elm->getIdTypePrestation() . '" name=IdTypePrestation></div>';
+echo '<input type=hidden name=idEntite value=' . $_SESSION["entite"] . '> ';
 echo '<label for=NumeroTypePrestation class="caseForm labelForm">' . texte("NumeroTypePrestation") . '</label>';
 echo '<div class="caseForm donneeForm"><input type="number" ' . $disabled . 'value="' . $elm->getNumeroTypePrestation() . '" name=NumeroTypePrestation pattern="' . $regex['num'] . '" required></div>';
 echo '<div></div><div></div>';

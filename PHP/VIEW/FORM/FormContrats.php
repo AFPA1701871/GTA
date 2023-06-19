@@ -21,6 +21,7 @@ echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Contrats").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdContrat().'" name=IdContrat><input type="hidden" value="'.$_GET['idutilisateur'].'" name=IdUtilisateur></div>';
+echo '<input type=hidden name=idEntite value=' . $_SESSION["entite"] . '> ';
 echo '<label for=IdCentre class="caseForm labelForm">'.texte("IdCentre").'</label>';
 echo '<div class="caseForm donneeForm">'.creerSelect($elm->getIdCentre(), 'Centres', ['nomCentre'], $disabled . ' required',null,null,null,"Choisir un centre").'</div>';
 echo '<div></div><div></div>';

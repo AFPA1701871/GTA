@@ -21,6 +21,7 @@ echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">'.texte("Formulaire Motifs").'</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdMotif().'" name=IdMotif></div>';
+	echo '<input type=hidden name=idEntite value=' . $_SESSION["entite"] . '> ';
 echo '<label for=CodeMotif class="caseForm labelForm">'.texte("CodeMotif").'</label>';
 echo '<div class="caseForm donneeForm"><input type="number" '.$disabled .'value="'.$elm->getCodeMotif().'" name=CodeMotif pattern="'.$regex["num"].'" required></div>';
 echo '<div></div><div></div>';

@@ -21,6 +21,7 @@ echo '<div class="bigEspace"></div>	';
 echo '<div class="caseForm titreForm col-span-form">Formulaire Logs</div>';
 echo '<div class="bigEspace  col-span-form"></div>	';
 	echo '<div class="noDisplay"><input type="hidden" value="'.$elm->getIdLog().'" name=IdLog></div>';
+	echo '<input type=hidden name=idEntite value=' . $_SESSION["entite"] . '> ';
 echo '<label for=DateLog class="caseForm labelForm">'.texte("DateLog").'</label>';
 echo '<div class="caseForm donneeForm"><input type="text" '.$disabled .'value="'.$elm->getDateLog().'" name=DateLog pattern="'.$regex["*"].'"></div>';
 echo '<div></div><div></div>';
