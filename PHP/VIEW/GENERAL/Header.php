@@ -1,13 +1,22 @@
-<body class="colonne">
+ <?php
+ $entite = isset($_SESSION['entite'])?$_SESSION["entite"]:"";
+ $libEntite = $entite!=0 && $entite!=""?EntitesManager::findbyId($entite)->getLibelleEntite():"";
+ echo '<body class="colonne">
     <header>
         <div class="cote"></div>
         <div>
 
-            <div class=wrapperlogo><a class=logo href="index.php?page=<?= (isset($_SESSION['utilisateur']) && $nom != 'ChangePassword' ? 'Accueil' : ($nom == 'ChangePassword' && empty($_GET['src']) ? 'ChangePassword' : (isset($_GET['src']) ? 'Accueil' : 'Default'))); ?>"><img src="./IMG/LogoGTA_blanc.png" alt=""><p class="titre">GTA</p></a></div>
-            <div class="">
-                <?php
+            <div class=wrapperlogo>
+                <a class=logo href="index.php?page='.
+                (isset($_SESSION['utilisateur']) && $nom != 'ChangePassword' ? 'Accueil' : ($nom == 'ChangePassword' && empty($_GET['src']) ? 'ChangePassword' : (isset($_GET['src']) ? 'Accueil' : 'Default'))).'">
+                <img src="./IMG/LogoGTA_blanc.png" alt="">
+               <div class="colonne"> <div class="titre">GTA</div>'.$libEntite.'</div>
+            </a></div>
+            <div class="">';
+               
                 if (isset($_SESSION['utilisateur'])) {
-                    echo '<input type=hidden id=idEntite value='.$_SESSION["entite"].'>';
+                    echo '<input type=hidden id=idEntite value='.$entite.'>';
+                   
                     echo '<div class="center demi">' . texte('Bonjour') . " " . $_SESSION['utilisateur']->getNomUtilisateur() . '</div>';
                     if (($nom == 'ChangePassword' && !empty($_GET['src'])) || $nom != 'ChangePassword')
                     {

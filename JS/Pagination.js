@@ -73,7 +73,8 @@ function AfficherPage(index, filtre) {
     // FocusBouton(index, true);
     pageActive = index;
     grid.innerHTML = "";
-
+    idEntite = document.querySelector("#idEntite").value;
+    if ( idEntite!=0) arrayConditions.idEntite =idEntite;
     var requ2 = new XMLHttpRequest();
     requ2.open('POST', 'index.php?page=ListeAPI', true);
     requ2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

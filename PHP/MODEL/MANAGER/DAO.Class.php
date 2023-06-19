@@ -188,7 +188,9 @@ class DAO
 	 */
 	private static function conditionSelect($conditions,$table)
 	{
+		if ((isset($_SESSION['entite']) && $_SESSION['entite']==0) || str_contains($table,"tilisateur") || str_contains($table,"ontrat") || str_contains($table,"exte"))
 		$req = " WHERE ";
+		else $req = " WHERE idEntite=".$_SESSION['entite']." AND ";
 		foreach ($conditions as $nomColonne => $valeur) {
 			if ($nomColonne != "fullTexte") {
 				// cas du in
